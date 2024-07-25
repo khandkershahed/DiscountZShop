@@ -1,588 +1,283 @@
-<!--begin::Header-->
-<div id="kt_header" class="header align-items-stretch">
-    <!--begin::Container-->
-    <div class="container-fluid d-flex align-items-stretch justify-content-between">
-        <!--begin::Aside mobile toggle-->
-        <div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="Show aside menu">
-            <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-                id="kt_aside_mobile_toggle">
-                <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
-                <span class="svg-icon svg-icon-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none">
-                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
-                            fill="currentColor" />
-                        <path opacity="0.3"
-                            d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
-                            fill="currentColor" />
-                    </svg>
-                </span>
-                <!--end::Svg Icon-->
-            </div>
-        </div>
-        <!--end::Aside mobile toggle-->
-        <!--begin::Mobile logo-->
-        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="../../demo1/dist/index.html" class="d-lg-none">
-                <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-2.svg') }}" class="h-30px" />
-            </a>
-        </div>
-        <!--end::Mobile logo-->
-        <!--begin::Wrapper-->
-        <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
-            <!--begin::Navbar-->
-            <div class="d-flex align-items-stretch" id="kt_header_nav">
-            </div>
-            <!--end::Navbar-->
-            <!--begin::Toolbar wrapper-->
-            <div class="d-flex align-items-stretch flex-shrink-0">
-                <!--begin::Notifications-->
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
-                    <!--begin::Menu- wrapper-->
-                    <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                        data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
-                        <span class="svg-icon svg-icon-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <path
-                                    d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
-                                    fill="currentColor" />
-                                <path
-                                    d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3"
-                                    d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3"
-                                    d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
-                                    fill="currentColor" />
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </div>
-                    <!--begin::Menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
-                        <!--begin::Heading-->
-                        <div class="d-flex flex-column bgi-no-repeat rounded-top"
-                            style="background-image:url('{{ asset('admin/assets/media/misc/pattern-1.jpg') }}')">
-                            <!--begin::Title-->
-                            <h3 class="text-white fw-bold px-9 mt-10 mb-6">Notifications
-                                <span class="fs-8 opacity-75 ps-3">24 reports</span>
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Tabs-->
-                            <ul class="nav nav-line-tabs nav-line-tabs-2x nav-stretch fw-bold px-9">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4 active"
-                                        data-bs-toggle="tab" href="#kt_topbar_notifications_1">Alerts</a>
-                                </li>
-                            </ul>
-                            <!--end::Tabs-->
-                        </div>
-                        <!--end::Heading-->
-                        <!--begin::Tab content-->
-                        <div class="tab-content">
-                            <!--begin::Tab panel-->
-                            <div class="tab-pane fade show active" id="kt_topbar_notifications_1" role="tabpanel">
-                                <!--begin::Items-->
-                                <div class="scroll-y mh-325px my-5 px-8">
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-primary">
-                                                    <!--begin::Svg Icon | path: icons/duotune/technology/teh008.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M11 6.5C11 9 9 11 6.5 11C4 11 2 9 2 6.5C2 4 4 2 6.5 2C9 2 11 4 11 6.5ZM17.5 2C15 2 13 4 13 6.5C13 9 15 11 17.5 11C20 11 22 9 22 6.5C22 4 20 2 17.5 2ZM6.5 13C4 13 2 15 2 17.5C2 20 4 22 6.5 22C9 22 11 20 11 17.5C11 15 9 13 6.5 13ZM17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M17.5 16C17.5 16 17.4 16 17.5 16L16.7 15.3C16.1 14.7 15.7 13.9 15.6 13.1C15.5 12.4 15.5 11.6 15.6 10.8C15.7 9.99999 16.1 9.19998 16.7 8.59998L17.4 7.90002H17.5C18.3 7.90002 19 7.20002 19 6.40002C19 5.60002 18.3 4.90002 17.5 4.90002C16.7 4.90002 16 5.60002 16 6.40002V6.5L15.3 7.20001C14.7 7.80001 13.9 8.19999 13.1 8.29999C12.4 8.39999 11.6 8.39999 10.8 8.29999C9.99999 8.19999 9.20001 7.80001 8.60001 7.20001L7.89999 6.5V6.40002C7.89999 5.60002 7.19999 4.90002 6.39999 4.90002C5.59999 4.90002 4.89999 5.60002 4.89999 6.40002C4.89999 7.20002 5.59999 7.90002 6.39999 7.90002H6.5L7.20001 8.59998C7.80001 9.19998 8.19999 9.99999 8.29999 10.8C8.39999 11.5 8.39999 12.3 8.29999 13.1C8.19999 13.9 7.80001 14.7 7.20001 15.3L6.5 16H6.39999C5.59999 16 4.89999 16.7 4.89999 17.5C4.89999 18.3 5.59999 19 6.39999 19C7.19999 19 7.89999 18.3 7.89999 17.5V17.4L8.60001 16.7C9.20001 16.1 9.99999 15.7 10.8 15.6C11.5 15.5 12.3 15.5 13.1 15.6C13.9 15.7 14.7 16.1 15.3 16.7L16 17.4V17.5C16 18.3 16.7 19 17.5 19C18.3 19 19 18.3 19 17.5C19 16.7 18.3 16 17.5 16Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
-                                                    Alice</a>
-                                                <div class="text-gray-400 fs-7">Phase 1 development
-                                                </div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">1 hr</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-danger">
-                                                    <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-danger">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <rect opacity="0.3" x="2" y="2" width="20"
-                                                                height="20" rx="10" fill="currentColor" />
-                                                            <rect x="11" y="14" width="7" height="2"
-                                                                rx="1" transform="rotate(-90 11 14)"
-                                                                fill="currentColor" />
-                                                            <rect x="11" y="17" width="2" height="2"
-                                                                rx="1" transform="rotate(-90 11 17)"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">HR
-                                                    Confidential</a>
-                                                <div class="text-gray-400 fs-7">Confidential staff
-                                                    documents</div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">2 hrs</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-warning">
-                                                    <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-warning">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Company
-                                                    HR</a>
-                                                <div class="text-gray-400 fs-7">Corporeate staff
-                                                    profiles</div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">5 hrs</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-success">
-                                                    <!--begin::Svg Icon | path: icons/duotune/files/fil023.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M5 15C3.3 15 2 13.7 2 12C2 10.3 3.3 9 5 9H5.10001C5.00001 8.7 5 8.3 5 8C5 5.2 7.2 3 10 3C11.9 3 13.5 4 14.3 5.5C14.8 5.2 15.4 5 16 5C17.7 5 19 6.3 19 8C19 8.4 18.9 8.7 18.8 9C18.9 9 18.9 9 19 9C20.7 9 22 10.3 22 12C22 13.7 20.7 15 19 15H5ZM5 12.6H13L9.7 9.29999C9.3 8.89999 8.7 8.89999 8.3 9.29999L5 12.6Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M17 17.4V12C17 11.4 16.6 11 16 11C15.4 11 15 11.4 15 12V17.4H17Z"
-                                                                fill="currentColor" />
-                                                            <path opacity="0.3"
-                                                                d="M12 17.4H20L16.7 20.7C16.3 21.1 15.7 21.1 15.3 20.7L12 17.4Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M8 12.6V18C8 18.6 8.4 19 9 19C9.6 19 10 18.6 10 18V12.6H8Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
-                                                    Redux</a>
-                                                <div class="text-gray-400 fs-7">New frontend admin theme
-                                                </div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">2 days</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-primary">
-                                                    <!--begin::Svg Icon | path: icons/duotune/maps/map001.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M6 22H4V3C4 2.4 4.4 2 5 2C5.6 2 6 2.4 6 3V22Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M18 14H4V4H18C18.8 4 19.2 4.9 18.7 5.5L16 9L18.8 12.5C19.3 13.1 18.8 14 18 14Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
-                                                    Breafing</a>
-                                                <div class="text-gray-400 fs-7">Product launch status
-                                                    update</div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">21 Jan</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-info">
-                                                    <!--begin::Svg Icon | path: icons/duotune/general/gen006.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-info">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M22 5V19C22 19.6 21.6 20 21 20H19.5L11.9 12.4C11.5 12 10.9 12 10.5 12.4L3 20C2.5 20 2 19.5 2 19V5C2 4.4 2.4 4 3 4H21C21.6 4 22 4.4 22 5ZM7.5 7C6.7 7 6 7.7 6 8.5C6 9.3 6.7 10 7.5 10C8.3 10 9 9.3 9 8.5C9 7.7 8.3 7 7.5 7Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M19.1 10C18.7 9.60001 18.1 9.60001 17.7 10L10.7 17H2V19C2 19.6 2.4 20 3 20H21C21.6 20 22 19.6 22 19V12.9L19.1 10Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Banner
-                                                    Assets</a>
-                                                <div class="text-gray-400 fs-7">Collection of banner
-                                                    images</div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">21 Jan</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                    <!--begin::Item-->
-                                    <div class="d-flex flex-stack py-4">
-                                        <!--begin::Section-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-warning">
-                                                    <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                                    <span class="svg-icon svg-icon-2 svg-icon-warning">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="25" viewBox="0 0 24 25" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Title-->
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Icon
-                                                    Assets</a>
-                                                <div class="text-gray-400 fs-7">Collection of SVG icons
-                                                </div>
-                                            </div>
-                                            <!--end::Title-->
-                                        </div>
-                                        <!--end::Section-->
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light fs-8">20 March</span>
-                                        <!--end::Label-->
-                                    </div>
-                                    <!--end::Item-->
-                                </div>
-                                <!--end::Items-->
-                                <!--begin::View more-->
-                                <div class="py-3 text-center border-top">
-                                    <a href="../../demo1/dist/pages/user-profile/activity.html"
-                                        class="btn btn-color-gray-600 btn-active-color-primary">View All
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-                                        <span class="svg-icon svg-icon-5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <rect opacity="0.5" x="18" y="13" width="13" height="2"
-                                                    rx="1" transform="rotate(-180 18 13)"
-                                                    fill="currentColor" />
-                                                <path
-                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                                    fill="currentColor" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon--></a>
-                                </div>
-                                <!--end::View more-->
-                            </div>
-                            <!--end::Tab panel-->
-                        </div>
-                        <!--end::Tab content-->
-                    </div>
-                    <!--end::Menu-->
-                    <!--end::Menu wrapper-->
-                </div>
-                <!--end::Notifications-->
-                <!--begin::Theme mode-->
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
-                    <!--begin::Theme mode docs-->
-                    <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                        href="../../demo1/dist/documentation/getting-started/dark-mode.html">
-                        <i class="fonticon-sun fs-2"></i>
-                    </a>
-                    <!--end::Theme mode docs-->
-                </div>
-                <!--end::Theme mode-->
-                <!--begin::User menu-->
-                <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-                    <!--begin::Menu wrapper-->
-                    <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-                        data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}"
-                            alt="user" />
-                    </div>
-                    <!--begin::User account menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
-                        data-kt-menu="true">
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <div class="menu-content d-flex align-items-center px-3">
-                                <!--begin::Avatar-->
-                                <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo"
-                                        src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}" />
-                                </div>
-                                <!--end::Avatar-->
-                                <!--begin::Username-->
-                                <div class="d-flex flex-column">
-                                    <div class="fw-bolder d-flex align-items-center fs-5">
-                                        {{ Auth::guard('admin')->user()->name }}
-                                    </div>
-                                    <a href="#" class="fw-bold text-muted text-hover-primary fs-7">
-                                        {{ Auth::guard('admin')->user()->email }}
-                                    </a>
-                                </div>
-                                <!--end::Username-->
-                            </div>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="{{ route('admin.profile.edit') }}" class="menu-link px-5">My
-                                Profile</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title position-relative">Language
-                                    <span
-                                        class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                                        <img class="w-15px h-15px rounded-1 ms-2"
-                                            src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
-                                            alt="" /></span></span>
-                            </a>
-                            <!--begin::Menu sub-->
-                            {{-- <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
-                                                alt="" />
-                                        </span>English</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/spain.svg') }}"
-                                                alt="" />
-                                        </span>Spanish</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/germany.svg') }}"
-                                                alt="" />
-                                        </span>German</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/japan.svg') }}"
-                                                alt="" />
-                                        </span>Japanese</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/france.svg') }}"
-                                                alt="" />
-                                        </span>French</a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div> --}}
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                    <div class="menu-item px-3">
-                                        <a rel="alternate" hreflang="{{ $localeCode }}"
-                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
-                                            class="menu-link d-flex px-5">
-                                            <span class="symbol symbol-20px me-4">
-                                                <img class="rounded-1"
-                                                    src="{{ asset('admin/assets/media/flags/' . $localeCode . '.svg') }}"
-                                                    alt="" />
-                                            </span>{{ $properties['native'] }}
-                                        </a>
-                                    </div>
-                                @endforeach
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu sub-->
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5 my-1">
-                            <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
-                                Settings</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <form method="POST" action="{{ route('admin.logout') }}">
-                                @csrf
-                                <a href="{{ route('admin.logout') }}"
-                                    onclick="event.preventDefault();
-                                this.closest('form').submit();"
-                                    class="menu-link px-5"> {{ __('Sign Out') }}</a>
-                            </form>
-                        </div>
+<header class="sticky-top bg-light">
+    <nav class="navbar navbar-expand-lg py-0">
+        <div class="container px-0">
+            <!-- Toggler Button for Mobile View -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <div class="menu-content px-5">
-                                <label
-                                    class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
-                                    for="kt_user_menu_dark_mode_toggle">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
-                                        name="mode" id="kt_user_menu_dark_mode_toggle"
-                                        data-kt-url="../../demo1/dist/index.html" />
-                                    <span class="pulse-ring ms-n1"></span>
-                                    <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-                                </label>
-                            </div>
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-flex align-items-center">
+                        <!-- Current Location -->
+                        <a class="nav-link current-location shadow-sm" aria-current="page"
+                            title="Location Wise Current Discount" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
+                                y="0" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512"
+                                xml:space="preserve" class="">
+                                <g>
+                                    <path
+                                        d="M341.476 338.285c54.483-85.493 47.634-74.827 49.204-77.056C410.516 233.251 421 200.322 421 166 421 74.98 347.139 0 256 0 165.158 0 91 74.832 91 166c0 34.3 10.704 68.091 31.19 96.446l48.332 75.84C118.847 346.227 31 369.892 31 422c0 18.995 12.398 46.065 71.462 67.159C143.704 503.888 198.231 512 256 512c108.025 0 225-30.472 225-90 0-52.117-87.744-75.757-139.524-83.715zm-194.227-92.34a15.57 15.57 0 0 0-.517-.758C129.685 221.735 121 193.941 121 166c0-75.018 60.406-136 135-136 74.439 0 135 61.009 135 136 0 27.986-8.521 54.837-24.646 77.671-1.445 1.906 6.094-9.806-110.354 172.918L147.249 245.945zM256 482c-117.994 0-195-34.683-195-60 0-17.016 39.568-44.995 127.248-55.901l55.102 86.463a14.998 14.998 0 0 0 25.298 0l55.101-86.463C411.431 377.005 451 404.984 451 422c0 25.102-76.313 60-195 60z"
+                                        fill="#ffffff" opacity="1" data-original="#000000" class="">
+                                    </path>
+                                    <path
+                                        d="M256 91c-41.355 0-75 33.645-75 75s33.645 75 75 75 75-33.645 75-75-33.645-75-75-75zm0 120c-24.813 0-45-20.187-45-45s20.187-45 45-45 45 20.187 45 45-20.187 45-45 45z"
+                                        fill="#ffffff" opacity="1" data-original="#000000"
+                                        class=""></path>
+                                </g>
+                            </svg>
+                        </a>
+                        <div class="dropdown position-static">
+                            <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu"
+                                type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">
+                                <span>
+                                    Menu
+                                    <div class="ps-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                            viewBox="0 0 22 22" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M3.2998 5.4999C3.2998 5.20816 3.4157 4.92838 3.62199 4.72209C3.82828 4.5158 4.10807 4.3999 4.3998 4.3999H17.5998C17.8915 4.3999 18.1713 4.5158 18.3776 4.72209C18.5839 4.92838 18.6998 5.20816 18.6998 5.4999C18.6998 5.79164 18.5839 6.07143 18.3776 6.27772C18.1713 6.48401 17.8915 6.5999 17.5998 6.5999H4.3998C4.10807 6.5999 3.82828 6.48401 3.62199 6.27772C3.4157 6.07143 3.2998 5.79164 3.2998 5.4999ZM3.2998 10.9999C3.2998 10.7082 3.4157 10.4284 3.62199 10.2221C3.82828 10.0158 4.10807 9.8999 4.3998 9.8999H10.9998C11.2915 9.8999 11.5713 10.0158 11.7776 10.2221C11.9839 10.4284 12.0998 10.7082 12.0998 10.9999C12.0998 11.2916 11.9839 11.5714 11.7776 11.7777C11.5713 11.984 11.2915 12.0999 10.9998 12.0999H4.3998C4.10807 12.0999 3.82828 11.984 3.62199 11.7777C3.4157 11.5714 3.2998 11.2916 3.2998 10.9999ZM3.2998 16.4999C3.2998 16.2082 3.4157 15.9284 3.62199 15.7221C3.82828 15.5158 4.10807 15.3999 4.3998 15.3999H17.5998C17.8915 15.3999 18.1713 15.5158 18.3776 15.7221C18.5839 15.9284 18.6998 16.2082 18.6998 16.4999C18.6998 16.7916 18.5839 17.0714 18.3776 17.2777C18.1713 17.484 17.8915 17.5999 17.5998 17.5999H4.3998C4.10807 17.5999 3.82828 17.484 3.62199 17.2777C3.4157 17.0714 3.2998 16.7916 3.2998 16.4999Z"
+                                                fill="#F15A2D" />
+                                        </svg>
+                                    </div>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
+                                aria-labelledby="dropdownMenuButton1"
+                                style="
+                border-top: 2px solid #eee !important;
+                background-image: url(./assets/img/shape/shape1.avif);
+                object-fit: fill;
+              ">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-2 bg-white px-0">
+                                            <ul class="nav nav-tabs flex-column border-0" id="myTab"
+                                                role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button
+                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0 active"
+                                                        id="home-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#home" type="button" role="tab"
+                                                        aria-controls="home" aria-selected="true">
+                                                        Kitchen Accessories
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button
+                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
+                                                        id="profile-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#profile" type="button"
+                                                        role="tab" aria-controls="profile"
+                                                        aria-selected="false">
+                                                        Health And Beauty
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button
+                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
+                                                        id="contact-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#contact" type="button"
+                                                        role="tab" aria-controls="contact"
+                                                        aria-selected="false">
+                                                        Winter Collections
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button
+                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
+                                                        id="contact-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#contact" type="button"
+                                                        role="tab" aria-controls="contact"
+                                                        aria-selected="false">
+                                                        Home Appliances
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button
+                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
+                                                        id="contact-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#contact" type="button"
+                                                        role="tab" aria-controls="contact"
+                                                        aria-selected="false">
+                                                        Ladies Bag Collections
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button
+                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
+                                                        id="contact-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#contact" type="button"
+                                                        role="tab" aria-controls="contact"
+                                                        aria-selected="false">
+                                                        Furniture Item
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="home"
+                                                    role="tabpanel" aria-labelledby="home-tab">
+                                                    <div class="row py-4" style="background-color: #eee">
+                                                        <div class="col-lg-4">
+                                                            <h6 class="divider-title">
+                                                                Bathroom Accessories
+                                                            </h6>
+                                                            <span class="divider-underline"></span>
+                                                            <ul class="ps-0 pt-3 main-category-dropdown">
+                                                                <li class="p-1">
+                                                                    <a href="#">Wall Fitting Rack</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Double Layer High
+                                                                        Quality</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Kitchen Trolley</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Multi-Functional Knife
+                                                                        Holder</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Commode Stand</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Double Layer High
+                                                                        Quality</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <h6 class="divider-title">
+                                                                Metal Furniture
+                                                            </h6>
+                                                            <span class="divider-underline"></span>
+                                                            <ul class="ps-0 pt-3 main-category-dropdown">
+                                                                <li class="p-1">
+                                                                    <a href="#">Wall Fitting Rack</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Double Layer High
+                                                                        Quality</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Kitchen Trolley</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Multi-Functional Knife
+                                                                        Holder</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Commode Stand</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Double Layer High
+                                                                        Quality</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <h6 class="divider-title">Clothing Item</h6>
+                                                            <span class="divider-underline"></span>
+                                                            <ul class="ps-0 pt-3 main-category-dropdown">
+                                                                <li class="p-1">
+                                                                    <a href="#">Wall Fitting Rack</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Double Layer High
+                                                                        Quality</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Kitchen Trolley</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Multi-Functional Knife
+                                                                        Holder</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Commode Stand</a>
+                                                                </li>
+                                                                <li class="p-1">
+                                                                    <a href="#">Double Layer High
+                                                                        Quality</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="profile" role="tabpanel"
+                                                    aria-labelledby="profile-tab">
+                                                    ...
+                                                </div>
+                                                <div class="tab-pane fade" id="contact" role="tabpanel"
+                                                    aria-labelledby="contact-tab">
+                                                    ...
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
                         </div>
-                        <!--end::Menu item-->
+                    </li>
+                </ul>
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link active" href="index.html">Home <span
+                                class="ps-3"> | </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="offers.html">Offers <span class="ps-3"> |
+                            </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="#">All Brands <span class="ps-3"> |
+                            </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="brand-all.html">Brands</a>
+                    </li>
+                </ul>
+                <!-- Search Form -->
+                <form class="d-flex" role="search">
+                    <div class="d-flex hdr-search align-items-center">
+                        <a href="#" class="border-0 me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                viewBox="0 0 30 30" fill="none">
+                                <g clip-path="url(#clip0_64_445)">
+                                    <path
+                                        d="M0.9375 9.84376V7.50001C0.941711 7.35668 0.976892 7.21595 1.04063 7.08751L3.32812 2.49376C3.56197 2.02534 3.92193 1.63149 4.36747 1.35655C4.81301 1.0816 5.32645 0.936477 5.85 0.937505H24.15C24.6735 0.936477 25.187 1.0816 25.6325 1.35655C26.0781 1.63149 26.438 2.02534 26.6719 2.49376L28.9594 7.07813C29.0244 7.20943 29.0596 7.3535 29.0625 7.50001V9.84376C29.0614 10.5371 28.8898 11.2196 28.5629 11.831C28.2359 12.4425 27.7636 12.9641 27.1875 13.35V27.1875H28.125C28.3736 27.1875 28.6121 27.2863 28.7879 27.4621C28.9637 27.6379 29.0625 27.8764 29.0625 28.125C29.0625 28.3736 28.9637 28.6121 28.7879 28.7879C28.6121 28.9637 28.3736 29.0625 28.125 29.0625H1.875C1.62636 29.0625 1.3879 28.9637 1.21209 28.7879C1.03627 28.6121 0.9375 28.3736 0.9375 28.125C0.9375 27.8764 1.03627 27.6379 1.21209 27.4621C1.3879 27.2863 1.62636 27.1875 1.875 27.1875H2.8125V13.35C2.23643 12.9641 1.7641 12.4425 1.43713 11.831C1.11016 11.2196 0.938576 10.5371 0.9375 9.84376ZM2.8125 9.84376C2.8125 10.4654 3.05943 11.0615 3.49897 11.501C3.93851 11.9406 4.53465 12.1875 5.15625 12.1875C5.77785 12.1875 6.37399 11.9406 6.81353 11.501C7.25307 11.0615 7.5 10.4654 7.5 9.84376V8.43751H2.8125V9.84376ZM27.1875 9.84376V8.43751H22.5V9.84376C22.5 10.4654 22.7469 11.0615 23.1865 11.501C23.626 11.9406 24.2221 12.1875 24.8438 12.1875C25.4654 12.1875 26.0615 11.9406 26.501 11.501C26.9406 11.0615 27.1875 10.4654 27.1875 9.84376ZM20.625 8.43751H15.9375V9.84376C15.9375 10.4654 16.1844 11.0615 16.624 11.501C17.0635 11.9406 17.6596 12.1875 18.2812 12.1875C18.9029 12.1875 19.499 11.9406 19.9385 11.501C20.3781 11.0615 20.625 10.4654 20.625 9.84376V8.43751ZM14.0625 8.43751H9.375V9.84376C9.375 10.4654 9.62193 11.0615 10.0615 11.501C10.501 11.9406 11.0971 12.1875 11.7188 12.1875C12.3404 12.1875 12.9365 11.9406 13.376 11.501C13.8156 11.0615 14.0625 10.4654 14.0625 9.84376V8.43751ZM24.9937 3.32813C24.9151 3.1721 24.7945 3.04114 24.6454 2.95003C24.4963 2.85892 24.3247 2.81129 24.15 2.81251H5.85C5.67528 2.81129 5.5037 2.85892 5.35462 2.95003C5.20553 3.04114 5.08487 3.1721 5.00625 3.32813L3.39375 6.56251H26.6063L24.9937 3.32813ZM12.1875 27.1875H17.8125V21.5625C17.8125 21.3139 17.7137 21.0754 17.5379 20.8996C17.3621 20.7238 17.1236 20.625 16.875 20.625H13.125C12.8764 20.625 12.6379 20.7238 12.4621 20.8996C12.2863 21.0754 12.1875 21.3139 12.1875 21.5625V27.1875ZM4.6875 27.1875H10.3125V21.5625C10.3125 20.8166 10.6088 20.1012 11.1363 19.5738C11.6637 19.0463 12.3791 18.75 13.125 18.75H16.875C17.6209 18.75 18.3363 19.0463 18.8637 19.5738C19.3912 20.1012 19.6875 20.8166 19.6875 21.5625V27.1875H25.3125V14.0625C25.1573 14.0874 25.0008 14.1031 24.8438 14.1094C24.2109 14.1039 23.5874 13.9562 23.0194 13.677C22.4514 13.3979 21.9535 12.9946 21.5625 12.4969C21.167 12.9862 20.6671 13.3809 20.0994 13.6521C19.5316 13.9233 18.9104 14.064 18.2812 14.064C17.6521 14.064 17.0309 13.9233 16.4631 13.6521C15.8954 13.3809 15.3955 12.9862 15 12.4969C14.6045 12.9862 14.1046 13.3809 13.5369 13.6521C12.9691 13.9233 12.3479 14.064 11.7188 14.064C11.0896 14.064 10.4684 13.9233 9.90062 13.6521C9.33287 13.3809 8.83296 12.9862 8.4375 12.4969C8.04189 12.986 7.54192 13.3804 6.97418 13.6513C6.40644 13.9222 5.78531 14.0627 5.15625 14.0625C5.00014 14.0717 4.84361 14.0717 4.6875 14.0625V27.1875Z"
+                                        fill="#252525" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_64_445">
+                                        <rect width="30" height="30" fill="white"
+                                            transform="matrix(-1 0 0 1 30 0)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </a>
+                        <input class="form-control hdr-search-box" type="search" placeholder="Search"
+                            aria-label="Search" />
                     </div>
-                    <!--end::User account menu-->
-                    <!--end::Menu wrapper-->
-                </div>
-                <!--end::User menu-->
+                    <button class="btn position-relative border-0 bg-transparent search-action"
+                        type="submit">
+                        <i class="fa-solid fa-search text-muted"></i>
+                    </button>
+                    <button class="border-0 bg-transparent bt-common bt-common-heart">
+                        <i class="fa-regular fa-heart fs-2 fw-normal">
+                            <span class="cart-count">0</span>
+                        </i>
+                    </button>
+                </form>
             </div>
-            <!--end::Toolbar wrapper-->
         </div>
-        <!--end::Wrapper-->
-    </div>
-    <!--end::Container-->
-</div>
-<!--end::Header-->
+    </nav>
+</header>
