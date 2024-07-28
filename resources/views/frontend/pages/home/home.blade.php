@@ -10,19 +10,19 @@
                                 <div class="hero-slider">
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                                 <div class="col-lg-12">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner2.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -40,13 +40,13 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner3.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="./assets/img/banner/banner4.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -119,13 +119,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -154,13 +154,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -189,13 +189,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -224,13 +224,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -259,13 +259,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -294,13 +294,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -329,13 +329,13 @@
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
                                                 <div class="coupon-logo">
-                                                    <img src="./assets/img/coupon/coupon-logo.png"
+                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                         class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="content-area"
                                                 style="
-                        background-image: url('./assets/img/coupon/coupon-bg.png');
+                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
                         background-repeat: no-repeat;
                       ">
                                                 <div class="p-1">
@@ -379,7 +379,7 @@
                 <div class="col-lg-6">
                     <div class="d-flex align-items-center justify-content-end">
                         <div>
-                            <img src="./assets/img/panda.png" alt="" />
+                            <img src="{{ asset('frontend') }}/assets/img/panda.png" alt="" />
                         </div>
                         <div class="bg-white px-3 py-2 rounded-2">
                             <h4>ramadan20</h4>
@@ -569,7 +569,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -602,7 +602,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -635,7 +635,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -668,7 +668,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -701,7 +701,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -734,7 +734,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -767,7 +767,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -800,7 +800,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -833,306 +833,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row grab-items">
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1167,7 +868,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1200,7 +901,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1233,7 +934,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1266,7 +967,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1299,7 +1000,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1332,7 +1033,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1365,7 +1066,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1398,7 +1099,7 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1431,7 +1132,306 @@
                                                                 <div class="row align-items-center">
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
-                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row grab-items">
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div
+                                                                            class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span
+                                                                                    class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
                                                                             class="img-fluid"
                                                                             alt="Logo" />
                                                                     </div>
@@ -1498,7 +1498,7 @@
                     <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
                         <div class="col-lg-6">
                             <div>
-                                <img src="./assets/img/product/03.png" class="img-fluid w-100"
+                                <img src="{{ asset('frontend') }}/assets/img/product/03.png" class="img-fluid w-100"
                                     alt="" />
                             </div>
                         </div>
@@ -1530,7 +1530,7 @@
                     <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
                         <div class="col-lg-6">
                             <div>
-                                <img src="./assets/img/product/04.png" class="img-fluid w-100"
+                                <img src="{{ asset('frontend') }}/assets/img/product/04.png" class="img-fluid w-100"
                                     alt="" />
                             </div>
                         </div>
@@ -1563,14 +1563,14 @@
                 <div class="col-lg-4 px-0">
                     <div class="d-flex justify-content-center">
                         <img class="img-fluid w-100 middle-banner"
-                            src="./assets/img/product/static-banner.png" alt="" />
+                            src="{{ asset('frontend') }}/assets/img/product/static-banner.png" alt="" />
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
                         <div class="col-lg-6">
                             <div>
-                                <img src="./assets/img/product/03.png" class="img-fluid w-100"
+                                <img src="{{ asset('frontend') }}/assets/img/product/03.png" class="img-fluid w-100"
                                     alt="" />
                             </div>
                         </div>
@@ -1602,7 +1602,7 @@
                     <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
                         <div class="col-lg-6">
                             <div>
-                                <img src="./assets/img/product/04.png" class="img-fluid w-100"
+                                <img src="{{ asset('frontend') }}/assets/img/product/04.png" class="img-fluid w-100"
                                     alt="" />
                             </div>
                         </div>
@@ -1725,7 +1725,7 @@
                                 </div>
                                 <div class="col-lg-9 position-relative"
                                     style="
-                  background-image: url(./assets/img/product/map.png);
+                  background-image: url({{ asset('frontend') }}/assets/img/product/map.png);
                   /* background-repeat: no-repeat; */
                   background-size: contain;
                   background-position: center;
@@ -1764,7 +1764,7 @@
                                         <h6 class="main-color text-center pb-3">25% OFF</h6>
                                         <div class="d-flex justify-content-center text-center">
                                             <img class="img-fluid flat-offer-img"
-                                                src="./assets/img/product/sliderproduct1.png"
+                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
                                                 alt="" />
                                         </div>
                                     </div>
@@ -1785,7 +1785,7 @@
                                         <h6 class="main-color text-center pb-3">25% OFF</h6>
                                         <div class="d-flex justify-content-center text-center">
                                             <img class="img-fluid flat-offer-img"
-                                                src="./assets/img/product/sliderproduct1.png"
+                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
                                                 alt="" />
                                         </div>
                                     </div>
@@ -1806,7 +1806,7 @@
                                         <h6 class="main-color text-center pb-3">25% OFF</h6>
                                         <div class="d-flex justify-content-center text-center">
                                             <img class="img-fluid flat-offer-img"
-                                                src="./assets/img/product/sliderproduct1.png"
+                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
                                                 alt="" />
                                         </div>
                                     </div>
@@ -1827,7 +1827,7 @@
                                         <h6 class="main-color text-center pb-3">25% OFF</h6>
                                         <div class="d-flex justify-content-center text-center">
                                             <img class="img-fluid flat-offer-img"
-                                                src="./assets/img/product/sliderproduct1.png"
+                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
                                                 alt="" />
                                         </div>
                                     </div>
@@ -1872,7 +1872,7 @@
                             <div class="deal-slider">
                                 <div class="items">
                                     <div class="py-5 d-flex justify-content-center">
-                                        <img class="img-fluid rounded-2" src="./assets/img/deal.png"
+                                        <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/deal.png"
                                             alt="" />
                                     </div>
                                     <div class="py-3">
@@ -1919,7 +1919,7 @@
                                 </div>
                                 <div class="items">
                                     <div class="py-5 d-flex justify-content-center">
-                                        <img class="img-fluid rounded-2" src="./assets/img/deal.png"
+                                        <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/deal.png"
                                             alt="" />
                                     </div>
                                     <div class="py-3">
@@ -2027,7 +2027,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2082,7 +2082,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2137,7 +2137,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2192,7 +2192,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2247,7 +2247,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2302,7 +2302,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2357,7 +2357,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2412,7 +2412,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2467,7 +2467,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2522,7 +2522,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2577,7 +2577,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2632,7 +2632,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2687,7 +2687,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2742,7 +2742,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2797,7 +2797,7 @@
                                     </div>
                                     <!-- Product Image -->
                                     <div class="d-flex justify-content-center py-3">
-                                        <img class="img-fluid" src="./assets/img/deal1.png"
+                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
                                             alt="" />
                                     </div>
                                     <div>
@@ -2826,37 +2826,37 @@
                     <div class="slick-slider-normal">
                         <div class="items">
                             <div>
-                                <img src="./assets/img/slider1.png"
+                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
                                     class="img-fluid custom-img w-100 rounded-2" alt="" />
                             </div>
                         </div>
                         <div class="items">
                             <div>
-                                <img src="./assets/img/slider1.png"
+                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
                                     class="img-fluid custom-img w-100 rounded-2" alt="" />
                             </div>
                         </div>
                         <div class="items">
                             <div>
-                                <img src="./assets/img/slider1.png"
+                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
                                     class="img-fluid custom-img w-100 rounded-2" alt="" />
                             </div>
                         </div>
                         <div class="items">
                             <div>
-                                <img src="./assets/img/slider1.png"
+                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
                                     class="img-fluid custom-img w-100 rounded-2" alt="" />
                             </div>
                         </div>
                         <div class="items">
                             <div>
-                                <img src="./assets/img/slider1.png"
+                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
                                     class="img-fluid custom-img w-100 rounded-2" alt="" />
                             </div>
                         </div>
                         <div class="items">
                             <div>
-                                <img src="./assets/img/slider1.png"
+                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
                                     class="img-fluid custom-img w-100 rounded-2" alt="" />
                             </div>
                         </div>
@@ -2887,71 +2887,71 @@
             <div class="container px-0">
                 <div class="slick-slider-partners">
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 20.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 20.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 21.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 21.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 22.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 22.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 23.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 23.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 24.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 24.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 25.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 26.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 27.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 28.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 29.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 30.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 25.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 26.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 27.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 28.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 29.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
                             alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="./assets/img/partner/Rectangle 30.png"
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
                             alt="" />
                     </div>
                 </div>
@@ -2965,15 +2965,15 @@
                 <div class="col-lg-12">
                     <div class="slick-slider-footer-slider">
                         <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="./assets/img/Footer Banner (2).png"
+                            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png"
                                 alt="" />
                         </div>
                         <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="./assets/img/Footer Banner (2).png"
+                            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png"
                                 alt="" />
                         </div>
                         <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="./assets/img/Footer Banner (2).png"
+                            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png"
                                 alt="" />
                         </div>
                     </div>

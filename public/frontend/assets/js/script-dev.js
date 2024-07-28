@@ -1,5 +1,5 @@
 // JavaScript to hide the loader once the page is fully loaded
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Hide the loader
   document.getElementById("loader").style.display = "none";
   // Show the content
@@ -13,12 +13,12 @@ $(document).ready(function () {
     dots: true,
     autoplaySpeed: 2000, // Adjust autoplay speed in milliseconds
     arrows: false,
-    fade: true // Enable fade effect
+    fade: true, // Enable fade effect
   });
 
   $(".available-coupon-slider").slick({
     autoplay: true,
-    slidesToShow:4,
+    slidesToShow: 4,
     dots: false,
     autoplaySpeed: 3000, // Adjust autoplay speed in milliseconds
     arrows: false,
@@ -56,19 +56,17 @@ $(document).ready(function () {
     autoplay: true,
     slidesToShow: 1,
     dots: false,
-    autoplaySpeed: 3000, 
+    autoplaySpeed: 3000,
     arrows: false,
   });
-
 
   $(".store-hero-slider").slick({
     autoplay: true,
     slidesToShow: 1,
     dots: true,
-    autoplaySpeed: 3000, 
+    autoplaySpeed: 3000,
     arrows: false,
   });
-
 
   // Custom Next button
   $(".deal-custom-next").click(function () {
@@ -109,7 +107,7 @@ $(document).ready(function () {
     arrows: false,
     swipe: false,
     slidesToShow: 11,
-    cssEase: 'linear',
+    cssEase: "linear",
     pauseOnFocus: false,
     pauseOnHover: false,
   });
@@ -174,7 +172,6 @@ $(document).ready(function () {
   });
 });
 
-
 class CountdownHMS {
   constructor(element, targetDate) {
     this.element = element;
@@ -214,7 +211,6 @@ document.querySelectorAll(".countdown-hms").forEach((element) => {
   new CountdownHMS(element, "2024-09-30");
 });
 
-
 class CountdownWithDays {
   constructor(element, targetDate) {
     this.element = element;
@@ -224,18 +220,26 @@ class CountdownWithDays {
 
   initialize() {
     const second = 1000,
-          minute = second * 60,
-          hour = minute * 60,
-          day = hour * 24;
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
 
     const x = setInterval(() => {
       const now = new Date().getTime();
       const distance = this.targetDate - now;
 
-      this.element.querySelector(".days").innerText = Math.floor(distance / day);
-      this.element.querySelector(".hours").innerText = Math.floor((distance % day) / hour);
-      this.element.querySelector(".minutes").innerText = Math.floor((distance % hour) / minute);
-      this.element.querySelector(".seconds").innerText = Math.floor((distance % minute) / second);
+      this.element.querySelector(".days").innerText = Math.floor(
+        distance / day
+      );
+      this.element.querySelector(".hours").innerText = Math.floor(
+        (distance % day) / hour
+      );
+      this.element.querySelector(".minutes").innerText = Math.floor(
+        (distance % hour) / minute
+      );
+      this.element.querySelector(".seconds").innerText = Math.floor(
+        (distance % minute) / second
+      );
 
       if (distance < 0) {
         clearInterval(x);
@@ -245,29 +249,30 @@ class CountdownWithDays {
 }
 
 // Usage example:
-document.querySelectorAll('.countdown-with-days').forEach(element => {
+document.querySelectorAll(".countdown-with-days").forEach((element) => {
   new CountdownWithDays(element, "2024-09-30");
 });
 
-(function() {
-  const heart = document.getElementById('heart');
-  heart.addEventListener('click', function() {
-    heart.classList.toggle('red');
+(function () {
+  const heart = document.getElementById("heart");
+  heart.addEventListener("click", function () {
+    heart.classList.toggle("red");
   });
 })();
 
 // id call
 
-document.querySelectorAll('.store-single li').forEach(item => {
-  item.addEventListener('click', function() {
-      // Remove active class from all items
-      document.querySelectorAll('.store-single li').forEach(li => {
-          li.classList.remove('active');
-      });
-      // Add active class to clicked item
-      this.classList.add('active');
-      // Scroll to the corresponding section
-      const targetId = this.getAttribute('data-target');
-      document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+document.querySelectorAll(".store-single li").forEach((item) => {
+  item.addEventListener("click", function () {
+    // Remove active class from all items
+    document.querySelectorAll(".store-single li").forEach((li) => {
+      li.classList.remove("active");
+    });
+    // Add active class to clicked item
+    this.classList.add("active");
+    // Scroll to the corresponding section
+    const targetId = this.getAttribute("data-target");
+    document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
   });
 });
+

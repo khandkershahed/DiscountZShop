@@ -83,22 +83,16 @@
                 top: 10px;
               ">
                                 <li class="mb-2">
-                                    <a href="">About Us</a>
+                                    <a href="{{ route('aboutUs') }}">About Us</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="">Contact Us</a>
-                                </li>
-                                <li class="mb-2">
-                                    <a href="">Sitemap</a>
+                                    <a href="{{ route('contactUs') }}">Contact Us</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="">All Brands</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="">Coupons</a>
-                                </li>
-                                <li class="mb-2">
-                                    <a href="">About Us</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="">Photos</a>
@@ -180,8 +174,8 @@
                         <div class="d-flex justify-content-center align-items-center pt-3">
                             <a href="" class="pe-2" style="font-size: 14px; color: #808083">Terms
                                 & Condition</a>
-                            <a href="" class=""
-                                style="font-size: 14px; color: #808083">Privacy Policy</a>
+                            <a href="" class="" style="font-size: 14px; color: #808083">Privacy
+                                Policy</a>
                         </div>
                     </div>
                 </div>

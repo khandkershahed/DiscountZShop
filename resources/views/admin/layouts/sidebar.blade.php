@@ -185,6 +185,37 @@
                             ],
                         ],
                         [
+                            'title' => 'Site Management',
+                            'icon' => 'icons/duotune/general/gen051.svg',
+                            'routes' => [
+                                'admin.page-banner.index',
+                                'admin.page-banner.create',
+                                'admin.page-banner.edit',
+                                'admin.categories.index',
+                                'admin.categories.create',
+                                'admin.categories.edit',
+                            ],
+                            'subMenu' => [
+                                [
+                                    'title' => 'Page Banner',
+                                    'routes' => ['admin.page-banner.index', 'admin.page-banner.create', 'admin.page-banner.edit'],
+                                    'route' => 'admin.page-banner.index',
+                                ],
+                                [
+                                    'title' => 'About Us Page',
+                                    'routes' => [
+                                        'admin.categories.index',
+                                        'admin.categories.create',
+                                        'admin.categories.edit',
+                                    ],
+                                    'subMenu' => [
+                                        ['title' => 'Category List', 'route' => 'admin.categories.index'],
+                                        ['title' => 'Add Category', 'route' => 'admin.categories.create'],
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
                             'title' => 'Settings',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
                             'routes' => ['admin.settings.index', 'admin.email-settings.index'],

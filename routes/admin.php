@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\IconController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\PageBannerController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserManagementController;
 
@@ -93,6 +94,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             'role'           => RoleController::class,
             'permission'     => PermissionController::class,
             'email-settings' => EmailSettingController::class,
+            'page-banner'    => PageBannerController::class,
         ],
         ['except' => ['show']]
     );
@@ -117,6 +119,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
     Route::post('icons/toggle-status/{id}', [IconController::class, 'toggleStatus'])->name('icons.toggle-status');
     Route::post('brands/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('brands.toggle-status');
+    Route::post('page-banner/toggle-status/{id}', [PageBannerController::class, 'toggleStatus'])->name('page-banner.toggle-status');
     Route::post('banners/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('banners.toggle-status');
 
     Route::get('/backup', [Controller::class, 'downloadBackup']);
