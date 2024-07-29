@@ -2,9 +2,8 @@
     <nav class="navbar navbar-expand-lg py-0">
         <div class="container px-0">
             <!-- Toggler Button for Mobile View -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+                aria-controls="staticBackdrop" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -16,9 +15,9 @@
                         <a class="nav-link current-location shadow-sm" aria-current="page"
                             title="Location Wise Current Discount" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
-                                y="0" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512"
-                                xml:space="preserve" class="">
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
+                                viewBox="0 0 512 512" style="enable-background: new 0 0 512 512" xml:space="preserve"
+                                class="">
                                 <g>
                                     <path
                                         d="M341.476 338.285c54.483-85.493 47.634-74.827 49.204-77.056C410.516 233.251 421 200.322 421 166 421 74.98 347.139 0 256 0 165.158 0 91 74.832 91 166c0 34.3 10.704 68.091 31.19 96.446l48.332 75.84C118.847 346.227 31 369.892 31 422c0 18.995 12.398 46.065 71.462 67.159C143.704 503.888 198.231 512 256 512c108.025 0 225-30.472 225-90 0-52.117-87.744-75.757-139.524-83.715zm-194.227-92.34a15.57 15.57 0 0 0-.517-.758C129.685 221.735 121 193.941 121 166c0-75.018 60.406-136 135-136 74.439 0 135 61.009 135 136 0 27.986-8.521 54.837-24.646 77.671-1.445 1.906 6.094-9.806-110.354 172.918L147.249 245.945zM256 482c-117.994 0-195-34.683-195-60 0-17.016 39.568-44.995 127.248-55.901l55.102 86.463a14.998 14.998 0 0 0 25.298 0l55.101-86.463C411.431 377.005 451 404.984 451 422c0 25.102-76.313 60-195 60z"
@@ -26,15 +25,14 @@
                                     </path>
                                     <path
                                         d="M256 91c-41.355 0-75 33.645-75 75s33.645 75 75 75 75-33.645 75-75-33.645-75-75-75zm0 120c-24.813 0-45-20.187-45-45s20.187-45 45-45 45 20.187 45 45-20.187 45-45 45z"
-                                        fill="#ffffff" opacity="1" data-original="#000000"
-                                        class=""></path>
+                                        fill="#ffffff" opacity="1" data-original="#000000" class=""></path>
                                 </g>
                             </svg>
                         </a>
                         <div class="dropdown position-static">
-                            <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu"
-                                type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
-                                data-bs-auto-close="outside" aria-expanded="false">
+                            <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu" type="button"
+                                id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                aria-expanded="false">
                                 <span>
                                     Menu
                                     <div class="ps-2">
@@ -49,31 +47,25 @@
                             </a>
                             <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
                                 aria-labelledby="dropdownMenuButton1"
-                                style="
-                border-top: 2px solid #eee !important;
-                background-image: url(./assets/img/shape/shape1.avif);
-                object-fit: fill;
-              ">
+                                style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-2 bg-white px-0">
-                                            <ul class="nav nav-tabs flex-column border-0" id="myTab"
-                                                role="tablist">
+                                            <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                                 <li class="nav-item" role="presentation">
                                                     <button
                                                         class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0 active"
-                                                        id="home-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#home" type="button" role="tab"
-                                                        aria-controls="home" aria-selected="true">
+                                                        id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                                        type="button" role="tab" aria-controls="home"
+                                                        aria-selected="true">
                                                         Kitchen Accessories
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button
                                                         class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="profile-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#profile" type="button"
-                                                        role="tab" aria-controls="profile"
+                                                        id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                                        type="button" role="tab" aria-controls="profile"
                                                         aria-selected="false">
                                                         Health And Beauty
                                                     </button>
@@ -81,9 +73,8 @@
                                                 <li class="nav-item" role="presentation">
                                                     <button
                                                         class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact" type="button"
-                                                        role="tab" aria-controls="contact"
+                                                        id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                                                        type="button" role="tab" aria-controls="contact"
                                                         aria-selected="false">
                                                         Winter Collections
                                                     </button>
@@ -91,9 +82,8 @@
                                                 <li class="nav-item" role="presentation">
                                                     <button
                                                         class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact" type="button"
-                                                        role="tab" aria-controls="contact"
+                                                        id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                                                        type="button" role="tab" aria-controls="contact"
                                                         aria-selected="false">
                                                         Home Appliances
                                                     </button>
@@ -102,9 +92,8 @@
                                                     <button
                                                         class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
                                                         id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact" type="button"
-                                                        role="tab" aria-controls="contact"
-                                                        aria-selected="false">
+                                                        data-bs-target="#contact" type="button" role="tab"
+                                                        aria-controls="contact" aria-selected="false">
                                                         Ladies Bag Collections
                                                     </button>
                                                 </li>
@@ -112,9 +101,8 @@
                                                     <button
                                                         class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
                                                         id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact" type="button"
-                                                        role="tab" aria-controls="contact"
-                                                        aria-selected="false">
+                                                        data-bs-target="#contact" type="button" role="tab"
+                                                        aria-controls="contact" aria-selected="false">
                                                         Furniture Item
                                                     </button>
                                                 </li>
@@ -122,8 +110,8 @@
                                         </div>
                                         <div class="col-lg-10">
                                             <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="home"
-                                                    role="tabpanel" aria-labelledby="home-tab">
+                                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                                    aria-labelledby="home-tab">
                                                     <div class="row py-4" style="background-color: #eee">
                                                         <div class="col-lg-4">
                                                             <h6 class="divider-title">
@@ -230,19 +218,19 @@
                 </ul>
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link active" href="index.html">Home <span
-                                class="ps-3"> | </span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="offers.html">Offers <span class="ps-3"> |
+                        <a class="nav-link custom-nav-link active" href="{{ route('homePage') }}">Home <span class="ps-3"> |
                             </span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="#">All Brands <span class="ps-3"> |
+                        <a class="nav-link custom-nav-link" href="{{ route('allOffer') }}">Offers <span class="ps-3"> |
                             </span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="brand-all.html">Brands</a>
+                        <a class="nav-link custom-nav-link" href="{{ route('allBrand') }}">Brands <span class="ps-3"> |
+                            </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="{{ route('allStore') }}">Store</a>
                     </li>
                 </ul>
                 <!-- Search Form -->
@@ -267,8 +255,7 @@
                         <input class="form-control hdr-search-box" type="search" placeholder="Search"
                             aria-label="Search" />
                     </div>
-                    <button class="btn position-relative border-0 bg-transparent search-action"
-                        type="submit">
+                    <button class="btn position-relative border-0 bg-transparent search-action" type="submit">
                         <i class="fa-solid fa-search text-muted"></i>
                     </button>
                     <button class="border-0 bg-transparent bt-common bt-common-heart">

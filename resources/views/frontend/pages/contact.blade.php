@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'About Us || DiscountZShop'">
+<x-frontend-app-layout :title="'Contact Us || DiscountZShop'">
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">

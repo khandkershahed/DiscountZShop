@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
 
-                <tbody class="fw-bold text-gray-600">
+                <tbody class="fw-bold text-gray-600 text-center">
                     @if ($banners)
                         @foreach ($banners as $banner)
                             <tr class="odd">
@@ -40,10 +40,10 @@
                                     {{ $loop->iteration }}
                                 </td>
                                 <td>
-
+                                    <img class="w-450px h-50px" src="{{ asset('storage/'.$banner->image) }}" alt="{{ $banner->page_name }}">
                                 </td>
                                 <td>
-                                    {{-- {{ $banner->order }} --}}
+                                    {{ ucfirst($banner->page_name) }}
                                 </td>
                                 <td>
                                     <span class="badge {{ $banner->status == 'active' ? 'bg-success' : 'bg-danger' }}">

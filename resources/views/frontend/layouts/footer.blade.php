@@ -1,5 +1,5 @@
 <footer style="background-color: #f9f9f9">
-    <section class="py-5">
+    <section class="pt-5">
         <div class="container">
             <div class="row gx-5 pb-5">
                 <div class="col-lg-4">
@@ -77,11 +77,7 @@
                                 <span class="title-divider-small"></span>
                             </div>
                             <ul class="ps-0 footer-link"
-                                style="
-                list-style-type: none;
-                position: relative;
-                top: 10px;
-              ">
+                                style="list-style-type: none;position: relative;top: 10px;">
                                 <li class="mb-2">
                                     <a href="{{ route('aboutUs') }}">About Us</a>
                                 </li>
@@ -89,14 +85,14 @@
                                     <a href="{{ route('contactUs') }}">Contact Us</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="">All Brands</a>
+                                    <a href="{{ route('allBrand') }}">All Brands</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="">Coupons</a>
                                 </li>
-                                <li class="mb-2">
+                                {{-- <li class="mb-2">
                                     <a href="">Photos</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <div class="col-lg-4">
@@ -106,13 +102,9 @@
                                 <span class="title-divider-small"></span>
                             </div>
                             <ul class="ps-0 footer-link"
-                                style="
-                list-style-type: none;
-                position: relative;
-                top: 10px;
-              ">
+                                style="list-style-type: none;position: relative;top: 10px;">
                                 <li class="mb-2">
-                                    <a href="">Legal Notice</a>
+                                    <a href="{{ route('faq') }}">FAQ</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="">New Offer</a>
@@ -121,14 +113,14 @@
                                     <a href="">Best Coupon</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="">Login</a>
+                                    <a href="{{ route('login') }}">Login</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="">Register</a>
+                                    <a href="{{ route('register') }}">Register</a>
                                 </li>
-                                <li class="mb-2">
+                                {{-- <li class="mb-2">
                                     <a href="">My Account</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <div class="col-lg-4">
@@ -163,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid pt-5" style="border-top: 2px solid var(--primary-color)">
+        <div class="container-fluid pt-3 pb-2" style="border-top: 2px solid var(--primary-color)">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
@@ -172,9 +164,9 @@
                             <span class="main-color">DiscountZshop</span>
                         </p>
                         <div class="d-flex justify-content-center align-items-center pt-3">
-                            <a href="" class="pe-2" style="font-size: 14px; color: #808083">Terms
+                            <a href="{{ route('termsCondition') }}" class="pe-3" style="font-size: 14px; color: #808083">Terms
                                 & Condition</a>
-                            <a href="" class="" style="font-size: 14px; color: #808083">Privacy
+                            <a href="{{ route('privacyPolicy') }}" class="" style="font-size: 14px; color: #808083">Privacy
                                 Policy</a>
                         </div>
                     </div>

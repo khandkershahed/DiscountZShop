@@ -7,7 +7,7 @@
 
             <div class="card-toolbar">
 
-                <a href="{{ route('admin.icons.index') }}" class="btn btn-light-info rounded-2">
+                <a href="{{ route('admin.page-banner.index') }}" class="btn btn-light-info rounded-2">
 
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -26,13 +26,13 @@
         </div>
         <div class="card-body pt-0">
 
-            <form class="form" action="{{ route('admin.icons.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ route('admin.page-banner.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="name"
-                            class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
+                            class="col-form-label fw-bold fs-6 required">{{ __('Page Name') }}
                         </x-metronic.label>
                         <x-metronic.select-option id="page_name" name="page_name" data-hide-search="true"
                             data-placeholder="Select an option">
@@ -48,7 +48,7 @@
                         </x-metronic.select-option>
                     </div>
                     <div class="col-lg-6 mb-7">
-                        <x-metronic.label for="image" class="col-form-label fw-bold fs-6 ">{{ __('Image') }}
+                        <x-metronic.label for="image" class="col-form-label fw-bold fs-6 required">{{ __('Image') }}
                         </x-metronic.label>
                         <x-metronic.file-input id="image" type="file" name="image"></x-metronic.file-input>
                     </div>

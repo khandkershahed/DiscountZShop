@@ -13,8 +13,9 @@
     <link rel="shortcut icon"
         href="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('images') }}"
         type="image/x-icon" />
-
-    <title>{{ $setting->site_name ?? config('app.name') }}</title>
+        
+    @props(['title'])
+    <title>{{ $title ?? config('app.name') }}</title>
     <!-- CSS Links -->
     <!-- Bootstrap CSS -->
     <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -106,8 +107,7 @@
             aria-labelledby="staticBackdropLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <div>I will not close if you click outside of me.</div>
