@@ -42,6 +42,7 @@
                             <option value="offer">Offer All</option>
                             <option value="store">Store All</option>
                             <option value="brand">Brand All</option>
+                            <option value="coupon">Coupon All</option>
                             <option value="faq">FAQ</option>
                             <option value="terms">Terms & Condition</option>
                             <option value="privacy">Privacy Policy</option>
