@@ -2,10 +2,9 @@
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" src="https://www.sheerid.com/wp-content/uploads/2022/07/hero_1200x628-2.jpg"
-                alt="" />
+            <img class="img-fluid w-100" src="{{!empty(optional($page_banner)->image) && file_exists(public_path('storage/'.optional($page_banner)->image)) ? asset('storage/'.optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
+                alt="{{ ucfirst(optional($page_banner)->page_name)}}" />
         </div>
-
     </section>
     <!-- Top Stores -->
     <section>

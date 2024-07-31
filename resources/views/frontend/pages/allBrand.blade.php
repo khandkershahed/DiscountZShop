@@ -1,10 +1,10 @@
 <x-frontend-app-layout :title="'All Brands || DiscountZShop'">
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Brands/brands-all.jpg" alt="" />
+            <img class="img-fluid w-100" src="{{!empty(optional($page_banner)->image) && file_exists(public_path('storage/'.optional($page_banner)->image)) ? asset('storage/'.optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
+                alt="{{ ucfirst(optional($page_banner)->page_name)}}" />
         </div>
     </section>
-    <!-- Hero End -->
     <!-- Brands All -->
     <section>
         <div class="container py-5">
