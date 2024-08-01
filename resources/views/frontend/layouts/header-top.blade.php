@@ -2,8 +2,8 @@
     <div class="container px-0">
         <div class="row">
             <div class="col-lg-6">
-                <span class="logo-text">discount<span class="main-color extrafont"
-                        style="font-size: 30px">Z</span>shop</span>
+                <a href="{{ route('homePage') }}"><span class="logo-text">discount<span class="main-color extrafont"
+                    style="font-size: 30px">Z</span>shop</span></a>
             </div>
             <div class="col-lg-6">
                 <div class="d-flex justify-content-end align-items-center">
