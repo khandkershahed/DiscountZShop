@@ -5,7 +5,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <a href="{{ route('dashboard') }}">
             <img alt="Logo"
-                src="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('images') }}"
+                src="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('admin/assets/media/svg/avatars/blank-dark.svg') }}"
                 class="h-60px logo w-200px">
         </a>
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
@@ -57,7 +57,7 @@
                 @php
                     $menuItems = [
                         [
-                            'title' => 'Product Management',
+                            'title' => 'Offer Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
                             'routes' => [
                                 'admin.brands.index',
@@ -69,24 +69,39 @@
                             ],
                             'subMenu' => [
                                 [
-                                    'title' => 'Brand',
+                                    'title' => 'Brand List',
                                     'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
-                                    'subMenu' => [
-                                        ['title' => 'Brand List', 'route' => 'admin.brands.index'],
-                                        ['title' => 'Add Brand', 'route' => 'admin.brands.create'],
-                                    ],
+                                    'route' => 'admin.brands.index',
+                                    // 'subMenu' => [
+                                    //     ['title' => 'Brand List', 'route' => 'admin.brands.index'],
+                                    // ],
                                 ],
                                 [
-                                    'title' => 'Category',
+                                    'title' => 'Offer Type List',
                                     'routes' => [
-                                        'admin.categories.index',
-                                        'admin.categories.create',
-                                        'admin.categories.edit',
+                                        'admin.offer-type.index',
+                                        'admin.offer-type.create',
+                                        'admin.offer-type.edit',
                                     ],
-                                    'subMenu' => [
-                                        ['title' => 'Category List', 'route' => 'admin.categories.index'],
-                                        ['title' => 'Add Category', 'route' => 'admin.categories.create'],
+                                    'route' => 'admin.offer-type.index',
+                                ],
+                                [
+                                    'title' => 'Offer List',
+                                    'routes' => [
+                                        'admin.offer.index',
+                                        'admin.offer.create',
+                                        'admin.offer.edit',
                                     ],
+                                    'route' => 'admin.offer.index',
+                                ],
+                                [
+                                    'title' => 'Coupon List',
+                                    'routes' => [
+                                        'admin.coupon.index',
+                                        'admin.coupon.create',
+                                        'admin.coupon.edit',
+                                    ],
+                                    'route' => 'admin.coupon.index',
                                 ],
                             ],
                         ],
@@ -103,80 +118,95 @@
                             'subMenu' => [
                                 [
                                     'title' => 'Contact Messages',
+                                    'routes' => ['admin.contacts.index'],
                                     'route' => 'admin.contacts.index',
                                 ],
                                 [
                                     'title' => 'FAQ Lists',
+                                    'routes' => ['admin.faq.index', 'admin.faq.create', 'admin.faq.edit'],
                                     'route' => 'admin.faq.index',
                                 ],
                                 [
                                     'title' => 'Subscribed Emails List',
+                                    'routes' => ['admin.newsletters.index'],
                                     'route' => 'admin.newsletters.index',
                                 ],
                             ],
                         ],
                         [
-                            'title' => 'HR Management',
-                            'icon' => 'icons/duotune/general/gen051.svg',
+                            'title' => 'Site Contents',
+                            'icon' => 'icons/duotune/ecommerce/ecm002.svg',
                             'routes' => [
-                                'admin.employee.index',
-                                'admin.employee.create',
-                                'admin.employee.edit',
-                                'admin.employee.show',
-                                'admin.role.index',
-                                'admin.role.create',
-                                'admin.role.edit',
-                                'admin.role.show',
-                                'admin.permission.index',
-                                'admin.permission.create',
-                                'admin.permission.edit',
-                                'admin.permission.show',
+                                'admin.terms-condition.index',
+                                'admin.terms-condition.create',
+                                'admin.terms-condition.edit',
+                                'admin.privacy-policy.index',
+                                'admin.privacy-policy.create',
+                                'admin.privacy-policy.edit',
                             ],
                             'subMenu' => [
                                 [
-                                    'title' => 'Employee Management',
+                                    'title' => 'Terms & Condition',
                                     'routes' => [
-                                        'admin.employee.index',
-                                        'admin.employee.create',
-                                        'admin.employee.edit',
-                                        'admin.employee.show',
+                                        'admin.terms-condition.index',
+                                        'admin.terms-condition.create',
+                                        'admin.terms-condition.edit',
+                                    ],
+                                    'route' => 'admin.terms-condition.index',
+                                ],
+                                [
+                                    'title' => 'Privacy Policy',
+                                    'routes' => [
+                                        'admin.privacy-policy.index',
+                                        'admin.privacy-policy.create',
+                                        'admin.privacy-policy.edit',
+                                    ],
+                                    'route' => 'admin.privacy-policy.index',
+                                ],
+                            ],
+                        ],
+                        [
+                            'title' => 'Staff Management',
+                            'icon' => 'icons/duotune/general/gen051.svg',
+                            'routes' => [
+                                'admin.staff.index',
+                                'admin.staff.create',
+                                'admin.staff.edit',
+                                'admin.role.index',
+                                'admin.role.create',
+                                'admin.role.edit',
+                                'admin.permission.index',
+                                'admin.permission.create',
+                                'admin.permission.edit',
+                            ],
+                            'subMenu' => [
+                                [
+                                    'title' => 'Staff List',
+                                    'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
+                                    'route' => 'admin.staff.index',
+                                ],
+                                [
+                                    'title' => 'Role & Permissions',
+                                    'routes' => [
                                         'admin.role.index',
                                         'admin.role.create',
                                         'admin.role.edit',
-                                        'admin.role.show',
                                         'admin.permission.index',
                                         'admin.permission.create',
                                         'admin.permission.edit',
-                                        'admin.permission.show',
                                     ],
                                     'subMenu' => [
                                         [
-                                            'title' => 'Employees',
-                                            'routes' => [
-                                                'admin.employee.index',
-                                                'admin.employee.create',
-                                                'admin.employee.edit',
-                                                'admin.employee.show',
-                                            ],
-                                            'route' => 'admin.employee.index',
-                                        ],
-                                        [
-                                            'title' => 'Roles',
-                                            'routes' => [
-                                                'admin.role.index',
-                                                'admin.role.create',
-                                                'admin.role.edit',
-                                                'admin.role.show',
-                                            ],
+                                            'title' => 'Roles List',
+                                            'routes' => ['admin.role.index', 'admin.role.create', 'admin.role.edit'],
                                             'route' => 'admin.role.index',
                                         ],
                                         [
-                                            'title' => 'Permissions',
+                                            'title' => 'Permissions List',
                                             'routes' => [
                                                 'admin.permission.index',
                                                 'admin.permission.create',
                                                 'admin.permission.edit',
-                                                'admin.permission.show',
                                             ],
                                             'route' => 'admin.permission.index',
                                         ],
@@ -185,32 +215,22 @@
                             ],
                         ],
                         [
-                            'title' => 'Site Management',
+                            'title' => 'Seller Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
-                            'routes' => [
-                                'admin.page-banner.index',
-                                'admin.page-banner.create',
-                                'admin.page-banner.edit',
-                                'admin.categories.index',
-                                'admin.categories.create',
-                                'admin.categories.edit',
-                            ],
                             'subMenu' => [
                                 [
-                                    'title' => 'Page Banner',
-                                    'routes' => ['admin.page-banner.index', 'admin.page-banner.create', 'admin.page-banner.edit'],
-                                    'route' => 'admin.page-banner.index',
-                                ],
-                                [
-                                    'title' => 'About Us Page',
-                                    'routes' => [
-                                        'admin.categories.index',
-                                        'admin.categories.create',
-                                        'admin.categories.edit',
-                                    ],
+                                    'title' => 'Seller',
                                     'subMenu' => [
-                                        ['title' => 'Category List', 'route' => 'admin.categories.index'],
-                                        ['title' => 'Add Category', 'route' => 'admin.categories.create'],
+                                        [
+                                            'title' => 'Seller List',
+                                            'routes' => ['admin.user.index'],
+                                            'route' => 'admin.user.index',
+                                        ],
+                                        [
+                                            'title' => 'Seller Statistic',
+                                            'routes' => ['admin.user.index'],
+                                            'route' => 'admin.user.index',
+                                        ],
                                     ],
                                 ],
                             ],
@@ -222,10 +242,12 @@
                             'subMenu' => [
                                 [
                                     'title' => 'Website Setting',
+                                    'routes' => ['admin.settings.index'],
                                     'route' => 'admin.settings.index',
                                 ],
                                 [
                                     'title' => 'Email Setting',
+                                    'routes' => ['admin.email-settings.index'],
                                     'route' => 'admin.email-settings.index',
                                 ],
                             ],
@@ -258,11 +280,10 @@
                         </span>
                         @if (!empty($item['subMenu']))
                             <div
-                                class="menu-sub menu-sub-accordion {{ Route::is(...$item['routes'] ?? []) ? 'here show' : '' }}">
+                                class="menu-sub menu-sub-accordion {{ Route::is(...$item['routes'] ?? []) ? 'menu-active-bg' : '' }}">
                                 @foreach ($item['subMenu'] as $subItem)
                                     @if (isset($subItem['subMenu']))
-                                        <div data-kt-menu-trigger="click"
-                                            class="menu-item menu-accordion mb-1 {{ Route::is(...$subItem['routes'] ?? []) ? 'here show' : '' }}">
+                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                                             <span class="menu-link">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
@@ -271,12 +292,11 @@
                                                 <span class="menu-arrow"></span>
                                             </span>
                                             <div
-                                                class="menu-sub menu-sub-accordion {{ Route::is(...$subItem['routes'] ?? []) ? 'here show' : '' }}">
+                                                class="menu-sub menu-sub-accordion {{ Route::is(...array_column($subItem['subMenu'], 'route') ?? []) ? 'here show' : '' }}">
                                                 @foreach ($subItem['subMenu'] as $subSubItem)
-                                                    {{-- @dd($subSubItem); --}}
                                                     <div class="menu-item">
                                                         @if (isset($subSubItem['route']))
-                                                            <a class="menu-link {{ Route::is(...$subSubItem['routes'] ?? []) ? 'active' : '' }}"
+                                                            <a class="menu-link {{ Route::is($subSubItem['route']) ? 'active' : '' }}"
                                                                 href="{{ route($subSubItem['route']) }}">
                                                                 <span class="menu-bullet">
                                                                     <span class="bullet bullet-dot"></span>
@@ -294,7 +314,7 @@
                                     @else
                                         <div class="menu-item">
                                             @if (isset($subItem['route']))
-                                                <a class="menu-link {{ Route::is($subItem['route']) ? 'active' : '' }}"
+                                                <a class="menu-link {{ Route::is($subItem['routes']) ? 'active' : '' }}"
                                                     href="{{ route($subItem['route']) }}">
                                                     <span class="menu-bullet">
                                                         <span class="bullet bullet-dot"></span>
@@ -311,7 +331,6 @@
                         @endif
                     </div>
                 @endforeach
-
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\CategoryRequest;
 
 class CategoryController extends Controller
@@ -84,32 +85,30 @@ class CategoryController extends Controller
 
         try {
             // Initialize variables to store file paths
-            $logoPath = null;
-            $imagePath = null;
-            $bannerImagePath = null;
-
-            // Handle logo file upload
-            if ($request->hasFile('logo')) {
-                $logoPath = handaleFileUpload($request->file('logo'), 'category');
+            $files = [
+                'logo' => $request->file('logo'),
+                'image' => $request->file('image'),
+                'banner_image' => $request->file('banner_image'),
+            ];
+            $uploadedFiles = [];
+            foreach ($files as $key => $file) {
+                if (!empty($file)) {
+                    $filePath = 'category/' . $key;
+                    $uploadedFiles[$key] = customUpload($file, $filePath);
+                    if ($uploadedFiles[$key]['status'] === 0) {
+                        return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                    }
+                } else {
+                    $uploadedFiles[$key] = ['status' => 0];
+                }
             }
-
-            // Handle image file upload
-            if ($request->hasFile('image')) {
-                $imagePath = handaleFileUpload($request->file('image'), 'category');
-            }
-
-            // Handle banner image file upload
-            if ($request->hasFile('banner_image')) {
-                $bannerImagePath = handaleFileUpload($request->file('banner_image'), 'category');
-            }
-
-            // Create the Brand model instance
+            // Create the category model instance
             $category = Category::create([
                 'name'         => $request->name,
                 'parent_id'    => $request->parent_id,
-                'logo'         => $logoPath,
-                'image'        => $imagePath,
-                'banner_image' => $bannerImagePath,
+                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
+                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
+                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
                 'description'  => $request->description,
                 'status'       => $request->status,
             ]);
@@ -125,7 +124,6 @@ class CategoryController extends Controller
             // Return back with error message
             return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Category: ' . $e->getMessage());
         }
-
     }
 
     /**
@@ -160,17 +158,36 @@ class CategoryController extends Controller
         DB::beginTransaction();
 
         try {
-            $logoPath = handleFileUpdate($request, 'logo', $category, 'category');
-            $imagePath = handleFileUpdate($request, 'image', $category, 'category');
-            $bannerImagePath = handleFileUpdate($request, 'banner_image', $category, 'category');
+            $files = [
+                'logo' => $request->file('logo'),
+                'image' => $request->file('image'),
+                'banner_image' => $request->file('banner_image'),
+            ];
+            $uploadedFiles = [];
+            foreach ($files as $key => $file) {
+                if (!empty($file)) {
+                    $filePath = 'category/' . $key;
+                    $oldFile = $category->$key ?? null;
 
-            // Update the brand with the new or existing file paths
+                    if ($oldFile) {
+                        Storage::delete("public/" . $oldFile);
+                    }
+                    $uploadedFiles[$key] = customUpload($file, $filePath);
+                    if ($uploadedFiles[$key]['status'] === 0) {
+                        return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                    }
+                } else {
+                    $uploadedFiles[$key] = ['status' => 0];
+                }
+            }
+
+            // Update the category with the new or existing file paths
             $category->update([
                 'name'         => $request->name,
                 'parent_id'    => $request->parent_id,
-                'logo'         => $logoPath,
-                'image'        => $imagePath,
-                'banner_image' => $bannerImagePath,
+                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $category->logo,
+                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $category->image,
+                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $category->banner_image,
                 'description'  => $request->description,
                 'status'       => $request->status,
             ]);
@@ -180,16 +197,28 @@ class CategoryController extends Controller
             return redirect()->back()->with('success', 'Category updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->with('error', 'An error occurred while updating the brand: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while updating the category: ' . $e->getMessage());
         }
-
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        Category::findOrFail($id)->delete();
+        $files = [
+            'logo' => $category->logo,
+            'image' => $category->image,
+            'banner_image' => $category->banner_image,
+        ];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $oldFile = $category->$key ?? null;
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
+                }
+            }
+        }
+        $category->delete();
     }
 }

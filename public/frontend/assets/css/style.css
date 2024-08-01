@@ -312,7 +312,7 @@ p {
 .category-menu {
   border-radius: 5px;
   background: #ebebeb;
-  width: 118px;
+  width: 140px;
   height: 38px;
   margin: auto;
   text-align: center;
@@ -1215,7 +1215,7 @@ button:hover {
 }
 
 .search-box button {
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 /* Term & Policy Style */
 .regular-banner img {

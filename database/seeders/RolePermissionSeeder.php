@@ -47,13 +47,23 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
-                'group_name' => 'Employee',
+                'group_name' => 'User',
                 'permissions' => [
-                    'view employee',
-                    'create employee',
-                    'show employee',
-                    'edit employee',
-                    'delete employee',
+                    'view user',
+                    'create user',
+                    'show user',
+                    'edit user',
+                    'delete user',
+                ],
+            ],
+            [
+                'group_name' => 'Staff',
+                'permissions' => [
+                    'view staff',
+                    'create staff',
+                    'show staff',
+                    'edit staff',
+                    'delete staff',
                 ],
             ],
             [
@@ -64,16 +74,6 @@ class RolePermissionSeeder extends Seeder
                     'edit categories',
                     'delete categories',
                     'create categories',
-                ],
-            ],
-            [
-                'group_name' => 'Brand',
-                'permissions' => [
-                    'view brand',
-                    'show brand',
-                    'edit brand',
-                    'delete brand',
-                    'create brand',
                 ],
             ],
             [
@@ -99,16 +99,23 @@ class RolePermissionSeeder extends Seeder
                     'delete activity logs',
                 ],
             ],
-
             [
-                'group_name' => 'Footers',
+                'group_name' => 'Tags',
                 'permissions' => [
-                    'view footer',
-                    'edit footer',
-                    'delete footer',
-                    'create footer',
+                    'view tag',
+                    'show tag',
+                    'edit tag',
+                    'delete tag',
+                    'create tag',
                 ],
             ],
+            [
+                'group_name' => 'Banners',
+                'permissions' => [
+                    'view banner',
+                ],
+            ],
+
         ];
 
         $roleAdmin = Role::create(['name' => 'Super Admin', 'guard_name' => 'admin']);
@@ -129,6 +136,5 @@ class RolePermissionSeeder extends Seeder
         if ($admin) {
             $admin->assignRole($roleAdmin);
         }
-        
     }
 }

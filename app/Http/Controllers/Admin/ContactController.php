@@ -15,7 +15,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.contact.index', [
+            'contacts' => Contact::get()
+        ]);
     }
 
     /**
@@ -86,6 +88,7 @@ class ContactController extends Controller
             'message'    => $request->message,
             'ip_address' => request()->ip(),
             'status'     => 'pending',
+            'priority'   => 'normal',
             'call'       => $request->call,
         ]);
 

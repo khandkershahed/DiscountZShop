@@ -9,17 +9,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\BrandRequest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Admin\BrandRequest;
 
 class BrandController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('permission:view brand|create brand|show brand|edit brand|delete brand')->only(['index', 'create', 'show', 'edit', 'destroy']);
-    }
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -69,35 +68,32 @@ class BrandController extends Controller
         DB::beginTransaction();
 
         try {
-            // Initialize variables to store file paths
-            $logoPath = null;
-            $imagePath = null;
-            $bannerImagePath = null;
-
-            // Handle logo file upload
-            if ($request->hasFile('logo')) {
-                $logoPath = handaleFileUpload($request->file('logo'), 'brands');
+            $files = [
+                'logo' => $request->file('logo'),
+                'image' => $request->file('image'),
+                'banner_image' => $request->file('banner_image'),
+            ];
+            $uploadedFiles = [];
+            foreach ($files as $key => $file) {
+                if (!empty($file)) {
+                    $filePath = 'brands/' . $key;
+                    $uploadedFiles[$key] = customUpload($file, $filePath);
+                    if ($uploadedFiles[$key]['status'] === 0) {
+                        return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                    }
+                } else {
+                    $uploadedFiles[$key] = ['status' => 0];
+                }
             }
-
-            // Handle image file upload
-            if ($request->hasFile('image')) {
-                $imagePath = handaleFileUpload($request->file('image'), 'brands');
-            }
-
-            // Handle banner image file upload
-            if ($request->hasFile('banner_image')) {
-                $bannerImagePath = handaleFileUpload($request->file('banner_image'), 'brands');
-            }
-
             // Create the Brand model instance
             $brand = Brand::create([
-                'name' => $request->name,
-                'logo' => $logoPath,
-                'image' => $imagePath,
-                'banner_image' => $bannerImagePath,
-                'description' => $request->description,
-                'url' => $request->url,
-                'status' => $request->status,
+                'name'         => $request->name,
+                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
+                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
+                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+                'description'  => $request->description,
+                'url'          => $request->url,
+                'status'       => $request->status,
             ]);
 
             // Commit the database transaction
@@ -138,16 +134,35 @@ class BrandController extends Controller
         DB::beginTransaction();
 
         try {
-            $logoPath = handleFileUpdate($request, 'logo', $brand, 'brands');
-            $imagePath = handleFileUpdate($request, 'image', $brand, 'brands');
-            $bannerImagePath = handleFileUpdate($request, 'banner_image', $brand, 'brands');
+            $files = [
+                'logo' => $request->file('logo'),
+                'image' => $request->file('image'),
+                'banner_image' => $request->file('banner_image'),
+            ];
+            $uploadedFiles = [];
+            foreach ($files as $key => $file) {
+                if (!empty($file)) {
+                    $filePath = 'brands/' . $key;
+                    $oldFile = $brand->$key ?? null;
 
+                    if ($oldFile) {
+                        Storage::delete("public/" . $oldFile);
+                    }
+                    $uploadedFiles[$key] = customUpload($file, $filePath);
+                    if ($uploadedFiles[$key]['status'] === 0) {
+                        return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                    }
+                } else {
+                    $uploadedFiles[$key] = ['status' => 0];
+                }
+            }
+            
             // Update the brand with the new or existing file paths
             $brand->update([
                 'name'         => $request->name,
-                'logo'         => $logoPath,
-                'image'        => $imagePath,
-                'banner_image' => $bannerImagePath,
+                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $brand->logo,
+                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $brand->image,
+                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $brand->banner_image,
                 'description'  => $request->description,
                 'url'          => $request->url,
                 'status'       => $request->status,
@@ -169,7 +184,19 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         //Delete the image if it exists
-
+        $files = [
+            'logo' => $brand->logo,
+            'image' => $brand->image,
+            'banner_image' => $brand->banner_image,
+        ];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $oldFile = $brand->$key ?? null;
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
+                }
+            }
+        }
         $brand->delete();
     }
 

@@ -7,8 +7,8 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Button-->
-                <a href="{{ route('admin.categories.index') }}" class="btn btn-light-info rounded-2">
-                    <!--begin::Svg Icon | path: brands/duotune/general/gen035.svg-->
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-light-info">
+                    <!--begin::Svg Icon | path: categorys/duotune/general/gen035.svg-->
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -47,24 +47,24 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
+                        <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Icon') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="logo" name="logo" :value="old('logo', $category->logo)"></x-metronic.file-input>
+                        <x-metronic.file-input id="logo" name="logo" :source="asset('storage/'.$category->logo)" :value="old('logo', $category->logo)"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="image" class="col-form-label fw-bold fs-6">{{ __('Thumbnail Image') }}
+                        <x-metronic.label for="image"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="image" name="image" :value="old('image', $category->image)"></x-metronic.file-input>
+                        <x-metronic.file-input id="image" name="image" :source="asset('storage/'.$category->image)" :value="old('image', $category->image)"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="banner_image" :value="old('banner_image', $category->banner_image)"
-                            name="banner_image"></x-metronic.file-input>
+                        <x-metronic.file-input id="banner_image" :source="asset('storage/'.$category->banner_image)" :value="old('banner_image', $category->banner_image)" name="banner_image"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-8 mb-7">
                         <x-metronic.label for="description" class="col-form-label fw-bold fs-6 ">{{ __('Description') }}

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Coupon;
+use App\Models\Offer;
 use App\Models\PageBanner;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,12 +37,28 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.allBrand',$data);
     }
+    public function brandDetails($slug)
+    {
+        $data =[
+            'brand' => Brand::where('slug',$slug)->first(),
+            'page_banner' => PageBanner::where('page_name' , 'brand')->latest('id')->first(),
+        ];
+        return view('frontend.pages.brandDetails',$data);
+    }
     public function allCoupon()
     {
         $data =[
             'page_banner' => PageBanner::where('page_name' , 'coupon')->latest('id')->first(),
         ];
         return view('frontend.pages.allCoupon',$data);
+    }
+    public function couponDetails($slug)
+    {
+        $data =[
+            'coupon' => Coupon::where('slug',$slug)->first(),
+            'page_banner' => PageBanner::where('page_name' , 'coupon')->latest('id')->first(),
+        ];
+        return view('frontend.pages.couponDetails',$data);
     }
     public function allStore()
     {
@@ -47,12 +67,28 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.allStore',$data);
     }
+    public function storeDetails($slug)
+    {
+        $data =[
+            'store' => Store::where('slug',$slug)->first(),
+            'page_banner' => PageBanner::where('page_name' , 'store')->latest('id')->first(),
+        ];
+        return view('frontend.pages.storeDetails',$data);
+    }
     public function allOffer()
     {
         $data =[
             'page_banner' => PageBanner::where('page_name' , 'offer')->latest('id')->first(),
         ];
         return view('frontend.pages.allOffer',$data);
+    }
+    public function offerDetails($slug)
+    {
+        $data =[
+            'offer' => Offer::where('slug',$slug)->first(),
+            'page_banner' => PageBanner::where('page_name' , 'offer')->latest('id')->first(),
+        ];
+        return view('frontend.pages.offerDetails',$data);
     }
     public function termsCondition()
     {

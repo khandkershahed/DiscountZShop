@@ -1,39 +1,38 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 
+
 if (!function_exists('customUpload')) {
-    function customUpload(UploadedFile $mainFile, string $uploadPath, $name, ?int $reqWidth = null, ?int $reqHeight = null): array
+    function customUpload(UploadedFile $mainFile, string $uploadPath, ?int $reqWidth = null, ?int $reqHeight = null): array
     {
         try {
             $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
-
+            $name = Str::limit($originalName, 180);
             $hashedName = substr($mainFile->hashName(), -12);
-
             $fileName = $name . '_' . $hashedName;
 
             if (!is_dir($uploadPath)) {
                 if (!mkdir($uploadPath, 0777, true)) {
                     abort(404, "Failed to create the directory: $uploadPath");
                 }
-                chmod($uploadPath, 0777); // Reset umask to default (optional)
+                chmod($uploadPath, 0777);// Reset umask to default (optional)
             }
 
+            $mainFile->storeAs("public/$uploadPath", $fileName);
+            $filePath = "$uploadPath/$fileName";
 
-            // $mainFile->storeAs($uploadPath, $fileName);
-            // $path = Storage::disk('public')->put("$uploadPath", $mainFile);
-            $path = Storage::disk('public')->putFileAs($uploadPath, $mainFile, $fileName);
             $output = [
                 'status'         => 1,
                 'file_name'      => $fileName,
                 'file_extension' => $mainFile->getClientOriginalExtension(),
                 'file_size'      => $mainFile->getSize(),
                 'file_type'      => $mainFile->getMimeType(),
-                'file_path'      => $path,
-
+                'file_path'      => $filePath ,
             ];
 
             return array_map('htmlspecialchars', $output);
@@ -45,8 +44,6 @@ if (!function_exists('customUpload')) {
         }
     }
 }
-
-
 
 
 if (!function_exists('handaleFileUpload')) {

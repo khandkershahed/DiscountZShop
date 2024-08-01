@@ -1,14 +1,14 @@
 <x-admin-app-layout :title="'Brand Add'">
     <div class="card card-flash">
-        <!--begin::Card header-->
+        
         <div class="card-header mt-6">
             <div class="card-title"></div>
 
-            <!--begin::Card toolbar-->
+            
             <div class="card-toolbar">
-                <!--begin::Button-->
-                <a href="{{ route('admin.brands.index') }}" class="btn btn-light-info rounded-2">
-                    <!--begin::Svg Icon | path: brands/duotune/general/gen035.svg-->
+                
+                <a href="{{ route('admin.brands.index') }}" class="btn btn-light-info">
+                    
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -20,16 +20,17 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    <!--end::Svg Icon-->Back to the list
+                    
+                    Back to the list
                 </a>
             </div>
         </div>
         <div class="card-body pt-0">
-            <!--begin::Form-->
+            
             <form class="form" action="{{ route('admin.brands.store') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
-                <!--begin::Input  group-->
+                
                 <div class="row">
                     <div class="col-lg-6 mb-7">
                         <x-metronic.label for="name"
@@ -59,12 +60,14 @@
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
+
                         <x-metronic.file-input id="image" name="image" :value="old('image')"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>
+
                         <x-metronic.file-input id="banner_image" :value="old('banner_image')" name="banner_image"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-8 mb-7">
@@ -91,9 +94,9 @@
                         {{ __('Submit') }}
                     </x-metronic.button>
                 </div>
-                <!--end::Actions-->
+                
             </form>
-            <!--end::Form-->
+            
         </div>
     </div>
 </x-admin-app-layout>

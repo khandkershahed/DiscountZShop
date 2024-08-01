@@ -11,29 +11,15 @@
             </div>
         @enderror
     </div>
-
     <div class="col-2 mt-n7">
-        <img id="{{ $id ?? 'file-input' }}-preview" src="{{ $source ? $source : '' }}"
-            alt="Image Preview" class="img-thumbnail" style="display: {{ $source ? 'block' : 'none' }};" width="55px"
+        <img id="{{ $id ?? 'file-input' }}-preview" src="{{ !empty($source) ? $source : asset('images/no_image.png') }}"
+            alt="Image Preview" class="img-thumbnail" style="display: {{ !empty($source) ? 'block' : 'none' }};" width="55px"
             height="68px">
     </div>
 </div>
 
 <script>
-    // function previewFile(input) {
-    //     var file = input.files[0];
-    //     var reader = new FileReader();
 
-    //     reader.onload = function(e) {
-    //         var preview = document.getElementById(input.id + '-preview');
-    //         preview.src = e.target.result;
-    //         preview.style.display = 'block';
-    //     }
-
-    //     if (file) {
-    //         reader.readAsDataURL(file);
-    //     }
-    // }
     function previewFile(input) {
         var file = input.files[0];
         var preview = document.getElementById(input.id + '-preview');
@@ -52,7 +38,6 @@
                 preview.src = e.target.result;
                 preview.style.display = 'block';
             }
-
             reader.readAsDataURL(file);
         } else {
             preview.src = '';

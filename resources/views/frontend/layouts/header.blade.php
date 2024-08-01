@@ -30,11 +30,12 @@
                             </svg>
                         </a>
                         <div class="dropdown position-static">
+                            <p class="ms-3 mb-2">{{ $city }} , {{ $country }}</p>
                             <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu" type="button"
                                 id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                                 aria-expanded="false">
                                 <span>
-                                    Menu
+                                    Categories
                                     <div class="ps-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                             viewBox="0 0 22 22" fill="none">
@@ -218,7 +219,7 @@
                 </ul>
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link active" href="{{ route('homePage') }}">Home <span class="ps-3"> |
+                        <a class="nav-link custom-nav-link " href="{{ route('homePage') }}">Home <span class="ps-3"> |
                             </span></a>
                     </li>
                     <li class="nav-item">

@@ -5,7 +5,7 @@
                 <div class="col-lg-5">
                     <div class="card border">
                         <div class="card-header align-items-center p-1 gap-2 gap-md-5">
-                            <div class="container px-0">
+                            <div class="container px-lg-3">
                                 <div class="row">
                                     <div class="col-lg-8 col-sm-12 text-lg-center text-sm-center">
                                         <div class="card-title table_title">
@@ -28,9 +28,9 @@
                                     class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
                                     id="kt_datatable_example_1">
                                     <thead class="table_header_bg">
-                                        <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
-                                            <th width="10%">Sl</th>
-                                            <th width="45%">Name</th>
+                                        <tr class="fw-bold text-gray-600 text-center">
+                                            <th width="5%">Sl</th>
+                                            <th width="50%">Name</th>
                                             <th width="20%">Status</th>
                                             <th width="25%">Action</th>
                                     </thead>
@@ -82,7 +82,7 @@
                                 <div class="row mb-5">
                                     <div class="col-lg-7 mb-7">
                                         <x-metronic.label for="category_id"
-                                            class="col-form-label required fw-bold fs-6">
+                                            class="col-form-label fw-bold fs-6">
                                             {{ __('FAQ category ') }}</x-metronic.label>
                                         <x-metronic.select-option id="category_id" name="category_id"
                                             data-hide-search="true" data-placeholder="Select an option">
@@ -162,7 +162,7 @@
                     <div class="modal-body">
                         <div class="col-lg-12 mb-7">
                             <x-metronic.label for="name"
-                                class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
+                                class="col-form-label fw-bold fs-6 required">{{ __('Category Name') }}
                             </x-metronic.label>
 
                             <x-metronic.input id="name" type="text" name="name" :value="old('name')"

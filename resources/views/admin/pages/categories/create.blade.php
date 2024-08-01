@@ -7,7 +7,7 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Button-->
-                <a href="{{ route('admin.categories.index') }}" class="btn btn-light-info rounded-2">
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-light-info">
                     <!--begin::Svg Icon | path: brands/duotune/general/gen035.svg-->
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
+                        <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Icon') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="logo" name="logo" :value="old('logo')"></x-metronic.file-input>

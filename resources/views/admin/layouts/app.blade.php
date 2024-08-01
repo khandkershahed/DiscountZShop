@@ -11,36 +11,38 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title"
-        content="{{ !empty($setting->site_motto) ? $setting->site_motto : config('app.name') }}" />
-    <meta property="og:url" content="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
-    <meta property="og:site_name" content="{{ !empty($setting->site_name) ? $setting->site_name : config('app.name') }}" />
-    <link rel="canonical" href="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
+        content="Metronic - Bootstrap 5 HTML, VueJS, React, Angular &amp; Laravel Admin Dashboard Theme" />
+    <meta property="og:url" content="https://keenthemes.com/metronic" />
+    <meta property="og:site_name" content="Keenthemes | Metronic" />
+    <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap_icons.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('admin/assets/css/font_awesome_6.css') }}"> --}}
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-
+    {{-- Net Problem --}}
+    {{-- <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css"/> --}}
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" /> --}}
+    {{-- Net Problem --}}
 
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
+    {{-- Net Problem --}}
+    {{-- <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet"> --}}
+    {{-- Net Problem --}}
 
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
     @props(['title'])
-    <title>{{ $title ?? config('app.name') }}</title>
+    <title>{{ $title ?? config('app.name', 'E-Commerce') }}</title>
 </head>
 
 <body id="kt_body"
-    class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
-    style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+    class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed">
 
 
     <div class="d-flex flex-column flex-root">
@@ -50,20 +52,26 @@
             @include('admin.layouts.sidebar')
 
 
-            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <div class="wrapper d-flex flex-column flex-row-fluid pt-lg-17" id="kt_wrapper">
 
                 @include('admin.layouts.header')
 
 
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-                    @include('admin.layouts.toolbar')
+                    {{-- @include('admin.layouts.toolbar') --}}
 
 
                     <div class="post d-flex flex-column-fluid" id="kt_post">
 
                         <div id="kt_content_container" class="container-xxl">
-
+                            @if (session('error'))
+                                @foreach ($messages as $item)
+                                    <div class="alert alert-danger">
+                                        {{ $item }}
+                                    </div>
+                                @endforeach
+                            @endif
                             {{ $slot }}
 
                         </div>
@@ -104,28 +112,92 @@
 
     <script src="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> --}}
     <script src="{{ asset('admin/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
 
 
 
-    <script src="{{ asset('admin/assets/js/custom/account/settings/signin-methods.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/account/settings/profile-details.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/account/settings/deactivate-account.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+
     <script src="{{ asset('admin/assets/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom/widgets.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script> --}}
     <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     @include('toastr')
     @stack('scripts')
 
+    <script>
+        $(document).ready(function() {
+            $("#kt_datatable_example").DataTable({
+                "language": {
+                    "lengthMenu": "Show _MENU_",
+                },
+                "dom": "<'row'" +
+                    "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                    "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                    ">" +
 
+                    "<'table-responsive'tr>" +
+
+                    "<'row'" +
+                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                    ">"
+            });
+        });
+    </script>
+
+    <script>
+        // Make the DIV element draggable:
+        var element = document.querySelector('.modal');
+        dragElement(element);
+
+        function dragElement(elmnt) {
+            var pos1 = 0,
+                pos2 = 0,
+                pos3 = 0,
+                pos4 = 0;
+            if (elmnt.querySelector('.modal-content')) {
+                // if present, the header is where you move the DIV from:
+                elmnt.querySelector('.modal-content').onmousedown = dragMouseDown;
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
 
 </body>
 

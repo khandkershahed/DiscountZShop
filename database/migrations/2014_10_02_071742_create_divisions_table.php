@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255)->nullable();
+            $table->string('latitude', 255)->nullable();
+            $table->string('longitude', 255)->nullable();
             $table->timestamps();
         });
     }

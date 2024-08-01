@@ -32,12 +32,13 @@ class FaqCategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'      => 'required|string|max:150',
+            'name'      => 'required|string|max:150|unique:faq_categories,name',
             'status'    => 'required|in:active,inactive',
         ], [
             'name.required'   => 'The name field is required.',
             'name.string'     => 'The name must be a string.',
             'name.max'        => 'The name may not be greater than :max characters.',
+            'name.unique'     => 'This name has already been taken.',
             'status.required' => 'The Status field is required.',
             'status.in'       => 'The status must be one of: active, inactive.',
         ]);
