@@ -42,7 +42,7 @@
                             <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="pe-3">
-                                    <img class="profile-logo-account" src="{{ asset('frontend') }}/assets/img/profile/profile-one.png"
+                                    <img class="profile-logo-account" src="{{ asset('admin/assets/media/svg/avatars/blank-dark.svg') }}"
                                         alt="" />
                                 </div>
                             </a>

@@ -12,6 +12,8 @@ Route::get('/about', [HomeController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 Route::post('contact/store', [ContactController::class, 'store'])->name('contact.add');
 
+Route::get('/category/{slug}', [HomeController::class, 'categoryDetails'])->name('category.details');
+
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
 Route::get('/offer/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
 

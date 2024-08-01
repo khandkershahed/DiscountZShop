@@ -66,8 +66,32 @@
                                 'admin.categories.index',
                                 'admin.categories.create',
                                 'admin.categories.edit',
+                                'admin.offer.index',
+                                'admin.offer.create',
+                                'admin.offer.edit',
+                                'admin.coupon.index',
+                                'admin.coupon.create',
+                                'admin.coupon.edit',
+                                'admin.store.index',
+                                'admin.store.create',
+                                'admin.store.edit',
+                                'admin.categories.index',
+                                'admin.categories.create',
+                                'admin.categories.edit',
                             ],
                             'subMenu' => [
+                                [
+                                    'title' => 'Category List',
+                                    'routes' => [
+                                        'admin.categories.index',
+                                        'admin.categories.create',
+                                        'admin.categories.edit',
+                                    ],
+                                    'route' => 'admin.categories.index',
+                                    // 'subMenu' => [
+                                    //     ['title' => 'Brand List', 'route' => 'admin.brands.index'],
+                                    // ],
+                                ],
                                 [
                                     'title' => 'Brand List',
                                     'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
@@ -75,6 +99,11 @@
                                     // 'subMenu' => [
                                     //     ['title' => 'Brand List', 'route' => 'admin.brands.index'],
                                     // ],
+                                ],
+                                [
+                                    'title' => 'Store List',
+                                    'routes' => ['admin.store.index', 'admin.store.create', 'admin.store.edit'],
+                                    'route' => 'admin.store.index',
                                 ],
                                 [
                                     'title' => 'Offer Type List',
@@ -87,20 +116,12 @@
                                 ],
                                 [
                                     'title' => 'Offer List',
-                                    'routes' => [
-                                        'admin.offer.index',
-                                        'admin.offer.create',
-                                        'admin.offer.edit',
-                                    ],
+                                    'routes' => ['admin.offer.index', 'admin.offer.create', 'admin.offer.edit'],
                                     'route' => 'admin.offer.index',
                                 ],
                                 [
                                     'title' => 'Coupon List',
-                                    'routes' => [
-                                        'admin.coupon.index',
-                                        'admin.coupon.create',
-                                        'admin.coupon.edit',
-                                    ],
+                                    'routes' => ['admin.coupon.index', 'admin.coupon.create', 'admin.coupon.edit'],
                                     'route' => 'admin.coupon.index',
                                 ],
                             ],
@@ -215,19 +236,19 @@
                             ],
                         ],
                         [
-                            'title' => 'Seller Management',
+                            'title' => 'Vendor Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
                             'subMenu' => [
                                 [
-                                    'title' => 'Seller',
+                                    'title' => 'Vendor',
                                     'subMenu' => [
                                         [
-                                            'title' => 'Seller List',
+                                            'title' => 'Vendor List',
                                             'routes' => ['admin.user.index'],
                                             'route' => 'admin.user.index',
                                         ],
                                         [
-                                            'title' => 'Seller Statistic',
+                                            'title' => 'Vendor Statistic',
                                             'routes' => ['admin.user.index'],
                                             'route' => 'admin.user.index',
                                         ],
@@ -238,7 +259,15 @@
                         [
                             'title' => 'Settings',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
-                            'routes' => ['admin.settings.index', 'admin.email-settings.index'],
+                            'routes' => [
+                                'admin.settings.index',
+                                'admin.email-settings.index',
+                                'admin.settings.index',
+                                'admin.country.index',
+                                'admin.division.index',
+                                'admin.city.index',
+                                'admin.area.index',
+                            ],
                             'subMenu' => [
                                 [
                                     'title' => 'Website Setting',
@@ -246,9 +275,24 @@
                                     'route' => 'admin.settings.index',
                                 ],
                                 [
-                                    'title' => 'Email Setting',
-                                    'routes' => ['admin.email-settings.index'],
-                                    'route' => 'admin.email-settings.index',
+                                    'title' => 'Country',
+                                    'routes' => ['admin.country.index'],
+                                    'route' => 'admin.country.index',
+                                ],
+                                [
+                                    'title' => 'Division',
+                                    'routes' => ['admin.division.index'],
+                                    'route' => 'admin.division.index',
+                                ],
+                                [
+                                    'title' => 'City',
+                                    'routes' => ['admin.city.index'],
+                                    'route' => 'admin.city.index',
+                                ],
+                                [
+                                    'title' => 'Area',
+                                    'routes' => ['admin.area.index'],
+                                    'route' => 'admin.area.index',
                                 ],
                             ],
                         ],

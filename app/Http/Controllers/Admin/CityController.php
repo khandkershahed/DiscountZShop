@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Coupon;
+use App\Models\City;
 use Illuminate\Http\Request;
 
-class CouponController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $data = [
-            'coupons' => Coupon::orderBy('name' , 'ASC')->get(),
+        $data = [
+            'citys' => City::orderBy('name' , 'ASC')->get(),
         ];
-        return view('admin.pages.coupon.index',$data);
+        return view('admin.pages.city.index',$data);
     }
 
     /**
@@ -24,7 +24,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.coupon.create');
+        //
     }
 
     /**

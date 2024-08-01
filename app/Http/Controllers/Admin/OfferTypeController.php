@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OfferType;
 use Illuminate\Http\Request;
 
 class OfferTypeController extends Controller
@@ -12,7 +13,10 @@ class OfferTypeController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'offer_types' => OfferType::orderBy('name' , 'ASC')->get(),
+        ];
+        return view('admin.pages.offerType.index',$data);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -12,7 +13,10 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'offers' => Offer::orderBy('name' , 'ASC')->get(),
+        ];
+        return view('admin.pages.offer.index',$data);
     }
 
     /**
@@ -20,7 +24,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.offer.create');
     }
 
     /**

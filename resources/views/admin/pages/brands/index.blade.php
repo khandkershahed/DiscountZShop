@@ -1,6 +1,5 @@
 <x-admin-app-layout :title="'Brands List'">
     <div class="card card-flash">
-
         <div class="card-header mt-6">
             <div class="card-title">
             </div>

@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\PageBannerController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
@@ -35,9 +36,13 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\DivisonController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\OfferTypeController;
+use App\Http\Controllers\Admin\StoreController;
 
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
@@ -98,10 +103,10 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     Route::resources(
         [
             'offer-type'            => OfferTypeController::class,
-            'country'               => OfferTypeController::class,
-            'city'                  => OfferTypeController::class,
-            'division'              => OfferTypeController::class,
-            'area'                  => OfferTypeController::class,
+            'country'               => CountryController::class,
+            'city'                  => CityController::class,
+            'division'              => DivisonController::class,
+            'area'                  => AreaController::class,
         ],
         ['except' => ['show','create','edit']]
     );
@@ -116,6 +121,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             'privacy-policy'        => PrivacyPolicyController::class,
             'offer'                 => OfferController::class,
             'coupon'                => CouponController::class,
+            'store'                 => StoreController::class,
         ],
         ['except' => ['show']]
     );

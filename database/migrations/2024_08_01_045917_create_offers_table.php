@@ -18,6 +18,14 @@ return new class extends Migration
             $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('set null');
             $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
+            $table->string('name', 30)->unique();
+            $table->string('slug', 40)->unique();
+            $table->string('logo', 150)->nullable();
+            $table->string('image', 150)->nullable();
+            $table->string('banner_image', 150)->nullable();
+            $table->text('description')->nullable();
+            $table->string('url', 255)->nullable();
+            $table->string('status')->default('active')->comment('inactive,active');
             $table->timestamps();
         });
     }

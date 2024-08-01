@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -12,7 +13,10 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+         $data = [
+            'stores' => Store::orderBy('name' , 'ASC')->get(),
+        ];
+        return view('admin.pages.store.index',$data);
     }
 
     /**
@@ -20,7 +24,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.store.create');
     }
 
     /**

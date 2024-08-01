@@ -194,6 +194,51 @@
             }
         }
     </script>
+    <script>
+        // Offer Counter
+        class Countdown {
+            constructor(element, expireDate) {
+                this.element = element;
+                this.expireDate = new Date(expireDate).getTime();
+                this.timerElement = this.element.querySelector(".countdown-timer");
+                this.start();
+            }
+
+            start() {
+                this.update();
+                this.interval = setInterval(() => this.update(), 1000);
+            }
+
+            update() {
+                const now = new Date().getTime();
+                const distance = this.expireDate - now;
+
+                if (distance < 0) {
+                    clearInterval(this.interval);
+                    this.timerElement.innerHTML = "EXPIRED";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(
+                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                const minutes = Math.floor(
+                    (distance % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                this.timerElement.innerHTML = `${days}D-${hours}H-${minutes}M-${seconds}S`;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".countdown").forEach((element) => {
+                const expireDate = element.getAttribute("data-expire-date");
+                new Countdown(element, expireDate);
+            });
+        });
+    </script>
     @include('toastr')
     @stack('scripts')
 </body>

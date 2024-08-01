@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Offer;
 use App\Models\PageBanner;
@@ -89,6 +90,14 @@ class HomeController extends Controller
             'page_banner' => PageBanner::where('page_name' , 'offer')->latest('id')->first(),
         ];
         return view('frontend.pages.offerDetails',$data);
+    }
+    public function categoryDetails($slug)
+    {
+        $data =[
+            'offer' => Category::where('slug',$slug)->first(),
+            'page_banner' => PageBanner::where('page_name' , 'offer')->latest('id')->first(),
+        ];
+        return view('frontend.pages.categoryDetails',$data);
     }
     public function termsCondition()
     {

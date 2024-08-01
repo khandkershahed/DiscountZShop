@@ -1076,9 +1076,9 @@ button:active {
   box-shadow: none !important;
 }
 .form-control {
-  background-color: #eeeeee4f;
-  border-radius: 0;
-  border: 1px solid #eeeeee4f;
+    background-color: #eee;
+    border-radius: 0;
+    border: 1px solid #eee;
 }
 /* Optionally, remove hover styles if needed */
 input:hover,
@@ -1100,18 +1100,18 @@ button:hover {
 .custom-offer-tabs {
   color: #a6a6a6;
   border-bottom: 1px solid #dfdfdf !important;
-  padding: 16px;
+  padding: 10px 13px;
 }
 .nav-tabs .nav-item.show .custom-offer-tabs,
 .nav-tabs .custom-offer-tabs {
   border-bottom: 1px solid white;
-  padding: 16px;
+  padding: 10px 13px;
 }
 .nav-tabs .nav-item.show .custom-offer-tabs,
 .nav-tabs .custom-offer-tabs.active {
   background-color: transparent;
   border-radius: 0;
-  padding: 16px;
+  padding: 10px 13px;
   color: #f15a2d !important;
 }
 .nav-tabs .nav-item.show .custom-offer-tabs,

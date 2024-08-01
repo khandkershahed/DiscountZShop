@@ -31,6 +31,7 @@
                                 <select class="form-control btn-common-three" name="" id="">
                                     <option value="" selected>No Area Available</option>
                                 </select>
+
                             </div>
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
@@ -79,10 +80,10 @@
                     <div class="bg-light">
                         <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
                             <li class="nav-item w-100" role="presentation">
-                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start active"
+                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start"
                                     id="all-category" data-bs-toggle="tab" data-bs-target="#all-category-pane"
                                     type="button" role="tab" aria-controls="all-category-pane"
-                                    aria-selected="true">
+                                    aria-selected="false">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span>All Categories</span>
                                         <span>(1)</span>
@@ -90,9 +91,9 @@
                                 </button>
                             </li>
                             <li class="nav-item w-100" role="presentation">
-                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start" id="beauty"
+                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start active" id="beauty"
                                     data-bs-toggle="tab" data-bs-target="#beauty-pane" type="button" role="tab"
-                                    aria-controls="beauty-pane" aria-selected="false">
+                                    aria-controls="beauty-pane" aria-selected="true">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span>Fashion</span>
                                         <span>(1)</span>
@@ -159,7 +160,7 @@
                 </div>
                 <div class="col-lg-10">
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="all-category-pane" role="tabpanel"
+                        <div class="tab-pane fade" id="all-category-pane" role="tabpanel"
                             aria-labelledby="all-category" tabindex="0">
                             <div class="row">
                                 <div class="col-lg-4 mt-4">
@@ -204,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="beauty-pane" role="tabpanel" aria-labelledby="beauty"
+                        <div class="tab-pane fade show active" id="beauty-pane" role="tabpanel" aria-labelledby="beauty"
                             tabindex="0">
                             <div class="row">
                                 <div class="col-lg-4 mt-4">
@@ -227,7 +228,7 @@
                                                 <p class="pb-4 text-black">
                                                     Premium Punjabi collections for men on online
                                                 </p>
-                                                <a href="{{ route('store.details','aarong') }}" class="main-color">
+                                                <a href="" class="main-color">
                                                     <small>See all in store</small>
                                                 </a>
                                             </div>
@@ -240,8 +241,8 @@
                                                 </div>
                                                 <p class="pt-2 text-center countdown"
                                                     data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire In:</span> <span
-                                                        class="countdown-timer">12 Days</span>
+                                                    <span class="main-color">Expire :</span> <span
+                                                        class="countdown-timer"></span>
                                                 </p>
                                             </div>
                                         </div>

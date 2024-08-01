@@ -59,52 +59,7 @@
                                                         id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
                                                         type="button" role="tab" aria-controls="home"
                                                         aria-selected="true">
-                                                        Kitchen Accessories
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button
-                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                                                        type="button" role="tab" aria-controls="profile"
-                                                        aria-selected="false">
-                                                        Health And Beauty
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button
-                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-                                                        type="button" role="tab" aria-controls="contact"
-                                                        aria-selected="false">
-                                                        Winter Collections
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button
-                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-                                                        type="button" role="tab" aria-controls="contact"
-                                                        aria-selected="false">
-                                                        Home Appliances
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button
-                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact" type="button" role="tab"
-                                                        aria-controls="contact" aria-selected="false">
-                                                        Ladies Bag Collections
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button
-                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0"
-                                                        id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact" type="button" role="tab"
-                                                        aria-controls="contact" aria-selected="false">
-                                                        Furniture Item
+                                                        Fashion
                                                     </button>
                                                 </li>
                                             </ul>
@@ -115,99 +70,19 @@
                                                     aria-labelledby="home-tab">
                                                     <div class="row py-4" style="background-color: #eee">
                                                         <div class="col-lg-4">
-                                                            <h6 class="divider-title">
-                                                                Bathroom Accessories
-                                                            </h6>
+                                                            <a href="{{ route('category.details','clothes') }}">
+                                                                <h6 class="divider-title">
+                                                                    Clothes
+                                                                </h6>
+                                                            </a>
                                                             <span class="divider-underline"></span>
                                                             <ul class="ps-0 pt-3 main-category-dropdown">
                                                                 <li class="p-1">
-                                                                    <a href="#">Wall Fitting Rack</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Double Layer High
-                                                                        Quality</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Kitchen Trolley</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Multi-Functional Knife
-                                                                        Holder</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Commode Stand</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Double Layer High
-                                                                        Quality</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <h6 class="divider-title">
-                                                                Metal Furniture
-                                                            </h6>
-                                                            <span class="divider-underline"></span>
-                                                            <ul class="ps-0 pt-3 main-category-dropdown">
-                                                                <li class="p-1">
-                                                                    <a href="#">Wall Fitting Rack</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Double Layer High
-                                                                        Quality</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Kitchen Trolley</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Multi-Functional Knife
-                                                                        Holder</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Commode Stand</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Double Layer High
-                                                                        Quality</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <h6 class="divider-title">Clothing Item</h6>
-                                                            <span class="divider-underline"></span>
-                                                            <ul class="ps-0 pt-3 main-category-dropdown">
-                                                                <li class="p-1">
-                                                                    <a href="#">Wall Fitting Rack</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Double Layer High
-                                                                        Quality</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Kitchen Trolley</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Multi-Functional Knife
-                                                                        Holder</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Commode Stand</a>
-                                                                </li>
-                                                                <li class="p-1">
-                                                                    <a href="#">Double Layer High
-                                                                        Quality</a>
+                                                                    <a href="{{ route('store.details','aarong') }}">Aarong</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="profile" role="tabpanel"
-                                                    aria-labelledby="profile-tab">
-                                                    ...
-                                                </div>
-                                                <div class="tab-pane fade" id="contact" role="tabpanel"
-                                                    aria-labelledby="contact-tab">
-                                                    ...
                                                 </div>
                                             </div>
                                         </div>
@@ -219,19 +94,19 @@
                 </ul>
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link " href="{{ route('homePage') }}">Home <span class="ps-3"> |
+                        <a class="nav-link custom-nav-link {{ Route::is('homePage') ? 'active' : '' }}" href="{{ route('homePage') }}">Home <span class="ps-3"> |
                             </span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="{{ route('allOffer') }}">Offers <span class="ps-3"> |
+                        <a class="nav-link custom-nav-link {{ Route::is(['allOffer','offer.details']) ? 'active' : '' }}" href="{{ route('allOffer') }}">Offers <span class="ps-3"> |
                             </span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="{{ route('allBrand') }}">Brands <span class="ps-3"> |
+                        <a class="nav-link custom-nav-link {{ Route::is(['allBrand','brand.details']) ? 'active' : '' }}" href="{{ route('allBrand') }}">Brands <span class="ps-3"> |
                             </span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="{{ route('allStore') }}">Store</a>
+                        <a class="nav-link custom-nav-link {{ Route::is(['allStore','store.details']) ? 'active' : '' }}" href="{{ route('allStore') }}">Store</a>
                     </li>
                 </ul>
                 <!-- Search Form -->

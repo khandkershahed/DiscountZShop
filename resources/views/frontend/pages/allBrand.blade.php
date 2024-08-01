@@ -129,7 +129,10 @@
                                 </div>
                             </div> --}}
                         </div>
-                        <div class="col-lg-4 mb-3 mt-2">
+                        <div class="col-12">
+                            <h5 class="text-center text-warning">No Brand is available right now.</h5>
+                        </div>
+                        {{-- <div class="col-lg-4 mb-3 mt-2">
                             <a href="">
                                 <div class="card shadow-sm brands-card">
                                     <div class="card-body p-0">
@@ -140,7 +143,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col">
@@ -161,30 +164,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-8.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo9.png"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                       
 
                     </div>
                 </div>

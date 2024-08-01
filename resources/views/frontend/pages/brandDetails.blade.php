@@ -95,7 +95,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section id="popular-discount">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 ps-0">
@@ -134,218 +134,41 @@
             <div class="row">
                 <div class="col-lg-12 py-4">
                     <div class="store-offers">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <span class="badge fw-normal"><i
-                                                    class="fa-solid fa-star pe-2"></i>8.5</span>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>AARONG</h5>
-                                            <p>Clothing Store</p>
-                                        </div>
-                                        <div>
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off<a href=""><i
-                                                    class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                        </small>
+                        <div class="card border-0 shadow-sm bg-light">
+                            <div class="row p-4 align-items-center">
+                                <div class="col-lg-6">
+                                    <div>
+                                        <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
+                                            height="80px" class="rounded-2 bg-white"
+                                            style="object-fit: cover;" alt="" />
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                        alt="arong-banner.jpg" />
+                                <div class="col-lg-6">
+                                    <span>Upto</span>
+                                    <h1 class="main-color special-font-box">
+                                        50% Off
+                                    </h1>
                                 </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <span class="badge fw-normal"><i
-                                                    class="fa-solid fa-star pe-2"></i>8.5</span>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>AARONG</h5>
-                                            <p>Clothing Store</p>
-                                        </div>
-                                        <div>
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off<a href=""><i
-                                                    class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                        </small>
-                                    </div>
+                                <div class="col-lg-12 pt-4">
+                                    <p class="pb-4 text-black">
+                                        Premium Punjabi collections for men on online
+                                    </p>
+                                    <a href="{{ route('store.details','aarong') }}" class="main-color">
+                                        <small>See all in store</small>
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <span class="badge fw-normal"><i
-                                                    class="fa-solid fa-star pe-2"></i>8.5</span>
-                                        </div>
+                                <div class="col-lg-12 pt-4">
+                                    <div class="d-flex">
+                                        <a href="" class="w-100 btn-common-one rounded-3">View</a>
+                                        <a href=""
+                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
+                                                class="fa-solid fa-copy"></i></a>
                                     </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>AARONG</h5>
-                                            <p>Clothing Store</p>
-                                        </div>
-                                        <div>
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off<a href=""><i
-                                                    class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <span class="badge fw-normal"><i
-                                                    class="fa-solid fa-star pe-2"></i>8.5</span>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>AARONG</h5>
-                                            <p>Clothing Store</p>
-                                        </div>
-                                        <div>
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off<a href=""><i
-                                                    class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <span class="badge fw-normal"><i
-                                                    class="fa-solid fa-star pe-2"></i>8.5</span>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>AARONG</h5>
-                                            <p>Clothing Store</p>
-                                        </div>
-                                        <div>
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off<a href=""><i
-                                                    class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                        </small>
-                                    </div>
+                                    <p class="pt-2 text-center countdown"
+                                        data-expire-date="August 17, 2024 00:00:00">
+                                        <span class="main-color">Expire In:</span> <span
+                                            class="countdown-timer">12 Days</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -399,7 +222,7 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-2 px-3">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d61428.417818685964!2d-47.94048907413692!3d-15.78938834782067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sPlano%20Piloto!5e0!3m2!1spt-BR!2sbr!4v1569520090696!5m2!1spt-BR!2sbr"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.21705146686878!2d90.35831624489104!3d23.76617157961525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a568a70445%3A0x89dff0189e12966d!2sNGEN%20IT%20LTD.!5e0!3m2!1sen!2sbd!4v1720612839750!5m2!1sen!2sbd"
                                 width="100%" height="450" frameborder="0" style="border: 0" allowfullscreen=""
                                 class="map-store"></iframe>
                         </div>
@@ -416,228 +239,41 @@
                     <div class="row">
                         <div class="col-lg-12 py-4">
                             <div class="store-popular-offer">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                                alt="arong-banner.jpg" />
-                                        </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <span class="badge fw-normal"><i
-                                                            class="fa-solid fa-star pe-2"></i>8.5</span>
-                                                </div>
-                                            </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between">
-                                                <div>
-                                                    <h5>AARONG</h5>
-                                                    <p>Clothing Store</p>
-                                                </div>
-                                                <div>
-                                                    <a href="store-single.html"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store"></i></a>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                                <span class="bg-danger badge fw-normal">
-                                                    <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                                </span>
-                                                <small class="text-sm">
-                                                    Get UpTo
-                                                    <span class="main-color">50%</span> Off<a href=""><i
-                                                            class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                                </small>
+                                <div class="card border-0 shadow-sm bg-light">
+                                    <div class="row p-4 align-items-center">
+                                        <div class="col-lg-6">
+                                            <div>
+                                                <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
+                                                    height="80px" class="rounded-2 bg-white"
+                                                    style="object-fit: cover;" alt="" />
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                                alt="arong-banner.jpg" />
+                                        <div class="col-lg-6">
+                                            <span>Upto</span>
+                                            <h1 class="main-color special-font-box">
+                                                50% Off
+                                            </h1>
                                         </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <span class="badge fw-normal"><i
-                                                            class="fa-solid fa-star pe-2"></i>8.5</span>
-                                                </div>
-                                            </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between">
-                                                <div>
-                                                    <h5>AARONG</h5>
-                                                    <p>Clothing Store</p>
-                                                </div>
-                                                <div>
-                                                    <a href="store-single.html"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store"></i></a>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                                <span class="bg-danger badge fw-normal">
-                                                    <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                                </span>
-                                                <small class="text-sm">
-                                                    Get UpTo
-                                                    <span class="main-color">50%</span> Off<a href=""><i
-                                                            class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                                </small>
-                                            </div>
+                                        <div class="col-lg-12 pt-4">
+                                            <p class="pb-4 text-black">
+                                                Premium Punjabi collections for men on online
+                                            </p>
+                                            <a href="{{ route('store.details','aarong') }}" class="main-color">
+                                                <small>See all in store</small>
+                                            </a>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                                alt="arong-banner.jpg" />
-                                        </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <span class="badge fw-normal"><i
-                                                            class="fa-solid fa-star pe-2"></i>8.5</span>
-                                                </div>
+                                        <div class="col-lg-12 pt-4">
+                                            <div class="d-flex">
+                                                <a href="" class="w-100 btn-common-one rounded-3">View</a>
+                                                <a href=""
+                                                    class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
+                                                        class="fa-solid fa-copy"></i></a>
                                             </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between">
-                                                <div>
-                                                    <h5>AARONG</h5>
-                                                    <p>Clothing Store</p>
-                                                </div>
-                                                <div>
-                                                    <a href="store-single.html"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store"></i></a>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                                <span class="bg-danger badge fw-normal">
-                                                    <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                                </span>
-                                                <small class="text-sm">
-                                                    Get UpTo
-                                                    <span class="main-color">50%</span> Off<a href=""><i
-                                                            class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                                alt="arong-banner.jpg" />
-                                        </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <span class="badge fw-normal"><i
-                                                            class="fa-solid fa-star pe-2"></i>8.5</span>
-                                                </div>
-                                            </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between">
-                                                <div>
-                                                    <h5>AARONG</h5>
-                                                    <p>Clothing Store</p>
-                                                </div>
-                                                <div>
-                                                    <a href="store-single.html"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store"></i></a>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                                <span class="bg-danger badge fw-normal">
-                                                    <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                                </span>
-                                                <small class="text-sm">
-                                                    Get UpTo
-                                                    <span class="main-color">50%</span> Off<a href=""><i
-                                                            class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                                </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
-                                                alt="arong-banner.jpg" />
-                                        </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <span class="badge fw-normal"><i
-                                                            class="fa-solid fa-star pe-2"></i>8.5</span>
-                                                </div>
-                                            </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between">
-                                                <div>
-                                                    <h5>AARONG</h5>
-                                                    <p>Clothing Store</p>
-                                                </div>
-                                                <div>
-                                                    <a href="store-single.html"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store"></i></a>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                                <span class="bg-danger badge fw-normal">
-                                                    <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                                </span>
-                                                <small class="text-sm">
-                                                    Get UpTo
-                                                    <span class="main-color">50%</span> Off<a href=""><i
-                                                            class="fa-solid fa-location-dot ps-1 main-color"></i></a>
-                                                </small>
-                                            </div>
+                                            <p class="pt-2 text-center countdown"
+                                                data-expire-date="August 17, 2024 00:00:00">
+                                                <span class="main-color">Expire In:</span> <span
+                                                    class="countdown-timer">12 Days</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
