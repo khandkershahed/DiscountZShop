@@ -15,17 +15,17 @@
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png"
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png"
                                             alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png"
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png"
                                             alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png"
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png"
                                             alt="" />
                                     </div>
                                 </div>
