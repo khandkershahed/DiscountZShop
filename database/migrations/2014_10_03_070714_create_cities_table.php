@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 255)->nullable();
             $table->string('latitude', 255)->nullable();
             $table->string('longitude', 255)->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

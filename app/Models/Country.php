@@ -15,4 +15,16 @@ class Country extends Model
      * @var array
      */
     protected $guarded = [];
+    public function division()
+    {
+        return $this->hasMany(Division::class, 'country_id');
+    }
+    public function city()
+    {
+        return $this->hasMany(City::class, 'country_id');
+    }
+    public function area()
+    {
+        return $this->hasMany(Area::class, 'country_id');
+    }
 }

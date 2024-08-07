@@ -15,4 +15,12 @@ class City extends Model
      * @var array
      */
     protected $guarded = [];
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'country_id');
+    }
 }

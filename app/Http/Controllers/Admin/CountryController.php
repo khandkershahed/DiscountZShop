@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CountryController extends Controller
 {
@@ -32,7 +34,34 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|string|max:150|unique:countries,name',
+            'status'    => 'required|in:active,inactive',
+        ], [
+            'name.required'   => 'The name field is required.',
+            'name.string'     => 'The name must be a string.',
+            'name.max'        => 'The name may not be greater than :max characters.',
+            'name.unique'     => 'This name has already been taken.',
+            'status.required' => 'The Status field is required.',
+            'status.in'       => 'The status must be one of: active, inactive.',
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->messages()->all() as $message) {
+                Session::flash('error', $message);
+            }
+            return redirect()->back()->withInput();
+        }
+
+        Country::create([
+            'name'          => $request->name,
+            'currency'      => $request->currency,
+            'currency_code' => $request->currency_code,
+            'country_code'  => $request->country_code,
+            'status'        => $request->status,
+        ]);
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -56,7 +85,33 @@ class CountryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|string|max:150',
+            'status'    => 'required|in:active,inactive',
+        ], [
+            'name.required'   => 'The name field is required.',
+            'name.string'     => 'The name must be a string.',
+            'name.max'        => 'The name may not be greater than :max characters.',
+            'status.required' => 'The Status field is required.',
+            'status.in'       => 'The status must be one of: active, inactive.',
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->messages()->all() as $message) {
+                Session::flash('error', $message);
+            }
+            return redirect()->back()->withInput();
+        }
+
+        Country::find($id)->update([
+            'name'          => $request->name,
+            'currency'      => $request->currency,
+            'currency_code' => $request->currency_code,
+            'country_code'  => $request->country_code,
+            'status'        => $request->status,
+        ]);
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been updated successfully!');
     }
 
     /**
@@ -64,6 +119,6 @@ class CountryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Country::find($id)->delete();
     }
 }

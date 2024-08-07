@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Division;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class DivisonController extends Controller
 {
@@ -14,7 +17,8 @@ class DivisonController extends Controller
     public function index()
     {
         $data = [
-            'divisions' => Division::orderBy('name' , 'ASC')->get(),
+            'countries' => Country::orderBy('name' , 'ASC')->get(),
+            'divisions' => Division::with('country')->orderBy('name' , 'ASC')->get(),
         ];
         return view('admin.pages.Division.index',$data);
     }
@@ -32,7 +36,36 @@ class DivisonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'country_id'     => 'nullable|exists:countries,id',
+            'name'           => 'required|string|max:150|unique:divisions,name',
+            'status'         => 'required|in:active,inactive',
+        ], [
+            'country_id.exists'  => 'The selected Country does not exist.',
+            'name.required'      => 'The name field is required.',
+            'name.string'        => 'The name must be a string.',
+            'name.max'           => 'The name may not be greater than: max characters.',
+            'name.unique'        => 'This name has already been taken.',
+            'status.required'    => 'The Status field is required.',
+            'status.in'          => 'The status must be one of :active,inactive.',
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->messages()->all() as $message) {
+                Session::flash('error', $message);
+            }
+            return redirect()->back()->withInput();
+        }
+
+        Division::create([
+            'country_id' => $request->country_id,
+            'name'       => $request->name,
+            'latitude'   => $request->latitude,
+            'longitude'  => $request->longitude,
+            'status'     => $request->status,
+        ]);
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -56,7 +89,33 @@ class DivisonController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|string|max:150',
+            'status'    => 'required|in:active,inactive',
+        ], [
+            'name.required'   => 'The name field is required.',
+            'name.string'     => 'The name must be a string.',
+            'name.max'        => 'The name may not be greater than :max characters.',
+            'status.required' => 'The Status field is required.',
+            'status.in'       => 'The status must be one of: active, inactive.',
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->messages()->all() as $message) {
+                Session::flash('error', $message);
+            }
+            return redirect()->back()->withInput();
+        }
+
+        Division::find($id)->update([
+            'country_id' => $request->country_id,
+            'name'       => $request->name,
+            'latitude'   => $request->latitude,
+            'longitude'  => $request->longitude,
+            'status'     => $request->status,
+        ]);
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been updated successfully!');
     }
 
     /**
@@ -64,6 +123,6 @@ class DivisonController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Division::find($id)->delete();
     }
 }
