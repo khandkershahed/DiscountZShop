@@ -25,7 +25,6 @@
         <div class="card-body pt-0">
 
             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_datatable_example">
-
                 <thead>
                     <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
@@ -66,7 +65,7 @@
     </div>
 
     <div class="modal fade" id="AddModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
                     <h5 class="modal-title ps-5">Add Division</h5>
@@ -79,48 +78,52 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="col-lg-12 mb-7">
-                            <x-metronic.label for="country_id" class="col-form-label required fw-bold fs-6">
-                                {{ __('Select Country ') }}</x-metronic.label>
-                            <x-metronic.select-option id="country_id" name="country_id" data-hide-search="true"
-                                data-placeholder="Select an option">
-                                <option></option>
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach
-                            </x-metronic.select-option>
-                        </div>
-                        <div class="col-lg-12 mb-7">
-                            <x-metronic.label for="name"
-                                class="col-form-label fw-bold fs-6 required">{{ __('Division Name') }}
-                            </x-metronic.label>
+                        <div class="row">
+                            <div class="col-lg-6 mb-7">
+                                <x-metronic.label for="country_id" class="col-form-label required fw-bold fs-6">
+                                    {{ __('Select Country ') }}</x-metronic.label>
+                                <x-metronic.select-option id="country_id" name="country_id" data-hide-search="true"
+                                    data-placeholder="Select an option">
+                                    <option></option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </x-metronic.select-option>
+                            </div>
+                            <div class="col-lg-6 mb-7">
+                                <x-metronic.label for="name"
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Division Name') }}
+                                </x-metronic.label>
 
-                            <x-metronic.input id="name" type="text" name="name" :value="old('name')"
-                                placeholder="Enter the Name" required></x-metronic.input>
-                        </div>
-                        <div class="col-lg-12 mb-7">
-                            <x-metronic.label for="latitude" class="col-form-label fw-bold fs-6">{{ __('Latitude') }}
-                            </x-metronic.label>
+                                <x-metronic.input id="name" type="text" name="name" :value="old('name')"
+                                    placeholder="Enter the Name" required></x-metronic.input>
+                            </div>
+                            <div class="col-lg-6 mb-7">
+                                <x-metronic.label for="latitude"
+                                    class="col-form-label fw-bold fs-6">{{ __('Latitude') }}
+                                </x-metronic.label>
 
-                            <x-metronic.input id="latitude" type="text" name="latitude" :value="old('latitude')"
-                                placeholder="Enter the latitude" :maxlength="40"></x-metronic.input>
-                        </div>
-                        <div class="col-lg-12 mb-7">
-                            <x-metronic.label for="longitude" class="col-form-label fw-bold fs-6">{{ __('Longitude') }}
-                            </x-metronic.label>
+                                <x-metronic.input id="latitude" type="text" name="latitude" :value="old('latitude')"
+                                    placeholder="Enter the latitude" :maxlength="40"></x-metronic.input>
+                            </div>
+                            <div class="col-lg-6 mb-7">
+                                <x-metronic.label for="longitude"
+                                    class="col-form-label fw-bold fs-6">{{ __('Longitude') }}
+                                </x-metronic.label>
 
-                            <x-metronic.input id="longitude" type="text" name="longitude" :value="old('longitude')"
-                                placeholder="Enter the longitude" :maxlength="40"></x-metronic.input>
-                        </div>
-                        <div class="col-lg-12 mb-7">
-                            <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
-                                {{ __('Select a Status ') }}</x-metronic.label>
-                            <x-metronic.select-option id="status" name="status" data-hide-search="true"
-                                data-placeholder="Select an option">
-                                <option></option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </x-metronic.select-option>
+                                <x-metronic.input id="longitude" type="text" name="longitude" :value="old('longitude')"
+                                    placeholder="Enter the longitude" :maxlength="40"></x-metronic.input>
+                            </div>
+                            <div class="col-lg-6 mb-7">
+                                <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
+                                    {{ __('Select a Status ') }}</x-metronic.label>
+                                <x-metronic.select-option id="status" name="status" data-hide-search="true"
+                                    data-placeholder="Select an option">
+                                    <option></option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </x-metronic.select-option>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer p-2">
@@ -135,7 +138,7 @@
 
     @foreach ($divisions as $division)
         <div class="modal fade" id="EditModal-{{ $division->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
                         <h5 class="modal-title ps-5">Edit Division</h5>
@@ -149,49 +152,52 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
-                            <div class="col-lg-12 mb-7">
-                                <x-metronic.label for="country_id" class="col-form-label required fw-bold fs-6">
-                                    {{ __('Select Country ') }}</x-metronic.label>
-                                <x-metronic.select-option id="country_id" name="country_id" data-hide-search="true"
-                                    data-placeholder="Select an option">
-                                    <option></option>
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}" @selected($country->id == $division->country_id)>
-                                            {{ $country->name }}</option>
-                                    @endforeach
-                                </x-metronic.select-option>
-                            </div>
-                            <div class="col-lg-12 mb-7">
-                                <x-metronic.label for="name"
-                                    class="col-form-label fw-bold fs-6 required">{{ __('Division Name') }}
-                                </x-metronic.label>
-                                <x-metronic.input id="name" type="text" name="name" :value="old('name', $division->name)"
-                                    placeholder="Enter the Name" required></x-metronic.input>
-                            </div>
-                            <div class="col-lg-12 mb-7">
-                                <x-metronic.label for="latitude"
-                                    class="col-form-label fw-bold fs-6">{{ __('Latitude') }}
-                                </x-metronic.label>
-                                <x-metronic.input id="latitude" type="text" name="latitude" :value="old('latitude', $division->latitude)"
-                                    placeholder="Enter the latitude" :maxlength="40"></x-metronic.input>
-                            </div>
-                            <div class="col-lg-12 mb-7">
-                                <x-metronic.label for="longitude"
-                                    class="col-form-label fw-bold fs-6">{{ __('Longitude') }}
-                                </x-metronic.label>
+                            <div class="row">
+                                <div class="col-lg-6 mb-7">
+                                    <x-metronic.label for="country_id" class="col-form-label required fw-bold fs-6">
+                                        {{ __('Select Country ') }}</x-metronic.label>
+                                    <x-metronic.select-option id="country_id" name="country_id"
+                                        data-hide-search="true" data-placeholder="Select an option">
+                                        <option></option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}" @selected($country->id == $division->country_id)>
+                                                {{ $country->name }}</option>
+                                        @endforeach
+                                    </x-metronic.select-option>
+                                </div>
+                                <div class="col-lg-6 mb-7">
+                                    <x-metronic.label for="name"
+                                        class="col-form-label fw-bold fs-6 required">{{ __('Division Name') }}
+                                    </x-metronic.label>
+                                    <x-metronic.input id="name" type="text" name="name" :value="old('name', $division->name)"
+                                        placeholder="Enter the Name" required></x-metronic.input>
+                                </div>
+                                <div class="col-lg-6 mb-7">
+                                    <x-metronic.label for="latitude"
+                                        class="col-form-label fw-bold fs-6">{{ __('Latitude') }}
+                                    </x-metronic.label>
+                                    <x-metronic.input id="latitude" type="text" name="latitude" :value="old('latitude', $division->latitude)"
+                                        placeholder="Enter the latitude" :maxlength="40"></x-metronic.input>
+                                </div>
+                                <div class="col-lg-6 mb-7">
+                                    <x-metronic.label for="longitude"
+                                        class="col-form-label fw-bold fs-6">{{ __('Longitude') }}
+                                    </x-metronic.label>
 
-                                <x-metronic.input id="longitude" type="text" name="longitude" :value="old('longitude', $division->longitude)"
-                                    placeholder="Enter the longitude" :maxlength="40"></x-metronic.input>
-                            </div>
-                            <div class="col-lg-12 mb-7">
-                                <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
-                                    {{ __('Select a Status ') }}</x-metronic.label>
-                                <x-metronic.select-option id="status" name="status" data-hide-search="true"
-                                    data-placeholder="Select an option">
-                                    <option></option>
-                                    <option value="active" @selected($division->status == 'active')>Active</option>
-                                    <option value="inactive" @selected($division->status == 'inactive')>Inactive</option>
-                                </x-metronic.select-option>
+                                    <x-metronic.input id="longitude" type="text" name="longitude"
+                                        :value="old('longitude', $division->longitude)" placeholder="Enter the longitude"
+                                        :maxlength="40"></x-metronic.input>
+                                </div>
+                                <div class="col-lg-6 mb-7">
+                                    <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
+                                        {{ __('Select a Status ') }}</x-metronic.label>
+                                    <x-metronic.select-option id="status" name="status" data-hide-search="true"
+                                        data-placeholder="Select an option">
+                                        <option></option>
+                                        <option value="active" @selected($division->status == 'active')>Active</option>
+                                        <option value="inactive" @selected($division->status == 'inactive')>Inactive</option>
+                                    </x-metronic.select-option>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer p-2">
