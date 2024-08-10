@@ -2,12 +2,12 @@
 
     <div class="card card-flash">
 
-        <!--begin::Modal body-->
+        
         <div class="card-body scroll-y mx-5 mx-xl-15 my-7">
-            <!--begin::Form-->
+            
             <form class="form" action="{{ route('admin.permission.store') }}" method="POST">
                 @csrf
-                <!--begin::Input group-->
+                
                 <div class="fv-row mb-7">
                     <x-metronic.label for="goup-name"
                         class="col-form-label fw-bold fs-6">{{ __('Group Name') }}
@@ -34,10 +34,10 @@
                         {{ __('Submit') }}
                     </x-metronic.button>
                 </div>
-                <!--end::Actions-->
+                
             </form>
-            <!--end::Form-->
+            
         </div>
-        <!--end::Modal body-->
+        
     </div>
 </x-admin-app-layout>

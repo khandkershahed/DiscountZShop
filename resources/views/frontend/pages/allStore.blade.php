@@ -2,8 +2,9 @@
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" src="{{!empty(optional($page_banner)->image) && file_exists(public_path('storage/'.optional($page_banner)->image)) ? asset('storage/'.optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
-                alt="{{ ucfirst(optional($page_banner)->page_name)}}" />
+            <img class="img-fluid w-100"
+                src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
+                alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
         </div>
     </section>
     <!-- Top Stores -->
@@ -37,7 +38,7 @@
                                         <a class="dropdown-item" href="#">Syhlet</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Rongpur</a>
+                                        <a class="dropdown-item" href="#">Rajshahi</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#">Khulna</a>
@@ -135,164 +136,20 @@
                                             alt="arong-logo.png" />
                                     </div>
                                     <div class="store-rating">
-                                        <a href="store-single.html"
+                                        <a href="{{ route('store.details', 'aarong') }}"
                                             class="btn btn-common-one rounded-circle store-btn"><i
-                                                class="fa-solid fa-store" aria-hidden="true"></i></a>
+                                                class="fa-solid fa-store" aria-hidden="true"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <!-- Store Info -->
                                 <div class="pt-4 d-flex justify-content-between">
-                                    <div>
-                                        <h5>AARONG</h5>
-                                        <p>Clothing Store</p>
-                                    </div>
-                                    <div>
-                                        <button class="btn border-0 p-0 m-0 pe-2">
-                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                title="Store Location" data-bs-toggle="modal"
-                                                data-bs-target="#store-Location" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                    <span class="bg-danger badge fw-normal">
-                                        <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                    </span>
-                                    <small class="text-sm">
-                                        Get UpTo <span class="main-color">50%</span> Off
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-0 rounded-2">
-                            <!-- Store Banner -->
-                            <div class="main-store-banner">
-                                <img class="img-fluid rounded-2"
-                                    src="{{ asset('frontend') }}/assets/img/store/foodpanda-banner.jpg"
-                                    alt="arong-banner.jpg" />
-                            </div>
-                            <!-- Store Logo And Rating -->
-                            <div class="px-3 pb-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="store-logo">
-                                        <img class="img-fluid"
-                                            src="{{ asset('frontend') }}/assets/img/store/foodpanda-logo.png"
-                                            alt="arong-logo.png" />
-                                    </div>
-                                    <div class="store-rating">
-                                        <a href="store-single.html"
-                                            class="btn btn-common-one rounded-circle store-btn"><i
-                                                class="fa-solid fa-store" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- Store Info -->
-                                <div class="pt-4 d-flex justify-content-between">
-                                    <div>
-                                        <h5>FOODPANDA</h5>
-                                        <p>Food & Delivery</p>
-                                    </div>
-                                    <div>
-                                        <button class="btn border-0 p-0 m-0 pe-2">
-                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                title="Store Location" data-bs-toggle="modal"
-                                                data-bs-target="#store-Location" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                    <span class="bg-danger badge fw-normal">
-                                        <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                    </span>
-                                    <small class="text-sm">
-                                        Get UpTo <span class="main-color">50%</span> Off
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-0 rounded-2">
-                            <!-- Store Banner -->
-                            <div class="main-store-banner">
-                                <img class="img-fluid rounded-2"
-                                    src="{{ asset('frontend') }}/assets/img/store/pathao-banner.jpg"
-                                    alt="arong-banner.jpg" />
-                            </div>
-                            <!-- Store Logo And Rating -->
-                            <div class="px-3 pb-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="store-logo">
-                                        <img class="img-fluid"
-                                            src="{{ asset('frontend') }}/assets/img/store/pathao-logo.png"
-                                            alt="arong-logo.png" />
-                                    </div>
-                                    <div class="store-rating">
-                                        <a href="store-single.html"
-                                            class="btn btn-common-one rounded-circle store-btn"><i
-                                                class="fa-solid fa-store" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- Store Info -->
-                                <div class="pt-4 d-flex justify-content-between">
-                                    <div>
-                                        <h5>PATHAO</h5>
-                                        <p>Food & Delivery</p>
-                                    </div>
-                                    <div>
-                                        <button class="btn border-0 p-0 m-0 pe-2">
-                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                title="Store Location" data-bs-toggle="modal"
-                                                data-bs-target="#store-Location" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                    <span class="bg-danger badge fw-normal">
-                                        <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                    </span>
-                                    <small class="text-sm">
-                                        Get UpTo <span class="main-color">50%</span> Off
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-0 rounded-2">
-                            <!-- Store Banner -->
-                            <div class="main-store-banner">
-                                <img class="img-fluid rounded-2"
-                                    src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                    alt="arong-banner.jpg" />
-                            </div>
-                            <!-- Store Logo And Rating -->
-                            <div class="px-3 pb-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="store-logo">
-                                        <img class="img-fluid"
-                                            src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                            alt="arong-logo.png" />
-                                    </div>
-                                    <div class="store-rating">
-                                        <a href="store-single.html"
-                                            class="btn btn-common-one rounded-circle store-btn"><i
-                                                class="fa-solid fa-store" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- Store Info -->
-                                <div class="pt-4 d-flex justify-content-between">
-                                    <div>
-                                        <h5>BATA</h5>
-                                        <p>Food & Delivery</p>
-                                    </div>
+                                    <a href="{{ route('store.details', 'aarong') }}">
+                                        <div>
+                                            <h5>AARONG</h5>
+                                            <p>Clothing Store</p>
+                                        </div>
+                                    </a>
                                     <div>
                                         <button class="btn border-0 p-0 m-0 pe-2">
                                             <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
@@ -329,218 +186,12 @@
             </div>
             <div class="row pb-4">
                 <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row pb-4">
-                <div class="col-lg-3">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-0 rounded-2">
                             <!-- Store Banner -->
                             <div class="main-store-banner">
                                 <img class="img-fluid rounded-2"
-                                    src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
+                                    src="{{ asset('frontend') }}/assets/img/store/arong-banner.jpg"
                                     alt="arong-banner.jpg" />
                             </div>
                             <!-- Store Logo And Rating -->
@@ -548,21 +199,24 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="store-logo">
                                         <img class="img-fluid"
-                                            src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
+                                            src="{{ asset('frontend') }}/assets/img/store/arong-logo.png"
                                             alt="arong-logo.png" />
                                     </div>
                                     <div class="store-rating">
-                                        <a href="store-single.html"
+                                        <a href="{{ route('store.details', 'aarong') }}"
                                             class="btn btn-common-one rounded-circle store-btn"><i
-                                                class="fa-solid fa-store" aria-hidden="true"></i></a>
+                                                class="fa-solid fa-store" aria-hidden="true"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <!-- Store Info -->
                                 <div class="pt-4 d-flex justify-content-between">
-                                    <div>
-                                        <h5>BATA</h5>
-                                        <p>Food & Delivery</p>
-                                    </div>
+                                    <a href="{{ route('store.details', 'aarong') }}">
+                                        <div>
+                                            <h5>AARONG</h5>
+                                            <p>Clothing Store</p>
+                                        </div>
+                                    </a>
                                     <div>
                                         <button class="btn border-0 p-0 m-0 pe-2">
                                             <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
@@ -583,375 +237,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
-            <div class="row pb-4">
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0 rounded-2">
-                                <!-- Store Banner -->
-                                <div class="main-store-banner">
-                                    <img class="img-fluid rounded-2"
-                                        src="{{ asset('frontend') }}/assets/img/store/bata-banner.png"
-                                        alt="arong-banner.jpg" />
-                                </div>
-                                <!-- Store Logo And Rating -->
-                                <div class="px-3 pb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="store-logo">
-                                            <img class="img-fluid"
-                                                src="{{ asset('frontend') }}/assets/img/store/bata-logo.jpg"
-                                                alt="arong-logo.png" />
-                                        </div>
-                                        <div class="store-rating">
-                                            <a href="store-single.html"
-                                                class="btn btn-common-one rounded-circle store-btn"><i
-                                                    class="fa-solid fa-store"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <div>
-                                            <h5>BATA</h5>
-                                            <p>Food & Delivery</p>
-                                        </div>
-                                        <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
-                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                    title="Store Location" data-bs-toggle="modal"
-                                                    data-bs-target="#store-Location" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">50%</span> Off
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row my-5">
+            {{-- <div class="row my-5">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-center">
                         <a href="" class="btn btn-common-one">View More Store <i
                                 class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
+    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+        aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>I will not close if you click outside of me.</div>
+        </div>
+    </div>
+    <!-- Store Location Modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="store-Location" tabindex="-1" aria-labelledby="store-LocationLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: var(--primary-color)">
+                    <h5 class="modal-title text-white" id="store-LocationLabel">
+                       Aarong Store Location
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-0">
+                            <iframe class="mb-0"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.21705146686878!2d90.35831624489104!3d23.76617157961525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a568a70445%3A0x89dff0189e12966d!2sNGEN%20IT%20LTD.!5e0!3m2!1sen!2sbd!4v1720612839750!5m2!1sen!2sbd"
+                                width="100%" height="400" style="border: 0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Footer Slider End -->
 </x-frontend-app-layout>

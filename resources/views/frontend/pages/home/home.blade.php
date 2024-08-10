@@ -10,19 +10,23 @@
                                 <div class="hero-slider">
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png"
+                                            alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png"
+                                            alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png"
+                                            alt="" />
                                     </div>
                                     <div class="items">
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png"
+                                            alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +36,8 @@
                                 <div class="col-lg-12">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png"
+                                            alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -40,13 +45,15 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png"
+                                            alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png" alt="" />
+                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png"
+                                            alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -71,8 +78,8 @@
                                             Available Coupon
                                         </h4>
                                         <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="36"
-                                                height="23" viewBox="0 0 36 23" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="23"
+                                                viewBox="0 0 36 23" fill="none">
                                                 <path
                                                     d="M28.6172 14.5408C28.0353 14.5408 27.5625 15.0064 27.5625 15.5794C27.5625 16.1525 28.0353 16.618 28.6172 16.618C29.1991 16.618 29.6719 16.1525 29.6719 15.5794C29.6719 15.0064 29.1991 14.5408 28.6172 14.5408Z"
                                                     fill="#F15A2D" />
@@ -90,12 +97,10 @@
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <form class="d-flex w-75" role="search">
                                             <div class="d-flex w-100">
-                                                <input class="form-control rounded-pill form-control-sm"
-                                                    type="search" placeholder="Search Coupon..."
-                                                    aria-label="Search Coupon..." />
+                                                <input class="form-control rounded-pill form-control-sm" type="search"
+                                                    placeholder="Search Coupon..." aria-label="Search Coupon..." />
                                             </div>
-                                            <button
-                                                class="btn position-relative border-0 bg-transparent coupon-action"
+                                            <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
                                             </button>
@@ -404,8 +409,8 @@
                                             Grab Your Offer
                                         </h4>
                                         <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17"
-                                                height="36" viewBox="0 0 17 36" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="36"
+                                                viewBox="0 0 17 36" fill="none">
                                                 <path
                                                     d="M0.700195 0V19.7492H5.44065V35.9075L16.5017 14.363H10.1811L16.5017 0H0.700195Z"
                                                     fill="#F15A2D" />
@@ -419,32 +424,14 @@
                                         <div class="w-75">
                                             <a href=""><span class="badge mt-2 ct-badge">Super
                                                     Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Hot
-                                                    Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Buy 2 Get
-                                                    1</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20%
-                                                    Off</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super
-                                                    Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Best
-                                                    offer</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Best
-                                                    offer</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super
-                                                    Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super
-                                                    Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Buy 1 Get
-                                                    1</span></a>
+
                                         </div>
                                         <!-- Grab End -->
                                         <div class="d-flex justify-content-end align-items-center w-25">
                                             <button type="button" class="grab-custom-prev rounded-circle">
                                                 <i class="fas fa-arrow-left-long"></i>
                                             </button>
-                                            <button type="button"
-                                                class="grab-custom-next rounded-circle ms-3">
+                                            <button type="button" class="grab-custom-next rounded-circle ms-3">
                                                 <i class="fas fa-arrow-right-long"></i>
                                             </button>
                                         </div>
@@ -455,112 +442,20 @@
                         <div class="card-body pe-0">
                             <div class="row">
                                 <div class="col-lg-3 grab-offer-tabs-box">
-                                    <ul class="nav nav-tabs flex-column border-0" id="myTab"
-                                        role="tablist">
+                                    <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                         <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0 active"
-                                                id="home-tab" data-bs-toggle="tab"
-                                                data-bs-target="#home-tab-pane" type="button" role="tab"
-                                                aria-controls="home-tab-pane" aria-selected="true">
-                                                Food
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="profile-tab" data-bs-toggle="tab"
-                                                data-bs-target="#profile-tab-pane" type="button"
-                                                role="tab" aria-controls="profile-tab-pane"
-                                                aria-selected="false">
-                                                Cloth
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Home Appliance
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Electronics
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Furniture
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Resort & Hotel
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="profile-tab" data-bs-toggle="tab"
-                                                data-bs-target="#profile-tab-pane" type="button"
-                                                role="tab" aria-controls="profile-tab-pane"
-                                                aria-selected="false">
-                                                Cloth
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Home Appliance
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Electronics
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Furniture
-                                            </button>
-                                        </li>
-                                        <li class="nav-item mb-2" role="presentation">
-                                            <button class="nav-link grab-tabs w-100 rounded-0"
-                                                id="contact-tab" data-bs-toggle="tab"
-                                                data-bs-target="#contact-tab-pane" type="button"
-                                                role="tab" aria-controls="contact-tab-pane"
-                                                aria-selected="false">
-                                                Resort & Hotel
+                                            <button class="nav-link grab-tabs w-100 rounded-0 active" id="home-tab"
+                                                data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                                                role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                                                Fashion
                                             </button>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-9">
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="home-tab-pane"
-                                            role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                                            aria-labelledby="home-tab" tabindex="0">
                                             <div class="grab-slider">
                                                 <div class="row grab-items">
                                                     <div class="col-lg-4 mb-4">
@@ -570,15 +465,12 @@
                                                                     <div class="col-4">
                                                                         <img class="img-fluid"
                                                                             src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
+                                                                            class="img-fluid" alt="Logo" />
                                                                     </div>
                                                                     <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
+                                                                        <div class="d-flex align-items-center pb-2">
                                                                             <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
+                                                                                <span class="para-font">Get</span>
                                                                                 <span
                                                                                     class="ps-2 para-font">Upto</span>
                                                                             </p>
@@ -597,863 +489,41 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
+                                                        <div class="card border-0 shadow-sm bg-light">
+                                                            <div class="row p-4 align-items-center">
+                                                                <div class="col-lg-6">
+                                                                    <div>
+                                                                        <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
+                                                                            height="80px" class="rounded-2 bg-white"
+                                                                            style="object-fit: cover;" alt="" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
+                                                                <div class="col-lg-6">
+                                                                    <span>Upto</span>
+                                                                    <h1 class="main-color special-font-box">
+                                                                        50% Off
+                                                                    </h1>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
+                                                                <div class="col-lg-12 pt-4">
+                                                                    <p class="pb-4 text-black">
+                                                                        Premium Punjabi collections for men on online
+                                                                    </p>
+                                                                    <a href="{{ route('store.details','aarong') }}" class="main-color">
+                                                                        <small>See all in store</small>
+                                                                    </a>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
+                                                                <div class="col-lg-12 pt-4">
+                                                                    <div class="d-flex">
+                                                                        <a href="" class="w-100 btn-common-one rounded-3">View</a>
+                                                                        <a href=""
+                                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
+                                                                                class="fa-solid fa-copy"></i></a>
                                                                     </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row grab-items">
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row grab-items">
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid"
-                                                                            alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span
-                                                                                    class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
-                                                                        </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                        </p>
-                                                                    </div>
+                                                                    <p class="pt-2 text-center countdown"
+                                                                        data-expire-date="August 17, 2024 00:00:00">
+                                                                        <span class="main-color">Expire In:</span> <span
+                                                                            class="countdown-timer">12 Days</span>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1463,15 +533,9 @@
                                         </div>
                                         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
                                             aria-labelledby="profile-tab" tabindex="0">
-                                            ...
-                                        </div>
-                                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
-                                            aria-labelledby="contact-tab" tabindex="0">
-                                            ...
-                                        </div>
-                                        <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel"
-                                            aria-labelledby="disabled-tab" tabindex="0">
-                                            ...
+                                            <div class="row">
+                                                <h5 class="text-center">No Offer/Coupon Available</h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1513,10 +577,9 @@
                                     </div>
                                     <div class="pe-4">
                                         <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                height="30" viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15"
-                                                    fill="#F15A2D" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                viewBox="0 0 30 30" fill="none">
+                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
                                                 <path
                                                     d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
                                                     fill="white" />
@@ -1545,10 +608,9 @@
                                     </div>
                                     <div class="pe-4">
                                         <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                height="30" viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15"
-                                                    fill="#F15A2D" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                viewBox="0 0 30 30" fill="none">
+                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
                                                 <path
                                                     d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
                                                     fill="white" />
@@ -1585,10 +647,9 @@
                                     </div>
                                     <div class="pe-4">
                                         <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                height="30" viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15"
-                                                    fill="#F15A2D" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                viewBox="0 0 30 30" fill="none">
+                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
                                                 <path
                                                     d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
                                                     fill="white" />
@@ -1617,10 +678,9 @@
                                     </div>
                                     <div class="pe-4">
                                         <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                height="30" viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15"
-                                                    fill="#F15A2D" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                viewBox="0 0 30 30" fill="none">
+                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
                                                 <path
                                                     d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
                                                     fill="white" />
@@ -1651,8 +711,8 @@
                                             Grab By Location
                                         </h4>
                                         <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22"
-                                                height="31" viewBox="0 0 22 31" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="31"
+                                                viewBox="0 0 22 31" fill="none">
                                                 <path
                                                     d="M10.263 30.2372C9.84392 29.7675 0 18.6461 0 11.0705C5.93225e-05 4.96621 4.93463 0 11.0001 0C17.0655 0 22 4.96621 22 11.0705C22 18.6461 12.1561 29.7675 11.737 30.2372C11.3432 30.6786 10.6559 30.6777 10.263 30.2372Z"
                                                     fill="#F15A2D" />
@@ -1674,11 +734,9 @@
                                         <form class="d-flex w-100" role="search">
                                             <div class="d-flex w-100">
                                                 <input class="form-control rounded-pill form-control-sm"
-                                                    type="search" placeholder="Search"
-                                                    aria-label="Search" />
+                                                    type="search" placeholder="Search" aria-label="Search" />
                                             </div>
-                                            <button
-                                                class="btn position-relative border-0 bg-transparent coupon-action"
+                                            <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
                                             </button>
@@ -1693,45 +751,20 @@
                                     <div id="mapdetails">
                                         <!-- <p id="seriesName"></p> -->
                                         <div class="selected-point">
-                                            <small class="text-white">All Of <span
-                                                    id="pointName"></span></small>
+                                            <small class="text-white">All Of <span id="pointName"></span></small>
 
                                         </div>
                                         <!-- Selected Area All Zone Name  -->
                                         <div>
                                             <ul class="zone-name ps-0" style="list-style-type: none">
-                                                <li class="area-names">Mirpur</li>
-                                                <li class="area-names">Gulshan</li>
-                                                <li class="area-names">Banani</li>
-                                                <li class="area-names">Gulistan</li>
-                                                <li class="area-names">Farmgate</li>
-                                                <li class="area-names">Karwan Bazar</li>
-                                                <li class="area-names">Dhanmondi</li>
-                                                <li class="area-names">Mohammadpur</li>
-                                                <li class="area-names">New Market</li>
-                                                <li class="area-names">Shymoli</li>
-                                                <li class="area-names">Uttara</li>
-                                                <li class="area-names">Savar</li>
-                                                <li class="area-names">Abdullahpur</li>
-                                                <li class="area-names">Paltan</li>
-                                                <li class="area-names">Moghbazar</li>
-                                                <li class="area-names">Badda</li>
-                                                <li class="area-names">Jatrabari</li>
-                                                <li class="area-names">Sadar Ghat</li>
+                                                <li class="area-names">No Area Available</li>
                                             </ul>
                                         </div>
                                         <!-- <p id="pointValue"></p> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-9 position-relative"
-                                    style="
-                  background-image: url({{ asset('frontend') }}/assets/img/product/map.png);
-                  /* background-repeat: no-repeat; */
-                  background-size: contain;
-                  background-position: center;
-                  display: flex;
-                  align-items: center;
-                ">
+                                    style="background-image: url({{ asset('frontend') }}/assets/img/product/map.png);background-size: contain;background-position: center;display: flex;align-items: center;">
                                     <!-- <div class="mapoverlay"></div> -->
                                     <div id="mapcontainer" class="text-white"></div>
                                 </div>
@@ -1872,8 +905,8 @@
                             <div class="deal-slider">
                                 <div class="items">
                                     <div class="py-5 d-flex justify-content-center">
-                                        <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/deal.png"
-                                            alt="" />
+                                        <img class="img-fluid rounded-2"
+                                            src="{{ asset('frontend') }}/assets/img/deal.png" alt="" />
                                     </div>
                                     <div class="py-3">
                                         <h5 class="text-center">
@@ -1919,8 +952,8 @@
                                 </div>
                                 <div class="items">
                                     <div class="py-5 d-flex justify-content-center">
-                                        <img class="img-fluid rounded-2" src="{{ asset('frontend') }}/assets/img/deal.png"
-                                            alt="" />
+                                        <img class="img-fluid rounded-2"
+                                            src="{{ asset('frontend') }}/assets/img/deal.png" alt="" />
                                     </div>
                                     <div class="py-3">
                                         <h5 class="text-center">
@@ -1974,9 +1007,8 @@
                     <div class="d-flex justify-content-center align-items-center p-3 pb-0">
                         <form class="d-flex w-100" role="search">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control rounded-pill p-2"
-                                    placeholder="Search..." aria-label="Search..."
-                                    aria-describedby="basic-addon2" />
+                                <input type="text" class="form-control rounded-pill p-2" placeholder="Search..."
+                                    aria-label="Search..." aria-describedby="basic-addon2" />
                                 <div class="input-group-append search-btn">
                                     <button class="btn border-0" type="button">
                                         <i class="fa-solid fa-search"></i>
@@ -2317,501 +1349,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -2965,16 +1502,16 @@
                 <div class="col-lg-12">
                     <div class="slick-slider-footer-slider">
                         <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png"
-                                alt="" />
+                            <img class="img-fluid w-100"
+                                src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png" alt="" />
                         </div>
                         <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png"
-                                alt="" />
+                            <img class="img-fluid w-100"
+                                src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png" alt="" />
                         </div>
                         <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png"
-                                alt="" />
+                            <img class="img-fluid w-100"
+                                src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png" alt="" />
                         </div>
                     </div>
                 </div>

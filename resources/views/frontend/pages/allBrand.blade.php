@@ -35,12 +35,7 @@
                                     City
                                 </button>
                                 <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="
-                        position: absolute;
-                        inset: 0px auto auto 0px;
-                        margin: 0px;
-                        transform: translate(0px, 33px);
-                      ">
+                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
                                     <li>
                                         <a class="dropdown-item" href="#">Dhaka</a>
                                     </li>
@@ -65,12 +60,7 @@
                                     Area
                                 </button>
                                 <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="
-                        position: absolute;
-                        inset: 0px auto auto 0px;
-                        margin: 0px;
-                        transform: translate(0px, 33px);
-                      ">
+                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
                                     <li>
                                         <a class="dropdown-item" href="#">Gulshan</a>
                                     </li>
@@ -89,12 +79,7 @@
                                     <i class="fa-solid fa-filter fs-6" aria-hidden="true"></i>
                                 </button>
                                 <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="
-                        position: absolute;
-                        inset: 0px auto auto 0px;
-                        margin: 0px;
-                        transform: translate(0px, 33px);
-                      ">
+                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
                                     <li>
                                         <a class="dropdown-item" href="#">Top Stores</a>
                                     </li>
@@ -129,22 +114,25 @@
                 </div>
             </div>
             <div class="row gx-5">
-                <div class="col-lg-6">
+                <div class="col">
                     <div class="row bg-light">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0 py-2 main-color">Foods</p>
                                 <span class="store-devider"></span>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <div class="pt-1">
                                     <span class="badge text-end rounded-0 store-tags">
                                         <span>30%</span>
                                     </span>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="col-lg-4 mb-3 mt-2">
+                        <div class="col-12">
+                            <h5 class="text-center text-warning">No Brand is available right now.</h5>
+                        </div>
+                        {{-- <div class="col-lg-4 mb-3 mt-2">
                             <a href="">
                                 <div class="card shadow-sm brands-card">
                                     <div class="card-body p-0">
@@ -155,405 +143,17 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo2.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo3.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-5.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo6.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col">
                     <div class="row bg-light">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0 py-2 main-color">Fasions</p>
+                            <p class="mb-0 py-2 main-color">Fashions</p>
                             <span class="store-devider"></span>
                         </div>
                         <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo7.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-8.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo9.png"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo1.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo2.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo3.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row bg-light mt-4">
-                <div class="d-flex align-items-center">
-                    <p class="mb-0 py-2 main-color">Electronics</p>
-                    <span class="store-devider"></span>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-5.jpg"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo6.jpg"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo7.webp"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-8.jpg"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo9.png"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo1.webp"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo2.jpg"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo3.webp"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-5.jpg"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-2 mb-3">
-                    <a href="">
-                        <div class="card shadow-sm brands-card">
-                            <div class="card-body p-0">
-                                <div class="brands-logo">
-                                    <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo6.jpg"
-                                        alt="Brand Logo" title="Brand Logo" />
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row gx-5">
-                <div class="col-lg-4">
-                    <div class="row bg-light mt-4">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <p class="mb-0 py-2 main-color">Cloths</p>
-                                <span class="store-devider"></span>
-                            </div>
-                            <div>
-                                <div class="pt-1">
-                                    <span class="badge text-end rounded-0 store-tags">
-                                        <span>60%</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo7.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-8.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo9.png"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo1.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row mt-4">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <p class="mb-0 py-2 main-color">Electronics</p>
-                                <span class="store-devider"></span>
-                            </div>
-                            <div>
-                                <div class="pt-1">
-                                    <span class="badge text-end rounded-0">Flat Sale</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo2.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo3.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
+                            <a href="{{ route('brand.details','aarong') }}">
                                 <div class="card shadow-sm brands-card">
                                     <div class="card-body p-0">
                                         <div class="brands-logo">
@@ -564,92 +164,8 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-5.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row bg-light mt-4">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <p class="mb-0 py-2 main-color">Cloths</p>
-                                <span class="store-devider"></span>
-                            </div>
-                            <div>
-                                <div class="pt-1">
-                                    <span class="badge text-end rounded-0 store-tags">
-                                        <span>46%</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo6.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo7.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo-8.jpg"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo9.png"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row pt-5">
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <a href="" class="btn-common-one btn">
-                            View More Brands
-                            <i class="fa-solid fa-arrow-right-long ps-2"></i></a>
+                       
+
                     </div>
                 </div>
             </div>

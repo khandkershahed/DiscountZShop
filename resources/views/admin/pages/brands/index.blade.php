@@ -1,14 +1,11 @@
 <x-admin-app-layout :title="'Brands List'">
     <div class="card card-flash">
-
         <div class="card-header mt-6">
             <div class="card-title">
             </div>
-
-
             <div class="card-toolbar">
 
-                <a href="{{ route('admin.brands.create') }}" class="btn btn-light-primary rounded-2">
+                <a href="{{ route('admin.brands.create') }}" class="btn btn-light-primary">
 
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -32,11 +29,11 @@
                 <thead>
 
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                        <th>{{ __('brand.Sl') }}</th>
-                        <th>{{ __('brand.Logo') }}</th>
-                        <th>{{ __('brand.Name') }}</th>
-                        <th>{{ __('brand.Status') }}</th>
-                        <th>{{ __('brand.Action') }}</th>
+                        <th>Sl</th>
+                        <th>Logo</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
 
                 </thead>

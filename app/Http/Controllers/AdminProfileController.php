@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdminProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\AdminProfileUpdateRequest;
 
 class AdminProfileController extends Controller
 {
@@ -17,7 +19,8 @@ class AdminProfileController extends Controller
     public function edit(Request $request): View
     {
         return view('admin.profile.edit', [
-            'user' => $request->user(),
+            'user' => Auth::guard('admin')->user(),
+            'roles' => Role::get(),
         ]);
     }
 
@@ -26,7 +29,31 @@ class AdminProfileController extends Controller
      */
     public function update(AdminProfileUpdateRequest $request): RedirectResponse
     {
+
+
+        $files = [
+            'photo'    => $request->file('photo'),
+        ];
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $filePath = 'admin/' . $key;
+                $oldFile = $request->user()->$key ?? null;
+
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+        $request->user()->photo = $uploadedFiles['photo']['status'] == 1 ? $uploadedFiles['photo']['file_path'] : $request->user()->photo;
         $request->user()->fill($request->validated());
+        // dd($request->user());
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

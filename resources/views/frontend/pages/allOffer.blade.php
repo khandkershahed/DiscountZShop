@@ -19,47 +19,18 @@
                         <div class="d-flex align-items-center">
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    City
-                                </button>
-                                <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Dhaka</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Syhlet</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Rongpur</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Khulna</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Barishal</a>
-                                    </li>
-                                </ul>
+                                <select class="form-control select btn-common-three" name="" id="">
+                                    <option value="" selected>Dhaka</option>
+                                    <option value="">Khulna</option>
+                                    <option value="">RajShahi</option>
+                                </select>
+
                             </div>
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    Area
-                                </button>
-                                <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Gulshan</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Mirpur</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Savar</a>
-                                    </li>
-                                </ul>
+                                <select class="form-control btn-common-three" name="" id="">
+                                    <option value="" selected>No Area Available</option>
+                                </select>
                             </div>
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
@@ -113,8 +84,8 @@
                                     type="button" role="tab" aria-controls="all-category-pane"
                                     aria-selected="true">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span>All Categorie</span>
-                                        <span>(10)</span>
+                                        <span>All Categories</span>
+                                        <span>(1)</span>
                                     </div>
                                 </button>
                             </li>
@@ -123,34 +94,15 @@
                                     data-bs-toggle="tab" data-bs-target="#beauty-pane" type="button" role="tab"
                                     aria-controls="beauty-pane" aria-selected="false">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span>Beauty</span>
-                                        <span>(10)</span>
-                                    </div>
-                                </button>
-                            </li>
-                            <li class="nav-item w-100" role="presentation">
-                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start" id="health"
-                                    data-bs-toggle="tab" data-bs-target="#health-pane" type="button" role="tab"
-                                    aria-controls="health-pane" aria-selected="false">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span>Helth</span>
-                                        <span>(10)</span>
-                                    </div>
-                                </button>
-                            </li>
-                            <li class="nav-item w-100" role="presentation">
-                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start" id="fitness"
-                                    data-bs-toggle="tab" data-bs-target="#fitness-pane" type="button"
-                                    role="tab" aria-controls="fitness-pane" aria-selected="false">
-                                    <div class="d-flex justify-content-between align-items-center">
                                         <span>Fashion</span>
-                                        <span>(10)</span>
+                                        <span>(1)</span>
                                     </div>
                                 </button>
                             </li>
+
                         </ul>
                     </div>
-                    <h6 class="fw-bold pt-5 pb-2">Extra Category</h6>
+                    {{-- <h6 class="fw-bold pt-5 pb-2">Extra Category</h6>
                     <div>
                         <div class="row">
                             <div class="col-lg-12">
@@ -181,7 +133,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <h6 class="fw-bold pt-3 pb-2">Discount%</h6>
                     <div>
                         <div class="row">
@@ -192,9 +144,7 @@
                     </div>
                     <div class="pt-4">
                         <div class="card overlay-card rounded-2"
-                            style="
-                background-image: url(https://htmlbeans.com/html/coupon/images/img39.jpg);
-              ">
+                            style="background-image: url(https://htmlbeans.com/html/coupon/images/img39.jpg);">
                             <div class="card-body text-center">
                                 <div>
                                     <p>
@@ -212,126 +162,6 @@
                         <div class="tab-pane fade show active" id="all-category-pane" role="tabpanel"
                             aria-labelledby="all-category" tabindex="0">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="row p-4 align-items-center">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <img src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
-                                                        style="object-fit: cover;" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <span>Upto</span>
-                                                <h1 class="main-color special-font-box">
-                                                    50% Off
-                                                </h1>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <p class="pb-4 text-black">
-                                                    Premium Punjabi collections for men on online
-                                                </p>
-                                                <a href="" class="main-color">
-                                                    <small>See all in store</small>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <div class="d-flex">
-                                                    <a href="" class="w-100 btn-common-one rounded-3">View</a>
-                                                    <a href=""
-                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                            class="fa-solid fa-copy"></i></a>
-                                                </div>
-                                                <p class="pt-2 text-center countdown"
-                                                    data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire :</span> <span
-                                                        class="countdown-timer"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="row p-4 align-items-center">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <img src="{{ asset('frontend') }}/assets/img/Brands/logo1.webp" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
-                                                        style="object-fit: cover;" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <span>Upto</span>
-                                                <h1 class="main-color special-font-box">
-                                                    50% Off
-                                                </h1>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <p class="pb-4 text-black">
-                                                    Premium Punjabi collections for men on online
-                                                </p>
-                                                <a href="" class="main-color">
-                                                    <small>See all in store</small>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <div class="d-flex">
-                                                    <a href="" class="w-100 btn-common-one rounded-3">View</a>
-                                                    <a href=""
-                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                            class="fa-solid fa-copy"></i></a>
-                                                </div>
-                                                <p class="pt-2 text-center countdown"
-                                                    data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire :</span> <span
-                                                        class="countdown-timer"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="row p-4 align-items-center">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <img src="{{ asset('frontend') }}/assets/img/Brands/logo3.webp" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
-                                                        style="object-fit: cover;" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <span>Upto</span>
-                                                <h1 class="main-color special-font-box">
-                                                    50% Off
-                                                </h1>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <p class="pb-4 text-black">
-                                                    Premium Punjabi collections for men on online
-                                                </p>
-                                                <a href="" class="main-color">
-                                                    <small>See all in store</small>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <div class="d-flex">
-                                                    <a href="" class="w-100 btn-common-one rounded-3">View</a>
-                                                    <a href=""
-                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                            class="fa-solid fa-copy"></i></a>
-                                                </div>
-                                                <p class="pt-2 text-center countdown"
-                                                    data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire :</span> <span
-                                                        class="countdown-timer"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-lg-4 mt-4">
                                     <div class="card border-0 shadow-sm bg-light">
                                         <div class="row p-4 align-items-center">
@@ -365,88 +195,8 @@
                                                 </div>
                                                 <p class="pt-2 text-center countdown"
                                                     data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire :</span> <span
-                                                        class="countdown-timer"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mt-4">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="row p-4 align-items-center">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <img src="{{ asset('frontend') }}/assets/img/Brands/logo-8.jpg" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
-                                                        style="object-fit: cover;" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <span>Upto</span>
-                                                <h1 class="main-color special-font-box">
-                                                    50% Off
-                                                </h1>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <p class="pb-4 text-black">
-                                                    Premium Punjabi collections for men on online
-                                                </p>
-                                                <a href="" class="main-color">
-                                                    <small>See all in store</small>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <div class="d-flex">
-                                                    <a href="" class="w-100 btn-common-one rounded-3">View</a>
-                                                    <a href=""
-                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                            class="fa-solid fa-copy"></i></a>
-                                                </div>
-                                                <p class="pt-2 text-center countdown"
-                                                    data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire :</span> <span
-                                                        class="countdown-timer"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 mt-4">
-                                    <div class="card border-0 shadow-sm bg-light">
-                                        <div class="row p-4 align-items-center">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <img src="{{ asset('frontend') }}/assets/img/Brands/logo6.jpg" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
-                                                        style="object-fit: cover;" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <span>Upto</span>
-                                                <h1 class="main-color special-font-box">
-                                                    50% Off
-                                                </h1>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <p class="pb-4 text-black">
-                                                    Premium Punjabi collections for men on online
-                                                </p>
-                                                <a href="" class="main-color">
-                                                    <small>See all in store</small>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-12 pt-4">
-                                                <div class="d-flex">
-                                                    <a href="" class="w-100 btn-common-one rounded-3">View</a>
-                                                    <a href=""
-                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                            class="fa-solid fa-copy"></i></a>
-                                                </div>
-                                                <p class="pt-2 text-center countdown"
-                                                    data-expire-date="August 17, 2024 00:00:00">
-                                                    <span class="main-color">Expire :</span> <span
-                                                        class="countdown-timer"></span>
+                                                    <span class="main-color">Expire In:</span> <span
+                                                        class="countdown-timer">12 Days</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -457,30 +207,51 @@
                         <div class="tab-pane fade" id="beauty-pane" role="tabpanel" aria-labelledby="beauty"
                             tabindex="0">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    Two Tab Content
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="health-pane" role="tabpanel" aria-labelledby="health"
-                            tabindex="0">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    Three Tab Content
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="fitness-pane" role="tabpanel" aria-labelledby="fitness"
-                            tabindex="0">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    Four Tab Content
+                                <div class="col-lg-4 mt-4">
+                                    <div class="card border-0 shadow-sm bg-light">
+                                        <div class="row p-4 align-items-center">
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
+                                                        height="80px" class="rounded-2 bg-white"
+                                                        style="object-fit: cover;" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <span>Upto</span>
+                                                <h1 class="main-color special-font-box">
+                                                    50% Off
+                                                </h1>
+                                            </div>
+                                            <div class="col-lg-12 pt-4">
+                                                <p class="pb-4 text-black">
+                                                    Premium Punjabi collections for men on online
+                                                </p>
+                                                <a href="{{ route('store.details','aarong') }}" class="main-color">
+                                                    <small>See all in store</small>
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-12 pt-4">
+                                                <div class="d-flex">
+                                                    <a href="" class="w-100 btn-common-one rounded-3">View</a>
+                                                    <a href=""
+                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
+                                                            class="fa-solid fa-copy"></i></a>
+                                                </div>
+                                                <p class="pt-2 text-center countdown"
+                                                    data-expire-date="August 17, 2024 00:00:00">
+                                                    <span class="main-color">Expire In:</span> <span
+                                                        class="countdown-timer">12 Days</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-center align-items-center mt-4">
                             <!-- <a href="" class="btn-common-three">View More</a> -->
@@ -505,7 +276,7 @@
                             </nav>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
