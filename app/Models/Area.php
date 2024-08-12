@@ -21,10 +21,10 @@ class Area extends Model
     }
     public function division()
     {
-        return $this->belongsTo(Division::class, 'country_id');
+        return $this->belongsTo(Division::class, 'division_id');
     }
     public function city()
     {
-        return $this->belongsTo(City::class, 'country_id');
+        return $this->belongsTo(City::class, 'city_id');
     }
 }

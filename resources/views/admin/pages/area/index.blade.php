@@ -42,9 +42,9 @@
                     @foreach ($areas as $area)
                         <tr class="text-center fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $area->country->name }}</td>
-                            <td>{{ $area->division->name }}</td>
-                            <td>{{ $area->city->name }}</td>
+                            <td>{{ optional($area->country)->name }}</td>
+                            <td>{{ optional($area->division)->name }}</td>
+                            <td>{{ optional($area->city)->name }}</td>
                             <td>{{ $area->name }}</td>
                             <td><span class="badge {{ $area->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $area->status == 'active' ? 'Active' : 'InActive' }}</span></td>
