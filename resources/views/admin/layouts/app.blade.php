@@ -114,7 +114,9 @@
     <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
 
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+
     @include('toastr')
+    
     @stack('scripts')
 
     <script>

@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\BrandRequest;
 use App\Models\Brand;
-use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\HtmlString;
-use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\HtmlString;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\Admin\BrandRequest;
 
 class BrandController extends Controller
 {
@@ -26,7 +24,7 @@ class BrandController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $editUrl   = route('admin.brands.edit', $row->id);
+                    $editUrl = route('admin.brands.edit', $row->id);
                     $deleteUrl = route('admin.brands.destroy', $row->id);
 
                     $html = <<<HTML
@@ -87,13 +85,13 @@ class BrandController extends Controller
             }
             // Create the Brand model instance
             $brand = Brand::create([
-                'name'         => $request->name,
-                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
-                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
+                'name' => $request->name,
+                'logo' => $uploadedFiles['logo']['status'] == 1 ? $uploadedFiles['logo']['file_path'] : null,
+                'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
-                'description'  => $request->description,
-                'url'          => $request->url,
-                'status'       => $request->status,
+                'description' => $request->description,
+                'url' => $request->url,
+                'status' => $request->status,
             ]);
 
             // Commit the database transaction
@@ -108,7 +106,6 @@ class BrandController extends Controller
             return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Brand: ' . $e->getMessage());
         }
     }
-
 
     /**
      * Display the specified resource.
@@ -156,16 +153,16 @@ class BrandController extends Controller
                     $uploadedFiles[$key] = ['status' => 0];
                 }
             }
-            
+
             // Update the brand with the new or existing file paths
             $brand->update([
-                'name'         => $request->name,
-                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $brand->logo,
-                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $brand->image,
+                'name' => $request->name,
+                'logo' => $uploadedFiles['logo']['status'] == 1 ? $uploadedFiles['logo']['file_path'] : $brand->logo,
+                'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $brand->image,
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $brand->banner_image,
-                'description'  => $request->description,
-                'url'          => $request->url,
-                'status'       => $request->status,
+                'description' => $request->description,
+                'url' => $request->url,
+                'status' => $request->status,
             ]);
 
             DB::commit();
@@ -176,7 +173,6 @@ class BrandController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating the brand: ' . $e->getMessage());
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
