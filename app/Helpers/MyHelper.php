@@ -12,9 +12,10 @@ if (!function_exists('customUpload')) {
     {
         try {
             $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $name = Str::limit($originalName, 180);
+            $name = Str::limit($originalName, 120);
             $hashedName = substr($mainFile->hashName(), -12);
-            $fileName = $name . '_' . $hashedName;
+            // $fileName = $name . '_' . $hashedName;
+            $fileName = $hashedName;
 
             if (!is_dir($uploadPath)) {
                 if (!mkdir($uploadPath, 0777, true)) {

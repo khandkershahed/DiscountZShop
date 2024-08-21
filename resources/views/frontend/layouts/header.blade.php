@@ -31,65 +31,79 @@
                         </a>
                         <div class="dropdown position-static">
                             <p class="ms-3 mb-2">{{ $city }} , {{ $country }}</p>
-                            <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu" type="button"
-                                id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                                aria-expanded="false">
-                                <span>
-                                    Categories
-                                    <div class="ps-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 22 22" fill="none">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M3.2998 5.4999C3.2998 5.20816 3.4157 4.92838 3.62199 4.72209C3.82828 4.5158 4.10807 4.3999 4.3998 4.3999H17.5998C17.8915 4.3999 18.1713 4.5158 18.3776 4.72209C18.5839 4.92838 18.6998 5.20816 18.6998 5.4999C18.6998 5.79164 18.5839 6.07143 18.3776 6.27772C18.1713 6.48401 17.8915 6.5999 17.5998 6.5999H4.3998C4.10807 6.5999 3.82828 6.48401 3.62199 6.27772C3.4157 6.07143 3.2998 5.79164 3.2998 5.4999ZM3.2998 10.9999C3.2998 10.7082 3.4157 10.4284 3.62199 10.2221C3.82828 10.0158 4.10807 9.8999 4.3998 9.8999H10.9998C11.2915 9.8999 11.5713 10.0158 11.7776 10.2221C11.9839 10.4284 12.0998 10.7082 12.0998 10.9999C12.0998 11.2916 11.9839 11.5714 11.7776 11.7777C11.5713 11.984 11.2915 12.0999 10.9998 12.0999H4.3998C4.10807 12.0999 3.82828 11.984 3.62199 11.7777C3.4157 11.5714 3.2998 11.2916 3.2998 10.9999ZM3.2998 16.4999C3.2998 16.2082 3.4157 15.9284 3.62199 15.7221C3.82828 15.5158 4.10807 15.3999 4.3998 15.3999H17.5998C17.8915 15.3999 18.1713 15.5158 18.3776 15.7221C18.5839 15.9284 18.6998 16.2082 18.6998 16.4999C18.6998 16.7916 18.5839 17.0714 18.3776 17.2777C18.1713 17.484 17.8915 17.5999 17.5998 17.5999H4.3998C4.10807 17.5999 3.82828 17.484 3.62199 17.2777C3.4157 17.0714 3.2998 16.7916 3.2998 16.4999Z"
-                                                fill="#F15A2D" />
-                                        </svg>
-                                    </div>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
-                                aria-labelledby="dropdownMenuButton1"
-                                style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-2 bg-white px-0">
-                                            <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
-                                                <li class="nav-item" role="presentation">
-                                                    <button
-                                                        class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0 active"
-                                                        id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                                                        type="button" role="tab" aria-controls="home"
-                                                        aria-selected="true">
-                                                        Fashion
-                                                    </button>
-                                                </li>
-                                            </ul>
+                            @if ($categories->count() > 0)
+                                <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu" type="button"
+                                    id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">
+                                    <span>
+                                        Categories
+                                        <div class="ps-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 22 22" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M3.2998 5.4999C3.2998 5.20816 3.4157 4.92838 3.62199 4.72209C3.82828 4.5158 4.10807 4.3999 4.3998 4.3999H17.5998C17.8915 4.3999 18.1713 4.5158 18.3776 4.72209C18.5839 4.92838 18.6998 5.20816 18.6998 5.4999C18.6998 5.79164 18.5839 6.07143 18.3776 6.27772C18.1713 6.48401 17.8915 6.5999 17.5998 6.5999H4.3998C4.10807 6.5999 3.82828 6.48401 3.62199 6.27772C3.4157 6.07143 3.2998 5.79164 3.2998 5.4999ZM3.2998 10.9999C3.2998 10.7082 3.4157 10.4284 3.62199 10.2221C3.82828 10.0158 4.10807 9.8999 4.3998 9.8999H10.9998C11.2915 9.8999 11.5713 10.0158 11.7776 10.2221C11.9839 10.4284 12.0998 10.7082 12.0998 10.9999C12.0998 11.2916 11.9839 11.5714 11.7776 11.7777C11.5713 11.984 11.2915 12.0999 10.9998 12.0999H4.3998C4.10807 12.0999 3.82828 11.984 3.62199 11.7777C3.4157 11.5714 3.2998 11.2916 3.2998 10.9999ZM3.2998 16.4999C3.2998 16.2082 3.4157 15.9284 3.62199 15.7221C3.82828 15.5158 4.10807 15.3999 4.3998 15.3999H17.5998C17.8915 15.3999 18.1713 15.5158 18.3776 15.7221C18.5839 15.9284 18.6998 16.2082 18.6998 16.4999C18.6998 16.7916 18.5839 17.0714 18.3776 17.2777C18.1713 17.484 17.8915 17.5999 17.5998 17.5999H4.3998C4.10807 17.5999 3.82828 17.484 3.62199 17.2777C3.4157 17.0714 3.2998 16.7916 3.2998 16.4999Z"
+                                                    fill="#F15A2D" />
+                                            </svg>
                                         </div>
-                                        <div class="col-lg-10">
-                                            <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                                    aria-labelledby="home-tab">
-                                                    <div class="row py-4" style="background-color: #eee">
-                                                        <div class="col-lg-4">
-                                                            <a href="{{ route('category.details', 'clothes') }}">
-                                                                <h6 class="divider-title">
-                                                                    Clothes
-                                                                </h6>
-                                                            </a>
-                                                            <span class="divider-underline"></span>
-                                                            <ul class="ps-0 pt-3 main-category-dropdown">
-                                                                <li class="p-1">
-                                                                    <a
-                                                                        href="{{ route('store.details', 'aarong') }}">Aarong</a>
-                                                                </li>
-                                                            </ul>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
+                                    aria-labelledby="dropdownMenuButton1"
+                                    style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-2 bg-white px-0">
+                                                <ul class="nav nav-tabs flex-column border-0" id="myTab"
+                                                    role="tablist">
+                                                    @foreach ($categories as $header_category)
+                                                        <li class="nav-item" role="presentation">
+                                                            <button
+                                                                class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0 {{ $loop->first ? 'active' : '' }}"
+                                                                id="home-{{ $header_category->id }}-tab"
+                                                                data-bs-toggle="tab"
+                                                                data-bs-target="#home-{{ $header_category->id }}"
+                                                                type="button" role="tab"
+                                                                aria-controls="home-{{ $header_category->id }}"
+                                                                aria-selected="true">
+                                                                {{ $header_category->name }}
+                                                            </button>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <div class="tab-content" id="myTabContent">
+                                                    @foreach ($categories as $header_category)
+                                                        <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
+                                                            id="home-{{ $header_category->id }}" role="tabpanel"
+                                                            aria-labelledby="home-{{ $header_category->id }}-tab">
+                                                            <div class="row py-4" style="background-color: #eee">
+                                                                @foreach ($header_category->children as $header_category_child)
+                                                                    <div class="col-lg-4">
+                                                                        <a
+                                                                            href="{{ route('category.details', 'clothes') }}">
+                                                                            <h6 class="divider-title">
+                                                                                {{ $header_category_child->name }}
+                                                                            </h6>
+                                                                        </a>
+                                                                        <span class="divider-underline"></span>
+                                                                        <ul class="ps-0 pt-3 main-category-dropdown">
+                                                                            <li class="p-1">
+                                                                                <a
+                                                                                    href="{{ route('store.details', 'aarong') }}">Aarong</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </ul>
+                                </ul>
+                            @endif
                         </div>
                     </li>
                 </ul>
@@ -141,7 +155,7 @@
                                 </a>
                                 <ul class="dropdown-menu toggler-menu py-3">
                                     <li class="dropdown-item pb-2">
-                                        <a href="{{ route('store.details','aarong') }}"><i
+                                        <a href="{{ route('store.details', 'aarong') }}"><i
                                                 class="fa-solid fa-house-user main-color pe-2"></i>
                                             Aarong</a>
                                     </li>

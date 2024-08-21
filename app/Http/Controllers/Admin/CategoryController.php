@@ -25,7 +25,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('admin.pages.categories.index', [
-            'categories' => Category::with('children')->whereNull('parent_id')->get()
+            'categories' => Category::with('children')->whereNull('parent_id')->get(),
         ]);
     }
 

@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-lg-6 mb-7">
                                 <x-metronic.label for="name"
-                                    class="col-form-label fw-bold fs-6 required">{{ __('City Name') }}
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Area Name') }}
                                 </x-metronic.label>
 
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name')"
@@ -216,7 +216,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-7">
                                     <x-metronic.label for="name"
-                                        class="col-form-label fw-bold fs-6 required">{{ __('Division Name') }}
+                                        class="col-form-label fw-bold fs-6 required">{{ __('Area Name') }}
                                     </x-metronic.label>
                                     <x-metronic.input id="name" type="text" name="name" :value="old('name', $area->name)"
                                         placeholder="Enter the Name" required></x-metronic.input>
