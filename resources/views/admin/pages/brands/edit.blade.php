@@ -46,12 +46,24 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
-                    {{-- @php
-                        $categoryIds = is_string($product->category_id)
-                            ? json_decode($product->category_id, true) // Convert JSON string to array
-                            : $product->category_id;
+                    @php
+                        $countryIds = is_string($brand->country_id)
+                            ? json_decode($brand->country_id, true) // Convert JSON string to array
+                            : $brand->country_id;
+                        $divisionIds = is_string($brand->division_id)
+                            ? json_decode($brand->division_id, true) // Convert JSON string to array
+                            : $brand->division_id;
+                        $cityIds = is_string($brand->city_id)
+                            ? json_decode($brand->city_id, true) // Convert JSON string to array
+                            : $brand->city_id;
+                        $areaIds = is_string($brand->area_id)
+                            ? json_decode($brand->area_id, true) // Convert JSON string to array
+                            : $brand->area_id;
                     @endphp
-                    {{ in_array($category->id, $categoryIds) ? 'selected' : '' }} --}}
+
+
+
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="country_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
@@ -60,7 +72,7 @@
                             <option></option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country->id }}"
-                                    {{ in_array($country->id, old('country_id', $brand->country_id->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($country->id, $countryIds) ? 'selected' : '' }}>
                                     {{ $country->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -75,7 +87,7 @@
                             <option></option>
                             @foreach ($divisions as $division)
                                 <option value="{{ $division->id }}"
-                                    {{ in_array($division->id, old('division_id', $brand->division_id->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($division->id, $divisionIds) ? 'selected' : '' }}>
                                     {{ $division->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -90,7 +102,7 @@
                             <option></option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}"
-                                    {{ in_array($city->id, old('city_id', $brand->city_id->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($city->id, $cityIds) ? 'selected' : '' }}>
                                     {{ $city->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -105,7 +117,7 @@
                             <option></option>
                             @foreach ($areas as $area)
                                 <option value="{{ $area->id }}"
-                                    {{ in_array($area->id, old('area_id', $brand->area_id->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($area->id, $areaIds) ? 'selected' : '' }}>
                                     {{ $area->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
