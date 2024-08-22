@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap_icons.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('admin/assets/css/font_awesome_6.css') }}"> --}}
 
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
 
@@ -112,13 +112,26 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script> --}}
     <script src="{{ asset('admin/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
 
     @include('toastr')
-    
-    @stack('scripts')
 
+    @stack('scripts')
+    <script>
+        document.querySelectorAll('.ckeditor').forEach(element => {
+            if (!element.classList.contains('ck-editor__editable_inline')) {
+                ClassicEditor
+                    .create(element)
+                    .then(editor => {
+                        console.log('CKEditor initialized:', editor);
+                    })
+                    .catch(error => {
+                        console.error('CKEditor initialization error:', error);
+                    });
+            }
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $("#kt_datatable_example").DataTable({

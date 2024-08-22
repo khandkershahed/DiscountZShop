@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\BrandRequest;
+use App\Models\Area;
+use App\Models\City;
 use App\Models\Brand;
+use App\Models\Country;
+use App\Models\Category;
+use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\HtmlString;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\HtmlString;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Admin\BrandRequest;
 
 class BrandController extends Controller
 {
@@ -54,7 +59,14 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.brands.create');
+        $data = [
+            'categories' => Category::active()->get(),
+            'countries'  => Country::orderBy('name', 'asc')->get(),
+            'divisions'  => Division::orderBy('name', 'asc')->get(),
+            'citys'      => City::orderBy('name', 'asc')->get(),
+            'areas'      => Area::orderBy('name', 'asc')->get(),
+        ];
+        return view('admin.pages.brands.create', $data);
     }
 
     /**
@@ -85,14 +97,22 @@ class BrandController extends Controller
             }
             // Create the Brand model instance
             $brand = Brand::create([
-                'name'         => $request->name,
-                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
-                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
-                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
-                'description'  => $request->description,
-                'url'          => $request->url,
-                'status'       => $request->status,
-                'category'     => $request->category,
+                'name'              => $request->name,
+                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
+                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
+                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+                'country_id'        => $request->country_id,
+                'division_id'       => $request->division_id,
+                'city_id'           => $request->city_id,
+                'area_id'           => $request->area_id,
+                'category_id'       => $request->category_id,
+                'about'             => $request->about,
+                'offer_description' => $request->offer_description,
+                'location'          => $request->location,
+                'description'       => $request->description,
+                'url'               => $request->url,
+                'category'          => $request->category,
+                'status'            => $request->status,
             ]);
 
             // Commit the database transaction
@@ -121,7 +141,15 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('admin.pages.brands.edit', ['brand' => $brand]);
+        $data = [
+            'brand'      => $brand,
+            'categories' => Category::active()->get(),
+            'countries'  => Country::orderBy('name', 'asc')->get(),
+            'divisions'  => Division::orderBy('name', 'asc')->get(),
+            'citys'      => City::orderBy('name', 'asc')->get(),
+            'areas'      => Area::orderBy('name', 'asc')->get(),
+        ];
+        return view('admin.pages.brands.edit', $data);
     }
 
     /**
@@ -157,14 +185,22 @@ class BrandController extends Controller
 
             // Update the brand with the new or existing file paths
             $brand->update([
-                'name'         => $request->name,
-                'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $brand->logo,
-                'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $brand->image,
-                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $brand->banner_image,
-                'description'  => $request->description,
-                'url'          => $request->url,
-                'status'       => $request->status,
-                'category'     => $request->category,
+                'name'              => $request->name,
+                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $brand->logo,
+                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $brand->image,
+                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $brand->banner_image,
+                'country_id'        => $request->country_id,
+                'division_id'       => $request->division_id,
+                'city_id'           => $request->city_id,
+                'area_id'           => $request->area_id,
+                'category_id'       => $request->category_id,
+                'about'             => $request->about,
+                'offer_description' => $request->offer_description,
+                'location'          => $request->location,
+                'description'       => $request->description,
+                'url'               => $request->url,
+                'category'          => $request->category,
+                'status'            => $request->status,
             ]);
 
             DB::commit();
@@ -196,7 +232,7 @@ class BrandController extends Controller
             }
         }
         $brand->delete();
-    }
+    } 
 
     public function toggleStatus(string $id)
     {

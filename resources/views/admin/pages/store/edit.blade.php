@@ -1,14 +1,12 @@
-<x-admin-app-layout :title="'Brand Edit'">
+<x-admin-app-layout :title="'Store Edit'">
     <div class="card card-flash">
-        <!--begin::Card header-->
+
         <div class="card-header mt-6">
             <div class="card-title"></div>
 
-            <!--begin::Card toolbar-->
+
             <div class="card-toolbar">
-                <!--begin::Button-->
-                <a href="{{ route('admin.brands.index') }}" class="btn btn-light-info">
-                    <!--begin::Svg Icon | path: brands/duotune/general/gen035.svg-->
+                <a href="{{ route('admin.store.index') }}" class="btn btn-light-info">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -20,17 +18,16 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    <!--end::Svg Icon-->Back to the list
+                    Back to the list
                 </a>
             </div>
         </div>
         <div class="card-body pt-0">
-            <!--begin::Form-->
-            <form class="form" action="{{ route('admin.brands.update', $brand->id) }}" method="POST"
+
+            <form class="form" action="{{ route('admin.store.update', $store->id) }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <!--begin::Input group-->
 
                 <div class="row">
                     <div class="col-lg-3 mb-7">
@@ -41,7 +38,7 @@
                             <option></option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
-                                    {{ $category->id == old('category_id', $brand->category_id) ? 'selected' : '' }}>
+                                    {{ $category->id == old('category_id', $store->category_id) ? 'selected' : '' }}>
                                     {{ $category->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -54,7 +51,7 @@
                             <option></option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country->id }}"
-                                    {{ in_array($country->id, old('country_id', $brand->countries->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($country->id, old('country_id', $store->countries->pluck('id')->toArray())) ? 'selected' : '' }}>
                                     {{ $country->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -67,7 +64,7 @@
                             <option></option>
                             @foreach ($divisions as $division)
                                 <option value="{{ $division->id }}"
-                                    {{ in_array($division->id, old('division_id', $brand->divisions->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($division->id, old('division_id', $store->divisions->pluck('id')->toArray())) ? 'selected' : '' }}>
                                     {{ $division->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -80,7 +77,7 @@
                             <option></option>
                             @foreach ($cities as $city)
                                 <option value="{{ $city->id }}"
-                                    {{ in_array($city->id, old('city_id', $brand->cities->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($city->id, old('city_id', $store->cities->pluck('id')->toArray())) ? 'selected' : '' }}>
                                     {{ $city->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -93,7 +90,7 @@
                             <option></option>
                             @foreach ($areas as $area)
                                 <option value="{{ $area->id }}"
-                                    {{ in_array($area->id, old('area_id', $brand->areas->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                    {{ in_array($area->id, old('area_id', $store->areas->pluck('id')->toArray())) ? 'selected' : '' }}>
                                     {{ $area->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
@@ -101,14 +98,14 @@
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}</x-metronic.label>
-                        <x-metronic.input id="name" type="text" name="name" :value="old('name', $brand->name)"
+                        <x-metronic.input id="name" type="text" name="name" :value="old('name', $store->name)"
                             placeholder="Enter the Name" required></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="url"
                             class="col-form-label fw-bold fs-6 required">{{ __('Url') }}</x-metronic.label>
-                        <x-metronic.input id="url" type="url" name="url" :value="old('url', $brand->url)"
+                        <x-metronic.input id="url" type="url" name="url" :value="old('url', $store->url)"
                             placeholder="Enter the Url"></x-metronic.input>
                     </div>
 
@@ -118,10 +115,10 @@
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option></option>
-                            <option value="active" {{ old('status', $brand->status) == 'active' ? 'selected' : '' }}>
+                            <option value="active" {{ old('status', $store->status) == 'active' ? 'selected' : '' }}>
                                 Active</option>
                             <option value="inactive"
-                                {{ old('status', $brand->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                {{ old('status', $store->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
                         </x-metronic.select-option>
                     </div>
 
@@ -129,45 +126,45 @@
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="logo" name="logo" :source="asset('storage/' . $brand->logo)"
-                            :value="old('logo', $brand->logo)"></x-metronic.file-input>
+                        <x-metronic.file-input id="logo" name="logo" :source="asset('storage/' . $store->logo)"
+                            :value="old('logo', $store->logo)"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="image" name="image" :source="asset('storage/' . $brand->image)"
-                            :value="old('image', $brand->image)"></x-metronic.file-input>
+                        <x-metronic.file-input id="image" name="image" :source="asset('storage/' . $store->image)"
+                            :value="old('image', $store->image)"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="banner_image" :source="asset('storage/' . $brand->banner_image)" :value="old('banner_image', $brand->banner_image)"
+                        <x-metronic.file-input id="banner_image" :source="asset('storage/' . $store->banner_image)" :value="old('banner_image', $store->banner_image)"
                             name="banner_image"></x-metronic.file-input>
                     </div>
 
                     <div class="col-lg-12 mb-7">
                         <x-metronic.label for="about"
                             class="col-form-label fw-bold fs-6">{{ __('About') }}</x-metronic.label>
-                        <textarea id="about" class="ckeditor" name="about">{{ old('about', $brand->about) }}</textarea>
+                        <textarea id="about" class="ckeditor" name="about">{{ old('about', $store->about) }}</textarea>
                     </div>
                     <div class="col-lg-12 mb-7">
                         <x-metronic.label for="offer_description"
                             class="col-form-label fw-bold fs-6">{{ __('Offer Description') }}</x-metronic.label>
-                        <textarea id="offer_description" class="ckeditor" name="offer_description">{{ old('offer_description', $brand->offer_description) }}</textarea>
+                        <textarea id="offer_description" class="ckeditor" name="offer_description">{{ old('offer_description', $store->offer_description) }}</textarea>
                     </div>
                     <div class="col-lg-12 mb-7">
                         <x-metronic.label for="location"
                             class="col-form-label fw-bold fs-6">{{ __('Location') }}</x-metronic.label>
-                        <textarea id="location" class="ckeditor" name="location">{{ old('location', $brand->location) }}</textarea>
+                        <textarea id="location" class="ckeditor" name="location">{{ old('location', $store->location) }}</textarea>
                     </div>
                     <div class="col-lg-12 mb-7">
                         <x-metronic.label for="description"
                             class="col-form-label fw-bold fs-6">{{ __('Description') }}</x-metronic.label>
-                        <textarea id="description" class="ckeditor" name="description">{{ old('description', $brand->description) }}</textarea>
+                        <textarea id="description" class="ckeditor" name="description">{{ old('description', $store->description) }}</textarea>
                     </div>
                 </div>
                 <div class="text-center pt-15">
@@ -178,9 +175,9 @@
                         {{ __('Submit') }}
                     </x-metronic.button>
                 </div>
-                <!--end::Actions-->
+
             </form>
-            <!--end::Form-->
+
         </div>
     </div>
 </x-admin-app-layout>

@@ -13,17 +13,19 @@ return new class extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('set null');
-            $table->foreignId('division_id')->nullable()->constrained('divisions')->onDelete('set null');
-            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('set null');
-            $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');
+            $table->json('country_id')->nullable();
+            $table->json('division_id')->nullable();
+            $table->json('city_id')->nullable();
+            $table->json('area_id')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->string('name', 30)->unique();
             $table->string('slug', 40)->unique();
             $table->string('logo', 150)->nullable();
             $table->string('image', 150)->nullable();
             $table->string('banner_image', 150)->nullable();
-            $table->text('about')->nullable();
+            $table->longText('about')->nullable();
+            $table->longText('offer_description')->nullable();
+            $table->longText('location')->nullable();
             $table->text('description')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('category')->nullable();
