@@ -79,10 +79,6 @@
                         }
                     @endphp
 
-
-
-
-
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="country_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
@@ -216,7 +212,7 @@
                 <div class="text-center pt-15">
                     <x-metronic.button type="submit" class="primary">{{ __('Update') }}</x-metronic.button>
                 </div>
-                
+
                 <!--end::Actions-->
             </form>
             <!--end::Form-->
