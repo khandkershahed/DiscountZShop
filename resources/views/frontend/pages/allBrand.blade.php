@@ -102,29 +102,31 @@
             <div class="row gx-5">
 
                 @foreach ($categories as $category)
-                    <div class="col">
-                        <div class="row bg-light">
-                            <div class="d-flex align-items-center">
-                                <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
-                                <span class="store-devider"></span>
-                            </div>
-                            @foreach ($category->brands as $brand)
-                                <div class="col-lg-4 mb-3 mt-2">
-                                    <a href="{{ route('brand.details', $brand->slug) }}">
-                                        <div class="card shadow-sm brands-card">
-                                            <div class="card-body p-0">
-                                                <div class="brands-logo">
-                                                    <img class="img-fluid rounded-3"
-                                                        src="{{ asset('storage/' . $brand->logo) }}" alt="Brand Logo"
-                                                        title="Brand Logo" />
+                    @if ($category->brands->count() > 0)
+                        <div class="col">
+                            <div class="row bg-light">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
+                                    <span class="store-devider"></span>
+                                </div>
+                                @foreach ($category->brands as $brand)
+                                    <div class="col-lg-4 mb-3 mt-2">
+                                        <a href="{{ route('brand.details', $brand->slug) }}">
+                                            <div class="card shadow-sm brands-card">
+                                                <div class="card-body p-0">
+                                                    <div class="brands-logo">
+                                                        <img class="img-fluid rounded-3"
+                                                            src="{{ asset('storage/' . $brand->logo) }}" alt="Brand Logo"
+                                                            title="Brand Logo" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -136,11 +138,11 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1>Big Brands Are Here</h1>
-                        <p class="w-lg-50 w-100 pt-3">
+                        {{-- <p class="w-lg-50 w-100 pt-3">
                             Problems trying to resolve the conflict between <br />
                             the two major realms of Classical physics: Newtonian
                             mechanics
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>

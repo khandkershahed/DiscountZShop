@@ -101,10 +101,10 @@ class BrandController extends Controller
                 'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
                 'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
                 'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
-                'country_id'        => $request->country_id,
-                'division_id'       => $request->division_id,
-                'city_id'           => $request->city_id,
-                'area_id'           => $request->area_id,
+                'country_id'        => $request->input('country_id'),
+                'division_id'       => $request->input('division_id'),
+                'city_id'           => $request->input('city_id'),
+                'area_id'           => $request->input('area_id'),
                 'category_id'       => $request->category_id,
                 'about'             => $request->about,
                 'offer_description' => $request->offer_description,
@@ -189,10 +189,10 @@ class BrandController extends Controller
                 'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $brand->logo,
                 'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $brand->image,
                 'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $brand->banner_image,
-                'country_id'        => $request->country_id,
-                'division_id'       => $request->division_id,
-                'city_id'           => $request->city_id,
-                'area_id'           => $request->area_id,
+                'country_id'        => $request->input('country_id'),
+                'division_id'       => $request->input('division_id'),
+                'city_id'           => $request->input('city_id'),
+                'area_id'           => $request->input('area_id'),
                 'category_id'       => $request->category_id,
                 'about'             => $request->about,
                 'offer_description' => $request->offer_description,
@@ -232,7 +232,7 @@ class BrandController extends Controller
             }
         }
         $brand->delete();
-    } 
+    }
 
     public function toggleStatus(string $id)
     {
