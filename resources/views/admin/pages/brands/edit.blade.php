@@ -216,11 +216,7 @@
                 <div class="text-center pt-15">
                     <x-metronic.button type="submit" class="primary">{{ __('Update') }}</x-metronic.button>
                 </div>
-                <div class="text-center pt-15">
-                    <x-metronic.button type="submit" class="primary">
-                        {{ __('Submit') }}
-                    </x-metronic.button>
-                </div>
+                
                 <!--end::Actions-->
             </form>
             <!--end::Form-->

@@ -68,7 +68,7 @@
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="city_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
-                        <x-metronic.select-option id="city_id" name="city_id" data-hide-search="false" multiple
+                        <x-metronic.select-option id="city_id" name="city_id[]" data-hide-search="false" multiple
                             data-placeholder="Select an option">
                             <option></option>
                             @foreach ($citys as $city)
@@ -79,7 +79,7 @@
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="area_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
-                        <x-metronic.select-option id="area_id" name="area_id" data-hide-search="false" multiple
+                        <x-metronic.select-option id="area_id" name="area_id[]" data-hide-search="false" multiple
                             data-placeholder="Select an option">
                             <option></option>
                             @foreach ($areas as $area)
