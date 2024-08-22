@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('banner_image', 150)->nullable();
             $table->text('description')->nullable();
             $table->string('url', 255)->nullable();
+            $table->string('category')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');
             $table->timestamps();
         });
