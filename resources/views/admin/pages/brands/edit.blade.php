@@ -59,6 +59,8 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
+                    <!-- Division -->
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="division_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
@@ -72,6 +74,8 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
+                    <!-- City -->
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="city_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
@@ -85,6 +89,8 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
+                    <!-- Area -->
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="area_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
