@@ -47,19 +47,38 @@
                         </x-metronic.select-option>
                     </div>
                     @php
-                        $countryIds = is_string($brand->country_id)
-                            ? json_decode($brand->country_id, true) // Convert JSON string to array
-                            : $brand->country_id;
-                        $divisionIds = is_string($brand->division_id)
-                            ? json_decode($brand->division_id, true) // Convert JSON string to array
-                            : $brand->division_id;
-                        $cityIds = is_string($brand->city_id)
-                            ? json_decode($brand->city_id, true) // Convert JSON string to array
-                            : $brand->city_id;
-                        $areaIds = is_string($brand->area_id)
-                            ? json_decode($brand->area_id, true) // Convert JSON string to array
-                            : $brand->area_id;
+                        // Initialize as empty arrays
+                        $countryIds = [];
+                        $divisionIds = [];
+                        $cityIds = [];
+                        $areaIds = [];
+
+                        // Check and decode if they are strings
+                        if (is_string($brand->country_id)) {
+                            $countryIds = json_decode($brand->country_id, true) ?? [];
+                        } elseif (is_array($brand->country_id)) {
+                            $countryIds = $brand->country_id;
+                        }
+
+                        if (is_string($brand->division_id)) {
+                            $divisionIds = json_decode($brand->division_id, true) ?? [];
+                        } elseif (is_array($brand->division_id)) {
+                            $divisionIds = $brand->division_id;
+                        }
+
+                        if (is_string($brand->city_id)) {
+                            $cityIds = json_decode($brand->city_id, true) ?? [];
+                        } elseif (is_array($brand->city_id)) {
+                            $cityIds = $brand->city_id;
+                        }
+
+                        if (is_string($brand->area_id)) {
+                            $areaIds = json_decode($brand->area_id, true) ?? [];
+                        } elseif (is_array($brand->area_id)) {
+                            $areaIds = $brand->area_id;
+                        }
                     @endphp
+
 
 
 
