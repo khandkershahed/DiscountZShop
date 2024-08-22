@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('logo', 150)->nullable();
             $table->string('image', 150)->nullable();
             $table->string('banner_image', 150)->nullable();
+            $table->text('about')->nullable();
             $table->text('description')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('category')->nullable();

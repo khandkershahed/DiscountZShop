@@ -3,11 +3,11 @@
         <div class="row">
             <div class="store-hero-slider">
                 <div class="regular-banner">
-                    <img class="img-fluid w-100 rounded-2" src="{{ asset('frontend') }}/assets/img/store/aarong3.jpg" alt="" />
+                    <img class="img-fluid w-100 rounded-2" src="{{ asset('storage/'.$brand->banner_image) }}" alt="" />
                 </div>
-                <div class="regular-banner">
+                {{-- <div class="regular-banner">
                     <img class="img-fluid w-100 rounded-2" src="{{ asset('frontend') }}/assets/img/store/aarong2.webp" alt="" />
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -18,7 +18,8 @@
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="text-center">
-                            <h2 class="pb-2">Arrong Exclusive Showroom Store</h2>
+                            <h2 class="pb-2">{{ $brand->name }}</h2>
+                            {{-- <h2 class="pb-2">Arrong Exclusive Showroom Store</h2> --}}
                             <p>
                                 <i class="fa-solid fa-location-dot main-color"></i> Shop
                                 No 16A Shastri Nagar Main Road Opposite BCM School, Ab
@@ -53,7 +54,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="brand-single pt-3 d-flex justify-content-center">
-                        <li data-target="about" class="active">About</li>
+                        <li data-target="about">About</li>
                         <li data-target="popular-discount">Brand Products</li>
                         <li data-target="offers">Recent Offers</li>
                         <li data-target="location">Location</li>
@@ -63,8 +64,8 @@
         </div>
     </section>
     <!-- store details End -->
-    <section id="about">
-        <div class="container py-4">
+    <section>
+        <div class="container py-4" id="about">
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="">About</h3>
@@ -95,8 +96,8 @@
             </div>
         </div>
     </section>
-    <section id="popular-discount">
-        <div class="container">
+    <section>
+        <div class="container" id="popular-discount">
             <div class="row align-items-center">
                 <div class="col-lg-6 ps-0">
                     <div>
@@ -115,8 +116,8 @@
             </div>
         </div>
     </section>
-    <section id="offers">
-        <div class="container py-4">
+    <section>
+        <div class="container py-4" id="offers">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Recent Offers</h2>
@@ -177,8 +178,8 @@
             </div>
         </div>
     </section>
-    <section id="location">
-        <div class="container py-4">
+    <section>
+        <div class="container py-4" id="location">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Location</h2>

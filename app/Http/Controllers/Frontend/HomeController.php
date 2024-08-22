@@ -35,6 +35,8 @@ class HomeController extends Controller
     {
         $data =[
             'page_banner' => PageBanner::where('page_name' , 'brand')->latest('id')->first(),
+            'categories'  => Category::with('brands')->latest('id')->active()->get(),
+            'brands'      => PageBanner::where('page_name' , 'brand')->latest('id')->first(),
         ];
         return view('frontend.pages.allBrand',$data);
     }

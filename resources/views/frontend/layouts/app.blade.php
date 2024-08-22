@@ -19,6 +19,9 @@
     <!-- CSS Links -->
     <!-- Bootstrap CSS -->
     <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <!-- Slick Slider CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
@@ -71,7 +74,7 @@
     <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
     <!-- Custom Script -->
     <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
     <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
@@ -236,6 +239,22 @@
             document.querySelectorAll(".countdown").forEach((element) => {
                 const expireDate = element.getAttribute("data-expire-date");
                 new Countdown(element, expireDate);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#custom_select1').select2({
+                theme: 'bootstrap-5',
+                placeholder: $( this ).data( 'placeholder' ),
+            });
+            $('#custom_select2').select2({
+                theme: 'bootstrap-5',
+                placeholder: $( this ).data( 'placeholder' ),
+            });
+            $('#custom_select3').select2({
+                theme: 'bootstrap-5',
+                placeholder: $( this ).data( 'placeholder' ),
             });
         });
     </script>

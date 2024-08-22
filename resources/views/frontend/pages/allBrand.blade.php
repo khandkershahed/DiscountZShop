@@ -1,8 +1,9 @@
 <x-frontend-app-layout :title="'All Brands || DiscountZShop'">
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" src="{{!empty(optional($page_banner)->image) && file_exists(public_path('storage/'.optional($page_banner)->image)) ? asset('storage/'.optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
-                alt="{{ ucfirst(optional($page_banner)->page_name)}}" />
+            <img class="img-fluid w-100"
+                src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
+                alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
         </div>
     </section>
     <!-- Brands All -->
@@ -12,11 +13,11 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1>Discover Our Esteemed Brands</h1>
-                        <p class="w-lg-50 w-100 pt-3">
+                        {{-- <p class="w-lg-50 w-100 pt-3">
                             Exploring solutions to bridge the gap between the
                             established principles of Classical physics: Newtonian
                             mechanics.
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>
@@ -24,53 +25,38 @@
                 <div class="col-lg-12 pe-0 pb-2">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
-                            <h3>All Stores</h3>
+                            <h3>All Brands</h3>
                             <span class="store-devider"></span>
                         </div>
                         <div class="d-flex align-items-center">
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    City
-                                </button>
-                                <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Dhaka</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Syhlet</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Rongpur</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Khulna</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Barishal</a>
-                                    </li>
-                                </ul>
+                                <select class="form-select" id="custom_select1" name="division"
+                                    data-placeholder="Select Division">
+                                    <option value="">Select Division</option>
+                                    @foreach ($divisions as $division)
+                                        <option value="{{ $division->name }}">{{ $division->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    Area
-                                </button>
-                                <ul class="dropdown-menu rounded-0" data-popper-placement="bottom-start"
-                                    style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Gulshan</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Mirpur</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Savar</a>
-                                    </li>
-                                </ul>
+                                <select class="form-select" id="custom_select2" name="city"
+                                    data-placeholder="Select City">
+                                    <option value="">Select City</option>
+                                    @foreach ($citys as $city)
+                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="btn-group pe-2">
+                                <select class="form-select" id="custom_select3" name="area"
+                                    data-placeholder="Select Area">
+                                    <option value="">Select Area</option>
+                                    @foreach ($areas as $area)
+                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
@@ -114,60 +100,32 @@
                 </div>
             </div>
             <div class="row gx-5">
-                <div class="col">
-                    <div class="row bg-light">
-                        <div class="d-flex justify-content-between">
+
+                @foreach ($categories as $category)
+                    <div class="col">
+                        <div class="row bg-light">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0 py-2 main-color">Foods</p>
+                                <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
                                 <span class="store-devider"></span>
                             </div>
-                            {{-- <div>
-                                <div class="pt-1">
-                                    <span class="badge text-end rounded-0 store-tags">
-                                        <span>30%</span>
-                                    </span>
-                                </div>
-                            </div> --}}
-                        </div>
-                        <div class="col-12">
-                            <h5 class="text-center text-warning">No Brand is available right now.</h5>
-                        </div>
-                        {{-- <div class="col-lg-4 mb-3 mt-2">
-                            <a href="">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo1.webp"
-                                                alt="Brand Logo" title="Brand Logo" />
+                            @foreach ($category->brands as $brand)
+                                <div class="col-lg-4 mb-3 mt-2">
+                                    <a href="{{ route('brand.details', $brand->slug) }}">
+                                        <div class="card shadow-sm brands-card">
+                                            <div class="card-body p-0">
+                                                <div class="brands-logo">
+                                                    <img class="img-fluid rounded-3"
+                                                        src="{{ asset('storage/' . $brand->logo) }}" alt="Brand Logo"
+                                                        title="Brand Logo" />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div> --}}
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="row bg-light">
-                        <div class="d-flex align-items-center">
-                            <p class="mb-0 py-2 main-color">Fashions</p>
-                            <span class="store-devider"></span>
+                            @endforeach
                         </div>
-                        <div class="col-lg-4 mb-3 mt-2">
-                            <a href="{{ route('brand.details','aarong') }}">
-                                <div class="card shadow-sm brands-card">
-                                    <div class="card-body p-0">
-                                        <div class="brands-logo">
-                                            <img class="img-fluid rounded-3" src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
-                                                alt="Brand Logo" title="Brand Logo" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                       
-
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -193,55 +151,72 @@
             <div class="container px-0">
                 <div class="slick-slider-partners">
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 20.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 20.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 21.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 21.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 22.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 22.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 23.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 23.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 24.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 24.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
+                            alt="" />
                     </div>
                     <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png" alt="" />
+                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
+                            alt="" />
                     </div>
                 </div>
             </div>

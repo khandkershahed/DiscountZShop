@@ -32,6 +32,10 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+    public function brands()
+    {
+        return $this->hasMany(Brand::class, 'category_id');
+    }
 
     public function scopeActive($query)
     {
