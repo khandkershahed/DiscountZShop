@@ -11,7 +11,7 @@
         content="{{ !empty($setting->site_name) ? $setting->site_name : config('app.name') }}" />
     <link rel="canonical" href="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
     <link rel="shortcut icon"
-        href="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('images') }}"
+        href="{{ !empty($setting->site_favicon) && file_exists(public_path('storage/' . $setting->site_favicon)) ? asset('storage/' . $setting->site_favicon) : asset('images/no_icon.png') }}"
         type="image/x-icon" />
 
     @props(['title'])
