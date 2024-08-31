@@ -1,22 +1,21 @@
 <?php
 
-use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 
 
 if (!function_exists('customUpload')) {
     function customUpload(UploadedFile $mainFile, string $uploadPath, ?int $reqWidth = null, ?int $reqHeight = null): array
     {
         try {
-            $originalName     = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $fileExtention    = $mainFile->getClientOriginalExtension();
-            $currentTime      = Str::random(10) . time();
+            $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileExtention = $mainFile->getClientOriginalExtension();
+            $currentTime = Str::random(10) . time();
             $name = Str::limit($originalName, 100);
-            $fileName = $currentTime . '.' . $fileExtention ;
-            $fullUploadPath  = "public/$uploadPath";
+            $fileName = $currentTime . '.' . $fileExtention;
+            $fullUploadPath = "public/$uploadPath";
 
             // Ensure directory exists
             if (!Storage::exists($fullUploadPath)) {
@@ -48,12 +47,12 @@ if (!function_exists('customUpload')) {
             // $filePath = "$uploadPath/$fileName";
 
             $output = [
-                'status'         => 1,
-                'file_name'      => $fileName,
+                'status' => 1,
+                'file_name' => $fileName,
                 'file_extension' => $mainFile->getClientOriginalExtension(),
-                'file_size'      => $mainFile->getSize(),
-                'file_type'      => $mainFile->getMimeType(),
-                'file_path'      => $filePath,
+                'file_size' => $mainFile->getSize(),
+                'file_type' => $mainFile->getMimeType(),
+                'file_path' => $filePath,
             ];
 
             return array_map('htmlspecialchars', $output);
@@ -95,6 +94,7 @@ if (!function_exists('handaleFileUpload')) {
     }
 }
 
+
 if (!function_exists('handleFileUpdate')) {
     /**
      * Handle file upload and deletion of old files.
@@ -117,6 +117,7 @@ if (!function_exists('handleFileUpdate')) {
         return $model->$fileKey;
     }
 }
+
 
 if (!function_exists('noImage')) {
     function noImage()

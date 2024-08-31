@@ -32,6 +32,7 @@
                 @csrf
 
                 <div class="row">
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="category_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select a Category') }}</x-metronic.label>
@@ -43,6 +44,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="country_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
@@ -54,6 +56,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="division_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
@@ -65,6 +68,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="city_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
@@ -76,6 +80,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="area_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
@@ -87,6 +92,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+                    
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}

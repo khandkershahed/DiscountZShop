@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\OfferRequest;
 
 class OfferController extends Controller
 {
@@ -14,9 +15,9 @@ class OfferController extends Controller
     public function index()
     {
         $data = [
-            'offers' => Offer::orderBy('name' , 'ASC')->get(),
+            'offers' => Offer::orderBy('name', 'ASC')->get(),
         ];
-        return view('admin.pages.offer.index',$data);
+        return view('admin.pages.offer.index', $data);
     }
 
     /**
@@ -30,9 +31,9 @@ class OfferController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OfferRequest $request)
     {
-        //
+        
     }
 
     /**
