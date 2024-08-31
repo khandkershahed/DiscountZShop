@@ -1,10 +1,9 @@
-<x-admin-app-layout :title="'Coupon Add'">
+<x-admin-app-layout :title="'Offer Edit'">
     <div class="card card-flash">
-
         <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
-                <a href="{{ route('admin.coupon.index') }}" class="btn btn-light-info">
+                <a href="{{ route('admin.offer.index') }}" class="btn btn-light-info">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -23,10 +22,9 @@
         </div>
         <div class="card-body pt-0">
 
-            <form class="form" action="{{ route('admin.coupon.store') }}" method="POST"
+            <form class="form" action="{{ route('admin.offer.update') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
-
                 <div class="row">
                     <div class="col-lg-6 mb-7">
                         <x-metronic.label for="name"

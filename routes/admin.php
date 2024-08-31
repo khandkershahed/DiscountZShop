@@ -55,7 +55,6 @@ Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(functio
 
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
-
 });
 
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
@@ -102,16 +101,16 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     );
     Route::resources(
         [
-            'faq' => FaqController::class,
-            'role' => RoleController::class,
-            'permission' => PermissionController::class,
-            'email-settings' => EmailSettingController::class,
-            'page-banner' => PageBannerController::class,
+            'faq'             => FaqController::class,
+            'role'            => RoleController::class,
+            'permission'      => PermissionController::class,
+            'email-settings'  => EmailSettingController::class,
+            'page-banner'     => PageBannerController::class,
             'terms-condition' => TermsAndConditionController::class,
-            'privacy-policy' => PrivacyPolicyController::class,
-            'offer' => OfferController::class,
-            'coupon' => CouponController::class,
-            'store' => StoreController::class,
+            'privacy-policy'  => PrivacyPolicyController::class,
+            'offer'           => OfferController::class,
+            'coupon'          => CouponController::class,
+            'store'           => StoreController::class,
         ],
         ['except' => ['show']]
     );
@@ -119,15 +118,15 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     Route::resources(
         [
 
-            'user' => UserController::class, //done
-            'staff' => StaffController::class, //done
-            'user-management' => UserManagementController::class, //done
+            'user'             => UserController::class, //done
+            'staff'            => StaffController::class, //done
+            'user-management'  => UserManagementController::class, //done
             'admin-managemnet' => UserManagementController::class, //done
-            'categories' => CategoryController::class, //done
-            'icons' => IconController::class, //done
-            'newsletters' => NewsletterController::class,
-            'brands' => BrandController::class, //done
-            'contacts' => ContactController::class,
+            'categories'       => CategoryController::class, //done
+            'icons'            => IconController::class, //done
+            'newsletters'      => NewsletterController::class,
+            'brands'           => BrandController::class, //done
+            'contacts'         => ContactController::class,
 
         ],
     );

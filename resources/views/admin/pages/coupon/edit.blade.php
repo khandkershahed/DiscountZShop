@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Coupon Add'">
+<x-admin-app-layout :title="'Coupon Edit'">
     <div class="card card-flash">
 
         <div class="card-header mt-6">
@@ -23,7 +23,7 @@
         </div>
         <div class="card-body pt-0">
 
-            <form class="form" action="{{ route('admin.coupon.store') }}" method="POST"
+            <form class="form" action="{{ route('admin.coupon.update') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
 

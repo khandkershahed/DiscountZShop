@@ -48,7 +48,7 @@ class CouponController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.pages.coupon.edit');
     }
 
     /**

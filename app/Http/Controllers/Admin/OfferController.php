@@ -48,7 +48,7 @@ class OfferController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.pages.offer.edit');
     }
 
     /**

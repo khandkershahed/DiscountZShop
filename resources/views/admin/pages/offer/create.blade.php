@@ -80,6 +80,7 @@
                             <option></option>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
+                            <option value="expired">Expired</option>
                         </x-metronic.select-option>
                     </div>
 
