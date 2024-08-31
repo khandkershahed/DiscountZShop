@@ -23,9 +23,9 @@ class OfferRequest extends FormRequest
     {
         return [
 
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
 
             'country_id' => 'nullable|json',
             'division_id' => 'nullable|json',

@@ -101,16 +101,16 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     );
     Route::resources(
         [
-            'faq'             => FaqController::class,
-            'role'            => RoleController::class,
-            'permission'      => PermissionController::class,
-            'email-settings'  => EmailSettingController::class,
-            'page-banner'     => PageBannerController::class,
+            'faq' => FaqController::class,
+            'role' => RoleController::class,
+            'permission' => PermissionController::class,
+            'email-settings' => EmailSettingController::class,
+            'page-banner' => PageBannerController::class,
             'terms-condition' => TermsAndConditionController::class,
-            'privacy-policy'  => PrivacyPolicyController::class,
-            'offer'           => OfferController::class,
-            'coupon'          => CouponController::class,
-            'store'           => StoreController::class,
+            'privacy-policy' => PrivacyPolicyController::class,
+            'offer' => OfferController::class,
+            'coupon' => CouponController::class,
+            'store' => StoreController::class,
         ],
         ['except' => ['show']]
     );
@@ -118,15 +118,15 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     Route::resources(
         [
 
-            'user'             => UserController::class, //done
-            'staff'            => StaffController::class, //done
-            'user-management'  => UserManagementController::class, //done
+            'user' => UserController::class, //done
+            'staff' => StaffController::class, //done
+            'user-management' => UserManagementController::class, //done
             'admin-managemnet' => UserManagementController::class, //done
-            'categories'       => CategoryController::class, //done
-            'icons'            => IconController::class, //done
-            'newsletters'      => NewsletterController::class,
-            'brands'           => BrandController::class, //done
-            'contacts'         => ContactController::class,
+            'categories' => CategoryController::class, //done
+            'icons' => IconController::class, //done
+            'newsletters' => NewsletterController::class,
+            'brands' => BrandController::class, //done
+            'contacts' => ContactController::class,
 
         ],
     );

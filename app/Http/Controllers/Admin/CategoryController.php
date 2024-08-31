@@ -106,9 +106,11 @@ class CategoryController extends Controller
             $category = Category::create([
                 'name'         => $request->name,
                 'parent_id'    => $request->parent_id,
+
                 'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
                 'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+                
                 'description'  => $request->description,
                 'status'       => $request->status,
             ]);

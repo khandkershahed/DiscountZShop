@@ -55,8 +55,8 @@ return new class extends Migration
             $table->timestamp('expiry_date')->nullable();//
 
             $table->string('status')->default('active')->comment('inactive,active,expired');//
-            
-            $table->timestamps(); // Creates `created_at` and `updated_at` columns
+
+            $table->timestamps();
         });
     }
 
