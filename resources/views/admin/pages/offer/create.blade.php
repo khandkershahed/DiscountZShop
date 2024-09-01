@@ -29,6 +29,18 @@
                 <div class="row">
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="notify_to"
+                            class="col-form-label fw-bold fs-6">{{ __('Select a Notify') }}</x-metronic.label>
+                        <x-metronic.select-option id="notify_to" required name="notify_to[]" data-hide-search="false"
+                            multiple data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($admins as $admin)
+                                <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="country_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
                         <x-metronic.select-option id="country_id" required name="country_id[]" data-hide-search="false"
@@ -39,6 +51,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="division_id"
@@ -89,8 +102,9 @@
                         </x-metronic.select-option>
                     </div>
 
+                    <!-- Update for brand_id -->
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="category_id"
+                        <x-metronic.label for="brand_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select a Brand') }}</x-metronic.label>
                         <x-metronic.select-option id="brand_id" name="brand_id" data-hide-search="false"
                             data-placeholder="Select an option">
@@ -101,26 +115,15 @@
                         </x-metronic.select-option>
                     </div>
 
+                    <!-- Update for store_id -->
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="category_id"
+                        <x-metronic.label for="store_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select a Store') }}</x-metronic.label>
                         <x-metronic.select-option id="store_id" name="store_id" data-hide-search="false"
                             data-placeholder="Select an option">
                             <option></option>
                             @foreach ($stores as $store)
                                 <option value="{{ $store->id }}">{{ $store->name }}</option>
-                            @endforeach
-                        </x-metronic.select-option>
-                    </div>
-
-                    <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="notify_to"
-                            class="col-form-label fw-bold fs-6">{{ __('Select a Notify') }}</x-metronic.label>
-                        <x-metronic.select-option id="notify_to" name="notify_to" data-hide-search="false"
-                            data-placeholder="Select an option">
-                            <option></option>
-                            @foreach ($admins as $admin)
-                                <option value="{{ $admin->id }}">{{ $admin->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
                     </div>
@@ -139,15 +142,15 @@
                         </x-metronic.label>
 
                         <x-metronic.input id="url" type="url" name="url" :value="old('url')"
-                            placeholder="Enter the Url"></x-metronic.input>
+                            placeholder="https://www.google.com"></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="source_url" class="col-form-label fw-bold fs-6">{{ __('Source Url') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="url" type="text" name="source_url" :value="old('source_url')"
-                            placeholder="Enter the Source Url"></x-metronic.input>
+                        <x-metronic.input id="url" type="url" name="source_url" :value="old('source_url')"
+                            placeholder="https://www.google.com"></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -172,7 +175,7 @@
                         </x-metronic.label>
 
                         <x-metronic.input id="price" type="number" s name="price" :value="old('price')"
-                            placeholder="Enter the Badge" required></x-metronic.input>
+                            placeholder="Eg:10,000.00" required></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -181,7 +184,7 @@
                         </x-metronic.label>
 
                         <x-metronic.input id="offer_price" type="number" s name="offer_price" :value="old('offer_price')"
-                            placeholder="Enter the Offer Price" required></x-metronic.input>
+                            placeholder="Eg:10,000.00" required></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -189,53 +192,52 @@
                             class="col-form-label fw-bold fs-6">{{ __('Coupon Code') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="coupon_code" type="number" s name="coupon_code" :value="old('coupon_code')"
-                            placeholder="Enter the Coupon Code"></x-metronic.input>
+                        <x-metronic.input id="coupon_code" type="text" s name="coupon_code" :value="old('coupon_code')"
+                            placeholder="Eg: Dis-125874"></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-6 mb-7">
                         <x-metronic.label for="map_url"
                             class="col-form-label fw-bold fs-6 required">{{ __('Map Url') }}
                         </x-metronic.label>
 
                         <x-metronic.textarea id="map_url" type="text" s name="map_url" :value="old('map_url')"
-                            placeholder="Enter the Map Url" required></x-metronic.textarea>
+                            placeholder="Please Map Url" required></x-metronic.textarea>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <!-- Update for date fields -->
+                    <div class="col-lg-2 mb-7">
                         <x-metronic.label for="start_date"
-                            class="col-form-label fw-bold fs-6 required">{{ __('Start Date') }}
-                        </x-metronic.label>
-
-                        <x-metronic.input id="start_date" type="date" s name="start_date" :value="old('start_date')"
-                            placeholder="Enter the Coupon Code" required></x-metronic.input>
+                            class="col-form-label fw-bold fs-6 required">{{ __('Start Date') }}</x-metronic.label>
+                        <x-metronic.input id="start_date" type="date" name="start_date" :value="old('start_date')"
+                            required></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-2 mb-7">
                         <x-metronic.label for="start_date"
                             class="col-form-label fw-bold fs-6 required">{{ __('Notification Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="notification_date" type="date" s name="notification_date"
+                        <x-metronic.input id="notification_date" type="date" name="notification_date"
                             :value="old('notification_date')" placeholder="Enter the Coupon Code" required></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-2 mb-7">
                         <x-metronic.label for="start_date"
                             class="col-form-label fw-bold fs-6 required">{{ __('Expiry Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="expiry_date" type="date" s name="expiry_date" :value="old('expiry_date')"
+                        <x-metronic.input id="expiry_date" type="date" name="expiry_date" :value="old('expiry_date')"
                             placeholder="Enter the Expiry Code" required></x-metronic.input>
                     </div>
 
 
 
                     <div class="col-lg-12 mb-7">
-                        <x-metronic.label for="location" class="col-form-label fw-bold fs-6 ">{{ __('Location') }}
+                        <x-metronic.label for="locations" class="col-form-label fw-bold fs-6 ">{{ __('Location') }}
                         </x-metronic.label>
 
-                        <textarea id="location" class="ckeditor" name="location"></textarea>
+                        <textarea id="locations" class="ckeditor" name="locations"></textarea>
                     </div>
 
 
@@ -266,10 +268,10 @@
 
                     <div class="col-lg-8 mb-7">
                         <x-metronic.label for="description"
-                            class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                            class="col-form-label fw-bold fs-6">{{ __('Description') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="description" name="description"></x-metronic.textarea>
+                        <x-metronic.textarea id="description" placeholder="Write Description" name="description"></x-metronic.textarea>
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
@@ -279,7 +281,6 @@
                             <option></option>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
-                            <option value="expired">Expired</option>
                         </x-metronic.select-option>
                     </div>
 

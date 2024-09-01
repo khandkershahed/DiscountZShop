@@ -33,9 +33,11 @@ class OfferRequest extends FormRequest
             'area_id' => 'nullable|json',
             'notify_to' => 'nullable|json',
 
-            'category_id' => 'nullable',
+            'category_id' => 'required',
             'brand_id' => 'nullable',
-            'added_by' => 'nullable',
+            'added_by' => 'required',
+
+            'status' => 'nullable',
 
             'badge' => 'nullable',
             'name' => 'required|string',
@@ -44,9 +46,9 @@ class OfferRequest extends FormRequest
 
             'description' => 'nullable|string',
             'locations' => 'nullable|string',
-            'url' => 'nullable|string',
-            'source_url' => 'nullable|string',
-            'map_url' => 'nullable',
+            'url' => 'nullable|url',
+            'source_url' => 'nullable|url',
+            'map_url' => 'nullable|url',
             'tags' => 'nullable',
 
             'start_date' => 'required|date|date_format:Y-m-d',
