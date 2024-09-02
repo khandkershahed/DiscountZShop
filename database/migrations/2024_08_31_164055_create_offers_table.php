@@ -19,12 +19,12 @@ return new class extends Migration
             $table->json('city_id')->nullable();//
             $table->json('area_id')->nullable();//
 
-            $table->json('notify_to')->nullable()->comment('ids from admin table');
+            $table->json('notify_to')->nullable()->comment('ids from admin table');//
 
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');//
             $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('set null');//
             $table->foreignId('store_id')->nullable()->constrained('stores')->onDelete('set null');//
-            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
+            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');//
 
             $table->string('badge')->nullable();//
             $table->string('name')->unique();//

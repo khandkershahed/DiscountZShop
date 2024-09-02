@@ -126,6 +126,7 @@
                                 ],
                             ],
                         ],
+
                         [
                             'title' => 'Customer Support',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
@@ -154,6 +155,8 @@
                                 ],
                             ],
                         ],
+
+                        // Site Content 
                         [
                             'title' => 'Site Contents',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
@@ -161,11 +164,20 @@
                                 'admin.terms-condition.index',
                                 'admin.terms-condition.create',
                                 'admin.terms-condition.edit',
+
                                 'admin.privacy-policy.index',
                                 'admin.privacy-policy.create',
                                 'admin.privacy-policy.edit',
+
+                                'admin.page-banner.index',
+                                'admin.page-banner.create',
+                                'admin.page-banner.edit',
+
+                                'admin.about-us.index',
+                                'admin.about-us.edit',
                             ],
                             'subMenu' => [
+
                                 [
                                     'title' => 'Terms & Condition',
                                     'routes' => [
@@ -175,6 +187,7 @@
                                     ],
                                     'route' => 'admin.terms-condition.index',
                                 ],
+
                                 [
                                     'title' => 'Privacy Policy',
                                     'routes' => [
@@ -184,8 +197,30 @@
                                     ],
                                     'route' => 'admin.privacy-policy.index',
                                 ],
+
+                                [
+                                    'title' => 'Page Banner',
+                                    'routes' => [
+                                        'admin.page-banner.index',
+                                        'admin.page-banner.create',
+                                        'admin.page-banner.edit',
+                                    ],
+                                    'route' => 'admin.page-banner.index',
+                                ],
+
+                                [
+                                    'title' => 'About US',
+                                    'routes' => [
+                                        'admin.about-us.index',
+                                        'admin.about-us.edit',
+                                    ],
+                                    'route' => 'admin.about-us.index',
+                                ],
+
+
                             ],
                         ],
+
                         [
                             'title' => 'Staff Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
@@ -235,6 +270,7 @@
                                 ],
                             ],
                         ],
+
                         [
                             'title' => 'Vendor Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
@@ -256,6 +292,7 @@
                                 ],
                             ],
                         ],
+
                         [
                             'title' => 'Settings',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
@@ -296,6 +333,7 @@
                                 ],
                             ],
                         ],
+
                     ];
                 @endphp
 

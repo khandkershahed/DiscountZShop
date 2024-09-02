@@ -108,9 +108,10 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             'page-banner' => PageBannerController::class,
             'terms-condition' => TermsAndConditionController::class,
             'privacy-policy' => PrivacyPolicyController::class,
+            'store' => StoreController::class,
+
             'offer' => OfferController::class,
             'coupon' => CouponController::class,
-            'store' => StoreController::class,
         ],
         ['except' => ['show']]
     );
@@ -127,6 +128,14 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             'newsletters' => NewsletterController::class,
             'brands' => BrandController::class, //done
             'contacts' => ContactController::class,
+
+        ],
+    );
+
+    // Created By Ashiquzzaman
+    Route::resources(
+        [
+            'about-us' => AboutUsController::class,
 
         ],
     );
@@ -159,11 +168,10 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');
 
-    Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
-    Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
+    // Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
+    // Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
 });
 
-// Offer Status 
+// Offer Status
 Route::put('admin/offer/status/{id}', [OfferController::class, 'updateStatus'])->name('admin.offer.status.update');
 Route::put('admin/coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('admin.coupon.status.update');
-

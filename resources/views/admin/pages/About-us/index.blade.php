@@ -1,7 +1,7 @@
 <x-admin-app-layout :title="'About Us'">
     <div class="card shadow-sm">
         <!--begin::Form-->
-        <form class="form" action="{{ route('admin.about-us.updateOrCreate') }}" method="POST"
+        <form class="form" action="" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
