@@ -165,4 +165,5 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
 // Offer Status 
 Route::put('admin/offer/status/{id}', [OfferController::class, 'updateStatus'])->name('admin.offer.status.update');
+Route::put('admin/coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('admin.coupon.status.update');
 

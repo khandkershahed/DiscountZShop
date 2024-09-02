@@ -209,7 +209,7 @@
                     <div class="col-lg-2 mb-7">
                         <x-metronic.label for="start_date"
                             class="col-form-label fw-bold fs-6 required">{{ __('Start Date') }}</x-metronic.label>
-                        <x-metronic.input id="start_date" type="date" name="start_date" :value="old('start_date')"
+                        <x-metronic.input id="start_date" type="datetime-local" name="start_date" :value="old('start_date')"
                             required></x-metronic.input>
                     </div>
 
@@ -218,7 +218,7 @@
                             class="col-form-label fw-bold fs-6 required">{{ __('Notification Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="notification_date" type="date" name="notification_date"
+                        <x-metronic.input id="notification_date" type="datetime-local" name="notification_date"
                             :value="old('notification_date')" placeholder="Enter the Coupon Code" required></x-metronic.input>
                     </div>
 
@@ -227,7 +227,7 @@
                             class="col-form-label fw-bold fs-6 required">{{ __('Expiry Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="expiry_date" type="date" name="expiry_date" :value="old('expiry_date')"
+                        <x-metronic.input id="expiry_date" type="datetime-local" name="expiry_date" :value="old('expiry_date')"
                             placeholder="Enter the Expiry Code" required></x-metronic.input>
                     </div>
 

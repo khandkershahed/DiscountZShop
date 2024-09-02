@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Coupon extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
+    protected $slugSourceColumn = 'name';
 
     /**
      * The attributes that aren't mass assignable.
@@ -15,4 +17,14 @@ class Coupon extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function added()
+    {
+        return $this->belongsTo(Admin::class, 'added_by');
+    }
+
+    public function categoryName()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }

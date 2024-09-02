@@ -68,9 +68,10 @@ class OfferController extends Controller
 
             'price' => 'required|numeric',
             'offer_price' => 'required|numeric',
-            'start_date' => 'required|date|date_format:Y-m-d',
-            'notification_date' => 'required|date|date_format:Y-m-d',
-            'expiry_date' => 'required|date|date_format:Y-m-d',
+
+            'start_date' => 'required',
+            'notification_date' => 'required',
+            'expiry_date' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -101,11 +102,12 @@ class OfferController extends Controller
             // Create the Offer model instance
             Offer::create([
 
-                'country_id' => $request->country_id,
-                'division_id' => $request->division_id,
-                'city_id' => $request->city_id,
-                'area_id' => $request->area_id,
-                'notify_to' => $request->notify_to,
+                'country_id' => json_encode($request->country_id),
+                'division_id' => json_encode($request->division_id),
+                'city_id' => json_encode($request->city_id),
+                'area_id' => json_encode($request->area_id),
+                'notify_to' => json_encode($request->notify_to),
+
                 'tags' => $request->tags,
 
                 'added_by' => Auth::guard('admin')->user()->id,
@@ -206,11 +208,12 @@ class OfferController extends Controller
                 'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $offer->image,
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $offer->banner_image,
 
-                'country_id' => $request->country_id,
-                'division_id' => $request->division_id,
-                'city_id' => $request->city_id,
-                'area_id' => $request->area_id,
-                'notify_to' => $request->notify_to,
+                'country_id' => json_encode($request->country_id),
+                'division_id' => json_encode($request->division_id),
+                'city_id' => json_encode($request->city_id),
+                'area_id' => json_encode($request->area_id),
+                'notify_to' => json_encode($request->notify_to),
+
                 'tags' => $request->tags,
 
                 'added_by' => Auth::guard('admin')->user()->id,
@@ -251,31 +254,24 @@ class OfferController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::beginTransaction();
 
-        try {
-            $offer = Offer::findOrFail($id);
+        $offer = Offer::findOrFail($id);
 
-            // Delete associated files from storage
-            $files = ['logo', 'image', 'banner_image'];
+        // Delete associated files from storage
+        $files = ['logo', 'image', 'banner_image'];
 
-            foreach ($files as $file) {
-                $filePath = $offer->$file;
-                if ($filePath && Storage::exists("public/$filePath")) {
-                    Storage::delete("public/$filePath");
-                }
+        foreach ($files as $file) {
+            $filePath = $offer->$file;
+            if ($filePath && Storage::exists("public/$filePath")) {
+                Storage::delete("public/$filePath");
             }
-
-            // Delete the offer record
-            $offer->delete();
-
-            DB::commit();
-
-            return redirect()->back();
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->route('admin.offer.index')->with('error', 'An error occurred while deleting the offer: ' . $e->getMessage());
         }
+
+        // Delete the offer record
+        $offer->delete();
+
+        DB::commit();
+
     }
 
     public function updateStatus(Request $request, $id)
