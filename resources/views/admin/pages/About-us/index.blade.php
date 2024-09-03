@@ -1,88 +1,228 @@
-<x-admin-app-layout :title="'About Us'">
-    <div class="card shadow-sm">
-        <!--begin::Form-->
-        <form class="form" action="" method="POST"
-            enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <div class="card-header">
-                <h3 class="card-title">About Us</h3>
-                <div class="card-toolbar">
-                    <a href="{{ route('admin.dashboard') }}"type="button" class="btn btn-sm btn-light">
-                        Back
-                    </a>
-                </div>
+<x-admin-app-layout :title="'About Us Update'">
+
+    {{-- Font Awesome CDN --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        // Configure Toastr
+        toastr.options = {
+            "closeButton": true, // Add a close button
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true, // Show a progress bar
+            "positionClass": "toast-top-right", // Position of the toast
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300", // Show duration in milliseconds
+            "hideDuration": "1000", // Hide duration in milliseconds
+            "timeOut": "5000", // Time to show the notification (5000ms = 5 seconds)
+            "extendedTimeOut": "1000", // Time to extend the notification on hover
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        /* The slider before it is checked */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        /* Change background color when checked */
+        input:checked+.slider {
+            background-color: #49c464;
+            /* Green color for active */
+        }
+
+        /* Move the slider handle when checked */
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        /* When the switch is inactive (danger color) */
+        input:not(:checked)+.slider {
+            background-color: #f44336;
+            /* Red color for inactive */
+        }
+
+        /* Rounded slider */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        /* Rounded slider handle */
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
+    <div class="card card-flash">
+        <div class="card-header mt-6">
+            <div class="card-title"></div>
+            <div class="card-toolbar">
+
+                {{-- <a href="{{ route('admin.about-us.create') }}" class="btn btn-light-primary">
+                    <span class="svg-icon svg-icon-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                fill="currentColor" />
+                            <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
+                                transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
+                            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
+                                fill="currentColor" />
+                        </svg>
+                    </span>
+                    Add About
+                </a> --}}
+
             </div>
-            <div class="card-body">
-                <!--begin::Alerts-->
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+        </div>
 
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
-                <!--end::Alerts-->
-                <!--begin::Input group-->
-                <div class="row">
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="image" class="col-form-label fw-bold fs-6 ">{{ __('About Us Photo') }}
-                        </x-metronic.label>
+        <div class="card-body pt-0">
+            <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th width="5%">No</th>
+                        <th>Banner Image</th>
+                        <th>Banner Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="fw-bold text-gray-600">
 
-                        <x-metronic.input id="image" type="file" name="image"
-                            :value="old('image', optional($aboutUs)->image)"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="title" class="col-form-label fw-bold fs-6 ">{{ __('Title') }}
-                        </x-metronic.label>
+                    @foreach ($aboutus as $key => $about)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
 
-                        <x-metronic.input id="title" type="text" name="title" placeholder="Enter the Title"
-                            :value="old('title', optional($aboutUs)->title)"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="badge" class="col-form-label fw-bold fs-6 ">{{ __('Badge') }}
-                        </x-metronic.label>
+                            <td class="">
+                                <img src="{{ !empty($about->banner_image) ? url('storage/' . $about->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($about->banner_image) }}"
+                                    height="40" width="40" alt="">
 
-                        <x-metronic.input id="badge" type="text" name="badge" placeholder="Enter the Badge"
-                            :value="old('badge', optional($aboutUs)->badge)"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="short_description"
-                            class="col-form-label fw-bold fs-6 ">{{ __('Short Description') }}
-                        </x-metronic.label>
+                            </td>
 
-                        <x-metronic.input id="short_description" type="text" name="short_description"
-                            placeholder="Enter the Short Description" :value="old('short_description', optional($aboutUs)->short_description)"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="button_name" class="col-form-label fw-bold fs-6 ">{{ __('Button Name') }}
-                        </x-metronic.label>
+                            {{-- <td class="text-start">{{ $about->categoryName->name }}</td> --}}
+                            <td class="">{{ $about->row_one_column_one_title }}</td>
 
-                        <x-metronic.input id="button_name" type="text" name="button_name"
-                            placeholder="Enter the Button Name" :value="old('button_name', optional($aboutUs)->button_name)"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="button_link" class="col-form-label fw-bold fs-6 ">{{ __('Button Link') }}
-                        </x-metronic.label>
+                            {{-- <td class="text-start">
+                                <label class="switch">
+                                    <input type="checkbox" class="status-toggle" data-id="{{ $about->id }}"
+                                        {{ $about->status == 'active' ? 'checked' : '' }}>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td> --}}
 
-                        <x-metronic.input id="button_link" type="url" name="button_link"
-                            placeholder="Enter the Button Link" :value="old('button_link', optional($aboutUs)->button_link)"></x-metronic.input>
-                    </div>
-                </div>
-                <!--end::Form-->
-            </div>
-            <div class="card-footer">
-                <div class="text-end">
-                    <x-metronic.button type="submit" class="primary">
-                        {{ __('Submit') }}
-                    </x-metronic.button>
-                </div>
-                <!--end::Actions-->
-            </div>
-        </form>
+
+                            <td>
+                                <a href="{{ route('admin.about-us.edit', $about->id) }}" class="text-primary">
+                                    <i class="fa-solid fa-pencil text-primary"></i>
+                                </a>
+
+                                <a href="{{ route('admin.about-us.destroy', $about->id) }}" class="delete">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    @endforeach
+
+
+                </tbody>
+            </table>
+        </div>
+
     </div>
+
+    @push('scripts')
+        <script>
+            $("#kt_datatable_example_5").DataTable({
+                "language": {
+                    "lengthMenu": "Show _MENU_",
+                },
+                "dom": "<'row'" +
+                    "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                    "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                    ">" +
+
+                    "<'table-responsive'tr>" +
+
+                    "<'row'" +
+                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                    ">"
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('.status-toggle').change(function() {
+                    var couponId = $(this).data('id');
+                    var newStatus = $(this).is(':checked') ? 'active' : 'inactive';
+
+                    $.ajax({
+                        url: '/admin/coupon/status/' + couponId,
+                        method: 'PUT',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            status: newStatus
+                        },
+                        success: function(response) {
+                            if (newStatus === 'active') {
+                                toastr.success('Coupon has been activated successfully.');
+                            } else {
+                                toastr.warning('Coupon has been deactivated successfully.');
+                            }
+                        },
+                        error: function(xhr) {
+                            toastr.error('An error occurred while updating the status.');
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
+
 </x-admin-app-layout>

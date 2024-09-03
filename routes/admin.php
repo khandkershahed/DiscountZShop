@@ -118,7 +118,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
     Route::resources(
         [
-
             'user' => UserController::class, //done
             'staff' => StaffController::class, //done
             'user-management' => UserManagementController::class, //done

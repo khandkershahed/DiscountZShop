@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AboutUs extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
 
-    protected $slugSourceColumn = 'title';
+    // protected $slugSourceColumn = 'title';
 
     /**
      * The attributes that aren't mass assignable.
@@ -19,8 +19,8 @@ class AboutUs extends Model
      */
     protected $guarded = [];
 
-    public function media()
-    {
-        return $this->morphOne(Media::class, 'model');
-    }
+    // public function media()
+    // {
+    //     return $this->morphOne(Media::class, 'model');
+    // }
 }
