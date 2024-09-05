@@ -3,101 +3,6 @@
     {{-- Font Awesome CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-    <!-- Toastr CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <script>
-        // Configure Toastr
-        toastr.options = {
-            "closeButton": true, // Add a close button
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": true, // Show a progress bar
-            "positionClass": "toast-top-right", // Position of the toast
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300", // Show duration in milliseconds
-            "hideDuration": "1000", // Hide duration in milliseconds
-            "timeOut": "5000", // Time to show the notification (5000ms = 5 seconds)
-            "extendedTimeOut": "1000", // Time to extend the notification on hover
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-    </script>
-
-
-    <style>
-        /* The switch - the box around the slider */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        /* The slider before it is checked */
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-        }
-
-        /* Change background color when checked */
-        input:checked+.slider {
-            background-color: #49c464;
-            /* Green color for active */
-        }
-
-        /* Move the slider handle when checked */
-        input:checked+.slider:before {
-            transform: translateX(26px);
-        }
-
-        /* When the switch is inactive (danger color) */
-        input:not(:checked)+.slider {
-            background-color: #f44336;
-            /* Red color for inactive */
-        }
-
-        /* Rounded slider */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        /* Rounded slider handle */
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
 
     <div class="card card-flash">
         <div class="card-header mt-6">
@@ -127,8 +32,8 @@
                 <thead class="bg-dark text-light">
                     <tr>
                         <th width="5%">No</th>
-                        <th>Banner Image</th>
-                        <th>Banner Image</th>
+                        <th>Template</th>
+                        {{-- <th>Banner Image</th> --}}
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -139,13 +44,14 @@
                             <td>{{ $key + 1 }}</td>
 
                             <td class="">
-                                <img src="{{ !empty($about->banner_image) ? url('storage/' . $about->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($about->banner_image) }}"
-                                    height="40" width="40" alt="">
+                                {{-- <img src="{{ !empty($about->banner_image) ? url('storage/' . $about->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($about->banner_image) }}"
+                                    height="40" width="40" alt=""> --}}
+                                <p>About One</p>
 
                             </td>
 
                             {{-- <td class="text-start">{{ $about->categoryName->name }}</td> --}}
-                            <td class="">{{ $about->row_one_column_one_title }}</td>
+                            {{-- <td class="">{{ $about->row_one_column_one_title }}</td> --}}
 
                             {{-- <td class="text-start">
                                 <label class="switch">
@@ -161,9 +67,9 @@
                                     <i class="fa-solid fa-pencil text-primary"></i>
                                 </a>
 
-                                <a href="{{ route('admin.about-us.destroy', $about->id) }}" class="delete">
+                                {{-- <a href="{{ route('admin.about-us.destroy', $about->id) }}" class="delete">
                                     <i class="fa-solid fa-trash text-danger"></i>
-                                </a>
+                                </a> --}}
 
                             </td>
                         </tr>
@@ -193,34 +99,6 @@
                     "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
                     "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
                     ">"
-            });
-        </script>
-
-        <script>
-            $(document).ready(function() {
-                $('.status-toggle').change(function() {
-                    var couponId = $(this).data('id');
-                    var newStatus = $(this).is(':checked') ? 'active' : 'inactive';
-
-                    $.ajax({
-                        url: '/admin/coupon/status/' + couponId,
-                        method: 'PUT',
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            status: newStatus
-                        },
-                        success: function(response) {
-                            if (newStatus === 'active') {
-                                toastr.success('Coupon has been activated successfully.');
-                            } else {
-                                toastr.warning('Coupon has been deactivated successfully.');
-                            }
-                        },
-                        error: function(xhr) {
-                            toastr.error('An error occurred while updating the status.');
-                        }
-                    });
-                });
             });
         </script>
     @endpush

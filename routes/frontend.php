@@ -1,11 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
-
-
-
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'homePage'])->name('homePage');
 Route::get('/about', [HomeController::class, 'aboutUs'])->name('aboutUs');
