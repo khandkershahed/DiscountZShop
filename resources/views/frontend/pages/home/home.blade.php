@@ -1,4 +1,5 @@
-<x-frontend-app-layout :title="'DiscountZShop || Offer and Discounts in One Place'">
+<x-frontend-app-layout :title="'DiscountZShop'">
+
     <!-- Hero Section -->
     <section>
         <div class="container-fluid px-0" style="overflow: hidden">
@@ -64,6 +65,7 @@
         </div>
     </section>
     <!-- Hero Section End -->
+
     <!-- Available Coupon Start -->
     <section>
         <div class="container pt-70 pb-70 px-0">
