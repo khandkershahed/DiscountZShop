@@ -112,6 +112,8 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
             'offer' => OfferController::class,
             'coupon' => CouponController::class,
+
+            'about-us' => AboutUsController::class,
         ],
         ['except' => ['show']]
     );
@@ -132,12 +134,12 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     );
 
     // Created By Ashiquzzaman
-    Route::resources(
-        [
-            'about-us' => AboutUsController::class,
+    // Route::resources(
+    //     [
+            
 
-        ],
-    );
+    //     ],
+    // );
 
     Route::get('active-mail-configuration', [EmailSettingController::class, 'activeMailConfiguration'])->name('active.mail.configuration');
     Route::put('email-settings', [EmailSettingController::class, 'emailUpdateOrCreate'])->name('email.settings.updateOrCreate');
@@ -169,7 +171,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
     // Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     // Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
-    
+
     // Offer Status
     Route::put('admin/offer/status/{id}', [OfferController::class, 'updateStatus'])->name('admin.offer.status.update');
     Route::put('admin/coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('admin.coupon.status.update');
