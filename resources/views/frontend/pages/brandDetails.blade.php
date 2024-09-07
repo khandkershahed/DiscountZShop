@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'Brand Details || DiscountZShop'">
+
     <section class="container px-0 mt-3">
         <div class="row">
             <div class="store-hero-slider">
@@ -12,6 +13,7 @@
         </div>
     </section>
     <!-- Hero End -->
+    
     <section>
         <div class="container py-5">
             <div class="row">

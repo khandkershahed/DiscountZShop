@@ -139,7 +139,7 @@
                             <td>{{ $key + 1 }}</td>
 
                             <td class="">
-                                <img src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : 'https://ui-avatars.com/api/?name=' . urlencode($banner->name) }}"
+                                <img src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : 'https://ui-avatars.com/api/?name=' . urlencode($banner->image_one) }}"
                                     height="40" width="40" alt="{{ $banner->name }}">
 
                             </td>

@@ -26,12 +26,13 @@
 
                             <div class="row gx-3">
 
+                                {{-- @dd($banner); --}}
+
                                 <div class="col-lg-12">
-                                    <div>
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ !empty(optional($banner)->image_one) && file_exists(public_path('storage/' . optional($banner)->image_one)) ? asset('storage/' . optional($banner)->image_one) : asset('images/no-banner(1920-330).png') }}"
-                                            alt="" alt="" />
-                                    </div>
+                                    <img class="img-fluid w-100 responsive-img"
+                                        src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
+                                        alt="" />
+
                                 </div>
 
                             </div>
@@ -40,7 +41,7 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ !empty(optional($banner)->image_two) && file_exists(public_path('storage/' . optional($banner)->image_two)) ? asset('storage/' . optional($banner)->image_two) : asset('images/no-banner(1920-330).png') }}"
+                                            src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
                                             alt="" />
                                     </div>
                                 </div>
@@ -48,7 +49,7 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ !empty(optional($banner)->image_three) && file_exists(public_path('storage/' . optional($banner)->image_three)) ? asset('storage/' . optional($banner)->image_three) : asset('images/no-banner(1920-330).png') }}"
+                                            src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
                                             alt="" />
                                     </div>
                                 </div>
@@ -120,38 +121,42 @@
                                 <div class="available-coupon-slider">
 
 
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
+                                    @foreach ($coupons as $coupon)
+                                        <div class="items">
+                                            <div class="d-flex coupons-box">
+                                                <div class="logo">
+                                                    <div class="coupon-logo">
+                                                        <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                                            class="img-fluid" alt="" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
+
+                                                <div class="content-area"
+                                                    style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
+                                                    <div class="p-1">
+                                                        <p
+                                                            class="align-items-center text-start ps-5 coupon-text text-white">
+                                                            Get Upto
+                                                        </p>
+                                                        <h5 class="discount-percentage text-center fw-bold">
+                                                            {{ $coupon->badge }}
+                                                        </h5>
+                                                        <p class="text-white text-center ps-5 coupon-text">
+                                                            OFF
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-white text-center coupon-text pt-1">
+                                                            Code: ”<span
+                                                                id="coupon-code">{{ $coupon->coupon_code }}</span>”
+                                                            <a href="javascript:void(0);" class="copy-btn"><i
+                                                                    class="fas fa-copy ps-2"></i></a>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
 
 
                                 </div>
@@ -163,6 +168,7 @@
         </div>
     </section>
     <!-- Available Coupon End -->
+
     <!-- App Discount Start -->
     <section class="app-discount-box">
         <div class="container px-0">
@@ -184,6 +190,7 @@
         </div>
     </section>
     <!-- App Discount End -->
+
     <!-- Grab Your Offer -->
     <section style="background: #f9f9f9">
         <div class="container pt-70 pb-70 px-0">
@@ -340,6 +347,7 @@
         </div>
     </section>
     <!-- Grab Your Offer End -->
+
     <!-- Promotion Product -->
     <section>
         <div class="container px-0 pb-70">
@@ -489,6 +497,7 @@
         </div>
     </section>
     <!-- Promotion Product End -->
+
     <!-- Grab By Location -->
     <section style="background-color: #f5f6f8">
         <div class="container pt-70 pb-70 px-0">
@@ -569,6 +578,7 @@
         </div>
     </section>
     <!-- Grab By Location End -->
+
     <!-- Product Slider -->
     <section>
         <div class="container pb-70 pt-70 px-0">
@@ -667,6 +677,7 @@
         </div>
     </section>
     <!-- Product Slider End -->
+
     <!-- Deal Of The Day -->
     <section>
         <div class="container px-0 pt-70 pb-70">
@@ -1148,6 +1159,7 @@
         </div>
     </section>
     <!-- Deal Of The Day End -->
+
     <!-- Normal Slider Product Show -->
     <section>
         <div class="container py-5 px-0">
@@ -1195,6 +1207,7 @@
             </div>
         </div>
     </section>
+
     <!-- Normal Slider Product Show ENd -->
     <section>
         <div class="container py-5 px-0">
@@ -1212,100 +1225,50 @@
             </div>
         </div>
     </section>
+
+    {{-- Brands  --}}
     <section>
         <div class="container-fluid partners">
             <div class="container px-0">
                 <div class="slick-slider-partners">
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 20.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 21.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 22.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 23.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 24.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
-                            alt="" />
-                    </div>
+
+                    @forelse ($brands as $brand)
+                        <a href="{{ route('brand.details', $brand->slug) }}">
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid"
+                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($brand->name) }}"
+                                    alt="" />
+                            </div>
+                        </a>
+
+                    @empty
+                        <p>No Brand Avaiable</p>
+                    @endforelse
+
+
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Footer Slider -->
     <section>
         <div class="container px-0 pt-70 pb-70">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="slick-slider-footer-slider">
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100"
-                                src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png" alt="" />
-                        </div>
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100"
-                                src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png" alt="" />
-                        </div>
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100"
-                                src="{{ asset('frontend') }}/assets/img/Footer Banner (2).png" alt="" />
-                        </div>
+
+                        @foreach ($offers as $offer)
+                            <a href="{{ route('offer.details', $offer->slug) }}">
+                                <div class="items d-flex justify-content-center align-items-center">
+                                    <img class="img-fluid w-100"
+                                        src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : asset('images/banner-demo.png') }}"
+                                        alt="" />
+                                </div>
+                            </a>
+                        @endforeach
+
+
                     </div>
                 </div>
             </div>

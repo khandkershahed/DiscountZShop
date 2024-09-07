@@ -2,26 +2,34 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Brand;
-use App\Models\Offer;
-use App\Models\Store;
-use App\Models\Banner;
-use App\Models\Coupon;
-use App\Models\Slider;
-use App\Models\AboutUs;
-use App\Models\Category;
-use App\Models\PageBanner;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
+use App\Models\Banner;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Coupon;
+use App\Models\Offer;
+use App\Models\PageBanner;
+use App\Models\Slider;
+use App\Models\Store;
 
 class HomeController extends Controller
 {
     //homePage
     public function homePage()
     {
-        $sliders = Slider::where('status','active')->latest()->get();
-        $banner = Banner::where('status','active')->latest()->get();
+        $data = [
 
-        return view('frontend.pages.home.home',compact('sliders','banner'));
+            'sliders' => Slider::where('status', 'active')->latest()->get(),
+            'banner' => Banner::where('status', 'active')->latest()->get(),
+
+            'coupons' => Coupon::latest()->get(),
+            'brands' => Brand::latest()->get(),
+            'offers' => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
+            
+        ];
+
+        return view('frontend.pages.home.home', $data);
     }
 
     //About Us
@@ -43,6 +51,8 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.contact', $data);
     }
+
+    //allBrand
     public function allBrand()
     {
         $data = [
@@ -52,6 +62,8 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.allBrand', $data);
     }
+
+    //brandDetails
     public function brandDetails($slug)
     {
         $data = [
@@ -64,7 +76,6 @@ class HomeController extends Controller
     public function allCoupon()
     {
         $data = [
-            'page_banner' => PageBanner::where('page_name', 'coupon')->latest('id')->first(),
             'page_banner' => PageBanner::where('page_name', 'coupon')->latest('id')->first(),
         ];
         return view('frontend.pages.allCoupon', $data);
@@ -93,19 +104,25 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.storeDetails', $data);
     }
+
+    //allOffer
     public function allOffer()
     {
         $data = [
+
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
+            'categorys' => Category::withCount('offers')->where('status', 'active')->orderBy('name','ASC')->limit(10)->latest()->get(),
         ];
         return view('frontend.pages.allOffer', $data);
     }
+
+    //offerDetails
     public function offerDetails($slug)
     {
         $data = [
             'offer' => Offer::where('slug', $slug)->first(),
-            'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
         ];
+        
         return view('frontend.pages.offerDetails', $data);
     }
     public function categoryDetails($slug)
