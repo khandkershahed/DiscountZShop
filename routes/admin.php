@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
@@ -38,6 +39,7 @@ use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -110,10 +112,13 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             'privacy-policy' => PrivacyPolicyController::class,
             'store' => StoreController::class,
 
+            // Created By Ashiquzzaman
             'offer' => OfferController::class,
             'coupon' => CouponController::class,
-
             'about-us' => AboutUsController::class,
+            'slider' => SliderController::class,
+            'banner' => BannerController::class,
+
         ],
         ['except' => ['show']]
     );
@@ -136,7 +141,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     // Created By Ashiquzzaman
     // Route::resources(
     //     [
-            
 
     //     ],
     // );
@@ -172,8 +176,9 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     // Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     // Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
 
-    // Offer Status
-    Route::put('admin/offer/status/{id}', [OfferController::class, 'updateStatus'])->name('admin.offer.status.update');
-    Route::put('admin/coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('admin.coupon.status.update');
 });
-
+// Offer Status
+Route::put('admin/offer/status/{id}', [OfferController::class, 'updateStatus'])->name('admin.offer.status.update');
+Route::put('admin/coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('admin.coupon.status.update');
+Route::put('admin/slider/status/{id}', [SliderController::class, 'updateStatusSlider'])->name('admin.slider.status.update');
+Route::put('admin/banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('admin.banner.status.update');

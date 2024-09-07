@@ -156,7 +156,7 @@
                             ],
                         ],
 
-                        // Site Content 
+                        // Site Content
                         [
                             'title' => 'Site Contents',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
@@ -177,7 +177,6 @@
                                 'admin.about-us.edit',
                             ],
                             'subMenu' => [
-
                                 [
                                     'title' => 'Terms & Condition',
                                     'routes' => [
@@ -210,14 +209,9 @@
 
                                 [
                                     'title' => 'About US',
-                                    'routes' => [
-                                        'admin.about-us.index',
-                                        'admin.about-us.edit',
-                                    ],
+                                    'routes' => ['admin.about-us.index', 'admin.about-us.edit'],
                                     'route' => 'admin.about-us.index',
                                 ],
-
-
                             ],
                         ],
 
@@ -304,6 +298,8 @@
                                 'admin.division.index',
                                 'admin.city.index',
                                 'admin.area.index',
+                                'admin.slider.index',
+                                'admin.banner.index',
                             ],
                             'subMenu' => [
                                 [
@@ -331,9 +327,18 @@
                                     'routes' => ['admin.area.index'],
                                     'route' => 'admin.area.index',
                                 ],
+                                [
+                                    'title' => 'Slider',
+                                    'routes' => ['admin.slider.index'],
+                                    'route' => 'admin.slider.index',
+                                ],
+                                [
+                                    'title' => 'Banner',
+                                    'routes' => ['admin.banner.index'],
+                                    'route' => 'admin.banner.index',
+                                ],
                             ],
                         ],
-
                     ];
                 @endphp
 

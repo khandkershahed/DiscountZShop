@@ -8,55 +8,51 @@
                     <div class="row gx-3">
                         <div class="col-lg-7">
                             <div class="slick-slider" style="height: 100%">
+
                                 <div class="hero-slider">
-                                    <div class="items">
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner1.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="items">
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="items">
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png"
-                                            alt="" />
-                                    </div>
-                                    <div class="items">
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png"
-                                            alt="" />
-                                    </div>
+
+                                    @foreach ($sliders as $slider)
+                                        <div class="items">
+                                            <img class="img-fluid w-100 responsive-img"
+                                                src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}" />
+                                        </div>
+                                    @endforeach
+
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-5">
+
                             <div class="row gx-3">
+
                                 <div class="col-lg-12">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner2.png"
-                                            alt="" />
+                                            src="{{ !empty(optional($banner)->image_one) && file_exists(public_path('storage/' . optional($banner)->image_one)) ? asset('storage/' . optional($banner)->image_one) : asset('images/no-banner(1920-330).png') }}"
+                                            alt="" alt="" />
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row mt-3 gx-3">
+
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner3.png"
+                                            src="{{ !empty(optional($banner)->image_two) && file_exists(public_path('storage/' . optional($banner)->image_two)) ? asset('storage/' . optional($banner)->image_two) : asset('images/no-banner(1920-330).png') }}"
                                             alt="" />
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6">
                                     <div>
                                         <img class="img-fluid w-100 responsive-img"
-                                            src="{{ asset('frontend') }}/assets/img/banner/banner4.png"
+                                            src="{{ !empty(optional($banner)->image_three) && file_exists(public_path('storage/' . optional($banner)->image_three)) ? asset('storage/' . optional($banner)->image_three) : asset('images/no-banner(1920-330).png') }}"
                                             alt="" />
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -122,6 +118,8 @@
                         <div class="card-body py-5" style="background-color: #f8f8f8">
                             <div class="slick-slider">
                                 <div class="available-coupon-slider">
+
+
                                     <div class="items">
                                         <div class="d-flex coupons-box">
                                             <div class="logo">
@@ -131,10 +129,7 @@
                                                 </div>
                                             </div>
                                             <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
+                                                style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                 <div class="p-1">
                                                     <p
                                                         class="align-items-center text-start ps-5 coupon-text text-white">
@@ -157,216 +152,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="items">
-                                        <div class="d-flex coupons-box">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                        class="img-fluid" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="
-                        background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');
-                        background-repeat: no-repeat;
-                      ">
-                                                <div class="p-1">
-                                                    <p
-                                                        class="align-items-center text-start ps-5 coupon-text text-white">
-                                                        Get Upto
-                                                    </p>
-                                                    <h5 class="discount-percentage text-center fw-bold">
-                                                        50%
-                                                    </h5>
-                                                    <p class="text-white text-center ps-5 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text pt-1">
-                                                        Code: ”<span id="coupon-code">SAVE50</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                class="fas fa-copy ps-2"></i></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -495,9 +282,11 @@
                                                             <div class="row p-4 align-items-center">
                                                                 <div class="col-lg-6">
                                                                     <div>
-                                                                        <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
-                                                                            height="80px" class="rounded-2 bg-white"
-                                                                            style="object-fit: cover;" alt="" />
+                                                                        <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
+                                                                            width="80px" height="80px"
+                                                                            class="rounded-2 bg-white"
+                                                                            style="object-fit: cover;"
+                                                                            alt="" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
@@ -510,21 +299,23 @@
                                                                     <p class="pb-4 text-black">
                                                                         Premium Punjabi collections for men on online
                                                                     </p>
-                                                                    <a href="{{ route('store.details','aarong') }}" class="main-color">
+                                                                    <a href="{{ route('store.details', 'aarong') }}"
+                                                                        class="main-color">
                                                                         <small>See all in store</small>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-lg-12 pt-4">
                                                                     <div class="d-flex">
-                                                                        <a href="" class="w-100 btn-common-one rounded-3">View</a>
                                                                         <a href=""
-                                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                                                class="fa-solid fa-copy"></i></a>
+                                                                            class="w-100 btn-common-one rounded-3">View</a>
+                                                                        <a href=""
+                                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon
+                                                                            <i class="fa-solid fa-copy"></i></a>
                                                                     </div>
                                                                     <p class="pt-2 text-center countdown"
                                                                         data-expire-date="August 17, 2024 00:00:00">
-                                                                        <span class="main-color">Expire In:</span> <span
-                                                                            class="countdown-timer">12 Days</span>
+                                                                        <span class="main-color">Expire In:</span>
+                                                                        <span class="countdown-timer">12 Days</span>
                                                                     </p>
                                                                 </div>
                                                             </div>

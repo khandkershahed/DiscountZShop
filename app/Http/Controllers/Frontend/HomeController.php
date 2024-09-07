@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
 use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Coupon;
 use App\Models\Offer;
-use App\Models\PageBanner;
 use App\Models\Store;
+use App\Models\Banner;
+use App\Models\Coupon;
+use App\Models\Slider;
+use App\Models\AboutUs;
+use App\Models\Category;
+use App\Models\PageBanner;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
+    //homePage
     public function homePage()
     {
-        return view('frontend.pages.home.home');
+        $sliders = Slider::where('status','active')->latest()->get();
+        $banner = Banner::where('status','active')->latest()->get();
+
+        return view('frontend.pages.home.home',compact('sliders','banner'));
     }
 
     //About Us
@@ -54,13 +60,16 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.brandDetails', $data);
     }
+
     public function allCoupon()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'coupon')->latest('id')->first(),
+            'page_banner' => PageBanner::where('page_name', 'coupon')->latest('id')->first(),
         ];
         return view('frontend.pages.allCoupon', $data);
     }
+
     public function couponDetails($slug)
     {
         $data = [
