@@ -19,8 +19,6 @@ return new class extends Migration
             $table->date('effective_date')->nullable();
             $table->date('expiration_date')->nullable();
             $table->string('status')->default('active')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

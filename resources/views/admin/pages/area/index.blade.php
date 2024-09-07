@@ -42,9 +42,9 @@
                     @foreach ($areas as $area)
                         <tr class="text-center fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $area->country->name }}</td>
-                            <td>{{ $area->division->name }}</td>
-                            <td>{{ $area->city->name }}</td>
+                            <td>{{ optional($area->country)->name }}</td>
+                            <td>{{ optional($area->division)->name }}</td>
+                            <td>{{ optional($area->city)->name }}</td>
                             <td>{{ $area->name }}</td>
                             <td><span class="badge {{ $area->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $area->status == 'active' ? 'Active' : 'InActive' }}</span></td>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-lg-6 mb-7">
                                 <x-metronic.label for="name"
-                                    class="col-form-label fw-bold fs-6 required">{{ __('City Name') }}
+                                    class="col-form-label fw-bold fs-6 required">{{ __('Area Name') }}
                                 </x-metronic.label>
 
                                 <x-metronic.input id="name" type="text" name="name" :value="old('name')"
@@ -216,7 +216,7 @@
                                 </div>
                                 <div class="col-lg-6 mb-7">
                                     <x-metronic.label for="name"
-                                        class="col-form-label fw-bold fs-6 required">{{ __('Division Name') }}
+                                        class="col-form-label fw-bold fs-6 required">{{ __('Area Name') }}
                                     </x-metronic.label>
                                     <x-metronic.input id="name" type="text" name="name" :value="old('name', $area->name)"
                                         placeholder="Enter the Name" required></x-metronic.input>

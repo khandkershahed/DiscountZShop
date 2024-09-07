@@ -96,8 +96,8 @@
                                         <td>
                                             <!--begin::Status-->
                                             <div
-                                                class="badge {{ $category->status == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
-                                                {{ $category->status == 1 ? 'Active' : 'InActive' }}
+                                                class="badge {{ $category->status == 'active' ? 'badge-light-success' : 'badge-light-danger' }}">
+                                                {{ $category->status == 'active' ? 'Active' : 'InActive' }}
                                             </div>
                                             <!--end::Status-->
                                         </td>

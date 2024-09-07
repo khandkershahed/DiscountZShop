@@ -1,8 +1,107 @@
 <x-admin-app-layout :title="'Coupon List'">
+
+    {{-- Font Awesome CDN --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        // Configure Toastr
+        toastr.options = {
+            "closeButton": true, // Add a close button
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true, // Show a progress bar
+            "positionClass": "toast-top-right", // Position of the toast
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300", // Show duration in milliseconds
+            "hideDuration": "1000", // Hide duration in milliseconds
+            "timeOut": "5000", // Time to show the notification (5000ms = 5 seconds)
+            "extendedTimeOut": "1000", // Time to extend the notification on hover
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        /* The slider before it is checked */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        /* Change background color when checked */
+        input:checked+.slider {
+            background-color: #49c464;
+            /* Green color for active */
+        }
+
+        /* Move the slider handle when checked */
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        /* When the switch is inactive (danger color) */
+        input:not(:checked)+.slider {
+            background-color: #f44336;
+            /* Red color for inactive */
+        }
+
+        /* Rounded slider */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        /* Rounded slider handle */
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
     <div class="card card-flash">
         <div class="card-header mt-6">
-            <div class="card-title">
-            </div>
+            <div class="card-title"></div>
             <div class="card-toolbar">
 
                 <a href="{{ route('admin.coupon.create') }}" class="btn btn-light-primary">
@@ -19,38 +118,122 @@
                     </span>
                     Add Coupon
                 </a>
+
             </div>
         </div>
+
         <div class="card-body pt-0">
-
-            <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
-
-                <thead>
-                    <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                        <th>Sl</th>
-                        <th>Coupon Name</th>
-                        <th>Brand Name</th>
-                        <th>Store Name</th>
-                        <th>Expire Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
+            <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th width="2%">No</th>
+                        <th width="5%">Image</th>
+                        <th width="5%">Category</th>
+                        <th width="8%">Name</th>
+                        <th width="5%">Price</th>
+                        <th width="5%">Offer Price</th>
+                        <th width="8%">Coupon Code</th>
+                        <th width="5%">Added By</th>
+                        <th width="5%">Status</th>
+                        <th width="5%">Actions</th>
                     </tr>
                 </thead>
-
                 <tbody class="fw-bold text-gray-600">
-                    @foreach ($coupons as $coupon)
-                        <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $coupon->name }}</td>
-                            <td>Status</td>
-                            <td>Action</td>
+
+                    @foreach ($coupons as $key => $coupon)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+
+                            <td class="">
+                                <img src="{{ !empty($coupon->image) ? url('storage/' . $coupon->image) : 'https://ui-avatars.com/api/?name=' . urlencode($coupon->name) }}"
+                                    height="40" width="40" alt="{{ $coupon->name }}">
+
+                            </td>
+
+                            <td class="text-start">{{ $coupon->categoryName->name }}</td>
+                            <td class="text-start">{{ $coupon->name }}</td>
+                            <td class="text-start">Tk {{ $coupon->price }}</td>
+                            <td class="text-start">Tk {{ $coupon->offer_price }}</td>
+                            <td class="text-start">{{ $coupon->coupon_code }}</td>
+
+                            <td class="text-start">{{ $coupon->added->name }}</td>
+
+                            <td class="text-start">
+                                <label class="switch">
+                                    <input type="checkbox" class="status-toggle" data-id="{{ $coupon->id }}"
+                                        {{ $coupon->status == 'active' ? 'checked' : '' }}>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+
+
+                            <td>
+                                <a href="{{ route('admin.coupon.edit', $coupon->id) }}" class="text-primary">
+                                    <i class="fa-solid fa-pencil text-primary"></i>
+                                </a>
+
+                                <a href="{{ route('admin.coupon.destroy', $coupon->id) }}" class="delete">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </a>
+
+                            </td>
                         </tr>
                     @endforeach
+
+
                 </tbody>
-
             </table>
-
         </div>
+
     </div>
+
+    @push('scripts')
+        <script>
+            $("#kt_datatable_example_5").DataTable({
+                "language": {
+                    "lengthMenu": "Show _MENU_",
+                },
+                "dom": "<'row'" +
+                    "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                    "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                    ">" +
+
+                    "<'table-responsive'tr>" +
+
+                    "<'row'" +
+                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                    ">"
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('.status-toggle').change(function() {
+                    var couponId = $(this).data('id');
+                    var newStatus = $(this).is(':checked') ? 'active' : 'inactive';
+
+                    $.ajax({
+                        url: '/admin/coupon/status/' + couponId,
+                        method: 'PUT',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            status: newStatus
+                        },
+                        success: function(response) {
+                            if (newStatus === 'active') {
+                                toastr.success('Coupon has been activated successfully.');
+                            } else {
+                                toastr.warning('Coupon has been deactivated successfully.');
+                            }
+                        },
+                        error: function(xhr) {
+                            toastr.error('An error occurred while updating the status.');
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 
 </x-admin-app-layout>

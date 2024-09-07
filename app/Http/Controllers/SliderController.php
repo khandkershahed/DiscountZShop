@@ -1,27 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Banner;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class BannerController extends Controller
+class SliderController extends Controller
 {
-
     public function index()
     {
-        return view('admin.pages.banner.index', ['banners' => Banner::latest()->get()]);
+        return view('admin.pages.slider.index', ['sliders' => Slider::latest()->get()]);
     }
 
     //create
     public function create()
     {
-        return view('admin.pages.banner.create');
+        return view('admin.pages.slider.create');
     }
 
     //store
@@ -29,9 +26,8 @@ class BannerController extends Controller
     {
         // Validate the request
         $validator = Validator::make($request->all(), [
-            'image_one' => 'required|file|mimes:jpeg,png,jpg|max:2048',
-            'image_two' => 'required|file|mimes:jpeg,png,jpg|max:2048',
-            'image_three' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'status' => 'required|in:active,inactive',
         ]);
 
         if ($validator->fails()) {
@@ -42,14 +38,13 @@ class BannerController extends Controller
 
         try {
             $files = [
-                'image_one' => $request->file('image_one'),
-                'image_two' => $request->file('image_two'),
-                'image_three' => $request->file('image_three'),
+                'image' => $request->file('image'),
             ];
+
             $uploadedFiles = [];
             foreach ($files as $key => $file) {
                 if (!empty($file)) {
-                    $filePath = 'banner/' . $key;
+                    $filePath = 'slider/' . $key;
                     $uploadedFiles[$key] = customUpload($file, $filePath);
                     if ($uploadedFiles[$key]['status'] === 0) {
                         return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
@@ -59,22 +54,18 @@ class BannerController extends Controller
                 }
             }
 
-            // Create the Offer model instance
-            Banner::create([
-
+            // Create the Slider model instance
+            Slider::create([
                 'status' => $request->status,
-
-                'image_one' => $uploadedFiles['image_one']['status'] == 1 ? $uploadedFiles['image_one']['file_path'] : null,
-                'image_two' => $uploadedFiles['image_two']['status'] == 1 ? $uploadedFiles['image_two']['file_path'] : null,
-                'image_three' => $uploadedFiles['image_three']['status'] == 1 ? $uploadedFiles['image_three']['file_path'] : null,
+                'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
             ]);
 
             DB::commit();
-            return redirect()->route('admin.banner.index')->with('success', 'Banner created successfully');
+            return redirect()->route('admin.slider.index')->with('success', 'Slider created successfully');
 
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Offer: ' . $e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Slider: ' . $e->getMessage());
         }
     }
 
@@ -82,30 +73,26 @@ class BannerController extends Controller
     public function edit(string $id)
     {
         $data = [
-            'banner' => Banner::findOrFail($id),
+            'slider' => Slider::findOrFail($id),
         ];
-        return view('admin.pages.banner.edit', $data);
+        return view('admin.pages.slider.edit', $data);
     }
 
     //Update
     public function update(Request $request, string $id)
     {
-        $banner = Banner::find($id);
+        $slider = Slider::find($id);
 
         DB::beginTransaction();
 
         try {
             $files = [
-
-                'image_one' => $request->file('image_one'),
-                'image_two' => $request->file('image_two'),
-                'image_three' => $request->file('image_three'),
-
+                'image' => $request->file('image')
             ];
             $uploadedFiles = [];
             foreach ($files as $key => $file) {
                 if (!empty($file)) {
-                    $filePath = 'banner/' . $key;
+                    $filePath = 'slider/' . $key;
                     $oldFile = $brand->$key ?? null;
 
                     if ($oldFile) {
@@ -121,21 +108,16 @@ class BannerController extends Controller
             }
 
             // Update the brand with the new or existing file paths
-            $banner->update([
+            $slider->update([
 
-                'image_one' => $uploadedFiles['image_one']['status'] == 1 ? $uploadedFiles['image_one']['file_path'] : $banner->image_one,
-
-                'image_two' => $uploadedFiles['image_two']['status'] == 1 ? $uploadedFiles['image_two']['file_path'] : $banner->image_two,
-
-                'image_three' => $uploadedFiles['image_three']['status'] == 1 ? $uploadedFiles['image_three']['file_path'] : $banner->image_three,
-                
+                'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $slider->image,
                 'status' => $request->status,
 
             ]);
 
             DB::commit();
 
-            return redirect()->route('admin.banner.index')->with('success', 'Banner updated successfully');
+            return redirect()->route('admin.slider.index')->with('success', 'Slider updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while updating the brand: ' . $e->getMessage());
@@ -146,15 +128,26 @@ class BannerController extends Controller
     public function destroy(string $id)
     {
 
-        $offer = Banner::findOrFail($id);
+        $offer = Slider::findOrFail($id);
+
+        // Delete associated files from storage
+        $files = ['image'];
+
+        foreach ($files as $file) {
+            $filePath = $offer->$file;
+            if ($filePath && Storage::exists("public/$filePath")) {
+                Storage::delete("public/$filePath");
+            }
+        }
+
         // Delete the offer record
         $offer->delete();
 
     }
 
-    public function updateStatusBanner(Request $request, $id)
+    public function updateStatusSlider(Request $request, $id)
     {
-        $offer = Banner::findOrFail($id);
+        $offer = Slider::findOrFail($id);
         $offer->status = $request->input('status');
         $offer->save();
 

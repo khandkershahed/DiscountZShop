@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Offer List'">
+<x-admin-app-layout :title="'Slider List'">
 
     {{-- Font Awesome CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -104,7 +104,7 @@
             <div class="card-title"></div>
             <div class="card-toolbar">
 
-                <a href="{{ route('admin.offer.create') }}" class="btn btn-light-primary">
+                <a href="{{ route('admin.slider.create') }}" class="btn btn-light-primary">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -116,7 +116,7 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    Add Offer
+                    Add Slider Image
                 </a>
 
             </div>
@@ -126,53 +126,40 @@
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead class="bg-dark text-light">
                     <tr>
-                        <th width="5%">No</th>
+                        <th width="2%">No</th>
                         <th width="5%">Image</th>
-                        <th width="5%">Category</th>
-                        <th width="8%">Name</th>
-                        <th width="5%">Price</th>
-                        <th width="5%">Offer Price</th>
-                        <th width="8%">Coupon Code</th>
-                        <th width="5%">Added By</th>
                         <th width="5%">Status</th>
                         <th width="5%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
 
-                    @foreach ($offers as $key => $offer)
+                    @foreach ($sliders as $key => $item)
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
                             <td class="">
-                                <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                    height="40" width="40" alt="{{ $offer->name }}">
+                                <img src="{{ !empty($item->image) ? url('storage/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
+                                    height="40" width="40" alt="">
 
                             </td>
 
-                            <td class="text-start">{{ $offer->categoryName->name }}</td>
-                            <td class="text-start">{{ $offer->name }}</td>
-                            <td class="text-start">Tk {{ $offer->price }}</td>
-                            <td class="text-start">Tk {{ $offer->offer_price }}</td>
-                            <td class="text-start">{{ $offer->coupon_code }}</td>
-
-                            <td class="text-start">{{ $offer->added->name }}</td>
 
                             <td class="text-start">
                                 <label class="switch">
-                                    <input type="checkbox" class="status-toggle" data-id="{{ $offer->id }}"
-                                        {{ $offer->status == 'active' ? 'checked' : '' }}>
+                                    <input type="checkbox" class="status-toggle" data-id="{{ $item->id }}"
+                                        {{ $item->status == 'active' ? 'checked' : '' }}>
                                     <span class="slider round"></span>
                                 </label>
                             </td>
 
 
                             <td>
-                                <a href="{{ route('admin.offer.edit', $offer->id) }}" class="text-primary">
+                                <a href="{{ route('admin.slider.edit', $item->id) }}" class="text-primary">
                                     <i class="fa-solid fa-pencil text-primary"></i>
                                 </a>
 
-                                <a href="{{ route('admin.offer.destroy', $offer->id) }}" class="delete">
+                                <a href="{{ route('admin.slider.destroy', $item->id) }}" class="delete">
                                     <i class="fa-solid fa-trash text-danger"></i>
                                 </a>
 
@@ -210,11 +197,11 @@
         <script>
             $(document).ready(function() {
                 $('.status-toggle').change(function() {
-                    var offerId = $(this).data('id');
+                    var sliderId = $(this).data('id');
                     var newStatus = $(this).is(':checked') ? 'active' : 'inactive';
 
                     $.ajax({
-                        url: '/admin/offer/status/' + offerId,
+                        url: '/admin/slider/status/' + sliderId,
                         method: 'PUT',
                         data: {
                             _token: '{{ csrf_token() }}',
@@ -222,9 +209,9 @@
                         },
                         success: function(response) {
                             if (newStatus === 'active') {
-                                toastr.success('Offer has been activated successfully.');
+                                toastr.success('Slider has been activated successfully.');
                             } else {
-                                toastr.warning('Offer has been deactivated successfully.');
+                                toastr.warning('Slider has been deactivated successfully.');
                             }
                         },
                         error: function(xhr) {

@@ -19,9 +19,9 @@ class Category extends Model
      */
     protected $guarded = [];
 
-    protected $casts = [
-        'status' => 'boolean',
-    ];
+    // protected $casts = [
+    //     'status' => 'boolean',
+    // ];
 
     public function parent()
     {
@@ -32,9 +32,18 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+    public function brands()
+    {
+        return $this->hasMany(Brand::class, 'category_id');
+    }
 
     public function scopeActive($query)
     {
-        return $query->where('status', 1);
+        return $query->where('status', 'active');
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
     }
 }

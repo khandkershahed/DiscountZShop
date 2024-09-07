@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 
 
 if (!function_exists('customUpload')) {
@@ -12,27 +11,48 @@ if (!function_exists('customUpload')) {
     {
         try {
             $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $name = Str::limit($originalName, 180);
-            $hashedName = substr($mainFile->hashName(), -12);
-            $fileName = $name . '_' . $hashedName;
+            $fileExtention = $mainFile->getClientOriginalExtension();
+            $currentTime = Str::random(10) . time();
+            $name = Str::limit($originalName, 100);
+            $fileName = $currentTime . '.' . $fileExtention;
+            $fullUploadPath = "public/$uploadPath";
 
-            if (!is_dir($uploadPath)) {
-                if (!mkdir($uploadPath, 0777, true)) {
-                    abort(404, "Failed to create the directory: $uploadPath");
+            // Ensure directory exists
+            if (!Storage::exists($fullUploadPath)) {
+                // Create directory
+                $localPath = storage_path("app/$fullUploadPath");
+                if (!mkdir($localPath, 0755, true)) {
+                    abort(404, "Failed to create the directory: $fullUploadPath");
                 }
-                chmod($uploadPath, 0777);// Reset umask to default (optional)
+                // Ensure directory permissions are set correctly
+                chmod($localPath, 0755);
             }
 
-            $mainFile->storeAs("public/$uploadPath", $fileName);
-            $filePath = "$uploadPath/$fileName";
+            // Store the file
+            try {
+                $mainFile->storeAs($fullUploadPath, $fileName);
+                $filePath = "$uploadPath/$fileName";
+            } catch (\Exception $e) {
+                abort(500, "Failed to store the file: " . $e->getMessage());
+            }
+
+            // if (!is_dir("public/$uploadPath")) {
+            //     if (!mkdir("public/$uploadPath", 0777, true)) {
+            //         abort(404, "Failed to create the directory: public/$uploadPath");
+            //     }
+            //     chmod($uploadPath, 0777); // Reset umask to default (optional)
+            // }
+
+            // $mainFile->storeAs("public/$uploadPath", $fileName);
+            // $filePath = "$uploadPath/$fileName";
 
             $output = [
-                'status'         => 1,
-                'file_name'      => $fileName,
+                'status' => 1,
+                'file_name' => $fileName,
                 'file_extension' => $mainFile->getClientOriginalExtension(),
-                'file_size'      => $mainFile->getSize(),
-                'file_type'      => $mainFile->getMimeType(),
-                'file_path'      => $filePath ,
+                'file_size' => $mainFile->getSize(),
+                'file_type' => $mainFile->getMimeType(),
+                'file_path' => $filePath,
             ];
 
             return array_map('htmlspecialchars', $output);
@@ -74,6 +94,7 @@ if (!function_exists('handaleFileUpload')) {
     }
 }
 
+
 if (!function_exists('handleFileUpdate')) {
     /**
      * Handle file upload and deletion of old files.
@@ -96,6 +117,7 @@ if (!function_exists('handleFileUpdate')) {
         return $model->$fileKey;
     }
 }
+
 
 if (!function_exists('noImage')) {
     function noImage()

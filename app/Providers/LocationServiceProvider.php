@@ -46,5 +46,7 @@ class LocationServiceProvider extends ServiceProvider
             $view->with('city', $location['city'] ?? 'Unknown');
             $view->with('country', $location['country'] ?? 'Unknown');
         });
+
+        
     }
 }

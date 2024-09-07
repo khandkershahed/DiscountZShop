@@ -13,20 +13,46 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('set null');
-            $table->foreignId('division_id')->nullable()->constrained('divisions')->onDelete('set null');
-            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('set null');
-            $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');
+
+            $table->json('country_id')->nullable();
+            $table->json('division_id')->nullable();
+            $table->json('city_id')->nullable();
+            $table->json('area_id')->nullable();
+            $table->json('notify_to')->nullable()->comment('ids from admin table');
+            $table->json('tags')->nullable();
+
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->string('name', 30)->unique();
-            $table->string('slug', 40)->unique();
-            $table->string('logo', 150)->nullable();
-            $table->string('image', 150)->nullable();
-            $table->string('banner_image', 150)->nullable();
-            $table->text('description')->nullable();
-            $table->string('url', 255)->nullable();
-            $table->string('status')->default('active')->comment('inactive,active');
-            $table->timestamps();
+            $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('set null');
+            $table->foreignId('store_id')->nullable()->constrained('stores')->onDelete('set null');
+            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
+
+            $table->string('badge')->nullable();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+
+            $table->string('logo')->nullable();
+            $table->string('image')->nullable();
+            $table->string('banner_image')->nullable();
+
+            $table->double('price')->nullable();
+            $table->double('offer_price')->nullable();
+
+            $table->longText('description')->nullable();
+            $table->longText('locations')->nullable();
+
+            $table->text('url')->nullable();
+            $table->text('source_url')->nullable();
+            $table->text('map_url')->nullable();
+
+            $table->string('coupon_code')->nullable();
+            
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('notification_date')->nullable();
+            $table->timestamp('expiry_date')->nullable();
+
+            $table->string('status')->default('active')->comment('inactive,active,expired');
+            
+            $table->timestamps(); // Creates `created_at` and `updated_at` columns
         });
     }
 
