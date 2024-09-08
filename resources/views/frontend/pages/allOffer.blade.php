@@ -168,9 +168,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <span>Upto</span>
+
                                                     <h1 class="main-color special-font-box">
-                                                        50% Off
+                                                        {{ $offer->badge }}
                                                     </h1>
                                                 </div>
                                                 <div class="col-lg-12 pt-4">
@@ -223,9 +223,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <span>Upto</span>
                                                         <h1 class="main-color special-font-box">
-                                                            {{ $cateWiseOffer->badge }}% Off
+                                                            {{ $cateWiseOffer->badge }}
                                                         </h1>
                                                     </div>
                                                     <div class="col-lg-12 pt-4">
