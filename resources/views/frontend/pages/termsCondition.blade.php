@@ -18,9 +18,9 @@
                     @if (!empty($setting->support_email))
                         <p class="pt-2">Email: [{{ $setting->support_email }}]</p>
                     @endif
-                    @if (!empty($setting->primary_phone))
+                    {{-- @if (!empty($setting->primary_phone))
                         <p class="pt-2">Phone: [{{ $setting->primary_phone }}]</p>
-                    @endif
+                    @endif --}}
 
                     @if (!empty($terms->effective_date))
                         <p class="pt-2">Effective Date: [{{ $terms->effective_date }}]</p>
