@@ -538,7 +538,7 @@ p {
   height: 150px;
 }
 .product-scroll-show {
-  height: 783px;
+  /* height: 783px; */
   overflow-x: hidden;
 }
 .mapoverlay {

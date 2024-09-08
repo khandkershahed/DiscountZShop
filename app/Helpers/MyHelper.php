@@ -18,6 +18,7 @@ if (!function_exists('customUpload')) {
             $fullUploadPath = "public/$uploadPath";
 
             // Ensure directory exists
+            // Ensure directory exists
             if (!Storage::exists($fullUploadPath)) {
                 // Create directory
                 $localPath = storage_path("app/$fullUploadPath");

@@ -15,23 +15,20 @@
             class="col-form-label fw-bold fs-6 ">{{ __('Site Logo White (For Colorful Background)') }}
         </x-metronic.label>
 
-        <x-metronic.file-input id="site_logo_white" name="site_logo_white" :source="asset('storage/' . optional($setting)->site_logo_white)"
-            :value="old('site_logo_white')"></x-metronic.file-input>
+        <x-metronic.file-input id="site_logo_white" name="site_logo_white" :source="asset('storage/' . optional($setting)->site_logo_white)"></x-metronic.file-input>
     </div>
     <div class="col-lg-4 mb-7">
         <x-metronic.label for="site_logo_black"
             class="col-form-label fw-bold fs-6 ">{{ __('Site Logo Colorful (For White Background)') }}
         </x-metronic.label>
 
-        <x-metronic.file-input id="site_logo_black" name="site_logo_black" :source="asset('storage/' . optional($setting)->site_logo_black)"
-            :value="old('site_logo_black')"></x-metronic.file-input>
+        <x-metronic.file-input id="site_logo_black" name="site_logo_black" :source="asset('storage/' . optional($setting)->site_logo_black)"></x-metronic.file-input>
     </div>
     <div class="col-lg-4 mb-7">
         <x-metronic.label for="site_favicon" class="col-form-label fw-bold fs-6 ">{{ __('Site Favicon') }}
         </x-metronic.label>
 
-        <x-metronic.file-input id="site_favicon" type="file" name="site_favicon" :source="asset('storage/' . optional($setting)->site_favicon)"
-            :value="old('site_favicon', optional($setting)->site_favicon)"></x-metronic.file-input>
+        <x-metronic.file-input id="site_favicon" type="file" name="site_favicon" :source="asset('storage/' . optional($setting)->site_favicon)"></x-metronic.file-input>
     </div>
 
     <div class="col-lg-4 mb-7">
