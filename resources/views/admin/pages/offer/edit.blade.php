@@ -184,7 +184,7 @@
                         <x-metronic.label for="badge" class="col-form-label fw-bold fs-6">{{ __('Badge') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="badge" type="number" name="badge" value="{{ $offer->badge }}"
+                        <x-metronic.input id="badge" type="text" name="badge" value="{{ $offer->badge }}"
                             placeholder="Enter the Badge"></x-metronic.input>
                     </div>
 

@@ -157,7 +157,7 @@
                         <x-metronic.label for="badge" class="col-form-label fw-bold fs-6">{{ __('Badge') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="badge" type="number" name="badge" :value="old('badge')"
+                        <x-metronic.input id="badge" type="text" name="badge" :value="old('badge')"
                             placeholder="Eg:50"></x-metronic.input>
                     </div>
 
