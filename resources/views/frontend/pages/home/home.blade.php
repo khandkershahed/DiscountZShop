@@ -646,7 +646,7 @@
                                         <p class="py-3">
                                             {{ $offerLatest->short_description }}
                                         </p>
-                                        <a class="btn btn-dark rounded-pill px-5" href="#">See Details</a>
+                                        <a class="btn btn-dark rounded-pill px-5" href="{{ url('/offer-details' . '/' . $offerLatest->id . '/' . $offerLatest->slug) }}">See Details</a>
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
@@ -722,10 +722,12 @@
                                             </h5>
 
                                         </div>
+
                                         <div class="py-5 d-flex justify-content-center align-items-center">
-                                            <a href="" class="btn btn-common-one rounded-pill px-4">See
+                                            <a href="{{ url('/offer-details' . '/' . $offerDealLeft->id . '/' . $offerDealLeft->slug) }}" class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
                                         </div>
+                                        
                                         <div class="text-center pb-5 pt-4">
                                             <div>
                                                 <h5>
@@ -832,7 +834,7 @@
                                                 alt="" />
                                         </div>
                                         <div>
-                                            <a href="">
+                                            <a href="{{ url('/offer-details' . '/' . $offerDeal->id . '/' . $offerDeal->slug) }}">
                                                 <h6 class="mb-0 product-title">
                                                     {{ $offerDeal->name }}
                                                 </h6>

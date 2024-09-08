@@ -14,7 +14,7 @@ Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('em
 Route::get('/category/{slug}', [HomeController::class, 'categoryDetails'])->name('category.details');
 
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
-Route::get('/offer/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
+Route::get('/offer-details/{id}/{slug}', [HomeController::class, 'offerDetails']);
 
 Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand');
 Route::get('/brand/{slug}', [HomeController::class, 'brandDetails'])->name('brand.details');
@@ -27,4 +27,5 @@ Route::get('/store/{slug}', [HomeController::class, 'storeDetails'])->name('stor
 
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
+
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');

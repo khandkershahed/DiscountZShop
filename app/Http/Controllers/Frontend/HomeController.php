@@ -131,13 +131,11 @@ class HomeController extends Controller
     }
 
     //offerDetails
-    public function offerDetails($slug)
+    public function offerDetails($id,$slug)
     {
-        $data = [
-            'offer' => Offer::where('slug', $slug)->first(),
-        ];
-
-        return view('frontend.pages.offerDetails', $data);
+        $offerDetails = Offer::find($id);
+        return view('frontend.pages.offerDetails', compact('offerDetails'));
+        
     }
     public function categoryDetails($slug)
     {

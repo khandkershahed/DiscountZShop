@@ -6,34 +6,27 @@
                 <div class="col-lg-4">
                     <div>
                         <img class="img-fluid"
-                            src="https://govisually.com/wp-content/uploads/2023/03/use-bokeh-for-product-photography.png"
+                            src="{{ !empty($offerDetails->image) ? url('storage/' . $offerDetails->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDetails->name) }}"
                             alt="" />
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div>
-                        <h1 class="pb-3 main-color">{{ $offer->badge }}% Off</h1>
-                        <h4>{{ $offer->name }}</h4>
+                        <h1 class="pb-3 main-color">{{ $offerDetails->badge }}% Off</h1>
+                        <h4>{{ $offerDetails->name }}</h4>
                         <div class="d-flex align-items-center pt-3">
                             <p>Price:</p>
-                            <h6 class="ps-2 main-color">Tk: {{ $offer->price }}</h6>
+                            <h6 class="ps-2 main-color">{{ $offerDetails->price }}</h6>
                         </div>
                         <hr />
                         <p class="pt-2">
-                            Climbing is the activity of using one’s hands and feet (or
-                            indeed any other part of the body) to ascend a steep object.
-                            It is done both for recreation, to reach an inaccessible
-                            place, or for its own enjoyment. Just a sweet description
-                            here for this product.other part of the body) to ascend a
-                            steep object. It is done both for recreation, to reach an
-                            inaccessible place, or for its own enjoyment. Just a sweet
-                            description here for this product.
+                            {!! $offerDetails->short_description !!}
                         </p>
                         {{-- <div class="d-flex align-items-center pt-3">
                             <p>Available:</p>
                             <h6 class="ps-2 main-color">L'Oreal All Store</h6>
                         </div> --}}
-                        <p class="pt-2 countdown" data-expire-date="{{ $offer->expiry_date }}">
+                        <p class="pt-2 countdown" data-expire-date="{{ $offerDetails->expiry_date }}">
                             <span class="text-muted">Expire :</span>
                             <span class="countdown-timer main-color"></span>
                         </p>
@@ -48,7 +41,7 @@
         </div>
     </section>
 
-    <section>
+    {{-- <section>
         <div class="container py-5 pt-0">
             <!-- Share Row -->
             <hr />
@@ -79,13 +72,13 @@
                         </button>
                         <button class="btn btn-common-three me-3 text-white border-0"
                             style="
-                      background: linear-gradient(
-                        to right,
-                        #833ab4,
-                        #fd1d1d,
-                        #fcaf45,
-                        #f7b732
-                      );
+                        background: linear-gradient(
+                            to right,
+                            #833ab4,
+                            #fd1d1d,
+                            #fcaf45,
+                            #f7b732
+                        );
                     ">
                             <i class="fa-brands fa-instagram"></i> Instagram
                         </button>
@@ -94,9 +87,9 @@
                         </button>
                         <button class="btn btn-common-three me-3 text-white"
                             style="
-                      background: linear-gradient(to right, #ff0000, #cc0000);
+                        background: linear-gradient(to right, #ff0000, #cc0000);
                     ">
-                            <i class="fa-brands fa-youtube"></i> Yoube app
+                            <i class="fa-brands fa-youtube"></i> YouTube
                         </button>
                     </div>
                 </div>
@@ -104,7 +97,7 @@
             <hr />
             <!-- Share Row End -->
         </div>
-    </section>
+    </section> --}}
 
     <section>
         <div class="container">
@@ -113,31 +106,18 @@
                     <div class="mb-5">
                         <h3 class="pb-3">Descriptions</h3>
                         <p>
-                            {!! $offer->description !!}
+                            {!! $offerDetails->description !!}
                         </p>
                     </div>
-                </div>
-                <div class="col-lg-12 pb-5">
-                    <h3 class="pb-3">Feature list</h3>
-                    <ul class="ms-0 ps-4">
-                        <li>Ut nec ligula a urna luctus iaculis.</li>
-                        <li>
-                            Quisque congue libero eu erat vestibulum mattis in ac
-                            mauris.
-                        </li>
-                        <li>Sed porttitor felis sit amet urna suscipit imperdiet.</li>
-                        <li>Phasellus dignissim eros id vehicula pharetra.</li>
-                        <li>
-                            Curabitur sit amet odio eget libero adipiscing auctor.
-                        </li>
-                        <li>Maecenas auctor nisl sed aliquet mattis.</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
+
+    {{-- Smiliar Offer  --}}
+
+    {{-- <section>
         <div class="container py-4 pt-0">
             <div class="row">
                 <div class="col-lg-12">
@@ -376,7 +356,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     {{-- <section>
         <div class="container">
