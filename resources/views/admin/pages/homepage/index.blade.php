@@ -100,7 +100,8 @@
     </style>
 
     <div class="card card-flash">
-        <div class="card-header mt-6">
+
+        {{-- <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
 
@@ -120,7 +121,7 @@
                 </a>
 
             </div>
-        </div>
+        </div> --}}
 
         <div class="card-body pt-0">
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
@@ -148,9 +149,9 @@
                                     <i class="fa-solid fa-pencil text-primary"></i>
                                 </a>
 
-                                <a href="{{ route('admin.homepage.destroy', $homepage->id) }}" class="delete">
+                                {{-- <a href="{{ route('admin.homepage.destroy', $homepage->id) }}" class="delete">
                                     <i class="fa-solid fa-trash text-danger"></i>
-                                </a>
+                                </a> --}}
 
                             </td>
                         </tr>

@@ -722,7 +722,8 @@
                                         </div>
 
                                         <div class="py-5 d-flex justify-content-center align-items-center">
-                                            <a href="" class="btn btn-common-one rounded-pill px-4">See
+                                            <a href="{{ route('offer.details', $offerLatest->slug) }}"
+                                                class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
                                         </div>
 
@@ -782,33 +783,7 @@
                                             <div>
                                                 <div class="countdown-hms">
 
-                                                    {{-- <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
 
-                                                        <li>
-                                                            <span class="hours count-items p-2 me-1"></span>
-                                                        </li>
-
-                                                        <li>
-                                                            <span class="minutes count-items p-2 me-1"></span>
-                                                        </li>
-
-                                                        <li>
-                                                            <span class="seconds count-items p-2 me-1"></span>
-                                                        </li>
-
-                                                    </ul>
-
-                                                    <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                        <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                            Hour
-                                                        </li>
-                                                        <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                            Min
-                                                        </li>
-                                                        <li class="me-3 pt-0" style="font-size: 12px">
-                                                            Sec
-                                                        </li>
-                                                    </ul> --}}
 
                                                     <p class="pt-2 text-center countdown"
                                                         data-expire-date="{{ $offerDeal->expiry_date }}">
@@ -832,8 +807,7 @@
                                                 alt="" />
                                         </div>
                                         <div>
-                                            <a
-                                                href="{{ url('/offer-details' . '/' . $offerDeal->id . '/' . $offerDeal->slug) }}">
+                                            <a href="{{ route('offer.details', $offerLatest->slug) }}">
                                                 <h6 class="mb-0 product-title">
                                                     {{ $offerDeal->name }}
                                                 </h6>
