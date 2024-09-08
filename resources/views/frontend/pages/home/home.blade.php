@@ -273,7 +273,6 @@
                                                                     <div class="col-lg-6">
                                                                         <div>
                                                                             <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                                width="80px" height="80px"
                                                                                 class="rounded-2 bg-white"
                                                                                 style="object-fit: cover;"
                                                                                 alt="" />
@@ -330,7 +329,6 @@
                                                                         <div class="col-lg-6">
                                                                             <div>
                                                                                 <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                                    width="80px" height="80px"
                                                                                     class="rounded-2 bg-white"
                                                                                     style="object-fit: cover;"
                                                                                     alt="" />
