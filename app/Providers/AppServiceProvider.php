@@ -42,13 +42,10 @@ class AppServiceProvider extends ServiceProvider
         View::share('citys', null);
         View::share('areas', null);
         View::share('admins', null);
-        View::share('homepages', null);
 
         try {
             
-            if (Schema::hasTable('homepages')) {
-                View::share('homepage', HomePage::first());
-            }
+            
 
             if (Schema::hasTable('settings')) {
                 View::share('setting', Setting::first());

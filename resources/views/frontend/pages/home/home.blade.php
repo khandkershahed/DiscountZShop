@@ -581,93 +581,40 @@
     <section>
         <div class="container pb-70 pt-70 px-0">
             <div class="row">
+
                 <div class="col-lg-12">
                     <!-- Slick Slider -->
                     <div class="slick-slider-product">
-                        <div class="items me-2" style="background-color: #f5f6f8">
-                            <div class="row p-4 align-items-center">
-                                <div class="col-lg-7">
-                                    <h4>A community doing good</h4>
-                                    <p class="py-3">
-                                        Commerce is a global online marketplace, where people
-                                    </p>
-                                    <a class="btn btn-dark rounded-pill px-5" href="#">See Details</a>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div>
-                                        <h6 class="main-color text-center pb-3">25% OFF</h6>
-                                        <div class="d-flex justify-content-center text-center">
-                                            <img class="img-fluid flat-offer-img"
-                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
-                                                alt="" />
+
+                        @forelse ($offerLatests as $offerLatest)
+                            <div class="items me-2" style="background-color: #f5f6f8">
+                                <div class="row p-4 align-items-center">
+                                    <div class="col-lg-7">
+                                        <h4>{{ $offerLatest->name }}</h4>
+                                        <p class="py-3">
+                                            {{ $offerLatest->short_description }}
+                                        </p>
+                                        <a class="btn btn-dark rounded-pill px-5" href="#">See Details</a>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div>
+                                            <h6 class="main-color text-center pb-3">{{ $offerLatest->badge }}% OFF
+                                            </h6>
+                                            <div class="d-flex justify-content-center text-center">
+
+                                                <img class="img-fluid flat-offer-img"
+                                                    src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
+                                                    alt="" />
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="items me-2" style="background-color: #f5f6f8">
-                            <div class="row p-4 align-items-center">
-                                <div class="col-lg-7">
-                                    <h4>A community doing good</h4>
-                                    <p class="py-3">
-                                        Commerce is a global online marketplace, where people
-                                    </p>
-                                    <a class="btn btn-dark rounded-pill px-5" href="#">See Details</a>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div>
-                                        <h6 class="main-color text-center pb-3">25% OFF</h6>
-                                        <div class="d-flex justify-content-center text-center">
-                                            <img class="img-fluid flat-offer-img"
-                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
-                                                alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items me-2" style="background-color: #f5f6f8">
-                            <div class="row p-4 align-items-center">
-                                <div class="col-lg-7">
-                                    <h4>A community doing good</h4>
-                                    <p class="py-3">
-                                        Commerce is a global online marketplace, where people
-                                    </p>
-                                    <a class="btn btn-dark rounded-pill px-5" href="#">See Details</a>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div>
-                                        <h6 class="main-color text-center pb-3">25% OFF</h6>
-                                        <div class="d-flex justify-content-center text-center">
-                                            <img class="img-fluid flat-offer-img"
-                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
-                                                alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items me-2" style="background-color: #f5f6f8">
-                            <div class="row p-4 align-items-center">
-                                <div class="col-lg-7">
-                                    <h4>A community doing good</h4>
-                                    <p class="py-3">
-                                        Commerce is a global online marketplace, where people
-                                    </p>
-                                    <a class="btn btn-dark rounded-pill px-5" href="#">See Details</a>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div>
-                                        <h6 class="main-color text-center pb-3">25% OFF</h6>
-                                        <div class="d-flex justify-content-center text-center">
-                                            <img class="img-fluid flat-offer-img"
-                                                src="{{ asset('frontend') }}/assets/img/product/sliderproduct1.png"
-                                                alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+                            <p>No Offer Avaiable</p>
+                        @endforelse
+
                     </div>
                     <!-- End Slick Slider -->
                 </div>
@@ -705,106 +652,54 @@
                         <div class="card-body">
                             <!-- Slider Items -->
                             <div class="deal-slider">
-                                <div class="items">
-                                    <div class="py-5 d-flex justify-content-center">
-                                        <img class="img-fluid rounded-2"
-                                            src="{{ asset('frontend') }}/assets/img/deal.png" alt="" />
-                                    </div>
-                                    <div class="py-3">
-                                        <h5 class="text-center">
-                                            <span class="fw-bold">২৮%</span> ছাড়ে বই, অতিরিক্ত
-                                            ৪% ছাড় অ্যাপ অর্ডারে 'APPUSER' ব্যবহারে (৩০-৩১
-                                            মার্চ)
-                                        </h5>
-                                    </div>
-                                    <div class="py-5 d-flex justify-content-center align-items-center">
-                                        <a href="" class="btn btn-common-one rounded-pill px-4">See
-                                            Details</a>
-                                    </div>
-                                    <div class="text-center pb-5 pt-4">
-                                        <div>
-                                            <h5>
-                                                <span class="main-color">Hurry Up!</span> Offers
-                                                end in:
+
+                                @forelse ($offerDealLefts as $offerDealLeft)
+                                    <div class="items">
+                                        <div class="py-5 d-flex justify-content-center">
+                                            <img class="img-fluid rounded-2"
+                                                src="{{ !empty($offerDealLeft->image) ? url('storage/' . $offerDealLeft->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDealLeft->name) }}"
+                                                alt="" />
+                                        </div>
+                                        <div class="py-3">
+
+                                            <h5 class="text-center">
+                                                <span class="fw-bold main-color">{{ $offerDealLeft->badge }}%
+                                                </span>{{ $offerDealLeft->name }}
                                             </h5>
+
                                         </div>
-                                        <div class="countdown-with-days mt-4">
-                                            <ul class="countdown-box ps-0 mb-0">
-                                                <li>
-                                                    <span class="days count-items p-2"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="hours count-items p-2"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="minutes count-items p-2"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="seconds count-items p-2"></span>
-                                                </li>
-                                            </ul>
-                                            <ul class="countdown-box-text ps-0 mb-0">
-                                                <li class="pe-1">Day</li>
-                                                <li class="pe-2">Hour</li>
-                                                <li class="pe-2">Min</li>
-                                                <li class="pe-2">Sec</li>
-                                            </ul>
+                                        <div class="py-5 d-flex justify-content-center align-items-center">
+                                            <a href="" class="btn btn-common-one rounded-pill px-4">See
+                                                Details</a>
+                                        </div>
+                                        <div class="text-center pb-5 pt-4">
+                                            <div>
+                                                <h5>
+                                                    <span class="main-color">Hurry Up!</span> Offers
+                                                    end in:
+                                                </h5>
+                                            </div>
+                                            <div class="countdown-with-days mt-4">
+                                                <p class="pt-2 text-center countdown"
+                                                    data-expire-date="{{ $offerDealLeft->expiry_date }}">
+                                                    <span class="main-color">Expire In:</span>
+                                                    <span class="countdown-timer"> Days</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="items">
-                                    <div class="py-5 d-flex justify-content-center">
-                                        <img class="img-fluid rounded-2"
-                                            src="{{ asset('frontend') }}/assets/img/deal.png" alt="" />
-                                    </div>
-                                    <div class="py-3">
-                                        <h5 class="text-center">
-                                            <span class="fw-bold">২৮%</span> ছাড়ে বই, অতিরিক্ত
-                                            ৪% ছাড় অ্যাপ অর্ডারে 'APPUSER' ব্যবহারে (৩০-৩১
-                                            মার্চ)
-                                        </h5>
-                                    </div>
-                                    <div class="py-5 d-flex justify-content-center align-items-center">
-                                        <a href="" class="btn btn-common-one rounded-pill px-4">See
-                                            Details</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <div>
-                                            <h5>
-                                                <span class="main-color">Hurry Up!</span> Offers
-                                                end in:
-                                            </h5>
-                                        </div>
-                                        <div class="countdown-with-days mt-4">
-                                            <ul class="countdown-box ps-0 mb-0">
-                                                <li>
-                                                    <span class="days count-items p-2"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="hours count-items p-2"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="minutes count-items p-2"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="seconds count-items p-2"></span>
-                                                </li>
-                                            </ul>
-                                            <ul class="countdown-box-text ps-0 mb-0">
-                                                <li class="pe-1">Day</li>
-                                                <li class="pe-2">Hour</li>
-                                                <li class="pe-2">Min</li>
-                                                <li class="pe-2">Sec</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                @empty
+                                    <p>No Offer Avaiable</p>
+                                @endforelse
+
                             </div>
                             <!-- Slider Items -->
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-9 bg-light product-scroll-show">
+
                     <!-- Search Box -->
                     <div class="d-flex justify-content-center align-items-center p-3 pb-0">
                         <form class="d-flex w-100" role="search">
@@ -820,338 +715,86 @@
                         </form>
                     </div>
                     <!-- Search Box -->
+
                     <div class="row p-3 gx-3 pt-0">
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
+
+                        @forelse ($offerDeals as $offerDeal)
+                            <div class="col-lg-4 mb-3">
+                                <div class="card deal-card border-0">
+                                    <div class="card-body border-0 p-4">
+                                        <div class="d-flex justify-content-between">
+
+                                            <!-- Counter -->
+                                            <div>
+                                                <div class="countdown-hms">
+
+                                                    {{-- <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
+
+                                                        <li>
+                                                            <span class="hours count-items p-2 me-1"></span>
+                                                        </li>
+
+                                                        <li>
+                                                            <span class="minutes count-items p-2 me-1"></span>
+                                                        </li>
+
+                                                        <li>
+                                                            <span class="seconds count-items p-2 me-1"></span>
+                                                        </li>
+                                                        
+                                                    </ul>
+
+                                                    <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
+                                                        <li class="ps-1 me-2 pt-0" style="font-size: 12px">
+                                                            Hour
+                                                        </li>
+                                                        <li class="ps-2 me-3 pt-0" style="font-size: 12px">
+                                                            Min
+                                                        </li>
+                                                        <li class="me-3 pt-0" style="font-size: 12px">
+                                                            Sec
+                                                        </li>
+                                                    </ul> --}}
+
+                                                    <p class="pt-2 text-center countdown"
+                                                        data-expire-date="{{ $offerDeal->expiry_date }}">
+                                                        <span class="main-color">Expire In:</span>
+                                                        <span class="countdown-timer"> Days</span>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                            <!-- Wishlist -->
+                                            <div>
+                                                <a href="">
+                                                    <i class="fa-regular fa-heart fs-5"></i>
+                                                </a>
                                             </div>
                                         </div>
-                                        <!-- Wishlist -->
+                                        <!-- Product Image -->
+                                        <div class="d-flex justify-content-center align-items-center py-3">
+                                            <img class="img-fluid"
+                                                src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
+                                                alt="" />
+                                        </div>
                                         <div>
                                             <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
+                                                <h6 class="mb-0 product-title">
+                                                    {{ $offerDeal->name }}
+                                                </h6>
                                             </a>
+                                            <del class="pt-2">BDT {{ $offerDeal->offer_price }}</del>
+                                            <h6 class="main-color">BDT {{ $offerDeal->price }}</h6>
                                         </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-3">
-                            <div class="card deal-card border-0">
-                                <div class="card-body border-0 p-4">
-                                    <div class="d-flex justify-content-between">
-                                        <!-- Counter -->
-                                        <div>
-                                            <div class="countdown-hms">
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li>
-                                                        <span class="hours count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="minutes count-items p-2 me-1"></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="seconds count-items p-2 me-1"></span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
-                                                    <li class="ps-1 me-2 pt-0" style="font-size: 12px">
-                                                        Hour
-                                                    </li>
-                                                    <li class="ps-2 me-3 pt-0" style="font-size: 12px">
-                                                        Min
-                                                    </li>
-                                                    <li class="me-3 pt-0" style="font-size: 12px">
-                                                        Sec
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Wishlist -->
-                                        <div>
-                                            <a href="">
-                                                <i class="fa-regular fa-heart fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Image -->
-                                    <div class="d-flex justify-content-center align-items-center py-3">
-                                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/deal1.png"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <h6 class="mb-0 product-title">
-                                                Rovena Riva Series 6 Pcs.
-                                            </h6>
-                                        </a>
-                                        <del class="pt-2">BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+                            <p>No Offer Avaiable</p>
+                        @endforelse
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1253,21 +896,44 @@
                 <div class="col-lg-12">
                     <div class="slick-slider-footer-slider">
 
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_one) ? url('storage/' . $homepage->bottom_banner_slider_one) : asset('images/banner-demo.png') }}" alt="" />
-                        </div>
+                        <a href="{{ optional($homepage)->bottom_banner_slider_one_link }}">
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid w-100"
+                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_one) ? url('storage/' . optional($homepage)->bottom_banner_slider_one) : asset('images/banner-demo.png') }}"
+                                    alt="" />
+                            </div>
+                        </a>
 
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_two) ? url('storage/' . $homepage->bottom_banner_slider_two) : asset('images/banner-demo.png') }}" alt="" />
-                        </div>
+                        <a href="{{ optional($homepage)->bottom_banner_slider_two_link }}">
 
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_three) ? url('storage/' . $homepage->bottom_banner_slider_three) : asset('images/banner-demo.png') }}" alt="" />
-                        </div>
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid w-100"
+                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_two) ? url('storage/' . optional($homepage)->bottom_banner_slider_two) : asset('images/banner-demo.png') }}"
+                                    alt="" />
+                            </div>
 
-                        <div class="items d-flex justify-content-center align-items-center">
-                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_four) ? url('storage/' . $homepage->bottom_banner_slider_four) : asset('images/banner-demo.png') }}" alt="" />
-                        </div>
+                        </a>
+
+                        <a href="{{ optional($homepage)->bottom_banner_slider_three_link }}">
+
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid w-100"
+                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_three) ? url('storage/' . optional($homepage)->bottom_banner_slider_three) : asset('images/banner-demo.png') }}"
+                                    alt="" />
+                            </div>
+                            
+                        </a>
+
+                        <a href="{{ optional($homepage)->bottom_banner_slider_four_link }}">
+
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid w-100"
+                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_four) ? url('storage/' . optional($homepage)->bottom_banner_slider_four) : asset('images/banner-demo.png') }}"
+                                    alt="" />
+                            </div>
+
+                        </a>
+
 
                     </div>
                 </div>
