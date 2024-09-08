@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Banner Update'">
+<x-admin-app-layout :title="'HomePage Top Right Banners Update'">
     <div class="card card-flash">
 
         <div class="card-header mt-6">
@@ -67,7 +67,7 @@
                             height="80" width="80" alt="{{ $banner->name }}">
                     </div>
 
-                    
+
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
@@ -94,5 +94,5 @@
         </div>
     </div>
 
-    
+
 </x-admin-app-layout>

@@ -23,13 +23,13 @@ class HomeController extends Controller
     public function homePage()
     {
         $data = [
-            'sliders' => Slider::where('status', 'active')->latest()->get(),
-            'banner'  => Banner::where('status', 'active')->latest()->get(),
+            'sliders' => Slider::where('status', 'active')->latest('id')->get(),
+            'banner'  => Banner::where('status', 'active')->latest('id')->first(),
             'coupons' => Coupon::latest()->get(),
             'brands'  => Brand::latest()->get(),
             'offers'  => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
 
-            'offerLatests'  => Offer::where('status','active')->orderBy('name','ASC')->latest()->get(),
+            'offerLatests'  => Offer::where('status','active')->orderBy('name','ASC')->latest('id')->get(),
             'offerDealLefts'  => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
             'offerDeals'  => Offer::where('status','active')->limit(6)->latest()->get(),
 

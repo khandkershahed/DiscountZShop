@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Banner List'">
+<x-admin-app-layout :title="'HomePage Top Right Banners'">
 
     {{-- Font Awesome CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
