@@ -128,7 +128,7 @@
     <!-- Amount End -->
     @if ($brands->count() > 0)
         <section>
-            <div class="container py-5 px-0">
+            <div class="container py-5 pb-4 px-0">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">

@@ -497,7 +497,7 @@
     <!-- Promotion Product End -->
 
     <!-- Grab By Location -->
-    <section style="background-color: #f5f6f8">
+    {{-- <section style="background-color: #f5f6f8">
         <div class="container pt-70 pb-70 px-0">
             <div class="row">
                 <div class="col-lg-12 px-0">
@@ -574,7 +574,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Grab By Location End -->
 
     <!-- Product Slider -->
@@ -741,7 +741,7 @@
                                                         <li>
                                                             <span class="seconds count-items p-2 me-1"></span>
                                                         </li>
-                                                        
+
                                                     </ul>
 
                                                     <ul class="ps-0 mb-0 d-flex" style="list-style-type: none">
@@ -851,37 +851,34 @@
     </section>
 
     <!-- Normal Slider Product Show ENd -->
-    <section>
-        <div class="container py-5 px-0">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h1>Big Brands Are Here</h1>
-                        {{-- <p class="w-lg-50 w-100 pt-3">
-                            Problems trying to resolve the conflict between <br />
-                            the two major realms of Classical physics: Newtonian
-                            mechanics
-                        </p> --}}
+    @if ($brands->count() > 0)
+        <section>
+            <div class="container py-5 pb-4 px-0">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h1>Big Brands Are Here</h1>
+                            {{-- <p class="w-lg-50 w-100 pt-3">
+                                Problems trying to resolve the conflict between <br />
+                                the two major realms of Classical physics: Newtonian
+                                mechanics
+                            </p> --}}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{-- Brands  --}}
-    @if ($brands->count() > 0)
         <section>
             <div class="container-fluid partners">
                 <div class="container px-0">
-                    <div class="slick-slider-partners d-flex align-content-center align-items-center">
+                    <div class="slick-slider-partners">
                         @foreach ($brands as $brand)
-                            <a href="{{ route('brand.details', $brand->slug) }}">
-                                <div class="items d-flex justify-content-center align-items-center">
-                                    <img class="img-fluid"
-                                        src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($brand->name) }}"
-                                        alt="" />
-                                </div>
-                            </a>
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid"
+                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="" />
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -921,7 +918,7 @@
                                     src="{{ !empty(optional($homepage)->bottom_banner_slider_three) ? url('storage/' . optional($homepage)->bottom_banner_slider_three) : asset('images/banner-demo.png') }}"
                                     alt="" />
                             </div>
-                            
+
                         </a>
 
                         <a href="{{ optional($homepage)->bottom_banner_slider_four_link }}">
@@ -933,8 +930,6 @@
                             </div>
 
                         </a>
-
-
                     </div>
                 </div>
             </div>
