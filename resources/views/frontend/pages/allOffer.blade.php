@@ -20,21 +20,35 @@
                         <div class="d-flex align-items-center">
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-control select btn-common-three" name="" id="">
-                                    <option value="" selected>Dhaka</option>
-                                    <option value="">Khulna</option>
-                                    <option value="">RajShahi</option>
-                                </select>
-
-                            </div>
-                            <!-- Filter Store -->
-                            <div class="btn-group pe-2">
-                                <select class="form-control btn-common-three" name="" id="">
-                                    <option value="" selected>No Area Available</option>
+                                <select class="form-select" id="custom_select1" name="division"
+                                    data-placeholder="Select Division">
+                                    <option value="">Select Division</option>
+                                    @foreach ($divisions as $division)
+                                        <option value="{{ $division->name }}">{{ $division->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
+                                <select class="form-select" id="custom_select2" name="city"
+                                    data-placeholder="Select City">
+                                    <option value="">Select City</option>
+                                    @foreach ($citys as $city)
+                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="btn-group pe-2">
+                                <select class="form-select" id="custom_select3" name="area"
+                                    data-placeholder="Select Area">
+                                    <option value="">Select Area</option>
+                                    @foreach ($areas as $area)
+                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Filter Store -->
+                            {{-- <div class="btn-group pe-2">
                                 <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="true">
                                     <i class="fa-solid fa-filter fs-6" aria-hidden="true"></i>
@@ -51,7 +65,7 @@
                                         <a class="dropdown-item" href="#">Big Discount</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                             <!-- Search Store -->
                             <div class="wrapper-store">
                                 <div class="search-input-store">
@@ -153,8 +167,8 @@
 
                 <div class="col-lg-9">
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="beauty-pane" role="tabpanel" aria-labelledby="beauty"
-                            tabindex="0">
+                        <div class="tab-pane fade show active" id="beauty-pane" role="tabpanel"
+                            aria-labelledby="beauty" tabindex="0">
                             <div class="row">
                                 @foreach ($offers as $offer)
                                     <div class="col-lg-4 mt-4">
@@ -168,30 +182,36 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <span>Upto</span>
+
                                                     <h1 class="main-color special-font-box">
-                                                        50% Off
+                                                        {{ $offer->badge }}
                                                     </h1>
                                                 </div>
                                                 <div class="col-lg-12 pt-4">
                                                     <p class="pb-4 text-black">
-                                                        Premium Punjabi collections for men on online
+                                                        {{ $offer->name }}
                                                     </p>
-                                                    <a href="{{ route('store.details', 'aarong') }}" class="main-color">
-                                                        <small>See all in store</small>
+                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                        class="main-color">
+                                                        <small>See all</small>
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-12 pt-4">
                                                     <div class="d-flex">
-                                                        <a href="" class="w-100 btn-common-one rounded-3">View</a>
-                                                        <a href=""
-                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                                class="fa-solid fa-copy"></i></a>
+                                                        <a href="{{ route('offer.details', $offer->slug) }}"
+                                                            class="main-color">
+                                                            <small>View</small>
+                                                        </a>
+                                                        @if (!empty($offer->coupon_code))
+                                                            <a href="{{ $offer->coupon_code }}"
+                                                                class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
+                                                                    class="fa-solid fa-copy"></i></a>
+                                                        @endif
                                                     </div>
                                                     <p class="pt-2 text-center countdown"
-                                                        data-expire-date="August 17, 2024 00:00:00">
-                                                        <span class="main-color">Expire In:</span> <span
-                                                            class="countdown-timer">12 Days</span>
+                                                        data-expire-date="{{ $offer->expiry_date }}">
+                                                        <span class="main-color">Expire In:</span>
+                                                        <span class="countdown-timer"> Days</span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -201,8 +221,7 @@
                             </div>
                         </div>
                         @foreach ($categorys as $category)
-                            <div class="tab-pane fade"
-                                id="category-{{ $category->id }}-pane" role="tabpanel"
+                            <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
                                 @php
                                     $cateWiseOffers = App\Models\Offer::where('category_id', $category->id)
@@ -223,27 +242,28 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <span>Upto</span>
                                                         <h1 class="main-color special-font-box">
-                                                            {{ $cateWiseOffer->badge }}% Off
+                                                            {{ $cateWiseOffer->badge }}
                                                         </h1>
                                                     </div>
                                                     <div class="col-lg-12 pt-4">
                                                         <p class="pb-4 text-black">
                                                             {{ $cateWiseOffer->name }}
                                                         </p>
-                                                        <a href="" class="main-color">
-                                                            <small>See all in store</small>
+                                                        <a href="{{ route('offer.details', $cateWiseOffer->slug) }}"
+                                                            class="main-color">
+                                                            <small>See all</small>
                                                         </a>
                                                     </div>
                                                     <div class="col-lg-12 pt-4">
-
                                                         <div class="d-flex">
-                                                            <a href=""
+                                                            <a href="{{ route('offer.details', $cateWiseOffer->slug) }}"
                                                                 class="w-100 btn-common-one rounded-3">View</a>
-                                                            <a href=""
-                                                                class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                                    class="fa-solid fa-copy"></i></a>
+                                                            @if (!empty($cateWiseOffer->coupon_code))
+                                                                <a href="{{ $cateWiseOffer->coupon_code }}"
+                                                                    class="w-100 btn-common-three rounded-3 ms-2">Coupon
+                                                                    <i class="fa-solid fa-copy"></i></a>
+                                                            @endif
                                                         </div>
 
                                                         <p class="pt-2 text-center countdown"

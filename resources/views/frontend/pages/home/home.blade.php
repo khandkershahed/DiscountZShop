@@ -119,8 +119,6 @@
                         <div class="card-body py-5" style="background-color: #f8f8f8">
                             <div class="slick-slider">
                                 <div class="available-coupon-slider">
-
-
                                     @foreach ($coupons as $coupon)
                                         <div class="items">
                                             <div class="d-flex coupons-box">
@@ -1268,5 +1266,5 @@
         </div>
     </section>
     <!-- Footer Slider End -->
-    
+
 </x-frontend-app-layout>

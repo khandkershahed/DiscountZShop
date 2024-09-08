@@ -8,10 +8,13 @@ use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Faq;
 use App\Models\Offer;
 use App\Models\PageBanner;
+use App\Models\PrivacyPolicy;
 use App\Models\Slider;
 use App\Models\Store;
+use App\Models\TermsAndCondition;
 
 class HomeController extends Controller
 {
@@ -20,10 +23,10 @@ class HomeController extends Controller
     {
         $data = [
             'sliders' => Slider::where('status', 'active')->latest()->get(),
-            'banner' => Banner::where('status', 'active')->latest()->get(),
+            'banner'  => Banner::where('status', 'active')->latest()->get(),
             'coupons' => Coupon::latest()->get(),
-            'brands' => Brand::latest()->get(),
-            'offers' => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
+            'brands'  => Brand::latest()->get(),
+            'offers'  => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
         ];
 
         return view('frontend.pages.home.home', $data);
@@ -134,6 +137,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'terms')->latest('id')->first(),
+            'terms'       => TermsAndCondition::latest('id')->first(),
         ];
         return view('frontend.pages.termsCondition', $data);
     }
@@ -141,6 +145,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
+            'terms'       => PrivacyPolicy::latest('id')->first(),
         ];
         return view('frontend.pages.privacyPolicy', $data);
     }
@@ -148,6 +153,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
+            'faqs'        => Faq::orderBy('order','ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }

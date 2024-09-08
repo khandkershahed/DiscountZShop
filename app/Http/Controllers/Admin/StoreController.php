@@ -24,7 +24,7 @@ class StoreController extends Controller
     public function index()
     {
         $data = [
-            'stores' => Store::orderBy('name', 'ASC')->get(),
+            'stores' => Store::latest('id')->get(),
         ];
         return view('admin.pages.store.index', $data);
     }

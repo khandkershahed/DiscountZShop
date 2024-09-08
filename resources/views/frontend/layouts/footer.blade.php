@@ -9,9 +9,7 @@
                                     style="font-size: 30px">Z</span>shop</span>
                         </div>
                         <p class="pt-3 mb-0 footer-description">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the industry's
-                            standard.
+                            {{ $setting->site_motto }}
                         </p>
                         <!-- Contact Info Start -->
                         <div class="pt-3">
@@ -24,7 +22,7 @@
                                             fill="#F15A2D" />
                                     </svg>
                                 </div>
-                                <p class="ps-3 company-link">Email: info@gmail.com</p>
+                                <p class="ps-3 company-link">Email: {{ $setting->support_email }}</p>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div>
@@ -35,7 +33,7 @@
                                             fill="#F15A2D" />
                                     </svg>
                                 </div>
-                                <p class="ps-3 company-link">Call: +(880)16764745794</p>
+                                <p class="ps-3 company-link">Call: {{ $setting->primary_phone }}</p>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div>
@@ -47,8 +45,8 @@
                                     </svg>
                                 </div>
                                 <p class="ps-3 company-link">
-                                    5th Floor, Mahfuza Tower, Ring Road <br />
-                                    Mohammadpur, Dhaka 1207
+                                    {{ $setting->address_line_one }} <br/>
+                                    {{ $setting->address_line_two }}
                                 </p>
                             </div>
                             <div class="d-flex align-items-center pt-2">
@@ -61,7 +59,7 @@
                                     </svg>
                                 </div>
                                 <p class="ps-3 company-link">
-                                    Hours: 10:00 AM - 09:00 PM
+                                    Hours: 09:00 AM - 06:00 PM
                                 </p>
                             </div>
                         </div>
@@ -76,8 +74,7 @@
                                 <span class="title-divider"></span>
                                 <span class="title-divider-small"></span>
                             </div>
-                            <ul class="ps-0 footer-link"
-                                style="list-style-type: none;position: relative;top: 10px;">
+                            <ul class="ps-0 footer-link" style="list-style-type: none;position: relative;top: 10px;">
                                 <li class="mb-2">
                                     <a href="{{ route('aboutUs') }}">About Us</a>
                                 </li>
@@ -87,11 +84,8 @@
                                 <li class="mb-2">
                                     <a href="{{ route('allBrand') }}">All Brands</a>
                                 </li>
-                                <li class="mb-2">
-                                    <a href="">Coupons</a>
-                                </li>
                                 {{-- <li class="mb-2">
-                                    <a href="">Photos</a>
+                                    <a href="">Coupons</a>
                                 </li> --}}
                             </ul>
                         </div>
@@ -101,17 +95,16 @@
                                 <span class="title-divider"></span>
                                 <span class="title-divider-small"></span>
                             </div>
-                            <ul class="ps-0 footer-link"
-                                style="list-style-type: none;position: relative;top: 10px;">
+                            <ul class="ps-0 footer-link" style="list-style-type: none;position: relative;top: 10px;">
                                 <li class="mb-2">
                                     <a href="{{ route('faq') }}">FAQ</a>
                                 </li>
-                                <li class="mb-2">
+                                {{-- <li class="mb-2">
                                     <a href="">New Offer</a>
                                 </li>
                                 <li class="mb-2">
                                     <a href="">Best Coupon</a>
-                                </li>
+                                </li> --}}
                                 <li class="mb-2">
                                     <a href="{{ route('login') }}">Login</a>
                                 </li>
@@ -129,10 +122,18 @@
                                 <span class="title-divider"></span>
                                 <span class="title-divider-small"></span>
                             </div>
-                            <p class="pt-3 footer-description">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.
-                            </p>
+                            <form action="{{ route('email.subscribe') }}" method="POST">
+                                @csrf
+                                <p class="pt-3 footer-description pb-2">
+                                    <input type="email" class="form-control" name="email"
+                                        id="exampleFormControlInput1" placeholder="name@example.com" required />
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                </p>
+                                <button type="submit" class="btn btn-common-one pb-2">Subscribe<i
+                                        class="fa-solid fa-paper-plane ps-2"></i></button>
+                            </form>
                             <div class="pt-5">
                                 <p class="footer-description">Follow us on</p>
                                 <div class="pt-3 d-flex justify-content-space-around align-items-center">
@@ -160,13 +161,15 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
                         <p class="footer-description">
-                            2024 @ All Right Reserved By
-                            <span class="main-color">DiscountZshop</span>
+                            {{ $setting->copyright_title }}
+                            <a href="{{ $setting->copyright_url }}" class="main-color">{{ $setting->website_name }}</a>
                         </p>
                         <div class="d-flex justify-content-center align-items-center pt-3">
-                            <a href="{{ route('termsCondition') }}" class="pe-3" style="font-size: 14px; color: #808083">Terms
+                            <a href="{{ route('termsCondition') }}" class="pe-3"
+                                style="font-size: 14px; color: #808083">Terms
                                 & Condition</a>
-                            <a href="{{ route('privacyPolicy') }}" class="" style="font-size: 14px; color: #808083">Privacy
+                            <a href="{{ route('privacyPolicy') }}" class=""
+                                style="font-size: 14px; color: #808083">Privacy
                                 Policy</a>
                         </div>
                     </div>

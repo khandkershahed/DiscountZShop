@@ -41,8 +41,19 @@
                         <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $store->name }}</td>
-                            <td>Status</td>
-                            <td>Action</td>
+                            <td> <span class="badge {{ $store->status == 'active' ? 'bg-success' : 'bg-danger' }}">
+                                    {{ $store->status == 'active' ? 'Active' : 'InActive' }}</span>
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.store.edit', $store->id) }}"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <a href="{{ route('admin.store.destroy', $store->id) }}"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete">
+                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
