@@ -12,11 +12,11 @@
                 </div>
                 <div class="col-lg-8">
                     <div>
-                        <h1 class="pb-3 main-color">{{ $offerDetails->badge }}% Off</h1>
+                        <h1 class="pb-3 main-color">{{ $offerDetails->badge }}</h1>
                         <h4>{{ $offerDetails->name }}</h4>
                         <div class="d-flex align-items-center pt-3">
                             <p>Price:</p>
-                            <h6 class="ps-2 main-color">{{ $offerDetails->price }}</h6>
+                            <h6 class="ps-2 main-color">BDT {{ $offerDetails->price }}</h6>
                         </div>
                         <hr />
                         <p class="pt-2">
@@ -30,11 +30,11 @@
                             <span class="text-muted">Expire :</span>
                             <span class="countdown-timer main-color"></span>
                         </p>
-                        <div class="pt-4">
+                        {{-- <div class="pt-4">
                             <button href="" class="btn btn-common-one">
                                 Add To Wishlist <i class="fa-solid fa-heart ps-3"></i>
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -113,6 +113,23 @@
             </div>
         </div>
     </section>
+
+    @if (!empty($offerDetails->map_url))
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-2 px-3">
+                            <iframe
+                                src="{{ $offerDetails->map_url }}"
+                                width="100%" height="450" frameborder="0" style="border: 0" allowfullscreen=""
+                                class="map-store"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
 
 
     {{-- Smiliar Offer  --}}
