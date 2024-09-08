@@ -646,7 +646,9 @@
                                         <p class="py-3">
                                             {{ $offerLatest->short_description }}
                                         </p>
-                                        <a class="btn btn-dark rounded-pill px-5" href="{{ url('/offer-details' . '/' . $offerLatest->id . '/' . $offerLatest->slug) }}">See Details</a>
+                                        <a class="btn btn-dark rounded-pill px-5"
+                                            href="{{ url('/offer-details' . '/' . $offerLatest->id . '/' . $offerLatest->slug) }}">See
+                                            Details</a>
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
@@ -724,10 +726,11 @@
                                         </div>
 
                                         <div class="py-5 d-flex justify-content-center align-items-center">
-                                            <a href="{{ url('/offer-details' . '/' . $offerDealLeft->id . '/' . $offerDealLeft->slug) }}" class="btn btn-common-one rounded-pill px-4">See
+                                            <a href="{{ url('/offer-details' . '/' . $offerDealLeft->id . '/' . $offerDealLeft->slug) }}"
+                                                class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
                                         </div>
-                                        
+
                                         <div class="text-center pb-5 pt-4">
                                             <div>
                                                 <h5>
@@ -834,7 +837,8 @@
                                                 alt="" />
                                         </div>
                                         <div>
-                                            <a href="{{ url('/offer-details' . '/' . $offerDeal->id . '/' . $offerDeal->slug) }}">
+                                            <a
+                                                href="{{ url('/offer-details' . '/' . $offerDeal->id . '/' . $offerDeal->slug) }}">
                                                 <h6 class="mb-0 product-title">
                                                     {{ $offerDeal->name }}
                                                 </h6>
@@ -943,7 +947,11 @@
     @endif
 
     <!-- Footer Slider -->
-    @if (!empty($homepage->bottom_banner_slider_one) || !empty($homepage->bottom_banner_slider_two) || !empty($homepage->bottom_banner_slider_three) || !empty($homepage->bottom_banner_slider_four))
+    @if (
+        !empty($homepage->bottom_banner_slider_one) ||
+            !empty($homepage->bottom_banner_slider_two) ||
+            !empty($homepage->bottom_banner_slider_three) ||
+            !empty($homepage->bottom_banner_slider_four))
         <section>
             <div class="container px-0 pt-70 pb-70">
                 <div class="row">
