@@ -191,14 +191,14 @@
                                                     <p class="pb-4 text-black">
                                                         {{ $offer->name }}
                                                     </p>
-                                                    <a href="{{ url('/offer-details' . '/' . $offer->id . '/' . $offer->slug) }}"
+                                                    <a href="{{ route('offer.details',$offer->slug) }}"
                                                         class="main-color">
                                                         <small>See all</small>
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-12 pt-4">
                                                     <div class="d-flex">
-                                                        <a href="{{ url('/offer-details' . '/' . $offer->id . '/' . $offer->slug) }}"
+                                                        <a href="{{ route('offer.details',$offer->slug) }}"
                                                             class="main-color">
                                                             <small>View</small>
                                                         </a>

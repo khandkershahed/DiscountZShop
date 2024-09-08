@@ -131,11 +131,17 @@ class HomeController extends Controller
     }
 
     //offerDetails
-    public function offerDetails($id,$slug)
+    public function offerDetails($slug)
     {
-        $offerDetails = Offer::find($id);
-        return view('frontend.pages.offerDetails', compact('offerDetails'));
-        
+        $offerDetails = Offer::where('slug' , $slug)->first();
+        if ($offerDetails) {
+            return view('frontend.pages.offerDetails', compact('offerDetails'));
+        } else {
+            return redirect()->back()->with('Offer is not available.');
+
+        }
+
+
     }
     public function categoryDetails($slug)
     {
