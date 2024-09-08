@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Slider Add'">
+<x-admin-app-layout :title="'HomePage Top Left Slider Add'">
     <div class="card card-flash">
 
         <div class="card-header mt-6">
@@ -28,7 +28,7 @@
 
                 <div class="row">
 
-                    
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6">{{ __('Slider Image') }}
@@ -39,7 +39,7 @@
                             :value="old('image')"></x-metronic.file-input>
                     </div>
 
-                    
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                             {{ __('Select a Status ') }}</x-metronic.label>

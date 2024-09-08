@@ -32,18 +32,21 @@ return new class extends Migration
             $table->text('row_one_column_three_description')->nullable();//
             $table->text('row_one_column_three_url')->nullable();//
 
+            $table->string('row_two_image')->nullable();//
             $table->string('row_two_badge')->nullable();//
             $table->string('row_two_title')->nullable();//
             $table->longText('row_two_description')->nullable();//
             $table->string('row_two_button_name')->nullable();//
             $table->string('row_two_button_url')->nullable();//
 
+            $table->string('row_three_image')->nullable();//
             $table->string('row_three_badge')->nullable();//
             $table->string('row_three_title')->nullable();//
             $table->longText('row_three_description')->nullable();//
             $table->string('row_three_button_name')->nullable();//
             $table->string('row_three_button_url')->nullable();//
 
+            $table->string('row_four_image')->nullable();//
             $table->string('row_four_badge')->nullable();//
             $table->string('row_four_title')->nullable();//
             $table->longText('row_four_description')->nullable();//

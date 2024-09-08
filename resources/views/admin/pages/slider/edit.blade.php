@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Slider Update'">
+<x-admin-app-layout :title="'HomePage Top Left Slider Update'">
     <div class="card card-flash">
 
         <div class="card-header mt-6">

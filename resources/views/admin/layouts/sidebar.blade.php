@@ -180,6 +180,12 @@
                                 'admin.page-banner.index',
                                 'admin.page-banner.create',
                                 'admin.page-banner.edit',
+                                'admin.slider.index',
+                                'admin.slider.create',
+                                'admin.slider.edit',
+                                'admin.banner.index',
+                                'admin.banner.create',
+                                'admin.banner.edit',
 
                             ],
                             'subMenu' => [
@@ -198,7 +204,7 @@
                                     'routes' => ['admin.about-us.index', 'admin.about-us.edit'],
                                     'route' => 'admin.about-us.index',
                                 ],
-                                
+
                                 [
                                     'title' => 'Terms & Condition',
                                     'routes' => [
@@ -220,6 +226,18 @@
                                 ],
 
                                 [
+                                    'title' => 'HomePage Top Left Slider',
+                                    'routes' => ['admin.slider.index','admin.slider.create','admin.slider.edit'],
+                                    'route' => 'admin.slider.index',
+                                ],
+
+                                [
+                                    'title' => 'HomePage Top Right Banners',
+                                    'routes' => ['admin.banner.index','admin.banner.create','admin.banner.edit'],
+                                    'route' => 'admin.banner.index',
+                                ],
+
+                                [
                                     'title' => 'Page Banner',
                                     'routes' => [
                                         'admin.page-banner.index',
@@ -228,6 +246,7 @@
                                     ],
                                     'route' => 'admin.page-banner.index',
                                 ],
+
 
                             ],
                         ],
@@ -282,27 +301,27 @@
                             ],
                         ],
 
-                        [
-                            'title' => 'Vendor Management',
-                            'icon' => 'icons/duotune/general/gen051.svg',
-                            'subMenu' => [
-                                [
-                                    'title' => 'Vendor',
-                                    'subMenu' => [
-                                        [
-                                            'title' => 'Vendor List',
-                                            'routes' => ['admin.user.index'],
-                                            'route' => 'admin.user.index',
-                                        ],
-                                        [
-                                            'title' => 'Vendor Statistic',
-                                            'routes' => ['admin.user.index'],
-                                            'route' => 'admin.user.index',
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
+                        // [
+                        //     'title' => 'Vendor Management',
+                        //     'icon' => 'icons/duotune/general/gen051.svg',
+                        //     'subMenu' => [
+                        //         [
+                        //             'title' => 'Vendor',
+                        //             'subMenu' => [
+                        //                 [
+                        //                     'title' => 'Vendor List',
+                        //                     'routes' => ['admin.user.index'],
+                        //                     'route' => 'admin.user.index',
+                        //                 ],
+                        //                 [
+                        //                     'title' => 'Vendor Statistic',
+                        //                     'routes' => ['admin.user.index'],
+                        //                     'route' => 'admin.user.index',
+                        //                 ],
+                        //             ],
+                        //         ],
+                        //     ],
+                        // ],
 
                         [
                             'title' => 'Settings',
@@ -315,8 +334,7 @@
                                 'admin.division.index',
                                 'admin.city.index',
                                 'admin.area.index',
-                                'admin.slider.index',
-                                'admin.banner.index',
+
                             ],
                             'subMenu' => [
                                 [
@@ -344,16 +362,7 @@
                                     'routes' => ['admin.area.index'],
                                     'route' => 'admin.area.index',
                                 ],
-                                [
-                                    'title' => 'Slider',
-                                    'routes' => ['admin.slider.index'],
-                                    'route' => 'admin.slider.index',
-                                ],
-                                [
-                                    'title' => 'Banner',
-                                    'routes' => ['admin.banner.index'],
-                                    'route' => 'admin.banner.index',
-                                ],
+
                             ],
                         ],
                     ];

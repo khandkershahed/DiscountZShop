@@ -1,6 +1,5 @@
-<x-admin-app-layout :title="'Banner Add'">
+<x-admin-app-layout :title="'HomePage Top Right Banners Add'">
     <div class="card card-flash">
-
         <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
@@ -27,8 +26,6 @@
                 @csrf
 
                 <div class="row">
-
-
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image_one" class="col-form-label fw-bold fs-6 ">{{ __('Image One') }}
                         </x-metronic.label>
@@ -55,7 +52,7 @@
                             name="image_three"></x-metronic.file-input>
                     </div>
 
-                    
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                             {{ __('Select a Status ') }}</x-metronic.label>

@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Slider List'">
+<x-admin-app-layout :title="'HomePage Top Left Slider'">
 
     {{-- Font Awesome CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -103,7 +103,6 @@
         <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
-
                 <a href="{{ route('admin.slider.create') }}" class="btn btn-light-primary">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -118,7 +117,6 @@
                     </span>
                     Add Slider Image
                 </a>
-
             </div>
         </div>
 
@@ -162,11 +160,9 @@
                                 <a href="{{ route('admin.slider.destroy', $item->id) }}" class="delete">
                                     <i class="fa-solid fa-trash text-danger"></i>
                                 </a>
-
                             </td>
                         </tr>
                     @endforeach
-
 
                 </tbody>
             </table>
