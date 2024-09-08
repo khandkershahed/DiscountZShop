@@ -212,7 +212,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-9">
+                                {{-- <div class="col-lg-9">
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <!-- Grab Tags -->
                                         <div class="w-75">
@@ -230,7 +230,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body pe-0">
@@ -241,9 +241,23 @@
                                             <button class="nav-link grab-tabs w-100 rounded-0 active" id="home-tab"
                                                 data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
                                                 role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                                                Fashion
+                                                All Offers
                                             </button>
                                         </li>
+                                        @if ($categories->count() > 0)
+                                            @foreach ($categories as $offercategory)
+                                                <li class="nav-item mb-2" role="presentation">
+                                                    <button class="nav-link grab-tabs w-100 rounded-0"
+                                                        id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#home-{{ $offercategory->id }}"
+                                                        type="button" role="tab"
+                                                        aria-controls="home-{{ $offercategory->id }}"
+                                                        aria-selected="true">
+                                                        {{ $offercategory->name }}
+                                                    </button>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="col-lg-9">
@@ -252,89 +266,124 @@
                                             aria-labelledby="home-tab" tabindex="0">
                                             <div class="grab-slider">
                                                 <div class="row grab-items">
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ asset('frontend') }}/assets/img/coupon/coupon-logo.png"
-                                                                            class="img-fluid" alt="Logo" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div class="d-flex align-items-center pb-2">
-                                                                            <p class="">
-                                                                                <span class="para-font">Get</span>
-                                                                                <span
-                                                                                    class="ps-2 para-font">Upto</span>
-                                                                            </p>
-                                                                            <h1>50%</h1>
-                                                                            <p class="coupon-off">OFF</p>
+                                                    @foreach ($alloffers as $alloffer)
+                                                        <div class="col-lg-4 mt-4">
+                                                            <div class="card border-0 shadow-sm bg-light">
+                                                                <div class="row p-4 align-items-center">
+                                                                    <div class="col-lg-6">
+                                                                        <div>
+                                                                            <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                                width="80px" height="80px"
+                                                                                class="rounded-2 bg-white"
+                                                                                style="object-fit: cover;"
+                                                                                alt="" />
                                                                         </div>
-                                                                        <p class="para-font coupon-extra">
-                                                                            Code: EVALY30
-                                                                            <a href="javascript:void(0);"
-                                                                                class="copy-btn"><i
-                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+
+                                                                        <h1 class="main-color special-font-box">
+                                                                            {{ $alloffer->badge }}
+                                                                        </h1>
+                                                                    </div>
+                                                                    <div class="col-lg-12 pt-4">
+                                                                        <p class="pb-4 text-black">
+                                                                            {{ $alloffer->name }}
+                                                                        </p>
+                                                                        <a href="{{ route('offer.details', $alloffer->slug) }}"
+                                                                            class="main-color">
+                                                                            <small>See all</small>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-lg-12 pt-4">
+                                                                        <div class="d-flex">
+                                                                            <a href="{{ route('offer.details', $alloffer->slug) }}"
+                                                                                class="main-color">
+                                                                                <small>View</small>
+                                                                            </a>
+                                                                            @if (!empty($alloffer->coupon_code))
+                                                                                <a href="{{ $alloffer->coupon_code }}"
+                                                                                    class="w-100 btn-common-three rounded-3 ms-2">Coupon
+                                                                                    <i
+                                                                                        class="fa-solid fa-copy"></i></a>
+                                                                            @endif
+                                                                        </div>
+                                                                        <p class="pt-2 text-center countdown"
+                                                                            data-expire-date="{{ $alloffer->expiry_date }}">
+                                                                            <span class="main-color">Expire In:</span>
+                                                                            <span class="countdown-timer"> Days</span>
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4 mb-4">
-                                                        <div class="card border-0 shadow-sm bg-light">
-                                                            <div class="row p-4 align-items-center">
-                                                                <div class="col-lg-6">
-                                                                    <div>
-                                                                        <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
-                                                                            width="80px" height="80px"
-                                                                            class="rounded-2 bg-white"
-                                                                            style="object-fit: cover;"
-                                                                            alt="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <span>Upto</span>
-                                                                    <h1 class="main-color special-font-box">
-                                                                        50% Off
-                                                                    </h1>
-                                                                </div>
-                                                                <div class="col-lg-12 pt-4">
-                                                                    <p class="pb-4 text-black">
-                                                                        Premium Punjabi collections for men on online
-                                                                    </p>
-                                                                    <a href="{{ route('store.details', 'aarong') }}"
-                                                                        class="main-color">
-                                                                        <small>See all in store</small>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-lg-12 pt-4">
-                                                                    <div class="d-flex">
-                                                                        <a href=""
-                                                                            class="w-100 btn-common-one rounded-3">View</a>
-                                                                        <a href=""
-                                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon
-                                                                            <i class="fa-solid fa-copy"></i></a>
-                                                                    </div>
-                                                                    <p class="pt-2 text-center countdown"
-                                                                        data-expire-date="August 17, 2024 00:00:00">
-                                                                        <span class="main-color">Expire In:</span>
-                                                                        <span class="countdown-timer">12 Days</span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                            aria-labelledby="profile-tab" tabindex="0">
-                                            <div class="row">
-                                                <h5 class="text-center">No Offer/Coupon Available</h5>
+                                        @foreach ($categories as $offercategory)
+                                            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
+                                                aria-labelledby="profile-tab" tabindex="0">
+                                                <div class="row">
+                                                    @if ($offercategory->offers->count() > 0)
+                                                        @foreach ($offercategory->offers as $category_offer)
+                                                            <div class="col-lg-4 mt-4">
+                                                                <div class="card border-0 shadow-sm bg-light">
+                                                                    <div class="row p-4 align-items-center">
+                                                                        <div class="col-lg-6">
+                                                                            <div>
+                                                                                <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                    width="80px" height="80px"
+                                                                                    class="rounded-2 bg-white"
+                                                                                    style="object-fit: cover;"
+                                                                                    alt="" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+
+                                                                            <h1 class="main-color special-font-box">
+                                                                                {{ $category_offer->badge }}
+                                                                            </h1>
+                                                                        </div>
+                                                                        <div class="col-lg-12 pt-4">
+                                                                            <p class="pb-4 text-black">
+                                                                                {{ $category_offer->name }}
+                                                                            </p>
+                                                                            <a href="{{ route('offer.details', $category_offer->slug) }}"
+                                                                                class="main-color">
+                                                                                <small>See all</small>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-lg-12 pt-4">
+                                                                            <div class="d-flex">
+                                                                                <a href="{{ route('offer.details', $category_offer->slug) }}"
+                                                                                    class="main-color">
+                                                                                    <small>View</small>
+                                                                                </a>
+                                                                                @if (!empty($category_offer->coupon_code))
+                                                                                    <a href="{{ $category_offer->coupon_code }}"
+                                                                                        class="w-100 btn-common-three rounded-3 ms-2">Coupon
+                                                                                        <i
+                                                                                            class="fa-solid fa-copy"></i></a>
+                                                                                @endif
+                                                                            </div>
+                                                                            <p class="pt-2 text-center countdown"
+                                                                                data-expire-date="{{ $category_offer->expiry_date }}">
+                                                                                <span class="main-color">Expire
+                                                                                    In:</span>
+                                                                                <span class="countdown-timer">
+                                                                                    Days</span>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @else
+                                                        <h5 class="text-center">No Offer/Coupon Available</h5>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -347,144 +396,147 @@
     <!-- Grab Your Offer End -->
 
     <!-- Promotion Product -->
-    <section>
-        <div class="container px-0 pb-70">
-            <div class="row gx-4 promotion-container align-items-center">
-                <div class="col-lg-12 py-5">
-                    <h1 class="promotion-title">Biggest Deals From Oraimo</h1>
-                    <p class="text-center">
-                        Problems trying to resolve the conflict between <br />
-                        the two major realms of Classical physics: Newtonian mechanics
-                    </p>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
-                        <div class="col-lg-6">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/product/03.png" class="img-fluid w-100"
-                                    alt="" />
+    @if (optional($homepage)->brand)
+        <section>
+            <div class="container px-0 pb-70">
+                <div class="row gx-4 promotion-container align-items-center">
+                    <div class="col-lg-12 py-5">
+                        <h1 class="promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
+                        {{-- <p class="text-center">
+                            Problems trying to resolve the conflict between <br />
+                            the two major realms of Classical physics: Newtonian mechanics
+                        </p> --}}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
+                            <div class="col-lg-6">
+                                <div>
+                                    <img src="{{ asset('frontend') }}/assets/img/product/03.png"
+                                        class="img-fluid w-100" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="pe-2">
+                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
+                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <del>BDT 3350</del>
+                                            <h6 class="main-color">BDT 2550</h6>
+                                        </div>
+                                        <div class="pe-4">
+                                            <a href="" class="btn-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 30 30" fill="none">
+                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
+                                                    <path
+                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="pe-2">
-                                <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <del>BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                    <div class="pe-4">
-                                        <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                <path
-                                                    d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </a>
+                        <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
+                            <div class="col-lg-6">
+                                <div>
+                                    <img src="{{ asset('frontend') }}/assets/img/product/04.png"
+                                        class="img-fluid w-100" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="pe-2">
+                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
+                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <del>BDT 3350</del>
+                                            <h6 class="main-color">BDT 2550</h6>
+                                        </div>
+                                        <div class="pe-4">
+                                            <a href="" class="btn-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 30 30" fill="none">
+                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
+                                                    <path
+                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
-                        <div class="col-lg-6">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/product/04.png" class="img-fluid w-100"
-                                    alt="" />
-                            </div>
+                    <div class="col-lg-4 px-0">
+                        <div class="d-flex justify-content-center">
+                            <img class="img-fluid w-100 middle-banner"
+                                src="{{ asset('storage/' . optional($homepage)->deal_brand_image) }}"
+                                alt="" />
                         </div>
-                        <div class="col-lg-6">
-                            <div class="pe-2">
-                                <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <del>BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                    <div class="pe-4">
-                                        <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                <path
-                                                    d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
+                            <div class="col-lg-6">
+                                <div>
+                                    <img src="{{ asset('frontend') }}/assets/img/product/03.png"
+                                        class="img-fluid w-100" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="pe-2">
+                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
+                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <del>BDT 3350</del>
+                                            <h6 class="main-color">BDT 2550</h6>
+                                        </div>
+                                        <div class="pe-4">
+                                            <a href="" class="btn-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 30 30" fill="none">
+                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
+                                                    <path
+                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 px-0">
-                    <div class="d-flex justify-content-center">
-                        <img class="img-fluid w-100 middle-banner"
-                            src="{{ asset('frontend') }}/assets/img/product/static-banner.png" alt="" />
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
-                        <div class="col-lg-6">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/product/03.png" class="img-fluid w-100"
-                                    alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="pe-2">
-                                <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <del>BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                    <div class="pe-4">
-                                        <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                <path
-                                                    d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </a>
-                                    </div>
+                        <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
+                            <div class="col-lg-6">
+                                <div>
+                                    <img src="{{ asset('frontend') }}/assets/img/product/04.png"
+                                        class="img-fluid w-100" alt="" />
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
-                        <div class="col-lg-6">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/product/04.png" class="img-fluid w-100"
-                                    alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="pe-2">
-                                <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <del>BDT 3350</del>
-                                        <h6 class="main-color">BDT 2550</h6>
-                                    </div>
-                                    <div class="pe-4">
-                                        <a href="" class="btn-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                viewBox="0 0 30 30" fill="none">
-                                                <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                <path
-                                                    d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </a>
+                            <div class="col-lg-6">
+                                <div class="pe-2">
+                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
+                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <del>BDT 3350</del>
+                                            <h6 class="main-color">BDT 2550</h6>
+                                        </div>
+                                        <div class="pe-4">
+                                            <a href="" class="btn-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 30 30" fill="none">
+                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
+                                                    <path
+                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -492,8 +544,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <!-- Promotion Product End -->
 
     <!-- Grab By Location -->
@@ -663,8 +715,10 @@
                                         <div class="py-3">
 
                                             <h5 class="text-center">
-                                                <span class="fw-bold main-color">{{ $offerDealLeft->badge }}%
-                                                </span>{{ $offerDealLeft->name }}
+                                                <span class="fw-bold main-color">{{ $offerDealLeft->badge }}
+                                                </span>
+                                                <br>
+                                                {{ $offerDealLeft->name }}
                                             </h5>
 
                                         </div>
@@ -783,8 +837,8 @@
                                                     {{ $offerDeal->name }}
                                                 </h6>
                                             </a>
-                                            <del class="pt-2">BDT {{ $offerDeal->offer_price }}</del>
-                                            <h6 class="main-color">BDT {{ $offerDeal->price }}</h6>
+                                            <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                            <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -872,7 +926,7 @@
         <section>
             <div class="container-fluid partners">
                 <div class="container px-0">
-                    <div class="slick-slider-partners">
+                    <div class="slick-slider-partners d-flex align-items-center">
                         @foreach ($brands as $brand)
                             <div class="items d-flex justify-content-center align-items-center">
                                 <img class="img-fluid"

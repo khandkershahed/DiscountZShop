@@ -46,4 +46,8 @@ class Category extends Model
     {
         return $this->hasMany(Offer::class);
     }
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class);
+    }
 }

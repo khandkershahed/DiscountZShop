@@ -44,15 +44,15 @@ class AppServiceProvider extends ServiceProvider
         View::share('admins', null);
 
         try {
-            
-            
+
+
 
             if (Schema::hasTable('settings')) {
                 View::share('setting', Setting::first());
             }
 
             if (Schema::hasTable('categories')) {
-                View::share('categories', Category::with('children')->whereNull('parent_id')->get());
+                View::share('categories', Category::with('children','offers','coupons')->whereNull('parent_id')->get());
             }
 
             if (Schema::hasTable('brands')) {
