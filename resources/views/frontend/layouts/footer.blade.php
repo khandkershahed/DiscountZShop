@@ -137,16 +137,16 @@
                             <div class="pt-5">
                                 <p class="footer-description">Follow us on</p>
                                 <div class="pt-3 d-flex justify-content-space-around align-items-center">
-                                    <a href="#" class="p-2">
+                                    <a href="{{ $setting->facebook_url }}" class="p-2">
                                         <i class="fa-brands fa-facebook-f" style="font-size: 22px"></i>
                                     </a>
-                                    <a href="#" class="p-2">
+                                    <a href="{{ $setting->twitter_url }}" class="p-2">
                                         <i class="fa-brands fa-twitter" style="font-size: 22px"></i>
                                     </a>
-                                    <a href="#" class="p-2">
+                                    {{-- <a href="{{ $setting->instagram_url }}" class="p-2">
                                         <i class="fa-brands fa-instagram" style="font-size: 22px"></i>
-                                    </a>
-                                    <a href="#" class="p-2">
+                                    </a> --}}
+                                    <a href="{{ $setting->linkedin_url }}" class="p-2">
                                         <i class="fa-brands fa-linkedin-in" style="font-size: 22px"></i>
                                     </a>
                                 </div>
