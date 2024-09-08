@@ -12,6 +12,7 @@ use App\Models\Country;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Division;
+use App\Models\HomePage;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -41,9 +42,14 @@ class AppServiceProvider extends ServiceProvider
         View::share('citys', null);
         View::share('areas', null);
         View::share('admins', null);
+        View::share('homepages', null);
 
         try {
-            // Check for table existence and set actual values
+            
+            if (Schema::hasTable('homepages')) {
+                View::share('homepage', HomePage::first());
+            }
+
             if (Schema::hasTable('settings')) {
                 View::share('setting', Setting::first());
             }

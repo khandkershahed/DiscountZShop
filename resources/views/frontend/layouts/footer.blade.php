@@ -9,7 +9,7 @@
                                     style="font-size: 30px">Z</span>shop</span>
                         </div>
                         <p class="pt-3 mb-0 footer-description">
-                            {{ $setting->site_motto }}
+                            {{ optional($setting)->site_motto }}
                         </p>
                         <!-- Contact Info Start -->
                         <div class="pt-3">
@@ -22,7 +22,7 @@
                                             fill="#F15A2D" />
                                     </svg>
                                 </div>
-                                <p class="ps-3 company-link">Email: {{ $setting->support_email }}</p>
+                                <p class="ps-3 company-link">Email: {{ optional($setting)->support_email }}</p>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div>
@@ -33,7 +33,7 @@
                                             fill="#F15A2D" />
                                     </svg>
                                 </div>
-                                <p class="ps-3 company-link">Call: {{ $setting->primary_phone }}</p>
+                                <p class="ps-3 company-link">Call: {{ optional($setting)->primary_phone }}</p>
                             </div>
                             <div class="d-flex align-items-center pt-2">
                                 <div>
@@ -45,8 +45,8 @@
                                     </svg>
                                 </div>
                                 <p class="ps-3 company-link">
-                                    {{ $setting->address_line_one }} <br/>
-                                    {{ $setting->address_line_two }}
+                                    {{ optional($setting)->address_line_one }} <br/>
+                                    {{ optional($setting)->address_line_two }}
                                 </p>
                             </div>
                             <div class="d-flex align-items-center pt-2">
@@ -161,8 +161,8 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
                         <p class="footer-description">
-                            {{ $setting->copyright_title }}
-                            <a href="{{ $setting->copyright_url }}" class="main-color">{{ $setting->website_name }}</a>
+                            {{ optional($setting)->copyright_title }}
+                            <a href="{{ optional($setting)->copyright_url }}" class="main-color">{{ optional($setting)->website_name }}</a>
                         </p>
                         <div class="d-flex justify-content-center align-items-center pt-3">
                             <a href="{{ route('termsCondition') }}" class="pe-3"

@@ -1164,42 +1164,43 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="slick-slider-normal">
+
                         <div class="items">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
-                                    class="img-fluid custom-img w-100 rounded-2" alt="" />
-                            </div>
+                            <a href="">
+                                <div>
+                                    <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
+                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                </div>
+                            </a>
                         </div>
+
                         <div class="items">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
-                                    class="img-fluid custom-img w-100 rounded-2" alt="" />
-                            </div>
+                            <a href="">
+                                <div>
+                                    <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
+                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                </div>
+                            </a>
                         </div>
+
                         <div class="items">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
-                                    class="img-fluid custom-img w-100 rounded-2" alt="" />
-                            </div>
+                            <a href="">
+                                <div>
+                                    <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
+                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                </div>
+                            </a>
                         </div>
+
                         <div class="items">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
-                                    class="img-fluid custom-img w-100 rounded-2" alt="" />
-                            </div>
+                            <a href="">
+                                <div>
+                                    <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
+                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                </div>
+                            </a>
                         </div>
-                        <div class="items">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
-                                    class="img-fluid custom-img w-100 rounded-2" alt="" />
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/slider1.png"
-                                    class="img-fluid custom-img w-100 rounded-2" alt="" />
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1251,15 +1252,23 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="slick-slider-footer-slider">
-                        @foreach ($offers as $offer)
-                            <a href="{{ route('offer.details', $offer->slug) }}">
-                                <div class="items d-flex justify-content-center align-items-center">
-                                    <img class="img-fluid w-100"
-                                        src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : asset('images/banner-demo.png') }}"
-                                        alt="" />
-                                </div>
-                            </a>
-                        @endforeach
+
+                        <div class="items d-flex justify-content-center align-items-center">
+                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_one) ? url('storage/' . $homepage->bottom_banner_slider_one) : asset('images/banner-demo.png') }}" alt="" />
+                        </div>
+
+                        <div class="items d-flex justify-content-center align-items-center">
+                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_two) ? url('storage/' . $homepage->bottom_banner_slider_two) : asset('images/banner-demo.png') }}" alt="" />
+                        </div>
+
+                        <div class="items d-flex justify-content-center align-items-center">
+                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_three) ? url('storage/' . $homepage->bottom_banner_slider_three) : asset('images/banner-demo.png') }}" alt="" />
+                        </div>
+
+                        <div class="items d-flex justify-content-center align-items-center">
+                            <img class="img-fluid w-100" src="{{ !empty($homepage->bottom_banner_slider_four) ? url('storage/' . $homepage->bottom_banner_slider_four) : asset('images/banner-demo.png') }}" alt="" />
+                        </div>
+
                     </div>
                 </div>
             </div>
