@@ -65,6 +65,7 @@ class CouponController extends Controller
             'banner_image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
 
             'description' => 'nullable|string',
+            'short_description' => 'nullable|string',
             'map_url' => 'nullable|string',
 
             'price' => 'required|numeric',
@@ -122,6 +123,7 @@ class CouponController extends Controller
                 'offer_price' => $request->offer_price,
                 'start_date' => $request->start_date,
                 'description' => $request->description,
+                'short_description' => $request->short_description,
                 'locations' => $request->locations,
                 'url' => $request->url,
                 'source_url' => $request->source_url,

@@ -185,8 +185,8 @@
                         <x-metronic.label for="badge" class="col-form-label fw-bold fs-6">{{ __('Badge') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="badge" type="text" name="badge" value="{{ $coupon->badge }}"
-                            placeholder="Enter the Badge"></x-metronic.input>
+                        <x-metronic.input id="badge" type="number" name="badge" value="{{ $coupon->badge }}"
+                            placeholder="Eg: 50"></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -270,6 +270,13 @@
                         <textarea id="locations" class="ckeditor" name="locations">{!! $coupon->locations !!}</textarea>
                     </div>
 
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="description" class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        </x-metronic.label>
+
+                        <textarea id="description" class="ckeditor" name="description">{!! $coupon->description !!}</textarea>
+                    </div>
+
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
@@ -309,12 +316,12 @@
                     </div>
 
                     <div class="col-lg-8 mb-7">
-                        <x-metronic.label for="description"
-                            class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        <x-metronic.label for="short_description"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Short Description') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="description"
-                            name="description">{!! $coupon->description !!}</x-metronic.textarea>
+                        <x-metronic.textarea id="short_description"
+                            name="description">{!! $coupon->short_description !!}</x-metronic.textarea>
                     </div>
 
                     <div class="col-lg-4 mb-7">

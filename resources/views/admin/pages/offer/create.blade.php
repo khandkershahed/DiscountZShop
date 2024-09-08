@@ -157,8 +157,8 @@
                         <x-metronic.label for="badge" class="col-form-label fw-bold fs-6">{{ __('Badge') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="badge" type="text" name="badge" :value="old('badge')"
-                            placeholder="Enter the Badge"></x-metronic.input>
+                        <x-metronic.input id="badge" type="number" name="badge" :value="old('badge')"
+                            placeholder="Eg: 30"></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -240,6 +240,13 @@
                         <textarea id="locations" class="ckeditor" name="locations"></textarea>
                     </div>
 
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="description" class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        </x-metronic.label>
+
+                        <textarea id="description" class="ckeditor" name="description"></textarea>
+                    </div>
+
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
@@ -267,12 +274,13 @@
                     </div>
 
                     <div class="col-lg-8 mb-7">
-                        <x-metronic.label for="description"
-                            class="col-form-label fw-bold fs-6">{{ __('Description') }}
+                        <x-metronic.label for="short_description"
+                            class="col-form-label fw-bold fs-6">{{ __('Short Description') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="description" placeholder="Write Description" name="description"></x-metronic.textarea>
+                        <x-metronic.textarea id="short_description" placeholder="Write Short Description" name="short_description"></x-metronic.textarea>
                     </div>
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                             {{ __('Select a Status ') }}</x-metronic.label>

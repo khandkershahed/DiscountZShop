@@ -1275,4 +1275,5 @@
         </div>
     </section>
     <!-- Footer Slider End -->
+    
 </x-frontend-app-layout>
