@@ -122,7 +122,7 @@
                                 <span class="title-divider"></span>
                                 <span class="title-divider-small"></span>
                             </div>
-                            <form action="{{ route('ema') }}" method="POST">
+                            <form action="{{ route('email.subscribe') }}" method="POST">
                                 @csrf
                                 <p class="pt-3 footer-description">
                                     <input type="email" class="form-control" name="email"
