@@ -191,14 +191,14 @@
                                                     <p class="pb-4 text-black">
                                                         {{ $offer->name }}
                                                     </p>
-                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                    <a href="{{ url('/offer-details' . '/' . $offer->id . '/' . $offer->slug) }}"
                                                         class="main-color">
                                                         <small>See all</small>
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-12 pt-4">
                                                     <div class="d-flex">
-                                                        <a href="{{ route('offer.details', $offer->slug) }}"
+                                                        <a href="{{ url('/offer-details' . '/' . $offer->id . '/' . $offer->slug) }}"
                                                             class="main-color">
                                                             <small>View</small>
                                                         </a>
@@ -250,14 +250,14 @@
                                                         <p class="pb-4 text-black">
                                                             {{ $cateWiseOffer->name }}
                                                         </p>
-                                                        <a href="{{ route('offer.details', $cateWiseOffer->slug) }}"
+                                                        <a href=""
                                                             class="main-color">
                                                             <small>See all</small>
                                                         </a>
                                                     </div>
                                                     <div class="col-lg-12 pt-4">
                                                         <div class="d-flex">
-                                                            <a href="{{ route('offer.details', $cateWiseOffer->slug) }}"
+                                                            <a href=""
                                                                 class="w-100 btn-common-one rounded-3">View</a>
                                                             @if (!empty($cateWiseOffer->coupon_code))
                                                                 <a href="{{ $cateWiseOffer->coupon_code }}"
