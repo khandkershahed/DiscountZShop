@@ -38,6 +38,7 @@ return new class extends Migration
             $table->double('offer_price')->nullable();//
 
             $table->longText('description')->nullable();//
+            $table->text('short_description')->nullable();//
 
             $table->longText('locations')->nullable();//
 

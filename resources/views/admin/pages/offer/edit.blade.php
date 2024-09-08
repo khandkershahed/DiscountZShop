@@ -184,7 +184,7 @@
                         <x-metronic.label for="badge" class="col-form-label fw-bold fs-6">{{ __('Badge') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="badge" type="text" name="badge" value="{{ $offer->badge }}"
+                        <x-metronic.input id="badge" type="number" name="badge" value="{{ $offer->badge }}"
                             placeholder="Enter the Badge"></x-metronic.input>
                     </div>
 
@@ -229,8 +229,7 @@
                         </x-metronic.label>
 
                         <x-metronic.textarea id="map_url" type="text" s name="map_url"
-                             placeholder="Please Map Url"
-                            required>{!! $offer->map_url !!}</x-metronic.textarea>
+                            placeholder="Please Map Url" required>{!! $offer->map_url !!}</x-metronic.textarea>
                     </div>
 
                     <!-- Update for date fields -->
@@ -271,6 +270,14 @@
                         <textarea id="locations" class="ckeditor" name="locations">{!! $offer->locations !!}</textarea>
                     </div>
 
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="description"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        </x-metronic.label>
+
+                        <textarea id="description" class="ckeditor" name="description">{!! $offer->description !!}</textarea>
+                    </div>
+
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
@@ -278,6 +285,9 @@
 
                         <x-metronic.file-input id="logo" name="logo"
                             :value="old('logo')"></x-metronic.file-input>
+
+                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                            height="80" width="80" alt="{{ $offer->name }}">
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image"
@@ -286,6 +296,9 @@
 
                         <x-metronic.file-input id="image" name="image"
                             :value="old('image')"></x-metronic.file-input>
+
+                            <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                            height="80" width="80" alt="{{ $offer->name }}">
                     </div>
 
                     <div class="col-lg-4 mb-7">
@@ -295,15 +308,18 @@
 
                         <x-metronic.file-input id="banner_image" :value="old('banner_image')"
                             name="banner_image"></x-metronic.file-input>
+
+                            <img class="mt-3" src="{{ !empty($offer->banner_image) ? url('storage/' . $offer->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                            height="80" width="80" alt="{{ $offer->name }}">
                     </div>
 
                     <div class="col-lg-8 mb-7">
-                        <x-metronic.label for="description"
-                            class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        <x-metronic.label for="short_description"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Short Description') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="description"
-                            name="description">{!! $offer->description !!}</x-metronic.textarea>
+                        <x-metronic.textarea id="short_description"
+                            name="short_description">{!! $offer->short_description !!}</x-metronic.textarea>
                     </div>
 
                     <div class="col-lg-4 mb-7">
