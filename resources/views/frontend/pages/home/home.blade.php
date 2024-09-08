@@ -948,7 +948,7 @@
                     <div class="col-lg-12">
                         <div class="slick-slider-footer-slider">
                             @php
-                                $banners = [
+                                $bottom_banners = [
                                     [
                                         'link' => $homepage->bottom_banner_slider_one_link,
                                         'image' => $homepage->bottom_banner_slider_one,
@@ -969,11 +969,11 @@
                                 $defaultImage = asset('images/banner-demo.png');
                             @endphp
 
-                            @foreach ($banners as $banner)
-                                <a href="{{ optional($banner['link']) }}">
+                            @foreach ($bottom_banners as $bottom_banner)
+                                <a href="{{ optional($bottom_banner['link']) }}">
                                     <div class="items d-flex justify-content-center align-items-center">
                                         <img class="img-fluid w-100"
-                                            src="{{ !empty($banner['image']) ? url('storage/' . $banner['image']) : $defaultImage }}"
+                                            src="{{ !empty($bottom_banner['image']) ? url('storage/' . $bottom_banner['image']) : $defaultImage }}"
                                             alt="Banner image" />
                                     </div>
                                 </a>
