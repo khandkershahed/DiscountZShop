@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\DivisonController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\IconController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\NewsletterController;
@@ -118,6 +119,7 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
             'about-us' => AboutUsController::class,
             'slider' => SliderController::class,
             'banner' => BannerController::class,
+            'homepage' => HomePageController::class,
 
         ],
         ['except' => ['show']]
