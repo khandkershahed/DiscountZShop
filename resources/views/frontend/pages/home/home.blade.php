@@ -941,54 +941,50 @@
     @endif
 
     <!-- Footer Slider -->
-    <section>
-        <div class="container px-0 pt-70 pb-70">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="slick-slider-footer-slider">
+    @if (!empty($homepage->bottom_banner_slider_one) || !empty($homepage->bottom_banner_slider_two) || !empty($homepage->bottom_banner_slider_three) || !empty($homepage->bottom_banner_slider_four))
+        <section>
+            <div class="container px-0 pt-70 pb-70">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slick-slider-footer-slider">
+                            @php
+                                $banners = [
+                                    [
+                                        'link' => $homepage->bottom_banner_slider_one_link,
+                                        'image' => $homepage->bottom_banner_slider_one,
+                                    ],
+                                    [
+                                        'link' => $homepage->bottom_banner_slider_two_link,
+                                        'image' => $homepage->bottom_banner_slider_two,
+                                    ],
+                                    [
+                                        'link' => $homepage->bottom_banner_slider_three_link,
+                                        'image' => $homepage->bottom_banner_slider_three,
+                                    ],
+                                    [
+                                        'link' => $homepage->bottom_banner_slider_four_link,
+                                        'image' => $homepage->bottom_banner_slider_four,
+                                    ],
+                                ];
+                                $defaultImage = asset('images/banner-demo.png');
+                            @endphp
 
-                        <a href="{{ optional($homepage)->bottom_banner_slider_one_link }}">
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid w-100"
-                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_one) ? url('storage/' . optional($homepage)->bottom_banner_slider_one) : asset('images/banner-demo.png') }}"
-                                    alt="" />
-                            </div>
-                        </a>
-
-                        <a href="{{ optional($homepage)->bottom_banner_slider_two_link }}">
-
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid w-100"
-                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_two) ? url('storage/' . optional($homepage)->bottom_banner_slider_two) : asset('images/banner-demo.png') }}"
-                                    alt="" />
-                            </div>
-
-                        </a>
-
-                        <a href="{{ optional($homepage)->bottom_banner_slider_three_link }}">
-
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid w-100"
-                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_three) ? url('storage/' . optional($homepage)->bottom_banner_slider_three) : asset('images/banner-demo.png') }}"
-                                    alt="" />
-                            </div>
-
-                        </a>
-
-                        <a href="{{ optional($homepage)->bottom_banner_slider_four_link }}">
-
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid w-100"
-                                    src="{{ !empty(optional($homepage)->bottom_banner_slider_four) ? url('storage/' . optional($homepage)->bottom_banner_slider_four) : asset('images/banner-demo.png') }}"
-                                    alt="" />
-                            </div>
-
-                        </a>
+                            @foreach ($banners as $banner)
+                                <a href="{{ optional($banner['link']) }}">
+                                    <div class="items d-flex justify-content-center align-items-center">
+                                        <img class="img-fluid w-100"
+                                            src="{{ !empty($banner['image']) ? url('storage/' . $banner['image']) : $defaultImage }}"
+                                            alt="Banner image" />
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+
     <!-- Footer Slider End -->
 
 </x-frontend-app-layout>
