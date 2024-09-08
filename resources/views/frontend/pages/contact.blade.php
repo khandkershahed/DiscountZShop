@@ -25,8 +25,8 @@
                                     </div>
                                     <div class="ps-3">
                                         <h5>Call Now</h5>
-                                        <p class="pt-2">+(00) 852 852 9966</p>
-                                        <p>+(00) 852 852 9955</p>
+                                        <p class="pt-2">{{ $setting->primary_phone }}</p>
+                                        <p>{{ $setting->alternative_phone }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -37,8 +37,8 @@
                                     </div>
                                     <div class="ps-3">
                                         <h5>Contact Email</h5>
-                                        <p class="pt-2">Info@Coupay.com</p>
-                                        <p>Mail@Coupay.com</p>
+                                        <p class="pt-2">{{ $setting->contact_email }}</p>
+                                        <p>{{ $setting->support_email }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,10 @@
                                     <div class="ps-3">
                                         <h5>Our Location</h5>
                                         <p class="pt-2">
-                                            House No:50%, Block-B, Coupmy Street, Sydney, Australia
+                                            {{ $setting->address_line_one }}
+                                        </p>
+                                        <p class="pt-2">
+                                            {{ $setting->address_line_two }}
                                         </p>
                                     </div>
                                 </div>

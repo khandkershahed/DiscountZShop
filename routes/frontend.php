@@ -1,13 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\NewsletterController;
 
 Route::get('/', [HomeController::class, 'homePage'])->name('homePage');
 Route::get('/about', [HomeController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
 Route::post('contact/store', [ContactController::class, 'store'])->name('contact.add');
+Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('contact.add');
 
 Route::get('/category/{slug}', [HomeController::class, 'categoryDetails'])->name('category.details');
 
