@@ -289,15 +289,13 @@
                                                                         <p class="pb-4 text-black">
                                                                             {{ $alloffer->name }}
                                                                         </p>
-                                                                        <a href="{{ route('offer.details', $alloffer->slug) }}"
-                                                                            class="main-color">
+                                                                        <a href="" class="main-color">
                                                                             <small>See all</small>
                                                                         </a>
                                                                     </div>
                                                                     <div class="col-lg-12 pt-4">
                                                                         <div class="d-flex">
-                                                                            <a href="{{ route('offer.details', $alloffer->slug) }}"
-                                                                                class="main-color">
+                                                                            <a href="" class="main-color">
                                                                                 <small>View</small>
                                                                             </a>
                                                                             @if (!empty($alloffer->coupon_code))
@@ -348,15 +346,13 @@
                                                                             <p class="pb-4 text-black">
                                                                                 {{ $category_offer->name }}
                                                                             </p>
-                                                                            <a href="{{ route('offer.details', $category_offer->slug) }}"
-                                                                                class="main-color">
+                                                                            <a href="" class="main-color">
                                                                                 <small>See all</small>
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-lg-12 pt-4">
                                                                             <div class="d-flex">
-                                                                                <a href="{{ route('offer.details', $category_offer->slug) }}"
-                                                                                    class="main-color">
+                                                                                <a href="" class="main-color">
                                                                                     <small>View</small>
                                                                                 </a>
                                                                                 @if (!empty($category_offer->coupon_code))
@@ -647,7 +643,7 @@
                                             {{ $offerLatest->short_description }}
                                         </p>
                                         <a class="btn btn-dark rounded-pill px-5"
-                                            href="{{ url('/offer-details' . '/' . $offerLatest->id . '/' . $offerLatest->slug) }}">See
+                                            href="{{ route('offer.details', $offerLatest->slug) }}">See
                                             Details</a>
                                     </div>
                                     <div class="col-lg-5">
@@ -726,8 +722,7 @@
                                         </div>
 
                                         <div class="py-5 d-flex justify-content-center align-items-center">
-                                            <a href="{{ url('/offer-details' . '/' . $offerDealLeft->id . '/' . $offerDealLeft->slug) }}"
-                                                class="btn btn-common-one rounded-pill px-4">See
+                                            <a href="" class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
                                         </div>
 
