@@ -970,7 +970,7 @@
                             @endphp
 
                             @foreach ($bottom_banners as $bottom_banner)
-                                <a href="{{ optional($bottom_banner['link']) }}">
+                                <a href="{{ $bottom_banner['link'] }}">
                                     <div class="items d-flex justify-content-center align-items-center">
                                         <img class="img-fluid w-100"
                                             src="{{ !empty($bottom_banner['image']) ? url('storage/' . $bottom_banner['image']) : $defaultImage }}"
