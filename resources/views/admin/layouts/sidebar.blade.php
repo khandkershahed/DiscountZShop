@@ -161,6 +161,14 @@
                             'title' => 'Site Contents',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
                             'routes' => [
+
+                                'admin.homepage.index',
+                                'admin.homepage.create',
+                                'admin.homepage.edit',
+
+                                'admin.about-us.index',
+                                'admin.about-us.edit',
+
                                 'admin.terms-condition.index',
                                 'admin.terms-condition.create',
                                 'admin.terms-condition.edit',
@@ -173,10 +181,24 @@
                                 'admin.page-banner.create',
                                 'admin.page-banner.edit',
 
-                                'admin.about-us.index',
-                                'admin.about-us.edit',
                             ],
                             'subMenu' => [
+                                [
+                                    'title' => 'HomePage',
+                                    'routes' => [
+                                        'admin.homepage.index',
+                                        'admin.homepage.create',
+                                        'admin.homepage.edit',
+                                    ],
+                                    'route' => 'admin.homepage.index',
+                                ],
+
+                                [
+                                    'title' => 'About US',
+                                    'routes' => ['admin.about-us.index', 'admin.about-us.edit'],
+                                    'route' => 'admin.about-us.index',
+                                ],
+                                
                                 [
                                     'title' => 'Terms & Condition',
                                     'routes' => [
@@ -207,11 +229,6 @@
                                     'route' => 'admin.page-banner.index',
                                 ],
 
-                                [
-                                    'title' => 'About US',
-                                    'routes' => ['admin.about-us.index', 'admin.about-us.edit'],
-                                    'route' => 'admin.about-us.index',
-                                ],
                             ],
                         ],
 
