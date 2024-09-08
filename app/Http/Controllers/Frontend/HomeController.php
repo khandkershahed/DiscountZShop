@@ -23,10 +23,10 @@ class HomeController extends Controller
     {
         $data = [
             'sliders' => Slider::where('status', 'active')->latest()->get(),
-            'banner' => Banner::where('status', 'active')->latest()->get(),
+            'banner'  => Banner::where('status', 'active')->latest()->get(),
             'coupons' => Coupon::latest()->get(),
-            'brands' => Brand::latest()->get(),
-            'offers' => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
+            'brands'  => Brand::latest()->get(),
+            'offers'  => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
         ];
 
         return view('frontend.pages.home.home', $data);

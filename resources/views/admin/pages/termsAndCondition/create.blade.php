@@ -1,5 +1,5 @@
 <x-admin-app-layout :title="'Terms and Condition Add'">
-    
+
     <div class="card card-flash">
         <div class="card-header py-3">
             <div class="card-title"></div>
@@ -88,7 +88,7 @@
                     <x-metronic.label for="content" class="col-form-label required fw-bold fs-6">
                         {{ __('Content') }}</x-metronic.label>
                     <textarea name="content" rows="3" cols="3"
-                        class="tinymce_metronic form-control @error('content') is-invalid @enderror">{!! old('content') !!}</textarea>
+                        class="ckeditor form-control @error('content') is-invalid @enderror">{!! old('content') !!}</textarea>
                     @error('content')
                         <span class="text-danger"> {{ $message }} </span>
                     @enderror
