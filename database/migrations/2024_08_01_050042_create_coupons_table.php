@@ -45,13 +45,13 @@ return new class extends Migration
             $table->text('map_url')->nullable();
 
             $table->string('coupon_code')->nullable();
-            
+
             $table->timestamp('start_date')->nullable();
             $table->timestamp('notification_date')->nullable();
             $table->timestamp('expiry_date')->nullable();
 
             $table->string('status')->default('active')->comment('inactive,active,expired');
-            
+
             $table->timestamps(); // Creates `created_at` and `updated_at` columns
         });
     }

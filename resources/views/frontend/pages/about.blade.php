@@ -18,41 +18,41 @@
                 <div class="col-lg-4">
                     <div>
                         <img style="width: 80px;height: 80px;"
-                            src="{{ !empty($about->row_one_column_one_icon) ? url('storage/' . $about->row_one_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            src="{{ !empty(optional($about)->row_one_column_one_icon) ? url('storage/' . optional($about)->row_one_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="">
                     </div>
-                    <h4 class="pt-3">{{ $about->row_one_column_one_title }}</h4>
+                    <h4 class="pt-3">{{ optional($about)->row_one_column_one_title }}</h4>
                     <p class="pt-3 pb-3">
-                        {{ Str::words($about->row_one_column_one_description, 20, '...') }}
+                        {{ Str::words(optional($about)->row_one_column_one_description, 20, '...') }}
                     </p>
-                    <a href="{{ $about->row_one_column_one_url }}" class="main-color">Learn More <i
+                    <a href="{{ optional($about)->row_one_column_one_url }}" class="main-color">Learn More <i
                             class="fa-solid fa-arrow-right-long ps-2"></i></a>
                 </div>
 
                 <div class="col-lg-4">
                     <div>
                         <img style="width: 80px;height: 80px;"
-                            src="{{ !empty($about->row_one_column_two_icon) ? url('storage/' . $about->row_one_column_two_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            src="{{ !empty(optional($about)->row_one_column_two_icon) ? url('storage/' . optional($about)->row_one_column_two_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="">
                     </div>
-                    <h4 class="pt-3">{{ $about->row_one_column_two_title }}</h4>
+                    <h4 class="pt-3">{{ optional($about)->row_one_column_two_title }}</h4>
                     <p class="pt-3 pb-3">
-                        {{ Str::words($about->row_one_column_two_description, 20, '...') }}
+                        {{ Str::words(optional($about)->row_one_column_two_description, 20, '...') }}
                     </p>
-                    <a href="{{ $about->row_one_column_two_url }}" class="main-color">Learn More <i
+                    <a href="{{ optional($about)->row_one_column_two_url }}" class="main-color">Learn More <i
                             class="fa-solid fa-arrow-right-long ps-2"></i></a>
                 </div>
 
                 <div class="col-lg-4">
                     <div>
                         <img style="width: 80px;height: 80px;"
-                            src="{{ !empty($about->row_one_column_three_icon) ? url('storage/' . $about->row_one_column_three_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            src="{{ !empty(optional($about)->row_one_column_three_icon) ? url('storage/' . optional($about)->row_one_column_three_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="">
-                        <h4 class="pt-3">{{ $about->row_one_column_three_title }}</h4>
+                        <h4 class="pt-3">{{ optional($about)->row_one_column_three_title }}</h4>
                         <p class="pt-3 pb-3">
-                            {{ Str::words($about->row_one_column_three_description, 20, '...') }}
+                            {{ Str::words(optional($about)->row_one_column_three_description, 20, '...') }}
                         </p>
-                        <a href="{{ $about->row_one_column_three_url }}" class="main-color">Learn More <i
+                        <a href="{{ optional($about)->row_one_column_three_url }}" class="main-color">Learn More <i
                                 class="fa-solid fa-arrow-right-long ps-2"></i></a>
                     </div>
                 </div>
@@ -74,14 +74,14 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <p class="main-color fw-bold pb-4">{{ $about->row_two_badge }}</p>
-                    <h1 class="pb-4">{{ $about->row_two_title }}</h1>
+                    <p class="main-color fw-bold pb-4">{{ optiona($about)->row_two_badge }}</p>
+                    <h1 class="pb-4">{{ optiona($about)->row_two_title }}</h1>
                     <p>
-                        {!! $about->row_two_description !!}
+                        {!! optiona($about)->row_two_description !!}
                     </p>
                     <div class="pt-4">
-                        <a href="{{ $about->row_two_button_url }}"
-                            class="btn-common-one">{{ $about->row_two_button_name }}</a>
+                        <a href="{{ optiona($about)->row_two_button_url }}"
+                            class="btn-common-one">{{ optiona($about)->row_two_button_name }}</a>
                     </div>
                 </div>
             </div>
@@ -97,50 +97,50 @@
                 <div class="item">
                     <div class="">
                         <img style="width: 60px; height:60px;"
-                            src="{{ !empty($about->row_five_column_one_icon) ? url('storage/' . $about->row_five_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            src="{{ !empty(optiona($about)->row_five_column_one_icon) ? url('storage/' . optiona($about)->row_five_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="">
                     </div>
                     <h1 class="count" data-number="50"></h1>
-                    <a href="{{ $about->row_five_column_one_url }}">
-                        <h5 class="text-black">{{ $about->row_five_column_one_title }}</h5>
+                    <a href="{{ optiona($about)->row_five_column_one_url }}">
+                        <h5 class="text-black">{{ optiona($about)->row_five_column_one_title }}</h5>
                     </a>
                 </div>
 
                 <div class="item">
                     <div class="">
                         <img style="width: 60px; height: 60px;"
-                            src="{{ !empty($about->row_five_column_two_icon)
-                                ? asset('storage/' . $about->row_five_column_two_icon)
+                            src="{{ !empty(optiona($about)->row_five_column_two_icon)
+                                ? asset('storage/' . optiona($about)->row_five_column_two_icon)
                                 : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="Icon">
                     </div>
                     <h1 class="count" data-number="50"></h1>
-                    <a href="{{ $about->row_five_column_two_url }}">
-                        <h5 class="text-black">{{ $about->row_five_column_two_title }}</h5>
+                    <a href="{{ optiona($about)->row_five_column_two_url }}">
+                        <h5 class="text-black">{{ optiona($about)->row_five_column_two_title }}</h5>
                     </a>
                 </div>
 
                 <div class="item">
                     <div class="">
                         <img style="width: 60px; height:60px;"
-                            src="{{ !empty($about->row_five_column_three_icon) ? url('storage/' . $about->row_five_column_three_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            src="{{ !empty(optiona($about)->row_five_column_three_icon) ? url('storage/' . optiona($about)->row_five_column_three_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="">
                     </div>
                     <h1 class="count" data-number="50"></h1>
-                    <a href="{{ $about->row_five_column_three_url }}">
-                        <h5 class="text-black">{{ $about->row_five_column_three_title }}</h5>
+                    <a href="{{ optiona($about)->row_five_column_three_url }}">
+                        <h5 class="text-black">{{ optiona($about)->row_five_column_three_title }}</h5>
                     </a>
                 </div>
 
                 <div class="item">
                     <div class="">
                         <img style="width: 60px; height:60px;"
-                            src="{{ !empty($about->row_five_column_four_icon) ? url('storage/' . $about->row_five_column_four_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            src="{{ !empty(optiona($about)->row_five_column_four_icon) ? url('storage/' . optiona($about)->row_five_column_four_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                             alt="">
                     </div>
                     <h1 class="count" data-number="50"></h1>
-                    <a href="{{ $about->row_five_column_four_url }}">
-                        <h5 class="text-black">{{ $about->row_five_column_four_title }}</h5>
+                    <a href="{{ optiona($about)->row_five_column_four_url }}">
+                        <h5 class="text-black">{{ optiona($about)->row_five_column_four_title }}</h5>
                     </a>
                 </div>
 
@@ -155,11 +155,11 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1>Big Brands Are Here</h1>
-                        <p class="w-lg-50 w-100 pt-3">
+                        {{-- <p class="w-lg-50 w-100 pt-3">
                             Problems trying to resolve the conflict between <br />
                             the two major realms of Classical physics: Newtonian
                             mechanics
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>

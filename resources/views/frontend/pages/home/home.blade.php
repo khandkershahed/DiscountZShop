@@ -1215,11 +1215,11 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1>Big Brands Are Here</h1>
-                        <p class="w-lg-50 w-100 pt-3">
+                        {{-- <p class="w-lg-50 w-100 pt-3">
                             Problems trying to resolve the conflict between <br />
                             the two major realms of Classical physics: Newtonian
                             mechanics
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>
@@ -1227,29 +1227,25 @@
     </section>
 
     {{-- Brands  --}}
-    <section>
-        <div class="container-fluid partners">
-            <div class="container px-0">
-                <div class="slick-slider-partners">
-
-                    @forelse ($brands as $brand)
-                        <a href="{{ route('brand.details', $brand->slug) }}">
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($brand->name) }}"
-                                    alt="" />
-                            </div>
-                        </a>
-
-                    @empty
-                        <p>No Brand Avaiable</p>
-                    @endforelse
-
-
+    @if ($brands->count() > 0)
+        <section>
+            <div class="container-fluid partners">
+                <div class="container px-0">
+                    <div class="slick-slider-partners d-flex align-content-center align-items-center">
+                        @foreach ($brands as $brand)
+                            <a href="{{ route('brand.details', $brand->slug) }}">
+                                <div class="items d-flex justify-content-center align-items-center">
+                                    <img class="img-fluid"
+                                        src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($brand->name) }}"
+                                        alt="" />
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <!-- Footer Slider -->
     <section>
@@ -1257,7 +1253,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="slick-slider-footer-slider">
-
                         @foreach ($offers as $offer)
                             <a href="{{ route('offer.details', $offer->slug) }}">
                                 <div class="items d-flex justify-content-center align-items-center">
@@ -1267,8 +1262,6 @@
                                 </div>
                             </a>
                         @endforeach
-
-
                     </div>
                 </div>
             </div>
