@@ -45,7 +45,7 @@
                                     </svg>
                                 </div>
                                 <p class="ps-3 company-link">
-                                    {{ $setting->address_line_one }} <br />
+                                    {{ $setting->address_line_one }} <br/>
                                     {{ $setting->address_line_two }}
                                 </p>
                             </div>
@@ -59,7 +59,7 @@
                                     </svg>
                                 </div>
                                 <p class="ps-3 company-link">
-                                    Hours: 10:00 AM - 09:00 PM
+                                    Hours: 09:00 AM - 06:00 PM
                                 </p>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                             </div>
                             <form action="{{ route('email.subscribe') }}" method="POST">
                                 @csrf
-                                <p class="pt-3 footer-description">
+                                <p class="pt-3 footer-description pb-2">
                                     <input type="email" class="form-control" name="email"
                                         id="exampleFormControlInput1" placeholder="name@example.com" required />
                                     @error('email')
@@ -161,8 +161,8 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
                         <p class="footer-description">
-                            2024 @ All Right Reserved By
-                            <span class="main-color">DiscountZshop</span>
+                            {{ $setting->copyright_title }}
+                            <a href="{{ $setting->copyright_url }}" class="main-color">{{ $setting->website_name }}</a>
                         </p>
                         <div class="d-flex justify-content-center align-items-center pt-3">
                             <a href="{{ route('termsCondition') }}" class="pe-3"

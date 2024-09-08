@@ -11,7 +11,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="main-color">{{ $terms->title }}</h4>
+                    <h4 class="main-color mb-4">{{ $terms->title }}</h4>
                     <p>
                         {!! $terms->content !!}
                     </p>
