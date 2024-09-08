@@ -76,8 +76,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div>
-                            <img class="w-100 img-fluid rounded-3" src="https://htmlbeans.com/html/coupon/images/img31.jpg"
-                                alt="" />
+                            <img class="w-100 img-fluid rounded-3"
+                                src="https://htmlbeans.com/html/coupon/images/img31.jpg" alt="" />
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -100,97 +100,64 @@
     <!-- Who End -->
 
     <!-- Amount Start -->
-    <section class="fixed-background py-5" style="background-image: url({{ asset('storage/' . optional($about)->row_five_bg_image)) }})">
-        <div class="container">
-            <div id="counter">
-                <div class="item">
-                    <div class="">
-                        <img style="width: 60px; height:60px;"
-                            src="{{ !empty(optional($about)->row_five_column_one_icon) ? url('storage/' . optional($about)->row_five_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
-                            alt="">
-                    </div>
-                    <h1 class="count" data-number="50"></h1>
-                    <a href="{{ optional($about)->row_five_column_one_url }}">
-                        <h5 class="text-black">{{ optional($about)->row_five_column_one_title }}</h5>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <div class="">
-                        <img style="width: 60px; height: 60px;"
-                            src="{{ !empty(optional($about)->row_five_column_two_icon)
-                                ? asset('storage/' . optional($about)->row_five_column_two_icon)
-                                : 'https://ui-avatars.com/api/?name=Default' }}"
-                            alt="Icon">
-                    </div>
-                    <h1 class="count" data-number="50"></h1>
-                    <a href="{{ optional($about)->row_five_column_two_url }}">
-                        <h5 class="text-black">{{ optional($about)->row_five_column_two_title }}</h5>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <div class="">
-                        <img style="width: 60px; height:60px;"
-                            src="{{ !empty(optional($about)->row_five_column_three_icon) ? url('storage/' . optional($about)->row_five_column_three_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
-                            alt="">
-                    </div>
-                    <h1 class="count" data-number="50"></h1>
-                    <a href="{{ optional($about)->row_five_column_three_url }}">
-                        <h5 class="text-black">{{ optional($about)->row_five_column_three_title }}</h5>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <div class="">
-                        <img style="width: 60px; height:60px;"
-                            src="{{ !empty(optional($about)->row_five_column_four_icon) ? url('storage/' . optional($about)->row_five_column_four_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
-                            alt="">
-                    </div>
-                    <h1 class="count" data-number="50"></h1>
-                    <a href="{{ optional($about)->row_five_column_four_url }}">
-                        <h5 class="text-black">{{ optional($about)->row_five_column_four_title }}</h5>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Amount End -->
-    <section>
-        <div class="container py-5 px-0">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h1>Big Brands Are Here</h1>
-                        {{-- <p class="w-lg-50 w-100 pt-3">
-                            Problems trying to resolve the conflict between <br />
-                            the two major realms of Classical physics: Newtonian
-                            mechanics
-                        </p> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container-fluid partners">
-            <div class="container px-0">
-                <div class="slick-slider-partners">
-
-                    @foreach ($brands as $brand)
-                        <div class="items d-flex justify-content-center align-items-center">
-
-                            <img class="img-fluid"
-                                src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                alt="" />
+    @if (!empty(optional($about)->row_five_bg_image))
+        <section class="fixed-background py-5"
+            style="background-image: url({{ asset('storage/' . optional($about)->row_five_bg_image) }})">
+            <div class="container">
+                <div id="counter">
+                    @foreach (['one', 'two', 'three', 'four'] as $index)
+                        <div class="item">
+                            <div>
+                                <img style="width: 60px; height: 60px;"
+                                    src="{{ optional($about)->{'row_five_column_' . $index . '_icon'} ? asset('storage/' . optional($about)->{'row_five_column_' . $index . '_icon'}) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="{{ optional($about)->{'row_five_column_' . $index . '_title'} }}">
+                            </div>
+                            <h1 class="count" data-number="50"></h1>
+                            <a href="{{ optional($about)->{'row_five_column_' . $index . '_url'} }}">
+                                <h5 class="text-black">{{ optional($about)->{'row_five_column_' . $index . '_title'} }}
+                                </h5>
+                            </a>
                         </div>
                     @endforeach
-
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+
+
+    <!-- Amount End -->
+    @if ($brands->count() > 0)
+        <section>
+            <div class="container py-5 px-0">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h1>Big Brands Are Here</h1>
+                            {{-- <p class="w-lg-50 w-100 pt-3">
+                                Problems trying to resolve the conflict between <br />
+                                the two major realms of Classical physics: Newtonian
+                                mechanics
+                            </p> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container-fluid partners">
+                <div class="container px-0">
+                    <div class="slick-slider-partners">
+                        @foreach ($brands as $brand)
+                            <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid"
+                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="" />
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
 </x-frontend-app-layout>
