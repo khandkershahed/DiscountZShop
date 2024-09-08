@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Three Column Icon</label>
                                         <input type="file" accept="image/*"
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Three Column Title</label>
                                         <input type="text" class="form-control form-control-sm"
@@ -143,7 +143,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Three Column Url</label>
                                         <input type="text" class="form-control form-control-sm"
@@ -151,6 +151,17 @@
                                             name="row_one_column_three_url">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-3">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Row One Image</label>
+                                        <input type="file" class="form-control form-control-sm" name="row_one_image">
+                                    </div>
+                                    <img class="mt-3"
+                                        src="{{ !empty($about->row_one_image) ? url('storage/' . $about->row_one_image) : asset('images/no-image(random).png') }}"
+                                        height="80" width="80" alt="">
+                                </div>
+
 
                                 <div class="col-lg-12">
                                     <div class="mb-2">
@@ -205,11 +216,23 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
+                                <div class="col-lg-8">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Two Description</label>
                                         <textarea name="row_two_description" placeholder="Row Two Description" class="form-control form-control-sm"
                                             cols="3" rows="3">{!! $about->row_two_description !!}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Row Two Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm" name="row_two_image">
+
+                                        <img class="mt-3"
+                                            src="{{ !empty($about->row_two_image) ? url('storage/' . $about->row_two_image) : asset('images/no-image(random).png') }}"
+                                            height="80" width="80" alt="">
                                     </div>
                                 </div>
 
@@ -258,11 +281,23 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
+                                <div class="col-lg-8">
                                     <div class="mb-2">
                                         <label class="col-form-label pt-0">Row Three Description</label>
                                         <textarea name="row_three_description" placeholder="Row Three Description" class="form-control form-control-sm"
                                             cols="3" rows="3">{!! $about->row_three_description !!}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-2">
+                                        <label class="col-form-label pt-0">Row Three Image</label>
+                                        <input type="file" accept="image/*"
+                                            class="imageUpload form-control form-control-sm" name="row_three_image">
+
+                                        <img class="mt-3"
+                                            src="{{ !empty($about->row_three_image) ? url('storage/' . $about->row_three_image) : asset('images/no-image(random).png') }}"
+                                            height="80" width="80" alt="">
                                     </div>
                                 </div>
 
