@@ -82,21 +82,30 @@
                     <div class="bg-light">
 
                         <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+                            <li class="nav-item w-100" role="presentation">
+                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start active"
+                                    id="category-all" data-bs-toggle="tab" data-bs-target="#category-all-pane"
+                                    type="button" role="tab" aria-controls="category-all-pane"
+                                    aria-selected="true">
 
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span>All Offers</span>
+                                        <span>({{ $offers->count() }})</span>
+                                    </div>
+
+                                </button>
+                            </li>
                             @foreach ($categorys as $category)
                                 <li class="nav-item w-100" role="presentation">
-                                    <button
-                                        class="nav-link custom-offer-tabs border-0 w-100 text-start {{ $loop->first ? 'active' : '' }}"
+                                    <button class="nav-link custom-offer-tabs border-0 w-100 text-start"
                                         id="category-{{ $category->id }}" data-bs-toggle="tab"
                                         data-bs-target="#category-{{ $category->id }}-pane" type="button"
                                         role="tab" aria-controls="category-{{ $category->id }}-pane"
-                                        aria-selected="{{ $loop->first ? 'true' : 'false' }}">
-
+                                        aria-selected="false">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span>{{ $category->name }}</span>
                                             <span>({{ $category->offers_count }})</span>
                                         </div>
-
                                     </button>
                                 </li>
                             @endforeach
@@ -143,33 +152,74 @@
                 </div>
 
                 <div class="col-lg-9">
-
-
                     <div class="tab-content" id="myTabContent">
-
+                        <div class="tab-pane fade show active" id="beauty-pane" role="tabpanel" aria-labelledby="beauty"
+                            tabindex="0">
+                            <div class="row">
+                                @foreach ($offers as $offer)
+                                    <div class="col-lg-4 mt-4">
+                                        <div class="card border-0 shadow-sm bg-light">
+                                            <div class="row p-4 align-items-center">
+                                                <div class="col-lg-6">
+                                                    <div>
+                                                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                            width="80px" height="80px" class="rounded-2 bg-white"
+                                                            style="object-fit: cover;" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span>Upto</span>
+                                                    <h1 class="main-color special-font-box">
+                                                        50% Off
+                                                    </h1>
+                                                </div>
+                                                <div class="col-lg-12 pt-4">
+                                                    <p class="pb-4 text-black">
+                                                        Premium Punjabi collections for men on online
+                                                    </p>
+                                                    <a href="{{ route('store.details', 'aarong') }}" class="main-color">
+                                                        <small>See all in store</small>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-12 pt-4">
+                                                    <div class="d-flex">
+                                                        <a href="" class="w-100 btn-common-one rounded-3">View</a>
+                                                        <a href=""
+                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
+                                                                class="fa-solid fa-copy"></i></a>
+                                                    </div>
+                                                    <p class="pt-2 text-center countdown"
+                                                        data-expire-date="August 17, 2024 00:00:00">
+                                                        <span class="main-color">Expire In:</span> <span
+                                                            class="countdown-timer">12 Days</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                         @foreach ($categorys as $category)
-                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
+                            <div class="tab-pane fade"
                                 id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
-
                                 @php
                                     $cateWiseOffers = App\Models\Offer::where('category_id', $category->id)
                                         ->orderBy('name', 'ASC')
                                         ->get();
                                 @endphp
-
                                 <div class="row">
-
                                     @forelse ($cateWiseOffers as $cateWiseOffer)
                                         <div class="col-lg-4 mt-4">
                                             <div class="card border-0 shadow-sm bg-light">
                                                 <div class="row p-4 align-items-center">
-
                                                     <div class="col-lg-6">
                                                         <div>
                                                             <img src="{{ !empty($cateWiseOffer->logo) ? url('storage/' . $cateWiseOffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($cateWiseOffer->name) }}"
-                                                                width="80px" height="80px" class="rounded-2 bg-white"
-                                                                style="object-fit: cover;" alt="" />
+                                                                width="80px" height="80px"
+                                                                class="rounded-2 bg-white" style="object-fit: cover;"
+                                                                alt="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
@@ -213,57 +263,8 @@
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="beauty-pane" role="tabpanel" aria-labelledby="beauty"
-                                tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-4 mt-4">
-                                        <div class="card border-0 shadow-sm bg-light">
-                                            <div class="row p-4 align-items-center">
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png"
-                                                            width="80px" height="80px" class="rounded-2 bg-white"
-                                                            style="object-fit: cover;" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <span>Upto</span>
-                                                    <h1 class="main-color special-font-box">
-                                                        50% Off
-                                                    </h1>
-                                                </div>
-                                                <div class="col-lg-12 pt-4">
-                                                    <p class="pb-4 text-black">
-                                                        Premium Punjabi collections for men on online
-                                                    </p>
-                                                    <a href="{{ route('store.details', 'aarong') }}"
-                                                        class="main-color">
-                                                        <small>See all in store</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-12 pt-4">
-                                                    <div class="d-flex">
-                                                        <a href=""
-                                                            class="w-100 btn-common-one rounded-3">View</a>
-                                                        <a href=""
-                                                            class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
-                                                                class="fa-solid fa-copy"></i></a>
-                                                    </div>
-                                                    <p class="pt-2 text-center countdown"
-                                                        data-expire-date="August 17, 2024 00:00:00">
-                                                        <span class="main-color">Expire In:</span> <span
-                                                            class="countdown-timer">12 Days</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         @endforeach
-
                     </div>
-
                 </div>
 
                 {{-- <div class="row">

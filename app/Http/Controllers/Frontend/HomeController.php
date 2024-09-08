@@ -19,14 +19,11 @@ class HomeController extends Controller
     public function homePage()
     {
         $data = [
-
             'sliders' => Slider::where('status', 'active')->latest()->get(),
             'banner' => Banner::where('status', 'active')->latest()->get(),
-
             'coupons' => Coupon::latest()->get(),
             'brands' => Brand::latest()->get(),
             'offers' => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
-            
         ];
 
         return view('frontend.pages.home.home', $data);
@@ -39,7 +36,6 @@ class HomeController extends Controller
             'page_banner' => PageBanner::where('page_name', 'about')->latest('id')->first(),
             'about' => AboutUs::latest('id')->first(),
             'brands' => Brand::latest()->get(),
-
         ];
         return view('frontend.pages.about', $data);
     }
@@ -111,7 +107,8 @@ class HomeController extends Controller
         $data = [
 
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
-            'categorys' => Category::withCount('offers')->where('status', 'active')->orderBy('name','ASC')->limit(10)->latest()->get(),
+            'categorys'   => Category::withCount('offers')->where('status', 'active')->orderBy('name','ASC')->limit(10)->latest()->get(),
+            'offers'      => Offer::latest('id')->get(),
         ];
         return view('frontend.pages.allOffer', $data);
     }
@@ -122,7 +119,7 @@ class HomeController extends Controller
         $data = [
             'offer' => Offer::where('slug', $slug)->first(),
         ];
-        
+
         return view('frontend.pages.offerDetails', $data);
     }
     public function categoryDetails($slug)

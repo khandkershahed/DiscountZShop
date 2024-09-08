@@ -1574,7 +1574,7 @@ html {
 }
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
-  color: #f15a2d;
+  /* color: #f15a2d; */
 }
 .slick-dots li button:before {
   font-family: slick;
