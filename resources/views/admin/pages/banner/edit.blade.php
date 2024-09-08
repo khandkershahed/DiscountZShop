@@ -32,7 +32,7 @@
                 <div class="row">
 
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="image_one" class="col-form-label fw-bold fs-6 ">{{ __('Image One') }}
+                        <x-metronic.label for="image_one" class="col-form-label fw-bold fs-6 ">{{ __('HomePage Top Right Banners Top image') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="image_one" name="image_one"
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="image_two" class="col-form-label fw-bold fs-6 ">{{ __('Image Two') }}
+                        <x-metronic.label for="image_two" class="col-form-label fw-bold fs-6 ">{{ __('HomePage Top Right Banners Bottom Left Image') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="image_two" name="image_two"
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="image_three" class="col-form-label fw-bold fs-6 ">{{ __('Image Three') }}
+                        <x-metronic.label for="image_three" class="col-form-label fw-bold fs-6 ">{{ __('HomePage Top Right Banners Bottom Right Image') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="image_three" name="image_three"

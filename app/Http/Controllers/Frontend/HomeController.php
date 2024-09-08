@@ -22,23 +22,29 @@ class HomeController extends Controller
     //homePage
     public function homePage()
     {
+        // Retrieve offers and apply limits directly on queries
+        $offers = Offer::where('status', 'active')->inRandomOrder()->get();
+        $latestOffers = Offer::where('status', 'active')->latest('id')->get();
+
         $data = [
-            'sliders' => Slider::where('status', 'active')->latest('id')->get(),
-            'banner'  => Banner::where('status', 'active')->latest('id')->first(),
-            'coupons' => Coupon::latest()->get(),
-            'brands'  => Brand::latest()->get(),
-            'offers'  => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
+            'sliders'          => Slider::where('status', 'active')->latest('id')->get(),
+            'banner'           => Banner::where('status', 'active')->latest('id')->first(),
+            'coupons'          => Coupon::latest()->get(),
+            'brands'           => Brand::latest()->get(),
 
-            'offerLatests'  => Offer::where('status','active')->orderBy('name','ASC')->latest('id')->get(),
-            'offerDealLefts'  => Offer::where('status','active')->inRandomOrder()->limit(5)->get(),
-            'offerDeals'  => Offer::where('status','active')->limit(6)->latest()->get(),
+            'alloffers'        => $offers,
+            'offers'           => $offers->take(5), // Use `take` instead of `limit` for collections
 
-            'homepage'  => HomePage::latest()->first(),
+            'offerLatests'     => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
+            'offerDealLefts'   => $offers->take(5),
+            'offerDeals'       => $latestOffers->take(6),
 
+            'homepage'         => HomePage::with('brand')->latest('id')->first(),
         ];
 
         return view('frontend.pages.home.home', $data);
     }
+
 
     //About Us
     public function aboutUs()
@@ -118,7 +124,7 @@ class HomeController extends Controller
         $data = [
 
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
-            'categorys'   => Category::withCount('offers')->where('status', 'active')->orderBy('name','ASC')->limit(10)->latest()->get(),
+            'categorys'   => Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get(),
             'offers'      => Offer::latest('id')->get(),
         ];
         return view('frontend.pages.allOffer', $data);
@@ -159,9 +165,8 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order','ASC')->get(),
+            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }
-
 }

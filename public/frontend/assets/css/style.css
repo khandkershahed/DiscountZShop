@@ -367,9 +367,12 @@ p {
 .coupons-area {
   width: 205px;
 }
+.countdown{
+    font-weight: 600;
+}
 .coupon-logo {
   position: relative;
-  top: 22px;
+  /* top: 22px; */
   right: -35px;
 }
 .content-area {
