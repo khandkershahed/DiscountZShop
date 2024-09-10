@@ -137,6 +137,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}</x-metronic.label>
@@ -145,13 +146,22 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="headquarter"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Head Quarter') }}</x-metronic.label>
+                        <x-metronic.input id="headquarter" type="text" name="headquarter" :value="old('headquarter', $brand->headquarter)"
+                            placeholder="Enter the Head Quater" required></x-metronic.input>
+                    </div>
+
+
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="url"
                             class="col-form-label fw-bold fs-6 required">{{ __('Url') }}</x-metronic.label>
                         <x-metronic.input id="url" type="url" name="url" :value="old('url', $brand->url)"
                             placeholder="Enter the Url"></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-2 mb-7">
                         <x-metronic.label for="status"
                             class="col-form-label required fw-bold fs-6">{{ __('Select a Status') }}</x-metronic.label>
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"
@@ -165,12 +175,39 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
+                        <x-metronic.label for="map_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Url') }}</x-metronic.label>
+                        <x-metronic.textarea id="map_url" type="text" name="map_url"
+                            placeholder="Enter the Map Url">{!! $brand->map_url !!}</x-metronic.textarea>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="middle_banner_left" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Left') }}
+                        </x-metronic.label>
+
+                        <x-metronic.file-input id="middle_banner_left" name="middle_banner_left" :source="asset('storage/' . $brand->middle_banner_left)"
+                            :value="old('middle_banner_left', $brand->middle_banner_left)"></x-metronic.file-input>
+
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="middle_banner_right" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Right') }}
+                        </x-metronic.label>
+
+                        <x-metronic.file-input id="middle_banner_right" name="middle_banner_right" :source="asset('storage/' . $brand->middle_banner_right)"
+                            :value="old('middle_banner_right', $brand->middle_banner_right)"></x-metronic.file-input>
+
+                    </div>
+
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="logo" name="logo" :source="asset('storage/' . $brand->logo)"
                             :value="old('logo', $brand->logo)"></x-metronic.file-input>
+
                     </div>
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
@@ -179,6 +216,7 @@
                         <x-metronic.file-input id="image" name="image" :source="asset('storage/' . $brand->image)"
                             :value="old('image', $brand->image)"></x-metronic.file-input>
                     </div>
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
