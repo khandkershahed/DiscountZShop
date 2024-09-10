@@ -103,6 +103,15 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="headquarter"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Head Quarter') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="headquarter" type="text" name="headquarter" :value="old('headquarter')"
+                            placeholder="Enter the Head Quater" required></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="url"
                             class="col-form-label fw-bold fs-6 required">{{ __('Url') }}
                         </x-metronic.label>
@@ -111,7 +120,7 @@
                             placeholder="Enter the Url"></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-2 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
                             {{ __('Select a Status ') }}</x-metronic.label>
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"
@@ -123,11 +132,35 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
+                        <x-metronic.label for="map_url"
+                            class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.textarea id="map_url" type="url" name="map_url" :value="old('map_url')"
+                            placeholder="Enter the Map Url"></x-metronic.textarea>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="middle_banner_left" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Left') }}
+                        </x-metronic.label>
+
+                        <x-metronic.file-input id="middle_banner_left" name="middle_banner_left" :value="old('middle_banner_left')"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="middle_banner_right" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Right') }}
+                        </x-metronic.label>
+
+                        <x-metronic.file-input id="middle_banner_right" name="middle_banner_right" :value="old('middle_banner_right')"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="logo" name="logo" :value="old('logo')"></x-metronic.file-input>
                     </div>
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6">{{ __('Thumbnail Image') }}

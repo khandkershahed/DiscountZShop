@@ -116,8 +116,8 @@
                                                 <div class="card-body p-0">
                                                     <div class="brands-logo">
                                                         <img class="img-fluid rounded-3"
-                                                            src="{{ asset('storage/' . $brand->logo) }}" alt="Brand Logo"
-                                                            title="Brand Logo" />
+                                                            src="{{ asset('storage/' . $brand->logo) }}"
+                                                            alt="Brand Logo" title="Brand Logo" />
                                                     </div>
                                                 </div>
                                             </div>
