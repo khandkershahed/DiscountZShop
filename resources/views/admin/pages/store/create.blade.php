@@ -28,7 +28,68 @@
                 @csrf
 
                 <div class="row">
-                    <div class="col-lg-6 mb-7">
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="category_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select a Category') }}</x-metronic.label>
+                        <x-metronic.select-option id="category_id" name="category_id" data-hide-search="false"
+                            data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="country_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
+                        <x-metronic.select-option id="country_id" name="country_id[]" data-hide-search="false" multiple
+                            data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="division_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
+                        <x-metronic.select-option id="division_id" name="division_id[]" data-hide-search="false"
+                            multiple data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($divisions as $division)
+                                <option value="{{ $division->id }}">{{ $division->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="city_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
+                        <x-metronic.select-option id="city_id" name="city_id[]" data-hide-search="false" multiple
+                            data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($citys as $city)
+                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="area_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
+                        <x-metronic.select-option id="area_id" name="area_id[]" data-hide-search="false" multiple
+                            data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($areas as $area)
+                                <option value="{{ $area->id }}">{{ $area->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
                         </x-metronic.label>
@@ -37,13 +98,24 @@
                             placeholder="Enter the Name" required></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-6 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="url"
                             class="col-form-label fw-bold fs-6 required">{{ __('Url') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="url" type="url" name="url" :value="old('url')"
                             placeholder="Enter the Url"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
+                            {{ __('Select a Status ') }}</x-metronic.label>
+                        <x-metronic.select-option id="status" name="status" data-hide-search="true"
+                            data-placeholder="Select an option">
+                            <option></option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </x-metronic.select-option>
                     </div>
 
                     <div class="col-lg-4 mb-7">
@@ -57,33 +129,44 @@
                             class="col-form-label fw-bold fs-6">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="image" name="image" :value="old('image')"></x-metronic.file-input>
+                        <x-metronic.file-input id="image" name="image"
+                            :value="old('image')"></x-metronic.file-input>
                     </div>
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="banner_image" :value="old('banner_image')" name="banner_image"></x-metronic.file-input>
+                        <x-metronic.file-input id="banner_image" :value="old('banner_image')"
+                            name="banner_image"></x-metronic.file-input>
                     </div>
-                    <div class="col-lg-8 mb-7">
-                        <x-metronic.label for="description" class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="about" class="col-form-label fw-bold fs-6 ">{{ __('About') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="description" name="description"></x-metronic.textarea>
+                        <textarea id="about" class="ckeditor" name="about"></textarea>
                     </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
-                            {{ __('Select a Status ') }}</x-metronic.label>
-                        <x-metronic.select-option id="status" name="status" data-hide-search="true"
-                            data-placeholder="Select an option">
-                            <option></option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </x-metronic.select-option>
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="offer_description"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Offer Description') }}
+                        </x-metronic.label>
+
+                        <textarea id="offer_description" class="ckeditor" name="offer_description"></textarea>
                     </div>
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="location" class="col-form-label fw-bold fs-6 ">{{ __('Location') }}
+                        </x-metronic.label>
 
+                        <textarea id="location" class="ckeditor" name="location"></textarea>
+                    </div>
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="description"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        </x-metronic.label>
 
+                        <textarea id="description" class="ckeditor" name="description"></textarea>
+                    </div>
                 </div>
                 <div class="text-center pt-15">
                     <x-metronic.button type="submit" class="primary">

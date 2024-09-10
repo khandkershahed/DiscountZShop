@@ -92,7 +92,7 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
-                    
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
@@ -171,7 +171,7 @@
 
                         <textarea id="description" class="ckeditor" name="description"></textarea>
                     </div>
-
+ 
 
 
                 </div>
