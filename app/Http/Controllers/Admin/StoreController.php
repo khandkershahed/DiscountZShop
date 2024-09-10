@@ -50,7 +50,7 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
             'country_id' => 'array',
             'country_id.*' => 'exists:countries,id',
             'division_id' => 'array',
@@ -59,9 +59,9 @@ class StoreController extends Controller
             'city_id.*' => 'exists:cities,id',
             'area_id' => 'array',
             'area_id.*' => 'exists:areas,id',
-            'name' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
             'url' => 'nullable|url',
-            'status' => 'required|in:active,inactive',
+            'status' => 'nullable|in:active,inactive',
             'logo' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
             'image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
             'banner_image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
@@ -83,6 +83,8 @@ class StoreController extends Controller
                 'logo' => $request->file('logo'),
                 'image' => $request->file('image'),
                 'banner_image' => $request->file('banner_image'),
+                'middle_banner_left' => $request->file('middle_banner_left'),
+                'middle_banner_right' => $request->file('middle_banner_right'),
             ];
             $uploadedFiles = [];
             foreach ($files as $key => $file) {
@@ -98,22 +100,29 @@ class StoreController extends Controller
             }
             // Create the Brand model instance
             $store = Store::create([
-                'name'              => $request->name,
-                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
-                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
-                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
-                'country_id'        => json_encode($request->country_id),
-                'division_id'       => json_encode($request->division_id),
-                'city_id'           => json_encode($request->city_id),
-                'area_id'           => json_encode($request->area_id),
-                'category_id'       => $request->category_id,
-                'about'             => $request->about,
-                'offer_description' => $request->offer_description,
-                'location'          => $request->location,
-                'description'       => $request->description,
-                'url'               => $request->url,
-                'category'          => $request->category,
-                'status'            => $request->status,
+                'name'                => $request->name,
+                'headquarter'         => $request->headquarter,
+                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : null,
+                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : null,
+                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : null,
+
+                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
+
+                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
+
+                'country_id'          => json_encode($request->country_id),
+                'division_id'         => json_encode($request->division_id),
+                'city_id'             => json_encode($request->city_id),
+                'area_id'             => json_encode($request->area_id),
+                'category_id'         => $request->category_id,
+                'about'               => $request->about,
+                'offer_description'   => $request->offer_description,
+                'location'            => $request->location,
+                'description'         => $request->description,
+                'url'                 => $request->url,
+                'map_url'             => $request->map_url,
+                'category'            => $request->category,
+                'status'              => $request->status,
             ]);
 
             // Commit the database transaction
@@ -139,7 +148,7 @@ class StoreController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */ 
+     */
     public function edit(string $id)
     {
         $data = [
@@ -167,6 +176,9 @@ class StoreController extends Controller
                 'logo' => $request->file('logo'),
                 'image' => $request->file('image'),
                 'banner_image' => $request->file('banner_image'),
+
+                'middle_banner_left' => $request->file('middle_banner_left'),
+                'middle_banner_right' => $request->file('middle_banner_right'),
             ];
             $uploadedFiles = [];
             foreach ($files as $key => $file) {
@@ -188,22 +200,33 @@ class StoreController extends Controller
 
             // Update the store with the new or existing file paths
             $store->update([
-                'name'              => $request->name,
-                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $store->logo,
-                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $store->image,
-                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $store->banner_image,
-                'country_id'        => json_encode($request->country_id),
-                'division_id'       => json_encode($request->division_id),
-                'city_id'           => json_encode($request->city_id),
-                'area_id'           => json_encode($request->area_id),
-                'category_id'       => $request->category_id,
-                'about'             => $request->about,
-                'offer_description' => $request->offer_description,
-                'location'          => $request->location,
-                'description'       => $request->description,
-                'url'               => $request->url,
-                'category'          => $request->category,
-                'status'            => $request->status,
+                'name'                => $request->name,
+                'headquarter'         => $request->headquarter,
+
+                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : $store->logo,
+                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : $store->image,
+
+                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : $store->banner_image,
+
+                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $store->middle_banner_left,
+
+                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $store->middle_banner_right,
+
+
+                'country_id'          => json_encode($request->country_id),
+                'division_id'         => json_encode($request->division_id),
+                'city_id'             => json_encode($request->city_id),
+                'area_id'             => json_encode($request->area_id),
+
+                'category_id'         => $request->category_id,
+                'about'               => $request->about,
+                'offer_description'   => $request->offer_description,
+                'location'            => $request->location,
+                'description'         => $request->description,
+                'url'                 => $request->url,
+                'map_url'             => $request->map_url,
+                'category'            => $request->category,
+                'status'              => $request->status,
             ]);
 
             DB::commit();
@@ -225,6 +248,8 @@ class StoreController extends Controller
             'logo' => $store->logo,
             'image' => $store->image,
             'banner_image' => $store->banner_image,
+            'middle_banner_left' => $store->middle_banner_left,
+            'middle_banner_right' => $store->middle_banner_right,
         ];
         foreach ($files as $key => $file) {
             if (!empty($file)) {

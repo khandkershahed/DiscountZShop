@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\OfferType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class OfferTypeController extends Controller
 {
@@ -32,7 +34,32 @@ class OfferTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255|unique:offer_types,name',
+            'status' => 'nullable|in:active,inactive',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+
+        try {
+            // Create the Offer model instance
+            OfferType::create([
+                'name' => $request->name,
+                'status' => $request->status,
+                'created_at' => now(),
+            ]);
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Offer Type created successfully');
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Offer: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -56,7 +83,32 @@ class OfferTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'status' => 'nullable|in:active,inactive',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        DB::beginTransaction();
+
+        try {
+            // Create the Offer model instance
+            OfferType::find($id)->update([
+                'name' => $request->name,
+                'status' => $request->status,
+                'created_at' => now(),
+            ]);
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Offer Type updated successfully');
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Offer: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -64,6 +116,6 @@ class OfferTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        OfferType::find($id)->delete();
     }
 }

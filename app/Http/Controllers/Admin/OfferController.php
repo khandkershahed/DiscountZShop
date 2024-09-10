@@ -38,7 +38,7 @@ class OfferController extends Controller
     {
         // Validate the request
         $validator = Validator::make($request->all(), [
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
             'brand_id' => 'nullable|exists:brands,id',
             'store_id' => 'nullable|exists:stores,id',
 
@@ -67,12 +67,12 @@ class OfferController extends Controller
             'short_description' => 'nullable|string',
             'map_url' => 'nullable|string',
 
-            'price' => 'required|numeric',
-            'offer_price' => 'required|numeric',
+            'price' => 'nullable|numeric',
+            'offer_price' => 'nullable|numeric',
 
-            'start_date' => 'required',
-            'notification_date' => 'required',
-            'expiry_date' => 'required',
+            'start_date' => 'nullable',
+            'notification_date' => 'nullable',
+            'expiry_date' => 'nullable',
         ]);
 
         if ($validator->fails()) {

@@ -99,29 +99,29 @@ class BrandController extends Controller
             }
             // Create the Brand model instance
             $brand = Brand::create([
-                'name'              => $request->name,
-                'headquarter'              => $request->headquarter,
-                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
-                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
-                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+                'name'                => $request->name,
+                'headquarter'         => $request->headquarter,
+                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : null,
+                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : null,
+                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : null,
 
-                'middle_banner_right'      => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
+                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
 
-                'middle_banner_left'      => $uploadedFiles['middle_banner_left']['status'] == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
+                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
 
-                'country_id'        => json_encode($request->country_id),
-                'division_id'       => json_encode($request->division_id),
-                'city_id'           => json_encode($request->city_id),
-                'area_id'           => json_encode($request->area_id),
-                'category_id'       => $request->category_id,
-                'about'             => $request->about,
-                'offer_description' => $request->offer_description,
-                'location'          => $request->location,
-                'description'       => $request->description,
-                'url'               => $request->url,
-                'map_url'               => $request->map_url,
-                'category'          => $request->category,
-                'status'            => $request->status,
+                'country_id'          => json_encode($request->country_id),
+                'division_id'         => json_encode($request->division_id),
+                'city_id'             => json_encode($request->city_id),
+                'area_id'             => json_encode($request->area_id),
+                'category_id'         => $request->category_id,
+                'about'               => $request->about,
+                'offer_description'   => $request->offer_description,
+                'location'            => $request->location,
+                'description'         => $request->description,
+                'url'                 => $request->url,
+                'map_url'             => $request->map_url,
+                'category'            => $request->category,
+                'status'              => $request->status,
             ]);
 
             // Commit the database transaction
@@ -173,7 +173,7 @@ class BrandController extends Controller
                 'logo' => $request->file('logo'),
                 'image' => $request->file('image'),
                 'banner_image' => $request->file('banner_image'),
-                
+
                 'middle_banner_left' => $request->file('middle_banner_left'),
                 'middle_banner_right' => $request->file('middle_banner_right'),
             ];
@@ -197,33 +197,33 @@ class BrandController extends Controller
 
             // Update the brand with the new or existing file paths
             $brand->update([
-                'name'              => $request->name,
-                'headquarter'              => $request->headquarter,
+                'name'                => $request->name,
+                'headquarter'         => $request->headquarter,
 
-                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $brand->logo,
-                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $brand->image,
+                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : $brand->logo,
+                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : $brand->image,
 
-                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $brand->banner_image,
+                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : $brand->banner_image,
 
-                'middle_banner_left'      => $uploadedFiles['middle_banner_left']['status'] == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $brand->middle_banner_left,
+                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $brand->middle_banner_left,
 
-                'middle_banner_right'      => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $brand->middle_banner_right,
+                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $brand->middle_banner_right,
 
 
-                'country_id'        => json_encode($request->country_id),
-                'division_id'       => json_encode($request->division_id),
-                'city_id'           => json_encode($request->city_id),
-                'area_id'           => json_encode($request->area_id),
-                
-                'category_id'       => $request->category_id,
-                'about'             => $request->about,
-                'offer_description' => $request->offer_description,
-                'location'          => $request->location,
-                'description'       => $request->description,
-                'url'               => $request->url,
-                'map_url'               => $request->map_url,
-                'category'          => $request->category,
-                'status'            => $request->status,
+                'country_id'          => json_encode($request->country_id),
+                'division_id'         => json_encode($request->division_id),
+                'city_id'             => json_encode($request->city_id),
+                'area_id'             => json_encode($request->area_id),
+
+                'category_id'         => $request->category_id,
+                'about'               => $request->about,
+                'offer_description'   => $request->offer_description,
+                'location'            => $request->location,
+                'description'         => $request->description,
+                'url'                 => $request->url,
+                'map_url'             => $request->map_url,
+                'category'            => $request->category,
+                'status'              => $request->status,
             ]);
 
             DB::commit();

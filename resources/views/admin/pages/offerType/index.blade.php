@@ -4,7 +4,6 @@
             <div class="card-title">
             </div>
             <div class="card-toolbar">
-
                 <a href="javascript:void(0)" class="btn btn-light-primary" data-bs-toggle="modal"
                     data-bs-target="#AddModal">
                     <span class="svg-icon svg-icon-3">
@@ -23,9 +22,7 @@
             </div>
         </div>
         <div class="card-body pt-0">
-
             <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
-
                 <thead>
                     <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
@@ -40,8 +37,65 @@
                         <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $offer_type->name }}</td>
-                            <td>Status</td>
-                            <td>Action</td>
+                            <td>
+                                <span class="badge {{ $offer_type->status == 'active' ? 'bg-success' : 'bg-danger' }}">
+                                    {{ $offer_type->status == 'active' ? 'Active' : 'InActive' }}
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                    data-bs-toggle="modal" data-bs-target="#EditModal_{{ $offer_type->id }}">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                                <a href="{{ route('admin.offer-type.destroy', $offer_type->id) }}"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                    data-kt-docs-table-filter="delete_row">
+                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                </a>
+                                <div class="modal fade" id="EditModal_{{ $offer_type->id }}" data-backdrop="static">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content rounded-0 border-0 shadow-sm">
+                                            <div class="modal-header p-2 rounded-0">
+                                                <h5 class="modal-title ps-5">Edit Offer Type</h5>
+                                                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2"
+                                                    data-bs-dismiss="modal" aria-label="Close">
+                                                    <i class="fa-solid fa-circle-xmark"></i>
+                                                </div>
+                                            </div>
+                                            <form class="form" action="{{ route('admin.offer-type.update', $offer_type->id) }}"
+                                                method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="col-lg-12 mb-7">
+                                                        <x-metronic.label for="name"
+                                                            class="col-form-label fw-bold fs-6 required">{{ __('Offer Type Name') }}
+                                                        </x-metronic.label>
+
+                                                        <x-metronic.input id="name" type="text" name="name"
+                                                            :value="old('name', $offer_type->name)" placeholder="Enter the Name"
+                                                            required></x-metronic.input>
+                                                    </div>
+                                                    <div class="col-lg-12 mb-7">
+                                                        <x-metronic.label for="status"
+                                                            class="col-form-label required fw-bold fs-6">
+                                                            {{ __('Select a Status ') }}</x-metronic.label>
+                                                        <x-metronic.select-option id="status" name="status"
+                                                            data-hide-search="true" data-placeholder="Select an option">
+                                                            <option></option>
+                                                            <option value="active" @selected( $offer_type->status == 'active')>Active</option>
+                                                            <option value="inactive" @selected( $offer_type->status == 'inactive')>Inactive</option>
+                                                        </x-metronic.select-option>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer p-2">
+                                                    <x-metronic.button type="submit" class="primary">
+                                                        {{ __('Submit') }}
+                                                    </x-metronic.button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -61,7 +115,7 @@
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
                 </div>
-                <form class="form" action="{{ route('admin.faq-category.store') }}" method="POST"
+                <form class="form" action="{{ route('admin.offer-type.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
