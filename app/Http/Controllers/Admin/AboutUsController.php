@@ -17,14 +17,14 @@ class AboutUsController extends Controller
     public function index()
     {
         $aboutus = AboutUs::latest()->get();
-        return view('admin.pages.about-us.index', compact('aboutus'));
+        return view('admin.pages.About-us.index', compact('aboutus'));
     }
 
     //Edit About
     public function edit($id)
     {
         $about = AboutUs::findOrFail($id);
-        return view('admin.pages.about-us.edit', compact('about'));
+        return view('admin.pages.About-us.edit', compact('about'));
     }
 
     public function update(Request $request, $id)
@@ -124,7 +124,7 @@ class AboutUsController extends Controller
                 'row_three_description' => $request->row_three_description,
                 'row_three_button_name' => $request->row_three_button_name,
                 'row_three_button_url' => $request->row_three_button_url,
-                
+
                 'row_four_badge' => $request->row_four_badge,
                 'row_four_title' => $request->row_four_title,
                 'row_four_description' => $request->row_four_description,
@@ -146,7 +146,7 @@ class AboutUsController extends Controller
                 'row_five_column_four_title' => $request->row_five_column_four_title,
                 'row_five_column_four_description' => $request->row_five_column_four_description,
                 'row_five_column_four_url' => $request->row_five_column_four_url,
-                
+
 
             ]);
 

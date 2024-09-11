@@ -28,16 +28,16 @@ return new class extends Migration
             $table->string('offer_slider_image_four')->nullable();
 
             $table->string('bottom_banner_slider_one')->nullable();
-            $table->string('bottom_banner_slider_one_link')->nullable();
+            $table->text('bottom_banner_slider_one_link')->nullable();
 
             $table->string('bottom_banner_slider_two')->nullable();
-            $table->string('bottom_banner_slider_two_link')->nullable();
+            $table->text('bottom_banner_slider_two_link')->nullable();
 
             $table->string('bottom_banner_slider_three')->nullable();
-            $table->string('bottom_banner_slider_three_link')->nullable();
-            
+            $table->text('bottom_banner_slider_three_link')->nullable();
+
             $table->string('bottom_banner_slider_four')->nullable();
-            $table->string('bottom_banner_slider_four_link')->nullable();
+            $table->text('bottom_banner_slider_four_link')->nullable();
 
             $table->timestamps();
         });
