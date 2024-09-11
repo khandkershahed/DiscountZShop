@@ -655,7 +655,7 @@
 
     <!-- Deal Of The Day -->
     <section>
-        <div class="container px-0 pt-70 pb-70">
+        <div class="container px-0 pb-70">
             <div class="row gx-0">
                 <div class="col-lg-3">
                     <div class="card deal-of-the-day rounded-0">
