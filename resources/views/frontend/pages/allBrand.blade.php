@@ -100,14 +100,22 @@
                 </div>
             </div>
             <div class="row gx-5">
-
                 @foreach ($categories as $category)
                     @if ($category->brands->count() > 0)
-                        <div class="col">
-                            <div class="row bg-light">
-                                <div class="d-flex align-items-center">
-                                    <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
-                                    <span class="store-devider"></span>
+                        <div class="col-lg-6">
+                            <div class="row bg-light mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
+                                        <span class="store-devider"></span>
+                                    </div>
+                                    <div>
+                                        <div class="pt-1">
+                                          <span class="badge text-end rounded-0 store-tags">
+                                            <span>30%</span>
+                                          </span>
+                                        </div>
+                                      </div>
                                 </div>
                                 @foreach ($category->brands as $brand)
                                     <div class="col-lg-4 mb-3 mt-2">
@@ -117,7 +125,8 @@
                                                     <div class="brands-logo">
                                                         <img class="img-fluid rounded-3"
                                                             src="{{ asset('storage/' . $brand->logo) }}"
-                                                            alt="Brand Logo" title="Brand Logo" />
+                                                            alt="Brand Logo" title="Brand Logo"
+                                                            onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
                                                     </div>
                                                 </div>
                                             </div>
