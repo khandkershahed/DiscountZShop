@@ -26,9 +26,9 @@
                             <p>
                                 <i class="fa-solid fa-location-dot main-color"></i> {{ $brand->headquarter }}
                             </p>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                                 <div class="col-lg-6">
                                     <span>Upto</span>
                                     <h1 class="main-color special-font-box">
-                                        50% Off
+                                        {{ $brand->badge }}
                                     </h1>
                                 </div>
                                 <div class="col-lg-12 pt-4">
@@ -151,8 +151,8 @@
                             {!! $brand->location !!}
                         </p>
                     </div>
-                    
-                    
+
+
                 </div>
 
                 <div class="col-lg-8">

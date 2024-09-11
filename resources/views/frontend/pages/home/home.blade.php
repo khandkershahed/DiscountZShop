@@ -264,8 +264,7 @@
                                                                         <span>Upto</span>
                                                                         <div class="d-flex align-items-center">
                                                                             <h2 class="main-color special-font-box">
-                                                                                {{ $alloffer->badge }} <span>%
-                                                                                    Off</span>
+                                                                                {{ $alloffer->badge }}
                                                                             </h2>
                                                                         </div>
                                                                     </div>

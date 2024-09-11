@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <span>Upto</span>
-                                                    <h1 class="main-color special-font-box">{{ $offer->badge }} % Off
+                                                    <h1 class="main-color special-font-box">{{ $offer->badge }}
                                                     </h1>
                                                 </div>
                                                 <div class="col-lg-12 pt-4">

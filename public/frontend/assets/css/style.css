@@ -1584,6 +1584,7 @@ html {
     display: block; /* Remove inline block space */
     margin: 0 auto; /* Center the image within its container */
     padding: 8px;
+    bvo
 }
 .brands-card {
     border: 1px solid #efefef;
