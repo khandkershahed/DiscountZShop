@@ -611,14 +611,12 @@
     <section>
         <div class="container pb-70 pt-70 px-0">
             <div class="row">
-
                 <div class="col-lg-12">
                     <!-- Slick Slider -->
                     <div class="slick-slider-product">
-
                         @forelse ($offerLatests as $offerLatest)
                             <div class="items me-2" style="background-color: #f5f6f8">
-                                <div class="row p-4 align-items-center">
+                                <div class="row p-4 align-items-center product-discount-box">
                                     <div class="col-lg-7">
                                         <h4>{{ $offerLatest->name }}</h4>
                                         <p class="py-3">
@@ -630,10 +628,9 @@
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
-                                            <h6 class="main-color text-center pb-3">{{ $offerLatest->badge }}% OFF
+                                            <h6 class="main-color text-center pb-3">{{ $offerLatest->badge }}
                                             </h6>
                                             <div class="d-flex justify-content-center text-center">
-
                                                 <img class="img-fluid flat-offer-img rounded-circle"
                                                     src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
                                                     alt=""
@@ -696,7 +693,7 @@
                                         <div class="py-3">
 
                                             <h5 class="text-center">
-                                                <span class="fw-bold main-color">{{ $offerDealLeft->badge }} %Off
+                                                <span class="fw-bold main-color">{{ $offerDealLeft->badge }}
                                                 </span>
                                                 <br>
                                                 {{ $offerDealLeft->name }}

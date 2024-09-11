@@ -1564,6 +1564,10 @@ html {
     margin-bottom: 5px;
     font-size: 40px;
 }
+.product-discount-box{
+    height: 270px;
+    max-height: 100%;
+}
 #counter .item h3 {
     color: #4f4e28;
     text-transform: capitalize;
