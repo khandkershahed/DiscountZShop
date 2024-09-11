@@ -1,49 +1,51 @@
 <div class="container-fluid py-3">
     <div class="container px-0">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-6">
-                <a href="{{ route('homePage') }}"><span class="logo-text">discount<span class="main-color extrafont"
-                    style="font-size: 30px">Z</span>shop</span></a>
+                <a href="{{ route('homePage') }}" class="logo-main">
+                    <img class="img-fluid" src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                        alt="">
+                </a>
             </div>
             <div class="col-lg-6">
                 <div class="d-flex justify-content-end align-items-center">
                     @auth
-                    <div class="pe-3 user-name">{{ Auth::user()->name }}</div>
-                    <div class="btn-group">
-                        <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
-                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="pe-3">
-                                <img class="profile-logo-account" src="{{ asset('frontend') }}/assets/img/profile/profile-one.png"
-                                    alt="" />
-                            </div>
-                        </a>
-                        <ul class="dropdown-menu toggler-menu py-3">
-                            <li class="dropdown-item pb-2">
-                                <a href=""><i class="fa-solid fa-house-user main-color pe-2"></i>
-                                    Dashboard</a>
-                            </li>
-                            <li class="dropdown-item pb-2">
-                                <a href=""><i class="fa-solid fa-wallet main-color pe-2"></i>
-                                    Points</a>
-                            </li>
-                            <li class="dropdown-item pb-2">
-                                <a href=""><i class="fa-solid fa-percent main-color pe-3"></i>My
-                                    Discounts</a>
-                            </li>
-                            <div class="d-flex justify-content-center align-items-center pt-3">
-                                <button class="btn btn-common-one rounded-pill px-4 pt-2">
-                                    <i class="fa-solid fa-right-from-bracket"></i> Log Out
-                                </button>
-                            </div>
-                        </ul>
-                    </div>
-                        @else
+                        <div class="pe-3 user-name">{{ Auth::user()->name }}</div>
                         <div class="btn-group">
                             <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="pe-3">
-                                    <img class="profile-logo-account" src="{{ asset('admin/assets/media/svg/avatars/blank-dark.svg') }}"
-                                        alt="" />
+                                    <img class="profile-logo-account"
+                                        src="{{ asset('frontend') }}/assets/img/profile/profile-one.png" alt="" />
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu toggler-menu py-3">
+                                <li class="dropdown-item pb-2">
+                                    <a href=""><i class="fa-solid fa-house-user main-color pe-2"></i>
+                                        Dashboard</a>
+                                </li>
+                                <li class="dropdown-item pb-2">
+                                    <a href=""><i class="fa-solid fa-wallet main-color pe-2"></i>
+                                        Points</a>
+                                </li>
+                                <li class="dropdown-item pb-2">
+                                    <a href=""><i class="fa-solid fa-percent main-color pe-3"></i>My
+                                        Discounts</a>
+                                </li>
+                                <div class="d-flex justify-content-center align-items-center pt-3">
+                                    <button class="btn btn-common-one rounded-pill px-4 pt-2">
+                                        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                                    </button>
+                                </div>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="btn-group">
+                            <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="pe-3">
+                                    <img class="profile-logo-account"
+                                        src="{{ asset('admin/assets/media/svg/avatars/blank-dark.svg') }}" alt="" />
                                 </div>
                             </a>
                             <ul class="dropdown-menu toggler-menu py-3">

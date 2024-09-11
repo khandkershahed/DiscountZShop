@@ -5,14 +5,17 @@
                 <div class="col-lg-4">
                     <div>
                         <div>
-                            <span class="logo-text">discount<span class="main-color extrafont"
-                                    style="font-size: 30px">Z</span>shop</span>
+                            <a href="{{ route('homePage') }}" class="logo-main">
+                                <img class="img-fluid"
+                                    src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                                    alt="">
+                            </a>
                         </div>
                         <p class="pt-3 mb-0 footer-description">
                             {{ optional($setting)->site_motto }}
                         </p>
                         <!-- Contact Info Start -->
-                        <div class="pt-3">
+                        <div class="">
                             <div class="d-flex align-items-center pt-2">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12"
@@ -45,7 +48,7 @@
                                     </svg>
                                 </div>
                                 <p class="ps-3 company-link">
-                                    {{ optional($setting)->address_line_one }} <br/>
+                                    {{ optional($setting)->address_line_one }} <br />
                                     {{ optional($setting)->address_line_two }}
                                 </p>
                             </div>
@@ -134,9 +137,9 @@
                                 <button type="submit" class="btn btn-common-one pb-2">Subscribe<i
                                         class="fa-solid fa-paper-plane ps-2"></i></button>
                             </form>
-                            <div class="pt-5">
+                            <div class="pt-2">
                                 <p class="footer-description">Follow us on</p>
-                                <div class="pt-3 d-flex justify-content-space-around align-items-center">
+                                <div class="pt-1 d-flex justify-content-space-around align-items-center">
                                     <a href="{{ optional($setting)->facebook_url }}" class="p-2">
                                         <i class="fa-brands fa-facebook-f" style="font-size: 22px"></i>
                                     </a>
@@ -162,7 +165,8 @@
                     <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
                         <p class="footer-description">
                             {{ optional($setting)->copyright_title }}
-                            <a href="{{ optional($setting)->copyright_url }}" class="main-color">{{ optional($setting)->website_name }}</a>
+                            <a href="{{ optional($setting)->copyright_url }}"
+                                class="main-color">{{ optional($setting)->website_name }}</a>
                         </p>
                         <div class="d-flex justify-content-center align-items-center pt-3">
                             <a href="{{ route('termsCondition') }}" class="pe-3"
