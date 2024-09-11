@@ -1568,6 +1568,10 @@ html {
     height: 270px;
     max-height: 100%;
 }
+.grab-imgs img{
+    height: 90px;
+    width: 125px;
+}
 #counter .item h3 {
     color: #4f4e28;
     text-transform: capitalize;

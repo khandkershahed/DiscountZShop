@@ -252,10 +252,10 @@
                                                             <div class="card border-0 shadow-sm bg-light mb-2">
                                                                 <div class="row p-4 align-items-center">
                                                                     <div class="col-lg-6">
-                                                                        <div>
+                                                                        <div class="grab-imgs">
                                                                             <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
                                                                                 class="rounded-2 bg-white"
-                                                                                style="object-fit: cover;"
+                                                                                style="object-fit: contain;"
                                                                                 alt=""
                                                                                 onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                                         </div>
