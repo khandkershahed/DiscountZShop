@@ -1574,7 +1574,7 @@ html {
 .brands-logo img {
     width: 100%; /* Make the image responsive */
     height: 150px; /* Set a fixed height */
-    object-fit: cover; /* Ensure the image covers the container without distortion */
+    object-fit: contain; /* Ensure the image covers the container without distortion */
     display: block; /* Remove inline block space */
     margin: 0 auto; /* Center the image within its container */
 }
