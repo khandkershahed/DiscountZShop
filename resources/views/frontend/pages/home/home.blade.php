@@ -121,7 +121,7 @@
                                 <div class="available-coupon-slider">
                                     @foreach ($coupons as $coupon)
                                         <div class="items">
-                                            <div class="d-flex coupons-box">
+                                            <div class="d-flex coupons-box align-items-center">
                                                 <div class="logo">
                                                     <div class="coupon-logo">
                                                         <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
@@ -795,7 +795,8 @@
                                                 <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
                                             </div>
                                             <div class="mt-4">
-                                                <a href="{{ route('offer.details', $offerLatest->slug) }}" class="btn btn-common-one rounded-pill px-4">View</a>
+                                                <a href="{{ route('offer.details', $offerLatest->slug) }}"
+                                                    class="btn btn-common-one rounded-pill px-4">View</a>
                                             </div>
                                         </div>
                                     </div>
@@ -881,12 +882,27 @@
             </div>
         </section>
 
-        <section>
+        {{-- <section>
             <div class="container-fluid partners">
                 <div class="container px-0">
                     <div class="slick-slider-partners d-flex align-items-center">
                         @foreach ($brands as $brand)
                             <div class="items d-flex justify-content-center align-items-center">
+                                <img class="img-fluid"
+                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="" />
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section> --}}
+        <section>
+            <div class="container-fluid partners">
+                <div class="container px-0">
+                    <div class="slick-slider-partners">
+                        @foreach ($brands as $brand)
+                            <div class="items d-flex justify-content-center align-items-center partners-logos">
                                 <img class="img-fluid"
                                     src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
                                     alt="" />
