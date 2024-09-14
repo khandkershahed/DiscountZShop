@@ -10,7 +10,7 @@
     <!-- Hero End -->
 
     <section>
-        
+
         <div class="container mb-5">
             <div class="row py-5 pb-2">
                 <div class="col-lg-12 pe-0">
@@ -25,16 +25,17 @@
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
                                 <select class="form-select cust-select" id="custom_select1" name="division"
-                                    data-placeholder="Select Division" autocomplete="off" onchange="searchCoursesBySection(this.value)">
+                                    data-placeholder="Select Division" autocomplete="off"
+                                    onchange="searchCoursesBySection(this.value)">
 
                                     <option value="">Select Division</option>
 
                                     @forelse ($divisions as $division)
                                         <option value="{{ $division->id }}"
-                                            {{ request()->get('section') == $division->id ? 'selected' : '' }}>
+                                            {{ request()->get('division') == $division->id ? 'selected' : '' }}>
                                             {{ $division->name }}</option>
                                     @empty
-                                        <option disabled>No Offer Section Available</option>
+                                        <option disabled>No Offer Available</option>
                                     @endforelse
                                 </select>
                             </div>
@@ -43,7 +44,7 @@
                                 function searchCoursesBySection(sectionId) {
                                     if (sectionId) {
                                         // Redirect to the courses page with the selected section ID
-                                        window.location.href = `/offers/all?section=${sectionId}`;
+                                        window.location.href = `/offers/all?division=${sectionId}`;
                                     }
                                 }
                             </script>
@@ -157,11 +158,10 @@
 
                 <div class="col-lg-9">
                     <div class="tab-content" id="myTabContent">
-                        <!-- First tab content, active by default -->
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
 
-                            <div class="row" id="servicesContainer">
+                            <div class="row servicesContainer" id="servicesContainer">
                                 @foreach ($offerss as $offer)
                                     <div class="col-lg-4 mb-4">
                                         <div class="card border-0 shadow-sm bg-light">
@@ -225,7 +225,7 @@
                                         ->get();
                                 @endphp
 
-                                <div class="row" id="servicesContainer">
+                                <div class="row servicesContainer" id="servicesContainer">
                                     @if ($cateWiseOffers->count())
                                         @foreach ($cateWiseOffers as $offer)
                                             <div class="col-lg-4 mt-4">
@@ -288,7 +288,7 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
 
     @push('scripts')
@@ -347,6 +347,30 @@
                         },
                         success: function(data) {
                             $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        {{-- ============= --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#custom_select1').on('change', function() {
+                    var divisionId = $(this).val();
+
+                    $.ajax({
+                        url: '/offers/filter', // Ensure this is the correct URL
+                        method: 'GET',
+                        data: {
+                            division: divisionId
+                        },
+                        success: function(response) {
+                            $('#servicesContainer').html(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('AJAX Error: ', status, error);
                         }
                     });
                 });

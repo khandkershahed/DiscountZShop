@@ -76,6 +76,7 @@
                                         <h4 class="coupon-title mb-0 pe-3">
                                             Available Coupon
                                         </h4>
+
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="23"
                                                 viewBox="0 0 36 23" fill="none">
@@ -90,19 +91,21 @@
                                                     fill="#F15A2D" />
                                             </svg>
                                         </div>
+
                                     </div>
                                 </div>
+
                                 <div class="col-lg-8">
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <form class="d-flex w-75" role="search">
-                                            <div class="d-flex w-100">
+                                            {{-- <div class="d-flex w-100">
                                                 <input class="form-control rounded-pill form-control-sm" type="search"
                                                     placeholder="Search Coupon..." aria-label="Search Coupon..." />
                                             </div>
                                             <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
-                                            </button>
+                                            </button> --}}
                                         </form>
                                         <div class="d-flex justify-content-end align-items-center w-25">
                                             <button type="button" class="custom-prev rounded-circle">
@@ -114,6 +117,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="card-body py-5" style="background-color: #f8f8f8">
@@ -737,21 +741,26 @@
 
                     <!-- Search Box -->
                     <div class="d-flex justify-content-center align-items-center p-3 pb-0">
-                        <form class="d-flex w-100" role="search">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control rounded-pill p-2" placeholder="Search..."
-                                    aria-label="Search..." aria-describedby="basic-addon2" />
-                                <div class="input-group-append search-btn">
-                                    <button class="btn border-0" type="button">
-                                        <i class="fa-solid fa-search"></i>
-                                    </button>
-                                </div>
+                        {{-- <form method="get" action="{{ route('courses.search') }}" class="d-flex w-100" role="search"> --}}
+                        <div class="input-group mb-3">
+
+                            <input type="text" id="serviceSearch" class="form-control rounded-pill p-2"
+                                placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2" />
+
+                            <div class="input-group-append search-btn">
+                                <button class="btn border-0" type="button">
+                                    <i class="fa-solid fa-search"></i>
+                                </button>
                             </div>
-                        </form>
+
+                        </div>
+                        {{-- </form> --}}
                     </div>
                     <!-- Search Box -->
 
-                    <div class="row p-3 gx-3 pt-0">
+
+
+                    <div class="row p-3 gx-3 pt-0" id="servicesContainer">
 
                         @forelse ($offerDeals as $offerDeal)
                             <div class="col-lg-4 mb-3">
@@ -803,7 +812,12 @@
                                 </div>
                             </div>
                         @empty
-                            <p>No Offer Avaiable</p>
+                            <div class="text-center py-3">
+                                <img class="img-fluid" width="210px"
+                                    src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
+                                    alt="No Content">
+                            </div>
+                            <h5 class="text-center text-warning">No Course available right now.</h5>
                         @endforelse
 
                     </div>
@@ -962,6 +976,7 @@
             </div>
         </section>
     @endif
+
     @push('scripts')
         <script>
             function copyCouponCode(couponCode) {
@@ -985,6 +1000,25 @@
                 // Show an alert
                 alert('Coupon code "' + couponCode + '" copied to clipboard!');
             }
+        </script>
+
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('deal.search') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
         </script>
     @endpush
 

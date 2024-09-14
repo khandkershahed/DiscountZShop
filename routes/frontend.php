@@ -25,6 +25,12 @@ Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer')
 Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
 Route::get('/offers/search', [HomeController::class, 'searchOfferName'])->name('offer.search');
 
+Route::get('/offers/filter', [HomeController::class, 'filterOffers']);
+
+//Homepage Deal Search
+Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');
+
+
 //Brand
 Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand');
 Route::get('/brand/{slug}', [HomeController::class, 'brandDetails'])->name('brand.details');

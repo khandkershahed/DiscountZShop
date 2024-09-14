@@ -46,6 +46,22 @@ class HomeController extends Controller
         return view('frontend.pages.home.home', $data);
     }
 
+    // ===
+    public function searchDeal(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $offerDeals = Offer::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $offerDeals = Offer::latest()->get();
+        }
+
+        return view('frontend.pages.deal_search', compact('offerDeals'));
+    }
+
     //About Us
     public function aboutUs()
     {
@@ -103,6 +119,7 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.couponDetails', $data);
     }
+
     public function allStore()
     {
         $data = [
@@ -126,7 +143,7 @@ class HomeController extends Controller
         $categorys = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get();
         $offerss = Offer::latest()->get();
 
-        $sectionId = $request->input('section');
+        $sectionId = $request->input('division');
         $offersQuery = Offer::latest();
 
         if ($sectionId) {
@@ -137,6 +154,20 @@ class HomeController extends Controller
         $offers = $offersQuery->get();
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categorys', 'offers', 'offerss'));
+    }
+
+    public function filterOffers(Request $request)
+    {
+        $sectionId = $request->input('division');
+        $offersQuery = Offer::latest();
+
+        if ($sectionId) {
+            $offersQuery->where('division_id', $sectionId);
+        }
+
+        $offers = $offersQuery->get();
+
+        return view('frontend.pages.division_offer', compact('offers'));
     }
 
     //offerDetails
