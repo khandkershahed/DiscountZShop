@@ -161,74 +161,13 @@
         <div class="container-fluid partners">
             <div class="container px-0">
                 <div class="slick-slider-partners">
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 20.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 21.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 22.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 23.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 24.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 25.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 26.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 27.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 28.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 29.png"
-                            alt="" />
-                    </div>
-                    <div class="items d-flex justify-content-center align-items-center">
-                        <img class="img-fluid" src="{{ asset('frontend') }}/assets/img/partner/Rectangle 30.png"
-                            alt="" />
-                    </div>
+                    @foreach ($brands as $brand)
+                        <div class="items d-flex justify-content-center align-items-center partners-logos">
+                            <img class="img-fluid"
+                                src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                alt="" />
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

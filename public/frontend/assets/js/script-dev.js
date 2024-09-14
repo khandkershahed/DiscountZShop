@@ -106,7 +106,7 @@ $(document).ready(function () {
     speed: 3000,
     arrows: false,
     swipe: false,
-    slidesToShow: 11,
+    slidesToShow: 7,
     cssEase: "linear",
     pauseOnFocus: false,
     pauseOnHover: false,

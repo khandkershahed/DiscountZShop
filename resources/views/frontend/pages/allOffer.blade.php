@@ -143,9 +143,12 @@
                             style="background-image: url(https://htmlbeans.com/html/coupon/images/img39.jpg);">
                             <div class="card-body text-center">
                                 <div>
-                                    <p><i class="fa-solid fa-microphone text-white fw-3"></i></p>
+                                    <p class="pb-3">
+                                        <i class="fa-solid fa-receipt text-white"
+                                            style="rotate: 90deg; font-size: 28px"></i>
+                                    </p>
                                     <h6 class="pt-3">SUBMIT YOUR COUPON</h6>
-                                    <a href="javascript:void(0)" class="btn-common-one mt-2">All Coupon</a>
+                                    <a href="javascript:void(0)" class="btn-common-one mt-4">All Coupon</a>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +170,7 @@
                                                     <div>
                                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                             width="80px" height="80px" class="rounded-2 bg-white"
-                                                            style="object-fit: cover;" alt=""
+                                                            style="object-fit: contain;" alt=""
                                                             onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                     </div>
                                                 </div>
@@ -233,7 +236,7 @@
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                     width="80px" height="80px"
                                                                     class="rounded-2 bg-white"
-                                                                    style="object-fit: cover;" alt="" />
+                                                                    style="object-fit: contain;" alt="" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
