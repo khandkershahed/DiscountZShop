@@ -23,6 +23,7 @@ Route::get('/category/{slug}', [HomeController::class, 'categoryDetails'])->name
 //Offer
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
 Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
+Route::get('/offers/search', [HomeController::class, 'searchOfferName'])->name('offer.search');
 
 //Brand
 Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand');

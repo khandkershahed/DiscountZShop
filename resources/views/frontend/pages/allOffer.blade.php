@@ -8,7 +8,9 @@
         </div>
     </section>
     <!-- Hero End -->
+
     <section>
+        
         <div class="container mb-5">
             <div class="row py-5 pb-2">
                 <div class="col-lg-12 pe-0">
@@ -17,17 +19,36 @@
                             <h3>All Offers</h3>
                             <span class="store-devider"></span>
                         </div>
+
                         <div class="d-flex align-items-center">
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
                                 <select class="form-select cust-select" id="custom_select1" name="division"
-                                    data-placeholder="Select Division">
+                                    data-placeholder="Select Division" autocomplete="off" onchange="searchCoursesBySection(this.value)">
+
                                     <option value="">Select Division</option>
-                                    @foreach ($divisions as $division)
-                                        <option value="{{ $division->name }}">{{ $division->name }}</option>
-                                    @endforeach
+
+                                    @forelse ($divisions as $division)
+                                        <option value="{{ $division->id }}"
+                                            {{ request()->get('section') == $division->id ? 'selected' : '' }}>
+                                            {{ $division->name }}</option>
+                                    @empty
+                                        <option disabled>No Offer Section Available</option>
+                                    @endforelse
                                 </select>
                             </div>
+
+                            <script>
+                                function searchCoursesBySection(sectionId) {
+                                    if (sectionId) {
+                                        // Redirect to the courses page with the selected section ID
+                                        window.location.href = `/offers/all?section=${sectionId}`;
+                                    }
+                                }
+                            </script>
+
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
                                 <select class="form-select cust-select" id="custom_select2" name="city"
@@ -38,6 +59,8 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <!-- Filter Store -->
                             <div class="btn-group pe-2">
                                 <select class="form-select cust-select" id="custom_select3" name="area"
                                     data-placeholder="Select Area">
@@ -47,14 +70,15 @@
                                     @endforeach
                                 </select>
                             </div>
+
                             <!-- Search Store -->
                             <div class="wrapper-store">
+
                                 <div class="search-input-store">
-                                    <a href="#" target="_blank" hidden=""></a>
-                                    <input type="text" placeholder="Type to search..." />
-                                    <div class="autocom-box">
-                                        <!-- here list are inserted from javascript -->
-                                    </div>
+
+                                    <input type="text" id="serviceSearch" name=""
+                                        placeholder="Type to search..." />
+
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -63,9 +87,12 @@
                                             </path>
                                         </svg>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -81,7 +108,7 @@
                                     aria-selected="true">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span>All Offers</span>
-                                        <span>({{ $offers->count() }})</span>
+                                        <span>({{ $offerss->count() }})</span>
                                     </div>
                                 </button>
                             </li>
@@ -102,14 +129,15 @@
                         </ul>
                     </div>
 
-                    <h6 class="fw-bold pt-3 pb-2">Discount%</h6>
+                    {{-- <h6 class="fw-bold pt-3 pb-2">Discount%</h6>
                     <div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <input type="range" class="form-range" id="customRange1" />
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
                     <div class="pt-4">
                         <div class="card overlay-card rounded-2"
                             style="background-image: url(https://htmlbeans.com/html/coupon/images/img39.jpg);">
@@ -129,8 +157,9 @@
                         <!-- First tab content, active by default -->
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
-                            <div class="row">
-                                @foreach ($offers as $offer)
+
+                            <div class="row" id="servicesContainer">
+                                @foreach ($offerss as $offer)
                                     <div class="col-lg-4 mb-4">
                                         <div class="card border-0 shadow-sm bg-light">
                                             <div class="row p-4 align-items-center">
@@ -179,18 +208,21 @@
                                     </div>
                                 @endforeach
                             </div>
+
                         </div>
 
                         <!-- Other tabs content -->
                         @foreach ($categorys as $category)
                             <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
+
                                 @php
                                     $cateWiseOffers = App\Models\Offer::where('category_id', $category->id)
                                         ->orderBy('name', 'ASC')
                                         ->get();
                                 @endphp
-                                <div class="row">
+
+                                <div class="row" id="servicesContainer">
                                     @if ($cateWiseOffers->count())
                                         @foreach ($cateWiseOffers as $offer)
                                             <div class="col-lg-4 mt-4">
@@ -248,11 +280,14 @@
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>
         </div>
+        
     </section>
+
     @push('scripts')
         <script>
             // Bootstrap Tab Activation
@@ -266,6 +301,7 @@
                 })
             })
         </script>
+
         <script>
             function copyCouponCode(couponCode) {
                 // Create a temporary input element to copy the coupon code
@@ -288,6 +324,30 @@
                 // Show an alert
                 alert('Coupon code "' + couponCode + '" copied to clipboard!');
             }
+        </script>
+
+        {{-- Offer Search --}}
+
+        <!-- Include jQuery -->
+
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('offer.search') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
         </script>
     @endpush
 </x-frontend-app-layout>

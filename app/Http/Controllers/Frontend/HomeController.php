@@ -16,6 +16,7 @@ use App\Models\PrivacyPolicy;
 use App\Models\Slider;
 use App\Models\Store;
 use App\Models\TermsAndCondition;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -27,24 +28,23 @@ class HomeController extends Controller
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
 
         $data = [
-            'sliders'          => Slider::where('status', 'active')->latest('id')->get(),
-            'banner'           => Banner::where('status', 'active')->latest('id')->first(),
-            'coupons'          => Coupon::latest()->get(),
-            'brands'           => Brand::latest()->get(),
+            'sliders' => Slider::where('status', 'active')->latest('id')->get(),
+            'banner' => Banner::where('status', 'active')->latest('id')->first(),
+            'coupons' => Coupon::latest()->get(),
+            'brands' => Brand::latest()->get(),
 
-            'alloffers'        => $offers,
-            'offers'           => $offers->take(5), // Use `take` instead of `limit` for collections
+            'alloffers' => $offers,
+            'offers' => $offers->take(5), // Use `take` instead of `limit` for collections
 
-            'offerLatests'     => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
-            'offerDealLefts'   => $offers->take(5),
-            'offerDeals'       => $latestOffers->take(6),
+            'offerLatests' => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
+            'offerDealLefts' => $offers->take(5),
+            'offerDeals' => $latestOffers->take(6),
 
-            'homepage'         => HomePage::with('brand')->latest('id')->first(),
+            'homepage' => HomePage::with('brand')->latest('id')->first(),
         ];
 
         return view('frontend.pages.home.home', $data);
     }
-
 
     //About Us
     public function aboutUs()
@@ -119,21 +119,29 @@ class HomeController extends Controller
     }
 
     //allOffer
-    public function allOffer()
+    public function allOffer(Request $request)
     {
-        $data = [
+        $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
+        $categorys = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get();
+        $offerss = Offer::latest()->get();
 
-            'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
-            'categorys'   => Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get(),
-            'offers'      => Offer::latest('id')->get(),
-        ];
-        return view('frontend.pages.allOffer', $data);
+        $sectionId = $request->input('section');
+        $offersQuery = Offer::latest();
+
+        if ($sectionId) {
+            // Ensure that 'division_id' is the correct field to filter by
+            $offersQuery->where('division_id', $sectionId);
+        }
+
+        $offers = $offersQuery->get();
+
+        return view('frontend.pages.allOffer', compact('page_banner', 'categorys', 'offers', 'offerss'));
     }
 
     //offerDetails
     public function offerDetails($slug)
     {
-        $offerDetails = Offer::where('slug' , $slug)->first();
+        $offerDetails = Offer::where('slug', $slug)->first();
         if ($offerDetails) {
             return view('frontend.pages.offerDetails', compact('offerDetails'));
         } else {
@@ -141,8 +149,23 @@ class HomeController extends Controller
 
         }
 
-
     }
+    //searchCourseNAme
+    public function searchOfferName(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $offers = Offer::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $offers = Offer::latest()->get();
+        }
+
+        return view('frontend.pages.allOffer_search', compact('offers'))->render();
+    }
+
     public function categoryDetails($slug)
     {
         $data = [
@@ -155,7 +178,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'terms')->latest('id')->first(),
-            'terms'       => TermsAndCondition::latest('id')->first(),
+            'terms' => TermsAndCondition::latest('id')->first(),
         ];
         return view('frontend.pages.termsCondition', $data);
     }
@@ -163,7 +186,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
-            'terms'       => PrivacyPolicy::latest('id')->first(),
+            'terms' => PrivacyPolicy::latest('id')->first(),
         ];
         return view('frontend.pages.privacyPolicy', $data);
     }
@@ -171,7 +194,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+            'faqs' => Faq::orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }

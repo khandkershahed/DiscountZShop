@@ -68,8 +68,8 @@ class CouponController extends Controller
             'short_description' => 'nullable|string',
             'map_url' => 'nullable|string',
 
-            'price' => 'required|numeric',
-            'offer_price' => 'required|numeric',
+            // 'price' => 'required|numeric',
+            // 'offer_price' => 'required|numeric',
 
             'start_date' => 'required',
             'notification_date' => 'required',
