@@ -37,17 +37,17 @@ class HomePageController extends Controller
     public function store(Request $request)
     {
         // Validate the request
-        $validator = Validator::make($request->all(), [
+        // $validator = Validator::make($request->all(), [
 
-            'logo' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
-            'image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
-            'banner_image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
+        //     'logo' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
+        //     'image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
+        //     'banner_image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
 
-        ]);
+        // ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
 
         DB::beginTransaction();
 
@@ -211,7 +211,7 @@ class HomePageController extends Controller
 
                 'bottom_banner_slider_three' => $uploadedFiles['bottom_banner_slider_three']['status'] == 1 ? $uploadedFiles['bottom_banner_slider_three']['file_path'] : $homepage->bottom_banner_slider_three,
 
-                'offer_slider_image_four' => $uploadedFiles['offer_slider_image_four']['status'] == 1 ? $uploadedFiles['offer_slider_image_four']['file_path'] : $homepage->offer_slider_image_four,
+                'bottom_banner_slider_four' => $uploadedFiles['bottom_banner_slider_four']['status'] == 1 ? $uploadedFiles['bottom_banner_slider_four']['file_path'] : $homepage->bottom_banner_slider_four,
 
                 
 
