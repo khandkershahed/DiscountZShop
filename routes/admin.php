@@ -60,7 +60,8 @@ Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(functio
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
 });
 
-Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
+// Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
+Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
@@ -95,31 +96,30 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
     Route::resources(
         [
             'offer-type' => OfferTypeController::class,
-            'country' => CountryController::class,
-            'city' => CityController::class,
-            'division' => DivisonController::class,
-            'area' => AreaController::class,
+            'country'    => CountryController::class,
+            'city'       => CityController::class,
+            'division'   => DivisonController::class,
+            'area'       => AreaController::class,
         ],
         ['except' => ['show', 'create', 'edit']]
     );
     Route::resources(
         [
-            'faq' => FaqController::class,
-            'role' => RoleController::class,
-            'permission' => PermissionController::class,
-            'email-settings' => EmailSettingController::class,
-            'page-banner' => PageBannerController::class,
+            'faq'             => FaqController::class,
+            'role'            => RoleController::class,
+            'permission'      => PermissionController::class,
+            'email-settings'  => EmailSettingController::class,
+            'page-banner'     => PageBannerController::class,
             'terms-condition' => TermsAndConditionController::class,
-            'privacy-policy' => PrivacyPolicyController::class,
-            'store' => StoreController::class,
-
+            'privacy-policy'  => PrivacyPolicyController::class,
+            'store'           => StoreController::class,
             // Created By Ashiquzzaman
-            'offer' => OfferController::class,
-            'coupon' => CouponController::class,
-            'about-us' => AboutUsController::class,
-            'slider' => SliderController::class,
-            'banner' => BannerController::class,
-            'homepage' => HomePageController::class,
+            'offer'           => OfferController::class,
+            'coupon'          => CouponController::class,
+            'about-us'        => AboutUsController::class,
+            'slider'          => SliderController::class,
+            'banner'          => BannerController::class,
+            'homepage'        => HomePageController::class,
 
         ],
         ['except' => ['show']]
@@ -139,13 +139,6 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
         ],
     );
-
-    // Created By Ashiquzzaman
-    // Route::resources(
-    //     [
-
-    //     ],
-    // );
 
     Route::get('active-mail-configuration', [EmailSettingController::class, 'activeMailConfiguration'])->name('active.mail.configuration');
     Route::put('email-settings', [EmailSettingController::class, 'emailUpdateOrCreate'])->name('email.settings.updateOrCreate');
@@ -177,10 +170,8 @@ Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewP
 
     // Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     // Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
-
+    Route::put('offer/status/{id}', [OfferController::class, 'updateStatus'])->name('offer.status.update');
+    Route::put('coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('coupon.status.update');
+    Route::put('slider/status/{id}', [SliderController::class, 'updateStatusSlider'])->name('slider.status.update');
+    Route::put('banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('banner.status.update');
 });
-// Offer Status
-Route::put('admin/offer/status/{id}', [OfferController::class, 'updateStatus'])->name('admin.offer.status.update');
-Route::put('admin/coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('admin.coupon.status.update');
-Route::put('admin/slider/status/{id}', [SliderController::class, 'updateStatusSlider'])->name('admin.slider.status.update');
-Route::put('admin/banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('admin.banner.status.update');
