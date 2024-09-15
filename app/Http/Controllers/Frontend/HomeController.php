@@ -103,6 +103,30 @@ class HomeController extends Controller
         return view('frontend.pages.brandDetails', $data);
     }
 
+    //searchBrandName
+    // Check if categories and brands are fetched correctly
+    public function searchBrandName(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            // Fetch categories with brands
+            $categories = Category::with('brands')->latest('id')->active()->get();
+            // Fetch brands based on the search query
+            $brands = Brand::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            // Fetch all categories with brands
+            $categories = Category::with('brands')->latest('id')->active()->get();
+            // Fetch all brands
+            $brands = Brand::latest()->get();
+        }
+
+        // Return the view with the data
+        return view('frontend.pages.brand_search', compact('brands', 'categories'));
+    }
+
     public function allCoupon()
     {
         $data = [
@@ -125,8 +149,8 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'latest_stores' => Store::where('status', 'active')->orderBy('name','ASC')->limit(4)->latest()->get(),
-            'stores' => Store::where('status', 'active')->orderBy('name','ASC')->get(),
+            'latest_stores' => Store::where('status', 'active')->orderBy('name', 'ASC')->limit(4)->latest()->get(),
+            'stores' => Store::where('status', 'active')->orderBy('name', 'ASC')->get(),
         ];
         return view('frontend.pages.allStore', $data);
     }
@@ -139,6 +163,39 @@ class HomeController extends Controller
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
         ];
         return view('frontend.pages.storeDetails', $data);
+    }
+
+    //searchStoreName
+    public function searchStoreName(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $latest_stores = Store::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $latest_stores = Store::latest()->get();
+        }
+
+        return view('frontend.pages.store_search', compact('latest_stores'));
+    }
+
+    //searchDivisionName
+    public function searchDivisionName(Request $request)
+    {
+        $query = $request->input('division_id');
+
+        if ($query) {
+            $latest_stores = Store::where('division_id', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $latest_stores = Store::latest()->get();
+        }
+
+        return view('frontend.pages.store_division_search', compact('latest_stores'));
+        
     }
 
     //allOffer

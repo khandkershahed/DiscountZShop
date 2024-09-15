@@ -19,101 +19,70 @@
                             <span class="store-devider"></span>
                         </div>
                         <div class="d-flex align-items-center">
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    City
-                                </button>
-
-                                <ul class="dropdown-menu rounded-0"
-                                    data-popper-placement="bottom-start"style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">Dhaka</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">Syhlet</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">Rajshahi</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">Khulna</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">Barishal</a>
-                                    </li>
-
-                                </ul>
-
+                                <select class="form-select cust-select divisionSearch" id="custom_select1"
+                                    name="division_id" data-placeholder="Select Division" autocomplete="off">
+                                    <option value="">Select Division</option>
+                                    @forelse ($divisions as $division)
+                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    @empty
+                                        <option disabled>No Division Available</option>
+                                    @endforelse
+                                </select>
                             </div>
+
+
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    Area
-                                </button>
-                                <ul class="dropdown-menu rounded-0"
-                                    data-popper-placement="bottom-start"style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Gulshan</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Mirpur</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Savar</a>
-                                    </li>
-                                </ul>
+                                <select class="form-select cust-select" id="custom_select2" name="city"
+                                    data-placeholder="Select City">
+                                    <option value="">Select City</option>
+                                    @foreach ($citys as $city)
+                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="true">
-                                    <i class="fa-solid fa-filter fs-6"></i>
-                                </button>
-                                <ul class="dropdown-menu rounded-0"
-                                    data-popper-placement="bottom-start"style="position: absolute;inset: 0px auto auto 0px;margin: 0px;transform: translate(0px, 33px);">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Top Stores</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Today Flash Discounts</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Big Discount</a>
-                                    </li>
-                                </ul>
+                                <select class="form-select cust-select" id="custom_select3" name="area"
+                                    data-placeholder="Select Area">
+                                    <option value="">Select Area</option>
+                                    @foreach ($areas as $area)
+                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
                             <!-- Search Store -->
                             <div class="wrapper-store">
+
                                 <div class="search-input-store">
-                                    <a href="#" target="_blank" hidden></a>
-                                    <input type="text" placeholder="Type to search..." />
-                                    <div class="autocom-box">
-                                        <!-- here list are inserted from javascript -->
-                                    </div>
+
+                                    <input type="text" id="serviceSearch" autocomplete="off" name=""
+                                        placeholder="Type to search..." />
+
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                             <path
-                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                            </path>
                                         </svg>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row pb-1">
+            <div class="row pb-1 servicesContainer divisionContainer" id="">
 
                 @foreach ($latest_stores as $store)
                     <div class="col-lg-3">
@@ -173,9 +142,8 @@
                     </div>
                 @endforeach
 
-
-
             </div>
+
         </div>
     </section>
     <!-- All Stores -->
@@ -189,6 +157,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row pb-4">
 
                 @foreach ($stores as $store)
@@ -254,5 +223,78 @@
 
         </div>
     </section>
+
+    @push('scripts')
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('store.search.name') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('.servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            // $(document).ready(function() {
+            //     $('.divisionSearch').on('change', function() {
+            //         var divisionId = $(this).val();
+            //         if (divisionId) {
+            //             $.ajax({
+            //                 url: "{{ route('store.search.division') }}",
+            //                 method: 'GET',
+            //                 data: {
+            //                     division_id: divisionId
+            //                 },
+            //                 success: function(data) {
+            //                     $('.divisionContainer').html(data);
+            //                 }
+            //             });
+            //         } else {
+            //             $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+            //         }
+            //     });
+            // });
+
+            $(document).ready(function() {
+                $('#custom_select1').on('change', function() {
+
+                    var divisionId = $(this).val(); // Get selected division ID
+
+                    if (divisionId) {
+                        
+                        $.ajax({
+                            url: "{{ route('store.search.division') }}",
+                            method: 'GET',
+                            data: {
+                                division_id: divisionId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(
+                                data); // Update the container with the response data
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+            
+        </script>
+    @endpush
 
 </x-frontend-app-layout>

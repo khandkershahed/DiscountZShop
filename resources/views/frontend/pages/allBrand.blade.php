@@ -77,14 +77,15 @@
                                     </li>
                                 </ul>
                             </div>
+
                             <!-- Search Store -->
                             <div class="wrapper-store">
+
                                 <div class="search-input-store">
-                                    <a href="#" target="_blank" hidden=""></a>
-                                    <input type="text" placeholder="Type to search..." />
-                                    <div class="autocom-box">
-                                        <!-- here list are inserted from javascript -->
-                                    </div>
+
+                                    <input type="text" id="serviceSearch" autocomplete="off" name=""
+                                        placeholder="Type to search..." />
+
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -93,13 +94,16 @@
                                             </path>
                                         </svg>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row gx-5">
+
+            <div class="row gx-5" id="servicesContainer">
                 @foreach ($categories as $category)
                     @if ($category->brands->count() > 0)
                         <div class="col-lg-6">
@@ -109,13 +113,13 @@
                                         <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
                                         <span class="store-devider"></span>
                                     </div>
-                                    <div>
+                                    {{-- <div>
                                         <div class="pt-1">
-                                          <span class="badge text-end rounded-0 store-tags">
-                                            <span>30%</span>
-                                          </span>
+                                            <span class="badge text-end rounded-0 store-tags">
+                                                <span>30%</span>
+                                            </span>
                                         </div>
-                                      </div>
+                                    </div> --}}
                                 </div>
                                 @foreach ($category->brands as $brand)
                                     <div class="col-lg-4 mb-3 mt-2">
@@ -138,6 +142,7 @@
                     @endif
                 @endforeach
             </div>
+            
         </div>
     </section>
     <!-- Brands All End -->
@@ -172,4 +177,26 @@
             </div>
         </div>
     </section>
+
+    @push('scripts')
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('brands.search.name') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 </x-frontend-app-layout>
