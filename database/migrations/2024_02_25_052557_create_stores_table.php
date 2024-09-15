@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('image', 150)->nullable();
             $table->string('banner_image', 150)->nullable();
             $table->longText('about')->nullable();
+            $table->string('badge')->nullable();
             $table->longText('offer_description')->nullable();
             $table->longText('location')->nullable();
             $table->text('description')->nullable();

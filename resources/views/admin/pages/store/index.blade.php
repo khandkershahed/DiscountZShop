@@ -29,8 +29,6 @@
                     <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
                         <th>Store Name</th>
-                        <th>Location</th>
-                        <th>Expire Date</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>

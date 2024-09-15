@@ -152,7 +152,16 @@
                             :value="old('middle_banner_right')"></x-metronic.file-input>
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="badge"
+                            class="col-form-label fw-bold fs-6">{{ __('Badge') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="badge" type="text" name="badge" :value="old('badge')"
+                            placeholder="Eg: 50% off"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
@@ -160,7 +169,7 @@
                             :value="old('logo')"></x-metronic.file-input>
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
@@ -168,7 +177,7 @@
                         <x-metronic.file-input id="image" name="image"
                             :value="old('image')"></x-metronic.file-input>
                     </div>
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>

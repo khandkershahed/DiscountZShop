@@ -112,10 +112,11 @@
                         <x-metronic.select-option id="city_id" name="city_id[]" data-hide-search="false" multiple
                             data-placeholder="Select an option">
                             <option></option>
-                            @foreach ($cities as $city)
+                            @foreach ($citys as $city)
                                 <option value="{{ $city->id }}"
-                                    {{ in_array($city->id, $cityIds) ? 'selected' : '' }}>
-                                    {{ $city->name }}</option>
+                                    {{ in_array($city->id, old('city_id', json_decode($store->city_id, true) ?: [])) ? 'selected' : '' }}>
+                                    {{ $city->name }}
+                                </option>
                             @endforeach
                         </x-metronic.select-option>
                     </div>
@@ -198,7 +199,14 @@
 
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="badge"
+                            class="col-form-label fw-bold fs-6">{{ __('Badge') }}</x-metronic.label>
+                        <x-metronic.input id="badge" type="text" name="badge" :value="old('badge', $store->badge)"
+                            placeholder="Eg: 50% off"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
@@ -207,7 +215,7 @@
 
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6 required">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
@@ -216,7 +224,7 @@
                             :value="old('image', $store->image)"></x-metronic.file-input>
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>
@@ -248,11 +256,6 @@
                 </div>
                 <div class="text-center pt-15">
                     <x-metronic.button type="submit" class="primary">{{ __('Update') }}</x-metronic.button>
-                </div>
-                <div class="text-center pt-15">
-                    <x-metronic.button type="submit" class="primary">
-                        {{ __('Submit') }}
-                    </x-metronic.button>
                 </div>
 
             </form>

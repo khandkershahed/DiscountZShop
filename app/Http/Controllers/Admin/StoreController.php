@@ -123,6 +123,7 @@ class StoreController extends Controller
                 'map_url'             => $request->map_url,
                 'category'            => $request->category,
                 'status'              => $request->status,
+                'badge'              => $request->badge,
             ]);
 
             // Commit the database transaction
@@ -227,6 +228,7 @@ class StoreController extends Controller
                 'map_url'             => $request->map_url,
                 'category'            => $request->category,
                 'status'              => $request->status,
+                'badge'              => $request->badge,
             ]);
 
             DB::commit();

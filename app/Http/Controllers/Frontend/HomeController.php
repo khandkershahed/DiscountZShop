@@ -120,13 +120,18 @@ class HomeController extends Controller
         return view('frontend.pages.couponDetails', $data);
     }
 
+    //allStore
     public function allStore()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
+            'latest_stores' => Store::where('status', 'active')->orderBy('name','ASC')->limit(4)->latest()->get(),
+            'stores' => Store::where('status', 'active')->orderBy('name','ASC')->get(),
         ];
         return view('frontend.pages.allStore', $data);
     }
+
+    //storeDetails
     public function storeDetails($slug)
     {
         $data = [
