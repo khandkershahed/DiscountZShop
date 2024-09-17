@@ -24,8 +24,11 @@ Route::get('/category/{slug}', [HomeController::class, 'categoryDetails'])->name
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
 Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
 Route::get('/offers/search', [HomeController::class, 'searchOfferName'])->name('offer.search');
+Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisionName'])->name('offer.search.division');
+Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
+Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
-Route::get('/offers/filter', [HomeController::class, 'filterOffers']);
+
 
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');

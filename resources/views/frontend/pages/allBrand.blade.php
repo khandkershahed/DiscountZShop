@@ -24,13 +24,14 @@
             <div class="row py-5 pb-0">
                 <div class="col-lg-12 pe-0 pb-2">
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
+                        {{-- <div class="d-flex align-items-center">
                             <h3>All Brands</h3>
                             <span class="store-devider"></span>
-                        </div>
+                        </div> --}}
                         <div class="d-flex align-items-center">
+
                             <!-- Filter Store -->
-                            <div class="btn-group pe-2">
+                            {{-- <div class="btn-group pe-2">
                                 <select class="form-select" id="custom_select1" name="division"
                                     data-placeholder="Select Division">
                                     <option value="">Select Division</option>
@@ -38,9 +39,10 @@
                                         <option value="{{ $division->name }}">{{ $division->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
+
                             <!-- Filter Store -->
-                            <div class="btn-group pe-2">
+                            {{-- <div class="btn-group pe-2">
                                 <select class="form-select" id="custom_select2" name="city"
                                     data-placeholder="Select City">
                                     <option value="">Select City</option>
@@ -48,8 +50,8 @@
                                         <option value="{{ $city->name }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="btn-group pe-2">
+                            </div> --}}
+                            {{-- <div class="btn-group pe-2">
                                 <select class="form-select" id="custom_select3" name="area"
                                     data-placeholder="Select Area">
                                     <option value="">Select Area</option>
@@ -57,9 +59,9 @@
                                         <option value="{{ $area->name }}">{{ $area->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <!-- Filter Store -->
-                            <div class="btn-group pe-2">
+                            {{-- <div class="btn-group pe-2">
                                 <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="true">
                                     <i class="fa-solid fa-filter fs-6" aria-hidden="true"></i>
@@ -76,10 +78,10 @@
                                         <a class="dropdown-item" href="#">Big Discount</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
                             <!-- Search Store -->
-                            <div class="wrapper-store">
+                            {{-- <div class="wrapper-store">
 
                                 <div class="search-input-store">
 
@@ -96,7 +98,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -142,7 +144,7 @@
                     @endif
                 @endforeach
             </div>
-            
+
         </div>
     </section>
     <!-- Brands All End -->

@@ -246,31 +246,9 @@ class HomeController extends Controller
         $categorys = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get();
         $offerss = Offer::latest()->get();
 
-        $sectionId = $request->input('division');
-        $offersQuery = Offer::latest();
-
-        if ($sectionId) {
-            // Ensure that 'division_id' is the correct field to filter by
-            $offersQuery->where('division_id', $sectionId);
-        }
-
-        $offers = $offersQuery->get();
+        $offers = Offer::latest()->get();
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categorys', 'offers', 'offerss'));
-    }
-
-    public function filterOffers(Request $request)
-    {
-        $sectionId = $request->input('division');
-        $offersQuery = Offer::latest();
-
-        if ($sectionId) {
-            $offersQuery->where('division_id', $sectionId);
-        }
-
-        $offers = $offersQuery->get();
-
-        return view('frontend.pages.division_offer', compact('offers'));
     }
 
     //offerDetails
@@ -299,6 +277,63 @@ class HomeController extends Controller
         }
 
         return view('frontend.pages.allOffer_search', compact('offers'))->render();
+    }
+
+    public function searchOfferDivisionName(Request $request)
+    {
+        $offerss = [];
+        $query = $request->input('division_id');
+
+        if ($query) {
+            $offerss = Offer::where('division_id', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $offerss = Offer::latest()->get();
+        }
+
+        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
+
+        return response()->json(['html' => $responseHtml]);
+
+    }
+
+    //searchCityName
+    public function searchOfferCityName(Request $request)
+    {
+        $offerss = [];
+        $query = $request->input('city_id');
+
+        if ($query) {
+            $offerss = Offer::where('city_id', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $offerss = Offer::latest()->get();
+        }
+
+        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
+
+        return response()->json(['html' => $responseHtml]);
+    }
+
+    //searchAreaName
+    public function searchOfferAreaName(Request $request)
+    {
+        $offerss = [];
+        $query = $request->input('area_id');
+
+        if ($query) {
+            $offerss = Offer::where('area_id', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $offerss = Offer::latest()->get();
+        }
+
+        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
+
+        return response()->json(['html' => $responseHtml]);
     }
 
     public function categoryDetails($slug)

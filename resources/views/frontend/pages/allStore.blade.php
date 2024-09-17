@@ -333,37 +333,7 @@
             });
 
 
-            // $(document).ready(function() {
-            //     function fetchStores() {
-            //         var divisionId = $('#custom_select1').val(); // Get selected division ID
-            //         var cityName = $('#custom_select2').val(); // Get selected city name
-
-            //         $.ajax({
-            //             url: "{{ route('store.search.division') }}",
-            //             method: 'GET',
-            //             data: {
-            //                 division_id: divisionId,
-            //                 city: cityName
-            //             },
-            //             success: function(data) {
-            //                 $('.divisionContainer').html(data.html);
-            //             },
-            //             error: function() {
-            //                 $('.divisionContainer').html('<p>An error occurred while fetching stores.</p>');
-            //             }
-            //         });
-            //     }
-
-            //     // Fetch stores on division change
-            //     $('#custom_select1').on('change', function() {
-            //         fetchStores();
-            //     });
-
-            //     // Fetch stores on city change
-            //     $('#custom_select2').on('change', function() {
-            //         fetchStores();
-            //     });
-            // });
+           
         </script>
     @endpush
 

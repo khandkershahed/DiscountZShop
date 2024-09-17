@@ -24,50 +24,35 @@
 
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select1" name="division"
-                                    data-placeholder="Select Division" autocomplete="off"
-                                    onchange="searchCoursesBySection(this.value)">
-
+                                <select class="form-select cust-select" id="custom_select1" name="division_id"
+                                    data-placeholder="Select Division" autocomplete="off">
                                     <option value="">Select Division</option>
-
                                     @forelse ($divisions as $division)
-                                        <option value="{{ $division->id }}"
-                                            {{ request()->get('division') == $division->id ? 'selected' : '' }}>
-                                            {{ $division->name }}</option>
+                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
                                     @empty
-                                        <option disabled>No Offer Available</option>
+                                        <option disabled>No Division Available</option>
                                     @endforelse
                                 </select>
                             </div>
 
-                            <script>
-                                function searchCoursesBySection(sectionId) {
-                                    if (sectionId) {
-                                        // Redirect to the courses page with the selected section ID
-                                        window.location.href = `/offers/all?division=${sectionId}`;
-                                    }
-                                }
-                            </script>
-
-
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select2" name="city"
-                                    data-placeholder="Select City">
+                                <select class="form-select cust-select" id="custom_select2" name="city_id"
+                                    data-placeholder="Select City" autocomplete="off">
                                     <option value="">Select City</option>
                                     @foreach ($citys as $city)
-                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select3" name="area"
+                                <select class="form-select cust-select" id="custom_select3" name="area_id"
                                     data-placeholder="Select Area">
                                     <option value="">Select Area</option>
                                     @foreach ($areas as $area)
-                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -161,7 +146,7 @@
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
 
-                            <div class="row servicesContainer" id="servicesContainer">
+                            <div class="row servicesContainer divisionContainer" id="servicesContainer">
                                 @foreach ($offerss as $offer)
                                     <div class="col-lg-4 mb-4">
                                         <div class="card border-0 shadow-sm bg-light">
@@ -356,23 +341,88 @@
         {{-- ============= --}}
 
         <script>
+            // === === === === === Division === === === === ===
+
             $(document).ready(function() {
                 $('#custom_select1').on('change', function() {
-                    var divisionId = $(this).val();
 
-                    $.ajax({
-                        url: '/offers/filter', // Ensure this is the correct URL
-                        method: 'GET',
-                        data: {
-                            division: divisionId
-                        },
-                        success: function(response) {
-                            $('#servicesContainer').html(response);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('AJAX Error: ', status, error);
-                        }
-                    });
+                    var divisionId = $(this).val(); // Get selected division ID
+
+                    if (divisionId) {
+
+                        $.ajax({
+                            url: "{{ route('offer.search.division') }}",
+                            method: 'GET',
+                            data: {
+                                division_id: divisionId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+
+            // ====== City ====
+
+            $(document).ready(function() {
+                $('#custom_select2').on('change', function() {
+                    var cityId = $(this).val();
+
+                    if (cityId) {
+                        $.ajax({
+                            url: "{{ route('offer.search.city') }}",
+                            method: 'GET',
+                            data: {
+                                city_id: cityId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a city to see offers.</p>');
+                    }
+                });
+            });
+
+            // ============ area ============ 
+
+            $(document).ready(function() {
+                $('#custom_select3').on('change', function() {
+
+                    var areaId = $(this).val(); // Get selected division ID
+
+                    if (areaId) {
+
+                        $.ajax({
+                            url: "{{ route('offer.search.area') }}",
+                            method: 'GET',
+                            data: {
+                                area_id: areaId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
                 });
             });
         </script>
