@@ -1,4 +1,5 @@
-<x-frontend-app-layout :title="'All Stores || DiscountZShop'">
+<x-frontend-app-layout :title="'All Store || DiscountZShop'">
+
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
@@ -7,6 +8,7 @@
                 alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
         </div>
     </section>
+
     <!-- Top Stores -->
     <section>
         <div class="container">
@@ -22,8 +24,8 @@
 
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select divisionSearch" id="custom_select1"
-                                    name="division_id" data-placeholder="Select Division" autocomplete="off">
+                                <select class="form-select cust-select" id="custom_select1" name="division_id"
+                                    data-placeholder="Select Division" autocomplete="off">
                                     <option value="">Select Division</option>
                                     @forelse ($divisions as $division)
                                         <option value="{{ $division->id }}">{{ $division->name }}</option>
@@ -33,26 +35,24 @@
                                 </select>
                             </div>
 
-
-
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select2" name="city"
-                                    data-placeholder="Select City">
+                                <select class="form-select cust-select" id="custom_select2" name="city_id"
+                                    data-placeholder="Select City" autocomplete="off">
                                     <option value="">Select City</option>
                                     @foreach ($citys as $city)
-                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select3" name="area"
+                                <select class="form-select cust-select" id="custom_select3" name="area_id"
                                     data-placeholder="Select Area">
                                     <option value="">Select Area</option>
                                     @foreach ($areas as $area)
-                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="row pb-1 servicesContainer divisionContainer" id="">
+            <div class="row pb-1 servicesContainer divisionContainer cityContainer" id="">
 
                 @foreach ($latest_stores as $store)
                     <div class="col-lg-3">
@@ -146,6 +146,7 @@
 
         </div>
     </section>
+
     <!-- All Stores -->
     <section>
         <div class="container">
@@ -246,25 +247,7 @@
         </script>
 
         <script>
-            // $(document).ready(function() {
-            //     $('.divisionSearch').on('change', function() {
-            //         var divisionId = $(this).val();
-            //         if (divisionId) {
-            //             $.ajax({
-            //                 url: "{{ route('store.search.division') }}",
-            //                 method: 'GET',
-            //                 data: {
-            //                     division_id: divisionId
-            //                 },
-            //                 success: function(data) {
-            //                     $('.divisionContainer').html(data);
-            //                 }
-            //             });
-            //         } else {
-            //             $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
-            //         }
-            //     });
-            // });
+            // === === === === === Division === === === === ===
 
             $(document).ready(function() {
                 $('#custom_select1').on('change', function() {
@@ -272,7 +255,7 @@
                     var divisionId = $(this).val(); // Get selected division ID
 
                     if (divisionId) {
-                        
+
                         $.ajax({
                             url: "{{ route('store.search.division') }}",
                             method: 'GET',
@@ -280,8 +263,7 @@
                                 division_id: divisionId
                             },
                             success: function(data) {
-                                $('.divisionContainer').html(
-                                data); // Update the container with the response data
+                                $('.divisionContainer').html(data.html);
                             },
                             error: function() {
                                 $('.divisionContainer').html(
@@ -293,7 +275,95 @@
                     }
                 });
             });
-            
+
+            // ====== City ====
+
+            $(document).ready(function() {
+                $('#custom_select2').on('change', function() {
+                    var cityId = $(this).val();
+
+                    if (cityId) {
+                        $.ajax({
+                            url: "{{ route('store.search.city') }}",
+                            method: 'GET',
+                            data: {
+                                city_id: cityId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a city to see offers.</p>');
+                    }
+                });
+            });
+
+            // ============ area ============ 
+
+            $(document).ready(function() {
+                $('#custom_select3').on('change', function() {
+
+                    var areaId = $(this).val(); // Get selected division ID
+
+                    if (areaId) {
+
+                        $.ajax({
+                            url: "{{ route('store.search.area') }}",
+                            method: 'GET',
+                            data: {
+                                area_id: areaId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+
+
+            // $(document).ready(function() {
+            //     function fetchStores() {
+            //         var divisionId = $('#custom_select1').val(); // Get selected division ID
+            //         var cityName = $('#custom_select2').val(); // Get selected city name
+
+            //         $.ajax({
+            //             url: "{{ route('store.search.division') }}",
+            //             method: 'GET',
+            //             data: {
+            //                 division_id: divisionId,
+            //                 city: cityName
+            //             },
+            //             success: function(data) {
+            //                 $('.divisionContainer').html(data.html);
+            //             },
+            //             error: function() {
+            //                 $('.divisionContainer').html('<p>An error occurred while fetching stores.</p>');
+            //             }
+            //         });
+            //     }
+
+            //     // Fetch stores on division change
+            //     $('#custom_select1').on('change', function() {
+            //         fetchStores();
+            //     });
+
+            //     // Fetch stores on city change
+            //     $('#custom_select2').on('change', function() {
+            //         fetchStores();
+            //     });
+            // });
         </script>
     @endpush
 

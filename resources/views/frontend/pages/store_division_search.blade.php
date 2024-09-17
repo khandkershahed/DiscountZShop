@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="store-rating">
-                            <a href="{{ route('store.details') }}"
+                            <a href="{{ route('store.details', $store->slug) }}"
                                 class="btn btn-common-one rounded-circle store-btn"><i class="fa-solid fa-store"
                                     aria-hidden="true"></i>
                             </a>
@@ -28,7 +28,7 @@
                     </div>
                     <!-- Store Info -->
                     <div class="pt-4 d-flex justify-content-between">
-                        <a href="{{ route('store.details') }}">
+                        <a href="{{ route('store.details', $store->slug) }}">
                             <div>
                                 <h5>{{ $store->name }}</h5>
                                 <p>{{ $store->headquarter }}</p>

@@ -241,7 +241,7 @@
                         <!-- Row Two End-->
 
                         <!-- Row Three -->
-                        <div class="mt-2 mb-2">
+                        {{-- <div class="mt-2 mb-2">
 
                             <p class="text-white bg-info text-center shadow-sm"
                                 style="position: relative;  top: 20px; width: 10%">Row Three Area</p>
@@ -302,7 +302,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Row Three End-->
 
                         <!-- Row Four -->

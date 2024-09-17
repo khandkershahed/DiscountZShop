@@ -45,6 +45,9 @@ Route::get('/store/all', [HomeController::class, 'allStore'])->name('allStore');
 Route::get('/store/{slug}', [HomeController::class, 'storeDetails'])->name('store.details');
 Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
 Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');
+Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->name('store.search.city');
+Route::get('/store/search/area', [HomeController::class, 'searchAreaName'])->name('store.search.area');
+
 
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
