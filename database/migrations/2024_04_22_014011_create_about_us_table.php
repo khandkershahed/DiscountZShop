@@ -17,10 +17,6 @@ return new class extends Migration
 
             $table->string('banner_image')->nullable();//
 
-            $table->string('row_two_image')->nullable();//
-            $table->string('row_three_image')->nullable();//
-            $table->string('row_four_image')->nullable();//
-
             $table->string('row_one_column_one_icon')->nullable();//
             $table->string('row_one_column_one_title')->nullable();//
             $table->text('row_one_column_one_description')->nullable();//
