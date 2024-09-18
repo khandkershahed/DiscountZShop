@@ -77,7 +77,7 @@
                     <div class="col-lg-6">
                         <div>
                             <img class="w-100 img-fluid rounded-3"
-                                src="https://htmlbeans.com/html/coupon/images/img31.jpg" alt="" />
+                                src="{{ !empty($about->row_two_image) ? url('storage/' . $about->row_two_image) : asset('images/no-image(random).png') }}" alt="" />
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -125,39 +125,5 @@
     @endif
 
 
-    <!-- Amount End -->
-    @if ($brands->count() > 0)
-        <section>
-            <div class="container py-5 pb-4 px-0">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1>Big Brands Are Here</h1>
-                            {{-- <p class="w-lg-50 w-100 pt-3">
-                                Problems trying to resolve the conflict between <br />
-                                the two major realms of Classical physics: Newtonian
-                                mechanics
-                            </p> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="container-fluid partners">
-                <div class="container px-0">
-                    <div class="slick-slider-partners">
-                        @foreach ($brands as $brand)
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                    alt="" />
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
+    
 </x-frontend-app-layout>
