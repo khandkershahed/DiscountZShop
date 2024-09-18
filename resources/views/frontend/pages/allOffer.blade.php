@@ -98,6 +98,7 @@
                                     </div>
                                 </button>
                             </li>
+
                             @foreach ($categorys as $category)
                                 <li class="nav-item w-100" role="presentation">
                                     <button class="nav-link custom-offer-tabs border-0 w-100 text-start"
@@ -115,14 +116,6 @@
                         </ul>
                     </div>
 
-                    {{-- <h6 class="fw-bold pt-3 pb-2">Discount%</h6>
-                    <div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <input type="range" class="form-range" id="customRange1" />
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <div class="pt-4">
                         <div class="card overlay-card rounded-2"

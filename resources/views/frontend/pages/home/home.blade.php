@@ -232,14 +232,16 @@
                                         @if ($categories->count() > 0)
                                             @foreach ($categories as $offercategory)
                                                 <li class="nav-item mb-2" role="presentation">
+
                                                     <button class="nav-link grab-tabs w-100 rounded-0"
                                                         id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#home-{{ $offercategory->id }}"
+                                                        data-bs-target="#home-{{ $offercategory->id }}-pane"
                                                         type="button" role="tab"
-                                                        aria-controls="home-{{ $offercategory->id }}"
+                                                        aria-controls="home-{{ $offercategory->id }}-pane"
                                                         aria-selected="true">
                                                         {{ $offercategory->name }}
                                                     </button>
+
                                                 </li>
                                             @endforeach
                                         @endif
@@ -247,6 +249,7 @@
                                 </div>
                                 <div class="col-lg-9">
                                     <div class="tab-content" id="myTabContent">
+
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
                                             <div class="grab-slider">
@@ -305,9 +308,12 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         @foreach ($categories as $offercategory)
-                                            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                                aria-labelledby="profile-tab" tabindex="0">
+                                            <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane"
+                                                role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}"
+                                                tabindex="0">
+
                                                 <div class="row">
                                                     @if ($offercategory->offers->count() > 0)
                                                         @foreach ($offercategory->offers as $category_offer)
