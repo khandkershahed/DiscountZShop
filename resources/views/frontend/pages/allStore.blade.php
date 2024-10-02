@@ -105,7 +105,7 @@
                                         </div>
 
                                         <div class="store-rating">
-                                            <a href="{{ route('store.details', 'aarong') }}"
+                                            <a href="{{ route('store.details', $store->id) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
@@ -114,7 +114,7 @@
                                     </div>
                                     <!-- Store Info -->
                                     <div class="pt-4 d-flex justify-content-between">
-                                        <a href="{{ route('store.details', 'aarong') }}">
+                                        <a href="{{ route('store.details', $store->id) }}">
                                             <div>
                                                 <h5>{{ $store->name }}</h5>
                                                 <p>{{ $store->headquarter }}</p>
@@ -182,7 +182,7 @@
                                         </div>
 
                                         <div class="store-rating">
-                                            <a href="{{ route('store.details', 'aarong') }}"
+                                            <a href="{{ route('store.details', $store->id) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
@@ -191,7 +191,7 @@
                                     </div>
                                     <!-- Store Info -->
                                     <div class="pt-4 d-flex justify-content-between">
-                                        <a href="{{ route('store.details', 'aarong') }}">
+                                        <a href="{{ route('store.details', $store->id) }}">
                                             <div>
                                                 <h5>{{ $store->name }}</h5>
                                                 <p>{{ $store->headquarter }}</p>

@@ -45,7 +45,7 @@ Route::get('/coupon/{slug}', [HomeController::class, 'couponDetails'])->name('co
 
 //Store
 Route::get('/store/all', [HomeController::class, 'allStore'])->name('allStore');
-Route::get('/store/{slug}', [HomeController::class, 'storeDetails'])->name('store.details');
+Route::get('/store/{id}', [HomeController::class, 'storeDetails'])->name('store.details');
 Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
 Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');
 Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->name('store.search.city');

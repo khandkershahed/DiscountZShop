@@ -156,10 +156,10 @@ class HomeController extends Controller
     }
 
     //storeDetails
-    public function storeDetails($slug)
+    public function storeDetails($id)
     {
         $data = [
-            'store' => Store::where('slug', $slug)->first(),
+            'store' => Store::findOrFail($id),
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
         ];
         return view('frontend.pages.storeDetails', $data);
