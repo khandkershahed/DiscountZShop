@@ -198,7 +198,6 @@ class HomeController extends Controller
         $responseHtml = view('frontend.pages.store_division_search', ['latest_stores' => $latest_stores])->render();
 
         return response()->json(['html' => $responseHtml]);
-
     }
 
     //searchCityName
@@ -259,9 +258,7 @@ class HomeController extends Controller
             return view('frontend.pages.offerDetails', compact('offerDetails'));
         } else {
             return redirect()->back()->with('Offer is not available.');
-
         }
-
     }
     //searchCourseNAme
     public function searchOfferName(Request $request)
@@ -295,7 +292,6 @@ class HomeController extends Controller
         $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
 
         return response()->json(['html' => $responseHtml]);
-
     }
 
     //searchCityName
