@@ -59,12 +59,9 @@
 
                             <!-- Search Store -->
                             <div class="wrapper-store">
-
                                 <div class="search-input-store">
-
                                     <input type="text" id="serviceSearch" autocomplete="off" name=""
                                         placeholder="Type to search..." />
-
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -73,10 +70,8 @@
                                             </path>
                                         </svg>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -84,28 +79,26 @@
 
             <div class="row pb-1 servicesContainer divisionContainer cityContainer" id="">
 
-                @foreach ($latest_stores as $store)
+                @foreach ($latest_stores as $latest_store)
                     <div class="col-lg-3">
                         <div class="card border-0 shadow-sm">
                             <div class="card-body p-0 rounded-2">
                                 <!-- Store Banner -->
                                 <div class="main-store-banner">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ !empty($store->image) ? url('storage/' . $store->image) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
+                                        src="{{ !empty($latest_store->image) ? url('storage/' . $latest_store->image) : 'https://ui-avatars.com/api/?name=' . urlencode($latest_store->name) }}"
                                         alt="arong-banner.jpg" />
                                 </div>
                                 <!-- Store Logo And Rating -->
                                 <div class="px-3 pb-3">
                                     <div class="d-flex justify-content-between align-items-center">
-
                                         <div class="store-logo">
                                             <img class="img-fluid"
-                                                src="{{ !empty($store->logo) ? url('storage/' . $store->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
+                                                src="{{ !empty($latest_store->logo) ? url('storage/' . $latest_store->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($latest_store->name) }}"
                                                 alt="arong-logo.png" />
                                         </div>
-
                                         <div class="store-rating">
-                                            <a href="{{ route('store.details', $store->id) }}"
+                                            <a href="{{ route('store.details', $latest_store->id) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
@@ -113,15 +106,15 @@
 
                                     </div>
                                     <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
-                                        <a href="{{ route('store.details', $store->id) }}">
+                                    <div class="pt-4 d-flex justify-content-between store_title">
+                                        <a href="{{ route('store.details', $latest_store->id) }}">
                                             <div>
-                                                <h5>{{ $store->name }}</h5>
-                                                <p>{{ $store->headquarter }}</p>
+                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->name }}</h5>
+                                                <p>{{ $latest_store->headquarter }}</p>
                                             </div>
                                         </a>
                                         <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
+                                            <button class="btn border-0 p-0 m-0 ps-2">
                                                 <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
                                                     title="Store Location" data-bs-toggle="modal"
                                                     data-bs-target="#store-Location" aria-hidden="true"></i>
@@ -133,7 +126,7 @@
                                             <i class="fa-solid fa-percent pe-2"></i>OFFER
                                         </span>
                                         <small class="text-sm">
-                                            Get UpTo <span class="main-color">{{ $store->badge }}</span> Off
+                                            Get UpTo <span class="main-color">{{ $latest_store->badge }}</span> Off
                                         </small>
                                     </div>
                                 </div>
@@ -190,15 +183,15 @@
 
                                     </div>
                                     <!-- Store Info -->
-                                    <div class="pt-4 d-flex justify-content-between">
+                                    <div class="pt-4 d-flex justify-content-between store_title">
                                         <a href="{{ route('store.details', $store->id) }}">
                                             <div>
-                                                <h5>{{ $store->name }}</h5>
+                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $store->name }}</h5>
                                                 <p>{{ $store->headquarter }}</p>
                                             </div>
                                         </a>
                                         <div>
-                                            <button class="btn border-0 p-0 m-0 pe-2">
+                                            <button class="btn border-0 p-0 m-0 ps-2">
                                                 <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
                                                     title="Store Location" data-bs-toggle="modal"
                                                     data-bs-target="#store-Location" aria-hidden="true"></i>
@@ -303,7 +296,7 @@
                 });
             });
 
-            // ============ area ============ 
+            // ============ area ============
 
             $(document).ready(function() {
                 $('#custom_select3').on('change', function() {
@@ -333,7 +326,7 @@
             });
 
 
-           
+
         </script>
     @endpush
 
