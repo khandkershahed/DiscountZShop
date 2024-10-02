@@ -987,6 +987,14 @@ del {
     background-color: transparent;
     color: var(--primary-color);
 }
+
+.store_title{
+    align-items: center;
+    height: 7.5rem;
+}
+.offer_title{
+    height: 7.5rem;
+}
 .main-store-banner img {
     height: 240px;
     width: 100%;
@@ -1565,8 +1573,9 @@ html {
 }
 #counter .item {
     background: #fff;
-    width: 200px;
-    padding: 35px 40px;
+    width: 14rem;
+    height: 11rem;
+    padding: 35px 20px;
     margin: 10px;
     text-align: center;
     border-radius: 20px;

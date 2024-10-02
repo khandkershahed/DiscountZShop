@@ -20,11 +20,11 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->string('name', 30)->unique();
             $table->string('slug', 40)->unique();
+            $table->string('badge')->nullable();
             $table->string('logo', 150)->nullable();
             $table->string('image', 150)->nullable();
             $table->string('banner_image', 150)->nullable();
             $table->longText('about')->nullable();
-            $table->string('badge')->nullable();
             $table->longText('offer_description')->nullable();
             $table->longText('location')->nullable();
             $table->text('description')->nullable();

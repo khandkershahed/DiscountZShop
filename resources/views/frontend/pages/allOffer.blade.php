@@ -153,11 +153,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <span>Upto</span>
-                                                    <h1 class="main-color special-font-box">{{ $offer->badge }}
-                                                    </h1>
+                                                    @if (!empty($offer->badge))
+                                                        {{-- <span>Upto</span> --}}
+                                                        <h1 class="main-color special-font-box">{{ $offer->badge }}
+                                                        </h1>
+                                                    @endif
                                                 </div>
-                                                <div class="col-lg-12 pt-4">
+                                                <div class="col-lg-12 pt-4 offer_title">
                                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                     {{-- <a href="{{ route('offer.details', $offer->slug) }}"
                                                         class="main-color">
@@ -390,7 +392,7 @@
                 });
             });
 
-            // ============ area ============ 
+            // ============ area ============
 
             $(document).ready(function() {
                 $('#custom_select3').on('change', function() {

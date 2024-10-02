@@ -125,6 +125,7 @@
                             <option value="inactive">Inactive</option>
                         </x-metronic.select-option>
                     </div>
+                    
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="map_url" class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
