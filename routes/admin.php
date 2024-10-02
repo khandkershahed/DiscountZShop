@@ -113,6 +113,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'terms-condition' => TermsAndConditionController::class,
             'privacy-policy'  => PrivacyPolicyController::class,
             'store'           => StoreController::class,
+            
             // Created By Ashiquzzaman
             'offer'           => OfferController::class,
             'coupon'          => CouponController::class,

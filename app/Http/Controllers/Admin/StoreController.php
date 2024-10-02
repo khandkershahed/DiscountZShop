@@ -115,6 +115,7 @@ class StoreController extends Controller
                 'city_id'             => json_encode($request->city_id),
                 'area_id'             => json_encode($request->area_id),
                 'category_id'         => $request->category_id,
+                'category_type'         => $request->category_type,
                 'about'               => $request->about,
                 'offer_description'   => $request->offer_description,
                 'location'            => $request->location,
@@ -220,6 +221,7 @@ class StoreController extends Controller
                 'area_id'             => json_encode($request->area_id),
 
                 'category_id'         => $request->category_id,
+                'category_type'         => $request->category_type,
                 'about'               => $request->about,
                 'offer_description'   => $request->offer_description,
                 'location'            => $request->location,

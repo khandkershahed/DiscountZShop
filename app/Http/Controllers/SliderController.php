@@ -27,6 +27,7 @@ class SliderController extends Controller
         // Validate the request
         $validator = Validator::make($request->all(), [
             'image' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'url' => 'required',
             'status' => 'required|in:active,inactive',
         ]);
 
@@ -57,6 +58,7 @@ class SliderController extends Controller
             // Create the Slider model instance
             Slider::create([
                 'status' => $request->status,
+                'url' => $request->url,
                 'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
             ]);
 
@@ -112,6 +114,7 @@ class SliderController extends Controller
 
                 'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $slider->image,
                 'status' => $request->status,
+                'url' => $request->url,
 
             ]);
 

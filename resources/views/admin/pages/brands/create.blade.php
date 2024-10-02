@@ -46,6 +46,18 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="category_type"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Category Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="category_type" name="category_type"
+                            data-placeholder="Select an option">
+                            <option>Choose Option</option>
+                            <option value="top">Top</option>
+                            <option value="featured">Featured</option>
+                            <option value="best_seller">Best Seller</option>
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="country_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
                         <x-metronic.select-option id="country_id" name="country_id[]" data-hide-search="false" multiple
@@ -132,8 +144,7 @@
                     </div>
 
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="map_url"
-                            class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
+                        <x-metronic.label for="map_url" class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
                         </x-metronic.label>
 
                         <x-metronic.textarea id="map_url" type="url" name="map_url" :value="old('map_url')"
@@ -141,24 +152,29 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="middle_banner_left" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Left') }}
+                        <x-metronic.label for="middle_banner_left"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Left') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="middle_banner_left" name="middle_banner_left" :value="old('middle_banner_left')"></x-metronic.file-input>
+                        <x-metronic.file-input id="middle_banner_left" name="middle_banner_left"
+                            :value="old('middle_banner_left')"></x-metronic.file-input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="middle_banner_right" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Right') }}
+                        <x-metronic.label for="middle_banner_right"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Right') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="middle_banner_right" name="middle_banner_right" :value="old('middle_banner_right')"></x-metronic.file-input>
+                        <x-metronic.file-input id="middle_banner_right" name="middle_banner_right"
+                            :value="old('middle_banner_right')"></x-metronic.file-input>
                     </div>
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
-                        <x-metronic.file-input id="logo" name="logo" :value="old('logo')"></x-metronic.file-input>
+                        <x-metronic.file-input id="logo" name="logo"
+                            :value="old('logo')"></x-metronic.file-input>
                     </div>
 
                     <div class="col-lg-4 mb-7">
@@ -204,7 +220,7 @@
 
                         <textarea id="description" class="ckeditor" name="description"></textarea>
                     </div>
- 
+
 
 
                 </div>

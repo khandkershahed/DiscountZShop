@@ -22,8 +22,10 @@
             </div>
         </div>
         <div class="card-body pt-0">
-            <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
-                <thead>
+
+            <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                <thead class="bg-dark text-light">
+
                     <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
                         <th>Offer Type Name</th>
@@ -61,7 +63,8 @@
                                                     <i class="fa-solid fa-circle-xmark"></i>
                                                 </div>
                                             </div>
-                                            <form class="form" action="{{ route('admin.offer-type.update', $offer_type->id) }}"
+                                            <form class="form"
+                                                action="{{ route('admin.offer-type.update', $offer_type->id) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="modal-body">
@@ -81,8 +84,10 @@
                                                         <x-metronic.select-option id="status" name="status"
                                                             data-hide-search="true" data-placeholder="Select an option">
                                                             <option></option>
-                                                            <option value="active" @selected( $offer_type->status == 'active')>Active</option>
-                                                            <option value="inactive" @selected( $offer_type->status == 'inactive')>Inactive</option>
+                                                            <option value="active" @selected($offer_type->status == 'active')>Active
+                                                            </option>
+                                                            <option value="inactive" @selected($offer_type->status == 'inactive')>
+                                                                Inactive</option>
                                                         </x-metronic.select-option>
                                                     </div>
                                                 </div>
@@ -147,5 +152,26 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $("#kt_datatable_example_5").DataTable({
+                "language": {
+                    "lengthMenu": "Show MENU",
+                },
+                "dom": "<'row'" +
+                    "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                    "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                    ">" +
+
+                    "<'table-responsive'tr>" +
+
+                    "<'row'" +
+                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                    ">"
+            });
+        </script>
+    @endpush
 
 </x-admin-app-layout>

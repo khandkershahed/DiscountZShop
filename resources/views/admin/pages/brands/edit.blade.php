@@ -33,6 +33,7 @@
                 <!--begin::Input group-->
 
                 <div class="row">
+
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="category_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select a Category') }}</x-metronic.label>
@@ -44,6 +45,20 @@
                                     {{ $category->id == old('category_id', $brand->category_id) ? 'selected' : '' }}>
                                     {{ $category->name }}</option>
                             @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="category_type"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Category Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="category_type" name="category_type"
+                            data-placeholder="Select an option">
+                            <option>Choose Option</option>
+                            <option value="top" {{ $brand->category_type == 'top' ? 'selected' : '' }}>Top</option>
+                            <option value="featured" {{ $brand->category_type == 'featured' ? 'selected' : '' }}>
+                                Featured</option>
+                            <option value="best_seller" {{ $brand->category_type == 'best_seller' ? 'selected' : '' }}>
+                                Best Seller</option>
                         </x-metronic.select-option>
                     </div>
                     @php
@@ -182,7 +197,8 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="middle_banner_left" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Left') }}
+                        <x-metronic.label for="middle_banner_left"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Left') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="middle_banner_left" name="middle_banner_left" :source="asset('storage/' . $brand->middle_banner_left)"
@@ -191,7 +207,8 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="middle_banner_right" class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Right') }}
+                        <x-metronic.label for="middle_banner_right"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Middle Banner Right') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="middle_banner_right" name="middle_banner_right" :source="asset('storage/' . $brand->middle_banner_right)"
