@@ -10,7 +10,6 @@
     <!-- Hero End -->
 
     <section>
-
         <div class="container mb-5">
             <div class="row py-5 pb-2">
                 <div class="col-lg-12 pe-0">
@@ -155,8 +154,8 @@
                                                 <div class="col-lg-6">
                                                     @if (!empty($offer->badge))
                                                         {{-- <span>Upto</span> --}}
-                                                        <h1 class="main-color special-font-box">{{ $offer->badge }}
-                                                        </h1>
+                                                        <h3 class="main-color special-font-box">{{ $offer->badge }}
+                                                        </h3>
                                                     @endif
                                                 </div>
                                                 <div class="col-lg-12 pt-4 offer_title">
@@ -214,26 +213,29 @@
                                                         <div class="col-lg-6">
                                                             <div>
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px"
-                                                                    class="rounded-2 bg-white"
-                                                                    style="object-fit: contain;" alt="" />
+                                                                    width="80px" height="80px" class="rounded-2 bg-white"
+                                                                    style="object-fit: contain;" alt=""
+                                                                    onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <h1 class="main-color special-font-box">
-                                                                {{ $offer->badge }}</h1>
+                                                            @if (!empty($offer->badge))
+                                                                {{-- <span>Upto</span> --}}
+                                                                <h3 class="main-color special-font-box">{{ $offer->badge }}
+                                                                </h3>
+                                                            @endif
                                                         </div>
-                                                        <div class="col-lg-12 pt-4">
+                                                        <div class="col-lg-12 pt-4 offer_title">
                                                             <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                            <a href="{{ route('offer.details', $offer->slug) }}"
+                                                            {{-- <a href="{{ route('offer.details', $offer->slug) }}"
                                                                 class="main-color">
-                                                                <small>See all</small>
-                                                            </a>
+                                                                <small>See All In Store</small>
+                                                            </a> --}}
                                                         </div>
                                                         <div class="col-lg-12 pt-4">
                                                             <div class="d-flex">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="main-color">
+                                                                    class="w-100 btn-common-one rounded-3">
                                                                     <small>View</small>
                                                                 </a>
                                                                 @if (!empty($offer->coupon_code))
@@ -268,7 +270,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     @push('scripts')
