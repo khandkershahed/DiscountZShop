@@ -217,7 +217,8 @@
                 this.interval = setInterval(() => this.update(), 1000);
             }
 
-            update() {
+            if (expireDate) {
+                update() {
                 const now = new Date().getTime();
                 const distance = this.expireDate - now;
 
@@ -237,6 +238,9 @@
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 this.timerElement.innerHTML = `${days}D-${hours}H-${minutes}M-${seconds}S`;
+            }
+            } else {
+                this.timerElement.innerHTML = "Still Available";
             }
         }
 
