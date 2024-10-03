@@ -10,7 +10,6 @@
     <!-- Hero End -->
 
     <section>
-
         <div class="container mb-5">
             <div class="row py-5 pb-2">
                 <div class="col-lg-12 pe-0">
@@ -268,7 +267,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     @push('scripts')
