@@ -203,7 +203,6 @@
         }
     </script>
     <script>
-        // Offer Counter
         class Countdown {
             constructor(element, expireDate) {
                 this.element = element;
@@ -217,8 +216,7 @@
                 this.interval = setInterval(() => this.update(), 1000);
             }
 
-            if (expireDate) {
-                update() {
+            update() {
                 const now = new Date().getTime();
                 const distance = this.expireDate - now;
 
@@ -229,25 +227,24 @@
                 }
 
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor(
-                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-                );
-                const minutes = Math.floor(
-                    (distance % (1000 * 60 * 60)) / (1000 * 60)
-                );
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 this.timerElement.innerHTML = `${days}D-${hours}H-${minutes}M-${seconds}S`;
             }
-            } else {
-                this.timerElement.innerHTML = "Still Available";
-            }
         }
 
+        // Initialize countdowns on DOMContentLoaded
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".countdown").forEach((element) => {
                 const expireDate = element.getAttribute("data-expire-date");
-                new Countdown(element, expireDate);
+                if (expireDate) {
+                    new Countdown(element, expireDate);
+                } else {
+                    const timerElement = element.querySelector(".countdown-timer");
+                    timerElement.innerHTML = "Still Available";
+                }
             });
         });
     </script>
