@@ -740,7 +740,7 @@
                                         </div>
 
                                         <div class="py-5 d-flex justify-content-center align-items-center">
-                                            <a href="{{ route('offer.details', $offerLatest->slug) }}"
+                                            <a href="{{ route('offer.details', $offerDealLeft->slug) }}"
                                                 class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
                                         </div>
@@ -815,7 +815,7 @@
                                             </div>
                                             <!-- Wishlist -->
                                             <div>
-                                                <a href="">
+                                                <a href="{{ route('offer.details', $offerDeal->slug) }}">
                                                     <i class="fa-regular fa-heart fs-5"></i>
                                                 </a>
                                             </div>
@@ -829,7 +829,7 @@
                                         </div>
                                         <div>
                                             <div>
-                                                <a href="{{ route('offer.details', $offerLatest->slug) }}">
+                                                <a href="{{ route('offer.details', $offerDeal->slug) }}">
                                                     <h6 class="mb-3 product-title">
                                                         {{ $offerDeal->name }}
                                                     </h6>
@@ -838,7 +838,7 @@
                                                 <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
                                             </div>
                                             <div class="mt-4">
-                                                <a href="{{ route('offer.details', $offerLatest->slug) }}"
+                                                <a href="{{ route('offer.details', $offerDeal->slug) }}"
                                                     class="btn btn-common-one rounded-pill px-4">View</a>
                                             </div>
                                         </div>
