@@ -39,6 +39,15 @@
                             :value="old('image')"></x-metronic.file-input>
                     </div>
 
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="url" type="text" name="url" :value="old('url')"
+                            placeholder="Enter the Url" required></x-metronic.input>
+                    </div>
+
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">

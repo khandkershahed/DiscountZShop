@@ -43,6 +43,19 @@
                             @endforeach
                         </x-metronic.select-option>
                     </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="category_type"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Category Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="category_type" name="category_type"
+                            data-placeholder="Select an option">
+                            <option>Choose Option</option>
+                            <option value="top" {{ $store->category_type == 'top' ? 'selected' : '' }}>Top</option>
+                            <option value="featured" {{ $store->category_type == 'featured' ? 'selected' : '' }}>Featured</option>
+                            <option value="best_seller" {{ $store->category_type == 'best_seller' ? 'selected' : '' }}>Best Seller</option>
+                        </x-metronic.select-option>
+                    </div>
+
                     @php
                         // Initialize as empty arrays
                         $countryIds = [];

@@ -6,55 +6,71 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row gx-3">
+
                         <div class="col-lg-7">
+
                             <div class="slick-slider" style="height: 100%">
 
                                 <div class="hero-slider">
 
                                     @foreach ($sliders as $slider)
                                         <div class="items">
-                                            <img class="img-fluid w-100 responsive-img"
-                                                src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}" />
+                                            <a href="{{ $slider->url }}">
+                                                <img class="img-fluid w-100 responsive-img"
+                                                    src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}" />
+                                            </a>
                                         </div>
                                     @endforeach
 
 
                                 </div>
                             </div>
+
                         </div>
+
                         <div class="col-lg-5">
+
 
                             <div class="row gx-3">
 
                                 {{-- @dd($banner); --}}
 
                                 <div class="col-lg-12">
-                                    <img class="img-fluid w-100 responsive-img"
-                                        src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
-                                        alt="" />
+                                    <a href="{{ $banner->image_one_url }}" target="_blank">
+                                        <img class="img-fluid w-100 responsive-img"
+                                            src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
+                                            alt="" />
+                                    </a>
 
                                 </div>
 
                             </div>
+
                             <div class="row mt-3 gx-3">
 
                                 <div class="col-lg-6">
                                     <div>
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
-                                            alt="" />
+                                        <a href="{{ $banner->image_two_url }}">
+                                            <img class="img-fluid w-100 responsive-img"
+                                                src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
+                                                alt="" />
+                                        </a>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div>
-                                        <img class="img-fluid w-100 responsive-img"
-                                            src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
-                                            alt="" />
+                                        <a href="{{ $banner->image_three_url }}">
+                                            <img class="img-fluid w-100 responsive-img"
+                                                src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
+                                                alt="" />
+                                        </a>
                                     </div>
                                 </div>
 
                             </div>
+
+
                         </div>
                     </div>
                 </div>

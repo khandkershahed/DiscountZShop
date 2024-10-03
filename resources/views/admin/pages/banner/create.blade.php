@@ -22,16 +22,28 @@
         </div>
         <div class="card-body pt-0">
 
-            <form class="form" action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ route('admin.banner.store') }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
+
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="image_one" class="col-form-label fw-bold fs-6 ">{{ __('HomePage Top Right Banners Top image') }}
+                        <x-metronic.label for="image_one"
+                            class="col-form-label fw-bold fs-6 ">{{ __('HomePage Top Right Banners Top image') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="image_one" name="image_one"
                             :value="old('image_one')"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="image_one_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image One Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="image_one_url" type="url" name="image_one_url" :value="old('image_one_url')"
+                            placeholder="https://www.google.co.uk/" required></x-metronic.input>
                     </div>
 
                     <div class="col-lg-4 mb-7">
@@ -43,6 +55,15 @@
                             :value="old('image_two')"></x-metronic.file-input>
                     </div>
 
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="image_two_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image Two Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="image_two_url" type="url" name="image_two_url" :value="old('image_two_url')"
+                            placeholder="https://www.google.co.uk/" required></x-metronic.input>
+                    </div>
+
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="image_three"
                             class="col-form-label fw-bold fs-6 ">{{ __('HomePage Top Right Banners Bottom Right Image') }}
@@ -50,6 +71,15 @@
 
                         <x-metronic.file-input id="image_three" :value="old('image_three')"
                             name="image_three"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="image_three_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image Three Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="image_three_url" type="url" name="image_three_url" :value="old('image_three_url')"
+                            placeholder="https://www.google.co.uk/" required></x-metronic.input>
                     </div>
 
 

@@ -42,6 +42,15 @@
                             height="80" width="80" alt="{{ $slider->name }}">
                     </div>
 
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="url" type="text" name="url" :value="old('url',$slider->url)"
+                            placeholder="Enter the Url" required></x-metronic.input>
+                    </div>
+
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
