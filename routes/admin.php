@@ -148,7 +148,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('email-settings/toggle-status/{id}', [EmailSettingController::class, 'toggleStatus'])->name('email-settings.toggle-status');
 
     Route::post('icons/toggle-status/{id}', [IconController::class, 'toggleStatus'])->name('icons.toggle-status');
-    Route::post('brands/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('brands.toggle-status');
+    // Route::post('brands/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('brands.toggle-status');
     Route::post('page-banner/toggle-status/{id}', [PageBannerController::class, 'toggleStatus'])->name('page-banner.toggle-status');
     Route::post('banners/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('banners.toggle-status');
 
@@ -175,6 +175,6 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::put('coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('coupon.status.update');
     Route::put('slider/status/{id}', [SliderController::class, 'updateStatusSlider'])->name('slider.status.update');
     Route::put('banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('banner.status.update');
-
+    Route::put('brand/status/{id}', [BrandController::class, 'updateStatusBrand'])->name('brand.status.update');
     Route::put('staff/status/{id}', [StaffController::class, 'updateStaffStatus'])->name('staff.status');
 });

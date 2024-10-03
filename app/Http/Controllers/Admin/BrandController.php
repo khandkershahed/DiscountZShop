@@ -24,34 +24,11 @@ class BrandController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = Brand::latest('id')->get();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $editUrl = route('admin.brands.edit', $row->id);
-                    $deleteUrl = route('admin.brands.destroy', $row->id);
+        $data = [
+            'brands' => Brand::orderBy('name', 'ASC')->get(),
+        ];
 
-                    $html = <<<HTML
-                    <td class="text-end">
-                        <a href="{$editUrl}" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
-                            <span class="svg-icon svg-icon-3">
-                                <i class="fas fa-pen"></i>
-                            </span>
-                        </a>
-                        <a href="{$deleteUrl}" class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
-                            <span class="svg-icon svg-icon-3">
-                                <i class="fas fa-trash-alt"></i>
-                            </span>
-                        </a>
-                    </td>
-                    HTML;
-
-                    return new HtmlString($html);
-                })->rawColumns(['action'])->make(true);
-        }
-
-        return view('admin.pages.brands.index');
+        return view('admin.pages.brands.index',$data);
     }
 
     /**
@@ -266,6 +243,15 @@ class BrandController extends Controller
         $brand = Brand::findOrFail($id);
         $brand->status = $brand->status == 'active' ? 'inactive' : 'active';
         $brand->save();
+        return response()->json(['success' => true]);
+    }
+
+    public function updateStatusBrand(Request $request, $id)
+    {
+        $offer = Brand::findOrFail($id);
+        $offer->status = $request->input('status');
+        $offer->save();
+
         return response()->json(['success' => true]);
     }
 }

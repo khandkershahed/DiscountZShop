@@ -1,12 +1,110 @@
-<x-admin-app-layout :title="'Brands List'">
+<x-admin-app-layout :title="'Brand List'">
+
+    {{-- Font Awesome CDN --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        // Configure Toastr
+        toastr.options = {
+            "closeButton": true, // Add a close button
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true, // Show a progress bar
+            "positionClass": "toast-top-right", // Position of the toast
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300", // Show duration in milliseconds
+            "hideDuration": "1000", // Hide duration in milliseconds
+            "timeOut": "5000", // Time to show the notification (5000ms = 5 seconds)
+            "extendedTimeOut": "1000", // Time to extend the notification on hover
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        /* The slider before it is checked */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        /* Change background color when checked */
+        input:checked+.slider {
+            background-color: #49c464;
+            /* Green color for active */
+        }
+
+        /* Move the slider handle when checked */
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        /* When the switch is inactive (danger color) */
+        input:not(:checked)+.slider {
+            background-color: #f44336;
+            /* Red color for inactive */
+        }
+
+        /* Rounded slider */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        /* Rounded slider handle */
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
     <div class="card card-flash">
         <div class="card-header mt-6">
-            <div class="card-title">
-            </div>
+            <div class="card-title"></div>
             <div class="card-toolbar">
 
                 <a href="{{ route('admin.brands.create') }}" class="btn btn-light-primary">
-
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -18,41 +116,70 @@
                                 fill="currentColor" />
                         </svg>
                     </span>
-                    Add Brands
+                    Add Brand
                 </a>
+
             </div>
         </div>
+
         <div class="card-body pt-0">
-
-            <table class="brandsDT table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
-
-                <thead>
-
-                    <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                        <th>Sl</th>
-                        <th>Logo</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Action</th>
+            <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th width="2%">No</th>
+                        <th width="5%">Image</th>
+                        <th width="8%">Name</th>
+                        <th width="5%">Status</th>
+                        <th width="5%">Actions</th>
                     </tr>
-
                 </thead>
-
-
                 <tbody class="fw-bold text-gray-600">
 
+                    @foreach ($brands as $key => $brand)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+
+                            <td class="">
+                                <img src="{{ !empty($brand->image) ? url('storage/' . $brand->image) : 'https://ui-avatars.com/api/?name=' . urlencode($brand->name) }}"
+                                    height="40" width="40" alt="{{ $brand->name }}">
+
+                            </td>
+                            <td class="text-start">{{ $brand->name }}</td>
+
+                            <td class="text-start">
+                                <label class="switch">
+                                    <input type="checkbox" class="status-toggle" data-id="{{ $brand->id }}"
+                                        {{ $brand->status == 'active' ? 'checked' : '' }}>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+
+
+                            <td>
+                                <a href="{{ route('admin.brands.edit', $brand->id) }}" class="text-primary">
+                                    <i class="fa-solid fa-pencil text-primary"></i>
+                                </a>
+
+                                <a href="{{ route('admin.brands.destroy', $brand->id) }}" class="delete">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    @endforeach
+
+
                 </tbody>
-
             </table>
-
         </div>
+
     </div>
 
     @push('scripts')
         <script>
-            $(".kt_permissions_table").DataTable({
+            $("#kt_datatable_example_5").DataTable({
                 "language": {
-                    "lengthMenu": "Show MENU",
+                    "lengthMenu": "Show _MENU_",
                 },
                 "dom": "<'row'" +
                     "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
@@ -68,80 +195,34 @@
             });
         </script>
 
-
         <script>
             $(document).ready(function() {
-                var table = $('.brandsDT').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: "{{ route('admin.brands.index') }}",
-                    columns: [{
-                            data: null,
-                            render: function(data, type, row, meta) {
-                                return meta.row + 1; // Display serial number starting from 1
-                            },
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: 'logo',
-                            name: 'logo',
-                            render: function(data, type, row) {
-                                return `<img src="/storage/${data}" alt="${row.name}" width="50">`;
-                            }
-                        },
-                        {
-                            data: 'name',
-                            name: 'name'
-                        },
-                        {
-                            data: 'status',
-                            name: 'status',
-                            render: function(data, type, row) {
-                                return `
-                        <div class="form-check form-switch form-check-custom form-check-solid">
-                            <input class="form-check-input status-toggle" type="checkbox" id="status_toggle_${row.id}" ${data == 'active' ? 'checked' : ''} data-id="${row.id}" />
-                        </div>
-                    `;
-                            }
-                        },
-                        {
-                            data: 'action',
-                            name: 'action',
-                            orderable: false,
-                            searchable: false
-                        },
-                    ],
-                });
+                $('.status-toggle').change(function() {
+                    var brandId = $(this).data('id');
+                    var newStatus = $(this).is(':checked') ? 'active' : 'inactive';
 
-                $(document).on('change', '.status-toggle', function() {
-                    const id = $(this).data('id');
-                    const route = "{{ route('admin.brands.toggle-status', ':id') }}".replace(':id', id);
-                    toggleStatus(route, id);
-                });
-
-                function toggleStatus(route, id) {
                     $.ajax({
-                        url: route,
-                        type: 'POST',
+                        url: '/admin/brand/status/' + brandId,
+                        method: 'PUT',
                         data: {
-                            _token: '{{ csrf_token() }}'
+                            _token: '{{ csrf_token() }}',
+                            status: newStatus
                         },
                         success: function(response) {
-                            if (response.success) {
-                                alert('Status updated successfully!');
-                                table.ajax.reload(null, false); // Reload the DataTable
+                            if (newStatus === 'active') {
+                                toastr.success('Brand has been activated successfully.');
                             } else {
-                                alert('Failed to update status.');
+                                toastr.error('Brand has been deactivated successfully.');
                             }
                         },
-                        error: function() {
-                            alert('An error occurred while updating the status.');
+                        error: function(xhr) {
+                            toastr.warning('An error occurred while updating the status.');
                         }
                     });
-                }
+                });
             });
         </script>
-        
     @endpush
+
 </x-admin-app-layout>
+
