@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin;
 use App\Models\Category;
+use App\Mail\CategoryCreated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\CategoryRequest;
 
@@ -110,6 +114,8 @@ class CategoryController extends Controller
                 'logo'         => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
                 'image'        => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+
+                'added_by' => Auth::guard('admin')->user()->id,
                 
                 'description'  => $request->description,
                 'status'       => $request->status,
@@ -117,6 +123,12 @@ class CategoryController extends Controller
 
             // Commit the database transaction
             DB::commit();
+
+            //Mail Send
+            $admins = Admin::where('mail_status', 'mail')->get();
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new CategoryCreated($category));
+            }
 
             return redirect()->route('admin.categories.index')->with('success', 'Category created successfully');
         } catch (\Exception $e) {
@@ -192,6 +204,8 @@ class CategoryController extends Controller
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $category->banner_image,
                 'description'  => $request->description,
                 'status'       => $request->status,
+
+                'added_by' => Auth::guard('admin')->user()->id,
             ]);
 
             DB::commit();

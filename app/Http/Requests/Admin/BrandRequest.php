@@ -25,12 +25,7 @@ class BrandRequest extends FormRequest
         $brandId = $this->route('brand') ?? null;
 
         return [
-            'name'         => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('brands','name')->ignore($brandId),
-            ],
+            
             'logo'         => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,ico|max:2048',
             'image'        => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,ico|max:2048',
             'banner_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,ico|max:2048',

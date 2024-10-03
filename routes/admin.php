@@ -171,6 +171,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     // Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     // Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
+
+    //Toogle Status
     Route::put('offer/status/{id}', [OfferController::class, 'updateStatus'])->name('offer.status.update');
     Route::put('coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('coupon.status.update');
     Route::put('slider/status/{id}', [SliderController::class, 'updateStatusSlider'])->name('slider.status.update');

@@ -18,4 +18,14 @@ class Store extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function added()
+    {
+        return $this->belongsTo(Admin::class, 'added_by');
+    }
+
+    public function categoryName()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }

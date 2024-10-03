@@ -24,6 +24,11 @@ class Brand extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function categoryName()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
+
     public function offers()
     {
         return $this->hasMany(Offer::class);
@@ -31,5 +36,10 @@ class Brand extends Model
     public function coupons()
     {
         return $this->hasMany(Coupon::class);
+    }
+
+    public function added()
+    {
+        return $this->belongsTo(Admin::class, 'added_by');
     }
 }

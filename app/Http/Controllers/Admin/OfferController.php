@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Offer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Mail\OfferListCreated;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -101,7 +104,7 @@ class OfferController extends Controller
             }
 
             // Create the Offer model instance
-            Offer::create([
+            $offer = Offer::create([
 
                 'country_id' => json_encode($request->country_id),
                 'division_id' => json_encode($request->division_id),
@@ -142,8 +145,17 @@ class OfferController extends Controller
             ]);
 
             DB::commit();
-            return redirect()->route('admin.offer.index')->with('success', 'Offer created successfully');
 
+            //Mail Send
+            $admins = Admin::where('mail_status', 'mail')->get();
+
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new OfferListCreated($offer));
+            }
+            //Mail Send
+
+            return redirect()->route('admin.offer.index')->with('success', 'Offer created successfully');
+            
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Offer: ' . $e->getMessage());
@@ -274,7 +286,6 @@ class OfferController extends Controller
         $offer->delete();
 
         DB::commit();
-
     }
 
     public function updateStatus(Request $request, $id)
@@ -285,5 +296,4 @@ class OfferController extends Controller
 
         return response()->json(['success' => true]);
     }
-
 }

@@ -50,4 +50,9 @@ class Category extends Model
     {
         return $this->hasMany(Coupon::class);
     }
+
+    public function added()
+    {
+        return $this->belongsTo(Admin::class, 'added_by');
+    }
 }

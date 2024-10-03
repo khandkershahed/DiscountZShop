@@ -29,6 +29,8 @@
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
                         <th>Store Name</th>
+                        <th>Category Name</th>
+                        <th>Added By</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -39,9 +41,14 @@
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $store->name }}</td>
+                            <td>{{ $store->categoryName->name }}</td>
+
+                            <td>{{ optional($store->added)->name }}</td>
+
                             <td> <span class="badge {{ $store->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $store->status == 'active' ? 'Active' : 'InActive' }}</span>
                             </td>
+
                             <td>
                                 <a href="{{ route('admin.store.edit', $store->id) }}"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">

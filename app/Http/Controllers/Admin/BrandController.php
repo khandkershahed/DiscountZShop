@@ -4,15 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Area;
 use App\Models\City;
+use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Country;
 use App\Models\Category;
 use App\Models\Division;
+use App\Mail\BrandCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\BrandRequest;
@@ -28,7 +32,7 @@ class BrandController extends Controller
             'brands' => Brand::orderBy('name', 'ASC')->get(),
         ];
 
-        return view('admin.pages.brands.index',$data);
+        return view('admin.pages.brands.index', $data);
     }
 
     /**
@@ -90,6 +94,9 @@ class BrandController extends Controller
                 'division_id'         => json_encode($request->division_id),
                 'city_id'             => json_encode($request->city_id),
                 'area_id'             => json_encode($request->area_id),
+
+                'added_by' => Auth::guard('admin')->user()->id,
+
                 'category_id'         => $request->category_id,
                 'category_type'         => $request->category_type,
                 'about'               => $request->about,
@@ -104,6 +111,14 @@ class BrandController extends Controller
 
             // Commit the database transaction
             DB::commit();
+
+            // Mail Send
+            $admins = Admin::where('mail_status', 'mail')->get();
+
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new BrandCreated($brand));
+            }
+            // Mail Send
 
             return redirect()->route('admin.brands.index')->with('success', 'Brand created successfully');
         } catch (\Exception $e) {
@@ -187,6 +202,7 @@ class BrandController extends Controller
 
                 'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $brand->middle_banner_right,
 
+                'added_by' => Auth::guard('admin')->user()->id,
 
                 'country_id'          => json_encode($request->country_id),
                 'division_id'         => json_encode($request->division_id),

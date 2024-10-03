@@ -156,7 +156,7 @@
                             <td class="text-start">Tk {{ $offer->offer_price }}</td>
                             <td class="text-start">{{ $offer->coupon_code }}</td>
 
-                            <td class="text-start">{{ $offer->added->name }}</td>
+                            <td class="text-start">{{ optional($offer->added)->name }}</td>
 
                             <td class="text-start">
                                 <label class="switch">

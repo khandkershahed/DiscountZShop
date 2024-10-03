@@ -27,6 +27,7 @@ class Offer extends Model
     {
         return $this->belongsTo(Admin::class, 'added_by');
     }
+    
 
     public function category()
     {
