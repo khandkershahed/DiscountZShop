@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Coupon;
+use App\Mail\CouponCreated;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -103,7 +106,7 @@ class CouponController extends Controller
             }
 
             // Create the Offer model instance
-            Coupon::create([
+            $coupon = Coupon::create([
 
                 'country_id' => json_encode($request->country_id),
                 'division_id' => json_encode($request->division_id),
@@ -114,6 +117,7 @@ class CouponController extends Controller
                 'tags' => $request->tags,
 
                 'added_by' => Auth::guard('admin')->user()->id,
+
                 'name' => $request->name,
                 'badge' => $request->badge,
                 'category_id' => $request->category_id,
@@ -139,8 +143,15 @@ class CouponController extends Controller
             ]);
 
             DB::commit();
-            return redirect()->route('admin.coupon.index')->with('success', 'Coupon created successfully');
 
+            //Mail Send
+            $admins = Admin::where('mail_status', 'mail')->get();
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new CouponCreated($coupon));
+            }
+
+
+            return redirect()->route('admin.coupon.index')->with('success', 'Coupon created successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Offer: ' . $e->getMessage());
@@ -267,7 +278,6 @@ class CouponController extends Controller
 
         // Delete the offer record
         $offer->delete();
-
     }
 
     public function updateStatusCoupon(Request $request, $id)

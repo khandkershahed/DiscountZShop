@@ -113,7 +113,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'terms-condition' => TermsAndConditionController::class,
             'privacy-policy'  => PrivacyPolicyController::class,
             'store'           => StoreController::class,
-            
+
             // Created By Ashiquzzaman
             'offer'           => OfferController::class,
             'coupon'          => CouponController::class,
@@ -175,4 +175,6 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::put('coupon/status/{id}', [CouponController::class, 'updateStatusCoupon'])->name('coupon.status.update');
     Route::put('slider/status/{id}', [SliderController::class, 'updateStatusSlider'])->name('slider.status.update');
     Route::put('banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('banner.status.update');
+
+    Route::put('staff/status/{id}', [StaffController::class, 'updateStaffStatus'])->name('staff.status');
 });

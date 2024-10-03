@@ -266,11 +266,13 @@
                                 'admin.permission.edit',
                             ],
                             'subMenu' => [
+                                
                                 [
                                     'title' => 'Staff List',
                                     'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
                                     'route' => 'admin.staff.index',
                                 ],
+
                                 [
                                     'title' => 'Role & Permissions',
                                     'routes' => [
@@ -301,28 +303,7 @@
                             ],
                         ],
 
-                        // [
-                        //     'title' => 'Vendor Management',
-                        //     'icon' => 'icons/duotune/general/gen051.svg',
-                        //     'subMenu' => [
-                        //         [
-                        //             'title' => 'Vendor',
-                        //             'subMenu' => [
-                        //                 [
-                        //                     'title' => 'Vendor List',
-                        //                     'routes' => ['admin.user.index'],
-                        //                     'route' => 'admin.user.index',
-                        //                 ],
-                        //                 [
-                        //                     'title' => 'Vendor Statistic',
-                        //                     'routes' => ['admin.user.index'],
-                        //                     'route' => 'admin.user.index',
-                        //                 ],
-                        //             ],
-                        //         ],
-                        //     ],
-                        // ],
-
+                     
                         [
                             'title' => 'Settings',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
