@@ -29,7 +29,7 @@ class BrandController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'brands' => Brand::orderBy('name', 'ASC')->get(),
+            'brands' => Brand::latest('id')->get(),
         ];
 
         return view('admin.pages.brands.index', $data);

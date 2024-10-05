@@ -21,7 +21,7 @@ class OfferController extends Controller
     public function index()
     {
         $data = [
-            'offers' => Offer::orderBy('name', 'ASC')->get(),
+            'offers' => Offer::latest('id')->get(),
         ];
         return view('admin.pages.offer.index', $data);
     }
@@ -155,7 +155,7 @@ class OfferController extends Controller
             //Mail Send
 
             return redirect()->route('admin.offer.index')->with('success', 'Offer created successfully');
-            
+
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Offer: ' . $e->getMessage());

@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon"
         href="{{ !empty($site->site_favicon) && file_exists(public_path('storage/' . $site->site_favicon)) ? asset('storage/' . $site->site_favicon) : asset('images/no_icon.png') }}"
@@ -27,7 +26,7 @@
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
     @props(['title'])
-    <title>{{ $title ?? config('app.name', 'E-Commerce') }}</title>
+    <title>{{ $title ?? config('app.name', 'DiscountZShop') }}</title>
 </head>
 
 <body id="kt_body"
@@ -50,9 +49,7 @@
 
                     {{-- @include('admin.layouts.toolbar') --}}
 
-
                     <div class="post d-flex flex-column-fluid" id="kt_post">
-
                         <div id="kt_content_container" class="container-xxl">
                             @if (session('error'))
                                 @foreach ($messages as $item)
@@ -62,11 +59,8 @@
                                 @endforeach
                             @endif
                             {{ $slot }}
-
                         </div>
-
                     </div>
-
                 </div>
 
 
