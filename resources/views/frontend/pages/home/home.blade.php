@@ -870,7 +870,7 @@
                     <div class="slick-slider-normal">
 
                         <div class="items">
-                            <a href="">
+                            <a href="{{ $homepage->offer_slider_image_one_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
                                         class="img-fluid custom-img w-100 rounded-2" alt="" />
@@ -879,7 +879,7 @@
                         </div>
 
                         <div class="items">
-                            <a href="">
+                            <a href="{{ $homepage->offer_slider_image_two_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
                                         class="img-fluid custom-img w-100 rounded-2" alt="" />
@@ -888,7 +888,7 @@
                         </div>
 
                         <div class="items">
-                            <a href="">
+                            <a href="{{ $homepage->offer_slider_image_three_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
                                         class="img-fluid custom-img w-100 rounded-2" alt="" />
@@ -897,7 +897,7 @@
                         </div>
 
                         <div class="items">
-                            <a href="">
+                            <a href="{{ $homepage->offer_slider_image_four_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
                                         class="img-fluid custom-img w-100 rounded-2" alt="" />

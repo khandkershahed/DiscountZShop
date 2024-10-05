@@ -96,12 +96,30 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="deal_header"
+                            class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image One Link') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="offer_slider_image_one_link" type="text" name="offer_slider_image_one_link" :value="old('offer_slider_image_one_link')"
+                            placeholder="offer Slider Image One Link"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="offer_slider_image_two"
                             class="col-form-label fw-bold fs-6 ">{{ __('Offer Slider Image Two') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="offer_slider_image_two" name="offer_slider_image_two"
                             :value="old('offer_slider_image_two')"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="offer_slider_image_two_link"
+                            class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image Two Link') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="offer_slider_image_two_link" type="text" name="offer_slider_image_two_link" :value="old('offer_slider_image_two_link')"
+                            placeholder="offer Slider Image Two Link"></x-metronic.input>
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -114,12 +132,30 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="offer_slider_image_three_link"
+                            class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image Three Link') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="offer_slider_image_three_link" type="text" name="offer_slider_image_three_link" :value="old('offer_slider_image_three_link')"
+                            placeholder="offer Slider Image Three Link"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="offer_slider_image_four"
                             class="col-form-label fw-bold fs-6 ">{{ __('Offer Slider Image Four') }}
                         </x-metronic.label>
 
                         <x-metronic.file-input id="offer_slider_image_four" name="offer_slider_image_four"
                             :value="old('offer_slider_image_four')"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="offer_slider_image_four_link"
+                            class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image Four Link') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="offer_slider_image_four_link" type="text" name="offer_slider_image_four_link" :value="old('offer_slider_image_four_link')"
+                            placeholder="offer Slider Image Four Link"></x-metronic.input>
                     </div>
 
 
