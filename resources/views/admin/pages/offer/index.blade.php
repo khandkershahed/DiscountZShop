@@ -150,7 +150,7 @@
 
                             </td>
 
-                            <td class="text-start">{{ $offer->categoryName->name }}</td>
+                            <td class="text-start">{{ optional($offer->categoryName)->name }}</td>
                             <td class="text-start">{{ $offer->name }}</td>
                             <td class="text-start">Tk {{ $offer->price }}</td>
                             <td class="text-start">Tk {{ $offer->offer_price }}</td>
