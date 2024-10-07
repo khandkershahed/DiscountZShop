@@ -3,45 +3,52 @@
         <div class="card-body scroll-y mx-5 mx-xl-15 my-7">
             <form class="form" method="POST" action="{{ route('admin.staff.store') }}" enctype="multipart/form-data">
                 @csrf
+
                 <div class="row">
-                    <div class="col-lg-6 mb-7">
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="required fw-bold fs-6 mb-2">{{ __('Full Name') }}</x-metronic.label>
                         <x-metronic.input id="name" type="text" class="form-control-solid mb-3 mb-lg-0"
                             name="name" :value="old('name')" placeholder="Enter Full name"></x-metronic.input>
                     </div>
-                    <div class="col-lg-6 mb-7">
-                        <x-metronic.label for="email"
-                            class="required fw-bold fs-6 mb-2">{{ __('Email') }}</x-metronic.label>
-                        <x-metronic.input id="email" type="email" class="form-control-solid mb-3 mb-lg-0"
-                            name="email" :value="old('email')" placeholder="example@domain.com"></x-metronic.input>
-                    </div>
-                    <div class="col-lg-4 mb-7">
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="username"
                             class="fw-bold fs-6 mb-2">{{ __('User Name') }}</x-metronic.label>
                         <x-metronic.input id="username" type="text" class="form-control-solid mb-3 mb-lg-0"
                             name="username" :value="old('username')" placeholder="Enter User name"></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="email"
+                            class="required fw-bold fs-6 mb-2">{{ __('Email') }}</x-metronic.label>
+                        <x-metronic.input id="email" type="email" class="form-control-solid mb-3 mb-lg-0"
+                            name="email" :value="old('email')" placeholder="example@domain.com"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="phone"
+                            class="fw-bold fs-6 mb-2">{{ __('Phone') }}</x-metronic.label>
+                        <x-metronic.input id="phone" type="text" class="form-control-solid mb-3 mb-lg-0"
+                            name="phone" :value="old('phone')" placeholder="Phone"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="designation"
                             class="fw-bold fs-6 mb-2">{{ __('Designation') }}</x-metronic.label>
                         <x-metronic.input id="designation" type="text" class="form-control-solid mb-3 mb-lg-0"
                             name="designation" :value="old('designation')" placeholder="Designation"></x-metronic.input>
                     </div>
-                    <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="photo"
-                            class="fw-bold fs-6 mb-2">{{ __('Photo') }}</x-metronic.label>
-                        <x-metronic.file-input id="photo" type="file" class="form-control-solid mb-3 mb-lg-0"
-                            name="photo" :value="old('photo')" placeholder="example@domain.com"></x-metronic.file-input>
-                    </div>
-                    <div class="col-lg-6 mb-7">
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="password"
                             class="required fw-bold fs-6 mb-2">{{ __('Password') }}</x-metronic.label>
                         <x-metronic.input id="password" type="password" class="form-control-solid mb-3 mb-lg-0"
                             name="password" :value="old('password')" placeholder="Enter Password"></x-metronic.input>
                     </div>
-                    <div class="col-lg-6 mb-7">
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="password_confirmation"
                             class="required fw-bold fs-6 mb-2">{{ __('Confirm Password') }}</x-metronic.label>
                         <x-metronic.input id="password_confirmation" type="password"
@@ -49,7 +56,48 @@
                             placeholder="Confirm the password"></x-metronic.input>
                     </div>
 
-                    <div class="mb-7">
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="status"
+                            class="required fw-bold fs-6 mb-2">{{ __('Choose Status') }}</x-metronic.label>
+                        
+                        <select name="status" required class="form-select" id="status">
+                            <option disabled selected>Choose Option</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    
+                        @error('status')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="mail_status"
+                            class="fw-bold fs-6 mb-2">{{ __('Mail Status') }}</x-metronic.label>
+                        <select name="mail_status" class="form-select" id="">
+                            <option disabled selected>Choose Option</option>
+                            <option value="mail">Mail</option>
+                            <option value="nomail">No Mail</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="biometric_id"
+                            class="fw-bold fs-6 mb-2">{{ __('Biometric Id') }}</x-metronic.label>
+                        <x-metronic.input id="biometric_id" type="number"
+                            class="form-control-solid mb-3 mb-lg-0" name="biometric_id"
+                            placeholder="Biometric Id"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="photo"
+                            class="fw-bold fs-6 mb-2">{{ __('Photo') }}</x-metronic.label>
+                        <x-metronic.file-input id="photo" type="file" class="form-control-solid mb-3 mb-lg-0"
+                            name="photo" :value="old('photo')" placeholder="example@domain.com"></x-metronic.file-input>
+                    </div>
+
+                    {{-- <div class="mb-7">
 
                         <label class="required fw-bold fs-6 mb-5">Role</label>
                         @foreach ($roles as $role)
@@ -63,9 +111,10 @@
                             </div>
                             <div class='separator separator-dashed my-5'></div>
                         @endforeach
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="text-center pt-15">
+                
+                <div class="float-end pt-5">
                     <x-metronic.button type="submit" class="primary">
                         {{ __('Submit') }}
                     </x-metronic.button>

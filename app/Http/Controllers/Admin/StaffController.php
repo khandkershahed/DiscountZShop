@@ -18,10 +18,11 @@ class StaffController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct()
-    {
-        $this->middleware('permission:view staff|create staff|show staff|edit staff|delete staff')->only(['index', 'create', 'show', 'edit', 'destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('permission:view staff|create staff|show staff|edit staff|delete staff')->only(['index', 'create', 'show', 'edit', 'destroy']);
+    // }
+
     public function index()
     {
         return view('admin.pages.staff.index', ['staffs' => Admin::latest('id')->get()]);
@@ -42,10 +43,27 @@ class StaffController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Admin::class],
-            'username' => ['string', 'max:191', 'unique:' . Admin::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'status' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:' . Admin::class . ',email'
+            ],
+            'username' => [
+                'nullable', // Use this if username is not required
+                'string',
+                'max:191',
+                'unique:' . Admin::class . ',username'
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::defaults()
+            ],
         ]);
+
 
         $files = [
             'photo'    => $request->file('photo'),
@@ -64,19 +82,22 @@ class StaffController extends Controller
             }
         }
 
-        $user = Admin::create([
+        Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
+
+            'phone' => $request->phone,
+            'status' => $request->status,
+            'biometric_id' => $request->biometric_id,
+            'mail_status' => $request->mail_status,
+
             'designation' => $request->designation,
             'photo' => $uploadedFiles['photo']['status']    == 1 ? $uploadedFiles['photo']['file_path']   : null,
             'password' => Hash::make($request->password),
+
         ]);
 
-        $user->syncRoles($request->roles);
-
-        event(new Registered($user));
-        event(new ActivityLogged('User created', $user));
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff Added successfully');
     }
@@ -99,7 +120,7 @@ class StaffController extends Controller
     {
         return view('admin.pages.staff.edit', [
             'staff' => Admin::find($id),
-            'roles' => Role::get(),
+            // 'roles' => Role::get(),
         ]);
     }
 
@@ -108,13 +129,7 @@ class StaffController extends Controller
      */
     public function update(Request $request, Admin $staff): RedirectResponse
     {
-        $request->validate([
-            'name' => ['nullable', 'string', 'max:255'],
-            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:' . Admin::class . ',email,' . $staff->id],
-            'username' => ['string', 'max:191', 'unique:' . Admin::class . ',username,' . $staff->id],
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
-        ]);
-
+        
         $files = [
             'photo'    => $request->file('photo'),
         ];
@@ -137,19 +152,28 @@ class StaffController extends Controller
         }
 
         $staff->update([
-            'name'        => $request->name ? $request->name  : $staff->name,
-            'email'       => $request->email ? $request->email: $staff->email,
+
+            'name'        => $request->name,
+            // 'email'       => $request->email,
+
+            'phone' => $request->phone,
+            'status' => $request->status,
+            'biometric_id' => $request->biometric_id,
+            'mail_status' => $request->mail_status,
+
             'username'    => $request->username,
             'designation' => $request->designation,
+
             'photo'       => $uploadedFiles['photo']['status'] == 1 ? $uploadedFiles['photo']['file_path'] : $staff->photo,
-            'password'    => $request->password ? Hash::make($request->password) : $staff->password,
+
+            // 'password'    => $request->password ? Hash::make($request->password) : $staff->password,
         ]);
 
-        if ($request->roles) {
-            $staff->syncRoles($request->roles);
-        }
+        // if ($request->roles) {
+        //     $staff->syncRoles($request->roles);
+        // }
 
-        event(new ActivityLogged('Staff updated', $staff));
+        // event(new ActivityLogged('Staff updated', $staff));
 
         return redirect()->route('admin.staff.index')->with('success', 'staff updated successfully');
     }
@@ -174,5 +198,14 @@ class StaffController extends Controller
         $staff->delete();
 
         event(new ActivityLogged('Staff deleted', $staff));
+    }
+
+    public function updateStaffStatus(Request $request, $id)
+    {
+        $offer = Admin::findOrFail($id);
+        $offer->status = $request->input('status');
+        $offer->save();
+
+        return response()->json(['success' => true]);
     }
 }

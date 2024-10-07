@@ -41,6 +41,18 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="category_type"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Category Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="category_type" name="category_type"
+                            data-placeholder="Select an option">
+                            <option>Choose Option</option>
+                            <option value="top">Top</option>
+                            <option value="featured">Featured</option>
+                            <option value="best_seller">Best Seller</option>
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="country_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
                         <x-metronic.select-option id="country_id" name="country_id[]" data-hide-search="false" multiple
@@ -125,6 +137,7 @@
                             <option value="inactive">Inactive</option>
                         </x-metronic.select-option>
                     </div>
+                    
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="map_url" class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
@@ -152,7 +165,16 @@
                             :value="old('middle_banner_right')"></x-metronic.file-input>
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="badge"
+                            class="col-form-label fw-bold fs-6">{{ __('Badge') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="badge" type="text" name="badge" :value="old('badge')"
+                            placeholder="Eg: 50% off"></x-metronic.input>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
                         </x-metronic.label>
 
@@ -160,7 +182,7 @@
                             :value="old('logo')"></x-metronic.file-input>
                     </div>
 
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="image"
                             class="col-form-label fw-bold fs-6">{{ __('Thumbnail Image') }}
                         </x-metronic.label>
@@ -168,7 +190,7 @@
                         <x-metronic.file-input id="image" name="image"
                             :value="old('image')"></x-metronic.file-input>
                     </div>
-                    <div class="col-lg-4 mb-7">
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="banner_image"
                             class="col-form-label fw-bold fs-6 ">{{ __('Banner Image') }}
                         </x-metronic.label>

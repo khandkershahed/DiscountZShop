@@ -44,9 +44,9 @@ class AboutUsController extends Controller
 
                 'row_five_bg_image' => $request->file('row_five_bg_image'),
 
-                'row_one_image' => $request->file('row_one_image'),
+                // 'row_one_image' => $request->file('row_one_image'),
                 'row_two_image' => $request->file('row_two_image'),
-                'row_three_image' => $request->file('row_three_image'),
+                // 'row_three_image' => $request->file('row_three_image'),
 
                 'row_five_column_one_icon' => $request->file('row_five_column_one_icon'),
                 'row_five_column_two_icon' => $request->file('row_five_column_two_icon'),
@@ -87,11 +87,11 @@ class AboutUsController extends Controller
 
                 'row_five_bg_image' => $uploadedFiles['row_five_bg_image']['status'] == 1 ? $uploadedFiles['row_five_bg_image']['file_path'] : $about->row_five_bg_image,
 
-                'row_one_image' => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_path'] : $about->row_one_image,
+                // 'row_one_image' => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_path'] : $about->row_one_image,
 
                 'row_two_image' => $uploadedFiles['row_two_image']['status'] == 1 ? $uploadedFiles['row_two_image']['file_path'] : $about->row_two_image,
 
-                'row_three_image' => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_path'] : $about->row_three_image,
+                // 'row_three_image' => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_path'] : $about->row_three_image,
 
                 'row_five_column_one_icon' => $uploadedFiles['row_five_column_one_icon']['status'] == 1 ? $uploadedFiles['row_five_column_one_icon']['file_path'] : $about->row_five_column_one_icon,
 

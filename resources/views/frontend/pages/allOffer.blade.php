@@ -8,6 +8,7 @@
         </div>
     </section>
     <!-- Hero End -->
+
     <section>
         <div class="container mb-5">
             <div class="row py-5 pb-2">
@@ -17,44 +18,52 @@
                             <h3>All Offers</h3>
                             <span class="store-devider"></span>
                         </div>
+
                         <div class="d-flex align-items-center">
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select1" name="division"
-                                    data-placeholder="Select Division">
+                                <select class="form-select cust-select" id="custom_select1" name="division_id"
+                                    data-placeholder="Select Division" autocomplete="off">
                                     <option value="">Select Division</option>
-                                    @foreach ($divisions as $division)
-                                        <option value="{{ $division->name }}">{{ $division->name }}</option>
-                                    @endforeach
+                                    @forelse ($divisions as $division)
+                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    @empty
+                                        <option disabled>No Division Available</option>
+                                    @endforelse
                                 </select>
                             </div>
+
                             <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select2" name="city"
-                                    data-placeholder="Select City">
+                                <select class="form-select cust-select" id="custom_select2" name="city_id"
+                                    data-placeholder="Select City" autocomplete="off">
                                     <option value="">Select City</option>
                                     @foreach ($citys as $city)
-                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
+                            <!-- Filter Store -->
                             <div class="btn-group pe-2">
-                                <select class="form-select cust-select" id="custom_select3" name="area"
+                                <select class="form-select cust-select" id="custom_select3" name="area_id"
                                     data-placeholder="Select Area">
                                     <option value="">Select Area</option>
                                     @foreach ($areas as $area)
-                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
+                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <!-- Search Store -->
                             <div class="wrapper-store">
+
                                 <div class="search-input-store">
-                                    <a href="#" target="_blank" hidden=""></a>
-                                    <input type="text" placeholder="Type to search..." />
-                                    <div class="autocom-box">
-                                        <!-- here list are inserted from javascript -->
-                                    </div>
+
+                                    <input type="text" id="serviceSearch" name=""
+                                        placeholder="Type to search..." />
+
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -63,9 +72,12 @@
                                             </path>
                                         </svg>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -81,10 +93,11 @@
                                     aria-selected="true">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span>All Offers</span>
-                                        <span>({{ $offers->count() }})</span>
+                                        <span>({{ $offerss->count() }})</span>
                                     </div>
                                 </button>
                             </li>
+
                             @foreach ($categorys as $category)
                                 <li class="nav-item w-100" role="presentation">
                                     <button class="nav-link custom-offer-tabs border-0 w-100 text-start"
@@ -102,14 +115,7 @@
                         </ul>
                     </div>
 
-                    <h6 class="fw-bold pt-3 pb-2">Discount%</h6>
-                    <div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <input type="range" class="form-range" id="customRange1" />
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="pt-4">
                         <div class="card overlay-card rounded-2"
                             style="background-image: url(https://htmlbeans.com/html/coupon/images/img39.jpg);">
@@ -129,11 +135,11 @@
 
                 <div class="col-lg-9">
                     <div class="tab-content" id="myTabContent">
-                        <!-- First tab content, active by default -->
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
-                            <div class="row">
-                                @foreach ($offers as $offer)
+
+                            <div class="row servicesContainer divisionContainer" id="servicesContainer">
+                                @foreach ($offerss as $offer)
                                     <div class="col-lg-4 mb-4">
                                         <div class="card border-0 shadow-sm bg-light">
                                             <div class="row p-4 align-items-center">
@@ -146,11 +152,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <span>Upto</span>
-                                                    <h1 class="main-color special-font-box">{{ $offer->badge }}
-                                                    </h1>
+                                                    @if (!empty($offer->badge))
+                                                        {{-- <span>Upto</span> --}}
+                                                        <h3 class="main-color special-font-box">{{ $offer->badge }}
+                                                        </h3>
+                                                    @endif
                                                 </div>
-                                                <div class="col-lg-12 pt-4">
+                                                <div class="col-lg-12 pt-4 offer_title">
                                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                     {{-- <a href="{{ route('offer.details', $offer->slug) }}"
                                                         class="main-color">
@@ -182,18 +190,21 @@
                                     </div>
                                 @endforeach
                             </div>
+
                         </div>
 
                         <!-- Other tabs content -->
                         @foreach ($categorys as $category)
                             <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
+
                                 @php
                                     $cateWiseOffers = App\Models\Offer::where('category_id', $category->id)
                                         ->orderBy('name', 'ASC')
                                         ->get();
                                 @endphp
-                                <div class="row">
+
+                                <div class="row servicesContainer" id="servicesContainer">
                                     @if ($cateWiseOffers->count())
                                         @foreach ($cateWiseOffers as $offer)
                                             <div class="col-lg-4 mt-4">
@@ -202,26 +213,29 @@
                                                         <div class="col-lg-6">
                                                             <div>
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px"
-                                                                    class="rounded-2 bg-white"
-                                                                    style="object-fit: contain;" alt="" />
+                                                                    width="80px" height="80px" class="rounded-2 bg-white"
+                                                                    style="object-fit: contain;" alt=""
+                                                                    onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <h1 class="main-color special-font-box">
-                                                                {{ $offer->badge }}</h1>
+                                                            @if (!empty($offer->badge))
+                                                                {{-- <span>Upto</span> --}}
+                                                                <h3 class="main-color special-font-box">{{ $offer->badge }}
+                                                                </h3>
+                                                            @endif
                                                         </div>
-                                                        <div class="col-lg-12 pt-4">
+                                                        <div class="col-lg-12 pt-4 offer_title">
                                                             <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                            <a href="{{ route('offer.details', $offer->slug) }}"
+                                                            {{-- <a href="{{ route('offer.details', $offer->slug) }}"
                                                                 class="main-color">
-                                                                <small>See all</small>
-                                                            </a>
+                                                                <small>See All In Store</small>
+                                                            </a> --}}
                                                         </div>
                                                         <div class="col-lg-12 pt-4">
                                                             <div class="d-flex">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="main-color">
+                                                                    class="w-100 btn-common-one rounded-3">
                                                                     <small>View</small>
                                                                 </a>
                                                                 @if (!empty($offer->coupon_code))
@@ -251,11 +265,13 @@
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     @push('scripts')
         <script>
             // Bootstrap Tab Activation
@@ -269,6 +285,7 @@
                 })
             })
         </script>
+
         <script>
             function copyCouponCode(couponCode) {
                 // Create a temporary input element to copy the coupon code
@@ -291,6 +308,119 @@
                 // Show an alert
                 alert('Coupon code "' + couponCode + '" copied to clipboard!');
             }
+        </script>
+
+        {{-- Offer Search --}}
+
+        <!-- Include jQuery -->
+
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('offer.search') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        {{-- ============= --}}
+
+        <script>
+            // === === === === === Division === === === === ===
+
+            $(document).ready(function() {
+                $('#custom_select1').on('change', function() {
+
+                    var divisionId = $(this).val(); // Get selected division ID
+
+                    if (divisionId) {
+
+                        $.ajax({
+                            url: "{{ route('offer.search.division') }}",
+                            method: 'GET',
+                            data: {
+                                division_id: divisionId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+
+            // ====== City ====
+
+            $(document).ready(function() {
+                $('#custom_select2').on('change', function() {
+                    var cityId = $(this).val();
+
+                    if (cityId) {
+                        $.ajax({
+                            url: "{{ route('offer.search.city') }}",
+                            method: 'GET',
+                            data: {
+                                city_id: cityId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a city to see offers.</p>');
+                    }
+                });
+            });
+
+            // ============ area ============
+
+            $(document).ready(function() {
+                $('#custom_select3').on('change', function() {
+
+                    var areaId = $(this).val(); // Get selected division ID
+
+                    if (areaId) {
+
+                        $.ajax({
+                            url: "{{ route('offer.search.area') }}",
+                            method: 'GET',
+                            data: {
+                                area_id: areaId
+                            },
+                            success: function(data) {
+                                $('.divisionContainer').html(data.html);
+                            },
+                            error: function() {
+                                $('.divisionContainer').html(
+                                    '<p>An error occurred while fetching offers.</p>');
+                            }
+                        });
+                    } else {
+                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
         </script>
     @endpush
 </x-frontend-app-layout>

@@ -24,13 +24,14 @@
             <div class="row py-5 pb-0">
                 <div class="col-lg-12 pe-0 pb-2">
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
+                        {{-- <div class="d-flex align-items-center">
                             <h3>All Brands</h3>
                             <span class="store-devider"></span>
-                        </div>
+                        </div> --}}
                         <div class="d-flex align-items-center">
+
                             <!-- Filter Store -->
-                            <div class="btn-group pe-2">
+                            {{-- <div class="btn-group pe-2">
                                 <select class="form-select" id="custom_select1" name="division"
                                     data-placeholder="Select Division">
                                     <option value="">Select Division</option>
@@ -38,9 +39,10 @@
                                         <option value="{{ $division->name }}">{{ $division->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
+
                             <!-- Filter Store -->
-                            <div class="btn-group pe-2">
+                            {{-- <div class="btn-group pe-2">
                                 <select class="form-select" id="custom_select2" name="city"
                                     data-placeholder="Select City">
                                     <option value="">Select City</option>
@@ -48,8 +50,8 @@
                                         <option value="{{ $city->name }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="btn-group pe-2">
+                            </div> --}}
+                            {{-- <div class="btn-group pe-2">
                                 <select class="form-select" id="custom_select3" name="area"
                                     data-placeholder="Select Area">
                                     <option value="">Select Area</option>
@@ -57,9 +59,9 @@
                                         <option value="{{ $area->name }}">{{ $area->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <!-- Filter Store -->
-                            <div class="btn-group pe-2">
+                            {{-- <div class="btn-group pe-2">
                                 <button class="btn btn-common-three btn-sm dropdown-toggle px-2" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="true">
                                     <i class="fa-solid fa-filter fs-6" aria-hidden="true"></i>
@@ -76,15 +78,16 @@
                                         <a class="dropdown-item" href="#">Big Discount</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
+
                             <!-- Search Store -->
-                            <div class="wrapper-store">
+                            {{-- <div class="wrapper-store">
+
                                 <div class="search-input-store">
-                                    <a href="#" target="_blank" hidden=""></a>
-                                    <input type="text" placeholder="Type to search..." />
-                                    <div class="autocom-box">
-                                        <!-- here list are inserted from javascript -->
-                                    </div>
+
+                                    <input type="text" id="serviceSearch" autocomplete="off" name=""
+                                        placeholder="Type to search..." />
+
                                     <div class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -93,13 +96,16 @@
                                             </path>
                                         </svg>
                                     </div>
+
                                 </div>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row gx-5">
+
+            <div class="row gx-5" id="servicesContainer">
                 @foreach ($categories as $category)
                     @if ($category->brands->count() > 0)
                         <div class="col-lg-6">
@@ -109,13 +115,13 @@
                                         <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
                                         <span class="store-devider"></span>
                                     </div>
-                                    <div>
+                                    {{-- <div>
                                         <div class="pt-1">
-                                          <span class="badge text-end rounded-0 store-tags">
-                                            <span>30%</span>
-                                          </span>
+                                            <span class="badge text-end rounded-0 store-tags">
+                                                <span>30%</span>
+                                            </span>
                                         </div>
-                                      </div>
+                                    </div> --}}
                                 </div>
                                 @foreach ($category->brands as $brand)
                                     <div class="col-lg-4 mb-3 mt-2">
@@ -138,6 +144,7 @@
                     @endif
                 @endforeach
             </div>
+
         </div>
     </section>
     <!-- Brands All End -->
@@ -172,4 +179,26 @@
             </div>
         </div>
     </section>
+
+    @push('scripts')
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('brands.search.name') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 </x-frontend-app-layout>

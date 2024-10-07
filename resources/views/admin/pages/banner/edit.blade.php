@@ -40,7 +40,16 @@
 
                         <img class="mt-3"
                             src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : 'https://ui-avatars.com/api/?name=' . urlencode($banner->name) }}"
-                            height="80" width="80" alt="{{ $banner->name }}">
+                            height="80" width="80" alt="">
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="image_one_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image One Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="image_one_url" type="url" name="image_one_url" :value="old('image_one_url',$banner->image_one_url)"
+                            placeholder="Enter the Url" required></x-metronic.input>
                     </div>
 
                     <div class="col-lg-4 mb-7">
@@ -52,7 +61,16 @@
 
                         <img class="mt-3"
                             src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : 'https://ui-avatars.com/api/?name=' . urlencode($banner->name) }}"
-                            height="80" width="80" alt="{{ $banner->name }}">
+                            height="80" width="80" alt="">
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="image_two_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image Two Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="image_two_url" type="url" name="image_two_url" :value="old('image_two_url',$banner->image_two_url)"
+                            placeholder="Enter the Url" required></x-metronic.input>
                     </div>
 
                     <div class="col-lg-4 mb-7">
@@ -64,7 +82,16 @@
 
                         <img class="mt-3"
                             src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : 'https://ui-avatars.com/api/?name=' . urlencode($banner->name) }}"
-                            height="80" width="80" alt="{{ $banner->name }}">
+                            height="80" width="80" alt="">
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="image_three_url"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image Three Url') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="image_three_url" type="url" name="image_three_url" :value="old('image_three_url',$banner->image_three_url)"
+                            placeholder="Enter the Url" required></x-metronic.input>
                     </div>
 
 

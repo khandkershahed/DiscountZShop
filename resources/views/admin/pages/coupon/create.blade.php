@@ -171,7 +171,7 @@
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="price"
-                            class="col-form-label fw-bold fs-6 required">{{ __('Price') }}
+                            class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="price" type="number" s name="price" :value="old('price')"
@@ -180,7 +180,7 @@
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="offer_price"
-                            class="col-form-label fw-bold fs-6 required">{{ __('Offer Price') }}
+                            class="col-form-label fw-bold fs-6">{{ __('Offer Price') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="offer_price" type="number" s name="offer_price" :value="old('offer_price')"

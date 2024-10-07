@@ -91,6 +91,11 @@ class HomePageController extends Controller
                 'deal_header' => $request->deal_header,
                 'deal_brand_id' => $request->deal_brand_id,
 
+                'offer_slider_image_one_link' => $request->offer_slider_image_one_link,
+                'offer_slider_image_two_link' => $request->offer_slider_image_two_link,
+                'offer_slider_image_three_link' => $request->offer_slider_image_four_link,
+                'offer_slider_image_four_link' => $request->offer_slider_image_four_link,
+
                 'bottom_banner_slider_one_link' => $request->bottom_banner_slider_one_link,
                 'bottom_banner_slider_two_link' => $request->bottom_banner_slider_two_link,
                 'bottom_banner_slider_three_link' => $request->bottom_banner_slider_three_link,
@@ -213,7 +218,10 @@ class HomePageController extends Controller
 
                 'bottom_banner_slider_four' => $uploadedFiles['bottom_banner_slider_four']['status'] == 1 ? $uploadedFiles['bottom_banner_slider_four']['file_path'] : $homepage->bottom_banner_slider_four,
 
-                
+                'offer_slider_image_one_link' => $request->offer_slider_image_one_link,
+                'offer_slider_image_two_link' => $request->offer_slider_image_two_link,
+                'offer_slider_image_three_link' => $request->offer_slider_image_four_link,
+                'offer_slider_image_four_link' => $request->offer_slider_image_four_link,
 
                 
                 'top_banner_link' => $request->top_banner_link,

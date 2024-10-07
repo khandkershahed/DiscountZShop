@@ -23,14 +23,14 @@
         </div>
         <div class="card-body pt-0">
 
-            <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
-
-                <thead>
-                    <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+            <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                
+                <thead class="bg-dark text-light">
+                    <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
                         <th>Store Name</th>
-                        <th>Location</th>
-                        <th>Expire Date</th>
+                        <th>Category Name</th>
+                        <th>Added By</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -38,12 +38,17 @@
 
                 <tbody class="fw-bold text-gray-600">
                     @foreach ($stores as $store)
-                        <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $store->name }}</td>
+                            <td>{{ $store->categoryName->name }}</td>
+
+                            <td>{{ optional($store->added)->name }}</td>
+
                             <td> <span class="badge {{ $store->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $store->status == 'active' ? 'Active' : 'InActive' }}</span>
                             </td>
+
                             <td>
                                 <a href="{{ route('admin.store.edit', $store->id) }}"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -62,5 +67,26 @@
 
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $("#kt_datatable_example_5").DataTable({
+                "language": {
+                    "lengthMenu": "Show MENU",
+                },
+                "dom": "<'row'" +
+                    "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                    "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                    ">" +
+
+                    "<'table-responsive'tr>" +
+
+                    "<'row'" +
+                    "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                    "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                    ">"
+            });
+        </script>
+    @endpush
 
 </x-admin-app-layout>

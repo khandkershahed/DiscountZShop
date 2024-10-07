@@ -80,19 +80,23 @@
                                                             <div class="row py-4" style="background-color: #eee">
                                                                 @foreach ($header_category->children as $header_category_child)
                                                                     <div class="col-lg-4">
+
                                                                         <a
                                                                             href="{{ route('category.details', 'clothes') }}">
                                                                             <h6 class="divider-title">
                                                                                 {{ $header_category_child->name }}
                                                                             </h6>
                                                                         </a>
+
                                                                         <span class="divider-underline"></span>
+
                                                                         <ul class="ps-0 pt-3 main-category-dropdown">
                                                                             <li class="p-1">
                                                                                 <a
                                                                                     href="{{ route('store.details', 'aarong') }}">Aarong</a>
                                                                             </li>
                                                                         </ul>
+                                                                        
                                                                     </div>
                                                                 @endforeach
                                                             </div>

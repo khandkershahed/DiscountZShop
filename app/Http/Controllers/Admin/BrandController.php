@@ -4,18 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Area;
 use App\Models\City;
+use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Country;
 use App\Models\Category;
 use App\Models\Division;
+use App\Mail\BrandCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\BrandRequest;
+use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
 {
@@ -24,34 +30,11 @@ class BrandController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = Brand::latest('id')->get();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $editUrl = route('admin.brands.edit', $row->id);
-                    $deleteUrl = route('admin.brands.destroy', $row->id);
+        $data = [
+            'brands' => Brand::latest('id')->get(),
+        ];
 
-                    $html = <<<HTML
-                    <td class="text-end">
-                        <a href="{$editUrl}" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
-                            <span class="svg-icon svg-icon-3">
-                                <i class="fas fa-pen"></i>
-                            </span>
-                        </a>
-                        <a href="{$deleteUrl}" class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
-                            <span class="svg-icon svg-icon-3">
-                                <i class="fas fa-trash-alt"></i>
-                            </span>
-                        </a>
-                    </td>
-                    HTML;
-
-                    return new HtmlString($html);
-                })->rawColumns(['action'])->make(true);
-        }
-
-        return view('admin.pages.brands.index');
+        return view('admin.pages.brands.index', $data);
     }
 
     /**
@@ -72,8 +55,57 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(BrandRequest $request)
+    public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'country_id'        => 'nullable|array',
+            'country_id.*'      => 'nullable|exists:countries,id',
+            'division_id'       => 'nullable|array',
+            'division_id.*'     => 'nullable|exists:divisions,id',
+            'city_id'           => 'nullable|array',
+            'city_id.*'         => 'nullable|exists:cities,id',
+            'area_id'           => 'nullable|array',
+            'area_id.*'         => 'nullable|exists:areas,id',
+            'category_id'       => 'nullable|exists:categories,id',
+            'name'              => 'required|string|max:200|unique:brands,name',
+            'logo'              => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
+            'image'             => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
+            'banner_image'      => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
+            'about'             => 'nullable|string',
+            'offer_description' => 'nullable|string',
+            'location'          => 'nullable|string',
+            'description'       => 'nullable|string',
+            'url'               => 'nullable|url|max:255',
+            'category'          => 'nullable|string',
+            'status'            => 'required|in:active,inactive',
+        ], [
+            'country_id.*.exists'     => 'One of the selected countries is invalid.',
+            'division_id.*.exists'    => 'One of the selected divisions is invalid.',
+            'city_id.*.exists'        => 'One of the selected cities is invalid.',
+            'area_id.*.exists'        => 'One of the selected areas is invalid.',
+            'category_id.exists'      => 'The selected category is invalid.',
+            'name.required'           => 'The name field is required.',
+            'name.unique'             => 'The name has already been taken.',
+            'name.max'                => 'The name may not be greater than 30 characters.',
+            'slug.required'           => 'The slug field is required.',
+            'slug.unique'             => 'The slug has already been taken.',
+            'slug.max'                => 'The slug may not be greater than 40 characters.',
+            'logo.file'               => 'The logo must be a file.',
+            'image.file'              => 'The image must be a file.',
+            'banner_image.file'       => 'The banner image must be a file.',
+            'url.url'                 => 'The URL format is invalid.',
+            'url.max'                 => 'The URL may not be greater than 255 characters.',
+            'status.required'         => 'The status field is required.',
+            'status.in'               => 'The selected status is invalid. It must be either active or inactive.',
+        ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->messages()->all() as $message) {
+                Session::flash('error', $message);
+            }
+            return redirect()->back()->withInput();
+        }
+
         // Start the database transaction
         DB::beginTransaction();
 
@@ -113,7 +145,11 @@ class BrandController extends Controller
                 'division_id'         => json_encode($request->division_id),
                 'city_id'             => json_encode($request->city_id),
                 'area_id'             => json_encode($request->area_id),
+
+                'added_by'            => Auth::guard('admin')->user()->id,
+
                 'category_id'         => $request->category_id,
+                'category_type'       => $request->category_type,
                 'about'               => $request->about,
                 'offer_description'   => $request->offer_description,
                 'location'            => $request->location,
@@ -126,6 +162,14 @@ class BrandController extends Controller
 
             // Commit the database transaction
             DB::commit();
+
+            // Mail Send
+            $admins = Admin::where('mail_status', 'mail')->get();
+
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new BrandCreated($brand));
+            }
+            // Mail Send
 
             return redirect()->route('admin.brands.index')->with('success', 'Brand created successfully');
         } catch (\Exception $e) {
@@ -209,6 +253,7 @@ class BrandController extends Controller
 
                 'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $brand->middle_banner_right,
 
+                'added_by' => Auth::guard('admin')->user()->id,
 
                 'country_id'          => json_encode($request->country_id),
                 'division_id'         => json_encode($request->division_id),
@@ -216,6 +261,7 @@ class BrandController extends Controller
                 'area_id'             => json_encode($request->area_id),
 
                 'category_id'         => $request->category_id,
+                'category_type'         => $request->category_type,
                 'about'               => $request->about,
                 'offer_description'   => $request->offer_description,
                 'location'            => $request->location,
@@ -264,6 +310,15 @@ class BrandController extends Controller
         $brand = Brand::findOrFail($id);
         $brand->status = $brand->status == 'active' ? 'inactive' : 'active';
         $brand->save();
+        return response()->json(['success' => true]);
+    }
+
+    public function updateStatusBrand(Request $request, $id)
+    {
+        $offer = Brand::findOrFail($id);
+        $offer->status = $request->input('status');
+        $offer->save();
+
         return response()->json(['success' => true]);
     }
 }

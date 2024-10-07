@@ -26,7 +26,8 @@
         </div>
         <div class="card-body pt-0">
 
-            <form class="form" action="{{ route('admin.page-banner.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ route('admin.page-banner.store') }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
@@ -49,7 +50,8 @@
                         </x-metronic.select-option>
                     </div>
                     <div class="col-lg-6 mb-7">
-                        <x-metronic.label for="image" class="col-form-label fw-bold fs-6 required">{{ __('Image') }}
+                        <x-metronic.label for="image"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Image') }}
                         </x-metronic.label>
                         <x-metronic.file-input id="image" type="file" name="image"></x-metronic.file-input>
                     </div>
