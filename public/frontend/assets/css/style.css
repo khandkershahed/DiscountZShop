@@ -8,7 +8,7 @@
     font-weight: normal;
     font-style: normal;
 }
-.asda{
+.asda {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,6 +42,17 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+.category-menus::-webkit-scrollbar {
+    width: 0.3em;
+}
+
+.category-menus::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.category-menus::-webkit-scrollbar-thumb {
     background-color: var(--primary-color);
 }
 .product-scroll-show::-webkit-scrollbar {
@@ -387,7 +398,7 @@ p {
     width: 115px;
     top: -1px;
 }
-.coupon-logo img{
+.coupon-logo img {
     width: 100%;
     height: 60px;
     object-fit: contain;
@@ -781,7 +792,7 @@ p {
     height: 305px;
     overflow: auto;
 } */
- .arrow-btn{
+.arrow-btn {
     background-color: var(--primary-color);
     color: white;
     border: 0;
@@ -791,7 +802,7 @@ p {
     width: 30px;
     padding: 3px;
     height: 30px;
- }
+}
 .grab-card {
     border: 1px solid #ebebeb;
     background: #f9f9f9;
@@ -891,8 +902,7 @@ del {
     max-height: 705px;
     object-fit: cover;
 }
-.logo-main{
-
+.logo-main {
 }
 .logo-main img {
     width: 200px;
@@ -1005,23 +1015,29 @@ del {
     color: var(--primary-color);
 }
 
-.store_title{
+.store_title {
     align-items: center;
     height: 7.5rem;
 }
-/* .offer_title{
-    height: 7.5rem;
-} */
+.category-menus {
+    height: 330px;
+    overflow: auto;
+}
+.category-menus-show {
+    height: 330px;
+    overflow: auto;
+}
 .main-store-banner img {
-    height: 240px;
+    height: 360px;
     width: 100%;
-    object-fit: fill;
+    object-fit: cover;
 }
 .store-logo img {
-    /* border: 2px solid #f15a2d; */
-    width: 50px;
-    height: 50px;
-    object-fit: fill;
+    border: 2px solid #f15a2d;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 5px;
 }
 .store-rating {
     position: relative;
@@ -1103,10 +1119,11 @@ del {
     background: #efefef;
     cursor: pointer;
 }
-.btn-close {
-    --bs-btn-close-color: #fff; /* Corrected from #ffff to #fff */
-    --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
-}
+/* .btn-close {
+    --bs-btn-close-color: #030303;
+    --bs-btn-close-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e);
+    background: red;
+} */
 /* Remove focus styles */
 input:focus,
 textarea:focus,
@@ -1605,18 +1622,19 @@ html {
     margin-bottom: 5px;
     font-size: 40px;
 }
-.product-discount-box{
+.product-discount-box {
     height: 270px;
     max-height: 100%;
 }
-.grab-imgs img{
+.grab-imgs img {
     height: 90px;
     width: 125px;
 }
-.partners-logos{
-    height: 100px;
+.partners-logos {
+    width: 100%;
+    height: 70px;
+    object-fit: contain;
     max-height: 100%;
-    background: white;
     padding: 10px;
 }
 #counter .item h3 {
@@ -1639,7 +1657,6 @@ html {
     display: block; /* Remove inline block space */
     margin: 0 auto; /* Center the image within its container */
     padding: 8px;
-    bvo
 }
 .brands-card {
     border: 1px solid #efefef;
@@ -1669,6 +1686,7 @@ html {
 }
 /* Brands Page End*/
 /* Main Style End */
+
 @media (max-width: 1366px) {
     .responsive-img {
         height: 100%;
@@ -1726,4 +1744,22 @@ html {
 .cust-select:hover {
     background-color: #eee;
     color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .mobile-none {
+        display: none;
+    }
+    .product-discount-box {
+        height: 100%;
+        max-height: 100%;
+    }
+    .search-btn {
+        position: absolute;
+        left: 83.5%;
+        top: 3px;
+        border-radius: 100%;
+        /* background: #f15a2d; */
+        color: #808080;
+    }
 }

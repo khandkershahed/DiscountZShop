@@ -169,7 +169,7 @@
                                             <div class="col-lg-6">
                                                 <div>
                                                     <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
+                                                        height="80px" class="rounded-2"
                                                         style="object-fit: cover;" alt="" />
                                                 </div>
                                             </div>
@@ -214,7 +214,7 @@
                                             <div class="col-lg-6">
                                                 <div>
                                                     <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
-                                                        height="80px" class="rounded-2 bg-white"
+                                                        height="80px" class="rounded-2"
                                                         style="object-fit: cover;" alt="" />
                                                 </div>
                                             </div>

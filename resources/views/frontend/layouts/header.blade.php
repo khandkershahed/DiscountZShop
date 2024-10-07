@@ -2,10 +2,22 @@
     <nav class="navbar navbar-expand-lg py-0">
         <div class="container px-0">
             <!-- Toggler Button for Mobile View -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
-                aria-controls="staticBackdrop" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-flex justify-content-between align-items-center w-100 p-3">
+                <div>
+                    <a href="{{ route('homePage') }}" class="logo-main">
+                        <img class="img-fluid"
+                            src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                            alt="">
+                    </a>
+                </div>
+                <div>
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
 
             <!-- Navigation Links -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -52,7 +64,7 @@
                                     style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-3 bg-white px-0">
+                                            <div class="col-lg-3 bg-white px-0 category-menus">
                                                 <ul class="nav nav-tabs flex-column border-0" id="myTab"
                                                     role="tablist">
                                                     @foreach ($categories as $header_category)
@@ -77,7 +89,8 @@
                                                         <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
                                                             id="home-{{ $header_category->id }}" role="tabpanel"
                                                             aria-labelledby="home-{{ $header_category->id }}-tab">
-                                                            <div class="row py-4" style="background-color: #eee">
+                                                            <div class="row py-4 category-menus-show"
+                                                                style="background-color: #eee">
                                                                 @foreach ($header_category->children as $header_category_child)
                                                                     <div class="col-lg-4">
 
@@ -96,7 +109,7 @@
                                                                                     href="{{ route('store.details', 'aarong') }}">Aarong</a>
                                                                             </li>
                                                                         </ul>
-                                                                        
+
                                                                     </div>
                                                                 @endforeach
                                                             </div>
@@ -183,3 +196,15 @@
         </div>
     </nav>
 </header>
+<!-- Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+aria-labelledby="staticBackdropLabel">
+<div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body">
+    <div>I will not close if you click outside of me.</div>
+</div>
+</div>
+<!-- Offcanvas Menu End -->
