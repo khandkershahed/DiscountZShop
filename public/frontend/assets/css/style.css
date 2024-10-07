@@ -771,10 +771,21 @@ p {
     background: white;
     padding: 12px;
 }
-.grab-offer-tabs-box {
-    height: 420px;
+/* .grab-offer-tabs-box {
+    height: 305px;
     overflow: auto;
-}
+} */
+ .arrow-btn{
+    background-color: var(--primary-color);
+    color: white;
+    border: 0;
+    position: relative;
+    top: -20px;
+    border-radius: 100%;
+    width: 30px;
+    padding: 3px;
+    height: 30px;
+ }
 .grab-card {
     border: 1px solid #ebebeb;
     background: #f9f9f9;

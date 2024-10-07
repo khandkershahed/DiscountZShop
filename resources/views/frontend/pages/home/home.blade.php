@@ -226,8 +226,9 @@
                                             </button>
                                         </li>
                                         @if ($categories->count() > 0)
-                                            @foreach ($categories as $offercategory)
-                                                <li class="nav-item mb-2" role="presentation">
+                                            @foreach ($categories as $index => $offercategory)
+                                                <li class="nav-item mb-2 offer-item {{ $index >= 5 ? 'd-none' : '' }}"
+                                                    role="presentation">
                                                     <button class="nav-link grab-tabs w-100 rounded-0"
                                                         id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
                                                         data-bs-target="#home-{{ $offercategory->id }}"
@@ -240,6 +241,13 @@
                                             @endforeach
                                         @endif
                                     </ul>
+                                    <div class="d-flex justify-content-center">
+                                        <button id="show-more-btn" class="arrow-btn">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                        <button id="show-less-btn" class="arrow-btn d-none"><i
+                                                class="fa-solid fa-chevron-down"></i></button>
+                                    </div>
                                 </div>
                                 <div class="col-lg-9">
                                     <div class="tab-content" id="myTabContent">
@@ -985,6 +993,33 @@
                 // Show an alert
                 alert('Coupon code "' + couponCode + '" copied to clipboard!');
             }
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const showMoreBtn = document.getElementById('show-more-btn');
+                const showLessBtn = document.getElementById('show-less-btn');
+                const offerItems = document.querySelectorAll('.offer-item');
+
+                showMoreBtn.addEventListener('click', function() {
+                    offerItems.forEach((item, index) => {
+                        if (index >= 5) {
+                            item.classList.remove('d-none');
+                        }
+                    });
+                    showMoreBtn.classList.add('d-none');
+                    showLessBtn.classList.remove('d-none');
+                });
+
+                showLessBtn.addEventListener('click', function() {
+                    offerItems.forEach((item, index) => {
+                        if (index >= 5) {
+                            item.classList.add('d-none');
+                        }
+                    });
+                    showMoreBtn.classList.remove('d-none');
+                    showLessBtn.classList.add('d-none');
+                });
+            });
         </script>
     @endpush
 
