@@ -285,25 +285,28 @@ $(document).ready(function () {
         slidesToShow: 1,
         autoplaySpeed: 3000, // Adjust autoplay speed in milliseconds
         arrows: false,
-        dots: true,
+        dots: true, // Dots for larger screens
         fade: true,
         responsive: [
             {
                 breakpoint: 1024, // At screen widths of 1024px and below
                 settings: {
                     slidesToShow: 3, // Show 3 slides at a time
+                    dots: true, // Keep dots for medium devices
                 },
             },
             {
                 breakpoint: 768, // At screen widths of 768px and below
                 settings: {
                     slidesToShow: 2, // Show 2 slides at a time
+                    dots: false, // Remove dots for smaller devices
                 },
             },
             {
                 breakpoint: 480, // At screen widths of 480px and below
                 settings: {
                     slidesToShow: 1, // Show 1 slide at a time
+                    dots: false, // Remove dots for very small devices
                 },
             },
         ],

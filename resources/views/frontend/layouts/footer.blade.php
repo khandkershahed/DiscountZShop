@@ -4,7 +4,7 @@ background-image: url('{{ asset('images/maps.png') }}');
 background-position: center;
 background-repeat: no-repeat;
 background-color: #f8f9fa; /* Sets the background color */
-"
+">
     <section class="pt-5">
     <div class="container">
         <div class="row gx-5 pb-5">
@@ -22,7 +22,7 @@ background-color: #f8f9fa; /* Sets the background color */
                     </p>
                     <!-- Contact Info Start -->
                     <div class="">
-                        <div class="d-flex align-items-center pt-2">
+                        <div class="d-flex align-items-center pt-2 center-sm">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12"
                                     viewBox="0 0 16 12" fill="none">
@@ -33,7 +33,7 @@ background-color: #f8f9fa; /* Sets the background color */
                             </div>
                             <p class="ps-3 company-link">Email: {{ optional($setting)->support_email }}</p>
                         </div>
-                        <div class="d-flex align-items-center pt-2">
+                        <div class="d-flex align-items-center pt-2 center-sm">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15"
                                     viewBox="0 0 14 15" fill="none">
@@ -44,8 +44,8 @@ background-color: #f8f9fa; /* Sets the background color */
                             </div>
                             <p class="ps-3 company-link">Call: {{ optional($setting)->primary_phone }}</p>
                         </div>
-                        <div class="d-flex align-items-center pt-2">
-                            <div>
+                        <div class="d-flex align-items-center pt-2 center-sm">
+                            <div class="mobile-none-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18"
                                     viewBox="0 0 14 18" fill="none">
                                     <path
@@ -58,8 +58,8 @@ background-color: #f8f9fa; /* Sets the background color */
                                 {{ optional($setting)->address_line_two }}
                             </p>
                         </div>
-                        <div class="d-flex align-items-center pt-2">
-                            <div>
+                        <div class="d-flex align-items-center pt-2 center-sm">
+                            <div class="mobile-none-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
                                     viewBox="0 0 16 17" fill="none">
                                     <path
@@ -145,7 +145,7 @@ background-color: #f8f9fa; /* Sets the background color */
                         </form>
                         <div class="pt-4">
                             <p class="footer-description">Follow us on</p>
-                            <div class="pt-1 d-flex justify-content-space-around align-items-center">
+                            <div class="pt-1 d-flex justify-content-space-around align-items-center footer-icons">
                                 <a href="{{ optional($setting)->facebook_url }}" class="p-2">
                                     <i class="fa-brands fa-facebook-f" style="font-size: 22px"></i>
                                 </a>
@@ -169,7 +169,7 @@ background-color: #f8f9fa; /* Sets the background color */
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center footer-copywrite">
                         <p class="footer-description">
                             {{ optional($setting)->copyright_title }}
                             <a href="{{ optional($setting)->copyright_url }}"

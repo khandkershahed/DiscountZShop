@@ -81,7 +81,7 @@
 
     <!-- Available Coupon Start -->
     <section>
-        <div class="container pt-70 pb-70 px-0">
+        <div class="container pt-70 pb-70 px-0 biggest-deals">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card rounded-0 border-0 shadow-sm">
@@ -211,7 +211,7 @@
 
     <!-- Grab Your Offer -->
     <section style="background: #f9f9f9">
-        <div class="container pt-70 pb-70 px-0">
+        <div class="container pt-70 pb-70 px-0 biggest-deals">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card rounded-0 shadow-sm p-3 grab-card">
@@ -294,7 +294,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="card border-0 shadow-sm bg-light mb-2">
                                                                 <div class="row p-4 align-items-center">
-                                                                    <div class="col-lg-6">
+                                                                    <div class="col-lg-6 col-6">
                                                                         <div>
                                                                             <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
                                                                                 width="80px" height="80px"
@@ -304,7 +304,7 @@
                                                                                 onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-6">
+                                                                    <div class="col-lg-6 col-6">
                                                                         @if (!empty($alloffer->badge))
                                                                             {{-- <span>Upto</span> --}}
                                                                             <h3 class="main-color special-font-box">
@@ -435,7 +435,7 @@
     <!-- Promotion Product -->
     @if (optional($homepage)->brand)
         <section>
-            <div class="container px-0 pb-70">
+            <div class="container px-0 pb-70 biggest-deals">
                 <div class="row gx-4 promotion-container align-items-center">
                     <div class="col-lg-12 py-5">
                         <h1 class="promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
@@ -668,7 +668,7 @@
 
     <!-- Product Slider -->
     <section>
-        <div class="container pb-70 pt-70 px-0">
+        <div class="container pb-70 pt-70 px-0 latest-offers">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Slick Slider -->
@@ -885,7 +885,7 @@
 
     <!-- Normal Slider Product Show -->
     <section>
-        <div class="container py-5 px-0">
+        <div class="container py-lg-5 py-0 px-0">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="slick-slider-normal">
@@ -894,7 +894,7 @@
                             <a href="{{ $homepage->offer_slider_image_one_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -903,7 +903,7 @@
                             <a href="{{ $homepage->offer_slider_image_two_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -912,7 +912,7 @@
                             <a href="{{ $homepage->offer_slider_image_three_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -921,7 +921,7 @@
                             <a href="{{ $homepage->offer_slider_image_four_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -990,7 +990,7 @@
             !empty($homepage->bottom_banner_slider_three) ||
             !empty($homepage->bottom_banner_slider_four))
         <section>
-            <div class="container px-0 pt-70 pb-70">
+            <div class="container px-0 pt-70 pb-70 latest-offers">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="slick-slider-footer-slider">
@@ -1019,7 +1019,7 @@
                             @foreach ($bottom_banners as $bottom_banner)
                                 <a href="{{ $bottom_banner['link'] }}">
                                     <div class="items d-flex justify-content-center align-items-center">
-                                        <img class="img-fluid w-100 rounded-3"
+                                        <img class="img-fluid w-100 rounded-lg-3 rounded-0"
                                             src="{{ !empty($bottom_banner['image']) ? url('storage/' . $bottom_banner['image']) : $defaultImage }}"
                                             alt="Banner image" />
                                     </div>

@@ -2,20 +2,22 @@
     <nav class="navbar navbar-expand-lg py-0">
         <div class="container px-0">
             <!-- Toggler Button for Mobile View -->
-            <div class="d-flex justify-content-between align-items-center w-100 p-3">
-                <div>
-                    <a href="{{ route('homePage') }}" class="logo-main">
-                        <img class="img-fluid"
-                            src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
-                            alt="">
-                    </a>
-                </div>
-                <div>
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <div class="mobile-show w-100">
+                <div class="d-flex justify-content-between align-items-center w-100 p-3">
+                    <div>
+                        <a href="{{ route('homePage') }}" class="logo-main">
+                            <img class="img-fluid"
+                                src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                                alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -198,13 +200,13 @@
 </header>
 <!-- Offcanvas Menu -->
 <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
-aria-labelledby="staticBackdropLabel">
-<div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-</div>
-<div class="offcanvas-body">
-    <div>I will not close if you click outside of me.</div>
-</div>
+    aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>I will not close if you click outside of me.</div>
+    </div>
 </div>
 <!-- Offcanvas Menu End -->
