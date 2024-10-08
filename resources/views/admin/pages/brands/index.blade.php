@@ -147,7 +147,7 @@
 
                             </td>
                             <td class="text-start">{{ $brand->name }}</td>
-                            <td class="text-start">{{ $brand->categoryName->name }}</td>
+                            <td class="text-start">{{ optional($brand->categoryName)->name }}</td>
                             <td class="text-start">{{ optional($brand->added)->name }}</td>
 
                             <td class="text-start">
