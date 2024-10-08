@@ -72,18 +72,15 @@
                                             </path>
                                         </svg>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3 border py-2 shadow-sm">
-                    <h6 class="fw-bold pb-3">All Categories</h6>
+                    {{-- <h6 class="fw-bold pb-3">All Categories</h6> --}}
                     <div class="bg-light">
                         <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
                             <li class="nav-item w-100" role="presentation">
@@ -146,7 +143,7 @@
                                                 <div class="col-lg-6">
                                                     <div>
                                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                            width="80px" height="80px" class="rounded-2 bg-white"
+                                                            width="80px" height="80px" class="rounded-2"
                                                             style="object-fit: contain;" alt=""
                                                             onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                     </div>
@@ -154,7 +151,7 @@
                                                 <div class="col-lg-6">
                                                     @if (!empty($offer->badge))
                                                         {{-- <span>Upto</span> --}}
-                                                        <h3 class="main-color special-font-box">{{ $offer->badge }}
+                                                        <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
                                                         </h3>
                                                     @endif
                                                 </div>
@@ -213,7 +210,7 @@
                                                         <div class="col-lg-6">
                                                             <div>
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px" class="rounded-2 bg-white"
+                                                                    width="80px" height="80px" class="rounded-2"
                                                                     style="object-fit: contain;" alt=""
                                                                     onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                                                             </div>
@@ -221,7 +218,7 @@
                                                         <div class="col-lg-6">
                                                             @if (!empty($offer->badge))
                                                                 {{-- <span>Upto</span> --}}
-                                                                <h3 class="main-color special-font-box">{{ $offer->badge }}
+                                                                <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
                                                                 </h3>
                                                             @endif
                                                         </div>

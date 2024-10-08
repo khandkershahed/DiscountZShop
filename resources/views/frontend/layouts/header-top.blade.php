@@ -1,4 +1,4 @@
-<div class="container-fluid py-3">
+<div class="container-fluid py-3 mobile-none">
     <div class="container px-0">
         <div class="row align-items-center">
             <div class="col-lg-6">

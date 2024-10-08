@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="row gx-3">
 
-                        <div class="col-lg-7">
+                        <div class="col-lg-7 col-sm-12">
 
                             <div class="slick-slider" style="height: 100%">
 
@@ -16,7 +16,7 @@
                                     @foreach ($sliders as $slider)
                                         <div class="items">
                                             <a href="{{ $slider->url }}">
-                                                <img class="img-fluid w-100 responsive-img"
+                                                <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                     src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}" />
                                             </a>
                                         </div>
@@ -37,7 +37,7 @@
 
                                 <div class="col-lg-12">
                                     <a href="{{ $banner->image_one_url }}" target="_blank">
-                                        <img class="img-fluid w-100 responsive-img"
+                                        <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                             src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
                                             alt="" />
                                     </a>
@@ -46,12 +46,12 @@
 
                             </div>
 
-                            <div class="row mt-3 gx-3">
+                            <div class="row mt-lg-3 mt-2 gx-3">
 
                                 <div class="col-lg-6">
                                     <div>
                                         <a href="{{ $banner->image_two_url }}">
-                                            <img class="img-fluid w-100 responsive-img"
+                                            <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                 src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
                                                 alt="" />
                                         </a>
@@ -61,7 +61,7 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <a href="{{ $banner->image_three_url }}">
-                                            <img class="img-fluid w-100 responsive-img"
+                                            <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                 src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
                                                 alt="" />
                                         </a>
@@ -232,6 +232,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p class="coupon-title mb-0 pe-3 text-center fs-6">
+                                            No Tags Found...
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="d-flex align-items-center">
+{{-- Slider Buttons --}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body pe-0">
@@ -246,9 +258,9 @@
                                             </button>
                                         </li>
                                         @if ($categories->count() > 0)
-                                            @foreach ($categories as $offercategory)
-                                                <li class="nav-item mb-2" role="presentation">
-
+                                            @foreach ($categories as $index => $offercategory)
+                                                <li class="nav-item mb-2 {{ $index >= 5 ? 'd-none more-tabs' : '' }}"
+                                                    role="presentation">
                                                     <button class="nav-link grab-tabs w-100 rounded-0"
                                                         id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
                                                         data-bs-target="#home-{{ $offercategory->id }}-pane"
@@ -257,28 +269,36 @@
                                                         aria-selected="true">
                                                         {{ $offercategory->name }}
                                                     </button>
-
                                                 </li>
                                             @endforeach
                                         @endif
                                     </ul>
+                                    <div class="d-flex justify-content-center">
+                                        <button id="show-more-btn" class="arrow-btn">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                        <button id="show-less-btn" class="arrow-btn d-none">
+                                            <i class="fa-solid fa-chevron-up"></i>
+                                        </button>
+                                    </div>
                                 </div>
+
                                 <div class="col-lg-9">
                                     <div class="tab-content" id="myTabContent">
 
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
                                             <div class="grab-slider">
-                                                <div class="row grab-items">
+                                                <div class="row grab-items mb-2">
                                                     @foreach ($alloffers as $alloffer)
                                                         <div class="col-lg-4">
-                                                            <div class="card border-0 shadow-sm bg-light">
+                                                            <div class="card border-0 shadow-sm bg-light mb-2">
                                                                 <div class="row p-4 align-items-center">
                                                                     <div class="col-lg-6">
                                                                         <div>
                                                                             <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
                                                                                 width="80px" height="80px"
-                                                                                class="rounded-2 bg-white"
+                                                                                class="rounded-2"
                                                                                 style="object-fit: contain;"
                                                                                 alt=""
                                                                                 onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
@@ -293,7 +313,8 @@
                                                                         @endif
                                                                     </div>
                                                                     <div class="col-lg-12 pt-4 offer_title">
-                                                                        <p class="pb-4 text-black">{{ $alloffer->name }}
+                                                                        <p class="pb-4 text-black">
+                                                                            {{ $alloffer->name }}
                                                                         </p>
                                                                         {{-- <a href="{{ route('offer.details', $alloffer->slug) }}"
                                                                             class="main-color">
@@ -338,13 +359,13 @@
                                                     @if ($offercategory->offers->count() > 0)
                                                         @foreach ($offercategory->offers as $category_offer)
                                                             <div class="col-lg-4 mt-4">
-                                                                <div class="card border-0 shadow-sm bg-light">
+                                                                <div class="card border-0 shadow-sm bg-light mb-2">
                                                                     <div class="row p-4 align-items-center">
                                                                         <div class="col-lg-6">
                                                                             <div>
                                                                                 <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
                                                                                     width="80px" height="80px"
-                                                                                    class="rounded-2 bg-white"
+                                                                                    class="rounded-2"
                                                                                     style="object-fit: contain;"
                                                                                     alt=""
                                                                                     onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
@@ -395,7 +416,7 @@
                                                             </div>
                                                         @endforeach
                                                     @else
-                                                        <h5 class="text-center">No Offer/Coupon Available</h5>
+                                                        <img class="img-fluid" src="{{ asset('images/NoOffers.png') }}" alt="">
                                                     @endif
                                                 </div>
                                             </div>
@@ -655,7 +676,7 @@
                         @forelse ($offerLatests as $offerLatest)
                             <div class="items me-2" style="background-color: #f5f6f8">
                                 <div class="row p-4 align-items-center product-discount-box">
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-7 col-sm-12">
                                         <h4>{{ $offerLatest->name }}</h4>
                                         <p class="py-3">
                                             {{ $offerLatest->short_description }}
@@ -666,7 +687,7 @@
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
-                                            <h6 class="main-color text-center pb-3">{{ $offerLatest->badge }}
+                                            <h6 class="main-color text-center pb-3 pt-4 pt-lg-0">{{ $offerLatest->badge }}
                                             </h6>
                                             <div class="d-flex justify-content-center text-center">
                                                 <img class="img-fluid flat-offer-img rounded-circle"
@@ -998,7 +1019,7 @@
                             @foreach ($bottom_banners as $bottom_banner)
                                 <a href="{{ $bottom_banner['link'] }}">
                                     <div class="items d-flex justify-content-center align-items-center">
-                                        <img class="img-fluid w-100"
+                                        <img class="img-fluid w-100 rounded-3"
                                             src="{{ !empty($bottom_banner['image']) ? url('storage/' . $bottom_banner['image']) : $defaultImage }}"
                                             alt="Banner image" />
                                     </div>
@@ -1051,6 +1072,29 @@
                             $('#servicesContainer').html(data);
                         }
                     });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const showMoreBtn = document.getElementById('show-more-btn');
+                const showLessBtn = document.getElementById('show-less-btn');
+                const moreTabs = document.querySelectorAll('.more-tabs');
+
+                showMoreBtn.addEventListener('click', function() {
+                    moreTabs.forEach(tab => {
+                        tab.classList.remove('d-none');
+                    });
+                    showMoreBtn.classList.add('d-none');
+                    showLessBtn.classList.remove('d-none');
+                });
+
+                showLessBtn.addEventListener('click', function() {
+                    moreTabs.forEach(tab => {
+                        tab.classList.add('d-none');
+                    });
+                    showLessBtn.classList.add('d-none');
+                    showMoreBtn.classList.remove('d-none');
                 });
             });
         </script>

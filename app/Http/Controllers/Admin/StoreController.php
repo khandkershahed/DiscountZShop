@@ -54,32 +54,56 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'category_id' => 'nullable|exists:categories,id',
-            'country_id' => 'array',
-            'country_id.*' => 'exists:countries,id',
-            'division_id' => 'array',
-            'division_id.*' => 'exists:divisions,id',
-            'city_id' => 'array',
-            'city_id.*' => 'exists:cities,id',
-            'area_id' => 'array',
-            'area_id.*' => 'exists:areas,id',
-            'name' => 'nullable|string|max:255',
-            'url' => 'nullable|url',
-            'status' => 'nullable|in:active,inactive',
-            'logo' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
-            'image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
-            'banner_image' => 'nullable|file|mimes:jpeg,png,jpg|max:2048',
-            'about' => 'nullable|string',
+            'country_id'        => 'nullable|array',
+            'country_id.*'      => 'nullable|exists:countries,id',
+            'division_id'       => 'nullable|array',
+            'division_id.*'     => 'nullable|exists:divisions,id',
+            'city_id'           => 'nullable|array',
+            'city_id.*'         => 'nullable|exists:cities,id',
+            'area_id'           => 'nullable|array',
+            'area_id.*'         => 'nullable|exists:areas,id',
+            'category_id'       => 'nullable|exists:categories,id',
+            'name'              => 'required|string|max:200|unique:stores,name',
+            'badge'             => 'nullable|string',
+            'logo'              => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
+            'image'             => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
+            'banner_image'      => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
+            'about'             => 'nullable|string',
             'offer_description' => 'nullable|string',
-            'location' => 'nullable|string',
-            'description' => 'nullable|string',
+            'location'          => 'nullable|string',
+            'description'       => 'nullable|string',
+            'url'               => 'nullable|url|max:255',
+            'category'          => 'nullable|string',
+            'status'            => 'required|in:active,inactive',
+        ], [
+            'country_id.*.exists'     => 'One of the selected countries is invalid.',
+            'division_id.*.exists'    => 'One of the selected divisions is invalid.',
+            'city_id.*.exists'        => 'One of the selected cities is invalid.',
+            'area_id.*.exists'        => 'One of the selected areas is invalid.',
+            'category_id.exists'      => 'The selected category is invalid.',
+            'name.required'           => 'The name field is required.',
+            'name.unique'             => 'The name has already been taken.',
+            'name.max'                => 'The name may not be greater than 30 characters.',
+            'slug.required'           => 'The slug field is required.',
+            'slug.unique'             => 'The slug has already been taken.',
+            'slug.max'                => 'The slug may not be greater than 40 characters.',
+            'badge.string'            => 'The badge must be a string.',
+            'logo.file'               => 'The logo must be a file.',
+            'image.file'              => 'The image must be a file.',
+            'banner_image.file'       => 'The banner image must be a file.',
+            'url.url'                 => 'The URL format is invalid.',
+            'url.max'                 => 'The URL may not be greater than 255 characters.',
+            'status.required'         => 'The status field is required.',
+            'status.in'               => 'The selected status is invalid. It must be either active or inactive.',
         ]);
+
         if ($validator->fails()) {
             foreach ($validator->messages()->all() as $message) {
                 Session::flash('error', $message);
             }
             return redirect()->back()->withInput();
         }
+
         DB::beginTransaction();
 
         try {

@@ -5,7 +5,7 @@
             <div class="col-lg-6">
                 <div>
                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                        width="80px" height="80px" class="rounded-2 bg-white"
+                        width="80px" height="80px" class="rounded-2"
                         style="object-fit: cover;" alt=""
                         onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
                 </div>
