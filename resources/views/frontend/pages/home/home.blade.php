@@ -87,7 +87,7 @@
                     <div class="card rounded-0 border-0 shadow-sm">
                         <div class="card-header py-3 px-5" style="border-bottom: 1px solid #eee">
                             <div class="row align-items-center">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-sm-4">
                                     <div class="d-flex align-items-center">
                                         <h4 class="coupon-title mb-0 pe-3">
                                             Available Coupon
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <form class="d-flex w-75" role="search">
                                             {{-- <div class="d-flex w-100">
@@ -123,7 +123,8 @@
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
                                             </button> --}}
                                         </form>
-                                        <div class="d-flex justify-content-end align-items-center w-25">
+                                        <div
+                                            class="d-flex justify-content-end align-items-center w-25 navigation-slide">
                                             <button type="button" class="custom-prev rounded-circle">
                                                 <i class="fas fa-arrow-left-long"></i>
                                             </button>
@@ -164,7 +165,7 @@
                                                         </p>
                                                     </div>
                                                     <div>
-                                                        <p class="text-white text-center coupon-text pt-1">
+                                                        <p class="text-white text-center coupon-text coupon-code pt-1">
                                                             Code: ”<span
                                                                 id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                                             <a href="javascript:void(0);" class="copy-btn"><i
@@ -192,10 +193,10 @@
         <div class="container px-0">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="text-white">Get 20% on App</h1>
+                    <h1 class="text-white get-discounts-text">Get 20% on App</h1>
                 </div>
                 <div class="col-lg-6">
-                    <div class="d-flex align-items-center justify-content-end">
+                    <div class="d-flex align-items-center justify-content-end get-discounts">
                         <div>
                             <img src="{{ asset('frontend') }}/assets/img/panda.png" alt="" />
                         </div>
@@ -217,8 +218,8 @@
                     <div class="card rounded-0 shadow-sm p-3 grab-card">
                         <div class="card-header border-0 py-3 pb-4 bg-transparent">
                             <div class="row align-items-center">
-                                <div class="col-lg-3">
-                                    <div class="d-flex align-items-center">
+                                <div class="col-lg-3 col-12">
+                                    <div class="d-flex align-items-center grabs-offers">
                                         <h4 class="coupon-title mb-0 pe-3">
                                             Grab Your Offer
                                         </h4>
@@ -232,16 +233,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-12">
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="coupon-title mb-0 pe-3 text-center fs-6">
                                             No Tags Found...
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-12">
                                     <div class="d-flex align-items-center">
-{{-- Slider Buttons --}}
+                                        {{-- Slider Buttons --}}
                                     </div>
                                 </div>
                             </div>
@@ -416,7 +417,8 @@
                                                             </div>
                                                         @endforeach
                                                     @else
-                                                        <img class="img-fluid" src="{{ asset('images/NoOffers.png') }}" alt="">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('images/NoOffers.png') }}" alt="">
                                                     @endif
                                                 </div>
                                             </div>
@@ -687,7 +689,8 @@
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
-                                            <h6 class="main-color text-center pb-3 pt-4 pt-lg-0">{{ $offerLatest->badge }}
+                                            <h6 class="main-color text-center pb-3 pt-4 pt-lg-0">
+                                                {{ $offerLatest->badge }}
                                             </h6>
                                             <div class="d-flex justify-content-center text-center">
                                                 <img class="img-fluid flat-offer-img rounded-circle"
@@ -743,7 +746,7 @@
                             <div class="deal-slider">
                                 @forelse ($offerDealLefts as $offerDealLeft)
                                     <div class="items">
-                                        <div class="py-5 d-flex justify-content-center">
+                                        <div class="py-2 d-flex justify-content-center">
                                             <img class="img-fluid rounded-2"
                                                 src="{{ !empty($offerDealLeft->image) ? url('storage/' . $offerDealLeft->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDealLeft->name) }}"
                                                 alt=""
@@ -760,7 +763,7 @@
 
                                         </div>
 
-                                        <div class="py-5 d-flex justify-content-center align-items-center">
+                                        <div class="py-2 d-flex justify-content-center align-items-center">
                                             <a href="{{ route('offer.details', $offerDealLeft->slug) }}"
                                                 class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
