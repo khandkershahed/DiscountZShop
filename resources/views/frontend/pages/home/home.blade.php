@@ -681,17 +681,17 @@
                                     <div class="col-lg-7 col-sm-12">
                                         <h4>{{ $offerLatest->name }}</h4>
                                         <p class="py-3">
-                                            {{ $offerLatest->short_description }}
+                                            {{ \Illuminate\Support\Str::words($offerLatest->short_description, 10, '...') }}
                                         </p>
-                                        <a class="btn btn-common-one rounded-pill px-4"
+                                        <a class="btn btn-dark rounded-pill px-5"
                                             href="{{ route('offer.details', $offerLatest->slug) }}">See
                                             Details</a>
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
-                                            <h6 class="main-color text-center pb-3 pt-4 pt-lg-0">
+                                            <h5 class="main-color text-center pb-3 pt-4 pt-lg-0 fw-bold">
                                                 {{ $offerLatest->badge }}
-                                            </h6>
+                                            </h5>
                                             <div class="d-flex justify-content-center text-center">
                                                 <img class="img-fluid flat-offer-img rounded-circle"
                                                     src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
@@ -846,7 +846,7 @@
                                         </div>
                                         <!-- Product Image -->
                                         <div class="d-flex justify-content-center align-items-center py-3">
-                                            <img class="img-fluid"
+                                            <img class="img-fluid deal-img"
                                                 src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
                                                 alt=""
                                                 onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
@@ -897,7 +897,7 @@
                             <a href="{{ $homepage->offer_slider_image_one_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -906,7 +906,7 @@
                             <a href="{{ $homepage->offer_slider_image_two_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -915,7 +915,7 @@
                             <a href="{{ $homepage->offer_slider_image_three_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -924,7 +924,7 @@
                             <a href="{{ $homepage->offer_slider_image_four_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -975,7 +975,7 @@
                     <div class="slick-slider-partners">
                         @foreach ($brands as $brand)
                             <div class="items d-flex justify-content-center align-items-center partners-logos">
-                                <img class="img-fluid"
+                                <img class="img-fluid partners-logos-single"
                                     src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
                                     alt="" />
                             </div>
@@ -1022,7 +1022,7 @@
                             @foreach ($bottom_banners as $bottom_banner)
                                 <a href="{{ $bottom_banner['link'] }}">
                                     <div class="items d-flex justify-content-center align-items-center">
-                                        <img class="img-fluid w-100 rounded-lg-3 rounded-0"
+                                        <img class="img-fluid w-100 rounded-lg-3 rounded-2"
                                             src="{{ !empty($bottom_banner['image']) ? url('storage/' . $bottom_banner['image']) : $defaultImage }}"
                                             alt="Banner image" />
                                     </div>

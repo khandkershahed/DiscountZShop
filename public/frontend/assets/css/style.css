@@ -566,8 +566,13 @@ p {
     bottom: -24px;
 }
 .flat-offer-img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
+}
+.deal-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
 }
 .product-scroll-show {
     /* height: 783px; */
@@ -1637,6 +1642,11 @@ html {
     max-height: 100%;
     padding: 10px;
 }
+.partners-logos-single{
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+}
 #counter .item h3 {
     color: #4f4e28;
     text-transform: capitalize;
@@ -1749,28 +1759,28 @@ html {
     display: none;
 }
 @media (max-width: 768px) {
-    .menu-offcanvas{
+    .menu-offcanvas {
         width: 100% !important;
     }
-    .grabs-offers{
+    .grabs-offers {
         justify-content: center;
     }
-    .get-discounts-text{
+    .get-discounts-text {
         text-align: center;
     }
-    .get-discounts{
+    .get-discounts {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
     }
-    .coupon-code{
+    .coupon-code {
         position: relative;
         left: -18px;
     }
-    .navigation-slide{
+    .navigation-slide {
         margin-top: -25px;
     }
-    .coupon-title{
+    .coupon-title {
         font-size: 20px;
     }
     .mobile-none-sm {
