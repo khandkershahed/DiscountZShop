@@ -215,14 +215,93 @@
     </nav>
 </header>
 <!-- Offcanvas Menu -->
-<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+<div class="offcanvas menu-offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
     aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="staticBackdropLabel">
+            <a href="{{ route('homePage') }}" class="logo-main">
+                <img class="img-fluid"
+                    src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                    alt="">
+            </a>
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <div>I will not close if you click outside of me.</div>
+        <div class="pt-3">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                    <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('homePage') ? 'active' : '' }}"
+                        href="{{ route('homePage') }}">Home <span class="ps-3">
+                        </span></a>
+                </li>
+                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                    <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
+                        href="{{ route('allOffer') }}">Offers <span class="ps-3">
+                        </span></a>
+                </li>
+                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                    <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
+                        href="{{ route('allBrand') }}">Brands <span class="ps-3">
+                        </span></a>
+                </li>
+                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                    <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
+                        href="{{ route('allStore') }}">Store</a>
+                </li>
+            </ul>
+        </div>
+        <div class="pt-5">
+            <div class="text-center">
+                <h4>Our Location</h4>
+            </div>
+            <div class="d-flex justify-content-center align-items-center pt-2">
+                <p class="ps-3 company-link">Email: {{ optional($setting)->support_email }}</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center pt-2">
+                <p class="ps-3 company-link">Call: {{ optional($setting)->primary_phone }}</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center pt-2">
+                <p class="ps-3 company-link text-center">
+                    {{ optional($setting)->address_line_one }} <br />
+                    {{ optional($setting)->address_line_two }}
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="pt-4 d-flex justify-content-center align-items-center flex-column">
+                <p class="footer-description">Follow us on</p>
+                <div class="pt-1 d-flex justify-content-space-around align-items-center">
+                    <a href="{{ optional($setting)->facebook_url }}" class="p-2">
+                        <i class="fa-brands fa-facebook-f" style="font-size: 22px"></i>
+                    </a>
+                    <a href="{{ optional($setting)->twitter_url }}" class="p-2">
+                        <i class="fa-brands fa-twitter" style="font-size: 22px"></i>
+                    </a>
+                    {{-- <a href="{{ $setting->instagram_url }}" class="p-2">
+                            <i class="fa-brands fa-instagram" style="font-size: 22px"></i>
+                        </a> --}}
+                    <a href="{{ optional($setting)->linkedin_url }}" class="p-2">
+                        <i class="fa-brands fa-linkedin-in" style="font-size: 22px"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="fixed-bottom-footer">
+            <div class="pt-4">
+                <p class="footer-description">
+                    {{ optional($setting)->copyright_title }}
+                </p>
+                <div>
+                    <a href="{{ route('termsCondition') }}" class="pe-3" style="font-size: 14px; color: #808083;">
+                        Terms & Condition
+                    </a>
+                    <a href="{{ route('privacyPolicy') }}" style="font-size: 14px; color: #808083;">
+                        Privacy Policy
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Offcanvas Menu End -->

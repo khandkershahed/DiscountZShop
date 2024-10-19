@@ -87,7 +87,7 @@
                     <div class="card rounded-0 border-0 shadow-sm">
                         <div class="card-header py-3 px-5" style="border-bottom: 1px solid #eee">
                             <div class="row align-items-center">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-sm-4">
                                     <div class="d-flex align-items-center">
                                         <h4 class="coupon-title mb-0 pe-3">
                                             Available Coupon
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <form class="d-flex w-75" role="search">
                                             {{-- <div class="d-flex w-100">
@@ -123,7 +123,8 @@
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
                                             </button> --}}
                                         </form>
-                                        <div class="d-flex justify-content-end align-items-center w-25">
+                                        <div
+                                            class="d-flex justify-content-end align-items-center w-25 navigation-slide">
                                             <button type="button" class="custom-prev rounded-circle">
                                                 <i class="fas fa-arrow-left-long"></i>
                                             </button>
@@ -164,7 +165,7 @@
                                                         </p>
                                                     </div>
                                                     <div>
-                                                        <p class="text-white text-center coupon-text pt-1">
+                                                        <p class="text-white text-center coupon-text coupon-code pt-1">
                                                             Code: ”<span
                                                                 id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                                             <a href="javascript:void(0);" class="copy-btn"><i
@@ -192,10 +193,10 @@
         <div class="container px-0">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="text-white">Get 20% on App</h1>
+                    <h1 class="text-white get-discounts-text">Get 20% on App</h1>
                 </div>
                 <div class="col-lg-6">
-                    <div class="d-flex align-items-center justify-content-end">
+                    <div class="d-flex align-items-center justify-content-end get-discounts">
                         <div>
                             <img src="{{ asset('frontend') }}/assets/img/panda.png" alt="" />
                         </div>
@@ -217,8 +218,8 @@
                     <div class="card rounded-0 shadow-sm p-3 grab-card">
                         <div class="card-header border-0 py-3 pb-4 bg-transparent">
                             <div class="row align-items-center">
-                                <div class="col-lg-3">
-                                    <div class="d-flex align-items-center">
+                                <div class="col-lg-3 col-12">
+                                    <div class="d-flex align-items-center grabs-offers">
                                         <h4 class="coupon-title mb-0 pe-3">
                                             Grab Your Offer
                                         </h4>
@@ -232,16 +233,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-12">
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="coupon-title mb-0 pe-3 text-center fs-6">
                                             No Tags Found...
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-12">
                                     <div class="d-flex align-items-center">
-{{-- Slider Buttons --}}
+                                        {{-- Slider Buttons --}}
                                     </div>
                                 </div>
                             </div>
@@ -416,7 +417,8 @@
                                                             </div>
                                                         @endforeach
                                                     @else
-                                                        <img class="img-fluid" src="{{ asset('images/NoOffers.png') }}" alt="">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('images/NoOffers.png') }}" alt="">
                                                     @endif
                                                 </div>
                                             </div>
@@ -679,16 +681,17 @@
                                     <div class="col-lg-7 col-sm-12">
                                         <h4>{{ $offerLatest->name }}</h4>
                                         <p class="py-3">
-                                            {{ $offerLatest->short_description }}
+                                            {{ \Illuminate\Support\Str::words($offerLatest->short_description, 10, '...') }}
                                         </p>
-                                        <a class="btn btn-common-one rounded-pill px-4"
+                                        <a class="btn btn-dark rounded-pill px-5"
                                             href="{{ route('offer.details', $offerLatest->slug) }}">See
                                             Details</a>
                                     </div>
                                     <div class="col-lg-5">
                                         <div>
-                                            <h6 class="main-color text-center pb-3 pt-4 pt-lg-0">{{ $offerLatest->badge }}
-                                            </h6>
+                                            <h5 class="main-color text-center pb-3 pt-4 pt-lg-0 fw-bold">
+                                                {{ $offerLatest->badge }}
+                                            </h5>
                                             <div class="d-flex justify-content-center text-center">
                                                 <img class="img-fluid flat-offer-img rounded-circle"
                                                     src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
@@ -743,7 +746,7 @@
                             <div class="deal-slider">
                                 @forelse ($offerDealLefts as $offerDealLeft)
                                     <div class="items">
-                                        <div class="py-5 d-flex justify-content-center">
+                                        <div class="py-2 d-flex justify-content-center">
                                             <img class="img-fluid rounded-2"
                                                 src="{{ !empty($offerDealLeft->image) ? url('storage/' . $offerDealLeft->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDealLeft->name) }}"
                                                 alt=""
@@ -760,7 +763,7 @@
 
                                         </div>
 
-                                        <div class="py-5 d-flex justify-content-center align-items-center">
+                                        <div class="py-2 d-flex justify-content-center align-items-center">
                                             <a href="{{ route('offer.details', $offerDealLeft->slug) }}"
                                                 class="btn btn-common-one rounded-pill px-4">See
                                                 Details</a>
@@ -843,7 +846,7 @@
                                         </div>
                                         <!-- Product Image -->
                                         <div class="d-flex justify-content-center align-items-center py-3">
-                                            <img class="img-fluid"
+                                            <img class="img-fluid deal-img"
                                                 src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
                                                 alt=""
                                                 onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
@@ -894,7 +897,7 @@
                             <a href="{{ $homepage->offer_slider_image_one_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -903,7 +906,7 @@
                             <a href="{{ $homepage->offer_slider_image_two_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -912,7 +915,7 @@
                             <a href="{{ $homepage->offer_slider_image_three_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -921,7 +924,7 @@
                             <a href="{{ $homepage->offer_slider_image_four_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-0" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
                                 </div>
                             </a>
                         </div>
@@ -972,7 +975,7 @@
                     <div class="slick-slider-partners">
                         @foreach ($brands as $brand)
                             <div class="items d-flex justify-content-center align-items-center partners-logos">
-                                <img class="img-fluid"
+                                <img class="img-fluid partners-logos-single"
                                     src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
                                     alt="" />
                             </div>
@@ -1019,7 +1022,7 @@
                             @foreach ($bottom_banners as $bottom_banner)
                                 <a href="{{ $bottom_banner['link'] }}">
                                     <div class="items d-flex justify-content-center align-items-center">
-                                        <img class="img-fluid w-100 rounded-lg-3 rounded-0"
+                                        <img class="img-fluid w-100 rounded-lg-3 rounded-2"
                                             src="{{ !empty($bottom_banner['image']) ? url('storage/' . $bottom_banner['image']) : $defaultImage }}"
                                             alt="Banner image" />
                                     </div>

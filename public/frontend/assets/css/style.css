@@ -566,8 +566,13 @@ p {
     bottom: -24px;
 }
 .flat-offer-img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
+}
+.deal-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
 }
 .product-scroll-show {
     /* height: 783px; */
@@ -1637,6 +1642,11 @@ html {
     max-height: 100%;
     padding: 10px;
 }
+.partners-logos-single{
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+}
 #counter .item h3 {
     color: #4f4e28;
     text-transform: capitalize;
@@ -1749,6 +1759,30 @@ html {
     display: none;
 }
 @media (max-width: 768px) {
+    .menu-offcanvas {
+        width: 100% !important;
+    }
+    .grabs-offers {
+        justify-content: center;
+    }
+    .get-discounts-text {
+        text-align: center;
+    }
+    .get-discounts {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .coupon-code {
+        position: relative;
+        left: -18px;
+    }
+    .navigation-slide {
+        margin-top: -25px;
+    }
+    .coupon-title {
+        font-size: 20px;
+    }
     .mobile-none-sm {
         display: none;
     }
@@ -1819,5 +1853,18 @@ html {
         border-radius: 100%;
         /* background: #f15a2d; */
         color: #808080;
+    }
+    .fixed-bottom-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #f8f9fa; /* Optional: Adjust this to fit your design */
+        padding: 10px 0; /* Padding for spacing */
+        text-align: center; /* Center text in the footer */
+        z-index: 100; /* Ensure it's on top of other elements */
+    }
+
+    .footer-description {
+        margin-bottom: 0; /* Prevent extra spacing */
     }
 }
