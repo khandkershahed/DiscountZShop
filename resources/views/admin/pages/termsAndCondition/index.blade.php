@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    @push('scripts')
+    {{-- @push('scripts')
         <script>
             $(document).ready(function() {
 
@@ -109,5 +109,5 @@
                 }
             });
         </script>
-    @endpush
+    @endpush --}}
 </x-admin-app-layout>

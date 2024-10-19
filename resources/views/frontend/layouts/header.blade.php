@@ -27,7 +27,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <!-- Current Location -->
                         <a class="nav-link current-location shadow-sm" aria-current="page"
-                            title="Location Wise Current Discount" href="#">
+                            title="Location Wise Current Discount" href="javascript:;">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
                                 viewBox="0 0 512 512" style="enable-background: new 0 0 512 512" xml:space="preserve"
@@ -105,11 +105,22 @@
 
                                                                         <span class="divider-underline"></span>
 
+                                                                        @php
+
+                                                                            $offers = App\Models\Offer::where(
+                                                                                'category_id',
+                                                                                $header_category_child->id,
+                                                                            )->get();
+
+                                                                        @endphp
+
                                                                         <ul class="ps-0 pt-3 main-category-dropdown">
-                                                                            <li class="p-1">
-                                                                                <a
-                                                                                    href="{{ route('store.details', 'aarong') }}">Aarong</a>
-                                                                            </li>
+                                                                            @foreach ($offers as $offer)
+                                                                                <li class="p-1">
+                                                                                    <a
+                                                                                        href="{{ route('store.details', 'aarong') }}">{{ $offer->name }}</a>
+                                                                                </li>
+                                                                            @endforeach
                                                                         </ul>
 
                                                                     </div>
@@ -172,12 +183,17 @@
                                         </svg>
                                     </div>
                                 </a>
+                                @php
+                                    $stores = App\Models\Store::latest()->get();
+                                @endphp
                                 <ul class="dropdown-menu toggler-menu py-3">
-                                    <li class="dropdown-item pb-2">
-                                        <a href="{{ route('store.details', 'aarong') }}"><i
-                                                class="fa-solid fa-house-user main-color pe-2"></i>
-                                            Aarong</a>
-                                    </li>
+                                    @foreach ($stores as $store)
+                                        <li class="dropdown-item pb-2">
+                                            <a href="javascript:;"><i
+                                                    class="fa-solid fa-house-user main-color pe-2">{{ $store->name }}</i>
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
 
