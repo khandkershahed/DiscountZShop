@@ -169,7 +169,8 @@
                                                             Code: ”<span
                                                                 id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                                             <a href="javascript:void(0);" class="copy-btn"><i
-                                                                    class="fas fa-copy ps-2"></i></a>
+                                                                    class="fas fa-copy ps-2"></i>
+                                                            </a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -209,17 +210,16 @@
         </div>
     </section>
     <!-- App Discount End -->
-
     <!-- Grab Your Offer -->
     <section style="background: #f9f9f9">
-        <div class="container pt-70 pb-70 px-0 biggest-deals">
+        <div class="container pt-70 pb-70 px-0">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card rounded-0 shadow-sm p-3 grab-card">
                         <div class="card-header border-0 py-3 pb-4 bg-transparent">
                             <div class="row align-items-center">
-                                <div class="col-lg-3 col-12">
-                                    <div class="d-flex align-items-center grabs-offers">
+                                <div class="col-lg-3">
+                                    <div class="d-flex align-items-center">
                                         <h4 class="coupon-title mb-0 pe-3">
                                             Grab Your Offer
                                         </h4>
@@ -233,16 +233,31 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="coupon-title mb-0 pe-3 text-center fs-6">
-                                            No Tags Found...
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-12">
-                                    <div class="d-flex align-items-center">
-                                        {{-- Slider Buttons --}}
+                                <div class="col-lg-9">
+                                    <div class="d-flex justify-content-space-between align-items-center">
+                                        <!-- Grab Tags -->
+                                        <div class="w-75">
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Hot Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Buy 2 Get 1</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20%
+                                                    Off</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Buy 1 Get 1</span></a>
+                                        </div>
+                                        <!-- Grab End -->
+                                        <div class="d-flex justify-content-end align-items-center w-25">
+                                            <button type="button" class="grab-custom-prev rounded-circle">
+                                                <i class="fas fa-arrow-left-long"></i>
+                                            </button>
+                                            <button type="button" class="grab-custom-next rounded-circle ms-3">
+                                                <i class="fas fa-arrow-right-long"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -260,7 +275,7 @@
                                         </li>
                                         @if ($categories->count() > 0)
                                             @foreach ($categories as $index => $offercategory)
-                                                <li class="nav-item mb-2 {{ $index >= 5 ? 'd-none more-tabs' : '' }}"
+                                                <li class="nav-item mb-2 {{ $index >= 6 ? 'd-none more-tabs' : '' }}"
                                                     role="presentation">
                                                     <button class="nav-link grab-tabs w-100 rounded-0"
                                                         id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
@@ -283,65 +298,47 @@
                                         </button>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-9">
                                     <div class="tab-content" id="myTabContent">
-
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
                                             <div class="grab-slider">
-                                                <div class="row grab-items mb-2">
+                                                <div class="row grab-items">
                                                     @foreach ($alloffers as $alloffer)
-                                                        <div class="col-lg-4">
-                                                            <div class="card border-0 shadow-sm bg-light mb-2">
-                                                                <div class="row p-4 align-items-center">
-                                                                    <div class="col-lg-6 col-6">
-                                                                        <div>
-                                                                            <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                                width="80px" height="80px"
-                                                                                class="rounded-2"
-                                                                                style="object-fit: contain;"
-                                                                                alt=""
-                                                                                onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
+                                                        <div class="col-lg-4 mb-4">
+                                                            <div class="coupon-box">
+                                                                <div class="coupon-box-content">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-4">
+                                                                            <img class="img-fluid"
+                                                                                src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                                class="img-fluid" alt="Logo" />
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 col-6">
-                                                                        @if (!empty($alloffer->badge))
-                                                                            {{-- <span>Upto</span> --}}
-                                                                            <h3 class="main-color special-font-box">
-                                                                                {{ $alloffer->badge }}
-                                                                            </h3>
-                                                                        @endif
-                                                                    </div>
-                                                                    <div class="col-lg-12 pt-4 offer_title">
-                                                                        <p class="pb-4 text-black">
-                                                                            {{ $alloffer->name }}
-                                                                        </p>
-                                                                        {{-- <a href="{{ route('offer.details', $alloffer->slug) }}"
-                                                                            class="main-color">
-                                                                            <small>See All In Store</small>
-                                                                        </a> --}}
-                                                                    </div>
-                                                                    <div class="col-lg-12 pt-4">
-                                                                        <div class="d-flex">
-                                                                            <a href="{{ route('offer.details', $alloffer->slug) }}"
-                                                                                class="w-100 btn-common-one rounded-3">
-                                                                                <small>View</small>
-                                                                            </a>
+                                                                        <div class="col-8 text-center">
+                                                                            <div
+                                                                                class="d-flex justify-content-center align-items-center pb-2">
+                                                                                <p class="">
+                                                                                    <span
+                                                                                        class="para-font">Get</span><br>
+                                                                                    <span
+                                                                                        class="ps-2 para-font">Upto</span>
+                                                                                </p>
+                                                                                @if (!empty($alloffer->badge))
+                                                                                    <h1>{{ substr($alloffer->badge, 0, -4) }}
+                                                                                    </h1>
+                                                                                @endif
+                                                                                <p class="coupon-off">OFF</p>
+                                                                            </div>
+
                                                                             @if (!empty($alloffer->coupon_code))
-                                                                                <a href="javascript:void(0);"
-                                                                                    class="w-100 btn-common-three rounded-3 ms-2"
-                                                                                    onclick="copyCouponCode('{{ $alloffer->coupon_code }}')">
-                                                                                    Coupon <i
-                                                                                        class="fa-solid fa-copy"></i>
-                                                                                </a>
+                                                                                <p class="para-font coupon-extra">
+                                                                                    Code: {{ $alloffer->coupon_code }}
+                                                                                    <a href="javascript:void(0);"
+                                                                                        class="copy-btn"><i
+                                                                                            class="fa-regular fa-copy"></i></a>
+                                                                                </p>
                                                                             @endif
                                                                         </div>
-                                                                        <p class="pt-2 text-center countdown"
-                                                                            data-expire-date="{{ $alloffer->expiry_date }}">
-                                                                            <span class="main-color">Expire In:</span>
-                                                                            <span class="countdown-timer"> Days</span>
-                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -353,73 +350,63 @@
 
                                         @foreach ($categories as $offercategory)
                                             <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane"
-                                                role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}"
+                                                role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab"
                                                 tabindex="0">
-
-                                                <div class="row">
-                                                    @if ($offercategory->offers->count() > 0)
-                                                        @foreach ($offercategory->offers as $category_offer)
-                                                            <div class="col-lg-4 mt-4">
-                                                                <div class="card border-0 shadow-sm bg-light mb-2">
-                                                                    <div class="row p-4 align-items-center">
-                                                                        <div class="col-lg-6">
-                                                                            <div>
-                                                                                <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                                    width="80px" height="80px"
-                                                                                    class="rounded-2"
-                                                                                    style="object-fit: contain;"
-                                                                                    alt=""
-                                                                                    onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-lg-6">
-                                                                            @if (!empty($category_offer->badge))
-                                                                                {{-- <span>Upto</span> --}}
-                                                                                <h3
-                                                                                    class="main-color special-font-box">
-                                                                                    {{ $category_offer->badge }}
-                                                                                </h3>
-                                                                            @endif
-                                                                        </div>
-                                                                        <div class="col-lg-12 pt-4 offer_title">
-                                                                            <p class="pb-4 text-black">
-                                                                                {{ $category_offer->name }}</p>
-                                                                            {{-- <a href="{{ route('offer.details', $category_offer->slug) }}"
-                                                                                class="main-color">
-                                                                                <small>See All In Store</small>
-                                                                            </a> --}}
-                                                                        </div>
-                                                                        <div class="col-lg-12 pt-4">
-                                                                            <div class="d-flex">
-                                                                                <a href="{{ route('offer.details', $category_offer->slug) }}"
-                                                                                    class="w-100 btn-common-one rounded-3">
-                                                                                    <small>View</small>
-                                                                                </a>
-                                                                                @if (!empty($category_offer->coupon_code))
-                                                                                    <a href="javascript:void(0);"
-                                                                                        class="w-100 btn-common-three rounded-3 ms-2"
-                                                                                        onclick="copyCouponCode('{{ $category_offer->coupon_code }}')">
-                                                                                        Coupon <i
-                                                                                            class="fa-solid fa-copy"></i>
+                                                <div class="grab-slider">
+                                                    <div class="row grab-items">
+                                                        @if ($offercategory->offers->count() > 0)
+                                                            @foreach ($offercategory->offers as $category_offer)
+                                                                <div class="col-lg-4 mb-4">
+                                                                    <div class="coupon-box">
+                                                                        <div class="coupon-box-content">
+                                                                            <div class="row align-items-center">
+                                                                                <div class="col-4">
+                                                                                    <img class="img-fluid"
+                                                                                        src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                        class="img-fluid"
+                                                                                        alt="Logo" />
+                                                                                </div>
+                                                                                <div class="col-8 text-center">
+                                                                                    <div
+                                                                                        class="d-flex justify-content-center align-items-center pb-2">
+                                                                                        <p class="">
+                                                                                            <span
+                                                                                                class="para-font">Get</span><br>
+                                                                                            <span
+                                                                                                class="ps-2 para-font">Upto</span>
+                                                                                        </p>
+                                                                                        @if (!empty($category_offer->badge))
+                                                                                            <h1>{{ substr($category_offer->badge, 0, -4) }}
+                                                                                            </h1>
+                                                                                        @endif
+                                                                                        <p class="coupon-off">OFF</p>
+                                                                                    </div>
+                                                                                    @if (!empty($category_offer->coupon_code))
+                                                                                        <p
+                                                                                            class="para-font coupon-extra">
+                                                                                            Code:
+                                                                                            {{ $category_offer->coupon_code }}
+                                                                                            <a href="javascript:void(0);"
+                                                                                                class="copy-btn"><i
+                                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                                        </p>
+                                                                                    @endif
+                                                                                    <a href="{{ route('offer.details', $category_offer->slug) }}"
+                                                                                        class="w-100 btn-common-one rounded-3">
+                                                                                        <small>View</small>
                                                                                     </a>
-                                                                                @endif
+                                                                                </div>
                                                                             </div>
-                                                                            <p class="pt-2 text-center countdown"
-                                                                                data-expire-date="{{ $category_offer->expiry_date }}">
-                                                                                <span class="main-color">Expire
-                                                                                    In:</span>
-                                                                                <span class="countdown-timer">
-                                                                                    Days</span>
-                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        @endforeach
-                                                    @else
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('images/NoOffers.png') }}" alt="">
-                                                    @endif
+                                                            @endforeach
+                                                        @else
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('images/NoOffers.png') }}"
+                                                                alt="">
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -435,16 +422,13 @@
     <!-- Grab Your Offer End -->
 
     <!-- Promotion Product -->
+
     @if (optional($homepage)->brand)
         <section>
             <div class="container px-0 pb-70 biggest-deals">
                 <div class="row gx-4 promotion-container align-items-center">
                     <div class="col-lg-12 py-5">
                         <h1 class="promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
-                        {{-- <p class="text-center">
-                            Problems trying to resolve the conflict between <br />
-                            the two major realms of Classical physics: Newtonian mechanics
-                        </p> --}}
                     </div>
                     <div class="col-lg-4">
                         <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
@@ -478,37 +462,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
-                            <div class="col-lg-6">
-                                <div>
-                                    <img src="{{ asset('frontend') }}/assets/img/product/04.png"
-                                        class="img-fluid w-100" alt="" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="pe-2">
-                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <del>BDT 3350</del>
-                                            <h6 class="main-color">BDT 2550</h6>
-                                        </div>
-                                        <div class="pe-4">
-                                            <a href="" class="btn-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                    viewBox="0 0 30 30" fill="none">
-                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                    <path
-                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                        fill="white" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Repeat the product showcase for other products -->
                     </div>
                     <div class="col-lg-4 px-0">
                         <div class="d-flex justify-content-center">
@@ -517,74 +471,19 @@
                                 alt="" />
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
-                            <div class="col-lg-6">
-                                <div>
-                                    <img src="{{ asset('frontend') }}/assets/img/product/03.png"
-                                        class="img-fluid w-100" alt="" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="pe-2">
-                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <del>BDT 3350</del>
-                                            <h6 class="main-color">BDT 2550</h6>
-                                        </div>
-                                        <div class="pe-4">
-                                            <a href="" class="btn-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                    viewBox="0 0 30 30" fill="none">
-                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                    <path
-                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                        fill="white" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center bg-light py-4 mt-3 product-showcase brand-home-img">
-                            <div class="col-lg-6">
-                                <div>
-                                    <img src="{{ asset('frontend') }}/assets/img/product/04.png"
-                                        class="img-fluid w-100" alt="" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="pe-2">
-                                    <h5>Oraimo Riff 2 Half in-Ear True Wireless Earbuds</h5>
-                                    <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <del>BDT 3350</del>
-                                            <h6 class="main-color">BDT 2550</h6>
-                                        </div>
-                                        <div class="pe-4">
-                                            <a href="" class="btn-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                    viewBox="0 0 30 30" fill="none">
-                                                    <circle cx="15" cy="15" r="15" fill="#F15A2D" />
-                                                    <path
-                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                        fill="white" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
+    @else
+        <!-- Fallback section for no data -->
+        <section>
+            <div class="container text-center py-5">
+                <h2 class="my-4">No Deals Available</h2>
+                <img src="{{ asset('images/NoOffers.png') }}" alt="No Data Available" class="img-fluid w-100">
+            </div>
+        </section>
     @endif
+
     <!-- Promotion Product End -->
 
     <!-- Grab By Location -->
@@ -897,7 +796,8 @@
                             <a href="{{ $homepage->offer_slider_image_one_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
@@ -906,7 +806,8 @@
                             <a href="{{ $homepage->offer_slider_image_two_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
@@ -915,7 +816,8 @@
                             <a href="{{ $homepage->offer_slider_image_three_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
@@ -924,7 +826,8 @@
                             <a href="{{ $homepage->offer_slider_image_four_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>

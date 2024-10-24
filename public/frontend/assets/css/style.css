@@ -570,9 +570,9 @@ p {
     height: 130px;
 }
 .deal-img {
-    width: 100%;
+    width: 260px;
     height: 280px;
-    object-fit: cover;
+    object-fit: contain;
 }
 .product-scroll-show {
     /* height: 783px; */
@@ -748,7 +748,10 @@ p {
     text-align: center;
     background: #e1e1e145;
 }
-
+.grab-offer-tabs-box {
+    height: 430px;
+    overflow: auto;
+}
 ::placeholder {
     color: #cbcbcb !important;
     opacity: 0.5; /* Firefox */
