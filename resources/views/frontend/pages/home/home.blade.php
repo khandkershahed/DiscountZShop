@@ -114,14 +114,14 @@
                                 <div class="col-lg-8 col-sm-8">
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <form class="d-flex w-75" role="search">
-                                            {{-- <div class="d-flex w-100">
+                                            <div class="d-flex w-100">
                                                 <input class="form-control rounded-pill form-control-sm" type="search"
                                                     placeholder="Search Coupon..." aria-label="Search Coupon..." />
                                             </div>
                                             <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
-                                            </button> --}}
+                                            </button>
                                         </form>
                                         <div
                                             class="d-flex justify-content-end align-items-center w-25 navigation-slide">
