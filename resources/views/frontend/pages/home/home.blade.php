@@ -302,49 +302,41 @@
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
-                                            <div class="grab-slider">
-                                                <div class="row grab-items">
-                                                    @foreach ($alloffers as $alloffer)
-                                                        <div class="col-lg-4 mb-4">
-                                                            <div class="coupon-box">
-                                                                <div class="coupon-box-content">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-4">
-                                                                            <img class="img-fluid"
-                                                                                src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                                class="img-fluid" alt="Logo" />
-                                                                        </div>
-                                                                        <div class="col-8 text-center">
-                                                                            <div
-                                                                                class="d-flex justify-content-center align-items-center pb-2">
-                                                                                <p class="">
-                                                                                    <span
-                                                                                        class="para-font">Get</span><br>
-                                                                                    <span
-                                                                                        class="ps-2 para-font">Upto</span>
-                                                                                </p>
-                                                                                @if (!empty($alloffer->badge))
-                                                                                    <h1>{{ substr($alloffer->badge, 0, -4) }}
-                                                                                    </h1>
-                                                                                @endif
-                                                                                <p class="coupon-off">OFF</p>
-                                                                            </div>
-
-                                                                            @if (!empty($alloffer->coupon_code))
-                                                                                <p class="para-font coupon-extra">
-                                                                                    Code: {{ $alloffer->coupon_code }}
-                                                                                    <a href="javascript:void(0);"
-                                                                                        class="copy-btn"><i
-                                                                                            class="fa-regular fa-copy"></i></a>
-                                                                                </p>
+                                            <div class="row grab-items">
+                                                @foreach ($alloffers as $alloffer) <!-- Removed the limit -->
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                            alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex justify-content-center align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span><br>
+                                                                                <span class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            @if (!empty($alloffer->badge))
+                                                                                <h1>{{ substr($alloffer->badge, 0, -4) }}</h1>
                                                                             @endif
+                                                                            <p class="coupon-off">OFF</p>
                                                                         </div>
+
+                                                                        @if (!empty($alloffer->coupon_code))
+                                                                            <p class="para-font coupon-extra">
+                                                                                Code: {{ $alloffer->coupon_code }}
+                                                                                <a href="javascript:void(0);" class="copy-btn"><i class="fa-regular fa-copy"></i></a>
+                                                                            </p>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endforeach
-                                                </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
 
@@ -359,44 +351,44 @@
                                                                 <div class="col-lg-4 mb-4">
                                                                     <div class="coupon-box">
                                                                         <div class="coupon-box-content">
-                                                                            <div class="row align-items-center">
-                                                                                <div class="col-4">
-                                                                                    <img class="img-fluid"
-                                                                                        src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                                        class="img-fluid"
-                                                                                        alt="Logo" />
-                                                                                </div>
-                                                                                <div class="col-8 text-center">
-                                                                                    <div
-                                                                                        class="d-flex justify-content-center align-items-center pb-2">
-                                                                                        <p class="">
-                                                                                            <span
-                                                                                                class="para-font">Get</span><br>
-                                                                                            <span
-                                                                                                class="ps-2 para-font">Upto</span>
-                                                                                        </p>
-                                                                                        @if (!empty($category_offer->badge))
-                                                                                            <h1>{{ substr($category_offer->badge, 0, -4) }}
-                                                                                            </h1>
-                                                                                        @endif
-                                                                                        <p class="coupon-off">OFF</p>
+                                                                            <a
+                                                                                href="{{ route('offer.details', $category_offer->slug) }}">
+                                                                                <div class="row align-items-center">
+                                                                                    <div class="col-4">
+                                                                                        <img class="img-fluid"
+                                                                                            src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                            class="img-fluid"
+                                                                                            alt="Logo" />
                                                                                     </div>
-                                                                                    @if (!empty($category_offer->coupon_code))
-                                                                                        <p
-                                                                                            class="para-font coupon-extra">
-                                                                                            Code:
-                                                                                            {{ $category_offer->coupon_code }}
-                                                                                            <a href="javascript:void(0);"
-                                                                                                class="copy-btn"><i
-                                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                                        </p>
-                                                                                    @endif
-                                                                                    <a href="{{ route('offer.details', $category_offer->slug) }}"
-                                                                                        class="w-100 btn-common-one rounded-3">
-                                                                                        <small>View</small>
-                                                                                    </a>
+                                                                                    <div class="col-8 text-center">
+                                                                                        <div
+                                                                                            class="d-flex justify-content-center align-items-center pb-2">
+                                                                                            <p class="">
+                                                                                                <span
+                                                                                                    class="para-font">Get</span><br>
+                                                                                                <span
+                                                                                                    class="ps-2 para-font">Upto</span>
+                                                                                            </p>
+                                                                                            @if (!empty($category_offer->badge))
+                                                                                                <h1>{{ substr($category_offer->badge, 0, -4) }}
+                                                                                                </h1>
+                                                                                            @endif
+                                                                                            <p class="coupon-off">OFF
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        @if (!empty($category_offer->coupon_code))
+                                                                                            <p
+                                                                                                class="para-font coupon-extra">
+                                                                                                Code:
+                                                                                                {{ $category_offer->coupon_code }}
+                                                                                                <a href="javascript:void(0);"
+                                                                                                    class="copy-btn"><i
+                                                                                                        class="fa-regular fa-copy"></i></a>
+                                                                                            </p>
+                                                                                        @endif
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
+                                                                            </a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -580,7 +572,7 @@
                                     <div class="col-lg-7 col-sm-12">
                                         <h4>{{ $offerLatest->name }}</h4>
                                         <p class="py-3">
-                                            {{ \Illuminate\Support\Str::words($offerLatest->short_description, 10, '...') }}
+                                            {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
                                         </p>
                                         <a class="btn btn-dark rounded-pill px-5"
                                             href="{{ route('offer.details', $offerLatest->slug) }}">See

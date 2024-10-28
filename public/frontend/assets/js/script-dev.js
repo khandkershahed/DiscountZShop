@@ -64,7 +64,7 @@ $(document).ready(function () {
             {
                 breakpoint: 1024, // At screen widths of 1024px and below
                 settings: {
-                    slidesToShow: 3, // Show 3 slides at a time
+                    slidesToShow: 1, // Show 3 slides at a time
                 },
             },
             {

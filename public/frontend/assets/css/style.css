@@ -575,7 +575,7 @@ p {
     object-fit: contain;
 }
 .product-scroll-show {
-    /* height: 783px; */
+    height: 770px;
     overflow-x: hidden;
 }
 .mapoverlay {
