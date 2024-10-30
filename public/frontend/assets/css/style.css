@@ -1659,7 +1659,7 @@ html {
     max-height: 100%;
     padding: 10px;
 }
-.partners-logos-single{
+.partners-logos-single {
     width: 100%;
     height: 60px;
     object-fit: contain;
@@ -1775,14 +1775,14 @@ html {
 .mobile-show {
     display: none;
 }
-.deal-hbox{
+.deal-hbox {
     padding-bottom: 0;
 }
 @media (max-width: 768px) {
-    .product_discount_box{
+    .product_discount_box {
         text-align: center;
     }
-    #mapsidebar{
+    #mapsidebar {
         height: auto;
     }
     .menu-offcanvas {
@@ -1816,7 +1816,7 @@ html {
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    .available-cp{
+    .available-cp {
         margin: auto;
     }
     .latest-offers {
@@ -1826,7 +1826,7 @@ html {
     .mobile-show {
         display: block;
     }
-    .deal-hbox{
+    .deal-hbox {
         padding-bottom: 5rem;
     }
     .center-sm {
@@ -1900,4 +1900,98 @@ html {
     .footer-description {
         margin-bottom: 0; /* Prevent extra spacing */
     }
+}
+
+.vendor-logo {
+    width: 130px;
+}
+.vendor-menus {
+    background: transparent;
+    color: #252525;
+    height: 90px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.vendor-menus.active {
+    background: #f15a2d;
+    color: #fff;
+    height: 90px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.vendor-menus:hover {
+    background: #e3e1e1;
+    color: #f15a2d;
+    height: 90px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    transition: 0.5s all;
+}
+.vendor-banners img {
+    height: 410px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Style the overlay container */
+.overlay-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-container img {
+    display: block;
+    width: 100%;
+    transition: transform 0.5s ease; /* Add transition for zoom effect */
+}
+
+/* Zoom effect on image hover */
+.overlay-container:hover img {
+    transform: scale(1.1); /* Slightly zoom the image */
+}
+
+/* Common overlay styling */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    transform-origin: bottom left; /* Start animation from bottom-left */
+    transform: scale(0); /* Initial scale set to 0 */
+    transition: transform 0.5s ease;
+}
+
+/* Staggered animation for each overlay layer */
+.overlay-1 {
+    background: rgba(0, 0, 0, 0.2); /* First layer slightly lighter */
+    transition-delay: 0.1s;
+}
+
+.overlay-2 {
+    background: rgba(0, 0, 0, 0.3); /* Second layer slightly darker */
+    transition-delay: 0.2s;
+}
+
+.overlay-3 {
+    background: rgba(0, 0, 0, 0.4); /* Third layer darkest */
+    transition-delay: 0.3s;
+}
+
+/* Hover effect to animate all overlay layers */
+.overlay-container:hover .overlay {
+    transform: scale(1); /* Expand each overlay to cover entire image */
 }

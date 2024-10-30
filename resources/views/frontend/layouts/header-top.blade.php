@@ -60,8 +60,8 @@
                             </ul>
                         </div>
                     @endauth
-                    {{-- <div>
-                        <a href="">
+                    <div>
+                        <a href="{{ route('wallet') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29"
                                 fill="none">
                                 <path
@@ -72,7 +72,7 @@
                                     fill="#252525" />
                             </svg>
                         </a>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>
