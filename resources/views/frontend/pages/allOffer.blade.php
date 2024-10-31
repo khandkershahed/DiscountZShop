@@ -145,7 +145,7 @@
                                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                             width="80px" height="80px" class="rounded-2"
                                                             style="object-fit: contain;" alt=""
-                                                            onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
+                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -187,7 +187,6 @@
                                     </div>
                                 @endforeach
                             </div>
-
                         </div>
 
                         <!-- Other tabs content -->
@@ -212,7 +211,7 @@
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                     width="80px" height="80px" class="rounded-2"
                                                                     style="object-fit: contain;" alt=""
-                                                                    onerror="this.onerror=null; this.src='{{ asset('images/no-brand-img.png') }}';" />
+                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">

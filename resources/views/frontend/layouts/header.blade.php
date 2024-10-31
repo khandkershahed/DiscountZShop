@@ -155,7 +155,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
-                            href="{{ route('allStore') }}">Store</a>
+                            href="{{ route('allStore') }}">Store <span class="ps-3"> |</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link {{ Route::is('vendors') ? 'active' : '' }}"
+                            href="{{ route('vendors') }}">Vendors</a>
                     </li>
                 </ul>
                 <!-- Search Form -->
@@ -230,24 +234,34 @@
     <div class="offcanvas-body">
         <div class="pt-3">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                <li class="nav-item mb-2"
+                    style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
                     <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('homePage') ? 'active' : '' }}"
                         href="{{ route('homePage') }}">Home <span class="ps-3">
                         </span></a>
                 </li>
-                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                <li class="nav-item mb-2"
+                    style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
                     <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
                         href="{{ route('allOffer') }}">Offers <span class="ps-3">
                         </span></a>
                 </li>
-                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                <li class="nav-item mb-2"
+                    style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
                     <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
                         href="{{ route('allBrand') }}">Brands <span class="ps-3">
-                        </span></a>
+                        </span>
+                    </a>
                 </li>
-                <li class="nav-item mb-2" style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                <li class="nav-item mb-2"
+                    style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
                     <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
                         href="{{ route('allStore') }}">Store</a>
+                </li>
+                <li class="nav-item mb-2"
+                    style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                    <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('vendors') ? 'active' : '' }}"
+                        href="{{ route('vendors') }}">Vendors</a>
                 </li>
             </ul>
         </div>

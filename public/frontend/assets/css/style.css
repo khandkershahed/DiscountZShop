@@ -32,6 +32,19 @@
 }
 
 /* CSS Reset */
+/* Global Css Start */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    vertical-align: baseline;
+    list-style-type: none;
+}
 /* Scroll */
 body::-webkit-scrollbar {
     width: 0.3em;
@@ -402,7 +415,8 @@ p {
     width: 100%;
     height: 60px;
     object-fit: contain;
-    padding: 5px;
+    padding: 2px;
+    border-radius: 100%;
 }
 .content-area {
     position: relative;
@@ -1082,12 +1096,10 @@ del {
     height: 40px;
     width: 100%;
     outline: none;
-    border: none;
+    border: 1px solid #25252525;
     border-radius: 5px;
     padding: 0 60px 0 20px;
     font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
 .search-input-store.active input {
@@ -1645,7 +1657,7 @@ html {
     max-height: 100%;
     padding: 10px;
 }
-.partners-logos-single{
+.partners-logos-single {
     width: 100%;
     height: 60px;
     object-fit: contain;
@@ -1761,7 +1773,16 @@ html {
 .mobile-show {
     display: none;
 }
+.deal-hbox {
+    padding-bottom: 0;
+}
 @media (max-width: 768px) {
+    .product_discount_box {
+        text-align: center;
+    }
+    #mapsidebar {
+        height: auto;
+    }
     .menu-offcanvas {
         width: 100% !important;
     }
@@ -1787,10 +1808,14 @@ html {
         font-size: 20px;
     }
     .mobile-none-sm {
-        display: none;
+        display: none !important;
     }
     .biggest-deals {
+        padding-top: 0px;
         padding-bottom: 0px;
+    }
+    .available-cp {
+        margin: auto;
     }
     .latest-offers {
         padding-top: 0px;
@@ -1798,6 +1823,9 @@ html {
     }
     .mobile-show {
         display: block;
+    }
+    .deal-hbox {
+        padding-bottom: 5rem;
     }
     .center-sm {
         display: flex;
@@ -1870,4 +1898,127 @@ html {
     .footer-description {
         margin-bottom: 0; /* Prevent extra spacing */
     }
+}
+
+.vendor-logo {
+    width: 130px;
+}
+.vendor-menus {
+    background: transparent;
+    color: #252525;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-left: 65px;
+    padding-right: 65px;
+}
+.vendor-menus.active {
+    background: #f15a2d;
+    color: #fff;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-left: 65px;
+    padding-right: 65px;
+}
+.vendor-menus:hover {
+    background: #e3e1e1;
+    color: #f15a2d;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-left: 65px;
+    padding-right: 65px;
+    transition: 0.5s all;
+}
+.vendor-banners img {
+    height: 410px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Style the overlay container */
+.overlay-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-container img {
+    display: block;
+    width: 100%;
+    transition: transform 0.5s ease; /* Add transition for zoom effect */
+}
+
+/* Zoom effect on image hover */
+.overlay-container:hover img {
+    transform: scale(1.1); /* Slightly zoom the image */
+}
+
+/* Common overlay styling */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    transform-origin: bottom left; /* Start animation from bottom-left */
+    transform: scale(0); /* Initial scale set to 0 */
+    transition: transform 0.5s ease;
+}
+
+/* Staggered animation for each overlay layer */
+.overlay-1 {
+    background: rgba(0, 0, 0, 0.2); /* First layer slightly lighter */
+    transition-delay: 0.1s;
+}
+
+.overlay-2 {
+    background: rgba(0, 0, 0, 0.3); /* Second layer slightly darker */
+    transition-delay: 0.2s;
+}
+
+.overlay-3 {
+    background: rgba(0, 0, 0, 0.4); /* Third layer darkest */
+    transition-delay: 0.3s;
+}
+
+/* Hover effect to animate all overlay layers */
+.overlay-container:hover .overlay {
+    transform: scale(1); /* Expand each overlay to cover entire image */
+}
+.nav-tabs .nav-item.show .vendor-store,
+.nav-tabs .vendor-store.active {
+    border: 0px solid #eee;
+    background-color: #eee;
+}
+.nav-tabs .nav-item.show .vendor-store,
+.nav-tabs .vendor-store {
+    border: 0px solid #eee;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.nav-tabs .nav-item.show .vendor-store,
+.nav-tabs .vendor-store:hover {
+    border: 0px solid #eee;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.nav-tabs .vendor-store-items:focus,
+.nav-tabs .vendor-store-items:hover {
+    background-color: #eee;
+    border: 0px solid #eee;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.vendor-store-items:focus-visible,
+.vendor-store-items:hover {
+    border: 0px solid #eee;
+    border-radius: 0;
 }
