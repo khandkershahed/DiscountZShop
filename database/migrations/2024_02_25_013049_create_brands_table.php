@@ -18,6 +18,7 @@ return new class extends Migration
             $table->json('city_id')->nullable();
             $table->json('area_id')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
+            $table->foreignId('vendor_id')->nullable()->constrained('vendors')->onDelete('set null');
             $table->string('name', 30)->unique();
             $table->string('slug', 40)->unique();
             $table->string('logo', 150)->nullable();
