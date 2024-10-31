@@ -10,36 +10,42 @@
     <section class="mb-5">
         <div class="container rounded-2 p-0" style="margin-top: -60px; position: relative; z-index: 5;">
             <div class="row align-items-center">
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <div class="vendor-logo p-2 rounded-2" style="background-color: #eee; border: 2px solid #f15a2d;">
                         <img class="img-fluid rounded-2 border" src="{{ asset('images/khassfood.jpg') }}"
                             alt="">
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-5"></div>
-                        <div class="col-lg-7">
-                            <div
-                                class="d-flex align-items-center justify-content-end rounded-2"style="background-color: #eee;">
-                                <a href="{{ route('vendor.overview', ['id' => 'arong']) }}">
-                                    <div class="vendor-menus active rounded-2">
-                                        <h5>Overview</h5>
-                                    </div>
-                                </a>
-                                <a href="{{ route('vendor.stores', ['id' => 'arong']) }}">
-                                    <div class="vendor-menus rounded-2">
-                                        <h5>Stores</h5>
-                                    </div>
-                                </a>
-                                <a href="{{ route('vendor.offers', ['id' => 'arong']) }}">
-                                    <div class="vendor-menus rounded-2">
-                                        <h5>Offers</h5>
-                                    </div>
-                                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div
+                        class="d-flex align-items-center justify-content-end rounded-2 mb-4 mt-0"style="background-color: #eee;">
+                        <a href="{{ route('vendor.overview', ['id' => 'arong']) }}">
+                            <div class="vendor-menus {{ Route::is('vendor.overview') ? 'active' : '' }} rounded-2">
+                                <h6>Overview</h6>
                             </div>
-                        </div>
+                        </a>
+                        <a href="{{ route('vendor.stores', ['id' => 'arong']) }}">
+                            <div class="vendor-menus {{ Route::is('vendor.stores') ? 'active' : '' }} rounded-2">
+                                <h6>Stores</h6>
+                            </div>
+                        </a>
+                        <a href="{{ route('vendor.offers', ['id' => 'arong']) }}">
+                            <div class="vendor-menus {{ Route::is('vendor.offers') ? 'active' : '' }} rounded-2">
+                                <h6>Offers</h6>
+                            </div>
+                        </a>
                     </div>
+                </div>
+                <div class="col-lg-7">
+                    {{-- Empty Column No Need To Add Content --}}
                 </div>
             </div>
         </div>

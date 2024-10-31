@@ -313,6 +313,29 @@
                         </div>
                     </div>
                 </div>
+                {{-- Pagination Of The Data --}}
+                <div class="col-lg-12">
+                    <div class="d-flex justify-content-center align-items-center pb-4 pt-2">
+                        <a href="javascript:void(0)" class="btn-common-one rounded-3 ">
+                            <small>Show More</small>
+                        </a>
+                    </div>
+                    {{-- <div id="wrapper" class="pb-4 pt-2 ">
+                        <ul id="pagination">
+                            <li><a class="" href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#" class="active">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div> --}}
+                </div>
             </div>
+        </div>
+        </div>
         </div>
 </x-frontend-app-layout>

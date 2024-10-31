@@ -1096,12 +1096,10 @@ del {
     height: 40px;
     width: 100%;
     outline: none;
-    border: none;
+    border: 1px solid #25252525;
     border-radius: 5px;
     padding: 0 60px 0 20px;
     font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
 .search-input-store.active input {
@@ -1908,35 +1906,35 @@ html {
 .vendor-menus {
     background: transparent;
     color: #252525;
-    height: 90px;
+    height: 50px;
     text-align: center;
     align-items: center;
     display: flex;
     text-align: center;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 65px;
+    padding-right: 65px;
 }
 .vendor-menus.active {
     background: #f15a2d;
     color: #fff;
-    height: 90px;
+    height: 50px;
     text-align: center;
     align-items: center;
     display: flex;
     text-align: center;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 65px;
+    padding-right: 65px;
 }
 .vendor-menus:hover {
     background: #e3e1e1;
     color: #f15a2d;
-    height: 90px;
+    height: 50px;
     text-align: center;
     align-items: center;
     display: flex;
     text-align: center;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 65px;
+    padding-right: 65px;
     transition: 0.5s all;
 }
 .vendor-banners img {
@@ -1994,4 +1992,33 @@ html {
 /* Hover effect to animate all overlay layers */
 .overlay-container:hover .overlay {
     transform: scale(1); /* Expand each overlay to cover entire image */
+}
+.nav-tabs .nav-item.show .vendor-store,
+.nav-tabs .vendor-store.active {
+    border: 0px solid #eee;
+    background-color: #eee;
+}
+.nav-tabs .nav-item.show .vendor-store,
+.nav-tabs .vendor-store {
+    border: 0px solid #eee;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.nav-tabs .nav-item.show .vendor-store,
+.nav-tabs .vendor-store:hover {
+    border: 0px solid #eee;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.nav-tabs .vendor-store-items:focus,
+.nav-tabs .vendor-store-items:hover {
+    background-color: #eee;
+    border: 0px solid #eee;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.vendor-store-items:focus-visible,
+.vendor-store-items:hover {
+    border: 0px solid #eee;
+    border-radius: 0;
 }

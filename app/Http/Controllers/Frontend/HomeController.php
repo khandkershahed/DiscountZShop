@@ -104,6 +104,14 @@ class HomeController extends Controller
     }
 
     // Vendor Details
+    public function vendors()
+    {
+        // $data = [
+        //     'vendor' => Vendor::where('slug', $slug)->first(),
+        //     'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
+        // ];
+        return view('frontend.pages.vendor.vendors');
+    }
     public function vendorOverview($slug)
     {
         // $data = [
