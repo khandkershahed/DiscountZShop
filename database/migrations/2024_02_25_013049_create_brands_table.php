@@ -18,15 +18,17 @@ return new class extends Migration
             $table->json('city_id')->nullable();
             $table->json('area_id')->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->foreignId('vendor_id')->nullable()->constrained('vendors')->onDelete('set null');
             $table->string('name', 30)->unique();
             $table->string('slug', 40)->unique();
             $table->string('logo', 150)->nullable();
             $table->string('image', 150)->nullable();
             $table->string('banner_image', 150)->nullable();
+            $table->string('about_title')->nullable();
             $table->longText('about')->nullable();
+            $table->string('offer_description_title')->nullable();
             $table->longText('offer_description')->nullable();
             $table->longText('location')->nullable();
+            $table->string('description_title')->nullable();
             $table->text('description')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('category')->nullable();

@@ -5,7 +5,7 @@
             <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
                 <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
                     <a href="" class="py-9 mb-5">
-                        <img alt="Logo" src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/settings/' . $site->system_logo_white)) ? asset('storage/settings/' . $site->system_logo_white) : asset('images/no_logo.png') }}" class="h-60px">
+                        <img alt="Logo" src="{{ !empty($setting->site_logo_black) && file_exists(public_path('storage/' . $setting->site_logo_black)) ? asset('storage/' . $setting->site_logo_black) : asset('images/no_logo.png') }}" class="h-60px">
                     </a>
                     <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #ffffff;">Welcome to {{ !empty($setting->site_name) ? $setting->site_name : config('app.name') }}</h1>
                     {{-- <p class="fw-bold fs-2" style="color: #ffffff;">Discover Amazing Metronic

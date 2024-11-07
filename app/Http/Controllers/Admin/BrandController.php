@@ -6,6 +6,7 @@ use App\Models\Area;
 use App\Models\City;
 use App\Models\Admin;
 use App\Models\Brand;
+use App\Models\Store;
 use App\Models\Country;
 use App\Models\Category;
 use App\Models\Division;
@@ -46,6 +47,7 @@ class BrandController extends Controller
             'categories' => Category::active()->get(),
             'countries'  => Country::orderBy('name', 'asc')->get(),
             'divisions'  => Division::orderBy('name', 'asc')->get(),
+            
             'citys'      => City::orderBy('name', 'asc')->get(),
             'areas'      => Area::orderBy('name', 'asc')->get(),
         ];
@@ -57,6 +59,12 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        foreach ($request->stores as $key => $store) {
+            dd($store);
+        }
+
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'country_id'        => 'nullable|array',
             'country_id.*'      => 'nullable|exists:countries,id',
@@ -131,34 +139,68 @@ class BrandController extends Controller
             }
             // Create the Brand model instance
             $brand = Brand::create([
-                'name'                => $request->name,
-                'headquarter'         => $request->headquarter,
-                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : null,
-                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : null,
-                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : null,
-
-                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
-
-                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
-
-                'country_id'          => json_encode($request->country_id),
-                'division_id'         => json_encode($request->division_id),
-                'city_id'             => json_encode($request->city_id),
-                'area_id'             => json_encode($request->area_id),
-
-                'added_by'            => Auth::guard('admin')->user()->id,
-
-                'category_id'         => $request->category_id,
-                'category_type'       => $request->category_type,
-                'about'               => $request->about,
-                'offer_description'   => $request->offer_description,
-                'location'            => $request->location,
-                'description'         => $request->description,
-                'url'                 => $request->url,
-                'map_url'             => $request->map_url,
-                'category'            => $request->category,
-                'status'              => $request->status,
+                'name'                      => $request->name,
+                'headquarter'               => $request->headquarter,
+                'logo'                      => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : null,
+                'image'                     => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : null,
+                'banner_image'              => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : null,
+                'middle_banner_right'       => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
+                'middle_banner_left'        => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
+                'country_id'                => json_encode($request->country_id),
+                'division_id'               => json_encode($request->division_id),
+                'city_id'                   => json_encode($request->city_id),
+                'area_id'                   => json_encode($request->area_id),
+                'added_by'                  => Auth::guard('admin')->user()->id,
+                'category_id'               => $request->category_id,
+                'category_type'             => $request->category_type,
+                'about_title'               => $request->about_title,
+                'about'                     => $request->about,
+                'offer_description_title'   => $request->offer_description_title,
+                'offer_description'         => $request->offer_description,
+                'location'                  => $request->location,
+                'description_title'         => $request->description_title,
+                'description'               => $request->description,
+                'url'                       => $request->url,
+                'map_url'                   => $request->map_url,
+                'category'                  => $request->category,
+                'status'                    => $request->status,
             ]);
+
+            foreach ($request->stores as $key => $store) {
+                $store = Store::create([
+                    'name'                => $request->name,
+                    'headquarter'         => $request->headquarter,
+                    'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : null,
+                    'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : null,
+                    'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : null,
+
+                    'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
+
+                    'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
+
+                    'added_by'            => Auth::guard('admin')->user()->id,
+
+                    'country_id'          => $store['country_id'],
+                    'division_id'         => $store['division_id'],
+                    'city_id'             => $store['city_id'],
+                    'area_id'             => $store['area_id'],
+                    'title'               => $store['title'],
+                    'address_line_one'    => $store['address_line_one'],
+                    'address_line_two'    => $store['address_line_two'],
+                    'url'                 => $store['url'],
+                    'category_id'         => $request->category_id,
+                    'category_type'       => $request->category_type,
+                    'about'               => $request->about,
+                    'offer_description'   => $request->offer_description,
+                    'location'            => $request->location,
+                    'description'         => $request->description,
+                    'url'                 => $request->url,
+                    'map_url'             => $request->map_url,
+                    'category'            => $request->category,
+                    'status'              => $request->status,
+                    'badge'               => $request->badge,
+                ]);
+            }
 
             // Commit the database transaction
             DB::commit();
@@ -241,35 +283,38 @@ class BrandController extends Controller
 
             // Update the brand with the new or existing file paths
             $brand->update([
-                'name'                => $request->name,
-                'headquarter'         => $request->headquarter,
+                'name'                      => $request->name,
+                'headquarter'               => $request->headquarter,
 
-                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : $brand->logo,
-                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : $brand->image,
+                'logo'                      => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : $brand->logo,
+                'image'                     => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : $brand->image,
 
-                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : $brand->banner_image,
+                'banner_image'              => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : $brand->banner_image,
 
-                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $brand->middle_banner_left,
+                'middle_banner_left'        => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $brand->middle_banner_left,
 
-                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $brand->middle_banner_right,
+                'middle_banner_right'       => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $brand->middle_banner_right,
 
-                'added_by' => Auth::guard('admin')->user()->id,
+                'added_by'                  => Auth::guard('admin')->user()->id,
 
-                'country_id'          => json_encode($request->country_id),
-                'division_id'         => json_encode($request->division_id),
-                'city_id'             => json_encode($request->city_id),
-                'area_id'             => json_encode($request->area_id),
+                'country_id'                => json_encode($request->country_id),
+                'division_id'               => json_encode($request->division_id),
+                'city_id'                   => json_encode($request->city_id),
+                'area_id'                   => json_encode($request->area_id),
 
-                'category_id'         => $request->category_id,
-                'category_type'         => $request->category_type,
-                'about'               => $request->about,
-                'offer_description'   => $request->offer_description,
-                'location'            => $request->location,
-                'description'         => $request->description,
-                'url'                 => $request->url,
-                'map_url'             => $request->map_url,
-                'category'            => $request->category,
-                'status'              => $request->status,
+                'category_id'               => $request->category_id,
+                'category_type'             => $request->category_type,
+                'about_title'               => $request->about_title,
+                'about'                     => $request->about,
+                'offer_description_title'   => $request->offer_description_title,
+                'offer_description'         => $request->offer_description,
+                'location'                  => $request->location,
+                'description_title'         => $request->description_title,
+                'description'               => $request->description,
+                'url'                       => $request->url,
+                'map_url'                   => $request->map_url,
+                'category'                  => $request->category,
+                'status'                    => $request->status,
             ]);
 
             DB::commit();
