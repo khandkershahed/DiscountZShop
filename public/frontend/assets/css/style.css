@@ -738,15 +738,16 @@ p {
     display: flex !important;
 }
 .coupon-box {
-    background-image: url("../img/border.png");
-    background-size: cover; /* Scale the image to cover the container */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    width: 100%; /* Make the width responsive */
-    padding-bottom: 41.87%; /* Maintain the aspect ratio (height / width * 100%) */
+    /* background-image: url("../img/border.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-bottom: 41.87%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px dashed #969595;
 }
 
 .coupon-box-content {

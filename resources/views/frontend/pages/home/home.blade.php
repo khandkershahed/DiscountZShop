@@ -296,16 +296,16 @@
                                                                     <div class="col-8 text-center">
                                                                         <div
                                                                             class="d-flex justify-content-center align-items-center pb-2">
-                                                                            <p class="pe-2">
+                                                                            {{-- <p class="pe-2">
                                                                                 <span class="para-font">Get</span><br>
                                                                                 <span
                                                                                     class="ps-2  para-font">Upto</span>
-                                                                            </p>
+                                                                            </p> --}}
                                                                             @if (!empty($alloffer->badge))
                                                                                 <h1>{{ substr($alloffer->badge, 0, -4) }}
                                                                                 </h1>
                                                                             @endif
-                                                                            <p class="coupon-off">OFF</p>
+                                                                            {{-- <p class="coupon-off">OFF</p> --}}
                                                                         </div>
 
                                                                         @if (!empty($alloffer->coupon_code))
@@ -348,17 +348,17 @@
                                                                                 <div class="col-8 text-center">
                                                                                     <div
                                                                                         class="d-flex justify-content-center align-items-center pb-2">
-                                                                                        <p class="">
+                                                                                        {{-- <p class="">
                                                                                             <span
                                                                                                 class="para-font">Get</span><br>
                                                                                             <span
                                                                                                 class="ps-2 para-font">Upto</span>
-                                                                                        </p>
+                                                                                        </p> --}}
                                                                                         @if (!empty($category_offer->badge))
                                                                                             <h1>{{ substr($category_offer->badge, 0, -4) }}
                                                                                             </h1>
                                                                                         @endif
-                                                                                        <p class="coupon-off">OFF</p>
+                                                                                        {{-- <p class="coupon-off">OFF</p> --}}
                                                                                     </div>
 
                                                                                     @if (!empty($category_offer->coupon_code))
