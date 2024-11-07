@@ -207,7 +207,24 @@
         <!--end::Form group-->
     </div>
 </div>
-
+<div class="row mt-2 justify-content-end">
+    <div class="d-flex align-items-center justify-content-between">
+        <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
+            data-bs-target="#kt_vtab_pane_1" aria-selected="false"
+            role="tab" tabindex="-1">
+            Previous
+            <span class="svg-icon svg-icon-4 ms-1 me-0">
+                <i class="fa-solid fa-arrow-right"></i>
+            </span>
+        </a>
+        <x-metronic.button type="submit" class="info rounded-0">
+            {{ __('Submit') }}
+            <span class="svg-icon svg-icon-4 ms-1 me-0">
+                <i class="fa-solid fa-arrow-right"></i>
+            </span>
+        </x-metronic.button>
+    </div>
+</div>
 
 @push('scripts')
     <script>
