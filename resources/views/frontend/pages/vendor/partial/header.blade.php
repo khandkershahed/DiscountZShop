@@ -27,8 +27,8 @@
                 <div class="col-lg-5">
                     <div
                         class="d-flex align-items-center justify-content-end rounded-2 mb-4 mt-0"style="background-color: #eee;">
-                        <a href="{{ route('vendor.overview', ['id' => 'arong']) }}">
-                            <div class="vendor-menus {{ Route::is('vendor.overview') ? 'active' : '' }} rounded-2">
+                        <a href="{{ route('brand.details', ['id' => 'arong']) }}">
+                            <div class="vendor-menus {{ Route::is('brand.details') ? 'active' : '' }} rounded-2">
                                 <h6>Overview</h6>
                             </div>
                         </a>
@@ -42,6 +42,16 @@
                                 <h6>Offers</h6>
                             </div>
                         </a>
+                        {{-- <a href="{{ route('vendor.stores', ['id' => 'arong']) }}">
+                            <div class="vendor-menus {{ Route::is('vendor.stores') ? 'active' : '' }} rounded-2">
+                                <h6>Stores</h6>
+                            </div>
+                        </a>
+                        <a href="{{ route('vendor.offers', ['id' => 'arong']) }}">
+                            <div class="vendor-menus {{ Route::is('vendor.offers') ? 'active' : '' }} rounded-2">
+                                <h6>Offers</h6>
+                            </div>
+                        </a> --}}
                     </div>
                 </div>
                 <div class="col-lg-7">

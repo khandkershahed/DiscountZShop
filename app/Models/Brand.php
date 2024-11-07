@@ -37,6 +37,10 @@ class Brand extends Model
     {
         return $this->hasMany(Coupon::class);
     }
+    public function stores()
+    {
+        return $this->hasMany(Store::class);
+    }
 
     public function added()
     {
