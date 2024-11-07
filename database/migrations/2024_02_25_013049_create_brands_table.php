@@ -29,7 +29,7 @@ return new class extends Migration
             $table->longText('offer_description')->nullable();
             $table->longText('location')->nullable();
             $table->string('description_title')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('category')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');

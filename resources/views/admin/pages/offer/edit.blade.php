@@ -261,15 +261,6 @@
                             required></x-metronic.input>
                     </div>
 
-
-
-                    <div class="col-lg-12 mb-7">
-                        <x-metronic.label for="locations" class="col-form-label fw-bold fs-6 ">{{ __('Location') }}
-                        </x-metronic.label>
-
-                        <textarea id="locations" class="ckeditor" name="locations">{!! $offer->locations !!}</textarea>
-                    </div>
-
                     <div class="col-lg-12 mb-7">
                         <x-metronic.label for="description"
                             class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
@@ -278,6 +269,13 @@
                         <textarea id="description" class="ckeditor" name="description">{!! $offer->description !!}</textarea>
                     </div>
 
+
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="locations" class="col-form-label fw-bold fs-6 ">{{ __('Description Two') }}
+                        </x-metronic.label>
+
+                        <textarea id="locations" class="ckeditor" name="locations">{!! $offer->locations !!}</textarea>
+                    </div>
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}

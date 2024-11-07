@@ -173,7 +173,7 @@
                         <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="price" type="number" s name="price" :value="old('price')"
+                        <x-metronic.input id="price" type="number" name="price" :value="old('price')"
                             placeholder="Eg:10,000.00"></x-metronic.input>
                     </div>
 
@@ -182,7 +182,7 @@
                             class="col-form-label fw-bold fs-6">{{ __('Offer Price') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="offer_price" type="number" s name="offer_price" :value="old('offer_price')"
+                        <x-metronic.input id="offer_price" type="number" name="offer_price" :value="old('offer_price')"
                             placeholder="Eg:10,000.00"></x-metronic.input>
                     </div>
 
@@ -191,7 +191,7 @@
                             class="col-form-label fw-bold fs-6">{{ __('Coupon Code') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="coupon_code" type="text" s name="coupon_code" :value="old('coupon_code')"
+                        <x-metronic.input id="coupon_code" type="text" name="coupon_code" :value="old('coupon_code')"
                             placeholder="Eg: Dis-125874"></x-metronic.input>
                     </div>
 
@@ -200,7 +200,7 @@
                             class="col-form-label fw-bold fs-6 required">{{ __('Map Url') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="map_url" type="text" s name="map_url" :value="old('map_url')"
+                        <x-metronic.textarea id="map_url" type="text" name="map_url" :value="old('map_url')"
                             placeholder="Please Map Url" required></x-metronic.textarea>
                     </div>
 
@@ -232,12 +232,7 @@
 
 
 
-                    <div class="col-lg-12 mb-7">
-                        <x-metronic.label for="locations" class="col-form-label fw-bold fs-6 ">{{ __('Location') }}
-                        </x-metronic.label>
 
-                        <textarea id="locations" class="ckeditor" name="locations"></textarea>
-                    </div>
 
                     <div class="col-lg-12 mb-7">
                         <x-metronic.label for="description"
@@ -247,6 +242,12 @@
                         <textarea id="description" class="ckeditor" name="description"></textarea>
                     </div>
 
+                    <div class="col-lg-12 mb-7">
+                        <x-metronic.label for="locations" class="col-form-label fw-bold fs-6 ">{{ __('Description Two') }}
+                        </x-metronic.label>
+
+                        <textarea id="locations" class="ckeditor" name="locations"></textarea>
+                    </div>
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}

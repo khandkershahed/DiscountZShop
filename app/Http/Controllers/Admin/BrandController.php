@@ -203,39 +203,39 @@ class BrandController extends Controller
                 ]);
             }
 
-            foreach ($request->offers as $key => $offer) {
-                $offer = Offer::create([
-                    'country_id'        => json_encode($store['country_id']),
-                    'division_id'       => json_encode($store['division_id']),
-                    'city_id'           => json_encode($store['city_id']),
-                    'area_id'           => json_encode($store['area_id']),
-                    'notify_to'         => json_encode($store['notify_to']),
-                    'tags'              => $request->tags,
-                    'added_by'          => Auth::guard('admin')->user()->id,
-                    'name'              => $request->name,
-                    'badge'             => $request->badge,
-                    'category_id'       => $request->category_id,
-                    'brand_id'          => $request->brand_id,
-                    'store_id'          => $request->store_id,
-                    'price'             => $request->price,
-                    'offer_price'       => $request->offer_price,
-                    'start_date'        => $request->start_date,
-                    'description'       => $request->description,
-                    'short_description' => $request->short_description,
-                    'locations'         => $request->locations,
-                    'url'               => $request->url,
-                    'source_url'        => $request->source_url,
-                    'coupon_code'       => $request->coupon_code,
-                    'status'            => $request->status,
-                    'notification_date' => $request->notification_date,
-                    'expiry_date'       => $request->expiry_date,
-                    'map_url'           => $request->map_url,
-                    'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
-                    'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
-                    'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
-                    'created_at'        => now(),
-                ]);
-            }
+            // foreach ($request->offers as $key => $offer) {
+            //     $offer = Offer::create([
+            //         'country_id'        => json_encode($offer['country_id']),
+            //         'division_id'       => json_encode($offer['division_id']),
+            //         'city_id'           => json_encode($offer['city_id']),
+            //         'area_id'           => json_encode($offer['area_id']),
+            //         'notify_to'         => json_encode($offer['notify_to']),
+            //         'tags'              => $offer['tags'],
+            //         'added_by'          => Auth::guard('admin')->user()->id,
+            //         'name'              => $request->name,
+            //         'badge'             => $request->badge,
+            //         'category_id'       => $request->category_id,
+            //         'brand_id'          => $request->brand_id,
+            //         'store_id'          => $request->store_id,
+            //         'price'             => $request->price,
+            //         'offer_price'       => $request->offer_price,
+            //         'start_date'        => $request->start_date,
+            //         'description'       => $request->description,
+            //         'short_description' => $request->short_description,
+            //         'locations'         => $request->locations,
+            //         'url'               => $request->url,
+            //         'source_url'        => $request->source_url,
+            //         'coupon_code'       => $request->coupon_code,
+            //         'status'            => $request->status,
+            //         'notification_date' => $request->notification_date,
+            //         'expiry_date'       => $request->expiry_date,
+            //         'map_url'           => $request->map_url,
+            //         'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
+            //         'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
+            //         'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+            //         'created_at'        => now(),
+            //     ]);
+            // }
             // Commit the database transaction
             DB::commit();
 
