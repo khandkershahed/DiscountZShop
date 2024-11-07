@@ -25,32 +25,33 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <form class="form" action="{{ route('admin.brands.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
-                                <div class="col-lg-2">
+                                <div class="col-lg-2 pe-0" style="border-right: 1px solid #f6f5f4">
                                     <ul class="nav nav-tabs nav-pills border-0 flex-row flex-md-column mb-3 mb-md-0 fs-6 border-1 border-light"
                                         role="tablist">
-                                        <li class="nav-item w-md-290px my-1 mt-0" role="presentation">
+                                        <li class="nav-item w-md-290px m-0" role="presentation">
                                             <a class="nav-link p-5 rounded-0 active tab-trigger" data-bs-toggle="tab"
                                                 href="#kt_vtab_pane_1" aria-selected="true" role="tab">Overview</a>
                                         </li>
-                                        <li class="nav-item w-md-290px my-1" role="presentation">
+                                        <li class="nav-item w-md-290px m-0" role="presentation">
                                             <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
                                                 href="#kt_vtab_pane_2" aria-selected="false" role="tab">Stores</a>
                                         </li>
-                                        <li class="nav-item w-md-290px my-1" role="presentation">
+                                        <li class="nav-item w-md-290px m-0" role="presentation">
                                             <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
                                                 href="#kt_vtab_pane_3" aria-selected="false" role="tab"
                                                 tabindex="-1">Offers</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-lg-10 px-4 p-2">
-                                    <form id="productForm" method="POST" action="{{ route('admin.brands.store') }}"
+                                <div class="col-lg-10 ps-0">
+                                    <div class="p-5">
+                                        <form id="productForm" method="POST" action="{{ route('admin.brands.store') }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="tab-content" id="myTabContent">
@@ -388,6 +389,7 @@
                                             </div>
                                         </div>
                                     </form>
+                                    </div>
                                 </div>
                             </div>
                             {{-- <div class="text-center pt-15">

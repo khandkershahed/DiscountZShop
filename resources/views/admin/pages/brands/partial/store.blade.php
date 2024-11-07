@@ -85,20 +85,36 @@
                                 placeholder="Enter the Address Line Two"
                                 required>{{ old('address_line_two') }}</x-metronic.input>
                         </div>
-                        <div class="col-lg-9 mb-5">
-                            <x-metronic.label for="url"
-                                class="col-form-label fw-bold fs-6 required">{{ __('Google Map URL') }}
-                            </x-metronic.label>
-
-                            <x-metronic.textarea id="url" name="url" :value="old('url')"
-                                placeholder="Enter the Google Map URL"
-                                required>{{ old('url') }}</x-metronic.textarea>
+                        <div class="col-lg-3 mb-7">
+                            <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
+                                {{ __('Select a Status ') }}</x-metronic.label>
+                            <x-metronic.select-option id="status" name="status" data-hide-search="true"
+                                data-placeholder="Select an option">
+                                <option></option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </x-metronic.select-option>
                         </div>
-                        <div class="col-lg-2">
-                            <a href="javascript:;" data-repeater-delete
-                                class="btn btn-sm btn-light-danger mt-3 mt-md-9">
-                                <i class="la la-trash-o fs-3"></i>Delete
-                            </a>
+
+
+                        <div class="col-lg-12">
+                            <div class="row align-items-center">
+                                <div class="col-lg-11 mb-5">
+                                    <x-metronic.label for="url"
+                                        class="col-form-label fw-bold fs-6 required">{{ __('Google Map URL') }}
+                                    </x-metronic.label>
+
+                                    <x-metronic.textarea id="url" name="url" :value="old('url')"
+                                        placeholder="Enter the Google Map URL"
+                                        required>{{ old('url') }}</x-metronic.textarea>
+                                </div>
+                                <div class="col-lg-1">
+                                    <a href="javascript:;" data-repeater-delete
+                                        class="btn btn-sm btn-light-danger mt-7">
+                                        <i class="la la-trash-o fs-3"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
