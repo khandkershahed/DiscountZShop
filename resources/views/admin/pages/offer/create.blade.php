@@ -170,8 +170,7 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="price"
-                            class="col-form-label fw-bold fs-6">{{ __('Price') }}
+                        <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="price" type="number" s name="price" :value="old('price')"
@@ -227,8 +226,8 @@
                             class="col-form-label fw-bold fs-6 required">{{ __('Expiry Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="expiry_date" type="datetime-local" name="expiry_date" :value="old('expiry_date')"
-                            placeholder="Enter the Expiry Code" required></x-metronic.input>
+                        <x-metronic.input id="expiry_date" type="datetime-local" name="expiry_date"
+                            :value="old('expiry_date')" placeholder="Enter the Expiry Code" required></x-metronic.input>
                     </div>
 
 
@@ -241,7 +240,8 @@
                     </div>
 
                     <div class="col-lg-12 mb-7">
-                        <x-metronic.label for="description" class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
+                        <x-metronic.label for="description"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Description') }}
                         </x-metronic.label>
 
                         <textarea id="description" class="ckeditor" name="description"></textarea>
@@ -278,7 +278,8 @@
                             class="col-form-label fw-bold fs-6">{{ __('Short Description') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="short_description" placeholder="Write Short Description" name="short_description"></x-metronic.textarea>
+                        <x-metronic.textarea id="short_description" placeholder="Write Short Description"
+                            name="short_description"></x-metronic.textarea>
                     </div>
 
                     <div class="col-lg-4 mb-7">
