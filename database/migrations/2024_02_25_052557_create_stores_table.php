@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');
             $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->string('title')->nullable();
+            $table->string('title')->nullable()->comment('required');
             $table->string('slug')->nullable()->unique();
             $table->string('address_line_one')->nullable();
             $table->string('address_line_two')->nullable();
