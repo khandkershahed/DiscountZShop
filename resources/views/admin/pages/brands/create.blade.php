@@ -26,9 +26,9 @@
                         </div>
                     </div>
                     <div class="card-body p-0">
-                        <form class="form" action="{{ route('admin.brands.store') }}" method="POST"
+                        {{-- <form class="form" action="{{ route('admin.brands.store') }}" method="POST"
                             enctype="multipart/form-data">
-                            @csrf
+                            @csrf --}}
 
                             <div class="row">
                                 <div class="col-lg-2 pe-0" style="border-right: 1px solid #f6f5f4">
@@ -63,16 +63,15 @@
                                                                 class="fw-bolder d-flex justify-content-center align-items-center text-dark">
                                                                 General Info
                                                             </h2>
-                                                            <p class="text-center p-0 m-0"><small
-                                                                    class="ms-4 text-danger fw-normal fs-sm-9">All The
-                                                                    Red
-                                                                    Star
-                                                                    Mark
-                                                                    Field Is Required.</small></p>
+                                                            <p class="text-center p-0 m-0">
+                                                                <small class="ms-4 text-danger fw-normal fs-sm-9">
+                                                                    All The Red Star Mark Field Is Required.
+                                                                </small>
+                                                            </p>
                                                         </div>
                                                         <div class="fv-row">
                                                             @include('admin.pages.brands.partial.overview')
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
