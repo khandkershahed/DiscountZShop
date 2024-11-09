@@ -33,6 +33,8 @@ class HomeController extends Controller
             'coupons' => Coupon::latest()->get(),
             'brands' => Brand::latest()->get(),
 
+            'categorys' => Category::latest()->limit(6)->get(),
+
             'alloffers' => $offers,
             'offers' => $offers->take(5), // Use `take` instead of `limit` for collections
 

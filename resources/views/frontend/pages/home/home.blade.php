@@ -210,6 +210,826 @@
     </section>
     <!-- App Discount End -->
 
+    <section style="background: #f9f9f9">
+        <div class="container pt-70 pb-70 px-0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card rounded-0 shadow-sm p-3 grab-card">
+                        <div class="card-header border-0 py-3 pb-4 bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="coupon-title mb-0 pe-3">
+                                            Grab Your Offer
+                                        </h4>
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="36"
+                                                viewBox="0 0 17 36" fill="none">
+                                                <path
+                                                    d="M0.700195 0V19.7492H5.44065V35.9075L16.5017 14.363H10.1811L16.5017 0H0.700195Z"
+                                                    fill="#F15A2D" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-9">
+                                    <div class="d-flex justify-content-space-between align-items-center">
+
+                                        <!-- Grab Tags -->
+                                        <div class="w-75">
+                                            {{-- <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Hot Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Buy 2 Get 1</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20%
+                                                    Off</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Buy 1 Get 1</span></a> --}}
+                                        </div>
+                                        <!-- Grab End -->
+
+                                        <div class="d-flex justify-content-end align-items-center w-25">
+                                            <button type="button" class="grab-custom-prev rounded-circle">
+                                                <i class="fas fa-arrow-left-long"></i>
+                                            </button>
+                                            <button type="button" class="grab-custom-next rounded-circle ms-3">
+                                                <i class="fas fa-arrow-right-long"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body pe-0">
+                            <div class="row">
+                                <div class="col-lg-3 grab-offer-tabs-box">
+                                    <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
+
+                                        {{-- <li class="nav-item mb-2" role="presentation">
+                                            <button class="nav-link grab-tabs w-100 rounded-0 active" id="home-tab"
+                                                data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                                                role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                                                Food
+                                            </button>
+                                        </li> --}}
+
+                                        @foreach ($categorys as $category)
+                                            <li class="nav-item mb-2" role="presentation">
+                                                <button class="nav-link grab-tabs w-100 rounded-0 active" id="profile-tab"
+                                                    data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                                                    type="button" role="tab" aria-controls="profile-tab-pane"
+                                                    aria-selected="false">
+                                                    {{ $category->name }}
+                                                </button>
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="tab-content" id="myTabContent">
+
+                                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                                            aria-labelledby="home-tab" tabindex="0">
+                                            <div class="grab-slider">
+
+                                                <div class="row grab-items">
+
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                </div>
+
+                                                <div class="row grab-items">
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row grab-items">
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 mb-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <img class="img-fluid"
+                                                                            src="./assets/img/coupon/coupon-logo.png"
+                                                                            class="img-fluid" alt="Logo" />
+                                                                    </div>
+                                                                    <div class="col-8 text-center">
+                                                                        <div class="d-flex align-items-center pb-2">
+                                                                            <p class="">
+                                                                                <span class="para-font">Get</span>
+                                                                                <span
+                                                                                    class="ps-2 para-font">Upto</span>
+                                                                            </p>
+                                                                            <h1>50%</h1>
+                                                                            <p class="coupon-off">OFF</p>
+                                                                        </div>
+                                                                        <p class="para-font coupon-extra">
+                                                                            Code: EVALY30
+                                                                            <a href="javascript:void(0);"
+                                                                                class="copy-btn"><i
+                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
+                                            aria-labelledby="profile-tab" tabindex="0">
+                                            ...
+                                        </div>
+                                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
+                                            aria-labelledby="contact-tab" tabindex="0">
+                                            ...
+                                        </div>
+                                        <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel"
+                                            aria-labelledby="disabled-tab" tabindex="0">
+                                            ...
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Grab Your Offer -->
     <section style="background: #f9f9f9">
         <div class="container pt-70 pb-70 px-0 biggest-deals">
@@ -897,7 +1717,8 @@
                             <a href="{{ $homepage->offer_slider_image_one_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
@@ -906,7 +1727,8 @@
                             <a href="{{ $homepage->offer_slider_image_two_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
@@ -915,7 +1737,8 @@
                             <a href="{{ $homepage->offer_slider_image_three_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
@@ -924,7 +1747,8 @@
                             <a href="{{ $homepage->offer_slider_image_four_link }}">
                                 <div>
                                     <img src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
-                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2" alt="" />
+                                        class="img-fluid custom-img w-100 rounded-lg-2 rounded-2 pe-2"
+                                        alt="" />
                                 </div>
                             </a>
                         </div>
