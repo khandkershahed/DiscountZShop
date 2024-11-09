@@ -48,7 +48,6 @@ class BrandController extends Controller
             'categories' => Category::active()->get(),
             'countries'  => Country::orderBy('name', 'asc')->get(),
             'divisions'  => Division::orderBy('name', 'asc')->get(),
-
             'citys'      => City::orderBy('name', 'asc')->get(),
             'areas'      => Area::orderBy('name', 'asc')->get(),
         ];

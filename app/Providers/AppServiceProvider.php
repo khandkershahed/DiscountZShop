@@ -34,19 +34,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::share('setting', null);
-        View::share('categories', null);
-        View::share('brands', null);
-        View::share('stores', null);
-        View::share('countries', null);
-        View::share('divisions', null);
-        View::share('citys', null);
-        View::share('areas', null);
-        View::share('admins', null);
+        View::share('categories', []);
+        View::share('brands', []);
+        View::share('stores', []);
+        View::share('countries', []);
+        View::share('divisions', []);
+        View::share('citys', []);
+        View::share('areas', []);
+        View::share('admins', []);
 
         try {
-
-
-
             if (Schema::hasTable('settings')) {
                 View::share('setting', Setting::first());
             }
@@ -68,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             if (Schema::hasTable('stores')) {
-                View::share('stores', Store::orderBy('name','asc')->get());
+                View::share('stores', Store::orderBy('title','asc')->get());
             }
 
             if (Schema::hasTable('cities')) {
