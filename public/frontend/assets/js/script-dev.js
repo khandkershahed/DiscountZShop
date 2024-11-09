@@ -64,7 +64,7 @@ $(document).ready(function () {
             {
                 breakpoint: 1024, // At screen widths of 1024px and below
                 settings: {
-                    slidesToShow: 3, // Show 3 slides at a time
+                    slidesToShow: 1, // Show 3 slides at a time
                 },
             },
             {
@@ -335,38 +335,38 @@ $(document).ready(function () {
     });
 });
 
-class CountdownHMS {
-    constructor(element, targetDate) {
-        this.element = element;
-        this.targetDate = new Date(targetDate).getTime();
-        this.initialize();
-    }
+// class CountdownHMS {
+//     constructor(element, targetDate) {
+//         this.element = element;
+//         this.targetDate = new Date(targetDate).getTime();
+//         this.initialize();
+//     }
 
-    initialize() {
-        const second = 1000,
-            minute = second * 60,
-            hour = minute * 60;
+//     initialize() {
+//         const second = 1000,
+//             minute = second * 60,
+//             hour = minute * 60;
 
-        const x = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = this.targetDate - now;
+//         const x = setInterval(() => {
+//             const now = new Date().getTime();
+//             const distance = this.targetDate - now;
 
-            this.element.querySelector(".hours").innerText = Math.floor(
-                (distance % (1000 * 60 * 60 * 24)) / hour
-            );
-            this.element.querySelector(".minutes").innerText = Math.floor(
-                (distance % hour) / minute
-            );
-            this.element.querySelector(".seconds").innerText = Math.floor(
-                (distance % minute) / second
-            );
+//             this.element.querySelector(".hours").innerText = Math.floor(
+//                 (distance % (1000 * 60 * 60 * 24)) / hour
+//             );
+//             this.element.querySelector(".minutes").innerText = Math.floor(
+//                 (distance % hour) / minute
+//             );
+//             this.element.querySelector(".seconds").innerText = Math.floor(
+//                 (distance % minute) / second
+//             );
 
-            if (distance < 0) {
-                clearInterval(x);
-            }
-        }, 1000);
-    }
-}
+//             if (distance < 0) {
+//                 clearInterval(x);
+//             }
+//         }, 1000);
+//     }
+// }
 
 // Usage example:
 

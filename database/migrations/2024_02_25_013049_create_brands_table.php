@@ -23,10 +23,13 @@ return new class extends Migration
             $table->string('logo', 150)->nullable();
             $table->string('image', 150)->nullable();
             $table->string('banner_image', 150)->nullable();
+            $table->string('about_title')->nullable();
             $table->longText('about')->nullable();
+            $table->string('offer_description_title')->nullable();
             $table->longText('offer_description')->nullable();
             $table->longText('location')->nullable();
-            $table->text('description')->nullable();
+            $table->string('description_title')->nullable();
+            $table->longText('description')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('category')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');

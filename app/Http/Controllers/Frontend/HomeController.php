@@ -105,6 +105,48 @@ class HomeController extends Controller
         return view('frontend.pages.brandDetails', $data);
     }
 
+    // Vendor Details
+    public function vendors()
+    {
+        // $data = [
+        //     'vendor' => Vendor::where('slug', $slug)->first(),
+        //     'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
+        // ];
+        return view('frontend.pages.vendor.vendors');
+    }
+    public function vendorOverview($slug)
+    {
+        $data = [
+            'brand' => Brand::where('slug', $slug)->first(),
+            'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+        ];
+        return view('frontend.pages.vendor.overview');
+    }
+    public function vendorStores($slug)
+    {
+        // $data = [
+        //     'vendor' => Vendor::where('slug', $slug)->first(),
+        //     'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
+        // ];
+        return view('frontend.pages.vendor.stores');
+    }
+    public function vendorOffers($slug)
+    {
+        // $data = [
+        //     'vendor' => Vendor::where('slug', $slug)->first(),
+        //     'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
+        // ];
+        return view('frontend.pages.vendor.offers');
+    }
+    public function wallet($slug)
+    {
+        // $data = [
+        //     'vendor' => Vendor::where('slug', $slug)->first(),
+        //     'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
+        // ];
+        return view('frontend.pages.wallet.myWallet');
+    }
+
     //searchBrandName
     // Check if categories and brands are fetched correctly
     public function searchBrandName(Request $request)

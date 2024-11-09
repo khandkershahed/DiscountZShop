@@ -57,6 +57,14 @@ Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name(
 
 //Privacy
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
 //Faq
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+
+
+Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
+
+// Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
+Route::get('/vendor/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
+Route::get('/vendor/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
