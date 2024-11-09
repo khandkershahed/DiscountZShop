@@ -40,10 +40,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="brand-single pt-3 d-flex justify-content-center">
-                        <li data-target="about">About</li>
-                        <li data-target="popular-discount">Brand Products</li>
-                        <li data-target="offers">Recent Offers</li>
-                        <li data-target="location">Location</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#popular-discount">Brand Products</a>
+                        </li>
+                        <li>
+                            <a href="#offers">Recent Offers</a>
+                        </li>
+                        <li>
+                            <a href="#location">Location</a>
+                        </li>
                     </ul>
                 </div>
             </div>

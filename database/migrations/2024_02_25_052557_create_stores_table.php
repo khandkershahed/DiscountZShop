@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->json('country_id')->nullable();
-            $table->json('division_id')->nullable();
-            $table->json('city_id')->nullable();
-            $table->json('area_id')->nullable();
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('set null');
+            $table->foreignId('division_id')->nullable()->constrained('divisions')->onDelete('set null');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('set null');
+            $table->foreignId('area_id')->nullable()->constrained('areas')->onDelete('set null');
+            $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->string('name', 30)->unique();
-            $table->string('slug', 40)->unique();
-            $table->string('badge')->nullable();
-            $table->string('logo', 150)->nullable();
-            $table->string('image', 150)->nullable();
-            $table->string('banner_image', 150)->nullable();
-            $table->longText('about')->nullable();
-            $table->longText('offer_description')->nullable();
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable()->unique();
+            $table->string('address_line_one')->nullable();
+            $table->string('address_line_two')->nullable();
+            $table->string('logo', 200)->nullable();
+            $table->string('image', 200)->nullable();
+            $table->string('banner_image', 200)->nullable();
             $table->longText('location')->nullable();
             $table->text('description')->nullable();
             $table->string('url', 255)->nullable();

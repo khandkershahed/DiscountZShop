@@ -59,10 +59,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="store-single pt-3">
-                        <li data-target="about" class="active">About</li>
-                        <li data-target="offers">Offers</li>
-                        <li data-target="location">Location</li>
-                        <li data-target="popular-discount">Description</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#offers">Offers</a>
+                        </li>
+                        <li>
+                            <a href="#location">Location</a>
+                        </li>
+                        <li>
+                            <a href="#popular-discount">Description</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -6,7 +6,7 @@
             <div data-repeater-list="stores">
                 <div data-repeater-item>
                     <div class="row align-items-center">
-                        <div class="col-lg-11" style="border: 1px solid #eee;">
+                        <div class="col-lg-11 mb-5" style="border: 1px solid #eee;">
                             <div class="form-group row mb-5">
                                 <div class="col-lg-3 mb-5">
                                     <x-metronic.label for="country_id"

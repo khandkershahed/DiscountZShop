@@ -174,13 +174,9 @@ class BrandController extends Controller
                     'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : null,
                     'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : null,
                     'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : null,
-
                     'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : null,
-
                     'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : null,
-
                     'added_by'            => Auth::guard('admin')->user()->id,
-
                     'country_id'          => $store['country_id'],
                     'division_id'         => $store['division_id'],
                     'city_id'             => $store['city_id'],
