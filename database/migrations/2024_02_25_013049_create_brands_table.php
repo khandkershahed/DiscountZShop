@@ -29,6 +29,10 @@ return new class extends Migration
             $table->longText('offer_description')->nullable();
             $table->longText('location')->nullable();
             $table->string('description_title')->nullable();
+
+            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');//
+            $table->foreignId('update_by')->nullable()->constrained('admins')->onDelete('set null');//
+
             $table->longText('description')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('category')->nullable();

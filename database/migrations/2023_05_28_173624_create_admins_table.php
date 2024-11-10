@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('zipcode')->nullable();
+
+            $table->string('admin_role_type')->nullable();
+
             $table->string('address')->nullable();
             $table->string('youtube')->nullable();
             $table->string('facebook')->nullable();

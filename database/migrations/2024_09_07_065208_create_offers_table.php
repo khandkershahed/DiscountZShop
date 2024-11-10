@@ -21,7 +21,10 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');//
             $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('set null');//
             $table->foreignId('store_id')->nullable()->constrained('stores')->onDelete('set null');//
+
             $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');//
+            $table->foreignId('update_by')->nullable()->constrained('admins')->onDelete('set null');//
+            
             $table->string('badge')->nullable();//
             $table->string('name')->unique();//
             $table->string('slug')->unique();//

@@ -206,9 +206,6 @@
     </div>
 
 
-
-
-
     {{--
         <div class="col-lg-4 mb-7">
             <x-metronic.label for="map_url"

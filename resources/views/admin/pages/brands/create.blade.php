@@ -26,11 +26,13 @@
                         </div>
                     </div>
                     <div class="card-body p-0">
+
                         <form class="form" action="{{ route('admin.brands.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
+
                                 <div class="col-lg-2 pe-0" style="border-right: 1px solid #f6f5f4">
                                     <ul class="nav nav-tabs nav-pills border-0 flex-row flex-md-column mb-3 mb-md-0 fs-6 border-1 border-light"
                                         role="tablist">
@@ -49,6 +51,7 @@
                                         </li>
                                     </ul>
                                 </div>
+
                                 <div class="col-lg-10 ps-0">
                                     <div class="p-5">
                                         <form id="productForm" method="POST" action="{{ route('admin.brands.store') }}"
@@ -72,7 +75,7 @@
                                                         </div>
                                                         <div class="fv-row">
                                                             @include('admin.pages.brands.partial.overview')
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,6 +98,7 @@
                                         </form>
                                     </div>
                                 </div>
+                                
                             </div>
                             {{-- <div class="text-center pt-15">
                                     <x-metronic.button type="submit" class="primary">
