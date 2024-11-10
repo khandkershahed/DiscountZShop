@@ -1,5 +1,4 @@
 <div class="row">
-
     <div class="col-lg-3 col-md-6 mb-7">
         <x-metronic.label for="category_id"
             class="col-form-label fw-bold fs-6">{{ __('Select a Category') }}</x-metronic.label>
@@ -18,7 +17,7 @@
         <x-metronic.label for="category_type"
             class="col-form-label fw-bold fs-6">{{ __('Select Category Type') }}</x-metronic.label>
         <x-metronic.select-option id="category_type" name="category_type" data-placeholder="Select an option">
-            <option>Choose Option</option>
+            <option></option>
             <option value="top">Top</option>
             <option value="featured">Featured</option>
             <option value="best_seller">Best Seller</option>
@@ -124,7 +123,7 @@
                 Inactive</option>
         </x-metronic.select-option>
     </div>
-    <div class="col-lg-3 col-md-12 mb-7">
+    <div class="col-lg-6 col-md-12 mb-7">
         <x-metronic.label for="headquarter" class="col-form-label fw-bold fs-6">{{ __('Head Quarter') }}
         </x-metronic.label>
         <x-metronic.input id="headquarter" type="text" name="headquarter" :value="old('headquarter')"
