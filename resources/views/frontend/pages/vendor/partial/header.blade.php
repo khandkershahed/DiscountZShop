@@ -13,7 +13,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="vendor-logo p-2 rounded-2" style="background-color: #eee; border: 2px solid #f15a2d;">
-                        <img class="img-fluid rounded-2 border" src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . $brand->logo)) ? asset('storage/' . $brand->logo) : asset('images/no_icon.png') }}"
+                        <img class="img-fluid rounded-2 border" src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
                             alt="">
                     </div>
                 </div>

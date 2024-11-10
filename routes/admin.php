@@ -128,18 +128,20 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resources(
         [
-            'user' => UserController::class, //done
-            'staff' => StaffController::class, //done
-            'user-management' => UserManagementController::class, //done
+            'user'             => UserController::class, //done
+            'staff'            => StaffController::class, //done
+            'user-management'  => UserManagementController::class, //done
             'admin-managemnet' => UserManagementController::class, //done
-            'categories' => CategoryController::class, //done
-            'icons' => IconController::class, //done
-            'newsletters' => NewsletterController::class,
-            'brands' => BrandController::class, //done
-            'contacts' => ContactController::class,
+            'categories'       => CategoryController::class, //done
+            'icons'            => IconController::class, //done
+            'newsletters'      => NewsletterController::class,
+            'brands'           => BrandController::class, //done
+            'contacts'         => ContactController::class,
 
         ],
     );
+
+    Route::post('brand/store/store', [BrandController::class, 'brandStores'])->name('brand.stores.store');
 
     Route::get('active-mail-configuration', [EmailSettingController::class, 'activeMailConfiguration'])->name('active.mail.configuration');
     Route::put('email-settings', [EmailSettingController::class, 'emailUpdateOrCreate'])->name('email.settings.updateOrCreate');

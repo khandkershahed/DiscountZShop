@@ -128,15 +128,15 @@ class HomeController extends Controller
             'brand' => Brand::with('stores')->where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
         ];
-        return view('frontend.pages.vendor.stores');
+        return view('frontend.pages.vendor.stores',$data);
     }
     public function vendorOffers($slug)
     {
-        // $data = [
-        //     'vendor' => Vendor::where('slug', $slug)->first(),
-        //     'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
-        // ];
-        return view('frontend.pages.vendor.offers');
+        $data = [
+            'brand' => Brand::with('stores')->where('slug', $slug)->first(),
+            'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
+        ];
+        return view('frontend.pages.vendor.offers',$data);
     }
     public function wallet($slug)
     {

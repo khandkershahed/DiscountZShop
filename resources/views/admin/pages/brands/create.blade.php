@@ -30,72 +30,68 @@
                             enctype="multipart/form-data">
                             @csrf --}}
 
-                            <div class="row">
-                                <div class="col-lg-2 pe-0" style="border-right: 1px solid #f6f5f4">
-                                    <ul class="nav nav-tabs nav-pills border-0 flex-row flex-md-column mb-3 mb-md-0 fs-6 border-1 border-light"
-                                        role="tablist">
-                                        <li class="nav-item w-md-290px m-0" role="presentation">
-                                            <a class="nav-link p-5 rounded-0 active tab-trigger" data-bs-toggle="tab"
-                                                href="#kt_vtab_pane_1" aria-selected="true" role="tab">Overview</a>
-                                        </li>
-                                        <li class="nav-item w-md-290px m-0" role="presentation">
-                                            <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                                href="#kt_vtab_pane_2" aria-selected="false" role="tab">Stores</a>
-                                        </li>
-                                        <li class="nav-item w-md-290px m-0" role="presentation">
-                                            <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                                href="#kt_vtab_pane_3" aria-selected="false" role="tab"
-                                                tabindex="-1">Offers</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-10 ps-0">
-                                    <div class="p-5">
-                                        <form id="productForm" method="POST" action="{{ route('admin.brands.store') }}"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade active show" id="kt_vtab_pane_1"
-                                                    role="tabpanel">
-                                                    <div class="w-100">
-                                                        <div class="pb-5 pb-lg-5">
-                                                            <h2
-                                                                class="fw-bolder d-flex justify-content-center align-items-center text-dark">
-                                                                General Info
-                                                            </h2>
-                                                            <p class="text-center p-0 m-0">
-                                                                <small class="ms-4 text-danger fw-normal fs-sm-9">
-                                                                    All The Red Star Mark Field Is Required.
-                                                                </small>
-                                                            </p>
-                                                        </div>
-                                                        <div class="fv-row">
-                                                            @include('admin.pages.brands.partial.overview')
+                        <div class="row">
+                            <div class="col-lg-2 pe-0" style="border-right: 1px solid #f6f5f4">
+                                <ul class="nav nav-tabs nav-pills border-0 flex-row flex-md-column mb-3 mb-md-0 fs-6 border-1 border-light"
+                                    role="tablist">
+                                    <li class="nav-item w-md-290px m-0" role="presentation">
+                                        <a class="nav-link p-5 rounded-0 active tab-trigger" data-bs-toggle="tab"
+                                            href="#kt_vtab_pane_1" aria-selected="true" role="tab">Overview</a>
+                                    </li>
+                                    <li class="nav-item w-md-290px m-0" role="presentation">
+                                        <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
+                                            href="#kt_vtab_pane_2" aria-selected="false" role="tab">Stores</a>
+                                    </li>
+                                    <li class="nav-item w-md-290px m-0" role="presentation">
+                                        <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
+                                            href="#kt_vtab_pane_3" aria-selected="false" role="tab"
+                                            tabindex="-1">Offers</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-10 ps-0">
+                                <div class="p-5">
 
-                                                        </div>
-                                                    </div>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
+                                            <div class="w-100">
+                                                <div class="pb-5 pb-lg-5">
+                                                    <h2
+                                                        class="fw-bolder d-flex justify-content-center align-items-center text-dark">
+                                                        General Info
+                                                    </h2>
+                                                    <p class="text-center p-0 m-0">
+                                                        <small class="ms-4 text-danger fw-normal fs-sm-9">
+                                                            All The Red Star Mark Field Is Required.
+                                                        </small>
+                                                    </p>
                                                 </div>
-                                                <div class="tab-pane fade" id="kt_vtab_pane_2" role="tabpanel">
-                                                    <div class="w-100">
-
-                                                        <div class="fv-row">
-                                                            @include('admin.pages.brands.partial.store')
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="kt_vtab_pane_3" role="tabpanel">
-                                                    <div class="w-100">
-                                                        <div class="fv-row">
-                                                            @include('admin.pages.brands.partial.offer')
-                                                        </div>
-                                                    </div>
+                                                <div class="fv-row">
+                                                    @include('admin.pages.brands.partial.overview')
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="kt_vtab_pane_2" role="tabpanel">
+                                            <div class="w-100">
+
+                                                <div class="fv-row">
+                                                    {{-- @include('admin.pages.brands.partial.store') --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="kt_vtab_pane_3" role="tabpanel">
+                                            <div class="w-100">
+                                                <div class="fv-row">
+                                                    {{-- @include('admin.pages.brands.partial.offer') --}}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
-                            {{-- <div class="text-center pt-15">
+                        </div>
+                        {{-- <div class="text-center pt-15">
                                     <x-metronic.button type="submit" class="primary">
                                         {{ __('Submit') }}
                                     </x-metronic.button>
@@ -128,6 +124,7 @@
                     if (!isValid) {
                         return false;
                     } else {
+                        // Instead of the alert, proceed with tab switch
                         switchTab(targetTabId);
                         return true;
                     }
@@ -136,9 +133,11 @@
                 function switchTab(targetTabId) {
                     $('.nav-link[href="' + targetTabId + '"]').tab('show');
                 }
+
                 $('.tab-trigger').on('show.bs.tab', function(event) {
                     return validateAndSwitchTab($(this).data('bs-target'));
                 });
+
                 $('.tab-content').on('input change', 'input, textarea, select', function() {
                     var $field = $(this);
                     var isSelect2 = $field.hasClass('select2-hidden-accessible');
@@ -148,19 +147,60 @@
                         $field.removeClass('is-invalid');
                     }
                 });
-                $('.multiple-select').on('change', function() {
-                    var $multiSelect = $(this);
-                    $multiSelect.removeClass('is-invalid');
-                });
+
+                // On click of 'Next' tab
                 $('.tab-trigger-next').on('click', function(event) {
                     const targetTabId = $(this).data('bs-target');
-                    validateAndSwitchTab(targetTabId);
+                    // event.preventDefault(); // Prevent default action (tab switch)
+
+                    // var form = $("#productForm");
+                    // // Validate the current tab first
+                    // if (validateAndSwitchTab(targetTabId)) {
+                    //     $.ajax({
+                    //         url: '{{ route('admin.brands.store') }}',
+                    //         type: 'POST',
+                    //         data: form.serialize(), // Serialize the form data
+                    //         success: function(response) {
+                    //             if (response.success) {
+                    //                 // Redirect without page reload
+                    //                 window.location.href = response.redirect_url;
+                    //             } else {
+                    //                 alert('There was an error saving the data.');
+                    //             }
+                    //         },
+                    //         error: function(xhr, status, error) {
+                    //             alert('An error occurred: ' + error);
+                    //         }
+                    //     });
+                    // }
                 });
+
+                // On click of 'Previous' tab
                 $('.tab-trigger-previous').on('click', function(event) {
                     const targetTabId = $(this).data('bs-target');
                     validateAndSwitchTab(targetTabId);
                 });
             });
         </script>
+
+<script>
+    $("#brand_stores").DataTable({
+        "language": {
+            "lengthMenu": "Show MENU",
+        },
+        "dom": "<'row'" +
+            "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+            "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+            ">" +
+
+            "<'table-responsive'tr>" +
+
+            "<'row'" +
+            "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+            "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+            ">"
+    });
+</script>
     @endpush
+
 </x-admin-app-layout>

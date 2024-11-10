@@ -48,12 +48,12 @@ if (!function_exists('customUpload')) {
             // $filePath = "$uploadPath/$fileName";
 
             $output = [
-                'status' => 1,
-                'file_name' => $fileName,
+                'status'         => 1,
+                'file_name'      => $fileName,
                 'file_extension' => $mainFile->getClientOriginalExtension(),
-                'file_size' => $mainFile->getSize(),
-                'file_type' => $mainFile->getMimeType(),
-                'file_path' => $filePath,
+                'file_size'      => $mainFile->getSize(),
+                'file_type'      => $mainFile->getMimeType(),
+                'file_path'      => $filePath,
             ];
 
             return array_map('htmlspecialchars', $output);
