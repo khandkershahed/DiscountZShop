@@ -49,37 +49,36 @@ class AppServiceProvider extends ServiceProvider
             }
 
             if (Schema::hasTable('categories')) {
-                View::share('categories', Category::with('children','offers','coupons')->whereNull('parent_id')->get());
+                View::share('categories', Category::with('children', 'offers', 'coupons')->whereNull('parent_id')->get());
             }
 
             if (Schema::hasTable('brands')) {
-                View::share('brands', Brand::orderBy('name','asc')->get());
+                View::share('brands', Brand::orderBy('name', 'asc')->get());
             }
 
             if (Schema::hasTable('countries')) {
-                View::share('countries', Country::orderBy('name','asc')->get());
+                View::share('countries', Country::orderBy('name', 'asc')->get());
             }
 
             if (Schema::hasTable('divisions')) {
-                View::share('divisions', Division::orderBy('name','asc')->get());
+                View::share('divisions', Division::orderBy('name', 'asc')->get());
             }
 
             if (Schema::hasTable('stores')) {
-                View::share('stores', Store::orderBy('title','asc')->get());
+                View::share('stores', Store::orderBy('title', 'asc')->get());
             }
 
             if (Schema::hasTable('cities')) {
-                View::share('citys', City::orderBy('name','asc')->get());
+                View::share('citys', City::orderBy('name', 'asc')->get());
             }
 
             if (Schema::hasTable('areas')) {
-                View::share('areas', Area::orderBy('name','asc')->get());
+                View::share('areas', Area::orderBy('name', 'asc')->get());
             }
 
             if (Schema::hasTable('admins')) {
-                View::share('admins', Admin::orderBy('name','asc')->get());
+                View::share('admins', Admin::orderBy('name', 'asc')->get());
             }
-
         } catch (Exception $e) {
             // Log the exception if needed
         }

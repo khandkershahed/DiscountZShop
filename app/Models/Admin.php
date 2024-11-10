@@ -42,5 +42,10 @@ class Admin extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // public function getOfferCountByAdminsAttribute()
+    // {
+    //     return Offer::where('added_by', $this->id)->count();
+    // }
+
     
 }

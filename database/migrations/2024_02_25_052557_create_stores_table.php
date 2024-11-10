@@ -29,6 +29,10 @@ return new class extends Migration
             $table->longText('location')->nullable();
             $table->text('description')->nullable();
             $table->string('url', 255)->nullable();
+
+            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');//
+            $table->foreignId('update_by')->nullable()->constrained('admins')->onDelete('set null');//
+
             $table->string('category')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');
             $table->timestamps();
