@@ -39,15 +39,17 @@
                                             href="#kt_vtab_pane_1" aria-selected="true" role="tab">Overview</a>
                                     </li>
                                     <li class="nav-item w-md-290px m-0" role="presentation">
-                                        <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                            href="#kt_vtab_pane_2" aria-selected="false" role="tab">Stores</a>
+                                        <a class="nav-link p-5 rounded-0 tab-trigger" onclick="overviewAlert(event)"
+                                            data-bs-toggle="tab" href="#kt_vtab_pane_2" aria-selected="true"
+                                            role="tab">Stores</a>
                                     </li>
-                                    <li class="nav-item w-md-290px m-0" role="presentation">
-                                        <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                            href="#kt_vtab_pane_3" aria-selected="false" role="tab"
-                                            tabindex="-1">Offers</a>
+                                    <li class="nav-item w-md-290px m-0">
+                                        <a class="nav-link p-5 rounded-0 tab-trigger" onclick="overviewAlert(event)"
+                                            data-bs-toggle="tab" href="#kt_vtab_pane_3" aria-selected="true"
+                                            role="tab">Offers</a>
                                     </li>
                                 </ul>
+
                             </div>
                             <div class="col-lg-10 ps-0">
                                 <div class="p-5">
@@ -71,21 +73,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="kt_vtab_pane_2" role="tabpanel">
-                                            <div class="w-100">
-
-                                                <div class="fv-row">
-                                                    {{-- @include('admin.pages.brands.partial.store') --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="kt_vtab_pane_3" role="tabpanel">
-                                            <div class="w-100">
-                                                <div class="fv-row">
-                                                    {{-- @include('admin.pages.brands.partial.offer') --}}
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                 </div>
@@ -105,102 +92,162 @@
 
     @push('scripts')
         <script>
+            function overviewAlert(event) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'You have to complete and save Brand Overview first!',
+                });
+                return false;
+            }
             $(document).ready(function() {
-                function validateAndSwitchTab(targetTabId) {
-                    let isValid = true;
-                    const activeTabHref = $('.tab-trigger.active').attr('href');
-                    $(activeTabHref).find('input, textarea, select').each(function() {
-                        var $field = $(this);
-                        var isSelect2 = $field.hasClass('select2-hidden-accessible');
-                        if ($field.prop('required') && $field.val() === '') {
-                            isValid = false;
-                            if (isSelect2) {
-                                $field.next('.select2-container').addClass('is-invalid');
-                            } else {
-                                $field.addClass('is-invalid');
-                            }
-                        }
-                    });
-                    if (!isValid) {
-                        return false;
-                    } else {
-                        // Instead of the alert, proceed with tab switch
-                        switchTab(targetTabId);
-                        return true;
-                    }
-                }
-
-                function switchTab(targetTabId) {
-                    $('.nav-link[href="' + targetTabId + '"]').tab('show');
-                }
 
                 $('.tab-trigger').on('show.bs.tab', function(event) {
-                    return validateAndSwitchTab($(this).data('bs-target'));
+                    return overviewAlert($(this));
                 });
-
-                $('.tab-content').on('input change', 'input, textarea, select', function() {
-                    var $field = $(this);
-                    var isSelect2 = $field.hasClass('select2-hidden-accessible');
-                    if (isSelect2) {
-                        $field.next('.select2-container').removeClass('is-invalid');
-                    } else {
-                        $field.removeClass('is-invalid');
-                    }
-                });
-
                 // On click of 'Next' tab
-                $('.tab-trigger-next').on('click', function(event) {
-                    const targetTabId = $(this).data('bs-target');
-                    // event.preventDefault(); // Prevent default action (tab switch)
 
-                    // var form = $("#productForm");
-                    // // Validate the current tab first
-                    // if (validateAndSwitchTab(targetTabId)) {
-                    //     $.ajax({
-                    //         url: '{{ route('admin.brands.store') }}',
-                    //         type: 'POST',
-                    //         data: form.serialize(), // Serialize the form data
-                    //         success: function(response) {
-                    //             if (response.success) {
-                    //                 // Redirect without page reload
-                    //                 window.location.href = response.redirect_url;
-                    //             } else {
-                    //                 alert('There was an error saving the data.');
-                    //             }
-                    //         },
-                    //         error: function(xhr, status, error) {
-                    //             alert('An error occurred: ' + error);
-                    //         }
-                    //     });
-                    // }
-                });
 
-                // On click of 'Previous' tab
-                $('.tab-trigger-previous').on('click', function(event) {
-                    const targetTabId = $(this).data('bs-target');
-                    validateAndSwitchTab(targetTabId);
-                });
             });
         </script>
 
-<script>
-    $("#brand_stores").DataTable({
-        "language": {
-            "lengthMenu": "Show MENU",
-        },
-        "dom": "<'row'" +
-            "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-            "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
-            ">" +
+        <!-- Include jQuery Validation plugin -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
-            "<'table-responsive'tr>" +
+        <script>
+            $(document).ready(function() {
 
-            "<'row'" +
-            "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-            "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-            ">"
-    });
-</script>
+                // Initialize the form validation
+                $('#productForm').validate({
+                    // Define the validation rules
+                    rules: {
+                        category_id: {
+                            required: true
+                        },
+                        category_type: {
+                            required: true
+                        },
+                        country_id: {
+                            required: true,
+                            minlength: 1 // Ensure at least one country is selected
+                        },
+                        division_id: {
+                            required: true,
+                            minlength: 1 // Ensure at least one division is selected
+                        },
+                        city_id: {
+                            required: true,
+                            minlength: 1 // Ensure at least one city is selected
+                        },
+                        area_id: {
+                            required: true,
+                            minlength: 1 // Ensure at least one area is selected
+                        },
+                        name: {
+                            required: true,
+                            minlength: 3
+                        },
+                        url: {
+                            required: true,
+                            url: true
+                        },
+                        status: {
+                            required: true
+                        },
+                        about_title: {
+                            required: true
+                        },
+                        offer_description_title: {
+                            required: true
+                        },
+                        description_title: {
+                            required: true
+                        },
+                        about: {
+                            required: true
+                        },
+                        offer_description: {
+                            required: true
+                        },
+                        description: {
+                            required: true
+                        }
+                    },
+                    // Define error messages
+                    messages: {
+                        category_id: {
+                            required: "Please select a category."
+                        },
+                        category_type: {
+                            required: "Please select a category type."
+                        },
+                        country_id: {
+                            required: "Please select at least one country."
+                        },
+                        division_id: {
+                            required: "Please select at least one division."
+                        },
+                        city_id: {
+                            required: "Please select at least one city."
+                        },
+                        area_id: {
+                            required: "Please select at least one area."
+                        },
+                        name: {
+                            required: "Please enter a name.",
+                            minlength: "Name should be at least 3 characters."
+                        },
+                        url: {
+                            required: "Please enter a valid URL."
+                        },
+                        status: {
+                            required: "Please select a status."
+                        },
+                        about_title: {
+                            required: "Please enter a section title."
+                        },
+                        offer_description_title: {
+                            required: "Please enter the offer description title."
+                        },
+                        description_title: {
+                            required: "Please enter the description title."
+                        },
+                        about: {
+                            required: "Please provide the section one description."
+                        },
+                        offer_description: {
+                            required: "Please provide the section three description."
+                        },
+                        description: {
+                            required: "Please provide the section four description."
+                        }
+                    },
+                    // If the form is valid, prevent the default form submission
+                    submitHandler: function(form) {
+                        // Here we can handle the form submission through AJAX if needed
+                        form.submit(); // If validation is passed, the form will submit normally
+                    }
+                });
+
+                // On clicking "Save & Continue", validate the form
+                $('#brandForm').on('submit', function(e) {
+                    e.preventDefault(); // Prevent default form submission
+
+                    // Check if the form is valid
+                    if ($('#brandForm').valid()) {
+                        // If valid, submit the form
+                        this.submit();
+                    } else {
+                        // Show alert if form is invalid
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Please correct the errors in the form before continuing.',
+                        });
+                    }
+                });
+
+            });
+        </script>
     @endpush
 
 </x-admin-app-layout>

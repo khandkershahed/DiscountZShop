@@ -1,6 +1,7 @@
-        <input id="{{ $id ?? '' }}" type="{{ $type ?? 'text' }}"
+@props(['id' => '', 'name', 'required' => ''])
+       <input id="{{ $id ?? '' }}" type="{{ $type ?? 'text' }}"
             class="form-control @error($name)is-invalid @enderror" name="{{ $name }}" step="0.01" maxlength="{{ $maxlength ?? 250 }}"
-            placeholder="{{ $placeholder ?? '' }}" value="{{ old($name, $value ?? '') }}" {{ $required ?? '' }}/>
+            placeholder="{{ $placeholder ?? '' }}" value="{{ old($name, $value ?? '') }}" {{ $required ?? 'required' }}/>
         @error($name)
             <div class="invalid-feedback">
                 {{ $message }}
