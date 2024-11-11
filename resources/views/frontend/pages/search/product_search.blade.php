@@ -17,7 +17,7 @@
         @else
             <div class="row">
                 <div class="col-lg-9 mx-auto">
-                    @foreach (brands as $brand)
+                    @foreach ($brands as $brand)
                         <div class="col-lg-4 mb-3 mt-2">
                             <a href="{{ route('brand.details', $brand->slug) }}">
                                 <div class="card shadow-sm brands-card">
