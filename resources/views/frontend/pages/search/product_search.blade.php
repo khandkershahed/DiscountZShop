@@ -12,6 +12,7 @@
     <div class="search-results my-5">
 
         <!-- Brands Section -->
+        <h3>Brand</h3>
         @if ($brands->isEmpty())
             <h4 class="text-center text-danger">Brand Not Found</h4>
         @else
@@ -37,6 +38,7 @@
         @endif
 
         <!-- Offers Section -->
+        <h3>Offer</h3>
         @if ($offers->isEmpty())
             <h4 class="text-center text-danger">Offer Not Found</h4>
         @else
@@ -109,6 +111,7 @@
         @endif
 
         <!-- Stores Section -->
+        <h3>Store</h3>
         @if ($stores->isEmpty())
             <h4 class="text-center text-danger">Store Not Found</h4>
         @else
