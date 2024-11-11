@@ -35,11 +35,11 @@
                                 <ul class="nav nav-tabs nav-pills border-0 flex-row flex-md-column mb-3 mb-md-0 fs-6 border-1 border-light"
                                     role="tablist">
                                     <li class="nav-item w-md-290px m-0" role="presentation">
-                                        <a class="nav-link p-5 rounded-0 active tab-trigger" data-bs-toggle="tab"
+                                        <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
                                             href="#kt_vtab_pane_1" aria-selected="true" role="tab">Overview</a>
                                     </li>
                                     <li class="nav-item w-md-290px m-0" role="presentation">
-                                        <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
+                                        <a class="nav-link p-5 rounded-0 active tab-trigger" data-bs-toggle="tab"
                                             href="#kt_vtab_pane_2" aria-selected="false" role="tab">Stores</a>
                                     </li>
                                     <li class="nav-item w-md-290px m-0" role="presentation">
@@ -53,7 +53,7 @@
                                 <div class="p-5">
 
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
+                                        <div class="tab-pane fade" id="kt_vtab_pane_1" role="tabpanel">
                                             <div class="w-100">
                                                 <div class="pb-5 pb-lg-5">
                                                     <h2
@@ -71,7 +71,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="kt_vtab_pane_2" role="tabpanel">
+                                        <div class="tab-pane fade active show" id="kt_vtab_pane_2" role="tabpanel">
                                             <div class="w-100">
 
                                                 <div class="fv-row brand_store">

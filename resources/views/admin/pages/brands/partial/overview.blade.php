@@ -1,7 +1,5 @@
-<form id="productForm" method="POST" action="{{ route('admin.brands.store') }}" enctype="multipart/form-data">
+<form id="brandForm" method="POST" action="{{ route('admin.brands.store') }}" enctype="multipart/form-data">
     @csrf
-
-
     <div class="row">
         <div class="col-lg-3 col-md-6 mb-7">
             <x-metronic.label for="category_id"
@@ -31,7 +29,7 @@
         <div class="col-lg-3 col-md-6 mb-7">
             <x-metronic.label for="country_id"
                 class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
-            <x-metronic.select-option id="country_id" name="country_id[]" data-hide-search="false" multiple
+            <x-metronic.select-option id="country_id" name="country_id[]" data-hide-search="false" multiple required
                 data-placeholder="Select an option">
                 <option></option>
                 @foreach ($countries as $country)
@@ -45,7 +43,7 @@
         <div class="col-lg-3 col-md-6 mb-7">
             <x-metronic.label for="division_id"
                 class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
-            <x-metronic.select-option id="division_id" name="division_id[]" data-hide-search="false" multiple
+            <x-metronic.select-option id="division_id" name="division_id[]" data-hide-search="false" multiple required
                 data-placeholder="Select an option">
                 <option></option>
                 @foreach ($divisions as $division)
@@ -244,6 +242,4 @@
             </button>
         </div>
     </div>
-
-
 </form>
