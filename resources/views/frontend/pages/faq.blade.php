@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'FAQs || DiscountZShop'">
+
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
@@ -8,6 +9,7 @@
         </div>
     </section>
     <!-- Hero End -->
+    
     <section class="faq-section py-5">
         <div class="container">
             <div class="row">

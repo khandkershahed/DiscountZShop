@@ -120,7 +120,7 @@ class HomeController extends Controller
             'brand' => Brand::where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
         ];
-        return view('frontend.pages.vendor.overview',$data);
+        return view('frontend.pages.vendor.overview', $data);
     }
     public function vendorStores($slug)
     {
@@ -128,7 +128,7 @@ class HomeController extends Controller
             'brand' => Brand::with('stores')->where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
         ];
-        return view('frontend.pages.vendor.stores',$data);
+        return view('frontend.pages.vendor.stores', $data);
     }
     public function vendorOffers($slug)
     {
@@ -136,7 +136,7 @@ class HomeController extends Controller
             'brand' => Brand::with('stores')->where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
         ];
-        return view('frontend.pages.vendor.offers',$data);
+        return view('frontend.pages.vendor.offers', $data);
     }
     public function wallet($slug)
     {
@@ -407,5 +407,16 @@ class HomeController extends Controller
             'faqs' => Faq::orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
+    }
+
+    //ProductSearch
+    public function productSearch(Request $request)
+    {
+
+        $request->validate(['search' => "required"]);
+
+        $item = $request->search;
+
+        return view('frontend.pages.search.product_search', compact('item'));
     }
 }

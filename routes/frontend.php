@@ -28,6 +28,9 @@ Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisi
 Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
 Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
+//Search 
+Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
+
 
 
 //Homepage Deal Search
