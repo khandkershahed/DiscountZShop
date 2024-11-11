@@ -119,13 +119,12 @@
         <div class="col-lg-3 col-md-6 mb-7">
             <x-metronic.label for="name" class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
             </x-metronic.label>
-
             <x-metronic.input id="name" type="text" name="name" :value="old('name', $brand->name)"
                 placeholder="Enter the Name" required></x-metronic.input>
         </div>
 
         <div class="col-lg-3 col-md-6 mb-7">
-            <x-metronic.label for="url" class="col-form-label fw-bold fs-6 required">{{ __('Url') }}
+            <x-metronic.label for="url" class="col-form-label fw-bold fs-6">{{ __('Url') }}
             </x-metronic.label>
 
             <x-metronic.input id="url" type="url" name="url" :value="old('url', $brand->url)"
@@ -139,7 +138,7 @@
                 name="banner_image"></x-metronic.file-input>
         </div>
         <div class="col-lg-3 col-md-6 mb-7">
-            <x-metronic.label for="logo" class="col-form-label fw-bold fs-6 ">{{ __('Logo') }}
+            <x-metronic.label for="logo" class="col-form-label fw-bold fs-6">{{ __('Logo') }}
             </x-metronic.label>
 
             <x-metronic.file-input id="logo" name="logo" :value="old('logo', $brand->logo)"
@@ -172,11 +171,11 @@
         </div>
         <div class="col-lg-12 mb-7">
             <x-metronic.label for="about_title"
-                class="col-form-label fw-bold fs-6 required">{{ __('Section One Title') }}
+                class="col-form-label fw-bold fs-6">{{ __('Section One Title') }}
             </x-metronic.label>
 
             <x-metronic.input id="about_title" type="text" name="about_title" :value="old('about_title', $brand->about_title)"
-                placeholder="Enter the Section Title" required></x-metronic.input>
+                placeholder="Enter the Section Title"></x-metronic.input>
         </div>
 
         <div class="col-lg-12 mb-7">
@@ -208,11 +207,11 @@
 
         <div class="col-lg-12 mb-7">
             <x-metronic.label for="offer_description_title"
-                class="col-form-label fw-bold fs-6 required">{{ __('Section Three Title') }}
+                class="col-form-label fw-bold fs-6">{{ __('Section Three Title') }}
             </x-metronic.label>
 
             <x-metronic.input id="offer_description_title" type="text" name="offer_description_title"
-                :value="old('offer_description_title', $brand->offer_description_title)" placeholder="Enter the Section Three Title" required></x-metronic.input>
+                :value="old('offer_description_title', $brand->offer_description_title)" placeholder="Enter the Section Three Title"></x-metronic.input>
         </div>
 
         <div class="col-lg-12 mb-7">
@@ -229,11 +228,11 @@
 
         <div class="col-lg-12 mb-7">
             <x-metronic.label for="description_title"
-                class="col-form-label fw-bold fs-6 required">{{ __('Section Four Title') }}
+                class="col-form-label fw-bold fs-6">{{ __('Section Four Title') }}
             </x-metronic.label>
 
             <x-metronic.input id="description_title" type="text" name="description_title" :value="old('description_title', $brand->description_title)"
-                placeholder="Enter the Section Four Title" required></x-metronic.input>
+                placeholder="Enter the Section Four Title"></x-metronic.input>
         </div>
 
         <div class="col-lg-12 mb-7">

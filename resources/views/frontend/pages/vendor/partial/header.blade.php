@@ -1,8 +1,7 @@
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" style="height: 400px; max-height: 100%;"
-                {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
+            <img class="img-fluid w-100" style="height: 400px; max-height: 100%;" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
                 src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
                 alt="Khash Foods Vendor" />
         </div>
@@ -13,7 +12,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="vendor-logo p-2 rounded-2" style="background-color: #eee; border: 2px solid #f15a2d;">
-                        <img class="img-fluid rounded-2 border" src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
+                        <img class="img-fluid rounded-2 border"
+                            src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
                             alt="">
                     </div>
                 </div>
@@ -33,11 +33,13 @@
                                 <h6>Overview</h6>
                             </div>
                         </a>
-                        <a href="{{ route('vendor.stores', optional($brand)->slug) }}">
-                            <div class="vendor-menus {{ Route::is('vendor.stores') ? 'active' : '' }} rounded-2">
-                                <h6>Stores</h6>
-                            </div>
-                        </a>
+                        @if (optional($brand)->stores->count() > 0)
+                            <a href="{{ route('vendor.stores', optional($brand)->slug) }}">
+                                <div class="vendor-menus {{ Route::is('vendor.stores') ? 'active' : '' }} rounded-2">
+                                    <h6>Stores</h6>
+                                </div>
+                            </a>
+                        @endif
                         <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
                             <div class="vendor-menus {{ Route::is('vendor.offers') ? 'active' : '' }} rounded-2">
                                 <h6>Offers</h6>

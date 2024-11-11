@@ -109,18 +109,7 @@
                 function validateAndSwitchTab(targetTabId) {
                     let isValid = true;
                     const activeTabHref = $('.tab-trigger.active').attr('href');
-                    $(activeTabHref).find('input, textarea, select').each(function() {
-                        var $field = $(this);
-                        var isSelect2 = $field.hasClass('select2-hidden-accessible');
-                        if ($field.prop('required') && $field.val() === '') {
-                            isValid = false;
-                            if (isSelect2) {
-                                $field.next('.select2-container').addClass('is-invalid');
-                            } else {
-                                $field.addClass('is-invalid');
-                            }
-                        }
-                    });
+
                     if (!isValid) {
                         return false;
                     } else {
@@ -193,23 +182,22 @@
                 });
                 $('.tab-trigger-offer-next').on('click', function(event) {
                     const targetTabId = $(this).data('bs-target');
-                    event.preventDefault(); // Prevent default action (tab switch)
+                    event.preventDefault();
 
                     // Serialize form data
                     var formData = new FormData($('#storeForm')[0]);
-                    // Validate the current tab first
                     if (validateAndSwitchTab(targetTabId)) {
                         $.ajax({
-                            url: $('#storeForm').attr('action'), // The route to update the brand
+                            url: $('#storeForm').attr('action'),
                             method: 'POST',
                             data: formData,
-                            processData: false, // Don't process the data
-                            contentType: false, // Don't set content-type header
+                            processData: false,
+                            contentType: false,
                             success: function(response) {
                                 if (response.success) {
                                     Swal.fire({
                                         icon: 'success',
-                                        title: 'Brand updated successfully!',
+                                        title: 'Store successfully!',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
@@ -218,9 +206,11 @@
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Oops...',
-                                        text: response.error_message ||
-                                            'Something went wrong!'
+                                        text: response.error_message
+                                        // text: response.error_message ||
+                                        //     'Something went wrong!'
                                     });
+                                    return false;
                                 }
                             },
                             error: function(xhr, status, error) {
@@ -242,6 +232,37 @@
                 });
             });
         </script>
+
+
+        <script>
+            $(document).ready(function() {
+                $('.stores').repeater({
+                    initEmpty: false,
+                    defaultValues: {
+                        'text-input': 'foo'
+                    },
+                    show: function() {
+                        $(this).slideDown();
+                        $(this).find('[data-kt-repeater="select2"]').select2();
+                        $(this).find('[data-kt-repeater="datepicker"]').flatpickr();
+                        new Tagify(this.querySelector('[data-kt-repeater="tagify"]'));
+                    },
+
+                    hide: function(deleteElement) {
+                        $(this).slideUp(deleteElement);
+                    },
+
+                    ready: function() {
+                        $('[data-kt-repeater="select2"]').select2();
+                        $('[data-kt-repeater="datepicker"]').flatpickr();
+                        new Tagify(document.querySelector('[data-kt-repeater="tagify"]'));
+                    }
+                });
+            });
+        </script>
     @endpush
+
+
+
 
 </x-admin-app-layout>

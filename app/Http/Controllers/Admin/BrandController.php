@@ -371,7 +371,8 @@ class BrandController extends Controller
 
             DB::rollback();
             // return response()->json(['success' => false, 'message' => 'An error occurred while creating the Brand: ' . $e->getMessage()]);
-            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Brand: ' . $e->getMessage());
+            Session::flash('error', 'An error occurred while creating the Brand: ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
     }
 
@@ -434,8 +435,8 @@ class BrandController extends Controller
 
             foreach ($request->stores as $key => $store) {
                 $store = Store::create([
-                    'name'                => $request->name,
-                    'headquarter'         => $request->headquarter,
+                    // 'name'                => $brand->name,
+                    // 'headquarter'         => $request->headquarter,
                     'added_by'            => Auth::guard('admin')->user()->id,
                     'country_id'          => $store['country_id'],
                     'division_id'         => $store['division_id'],
@@ -447,16 +448,10 @@ class BrandController extends Controller
                     'url'                 => $store['url'],
                     'brand_id'            => $brand->id,
                     'category_id'         => $brand->category_id,
-                    'category_type'       => $brand->category_type,
-                    'about'               => $brand->about,
-                    'offer_description'   => $brand->offer_description,
                     'location'            => $brand->location,
                     'description'         => $brand->description,
-                    'url'                 => $brand->url,
-                    'map_url'             => $brand->map_url,
-                    'category'            => $brand->category,
-                    'status'              => $brand->status,
-                    'badge'               => $brand->badge,
+                    'added_by'            => Auth::guard('admin')->user()->id,
+                    'status'              => $store['status'],
                 ]);
             }
 
@@ -475,11 +470,9 @@ class BrandController extends Controller
             return response()->json(['success' => true, 'html' => $responseHtml]);
             // return redirect()->route('admin.brands.index')->with('success', 'Brand created successfully');
         } catch (\Exception $e) {
-            // Rollback the database transaction in case of an error
             DB::rollback();
-
-            // Return back with error message
-            return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Brand: ' . $e->getMessage());
+            return response()->json(['success' => false, 'error_message' => $e->getMessage()]);
+            // return redirect()->back()->withInput()->with('error', 'An error occurred while creating the Brand: ' . $e->getMessage());
         }
     }
     /**

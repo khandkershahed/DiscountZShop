@@ -111,121 +111,55 @@
         </script>
 
         <!-- Include jQuery Validation plugin -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
 
         <script>
             $(document).ready(function() {
-
                 // Initialize the form validation
-                $('#productForm').validate({
+                $('#brandForm').validate({
                     // Define the validation rules
                     rules: {
-                        category_id: {
-                            required: true
-                        },
-                        category_type: {
-                            required: true
-                        },
-                        country_id: {
-                            required: true,
-                            minlength: 1 // Ensure at least one country is selected
-                        },
-                        division_id: {
-                            required: true,
-                            minlength: 1 // Ensure at least one division is selected
-                        },
-                        city_id: {
-                            required: true,
-                            minlength: 1 // Ensure at least one city is selected
-                        },
-                        area_id: {
-                            required: true,
-                            minlength: 1 // Ensure at least one area is selected
-                        },
-                        name: {
-                            required: true,
-                            minlength: 3
-                        },
-                        url: {
-                            required: true,
-                            url: true
-                        },
-                        status: {
-                            required: true
-                        },
-                        about_title: {
-                            required: true
-                        },
-                        offer_description_title: {
-                            required: true
-                        },
-                        description_title: {
-                            required: true
-                        },
-                        about: {
-                            required: true
-                        },
-                        offer_description: {
-                            required: true
-                        },
-                        description: {
-                            required: true
-                        }
+                        category_id: { required: true },
+                        category_type: { required: true },
+                        country_id: { required: true, minlength: 1 },
+                        division_id: { required: true, minlength: 1 },
+                        city_id: { required: true, minlength: 1 },
+                        area_id: { required: true, minlength: 1 },
+                        name: { required: true, minlength: 3 },
+                        // url: { required: true, url: true },
+                        status: { required: true },
+                        // about_title: { required: true },
+                        logo: { required: true },
+                        banner_image: { required: true },
+                        // offer_description_title: { required: true },
+                        // description_title: { required: true },
+                        // about: { required: true },
+                        // offer_description: { required: true },
+                        // description: { required: true }
                     },
                     // Define error messages
                     messages: {
-                        category_id: {
-                            required: "Please select a category."
-                        },
-                        category_type: {
-                            required: "Please select a category type."
-                        },
-                        country_id: {
-                            required: "Please select at least one country."
-                        },
-                        division_id: {
-                            required: "Please select at least one division."
-                        },
-                        city_id: {
-                            required: "Please select at least one city."
-                        },
-                        area_id: {
-                            required: "Please select at least one area."
-                        },
-                        name: {
-                            required: "Please enter a name.",
-                            minlength: "Name should be at least 3 characters."
-                        },
-                        url: {
-                            required: "Please enter a valid URL."
-                        },
-                        status: {
-                            required: "Please select a status."
-                        },
-                        about_title: {
-                            required: "Please enter a section title."
-                        },
-                        offer_description_title: {
-                            required: "Please enter the offer description title."
-                        },
-                        description_title: {
-                            required: "Please enter the description title."
-                        },
-                        about: {
-                            required: "Please provide the section one description."
-                        },
-                        offer_description: {
-                            required: "Please provide the section three description."
-                        },
-                        description: {
-                            required: "Please provide the section four description."
-                        }
+                        category_id: { required: "Please select a category." },
+                        category_type: { required: "Please select a category type." },
+                        country_id: { required: "Please select at least one country." },
+                        division_id: { required: "Please select at least one division." },
+                        city_id: { required: "Please select at least one city." },
+                        area_id: { required: "Please select at least one area." },
+                        name: { required: "Please enter a name.", minlength: "Name should be at least 3 characters." },
+                        url: { required: "Please enter a valid URL." },
+                        logo: { required: "Please enter a valid Logo Image." },
+                        banner_image: { required: "Please enter a valid Banner Image." },
+                        status: { required: "Please select a status." },
+                        about_title: { required: "Please enter a section title." },
+                        offer_description_title: { required: "Please enter the offer description title." },
+                        description_title: { required: "Please enter the description title." },
+                        about: { required: "Please provide the section one description." },
+                        offer_description: { required: "Please provide the section three description." },
+                        description: { required: "Please provide the section four description." }
                     },
-                    // If the form is valid, prevent the default form submission
-                    submitHandler: function(form) {
-                        // Here we can handle the form submission through AJAX if needed
-                        form.submit(); // If validation is passed, the form will submit normally
-                    }
+                    // Customize error display
+                    errorClass: 'is-invalid',
+                    validClass: 'is-valid',
                 });
 
                 // On clicking "Save & Continue", validate the form
@@ -237,16 +171,26 @@
                         // If valid, submit the form
                         this.submit();
                     } else {
-                        // Show alert if form is invalid
+                        // If invalid, collect the error messages
+                        var errorMessages = [];
+
+                        // Loop through each field and collect the error message for invalid fields
+                        $.each($('#brandForm').validate().errorList, function(index, error) {
+                            errorMessages.push(error.message);
+                        });
+
+                        // Display the error messages in a SweetAlert list
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'Please correct the errors in the form before continuing.',
+                            html: '<ul>' + errorMessages.map(function(msg) {
+                                return '<li>' + msg + '</li>';
+                            }).join('') + '</ul>',
                         });
                     }
                 });
-
             });
+
         </script>
     @endpush
 

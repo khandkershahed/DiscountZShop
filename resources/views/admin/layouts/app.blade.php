@@ -100,7 +100,6 @@
 
 
 
-
     <script src="{{ asset('admin/assets/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom/widgets.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom/apps/chat/chat.js') }}"></script>
@@ -114,6 +113,7 @@
     @include('toastr')
 
     @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     <script>
         document.querySelectorAll('.ckeditor').forEach(element => {
             if (!element.classList.contains('ck-editor__editable_inline')) {

@@ -1,14 +1,13 @@
 <x-frontend-app-layout :title="'Vendor Overview || DiscountZShop'">
     @include('frontend.pages.vendor.partial.header')
     {{-- Overview Start --}}
-    <section>
+    {{-- <section>
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="text-center">
                             <h2 class="pb-2">{{ $brand->name }}</h2>
-                            {{-- <h2 class="pb-2">Arrong Exclusive Showroom Store</h2> --}}
                             <p>
                                 <i class="fa-solid fa-location-dot main-color"></i> {{ $brand->headquarter }}
                             </p>
@@ -19,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section>
         <div class="container">
