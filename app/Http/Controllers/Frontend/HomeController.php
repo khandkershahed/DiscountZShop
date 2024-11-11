@@ -417,6 +417,21 @@ class HomeController extends Controller
 
         $item = $request->search;
 
-        return view('frontend.pages.search.product_search', compact('item'));
+        $brands = Brand::where('name', 'LIKE', "%$item%")
+            ->orWhere('offer_description_title', "LIKE", "%$item%")
+            ->orWhere('description_title', "LIKE", "%$item%")
+            ->get();
+
+        $offers = Offer::where('name', 'LIKE', "%$item%")
+            ->orWhere('short_description', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
+
+        $stores = Store::where('title', 'LIKE', "%$item%")
+            ->orWhere('slug', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
+
+        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores'));
     }
 }

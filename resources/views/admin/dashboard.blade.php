@@ -103,7 +103,7 @@
                 $offerCountByAdmins = App\Models\Offer::where('added_by', $admin->id)->count();
                 $storeCountByAdmins = App\Models\Store::where('added_by', $admin->id)->count();
 
-                $todayAdded = $brandCountByAdmins + $offerCountByAdmins + $storeCountByAdmins;
+                $totalAdded = $brandCountByAdmins + $offerCountByAdmins + $storeCountByAdmins;
 
                 $today = \Carbon\Carbon::today();
 
@@ -122,7 +122,7 @@
                     ->whereDate('created_at', $today)
                     ->count();
 
-                $total = $offerCountByAdminsToday + $brandCountByAdminsToday + $storeCountByAdminsToday;
+                $todayAdded = $offerCountByAdminsToday + $brandCountByAdminsToday + $storeCountByAdminsToday;
             @endphp
             <!--begin::Col-->
             <div class="col-md-6 col-xxl-4">
@@ -156,7 +156,7 @@
                             <!--end::Stats-->
                             <!--begin::Stats-->
                             <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
-                                <div class="fs-6 fw-bolder text-gray-700">{{ $total }}</div>
+                                <div class="fs-6 fw-bolder text-gray-700">{{ $totalAdded }}</div>
                                 <div class="fw-bold text-gray-400">Total Added</div>
                             </div>
                             <!--end::Stats-->

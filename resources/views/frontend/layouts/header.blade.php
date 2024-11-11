@@ -207,7 +207,7 @@
 
                     <div class="d-flex hdr-search align-items-center">
 
-                        <input class="form-control hdr-search-box" name="search"  type="text" placeholder="Search"
+                        <input class="form-control hdr-search-box" autocomplete="on" required name="search"  type="text" placeholder="Search"
                             aria-label="Search" />
                     </div>
 
