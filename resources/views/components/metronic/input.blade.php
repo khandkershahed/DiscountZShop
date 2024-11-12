@@ -1,7 +1,7 @@
 @props([
     'id' => '',
     'name' => '',
-    'type' => 'text',
+    'type' => '',
     'required' => '',
     'maxlength' => 250,
     'placeholder' => '',

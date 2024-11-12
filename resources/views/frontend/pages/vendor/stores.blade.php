@@ -39,9 +39,9 @@
                             <li class="nav-item w-100 vendor-store-items mb-2" role="presentation">
                                 <button
                                     class="nav-link w-100 vendor-store {{ $loop->first ? 'active' : '' }} border-0 text-start"
-                                    id="home-{{ optional($store)->id }}-tab" data-bs-toggle="tab"
-                                    data-bs-target="#home-{{ optional($store)->id }}" type="button" role="tab"
-                                    aria-controls="home-{{ optional($store)->id }}" aria-selected="true">
+                                    id="home_{{ optional($store)->id }}-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home_{{ optional($store)->id }}" type="button" role="tab"
+                                    aria-controls="home_{{ optional($store)->id }}" aria-selected="true">
                                     <div class="card border-0 bg-transparent">
                                         <div class="card-body p-2 px-3">
                                             <h6 style="text-decoration: underline;" class="text-primary">
@@ -62,11 +62,11 @@
                 </div>
 
                 <div class="col-lg-7">
-                    <div class="tab-content">
+                    <div class="tab-content"> 
                         @foreach ($stores as $store)
-                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
-                                id="home-{{ optional($store)->id }}" role="tabpanel"
-                                aria-labelledby="home-{{ optional($store)->id }}-tab">
+                            <div class="tab-pane {{ $loop->first ? 'show active' : '' }}"
+                                id="home_{{ optional($store)->id }}" role="tabpanel"
+                                aria-labelledby="home_{{ optional($store)->id }}-tab">
                                 <div class="card rounded-0 shadow-sm border">
                                     <div class="card-body p-2">
                                         <iframe src="{{ optional($store)->url }}" width="100%" height="400"
