@@ -56,27 +56,25 @@
                             </li>
                         @endforeach
                     </ul>
+
                 </div>
                 <div class="col-lg-7">
                     <div class="tab-content">
                         @foreach (optional($brand)->stores as $store)
-                            <div class="tab-pane {{ $loop->first ? 'active' : '' }}"
-                                id="home-{{ optional($store)->id }}" role="tabpanel"
-                                aria-labelledby="home-{{ optional($store)->id }}-tab">
+                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
+                                 id="home-{{ optional($store)->id }}" role="tabpanel"
+                                 aria-labelledby="home-{{ optional($store)->id }}-tab">
                                 <div class="card rounded-0 shadow-sm border">
                                     <div class="card-body p-2">
                                         <iframe src="{{ optional($store)->url }}" width="100%" height="400"
-                                            frameborder="0" style="border: 0" allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade" class="map-store"></iframe>
-                                        {{-- <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.667573975865!2d90.41069157533732!3d23.79484917864015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7110a869885%3A0xe58ef928dd171985!2sSultan&#39;s%20Dine%20Gulshan%20Branch!5e0!3m2!1sen!2sbd!4v1731393645643!5m2!1sen!2sbd"
-                                            width="600" height="450" style="border:0;" allowfullscreen=""
-                                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
+                                                frameborder="0" style="border: 0" allowfullscreen="" loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade" class="map-store"></iframe>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+
 
                 </div>
             </div>
