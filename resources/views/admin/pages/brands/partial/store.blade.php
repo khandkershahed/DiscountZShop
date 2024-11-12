@@ -38,7 +38,7 @@
                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
-                            <div class="modal fade" id="EditModal-{{ $store->id }}" data-backdrop="static">
+                            <div class="modal fade" id="store_edit{{ $store->id }}" data-backdrop="static">
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content rounded-0 border-0 shadow-sm">
                                         <div class="modal-header p-2 rounded-0">

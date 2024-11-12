@@ -203,6 +203,81 @@ class StoreController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // public function update(Request $request, string $id)
+    // {
+    //     $store = Store::findOrFail($id);
+
+    //     DB::beginTransaction();
+
+    //     try {
+    //         $files = [
+    //             'logo' => $request->file('logo'),
+    //             'image' => $request->file('image'),
+    //             'banner_image' => $request->file('banner_image'),
+
+    //             'middle_banner_left' => $request->file('middle_banner_left'),
+    //             'middle_banner_right' => $request->file('middle_banner_right'),
+    //         ];
+    //         $uploadedFiles = [];
+    //         foreach ($files as $key => $file) {
+    //             if (!empty($file)) {
+    //                 $filePath = 'store/' . $key;
+    //                 $oldFile = $store->$key ?? null;
+
+    //                 if ($oldFile) {
+    //                     Storage::delete("public/" . $oldFile);
+    //                 }
+    //                 $uploadedFiles[$key] = customUpload($file, $filePath);
+    //                 if ($uploadedFiles[$key]['status'] === 0) {
+    //                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+    //                 }
+    //             } else {
+    //                 $uploadedFiles[$key] = ['status' => 0];
+    //             }
+    //         }
+
+    //         // Update the store with the new or existing file paths
+    //         $store->update([
+    //             'name'                => $request->name,
+    //             'headquarter'         => $request->headquarter,
+
+    //             'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : $store->logo,
+    //             'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : $store->image,
+
+    //             'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : $store->banner_image,
+
+    //             'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $store->middle_banner_left,
+
+    //             'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $store->middle_banner_right,
+
+    //             'added_by' => Auth::guard('admin')->user()->id,
+
+    //             'country_id'          => json_encode($request->country_id),
+    //             'division_id'         => json_encode($request->division_id),
+    //             'city_id'             => json_encode($request->city_id),
+    //             'area_id'             => json_encode($request->area_id),
+
+    //             'category_id'         => $request->category_id,
+    //             'category_type'         => $request->category_type,
+    //             'about'               => $request->about,
+    //             'offer_description'   => $request->offer_description,
+    //             'location'            => $request->location,
+    //             'description'         => $request->description,
+    //             'url'                 => $request->url,
+    //             'map_url'             => $request->map_url,
+    //             'category'            => $request->category,
+    //             'status'              => $request->status,
+    //             'badge'              => $request->badge,
+    //         ]);
+
+    //         DB::commit();
+
+    //         return redirect()->route('admin.store.index')->with('success', 'Store updated successfully');
+    //     } catch (\Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->back()->with('error', 'An error occurred while updating the Store: ' . $e->getMessage());
+    //     }
+    // }
     public function update(Request $request, string $id)
     {
         $store = Store::findOrFail($id);
@@ -210,69 +285,28 @@ class StoreController extends Controller
         DB::beginTransaction();
 
         try {
-            $files = [
-                'logo' => $request->file('logo'),
-                'image' => $request->file('image'),
-                'banner_image' => $request->file('banner_image'),
 
-                'middle_banner_left' => $request->file('middle_banner_left'),
-                'middle_banner_right' => $request->file('middle_banner_right'),
-            ];
-            $uploadedFiles = [];
-            foreach ($files as $key => $file) {
-                if (!empty($file)) {
-                    $filePath = 'store/' . $key;
-                    $oldFile = $store->$key ?? null;
-
-                    if ($oldFile) {
-                        Storage::delete("public/" . $oldFile);
-                    }
-                    $uploadedFiles[$key] = customUpload($file, $filePath);
-                    if ($uploadedFiles[$key]['status'] === 0) {
-                        return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
-                    }
-                } else {
-                    $uploadedFiles[$key] = ['status' => 0];
-                }
-            }
 
             // Update the store with the new or existing file paths
             $store->update([
-                'name'                => $request->name,
-                'headquarter'         => $request->headquarter,
-
-                'logo'                => $uploadedFiles['logo']['status']                == 1 ? $uploadedFiles['logo']['file_path']               : $store->logo,
-                'image'               => $uploadedFiles['image']['status']               == 1 ? $uploadedFiles['image']['file_path']              : $store->image,
-
-                'banner_image'        => $uploadedFiles['banner_image']['status']        == 1 ? $uploadedFiles['banner_image']['file_path']       : $store->banner_image,
-
-                'middle_banner_left'  => $uploadedFiles['middle_banner_left']['status']  == 1 ? $uploadedFiles['middle_banner_left']['file_path'] : $store->middle_banner_left,
-
-                'middle_banner_right' => $uploadedFiles['middle_banner_right']['status'] == 1 ? $uploadedFiles['middle_banner_right']['file_path'] : $store->middle_banner_right,
-
-                'added_by' => Auth::guard('admin')->user()->id,
-
-                'country_id'          => json_encode($request->country_id),
-                'division_id'         => json_encode($request->division_id),
-                'city_id'             => json_encode($request->city_id),
-                'area_id'             => json_encode($request->area_id),
-
-                'category_id'         => $request->category_id,
-                'category_type'         => $request->category_type,
-                'about'               => $request->about,
-                'offer_description'   => $request->offer_description,
-                'location'            => $request->location,
-                'description'         => $request->description,
-                'url'                 => $request->url,
-                'map_url'             => $request->map_url,
-                'category'            => $request->category,
-                'status'              => $request->status,
-                'badge'              => $request->badge,
+                    'country_id'          => $request->country_id,
+                    'division_id'         => $request->division_id,
+                    'city_id'             => $request->city_id,
+                    'area_id'             => $request->area_id,
+                    'title'               => $request->title,
+                    'address_line_one'    => $request->address_line_one,
+                    'address_line_two'    => $request->address_line_two,
+                    'url'                 => $request->url,
+                    // 'brand_id'            => $request->id,
+                    'category_id'         => $request->category_id,
+                    'location'            => $request->location,
+                    'description'         => $request->description,
+                    'status'              => $request->status,
             ]);
 
             DB::commit();
-
-            return redirect()->route('admin.store.index')->with('success', 'Store updated successfully');
+            Session::flash('success', 'Store updated successfully');
+            return redirect()->back();
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while updating the Store: ' . $e->getMessage());

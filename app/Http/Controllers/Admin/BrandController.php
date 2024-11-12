@@ -437,7 +437,6 @@ class BrandController extends Controller
                 $store = Store::create([
                     // 'name'                => $brand->name,
                     // 'headquarter'         => $request->headquarter,
-                    'added_by'            => Auth::guard('admin')->user()->id,
                     'country_id'          => $store['country_id'],
                     'division_id'         => $store['division_id'],
                     'city_id'             => $store['city_id'],
