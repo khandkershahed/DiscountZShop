@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('banner_image', 200)->nullable();
             $table->longText('location')->nullable();
             $table->text('description')->nullable();
-            $table->string('url', 255)->nullable();
+            $table->text('url')->nullable();
 
             $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');//
             $table->foreignId('update_by')->nullable()->constrained('admins')->onDelete('set null');//

@@ -63,7 +63,7 @@
                                                             <option></option>
                                                             @foreach ($countries as $country)
                                                                 <option value="{{ $country->id }}"
-                                                                    @selected(old('country_id',$store->country_id) == $country->id)>
+                                                                    @selected(old('country_id', $store->country_id) == $country->id)>
                                                                     {{ $country->name }}
                                                                 </option>
                                                             @endforeach
@@ -78,7 +78,7 @@
                                                             <option></option>
                                                             @foreach ($divisions as $division)
                                                                 <option value="{{ $division->id }}"
-                                                                    @selected(old('division_id',$store->division_id) == $division->id)>
+                                                                    @selected(old('division_id', $store->division_id) == $division->id)>
                                                                     {{ $division->name }}
                                                                 </option>
                                                             @endforeach
@@ -94,7 +94,7 @@
                                                             <option></option>
                                                             @foreach ($citys as $city)
                                                                 <option value="{{ $city->id }}"
-                                                                    @selected(old('city_id',$store->city_id) == $city->id)>
+                                                                    @selected(old('city_id', $store->city_id) == $city->id)>
                                                                     {{ $city->name }}
                                                                 </option>
                                                             @endforeach
@@ -110,7 +110,7 @@
                                                             <option></option>
                                                             @foreach ($areas as $area)
                                                                 <option value="{{ $area->id }}"
-                                                                    @selected(old('area_id',$store->area_id) == $area->id)>
+                                                                    @selected(old('area_id', $store->area_id) == $area->id)>
                                                                     {{ $area->name }}
                                                                 </option>
                                                             @endforeach
@@ -122,7 +122,7 @@
                                                         </x-metronic.label>
 
                                                         <x-metronic.input id="title" type="text" name="title"
-                                                            :value="old('title',$store->title)"
+                                                            :value="old('title', $store->title)"
                                                             placeholder="Enter the title"></x-metronic.input>
                                                     </div>
                                                     <div class="col-lg-3 mb-5">
@@ -131,7 +131,10 @@
                                                         </x-metronic.label>
 
                                                         <x-metronic.input id="address_line_one" type="text"
-                                                            name="address_line_one" :value="old('address_line_one',$store->address_line_one)"
+                                                            name="address_line_one" :value="old(
+                                                                'address_line_one',
+                                                                $store->address_line_one,
+                                                            )"
                                                             placeholder="Enter the Address line one"></x-metronic.input>
                                                     </div>
                                                     <div class="col-lg-3 mb-5">
@@ -140,7 +143,10 @@
                                                         </x-metronic.label>
 
                                                         <x-metronic.input id="address_line_two" type="text"
-                                                            name="address_line_two" :value="old('address_line_one',$store->address_line_one)"
+                                                            name="address_line_two" :value="old(
+                                                                'address_line_one',
+                                                                $store->address_line_one,
+                                                            )"
                                                             placeholder="Enter the Address Line Two"></x-metronic.input>
                                                     </div>
                                                     <div class="col-lg-3 mb-7">
@@ -150,9 +156,9 @@
                                                         <x-metronic.select-option id="status" name="status"
                                                             data-hide-search="true" data-placeholder="Select an option">
                                                             <option></option>
-                                                            <option value="active" @selected(old('status',$store->status) == 'active')>Active
+                                                            <option value="active" @selected(old('status', $store->status) == 'active')>Active
                                                             </option>
-                                                            <option value="inactive" @selected(old('status',$store->status) == 'inactive')>
+                                                            <option value="inactive" @selected(old('status', $store->status) == 'inactive')>
                                                                 Inactive</option>
                                                         </x-metronic.select-option>
                                                     </div>
@@ -164,8 +170,8 @@
                                                         </x-metronic.label>
 
                                                         <x-metronic.textarea id="url" name="url"
-                                                            :value="old('url',$store->url)"
-                                                            placeholder="Enter the Google Map URL">{{ old('url',$store->url) }}</x-metronic.textarea>
+                                                            :value="old('url', $store->url)"
+                                                            placeholder="Enter the Google Map URL">{{ old('url', $store->url) }}</x-metronic.textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,131 +202,132 @@
 <form id="storeForm" method="POST" action="{{ route('admin.brand.stores.store') }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="brand_id" value="{{ $brand->id }}">
-        <div class="mb-7 stores" id="stores">
-            <div class="form-group">
-                <div data-repeater-list="stores">
-                    <div data-repeater-item>
-                        <div class="row align-items-center">
-                            <div class="col-lg-11 mb-5" style="border: 1px solid #eee;">
-                                <div class="form-group row mb-5">
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="country_id"
-                                            class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
-                                        <select class="form-select" data-kt-repeater="select2" name="country_id"
-                                            data-hide-search="false" data-placeholder="Select an option">
-                                            <option></option>
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}" @selected(old('country_id') == $country->id)>
-                                                    {{ $country->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="division_id"
-                                            class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
-                                        <select class="form-select" data-kt-repeater="select2" name="division_id"
-                                            data-hide-search="false" data-placeholder="Select an option">
-                                            <option></option>
-                                            @foreach ($divisions as $division)
-                                                <option value="{{ $division->id }}" @selected(old('division_id') == $division->id)>
-                                                    {{ $division->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+    <div class="mb-7 stores" id="stores">
+        <div class="form-group">
+            <div data-repeater-list="stores">
+                <div data-repeater-item>
+                    <div class="row align-items-center">
+                        <div class="col-lg-11 mb-5" style="border: 1px solid #eee;">
+                            <div class="form-group row mb-5">
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="country_id"
+                                        class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
+                                    <select class="form-select" data-kt-repeater="select2" name="country_id"
+                                        data-hide-search="false" data-placeholder="Select an option">
+                                        <option></option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}" @selected(old('country_id') == $country->id)>
+                                                {{ $country->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="division_id"
+                                        class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
+                                    <select class="form-select" data-kt-repeater="select2" name="division_id"
+                                        data-hide-search="false" data-placeholder="Select an option">
+                                        <option></option>
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}" @selected(old('division_id') == $division->id)>
+                                                {{ $division->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="city_id"
-                                            class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
-                                        <select class="form-select" data-kt-repeater="select2" name="city_id"
-                                            data-hide-search="false" data-placeholder="Select an option">
-                                            <option></option>
-                                            @foreach ($citys as $city)
-                                                <option value="{{ $city->id }}" @selected(old('city_id') == $city->id)>
-                                                    {{ $city->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="city_id"
+                                        class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
+                                    <select class="form-select" data-kt-repeater="select2" name="city_id"
+                                        data-hide-search="false" data-placeholder="Select an option">
+                                        <option></option>
+                                        @foreach ($citys as $city)
+                                            <option value="{{ $city->id }}" @selected(old('city_id') == $city->id)>
+                                                {{ $city->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="area_id"
-                                            class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
-                                        <select class="form-select" data-kt-repeater="select2" name="area_id"
-                                            data-hide-search="false" data-placeholder="Select an option">
-                                            <option></option>
-                                            @foreach ($areas as $area)
-                                                <option value="{{ $area->id }}" @selected(old('area_id') == $area->id)>
-                                                    {{ $area->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="title"
-                                            class="col-form-label fw-bold fs-6">{{ __('Title') }}
-                                        </x-metronic.label>
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="area_id"
+                                        class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
+                                    <select class="form-select" data-kt-repeater="select2" name="area_id"
+                                        data-hide-search="false" data-placeholder="Select an option">
+                                        <option></option>
+                                        @foreach ($areas as $area)
+                                            <option value="{{ $area->id }}" @selected(old('area_id') == $area->id)>
+                                                {{ $area->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="title"
+                                        class="col-form-label fw-bold fs-6">{{ __('Title') }}
+                                    </x-metronic.label>
 
-                                        <x-metronic.input id="title" type="text" name="title"
-                                            :value="old('title')" placeholder="Enter the title"></x-metronic.input>
-                                    </div>
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="address_line_one"
-                                            class="col-form-label fw-bold fs-6">{{ __('Address Line One') }}
-                                        </x-metronic.label>
+                                    <x-metronic.input id="title" type="text" name="title" :value="old('title')"
+                                        placeholder="Enter the title"></x-metronic.input>
+                                </div>
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="address_line_one"
+                                        class="col-form-label fw-bold fs-6">{{ __('Address Line One') }}
+                                    </x-metronic.label>
 
-                                        <x-metronic.input id="address_line_one" type="text"
-                                            name="address_line_one" :value="old('address_line_one')"
-                                            placeholder="Enter the Address line one"></x-metronic.input>
-                                    </div>
-                                    <div class="col-lg-3 mb-5">
-                                        <x-metronic.label for="address_line_two"
-                                            class="col-form-label fw-bold fs-6">{{ __('Address Line Two') }}
-                                        </x-metronic.label>
+                                    <x-metronic.input id="address_line_one" type="text" name="address_line_one"
+                                        :value="old('address_line_one')" placeholder="Enter the Address line one"></x-metronic.input>
+                                </div>
+                                <div class="col-lg-3 mb-5">
+                                    <x-metronic.label for="address_line_two"
+                                        class="col-form-label fw-bold fs-6">{{ __('Address Line Two') }}
+                                    </x-metronic.label>
 
-                                        <x-metronic.input id="address_line_two" type="text"
-                                            name="address_line_two" :value="old('address_line_one')"
-                                            placeholder="Enter the Address Line Two"></x-metronic.input>
-                                    </div>
-                                    <div class="col-lg-3 mb-7">
-                                        <x-metronic.label for="status" class="col-form-label fw-bold fs-6">
-                                            {{ __('Select a Status ') }}</x-metronic.label>
-                                        <x-metronic.select-option id="status" name="status"
-                                            data-hide-search="true" data-placeholder="Select an option">
-                                            <option></option>
-                                            <option value="active" @selected(old('status') == 'active')>Active</option>
-                                            <option value="inactive" @selected(old('status') == 'inactive')>Inactive</option>
-                                        </x-metronic.select-option>
-                                    </div>
+                                    <x-metronic.input id="address_line_two" type="text" name="address_line_two"
+                                        :value="old('address_line_one')" placeholder="Enter the Address Line Two"></x-metronic.input>
+                                </div>
+                                <div class="col-lg-3 mb-7">
+                                    <x-metronic.label for="status" class="col-form-label fw-bold fs-6">
+                                        {{ __('Select a Status ') }}</x-metronic.label>
+                                    <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" data-hide-search="true"
+                                        data-placeholder="Select an option" required>
+                                        <option></option>
+                                        <option value="active" @selected(old('status') == 'active')>Active</option>
+                                        <option value="inactive" @selected(old('status') == 'inactive')>Inactive</option>
+                                    </select>
+                                    @error('status')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
 
-                                    <div class="col-lg-12 mb-5">
-                                        <x-metronic.label for="url"
-                                            class="col-form-label fw-bold fs-6">{{ __('Google Map URL') }}
-                                        </x-metronic.label>
-                                        <x-metronic.textarea id="url" name="url" :value="old('url')"
-                                            placeholder="Enter the Google Map URL">{{ old('url') }}</x-metronic.textarea>
-                                    </div>
+                                <div class="col-lg-12 mb-5">
+                                    <x-metronic.label for="url"
+                                        class="col-form-label fw-bold fs-6">{{ __('Google Map URL') }}
+                                    </x-metronic.label>
+                                    <x-metronic.textarea id="url" name="url" :value="old('url')"
+                                        placeholder="Enter the Google Map URL">{{ old('url') }}</x-metronic.textarea>
                                 </div>
                             </div>
-                            <div class="col-lg-1">
-                                <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-7">
-                                    <i class="la la-trash-o fs-3"></i>
-                                </a>
-                            </div>
                         </div>
-
+                        <div class="col-lg-1">
+                            <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-7">
+                                <i class="la la-trash-o fs-3"></i>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
-
-            <div class="form-group mt-5">
-                <a href="javascript:;" data-repeater-create class="btn btn-primary">
-                    <i class="la la-plus"></i>
-                </a>
-            </div>
         </div>
+
+        <div class="form-group mt-5">
+            <a href="javascript:;" data-repeater-create class="btn btn-primary">
+                <i class="la la-plus"></i>
+            </a>
+        </div>
+    </div>
     </div>
     <div class="row mt-2 justify-content-end">
         <div class="d-flex align-items-center justify-content-between">

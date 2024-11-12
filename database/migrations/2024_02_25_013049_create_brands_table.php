@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreignId('update_by')->nullable()->constrained('admins')->onDelete('set null');//
 
             $table->longText('description')->nullable();
-            $table->string('url', 255)->nullable();
+            $table->text('url')->nullable();
             $table->string('category')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');
             $table->timestamps();
