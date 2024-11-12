@@ -319,8 +319,17 @@ class HomeController extends Controller
     public function offerDetails($slug)
     {
         $offerDetails = Offer::where('slug', $slug)->first();
+        $brand = Brand::with('stores')->where('id', $offerDetails->brand_id)->first();
+
+            $data = [
+                'brand'         => $brand,
+                'offerDetails'  => $offerDetails,
+                'page_banner'   => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+            ];
+
         if ($offerDetails) {
-            return view('frontend.pages.offerDetails', compact('offerDetails'));
+            return view('frontend.pages.vendor.offer_details', $data);
+            // return view('frontend.pages.offerDetails', $data);
         } else {
             return redirect()->back()->with('Offer is not available.');
         }
