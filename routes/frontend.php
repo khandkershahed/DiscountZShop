@@ -28,7 +28,7 @@ Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisi
 Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
 Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
-//Search 
+//Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
 
 
@@ -69,5 +69,5 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 
 Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
-Route::get('/vendor/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
-Route::get('/vendor/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
+Route::get('/brand/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
+Route::get('/brand/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
