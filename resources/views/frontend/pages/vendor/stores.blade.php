@@ -1,5 +1,10 @@
 <x-frontend-app-layout :title="'Brand Stores || DiscountZShop'">
     @include('frontend.pages.vendor.partial.header')
+    <style>
+        iframe{
+            width: 100% !important;
+        }
+    </style>
     <section id="location">
         <div class="container py-4">
             <div class="row">
@@ -62,16 +67,17 @@
                 </div>
 
                 <div class="col-lg-7">
-                    <div class="tab-content"> 
+                    <div class="tab-content">
                         @foreach ($stores as $store)
                             <div class="tab-pane {{ $loop->first ? 'show active' : '' }}"
                                 id="home_{{ optional($store)->id }}" role="tabpanel"
                                 aria-labelledby="home_{{ optional($store)->id }}-tab">
                                 <div class="card rounded-0 shadow-sm border">
-                                    <div class="card-body p-2">
-                                        <iframe src="{{ optional($store)->url }}" width="100%" height="400"
+                                    <div class="card-body p-2 w-100">
+                                        {!! optional($store)->url !!}
+                                        {{-- <iframe src="{{ optional($store)->url }}" width="100%" height="400"
                                             frameborder="0" style="border: 0" allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade" class="map-store"></iframe>
+                                            referrerpolicy="no-referrer-when-downgrade" class="map-store"></iframe> --}}
                                     </div>
                                 </div>
                             </div>
@@ -82,4 +88,5 @@
 
         </div>
     </section>
+
 </x-frontend-app-layout>

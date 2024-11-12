@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div
-                        class="d-flex align-items-center justify-content-end rounded-2 mb-4 mt-0"style="background-color: #eee;">
+                        class="d-flex align-items-center justify-content-center rounded-2 mb-4 mt-0" style="background-color: #eee;">
                         <a href="{{ route('brand.details', optional($brand)->slug) }}">
                             <div class="vendor-menus {{ Route::is('brand.details') ? 'active' : '' }} rounded-2">
                                 <h6>Overview</h6>

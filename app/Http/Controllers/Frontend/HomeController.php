@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Models\Banner;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Coupon;
 use App\Models\Faq;
-use App\Models\HomePage;
+use App\Models\Brand;
 use App\Models\Offer;
-use App\Models\PageBanner;
-use App\Models\PrivacyPolicy;
-use App\Models\Slider;
 use App\Models\Store;
-use App\Models\TermsAndCondition;
+use App\Models\Banner;
+use App\Models\Coupon;
+use App\Models\Slider;
+use App\Models\AboutUs;
+use App\Models\Category;
+use App\Models\HomePage;
+use App\Models\PageBanner;
 use Illuminate\Http\Request;
+use App\Models\PrivacyPolicy;
+use App\Models\TermsAndCondition;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -116,27 +117,47 @@ class HomeController extends Controller
     }
     public function vendorOverview($slug)
     {
-        $data = [
-            'brand' => Brand::where('slug', $slug)->first(),
-            'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-        ];
-        return view('frontend.pages.vendor.overview', $data);
+        $brand = Brand::with('stores')->where('slug', $slug)->first();
+        if ($brand) {
+            $data = [
+                'brand' => $brand,
+                'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+            ];
+            return view('frontend.pages.vendor.overview', $data);
+        } else {
+            Session::flash('warning', 'This Page is not available right now.');
+            return redirect()->back();
+        }
+
     }
     public function vendorStores($slug)
     {
-        $data = [
-            'brand' => Brand::with('stores')->where('slug', $slug)->first(),
-            'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
-        ];
-        return view('frontend.pages.vendor.stores', $data);
+        $brand = Brand::with('stores')->where('slug', $slug)->first();
+        if ($brand) {
+            $data = [
+                'brand' => $brand,
+                'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+            ];
+            return view('frontend.pages.vendor.stores', $data);
+        } else {
+            Session::flash('warning', 'This Page is not available right now.');
+            return redirect()->back();
+        }
+
     }
     public function vendorOffers($slug)
     {
-        $data = [
-            'brand' => Brand::with('stores')->where('slug', $slug)->first(),
-            'page_banner' => PageBanner::where('page_name', 'vendor')->latest('id')->first(),
-        ];
-        return view('frontend.pages.vendor.offers', $data);
+        $brand = Brand::with('stores','offers')->where('slug', $slug)->first();
+        if ($brand) {
+            $data = [
+                'brand' => $brand,
+                'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+            ];
+            return view('frontend.pages.vendor.offers', $data);
+        } else {
+            Session::flash('warning', 'This Page is not available right now.');
+            return redirect()->back();
+        }
     }
     public function wallet($slug)
     {
