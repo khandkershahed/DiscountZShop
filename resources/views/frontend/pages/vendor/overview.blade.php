@@ -54,23 +54,27 @@
 
 
 
-                    <div class="row py-5">
-                        <div class="col-lg-12">
-                            <h2 class="pb-4">{{ optional($brand)->offer_description_title }}</h2>
-                            <p style="text-align: justify;">
-                                {!! optional($brand)->offer_description !!}
-                            </p>
+                    @if (!empty(optional($brand)->offer_description_title) || !empty(optional($brand)->offer_description))
+                        <div class="row py-5">
+                            <div class="col-lg-12">
+                                <h2 class="pb-4">{{ optional($brand)->offer_description_title }}</h2>
+                                <p style="text-align: justify;">
+                                    {!! optional($brand)->offer_description !!}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
-                    <div class="row py-5">
-                        <div class="col-lg-12">
-                            <h2 class="pb-4">{{ optional($brand)->description_title }}</h2>
-                            <p style="text-align: justify;">
-                                {!! optional($brand)->description !!}
-                            </p>
+                    @if (!empty(optional($brand)->description_title) || !empty(optional($brand)->description))
+                        <div class="row py-5">
+                            <div class="col-lg-12">
+                                <h2 class="pb-4">{{ optional($brand)->description_title }}</h2>
+                                <p style="text-align: justify;">
+                                    {!! optional($brand)->description !!}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

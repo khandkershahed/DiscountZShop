@@ -501,8 +501,10 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(BrandRequest $request, Brand $brand)
+    public function update(Request $request, string $id)
     {
+        $brand = Brand::where('id',$id)->first();
+        dd($request->all());
         DB::beginTransaction();
 
         try {

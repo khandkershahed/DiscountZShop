@@ -215,7 +215,7 @@
         </div>
 
         <div class="col-lg-12 mb-7">
-            <x-metronic.label for="offer_description"
+            <x-metronic.label for="offer_description" 
                 class="col-form-label fw-bold fs-6 ">{{ __('Section Three Description') }}
             </x-metronic.label>
 
