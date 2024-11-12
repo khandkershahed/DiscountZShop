@@ -47,7 +47,6 @@
                                 </div>
                             </a>
                         @endif
-
                     </div>
                 </div>
                 <div class="col-lg-7">

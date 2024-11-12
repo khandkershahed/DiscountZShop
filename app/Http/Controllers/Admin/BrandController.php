@@ -465,7 +465,7 @@ class BrandController extends Controller
             //     Mail::to($admin->email)->send(new BrandCreated($brand));
             // }
             // Mail Send
-            $responseHtml = view('admin.pages.brands.partial.store', ['brand' => $brand])->render();
+            $responseHtml = view('admin.pages.brands.partial.store', compact('brand'))->render();
 
             return response()->json(['success' => true, 'html' => $responseHtml]);
             // return redirect()->route('admin.brands.index')->with('success', 'Brand created successfully');
