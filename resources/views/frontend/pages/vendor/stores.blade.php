@@ -58,8 +58,8 @@
                     </ul>
                 </div>
                 <div class="col-lg-7">
-                    @foreach (optional($brand)->stores as $store)
-                        <div class="tab-content">
+                    <div class="tab-content">
+                        @foreach (optional($brand)->stores as $store)
                             <div class="tab-pane {{ $loop->first ? 'active' : '' }}"
                                 id="home-{{ optional($store)->id }}" role="tabpanel"
                                 aria-labelledby="home-{{ optional($store)->id }}-tab">
@@ -75,8 +75,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
 
                 </div>
             </div>
