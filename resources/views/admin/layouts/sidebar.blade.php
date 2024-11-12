@@ -100,11 +100,11 @@
                                     //     ['title' => 'Brand List', 'route' => 'admin.brands.index'],
                                     // ],
                                 ],
-                                [
-                                    'title' => 'Store List',
-                                    'routes' => ['admin.store.index', 'admin.store.create', 'admin.store.edit'],
-                                    'route' => 'admin.store.index',
-                                ],
+                                // [
+                                //     'title' => 'Store List',
+                                //     'routes' => ['admin.store.index', 'admin.store.create', 'admin.store.edit'],
+                                //     'route' => 'admin.store.index',
+                                // ],
                                 [
                                     'title' => 'Offer Type List',
                                     'routes' => [
@@ -266,7 +266,7 @@
                                 'admin.permission.edit',
                             ],
                             'subMenu' => [
-                                
+
                                 [
                                     'title' => 'Staff List',
                                     'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
@@ -303,7 +303,7 @@
                             ],
                         ],
 
-                     
+
                         [
                             'title' => 'Settings',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
