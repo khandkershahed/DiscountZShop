@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'Vendor Overview || DiscountZShop'">
+<x-frontend-app-layout :title="'Offer Details || DiscountZShop'">
     @include('frontend.pages.vendor.partial.header')
     <section>
         <div class="container py-5">
