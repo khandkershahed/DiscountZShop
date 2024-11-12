@@ -246,27 +246,6 @@
             @enderror
         </div>
 
-        {{--
-            <div class="col-lg-4 mb-7">
-                <x-metronic.label for="map_url"
-                    class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
-                </x-metronic.label>
-
-                <x-metronic.textarea id="map_url" type="url" name="map_url"
-                    :value="old('map_url')"
-                    placeholder="Enter the Map Url"></x-metronic.textarea>
-            </div>
-
-
-            <div class="col-lg-12 mb-7">
-                <x-metronic.label for="location"
-                    class="col-form-label fw-bold fs-6 ">{{ __('Location') }}
-                </x-metronic.label>
-
-                <textarea id="location" class="ckeditor" name="location"></textarea>
-            </div>
-        --}}
-
     </div>
     <div class="row mt-2 justify-content-end">
         <div class="d-flex align-items-center justify-content-end">

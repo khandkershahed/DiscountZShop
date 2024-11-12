@@ -57,7 +57,7 @@
                                                     <div class="col-lg-3 mb-5">
                                                         <x-metronic.label for="country_id"
                                                             class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
-                                                        <select class="form-select" data-kt-repeater="select2"
+                                                        <x-metronic.select-option class="form-select"
                                                             name="country_id" data-hide-search="false"
                                                             data-placeholder="Select an option">
                                                             <option></option>
@@ -67,7 +67,7 @@
                                                                     {{ $country->name }}
                                                                 </option>
                                                             @endforeach
-                                                        </select>
+                                                        </x-metronic.select-option>
                                                     </div>
                                                     <div class="col-lg-3 mb-5">
                                                         <x-metronic.label for="division_id"
@@ -88,7 +88,7 @@
                                                     <div class="col-lg-3 mb-5">
                                                         <x-metronic.label for="city_id"
                                                             class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
-                                                        <select class="form-select" data-kt-repeater="select2"
+                                                        <x-metronic.select-option class="form-select"
                                                             name="city_id" data-hide-search="false"
                                                             data-placeholder="Select an option">
                                                             <option></option>
@@ -98,13 +98,13 @@
                                                                     {{ $city->name }}
                                                                 </option>
                                                             @endforeach
-                                                        </select>
+                                                        </x-metronic.select-option>
                                                     </div>
 
                                                     <div class="col-lg-3 mb-5">
                                                         <x-metronic.label for="area_id"
                                                             class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
-                                                        <select class="form-select" data-kt-repeater="select2"
+                                                        <x-metronic.select-option class="form-select"
                                                             name="area_id" data-hide-search="false"
                                                             data-placeholder="Select an option">
                                                             <option></option>
@@ -114,7 +114,7 @@
                                                                     {{ $area->name }}
                                                                 </option>
                                                             @endforeach
-                                                        </select>
+                                                        </x-metronic.select-option>
                                                     </div>
                                                     <div class="col-lg-3 mb-5">
                                                         <x-metronic.label for="title"
@@ -144,8 +144,8 @@
 
                                                         <x-metronic.input id="address_line_two" type="text"
                                                             name="address_line_two" :value="old(
-                                                                'address_line_one',
-                                                                $store->address_line_one,
+                                                                'address_line_two',
+                                                                $store->address_line_two,
                                                             )"
                                                             placeholder="Enter the Address Line Two"></x-metronic.input>
                                                     </div>
@@ -285,13 +285,14 @@
                                     </x-metronic.label>
 
                                     <x-metronic.input id="address_line_two" type="text" name="address_line_two"
-                                        :value="old('address_line_one')" placeholder="Enter the Address Line Two"></x-metronic.input>
+                                        :value="old('address_line_two')" placeholder="Enter the Address Line Two"></x-metronic.input>
                                 </div>
                                 <div class="col-lg-3 mb-7">
                                     <x-metronic.label for="status" class="col-form-label fw-bold fs-6">
                                         {{ __('Select a Status ') }}</x-metronic.label>
-                                    <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" data-hide-search="true"
-                                        data-placeholder="Select an option" required>
+                                    <select class="form-select @error('status') is-invalid @enderror" id="status"
+                                        name="status" data-hide-search="true" data-placeholder="Select an option"
+                                        required>
                                         <option></option>
                                         <option value="active" @selected(old('status') == 'active')>Active</option>
                                         <option value="inactive" @selected(old('status') == 'inactive')>Inactive</option>
@@ -327,7 +328,6 @@
                 <i class="la la-plus"></i>
             </a>
         </div>
-    </div>
     </div>
     <div class="row mt-2 justify-content-end">
         <div class="d-flex align-items-center justify-content-between">
