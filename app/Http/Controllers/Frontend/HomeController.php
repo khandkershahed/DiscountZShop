@@ -47,7 +47,7 @@ class HomeController extends Controller
 
             'homepage' => HomePage::with('brand')->latest('id')->first(),
         ];
-        
+
 
         return view('frontend.pages.home.home', $data);
     }
@@ -330,7 +330,8 @@ class HomeController extends Controller
                 'page_banner'   => PageBanner::where('page_name', 'brand')->latest('id')->first(),
             ];
 
-        if ($offerDetails) {
+        if ($offerDetails && $brand) {
+            Session::flash('warning', 'This Offer is not available right now.');
             return view('frontend.pages.vendor.offer_details', $data);
             // return view('frontend.pages.offerDetails', $data);
         } else {
