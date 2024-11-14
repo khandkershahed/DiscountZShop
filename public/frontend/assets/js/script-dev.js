@@ -327,7 +327,11 @@ $(document).ready(function () {
         tempInput.remove();
 
         // Show an alert
-        alert("Copied the code: " + couponCode);
+        Swal.fire({
+            icon: 'success',
+            title: "Copied the code: " + couponCode,
+        });
+        // alert("Copied the code: " + couponCode);
     });
 });
 
