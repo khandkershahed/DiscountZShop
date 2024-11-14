@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'DiscountZShop'">
+
     <!-- Hero Section -->
     <section>
         <div class="container-fluid px-0" style="overflow: hidden">
@@ -13,8 +14,7 @@
                                             <a href="{{ $slider->url }}">
                                                 <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                     src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}"
-                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"
-                                                    />
+                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                             </a>
                                         </div>
                                     @endforeach
@@ -28,7 +28,8 @@
                                     <a href="{{ $banner->image_one_url }}" target="_blank">
                                         <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                             src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
-                                            alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                            alt=""
+                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                     </a>
                                 </div>
                             </div>
@@ -38,7 +39,8 @@
                                         <a href="{{ $banner->image_two_url }}">
                                             <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                 src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
-                                                alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                                alt=""
+                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                         </a>
                                     </div>
                                 </div>
@@ -47,7 +49,8 @@
                                         <a href="{{ $banner->image_three_url }}">
                                             <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                 src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
-                                                alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                                alt=""
+                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                         </a>
                                     </div>
                                 </div>
@@ -59,6 +62,7 @@
         </div>
     </section>
     <!-- Hero Section End -->
+
     <!-- Available Coupon Start -->
     <section>
         <div class="container pt-70 pb-70 px-0 biggest-deals">
@@ -126,7 +130,8 @@
                                                 <div class="logo">
                                                     <div class="coupon-logo">
                                                         <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                            class="img-fluid" alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                                            class="img-fluid" alt=""
+                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                     </div>
                                                 </div>
 
@@ -166,6 +171,7 @@
         </div>
     </section>
     <!-- Available Coupon End -->
+
     <!-- App Discount Start -->
     <section class="app-discount-box">
         <div class="container px-0">
@@ -187,6 +193,7 @@
         </div>
     </section>
     <!-- App Discount End -->
+
     <!-- Grab Your Offer -->
     <section style="background: #f9f9f9">
         <div class="container pt-70 pb-70 px-0">
@@ -211,14 +218,15 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-9">
+
                                     <div class="d-flex justify-content-space-between align-items-center">
+
                                         <!-- Grab Tags -->
                                         <div class="">
                                             <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
                                             <a href=""><span class="badge mt-2 ct-badge">Hot Deal</span></a>
                                             <a href=""><span class="badge mt-2 ct-badge">Buy 2 Get 1</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20%
-                                                    Off</span></a>
+                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20% Off</span></a>
                                             <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
                                             <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
                                             <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
@@ -227,6 +235,7 @@
                                             <a href=""><span class="badge mt-2 ct-badge">Buy 1 Get 1</span></a>
                                         </div>
                                         <!-- Grab End -->
+
                                         {{-- <div class="d-flex justify-content-end align-items-center w-25">
                                             <button type="button" class="grab-custom-prev rounded-circle">
                                                 <i class="fas fa-arrow-left-long"></i>
@@ -551,12 +560,12 @@
                                     <div class="col-lg-7 col-sm-12">
                                         <div class="product_discount_box">
                                             <h4>{{ $offerLatest->name }}</h4>
-                                        <p class="py-3">
-                                            {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
-                                        </p>
-                                        <a class="btn btn-dark rounded-pill px-5"
-                                            href="{{ route('offer.details', $offerLatest->slug) }}">See
-                                            Details</a>
+                                            <p class="py-3">
+                                                {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
+                                            </p>
+                                            <a class="btn btn-dark rounded-pill px-5"
+                                                href="{{ route('offer.details', $offerLatest->slug) }}">See
+                                                Details</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
