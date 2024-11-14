@@ -47,6 +47,7 @@ class HomeController extends Controller
 
             'homepage' => HomePage::with('brand')->latest('id')->first(),
         ];
+        
 
         return view('frontend.pages.home.home', $data);
     }

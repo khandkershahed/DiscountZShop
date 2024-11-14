@@ -156,6 +156,21 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="offer_type_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Offer Type') }}</x-metronic.label>
+                        <x-metronic.select-option id="offer_type_id" name="offer_type_id" data-hide-search="false"
+                            data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($offer_types as $offer_type)
+                                <option value="{{ $offer_type->id }}"
+                                    {{ old('offer_type_id', $offer->offer_type_id) == $offer_type->id ? 'selected' : '' }}>
+                                    {{ $offer_type->name }}
+                                </option>
+                            @endforeach
+                        </x-metronic.select-option>
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
                         </x-metronic.label>
@@ -197,8 +212,7 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
-                        <x-metronic.label for="price"
-                            class="col-form-label fw-bold fs-6">{{ __('Price') }}
+                        <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="price" type="number" s name="price"
@@ -271,7 +285,8 @@
 
 
                     <div class="col-lg-12 mb-7">
-                        <x-metronic.label for="locations" class="col-form-label fw-bold fs-6 ">{{ __('Description Two') }}
+                        <x-metronic.label for="locations"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Description Two') }}
                         </x-metronic.label>
 
                         <textarea id="locations" class="ckeditor" name="locations">{!! $offer->locations !!}</textarea>
@@ -295,7 +310,7 @@
                         <x-metronic.file-input id="image" name="image"
                             :value="old('image')"></x-metronic.file-input>
 
-                            <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                        <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                             height="80" width="80" alt="{{ $offer->name }}">
                     </div>
 
@@ -307,7 +322,8 @@
                         <x-metronic.file-input id="banner_image" :value="old('banner_image')"
                             name="banner_image"></x-metronic.file-input>
 
-                            <img class="mt-3" src="{{ !empty($offer->banner_image) ? url('storage/' . $offer->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                        <img class="mt-3"
+                            src="{{ !empty($offer->banner_image) ? url('storage/' . $offer->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                             height="80" width="80" alt="{{ $offer->name }}">
                     </div>
 

@@ -129,6 +129,21 @@
                     </div>
 
                     <div class="col-lg-3 mb-7">
+
+                        <x-metronic.label for="offer_type_id"
+                            class="col-form-label fw-bold fs-6">{{ __('Select Offer type') }}</x-metronic.label>
+
+                        <x-metronic.select-option id="offer_type_id" name="offer_type_id" data-hide-search="false"
+                            data-placeholder="Select an option">
+                            <option></option>
+                            @foreach ($offer_types as $offer_type)
+                                <option value="{{ $offer_type->id }}">{{ $offer_type->name }}</option>
+                            @endforeach
+                        </x-metronic.select-option>
+                        
+                    </div>
+
+                    <div class="col-lg-3 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
                         </x-metronic.label>

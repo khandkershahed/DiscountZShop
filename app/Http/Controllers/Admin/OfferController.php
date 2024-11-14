@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
 use App\Models\Offer;
+use App\Models\OfferType;
 use Illuminate\Http\Request;
 use App\Mail\OfferListCreated;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,8 @@ class OfferController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.offer.create');
+        $offer_types = OfferType::latest()->get();
+        return view('admin.pages.offer.create', compact('offer_types'));
     }
 
     /**
@@ -65,6 +67,7 @@ class OfferController extends Controller
             'description'       => 'nullable|string',
             'short_description' => 'nullable|string',
             'map_url'           => 'required|string',
+            'offer_type_id'           => 'nullable|string',
             'price'             => 'nullable|numeric',
             'offer_price'       => 'nullable|numeric',
             'start_date'        => 'nullable|date',
@@ -153,6 +156,7 @@ class OfferController extends Controller
                 'notification_date' => $request->notification_date,
                 'expiry_date'       => $request->expiry_date,
                 'map_url'           => $request->map_url,
+                'offer_type_id'           => $request->offer_type_id,
                 'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
                 'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
                 'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
@@ -191,6 +195,7 @@ class OfferController extends Controller
     {
         $data = [
             'offer' => Offer::findOrFail($id),
+            'offer_types' => OfferType::latest()->get(),
         ];
 
         return view('admin.pages.offer.edit', $data);
@@ -266,6 +271,7 @@ class OfferController extends Controller
                 'notification_date' => $request->notification_date,
                 'expiry_date' => $request->expiry_date,
                 'map_url' => $request->map_url,
+                'offer_type_id' => $request->offer_type_id,
 
             ]);
 
