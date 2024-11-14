@@ -299,8 +299,8 @@
                                                                                         class="ps-2  para-font">Upto</span>
                                                                                 </p> --}}
                                                                                 @if (!empty($alloffer->badge))
-                                                                                    <h1>{{ substr($alloffer->badge, 0, -4) }}
-                                                                                    </h1>
+                                                                                    <h2>{{ substr($alloffer->badge, 0, -4) }}
+                                                                                    </h2>
                                                                                 @endif
                                                                                 {{-- <p class="coupon-off">OFF</p> --}}
                                                                             </div>
