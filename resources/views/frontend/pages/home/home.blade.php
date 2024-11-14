@@ -116,15 +116,15 @@
                                         {{-- <form action="" class="d-flex w-75" role="search" method="post"
                                             id="search-form">
                                             @csrf --}}
-                                            <div class="d-flex w-100">
-                                                <input class="form-control rounded-pill form-control-sm" name="search"
-                                                    type="search" placeholder="Search Coupon..."
-                                                    aria-label="Search Coupon..." id="coupon-search" />
-                                            </div>
-                                            <button class="btn position-relative border-0 bg-transparent coupon-action"
-                                                type="submit">
-                                                <i class="fa-solid fa-search" aria-hidden="true"></i>
-                                            </button>
+                                        <div class="d-flex w-100">
+                                            <input class="form-control rounded-pill form-control-sm" name="search"
+                                                type="search" placeholder="Search Coupon..."
+                                                aria-label="Search Coupon..." id="coupon-search" />
+                                        </div>
+                                        <button class="btn position-relative border-0 bg-transparent coupon-action"
+                                            type="submit">
+                                            <i class="fa-solid fa-search" aria-hidden="true"></i>
+                                        </button>
                                         {{-- </form> --}}
 
                                         <div
@@ -147,7 +147,8 @@
                             <div class="slick-slider">
                                 <div class="available-coupon-slider" id="coupon-list">
                                     @foreach ($coupons as $coupon)
-                                        <div class="items couponCode" data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
+                                        <div class="items couponCode"
+                                            data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                                             <div class="d-flex coupons-box align-items-center">
                                                 <div class="logo">
                                                     <div class="coupon-logo">
@@ -971,29 +972,26 @@
             // JavaScript for live search functionality
             document.addEventListener("DOMContentLoaded", function() {
                 const searchInput = document.getElementById('coupon-search');
-
                 const couponList = document.getElementById('coupon-list');
 
                 // Add input event listener for the search field
                 searchInput.addEventListener('input', function() {
-                    const searchQuery = searchInput.value.toLowerCase(); // Convert search input to lowercase
+                    const searchQuery = searchInput.value.toLowerCase()
+                .trim(); // Convert search input to lowercase and trim whitespace
 
                     // Get all coupon items
                     const coupons = couponList.querySelectorAll('.items');
 
                     // Loop through each coupon and check if it matches the search query
                     coupons.forEach(function(coupon) {
-                        const couponCode = coupon.getAttribute(
-                        'data-coupon-code'); // Get coupon code from data-coupon-code
+                        const couponCode = coupon.getAttribute('data-coupon-code')
+                    .trim(); // Get coupon code and trim whitespace
 
-                        // For debugging
-                        console.log('Searching for:', searchQuery);
-                        console.log('Coupon Code:', couponCode);
+                        console.log('Coupon Code:', couponCode); // Debugging
+                        console.log('Search Query:', searchQuery); // Debugging
 
-                        // If the coupon code matches the search query, show it; otherwise, hide it
+                        // Check if the coupon code includes the search query
                         if (couponCode.includes(searchQuery)) {
-                            // alert(couponCode);
-                            // alert(searchQuery);
                             coupon.style.display = ''; // Show coupon
                         } else {
                             coupon.style.display = 'none'; // Hide coupon
