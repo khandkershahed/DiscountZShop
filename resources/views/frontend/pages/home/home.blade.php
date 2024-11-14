@@ -162,7 +162,7 @@
                                                     <div class="p-1 ">
                                                         <h5 class="discount-percentage text-center fw-bold">
                                                             {{ $coupon->badge }}</h5>
-                                                        {{-- <p class="text-white text-center ps-5 coupon-text">OFF</p> --}}
+                                                        <p class="text-white text-center ps-1 coupon-text">OFF</p>
                                                     </div>
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-4">
