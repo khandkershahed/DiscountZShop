@@ -155,7 +155,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
-                            href="{{ route('allStore') }}">Store <span class="ps-3"> |</a>
+                            href="{{ route('allStore') }}">Stores <span class="ps-3"></a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link custom-nav-link {{ Route::is('vendors') ? 'active' : '' }}"
