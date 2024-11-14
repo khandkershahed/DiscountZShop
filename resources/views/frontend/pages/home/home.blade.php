@@ -168,8 +168,10 @@
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-2">
                                                             Code:
-                                                            ”<span class="couponCode" id="coupon-code">{{ $coupon->coupon_code }}</span>”
-                                                            <a href="javascript:void(0);" class="copy-btn" data-coupon_id="{{ $coupon->coupon_code }}">
+                                                            ”<span class="couponCode"
+                                                                id="coupon-code">{{ $coupon->coupon_code }}</span>”
+                                                            <a href="javascript:void(0);" class="copy-btn"
+                                                                data-coupon_id="{{ $coupon->coupon_code }}">
                                                                 <i class="fas fa-copy ps-2"></i>
                                                             </a>
                                                         </p>
@@ -1001,6 +1003,165 @@
                     });
                 });
             });
+        </script>
+
+        <script>
+            // Define your data for the map
+            var data = [
+                ["bd-da", 0],
+                ["bd-sy", 1],
+                ["bd-bk", 2],
+                ["bd-kh", 3],
+                ["bd-ba", 4],
+                ["bd-cg", 5],
+                ["bd-rp", 6],
+                ["bd-rj", 7],
+                ["bd-js", 8],
+                ["bd-lg", 9],
+                ["bd-br", 10],
+                ["bd-co", 11],
+                ["bd-hb", 12],
+                ["bd-sh", 13],
+                ["bd-dh", 14],
+                ["bd-nj", 15],
+                ["bd-pl", 16],
+                ["bd-na", 17],
+                ["bd-gb", 18],
+                ["bd-md", 19],
+                ["bd-mw", 20],
+                ["bd-ct", 21],
+                ["bd-kn", 22],
+                ["bd-sw", 23],
+                ["bd-rg", 24],
+                ["bd-nk", 25],
+                ["bd-lk", 26],
+                ["bd-pb", 27],
+                ["bd-fr", 28],
+                ["bd-gz", 29],
+                ["bd-sd", 30],
+                ["bd-ss", 31],
+                ["bd-ku", 32],
+                ["bd-ra", 33],
+                ["bd-mr", 34],
+            ];
+
+            // Create the chart
+            var chart = Highcharts.mapChart("mapcontainer", {
+                chart: {
+                    type: "map",
+                    map: "countries/bd/bd-all",
+                    backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background color
+                },
+
+                title: {
+                    text: "",
+                    style: {
+                        color: "#fff",
+                    },
+                },
+
+                subtitle: {
+                    text: "",
+                    style: {
+                        color: "#fff",
+                    },
+                },
+
+                legend: {
+                    enabled: false,
+                },
+
+                tooltip: {
+                    enabled: false,
+                },
+
+                navigation: {
+                    buttonOptions: {
+                        enabled: false,
+                    },
+                },
+
+                credits: {
+                    enabled: false,
+                },
+
+                plotOptions: {
+                    series: {
+                        point: {
+                            events: {
+                                click: function() {
+                                    updateDetails(this.series.name, this.name, this.value);
+                                },
+                            },
+                        },
+                    },
+                },
+
+                series: [{
+                    data: data,
+                    name: "Random data",
+                    allowPointSelect: true,
+                    cursor: "pointer",
+                    color: "#fff",
+                    states: {
+                        select: {
+                            color: "#f15a2d",
+                        },
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        format: "{point.name}",
+                    },
+                }, ],
+            });
+
+            // Function to update details
+            function updateDetails(seriesName, pointName, pointValue) {
+                var pointNameElem = document.getElementById("pointName");
+                if (pointNameElem) {
+                    pointNameElem.textContent = pointName;
+                }
+
+                if (pointName) {
+                    $.ajax({
+                        url: "{{ route('map.division') }}",
+                        method: 'GET',
+                        data: {
+                            division: pointName
+                        },
+                        success: function(data) {
+                            $('.zone-name').html(data.html);
+                        },
+                        error: function() {
+                            $('.zone-name').html(
+                                '<p>An error occurred while fetching offers.</p>');
+                        }
+                    });
+                } else {
+                    $('.zone-name').html('<p>Please select a division to see offers.</p>');
+                }
+            }
+            function cityAreas(pointName) {
+                
+                if (pointName) {
+                    $.ajax({
+                        url: "{{ route('map.city') }}",
+                        method: 'GET',
+                        data: {
+                            city: pointName
+                        },
+                        success: function(data) {
+                            $('.zone-name').html(data.html);
+                        },
+                        error: function() {
+                            $('.zone-name').html(
+                                '<p>An error occurred while fetching offers.</p>');
+                        }
+                    });
+                } else {
+                    $('.zone-name').html('<p>Please select a division to see offers.</p>');
+                }
+            }
         </script>
     @endpush
     <!-- Footer Slider End -->

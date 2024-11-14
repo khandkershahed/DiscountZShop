@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
 use App\Models\TermsAndCondition;
 use App\Http\Controllers\Controller;
+use App\Models\Division;
 use App\Models\OfferType;
 use Illuminate\Support\Facades\Session;
 
@@ -366,6 +367,22 @@ class HomeController extends Controller
         }
 
         $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
+
+        return response()->json(['html' => $responseHtml]);
+    }
+
+    public function mapDivision(Request $request)
+    {
+
+        $division = $request->input('division');
+
+        if ($division) {
+            $division = Division::with('cities','areas')->where('name', 'like', "%{$division}%")->first();
+        } else {
+            $division = '';
+        }
+
+        $responseHtml = view('frontend.pages.home.partial.map_division', ['division' => $division])->render();
 
         return response()->json(['html' => $responseHtml]);
     }

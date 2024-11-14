@@ -72,6 +72,8 @@ Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 Route::get('/{brand}', [HomeController::class, 'vendorOverview'])->name('brand.details');
 Route::get('/{brand}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
 Route::get('/{brand}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
+Route::get('/map/search/division', [HomeController::class, 'mapDivision'])->name('map.division');
+Route::get('/map/search/division', [HomeController::class, 'mapDivision'])->name('map.division');
 // Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
 // Route::get('/brand/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
 // Route::get('/brand/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
