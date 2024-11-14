@@ -121,12 +121,12 @@
 
                                         <div class="store-logo">
                                             <img class="img-fluid"
-                                                src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
+                                                src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                 alt="arong-logo.png" />
                                         </div>
 
                                         <div class="store-rating">
-                                            <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}"
+                                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
@@ -135,10 +135,10 @@
                                     </div>
                                     <!-- Store Info -->
                                     <div class="pt-4 d-flex justify-content-between store_title">
-                                        <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
+                                        <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
-                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $store->title }}</h5>
-                                                <p>{{ $store->headquarter }}</p>
+                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->title }}</h5>
+                                                <p>{{ $latest_store->headquarter }}</p>
                                             </div>
                                         </a>
                                         <div>
@@ -154,7 +154,7 @@
                                             <i class="fa-solid fa-percent pe-2"></i>OFFER
                                         </span>
                                         <small class="text-sm">
-                                            Get UpTo <span class="main-color">{{ $store->badge }}</span> Off
+                                            Get UpTo <span class="main-color">{{ $latest_store->badge }}</span> Off
                                         </small>
                                     </div> --}}
                                 </div>
