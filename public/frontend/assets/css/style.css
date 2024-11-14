@@ -226,7 +226,7 @@ p {
 /* Main Style Start */
 /* CSS to style the loader */
 #loader {
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

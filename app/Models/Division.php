@@ -19,4 +19,12 @@ class Division extends Model
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'division_id');
+    }
+    public function areas()
+    {
+        return $this->hasMany(Area::class, 'division_id');
+    }
 }

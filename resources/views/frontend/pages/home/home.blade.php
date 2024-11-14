@@ -25,7 +25,7 @@
                             <div class="row gx-3">
                                 {{-- @dd($banner); --}}
                                 <div class="col-lg-12">
-                                    <a href="{{ $banner->image_one_url }}" target="_blank">
+                                    <a href="{{ $banner->image_one_url }}">
                                         <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                             src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
                                             alt=""
@@ -113,15 +113,19 @@
                                             </button>
                                         </form> --}}
 
-                                        <form action="" class="d-flex w-75" role="search" method="post" id="search-form">
-                                            @csrf
-                                            <div class="d-flex w-100">
-                                                <input class="form-control rounded-pill form-control-sm" name="search" type="search" placeholder="Search Coupon..." aria-label="Search Coupon..." id="coupon-search"/>
-                                            </div>
-                                            <button class="btn position-relative border-0 bg-transparent coupon-action" type="submit">
-                                                <i class="fa-solid fa-search" aria-hidden="true"></i>
-                                            </button>
-                                        </form>
+                                        {{-- <form action="" class="d-flex w-75" role="search" method="post"
+                                            id="search-form">
+                                            @csrf --}}
+                                        <div class="d-flex w-100">
+                                            <input class="form-control rounded-pill form-control-sm" name="search"
+                                                type="search" placeholder="Search Coupon..."
+                                                aria-label="Search Coupon..." id="coupon-search" />
+                                        </div>
+                                        <button class="btn position-relative border-0 bg-transparent coupon-action"
+                                            type="submit">
+                                            <i class="fa-solid fa-search" aria-hidden="true"></i>
+                                        </button>
+                                        {{-- </form> --}}
 
                                         <div
                                             class="d-flex justify-content-end align-items-center w-25 navigation-slide">
@@ -143,24 +147,33 @@
                             <div class="slick-slider">
                                 <div class="available-coupon-slider" id="coupon-list">
                                     @foreach ($coupons as $coupon)
-                                        <div class="items" data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
+                                        <div class="items couponCode"
+                                            data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                                             <div class="d-flex coupons-box align-items-center">
                                                 <div class="logo">
                                                     <div class="coupon-logo">
                                                         <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                             class="img-fluid" alt=""
-                                                             onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                            class="img-fluid" alt=""
+                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                     </div>
                                                 </div>
-                                                <div class="content-area" style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
-                                                    <div class="p-1">
-                                                        <h5 class="discount-percentage text-center fw-bold">{{ $coupon->badge }} %</h5>
-                                                        <p class="text-white text-center ps-5 coupon-text">OFF</p>
+                                                <div class="content-area"
+                                                    style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
+                                                    <div class="p-1 ">
+                                                        <h5 class="discount-percentage text-center fw-bold pt-2">
+                                                            {{ $coupon->badge }}</h5>
+                                                        <p class="text-white text-center ps-1 pt-1 pb-1 coupon-text">OFF
+                                                        </p>
                                                     </div>
                                                     <div>
-                                                        <p class="text-white text-center coupon-text coupon-code pt-1">
-                                                            Code: ”<span id="coupon-code">{{ $coupon->coupon_code }}</span>”
-                                                            <a href="javascript:void(0);" class="copy-btn"><i class="fas fa-copy ps-2"></i></a>
+                                                        <p class="text-white text-center coupon-text coupon-code pt-2">
+                                                            Code:
+                                                            ”<span class="couponCode"
+                                                                id="coupon-code">{{ $coupon->coupon_code }}</span>”
+                                                            <a href="javascript:void(0);" class="copy-btn"
+                                                                data-coupon_id="{{ $coupon->coupon_code }}">
+                                                                <i class="fas fa-copy ps-2"></i>
+                                                            </a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -919,31 +932,6 @@
     @endif
     @push('scripts')
         <script>
-            function copyCouponCode(couponCode) {
-                // Create a temporary input element to copy the coupon code
-                var tempInput = document.createElement('input');
-                tempInput.style.position = 'absolute';
-                tempInput.style.left = '-9999px';
-                tempInput.value = couponCode;
-
-                // Append to the document and select the input value
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                tempInput.setSelectionRange(0, 99999); // For mobile devices
-
-                // Execute the copy command
-                document.execCommand('copy');
-
-                // Remove the temporary input element
-                document.body.removeChild(tempInput);
-
-                // Show an alert
-                alert('Coupon code "' + couponCode + '" copied to clipboard!');
-            }
-        </script>
-
-
-        <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
                     var query = $(this).val();
@@ -983,8 +971,198 @@
                 });
             });
         </script>
+
+        <script>
+            // JavaScript for live search functionality
+            document.addEventListener("DOMContentLoaded", function() {
+                const searchInput = document.getElementById('coupon-search');
+                const couponList = document.getElementById('coupon-list');
+
+                // Add input event listener for the search field
+                searchInput.addEventListener('input', function() {
+                    const searchQuery = searchInput.value.toLowerCase()
+                        .trim(); // Convert search input to lowercase and trim whitespace
+
+                    // Get all coupon items
+                    const coupons = couponList.querySelectorAll('.items');
+
+                    // Loop through each coupon and check if it matches the search query
+                    coupons.forEach(function(coupon) {
+                        const couponCode = coupon.getAttribute('data-coupon-code')
+                            .trim(); // Get coupon code and trim whitespace
+
+                        console.log('Coupon Code:', couponCode); // Debugging
+                        console.log('Search Query:', searchQuery); // Debugging
+
+                        // Check if the coupon code includes the search query
+                        if (couponCode.includes(searchQuery)) {
+                            coupon.style.display = ''; // Show coupon
+                        } else {
+                            coupon.style.display = 'none'; // Hide coupon
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            // Define your data for the map
+            var data = [
+                ["bd-da", 0],
+                ["bd-sy", 1],
+                ["bd-bk", 2],
+                ["bd-kh", 3],
+                ["bd-ba", 4],
+                ["bd-cg", 5],
+                ["bd-rp", 6],
+                ["bd-rj", 7],
+                ["bd-js", 8],
+                ["bd-lg", 9],
+                ["bd-br", 10],
+                ["bd-co", 11],
+                ["bd-hb", 12],
+                ["bd-sh", 13],
+                ["bd-dh", 14],
+                ["bd-nj", 15],
+                ["bd-pl", 16],
+                ["bd-na", 17],
+                ["bd-gb", 18],
+                ["bd-md", 19],
+                ["bd-mw", 20],
+                ["bd-ct", 21],
+                ["bd-kn", 22],
+                ["bd-sw", 23],
+                ["bd-rg", 24],
+                ["bd-nk", 25],
+                ["bd-lk", 26],
+                ["bd-pb", 27],
+                ["bd-fr", 28],
+                ["bd-gz", 29],
+                ["bd-sd", 30],
+                ["bd-ss", 31],
+                ["bd-ku", 32],
+                ["bd-ra", 33],
+                ["bd-mr", 34],
+            ];
+
+            // Create the chart
+            var chart = Highcharts.mapChart("mapcontainer", {
+                chart: {
+                    type: "map",
+                    map: "countries/bd/bd-all",
+                    backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background color
+                },
+
+                title: {
+                    text: "",
+                    style: {
+                        color: "#fff",
+                    },
+                },
+
+                subtitle: {
+                    text: "",
+                    style: {
+                        color: "#fff",
+                    },
+                },
+
+                legend: {
+                    enabled: false,
+                },
+
+                tooltip: {
+                    enabled: false,
+                },
+
+                navigation: {
+                    buttonOptions: {
+                        enabled: false,
+                    },
+                },
+
+                credits: {
+                    enabled: false,
+                },
+
+                plotOptions: {
+                    series: {
+                        point: {
+                            events: {
+                                click: function() {
+                                    updateDetails(this.series.name, this.name, this.value);
+                                },
+                            },
+                        },
+                    },
+                },
+
+                series: [{
+                    data: data,
+                    name: "Random data",
+                    allowPointSelect: true,
+                    cursor: "pointer",
+                    color: "#fff",
+                    states: {
+                        select: {
+                            color: "#f15a2d",
+                        },
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        format: "{point.name}",
+                    },
+                }, ],
+            });
+
+            // Function to update details
+            function updateDetails(seriesName, pointName, pointValue) {
+                var pointNameElem = document.getElementById("pointName");
+                if (pointNameElem) {
+                    pointNameElem.textContent = pointName;
+                }
+
+                if (pointName) {
+                    $.ajax({
+                        url: "{{ route('map.division') }}",
+                        method: 'GET',
+                        data: {
+                            division: pointName
+                        },
+                        success: function(data) {
+                            $('.zone-name').html(data.html);
+                        },
+                        error: function() {
+                            $('.zone-name').html(
+                                '<p>An error occurred while fetching offers.</p>');
+                        }
+                    });
+                } else {
+                    $('.zone-name').html('<p>Please select a division to see offers.</p>');
+                }
+            }
+            function cityAreas(pointName) {
+                
+                if (pointName) {
+                    $.ajax({
+                        url: "{{ route('map.city') }}",
+                        method: 'GET',
+                        data: {
+                            city: pointName
+                        },
+                        success: function(data) {
+                            $('.zone-name').html(data.html);
+                        },
+                        error: function() {
+                            $('.zone-name').html(
+                                '<p>An error occurred while fetching offers.</p>');
+                        }
+                    });
+                } else {
+                    $('.zone-name').html('<p>Please select a division to see offers.</p>');
+                }
+            }
+        </script>
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
-
-

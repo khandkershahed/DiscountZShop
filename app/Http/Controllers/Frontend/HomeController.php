@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
 use App\Models\TermsAndCondition;
 use App\Http\Controllers\Controller;
+use App\Models\Division;
 use App\Models\OfferType;
 use Illuminate\Support\Facades\Session;
 
@@ -30,22 +31,22 @@ class HomeController extends Controller
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
 
         $data = [
-            'sliders' => Slider::where('status', 'active')->latest('id')->get(),
-            'banner' => Banner::where('status', 'active')->latest('id')->first(),
-            'coupons' => Coupon::latest()->get(),
-            'brands' => Brand::latest()->get(),
-            'offer_types' => OfferType::latest()->get(),
+            'sliders'        => Slider::where('status', 'active')->latest('id')->get(),
+            'banner'         => Banner::where('status', 'active')->latest('id')->first(),
+            'coupons'        => Coupon::latest()->get(),
+            'brands'         => Brand::latest()->get(),
+            'offer_types'    => OfferType::latest()->get(),
 
-            'categorys' => Category::latest()->limit(6)->get(),
+            'categorys'      => Category::latest()->limit(6)->get(),
 
-            'alloffers' => $offers,
-            'offers' => $offers->take(5), // Use `take` instead of `limit` for collections
+            'alloffers'      => $offers,
+            'offers'         => $offers->take(5), // Use `take` instead of `limit` for collections
 
-            'offerLatests' => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
+            'offerLatests'   => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
             'offerDealLefts' => $offers->take(5),
-            'offerDeals' => $latestOffers->take(6),
+            'offerDeals'     => $latestOffers->take(6),
 
-            'homepage' => HomePage::with('brand')->latest('id')->first(),
+            'homepage'       => HomePage::with('brand')->latest('id')->first(),
         ];
 
 
@@ -370,6 +371,22 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
+    public function mapDivision(Request $request)
+    {
+
+        $division = $request->input('division');
+
+        if ($division) {
+            $division = Division::with('cities','areas')->where('name', 'like', "%{$division}%")->first();
+        } else {
+            $division = '';
+        }
+
+        $responseHtml = view('frontend.pages.home.partial.map_division', ['division' => $division])->render();
+
+        return response()->json(['html' => $responseHtml]);
+    }
+
     //searchCityName
     public function searchOfferCityName(Request $request)
     {
@@ -467,5 +484,4 @@ class HomeController extends Controller
 
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
     }
-   
 }

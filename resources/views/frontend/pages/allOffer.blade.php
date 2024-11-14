@@ -298,29 +298,7 @@
             })
         </script>
 
-        <script>
-            function copyCouponCode(couponCode) {
-                // Create a temporary input element to copy the coupon code
-                var tempInput = document.createElement('input');
-                tempInput.style.position = 'absolute';
-                tempInput.style.left = '-9999px';
-                tempInput.value = couponCode;
-
-                // Append to the document and select the input value
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                tempInput.setSelectionRange(0, 99999); // For mobile devices
-
-                // Execute the copy command
-                document.execCommand('copy');
-
-                // Remove the temporary input element
-                document.body.removeChild(tempInput);
-
-                // Show an alert
-                alert('Coupon code "' + couponCode + '" copied to clipboard!');
-            }
-        </script>
+        
 
         {{-- Offer Search --}}
 

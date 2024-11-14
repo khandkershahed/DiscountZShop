@@ -310,11 +310,37 @@ $(document).ready(function () {
 });
 
 // Copy Coupon Code
+
+function copyCouponCode(couponCode) {
+    // Create a temporary input element to copy the coupon code
+    var tempInput = document.createElement('input');
+    tempInput.style.position = 'absolute';
+    tempInput.style.left = '-9999px';
+    tempInput.value = couponCode;
+
+    // Append to the document and select the input value
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // For mobile devices
+
+    // Execute the copy command
+    document.execCommand('copy');
+
+    // Remove the temporary input element
+    document.body.removeChild(tempInput);
+
+    // Show an alert
+    Swal.fire({
+        icon: 'success',
+        title: 'Coupon code "' + couponCode + '" copied to clipboard!',
+    });
+    // alert('Coupon code "' + couponCode + '" copied to clipboard!');
+}
 $(document).ready(function () {
     $(".copy-btn").click(function () {
         // Get the text inside the span
-        var couponCode = $("#coupon-code").text();
-
+        var couponCode = $(this).data('coupon_id');
+        // alert(couponCode);
         // Create a temporary input element
         var tempInput = $("<input>");
         $("body").append(tempInput);
@@ -327,7 +353,11 @@ $(document).ready(function () {
         tempInput.remove();
 
         // Show an alert
-        alert("Copied the code: " + couponCode);
+        Swal.fire({
+            icon: 'success',
+            title: "Copied the code: " + couponCode,
+        });
+        // alert("Copied the code: " + couponCode);
     });
 });
 

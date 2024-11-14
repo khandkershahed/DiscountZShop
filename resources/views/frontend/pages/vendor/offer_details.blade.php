@@ -6,7 +6,7 @@
                 <div class="col-lg-4">
                     <div>
                         <img class="img-fluid"
-                            src="{{ !empty($offerDetails->image) ? url('storage/' . $offerDetails->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDetails->name) }}"
+                            src="{{ !empty($offerDetails->image) ? url('storage/' . $offerDetails->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
                             alt="" />
                     </div>
                 </div>
