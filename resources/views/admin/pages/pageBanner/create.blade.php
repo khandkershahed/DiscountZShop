@@ -39,6 +39,7 @@
                             data-placeholder="Select an option">
                             <option></option>
                             <option value="contact">Contact Us</option>
+                            <option value="search">Search Page</option>
                             <option value="about">About Us</option>
                             <option value="offer">Offer All</option>
                             <option value="store">Store All</option>

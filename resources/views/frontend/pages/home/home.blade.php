@@ -223,16 +223,10 @@
 
                                         <!-- Grab Tags -->
                                         <div class="">
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Hot Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Buy 2 Get 1</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20% Off</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Buy 1 Get 1</span></a>
+                                            @foreach ($offer_types as $offer_type)
+                                                <a href="javascript:void(0)"><span
+                                                        class="badge mt-2 ct-badge">{{ $offer_type->name }}</span></a>
+                                            @endforeach
                                         </div>
                                         <!-- Grab End -->
 
@@ -293,42 +287,44 @@
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
                                                     <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                            alt="Logo"
-                                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex justify-content-center align-items-center pb-2">
-                                                                            {{-- <p class="pe-2">
-                                                                                <span class="para-font">Get</span><br>
-                                                                                <span
-                                                                                    class="ps-2  para-font">Upto</span>
-                                                                            </p> --}}
-                                                                            @if (!empty($alloffer->badge))
-                                                                                <h1>{{ substr($alloffer->badge, 0, -4) }}
-                                                                                </h1>
-                                                                            @endif
-                                                                            {{-- <p class="coupon-off">OFF</p> --}}
+                                                        <a href="{{ route('offer.details',$alloffer->slug) }}">
+                                                            <div class="coupon-box">
+                                                                <div class="coupon-box-content">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-4">
+                                                                            <img class="img-fluid"
+                                                                                src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                                alt="Logo"
+                                                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                         </div>
+                                                                        <div class="col-8 text-center">
+                                                                            <div
+                                                                                class="d-flex justify-content-center align-items-center pb-2">
+                                                                                {{-- <p class="pe-2">
+                                                                                    <span class="para-font">Get</span><br>
+                                                                                    <span
+                                                                                        class="ps-2  para-font">Upto</span>
+                                                                                </p> --}}
+                                                                                @if (!empty($alloffer->badge))
+                                                                                    <h1>{{ substr($alloffer->badge, 0, -4) }}
+                                                                                    </h1>
+                                                                                @endif
+                                                                                {{-- <p class="coupon-off">OFF</p> --}}
+                                                                            </div>
 
-                                                                        @if (!empty($alloffer->coupon_code))
-                                                                            <p class="para-font coupon-extra">
-                                                                                Code: {{ $alloffer->coupon_code }}
-                                                                                <a href="javascript:void(0);"
-                                                                                    class="copy-btn"><i
-                                                                                        class="fa-regular fa-copy"></i></a>
-                                                                            </p>
-                                                                        @endif
+                                                                            @if (!empty($alloffer->coupon_code))
+                                                                                <p class="para-font coupon-extra">
+                                                                                    Code: {{ $alloffer->coupon_code }}
+                                                                                    <a href="javascript:void(0);"
+                                                                                        class="copy-btn"><i
+                                                                                            class="fa-regular fa-copy"></i></a>
+                                                                                </p>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </div>
                                                 @endforeach
                                             </div>
