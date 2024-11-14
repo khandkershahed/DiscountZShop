@@ -113,16 +113,12 @@
                                             </button>
                                         </form> --}}
 
-                                        <form action="" class="d-flex w-75" role="search" method="post"
-                                            id="search-form">
+                                        <form action="" class="d-flex w-75" role="search" method="post" id="search-form">
                                             @csrf
                                             <div class="d-flex w-100">
-                                                <input class="form-control rounded-pill form-control-sm" name="search"
-                                                    type="search" placeholder="Search Coupon..."
-                                                    aria-label="Search Coupon..." id="coupon-search" />
+                                                <input class="form-control rounded-pill form-control-sm" name="search" type="search" placeholder="Search Coupon..." aria-label="Search Coupon..." id="coupon-search"/>
                                             </div>
-                                            <button class="btn position-relative border-0 bg-transparent coupon-action"
-                                                type="submit">
+                                            <button class="btn position-relative border-0 bg-transparent coupon-action" type="submit">
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
                                             </button>
                                         </form>
@@ -152,27 +148,19 @@
                                                 <div class="logo">
                                                     <div class="coupon-logo">
                                                         <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                            class="img-fluid" alt=""
-                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                             class="img-fluid" alt=""
+                                                             onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                     </div>
                                                 </div>
-                                                <div class="content-area"
-                                                    style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
+                                                <div class="content-area" style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1">
-                                                        {{-- <p
-                                                            class="align-items-center text-start ps-5 coupon-text text-white">
-                                                            Get Upto
-                                                        </p> --}}
-                                                        <h5 class="discount-percentage text-center fw-bold">
-                                                            {{ $coupon->badge }} %</h5>
+                                                        <h5 class="discount-percentage text-center fw-bold">{{ $coupon->badge }} %</h5>
                                                         <p class="text-white text-center ps-5 coupon-text">OFF</p>
                                                     </div>
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-1">
-                                                            Code: ”<span
-                                                                id="coupon-code">{{ $coupon->coupon_code }}</span>”
-                                                            <a href="javascript:void(0);" class="copy-btn"><i
-                                                                    class="fas fa-copy ps-2"></i></a>
+                                                            Code: ”<span id="coupon-code">{{ $coupon->coupon_code }}</span>”
+                                                            <a href="javascript:void(0);" class="copy-btn"><i class="fas fa-copy ps-2"></i></a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -182,7 +170,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
@@ -1984,35 +1971,38 @@
             });
         </script>
 
-        <script>
-            // JavaScript for live search functionality
-            document.addEventListener("DOMContentLoaded", function() {
-                const searchInput = document.getElementById('coupon-search');
-                const couponList = document.getElementById('coupon-list');
+<script>
+    // JavaScript for live search functionality
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('coupon-search');
+        const couponList = document.getElementById('coupon-list');
 
-                // Add input event listener for the search field
-                searchInput.addEventListener('input', function() {
-                    const searchQuery = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive search
+        // Add input event listener for the search field
+        searchInput.addEventListener('input', function() {
+            const searchQuery = searchInput.value.toLowerCase(); // Convert search input to lowercase
 
-                    // Get all coupon items
-                    const coupons = couponList.querySelectorAll('.items');
+            // Get all coupon items
+            const coupons = couponList.querySelectorAll('.items');
 
-                    // Loop through each coupon and check if it matches the search query
-                    coupons.forEach(function(coupon) {
-                        const couponCode = coupon.getAttribute(
-                        'data-coupon-code'); // Get the coupon code for filtering
+            // Loop through each coupon and check if it matches the search query
+            coupons.forEach(function(coupon) {
+                const couponCode = coupon.getAttribute('data-coupon-code'); // Get coupon code from data-coupon-code
 
-                        // If the coupon code matches the search query, show it; otherwise, hide it
-                        if (couponCode.includes(searchQuery)) {
-                            coupon.style.display = ''; // Show coupon
-                        } else {
-                            coupon.style.display = 'none'; // Hide coupon
-                        }
-                    });
-                });
+                // For debugging, let's log the coupon code and the search query to check if they match
+                console.log('Searching for:', searchQuery);
+                console.log('Coupon Code:', couponCode);
+
+                // If the coupon code matches the search query, show it; otherwise, hide it
+                if (couponCode.includes(searchQuery)) {
+                    coupon.style.display = '';  // Show coupon
+                } else {
+                    coupon.style.display = 'none';  // Hide coupon
+                }
             });
-        </script>
-        
+        });
+    });
+</script>
+
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
