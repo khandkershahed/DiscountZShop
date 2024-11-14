@@ -1,3 +1,11 @@
+// JavaScript to hide the loader once the page is fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+    // Hide the loader
+    document.getElementById("loader").style.display = "none";
+    // Show the content
+    document.getElementById("content").style.display = "block";
+});
+
 $(document).ready(function () {
     $(".hero-slider").slick({
         autoplay: true,

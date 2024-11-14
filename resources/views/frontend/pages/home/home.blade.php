@@ -282,20 +282,22 @@
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
                                                     <div class="col-lg-4 mb-4">
-                                                        <a href="{{ route('offer.details', $alloffer->slug) }}">
-                                                            <div class="coupon-box">
-                                                                <div class="coupon-box-content">
-                                                                    <div class="row align-items-center">
-
-                                                                        <div class="col-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <a
+                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
                                                                             <img class="img-fluid"
                                                                                 src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
                                                                                 alt="Logo"
                                                                                 onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                                        </div>
+                                                                        </a>
+                                                                    </div>
 
-                                                                        <div class="col-8 text-center">
-
+                                                                    <div class="col-8 text-center">
+                                                                        <a
+                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
                                                                             <div
                                                                                 class="d-flex justify-content-center align-items-center pb-2">
 
@@ -315,11 +317,11 @@
                                                                                             class="fa-regular fa-copy"></i></a>
                                                                                 </p>
                                                                             @endif
-                                                                        </div>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </div>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -390,7 +392,7 @@
 
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -1263,7 +1265,7 @@
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
                                                     <div class="col-lg-4 mb-4">
-                                                            <a href="{{ route('offer.details', $alloffer->slug) }}">
+                                                        <a href="{{ route('offer.details', $alloffer->slug) }}">
                                                             <div class="coupon-box">
                                                                 <div class="coupon-box-content">
                                                                     <div class="row align-items-center">
@@ -1301,7 +1303,7 @@
                                                                 </div>
                                                             </div>
                                                         </a>
-                                                        </div>
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </div>

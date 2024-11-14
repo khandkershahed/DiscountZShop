@@ -35,11 +35,11 @@
 </head>
 
 <body>
-    <!-- Loader -->
-    {{-- <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." /> --}}
+    <div id="loader">
+        <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." />
+    </div>
 
-    <!-- Main Content -->
-    <div>
+    <div id="content" style="display: none">
         <!-- Top Area Box -->
         @include('frontend.layouts.header-top')
 
@@ -71,18 +71,6 @@
     <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
-    <script>
-        // Wait for DOM to load
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
-                console.log("Hiding loader and showing content.");
-                
-                // Hide loader and show content
-                document.getElementById("loader").style.setProperty("display", "none", "important");
-                document.getElementById("content").style.setProperty("display", "block", "important");
-            }, 3000); // Adjust time as needed
-        });
-    </script>
     <script>
         // Define your data for the map
         var data = [
