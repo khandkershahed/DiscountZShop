@@ -277,7 +277,7 @@
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
-                                            
+
                                             <div class="row">
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
@@ -323,7 +323,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            
+
                                         </div>
 
                                         @foreach ($categories as $offercategory)
@@ -720,8 +720,12 @@
                                                         {{ $offerDeal->name }}
                                                     </h6>
                                                 </a>
-                                                <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                                                <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @if (!empty($offerDeal->price))
+                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                @endif
+                                                @if (!empty($offerDeal->offer_price))
+                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @endif
                                             </div>
                                             <div class="mt-4">
                                                 <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -737,7 +741,7 @@
                                     src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
                                     alt="No Content">
                             </div>
-                            <h5 class="text-center text-warning">No Course available right now.</h5>
+                            <h5 class="text-center text-warning">No Offer available right now.</h5>
                         @endforelse
 
                     </div>
