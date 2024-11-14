@@ -134,40 +134,31 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
-
                             <div class="row servicesContainer divisionContainer" id="servicesContainer">
-                                @foreach ($offerss as $offer)
-                                    <div class="col-lg-4 mb-4">
+                                @foreach ($offerss as $index => $offer)
+                                    <div class="col-lg-4 mb-4 offer-card" data-index="{{ $index }}"
+                                        style="{{ $index >= 9 ? 'display: none;' : '' }}">
                                         <div class="card border-0 shadow-sm bg-light">
                                             <div class="row p-4 align-items-center">
                                                 <div class="col-lg-6">
-                                                    <div>
-                                                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                            width="80px" height="80px" class="rounded-2"
-                                                            style="object-fit: contain;" alt=""
-                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                    </div>
+                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                        width="80px" height="80px" class="rounded-2"
+                                                        style="object-fit: contain;" alt=""
+                                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                 </div>
                                                 <div class="col-lg-6">
                                                     @if (!empty($offer->badge))
-                                                        {{-- <span>Upto</span> --}}
-                                                        <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
-                                                        </h3>
+                                                        <h3 class="main-color special-font-box text-end">
+                                                            {{ $offer->badge }}</h3>
                                                     @endif
                                                 </div>
                                                 <div class="col-lg-12 pt-4 offer_title">
                                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                    {{-- <a href="{{ route('offer.details', $offer->slug) }}"
-                                                        class="main-color">
-                                                        <small>See All In Store</small>
-                                                    </a> --}}
                                                 </div>
                                                 <div class="col-lg-12 pt-4">
                                                     <div class="d-flex">
                                                         <a href="{{ route('offer.details', $offer->slug) }}"
-                                                            class="w-100 btn-common-one rounded-3">
-                                                            <small>View</small>
-                                                        </a>
+                                                            class="w-100 btn-common-one rounded-3"><small>View</small></a>
                                                         @if (!empty($offer->coupon_code))
                                                             <a href="javascript:void(0);"
                                                                 class="w-100 btn-common-three rounded-3 ms-2"
@@ -193,47 +184,36 @@
                         @foreach ($categorys as $category)
                             <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
-
                                 @php
                                     $cateWiseOffers = App\Models\Offer::where('category_id', $category->id)
                                         ->orderBy('name', 'ASC')
                                         ->get();
                                 @endphp
-
                                 <div class="row servicesContainer" id="servicesContainer">
                                     @if ($cateWiseOffers->count())
                                         @foreach ($cateWiseOffers as $offer)
-                                            <div class="col-lg-4 mt-4">
+                                            <div class="col-lg-4 mt-4 offer-card">
                                                 <div class="card border-0 shadow-sm bg-light">
                                                     <div class="row p-4 align-items-center">
                                                         <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px" class="rounded-2"
-                                                                    style="object-fit: contain;" alt=""
-                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                            </div>
+                                                            <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                width="80px" height="80px" class="rounded-2"
+                                                                style="object-fit: contain;" alt=""
+                                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                         </div>
                                                         <div class="col-lg-6">
                                                             @if (!empty($offer->badge))
-                                                                {{-- <span>Upto</span> --}}
-                                                                <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
-                                                                </h3>
+                                                                <h3 class="main-color special-font-box text-end">
+                                                                    {{ $offer->badge }}</h3>
                                                             @endif
                                                         </div>
                                                         <div class="col-lg-12 pt-4 offer_title">
                                                             <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                            {{-- <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                class="main-color">
-                                                                <small>See All In Store</small>
-                                                            </a> --}}
                                                         </div>
                                                         <div class="col-lg-12 pt-4">
                                                             <div class="d-flex">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="w-100 btn-common-one rounded-3">
-                                                                    <small>View</small>
-                                                                </a>
+                                                                    class="w-100 btn-common-one rounded-3"><small>View</small></a>
                                                                 @if (!empty($offer->coupon_code))
                                                                     <a href="javascript:void(0);"
                                                                         class="w-100 btn-common-three rounded-3 ms-2"
@@ -253,7 +233,7 @@
                                             </div>
                                         @endforeach
                                     @else
-                                        <div class="d-flex justify-content-ceneter flex-column">
+                                        <div class="d-flex justify-content-center flex-column">
                                             <img src="{{ asset('images/nocoupon.jpg') }}" alt="No Offers Available"
                                                 class="img-fluid" />
                                         </div>
@@ -261,7 +241,17 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
 
+                    <div class="d-flex justify-content-center align-items-center pb-4 pt-2" id="showMoreSection"
+                        style="display: none;">
+                        <a href="javascript:void(0)" class="btn-common-one rounded-3" id="toggleButton">
+                            <small>Show More</small>
+                        </a>
+                    </div>
+
+                    <div class="d-flex justify-content-center" id="allOffersMessage" style="display: none;">
+                        <p>All offers showing successfully.</p>
                     </div>
                 </div>
 
@@ -414,6 +404,43 @@
                         });
                     } else {
                         $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const showMoreButton = document.getElementById('toggleButton');
+                const allOffersMessage = document.getElementById('allOffersMessage');
+                const showMoreSection = document.getElementById('showMoreSection');
+                let currentIndex = 9; // Start with 9 visible items
+                const offers = document.querySelectorAll('.offer-card'); // All offer cards
+                const totalOffers = offers.length;
+
+                // Initially check if the "Show More" button should be visible or not
+                if (currentIndex >= totalOffers) {
+                    showMoreSection.style.display = 'none'; // Hide the button if all offers are visible
+                    allOffersMessage.style.display = 'block'; // Show the success message
+                } else {
+                    showMoreSection.style.display = 'block'; // Show the button if there are more offers
+                }
+
+                // Handle show more or less functionality
+                showMoreButton.addEventListener('click', function() {
+                    if (currentIndex + 6 >= totalOffers) {
+                        // If it's the last set of offers, show all and change button text to 'View Less'
+                        for (let i = currentIndex; i < totalOffers; i++) {
+                            offers[i].style.display = 'block';
+                        }
+                        showMoreButton.style.display = 'none'; // Hide the button
+                        allOffersMessage.style.display = 'block'; // Show the success message
+                        currentIndex = totalOffers; // Set currentIndex to totalOffers
+                    } else {
+                        // Otherwise, show 6 more offers
+                        for (let i = currentIndex; i < currentIndex + 6; i++) {
+                            offers[i].style.display = 'block';
+                        }
+                        currentIndex += 6; // Update currentIndex
                     }
                 });
             });
