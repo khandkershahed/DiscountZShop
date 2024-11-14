@@ -112,7 +112,7 @@
                                 <!-- Store Banner -->
                                 <div class="main-store-banner">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
+                                        src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
                                         alt="arong-banner.jpg" />
                                 </div>
                                 <!-- Store Logo And Rating -->
