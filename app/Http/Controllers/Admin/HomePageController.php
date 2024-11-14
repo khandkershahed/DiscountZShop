@@ -93,7 +93,7 @@ class HomePageController extends Controller
 
                 'offer_slider_image_one_link' => $request->offer_slider_image_one_link,
                 'offer_slider_image_two_link' => $request->offer_slider_image_two_link,
-                'offer_slider_image_three_link' => $request->offer_slider_image_four_link,
+                'offer_slider_image_three_link' => $request->offer_slider_image_three_link,
                 'offer_slider_image_four_link' => $request->offer_slider_image_four_link,
 
                 'bottom_banner_slider_one_link' => $request->bottom_banner_slider_one_link,
@@ -220,7 +220,7 @@ class HomePageController extends Controller
 
                 'offer_slider_image_one_link' => $request->offer_slider_image_one_link,
                 'offer_slider_image_two_link' => $request->offer_slider_image_two_link,
-                'offer_slider_image_three_link' => $request->offer_slider_image_four_link,
+                'offer_slider_image_three_link' => $request->offer_slider_image_three_link,
                 'offer_slider_image_four_link' => $request->offer_slider_image_four_link,
 
                 
