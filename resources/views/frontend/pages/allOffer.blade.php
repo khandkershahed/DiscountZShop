@@ -130,14 +130,14 @@
                     </div>
                 </div>
 
-                <div class="col-lg-9">
+                <div class="col-lg-9 pe-0">
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
 
                             <div class="row servicesContainer divisionContainer" id="servicesContainer">
                                 @foreach ($offerss as $offer)
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-4 mb-4 pe-2">
                                         <div class="card border-0 shadow-sm bg-light">
                                             <div class="row p-4 align-items-center">
                                                 <div class="col-lg-6">
@@ -262,6 +262,21 @@
                             </div>
                         @endforeach
 
+                    </div>
+                    <div>
+                        <nav>
+                            <ul class="pagination justify-content-center my-5">
+                              <li class="page-item"><a class="page-link" href="#"><span>&laquo;</span> Previous</a></li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">4</a></li>
+                              <li class="page-item"><a class="page-link" href="#">5</a></li>
+                              <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                              <li class="page-item"><a class="page-link" href="#">70</a></li>
+                              <li class="page-item"><a class="page-link" href="#">Next <span>&raquo;</span></a></li>
+                            </ul>
+                          </nav>
                     </div>
                 </div>
 
