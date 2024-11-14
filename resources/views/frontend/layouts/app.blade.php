@@ -35,11 +35,12 @@
 </head>
 
 <body>
-    <div id="loader">
+    {{-- <div id="loader">
         <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." />
-    </div>
+    </div> --}}
 
-    <div id="content" style="display: none">
+    {{-- <div id="content" style="display: none"> --}}
+    <div>
         <!-- Top Area Box -->
         @include('frontend.layouts.header-top')
 
