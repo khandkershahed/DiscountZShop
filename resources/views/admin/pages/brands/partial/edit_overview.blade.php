@@ -1,4 +1,5 @@
-<form class="form" id="brandForm" action="{{ route('admin.brands.update', $brand->id) }}" method="POST" enctype="multipart/form-data">
+<form class="form" id="brandForm" action="{{ route('admin.brands.update', $brand->id) }}" method="POST"
+    enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">
@@ -170,8 +171,7 @@
                 placeholder="Enter the Head Quater"></x-metronic.input>
         </div>
         <div class="col-lg-12 mb-7">
-            <x-metronic.label for="about_title"
-                class="col-form-label fw-bold fs-6">{{ __('Section One Title') }}
+            <x-metronic.label for="about_title" class="col-form-label fw-bold fs-6">{{ __('Section One Title') }}
             </x-metronic.label>
 
             <x-metronic.input id="about_title" type="text" name="about_title" :value="old('about_title', $brand->about_title)"
@@ -215,7 +215,7 @@
         </div>
 
         <div class="col-lg-12 mb-7">
-            <x-metronic.label for="offer_description" 
+            <x-metronic.label for="offer_description"
                 class="col-form-label fw-bold fs-6 ">{{ __('Section Three Description') }}
             </x-metronic.label>
 
@@ -240,7 +240,9 @@
                 class="col-form-label fw-bold fs-6">{{ __('Section Four Description') }}
             </x-metronic.label>
 
-            <textarea id="description" class="ckeditor @error('description')is-invalid @enderror" name="description">{{ old('description', $brand->description) }}</textarea>
+            <textarea id="description" class="ckeditor @error('description') is-invalid @enderror" name="description">
+                {{ old('description', $brand->description) }}
+            </textarea>
             @error('description')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

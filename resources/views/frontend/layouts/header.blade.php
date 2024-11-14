@@ -157,10 +157,10 @@
                         <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
                             href="{{ route('allStore') }}">Store <span class="ps-3"> |</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link custom-nav-link {{ Route::is('vendors') ? 'active' : '' }}"
                             href="{{ route('vendors') }}">Vendors</a>
-                    </li>
+                    </li> --}}
                 </ul>
                 <!-- Search Form -->
 

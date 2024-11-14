@@ -214,8 +214,8 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'latest_stores' => Store::where('status', 'active')->orderBy('name', 'ASC')->limit(4)->latest()->get(),
-            'stores' => Store::where('status', 'active')->orderBy('name', 'ASC')->get(),
+            'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
+            'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->get(),
         ];
         return view('frontend.pages.allStore', $data);
     }

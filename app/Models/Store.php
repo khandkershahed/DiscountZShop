@@ -23,6 +23,10 @@ class Store extends Model
     {
         return $this->belongsTo(Admin::class, 'added_by');
     }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
 
     public function categoryName()
     {

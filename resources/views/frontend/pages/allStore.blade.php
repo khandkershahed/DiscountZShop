@@ -86,7 +86,7 @@
                                 <!-- Store Banner -->
                                 <div class="main-store-banner">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ !empty($latest_store->image) ? url('storage/' . $latest_store->image) : 'https://ui-avatars.com/api/?name=' . urlencode($latest_store->name) }}"
+                                        src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
                                         alt="arong-banner.jpg" />
                                 </div>
                                 <!-- Store Logo And Rating -->
@@ -94,11 +94,11 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="store-logo">
                                             <img class="img-fluid"
-                                                src="{{ !empty($latest_store->logo) ? url('storage/' . $latest_store->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($latest_store->name) }}"
+                                                src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                 alt="arong-logo.png" />
                                         </div>
                                         <div class="store-rating">
-                                            <a href="{{ route('store.details', $latest_store->id) }}"
+                                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
@@ -107,9 +107,9 @@
                                     </div>
                                     <!-- Store Info -->
                                     <div class="pt-4 d-flex justify-content-between store_title">
-                                        <a href="{{ route('store.details', $latest_store->id) }}">
+                                        <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
-                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->name }}</h5>
+                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->title }}</h5>
                                                 <p>{{ $latest_store->headquarter }}</p>
                                             </div>
                                         </a>
@@ -121,14 +121,14 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
+                                    {{-- <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
                                         <span class="bg-danger badge fw-normal">
                                             <i class="fa-solid fa-percent pe-2"></i>OFFER
                                         </span>
                                         <small class="text-sm">
                                             Get UpTo <span class="main-color">{{ $latest_store->badge }}</span> Off
                                         </small>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                                 <!-- Store Banner -->
                                 <div class="main-store-banner">
                                     <img class="img-fluid rounded-2"
-                                        src="{{ !empty($store->image) ? url('storage/' . $store->image) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
+                                        src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
                                         alt="arong-banner.jpg" />
                                 </div>
                                 <!-- Store Logo And Rating -->
@@ -170,12 +170,12 @@
 
                                         <div class="store-logo">
                                             <img class="img-fluid"
-                                                src="{{ !empty($store->logo) ? url('storage/' . $store->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
+                                                src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                 alt="arong-logo.png" />
                                         </div>
 
                                         <div class="store-rating">
-                                            <a href="{{ route('store.details', $store->id) }}"
+                                            <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
@@ -184,9 +184,9 @@
                                     </div>
                                     <!-- Store Info -->
                                     <div class="pt-4 d-flex justify-content-between store_title">
-                                        <a href="{{ route('store.details', $store->id) }}">
+                                        <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
                                             <div>
-                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $store->name }}</h5>
+                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $store->title }}</h5>
                                                 <p>{{ $store->headquarter }}</p>
                                             </div>
                                         </a>
@@ -198,14 +198,14 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
+                                    {{-- <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
                                         <span class="bg-danger badge fw-normal">
                                             <i class="fa-solid fa-percent pe-2"></i>OFFER
                                         </span>
                                         <small class="text-sm">
                                             Get UpTo <span class="main-color">{{ $store->badge }}</span> Off
                                         </small>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

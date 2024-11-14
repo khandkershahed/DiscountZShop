@@ -138,20 +138,78 @@
                 });
 
                 // On click of 'Next' tab
+                // $('.tab-trigger-brand-next').on('click', function(event) {
+                //     const targetTabId = $(this).data('bs-target');
+                //     event.preventDefault(); // Prevent default action (tab switch)
+
+                //     // Serialize form data
+                //     var formData = new FormData($('#brandForm')[0]);
+                //     // Validate the current tab first
+                //     if (validateAndSwitchTab(targetTabId)) {
+                //         $.ajax({
+                //             url: $('#brandForm').attr('action'), // The route to update the brand
+                //             method: 'POST',
+                //             data: formData,
+                //             processData: false, // Don't process the data
+                //             contentType: false, // Don't set content-type header
+                //             success: function(response) {
+                //                 if (response.success) {
+                //                     Swal.fire({
+                //                         icon: 'success',
+                //                         title: 'Brand updated successfully!',
+                //                         showConfirmButton: false,
+                //                         timer: 1500
+                //                     });
+                //                 } else {
+                //                     Swal.fire({
+                //                         icon: 'error',
+                //                         title: 'Oops...',
+                //                         text: response.error_message ||
+                //                             'Something went wrong!'
+                //                     });
+                //                 }
+                //             },
+                //             error: function(xhr, status, error) {
+                //                 // If AJAX fails (e.g., server error)
+                //                 Swal.fire({
+                //                     icon: 'error',
+                //                     title: 'Error',
+                //                     text: 'There was an error processing your request.'
+                //                 });
+                //             }
+                //         });
+                //     }
+                // });
+
                 $('.tab-trigger-brand-next').on('click', function(event) {
                     const targetTabId = $(this).data('bs-target');
                     event.preventDefault(); // Prevent default action (tab switch)
 
                     // Serialize form data
                     var formData = new FormData($('#brandForm')[0]);
+
+                    // Add CKEditor data to FormData only if the editor is initialized
+                    document.querySelectorAll('.ckeditor').forEach(element => {
+                        // Ensure the editor instance is available
+                        if (element.editorInstance) {
+                            // Append the editor content to the FormData
+                            formData.append(element.name, element.editorInstance.getData());
+                        }
+                    });
+
                     // Validate the current tab first
                     if (validateAndSwitchTab(targetTabId)) {
+                        // Proceed with AJAX form submission
                         $.ajax({
                             url: $('#brandForm').attr('action'), // The route to update the brand
                             method: 'POST',
                             data: formData,
                             processData: false, // Don't process the data
                             contentType: false, // Don't set content-type header
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content') // Add CSRF token
+                            },
                             success: function(response) {
                                 if (response.success) {
                                     Swal.fire({
