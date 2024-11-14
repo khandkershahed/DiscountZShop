@@ -33,6 +33,7 @@ Route::post('/search', [HomeController::class, 'productSearch'])->name('product.
 
 
 
+
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');
 

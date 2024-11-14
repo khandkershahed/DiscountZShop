@@ -71,6 +71,7 @@
                     <div class="card rounded-0 border-0 shadow-sm">
                         <div class="card-header py-3 px-5" style="border-bottom: 1px solid #eee">
                             <div class="row align-items-center">
+
                                 <div class="col-lg-4 col-12">
                                     <div class="d-flex align-items-center">
                                         <h4 class="coupon-title mb-0 pe-3">
@@ -97,16 +98,21 @@
 
                                 <div class="col-lg-8 col-sm-8">
                                     <div class="d-flex justify-content-space-between align-items-center mobile-none-sm">
-                                        <form class="d-flex w-75 " role="search">
+
+                                        <form action="" class="d-flex w-75 "
+                                            role="search" method="post">
+                                            @csrf
                                             <div class="d-flex w-100">
-                                                <input class="form-control rounded-pill form-control-sm" type="search"
-                                                    placeholder="Search Coupon..." aria-label="Search Coupon..." />
+                                                <input class="form-control rounded-pill form-control-sm" name="search"
+                                                    type="search" placeholder="Search Coupon..."
+                                                    aria-label="Search Coupon..." />
                                             </div>
                                             <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
                                                 <i class="fa-solid fa-search" aria-hidden="true"></i>
                                             </button>
                                         </form>
+
                                         <div
                                             class="d-flex justify-content-end align-items-center w-25 navigation-slide">
                                             <button type="button" class="custom-prev rounded-circle">
@@ -116,11 +122,13 @@
                                                 <i class="fas fa-arrow-right-long"></i>
                                             </button>
                                         </div>
+
                                     </div>
                                 </div>
 
                             </div>
                         </div>
+
                         <div class="card-body py-5" style="background-color: #f8f8f8">
                             <div class="slick-slider">
                                 <div class="available-coupon-slider">
@@ -138,16 +146,16 @@
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1">
-                                                        <p
+                                                        {{-- <p
                                                             class="align-items-center text-start ps-5 coupon-text text-white">
                                                             Get Upto
-                                                        </p>
+                                                        </p> --}}
                                                         <h5 class="discount-percentage text-center fw-bold">
                                                             {{ $coupon->badge }} %
                                                         </h5>
-                                                        <p class="text-white text-center ps-5 coupon-text">
+                                                        {{-- <p class="text-white text-center ps-5 coupon-text">
                                                             OFF
-                                                        </p>
+                                                        </p> --}}
                                                     </div>
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-1">
@@ -165,6 +173,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -1521,6 +1530,7 @@
         </div>
     </section>
     <!-- Grab By Location End -->
+
     <!-- Product Slider -->
     <section>
         <div class="container pb-70 pt-70 px-0 latest-offers">
@@ -1569,6 +1579,7 @@
         </div>
     </section>
     <!-- Product Slider End -->
+
     <!-- Deal Of The Day -->
     <section>
         <div class="container px-0 pb-70">
@@ -1702,8 +1713,12 @@
                                                         {{ $offerDeal->name }}
                                                     </h6>
                                                 </a>
-                                                <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                                                <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @if (!empty($offerDeal->price))
+                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                @endif
+                                                @if (!empty($offerDeal->offer_price))
+                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @endif
                                             </div>
                                             <div class="mt-4">
                                                 <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -1719,7 +1734,7 @@
                                     src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
                                     alt="No Content">
                             </div>
-                            <h5 class="text-center text-warning">No Course available right now.</h5>
+                            <h5 class="text-center text-warning">No Offer available right now.</h5>
                         @endforelse
 
                     </div>
@@ -1944,6 +1959,17 @@
                     });
                     showLessBtn.classList.add('d-none');
                     showMoreBtn.classList.remove('d-none');
+                });
+            });
+        </script>
+
+        <script>
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const couponCode = this.closest('.coupon-code').querySelector('#coupon-code').innerText;
+                    navigator.clipboard.writeText(couponCode).then(() => {
+                        alert('Coupon code copied to clipboard!');
+                    });
                 });
             });
         </script>

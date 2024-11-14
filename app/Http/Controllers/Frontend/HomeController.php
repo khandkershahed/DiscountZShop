@@ -47,7 +47,7 @@ class HomeController extends Controller
 
             'homepage' => HomePage::with('brand')->latest('id')->first(),
         ];
-        
+
 
         return view('frontend.pages.home.home', $data);
     }
@@ -131,7 +131,6 @@ class HomeController extends Controller
             Session::flash('warning', 'This Page is not available right now.');
             return redirect()->back();
         }
-
     }
     public function vendorStores($slug)
     {
@@ -146,11 +145,10 @@ class HomeController extends Controller
             Session::flash('warning', 'This Page is not available right now.');
             return redirect()->back();
         }
-
     }
     public function vendorOffers($slug)
     {
-        $brand = Brand::with('stores','offers')->where('slug', $slug)->first();
+        $brand = Brand::with('stores', 'offers')->where('slug', $slug)->first();
         if ($brand) {
             $data = [
                 'brand' => $brand,
@@ -324,13 +322,14 @@ class HomeController extends Controller
         $offerDetails = Offer::where('slug', $slug)->first();
         $brand = Brand::with('stores')->where('id', $offerDetails->brand_id)->first();
 
-            $data = [
-                'brand'         => $brand,
-                'offerDetails'  => $offerDetails,
-                'page_banner'   => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            ];
+        $data = [
+            'brand'         => $brand,
+            'offerDetails'  => $offerDetails,
+            'page_banner'   => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+        ];
 
-        if ($offerDetails) {
+        if ($offerDetails && $brand) {
+            Session::flash('warning', 'This Offer is not available right now.');
             return view('frontend.pages.vendor.offer_details', $data);
             // return view('frontend.pages.offerDetails', $data);
         } else {
@@ -468,4 +467,5 @@ class HomeController extends Controller
 
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
     }
+   
 }
