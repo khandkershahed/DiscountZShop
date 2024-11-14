@@ -1,4 +1,5 @@
 // JavaScript to hide the loader once the page is fully loaded
+// JavaScript to hide the loader once the page is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
     // Hide the loader
     document.getElementById("loader").style.display = "none";

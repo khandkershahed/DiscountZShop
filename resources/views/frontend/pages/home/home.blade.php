@@ -138,16 +138,16 @@
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1">
-                                                        <p
+                                                        {{-- <p
                                                             class="align-items-center text-start ps-5 coupon-text text-white">
                                                             Get Upto
-                                                        </p>
+                                                        </p> --}}
                                                         <h5 class="discount-percentage text-center fw-bold">
                                                             {{ $coupon->badge }} %
                                                         </h5>
-                                                        <p class="text-white text-center ps-5 coupon-text">
+                                                        {{-- <p class="text-white text-center ps-5 coupon-text">
                                                             OFF
-                                                        </p>
+                                                        </p> --}}
                                                     </div>
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-1">
@@ -390,7 +390,7 @@
 
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -1700,8 +1700,12 @@
                                                         {{ $offerDeal->name }}
                                                     </h6>
                                                 </a>
-                                                <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                                                <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @if (!empty($offerDeal->price))
+                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                @endif
+                                                @if (!empty($offerDeal->offer_price))
+                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @endif
                                             </div>
                                             <div class="mt-4">
                                                 <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -1717,7 +1721,7 @@
                                     src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
                                     alt="No Content">
                             </div>
-                            <h5 class="text-center text-warning">No Course available right now.</h5>
+                            <h5 class="text-center text-warning">No Offer available right now.</h5>
                         @endforelse
 
                     </div>

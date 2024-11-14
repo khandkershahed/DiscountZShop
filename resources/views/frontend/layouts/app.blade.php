@@ -35,12 +35,12 @@
 </head>
 
 <body>
-    {{-- <div id="loader">
+    <div id="loader">
         <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." />
-    </div> --}}
+    </div>
 
-    {{-- <div id="content" style="display: none"> --}}
-    <div>
+    <div id="content" style="display: none">
+        {{-- <div> --}}
         <!-- Top Area Box -->
         @include('frontend.layouts.header-top')
 
@@ -60,7 +60,8 @@
     <!-- Bootstrap 5.3 Bundle with Popper -->
     <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <!-- jQuery -->
-    <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script> --}}
     <!-- FontAwesome -->
     <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
     <!-- Slick Slider JavaScript -->
@@ -254,6 +255,14 @@
     </script>
     @include('toastr')
     @stack('scripts')
+    <script>
+        $(document).ready(function() {
+            // Hide the loader
+            $("#loader").addClass('d-none');
+            // Show the content
+            $("#content").show();
+        });
+    </script>
 </body>
 
 </html>
