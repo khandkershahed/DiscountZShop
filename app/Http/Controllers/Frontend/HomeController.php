@@ -448,6 +448,7 @@ class HomeController extends Controller
 
         $request->validate(['search' => "required"]);
 
+        $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
         $item = $request->search;
 
         $brands = Brand::where('name', 'LIKE', "%$item%")
@@ -465,6 +466,6 @@ class HomeController extends Controller
             ->orWhere('description', "LIKE", "%$item%")
             ->get();
 
-        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores'));
+        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
     }
 }

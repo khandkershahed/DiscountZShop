@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');//
             $table->foreignId('update_by')->nullable()->constrained('admins')->onDelete('set null');//
-            
+            $table->unsignedBigInteger('offer_type_id')->nullable();
             $table->string('badge')->nullable();//
             $table->string('name')->unique();//
             $table->string('slug')->unique();//
