@@ -277,7 +277,7 @@
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
-                                            
+
                                             <div class="row">
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
@@ -323,7 +323,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            
+
                                         </div>
 
                                         @foreach ($categories as $offercategory)
@@ -387,8 +387,10 @@
                                                 </div>
                                             </div>
                                         @endforeach
+
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -539,6 +541,7 @@
         </div>
     </section>
     <!-- Grab By Location End -->
+
     <!-- Product Slider -->
     <section>
         <div class="container pb-70 pt-70 px-0 latest-offers">
@@ -587,6 +590,7 @@
         </div>
     </section>
     <!-- Product Slider End -->
+
     <!-- Deal Of The Day -->
     <section>
         <div class="container px-0 pb-70">
@@ -747,6 +751,7 @@
         </div>
     </section>
     <!-- Deal Of The Day End -->
+
     <!-- Normal Slider Product Show -->
     <section>
         <div class="container py-lg-5 py-0 px-0">
@@ -800,6 +805,7 @@
         </div>
     </section>
     <!-- Normal Slider Product Show ENd -->
+
     @if ($brands->count() > 0)
         <section>
             <div class="container py-5 pb-4 px-0">
@@ -1065,11 +1071,13 @@
                                 </div>
 
                                 <div class="col-lg-8 col-sm-8">
-                                    <div class="d-flex justify-content-space-between align-items-center mobile-none-sm">
+                                    <div
+                                        class="d-flex justify-content-space-between align-items-center mobile-none-sm">
                                         <form class="d-flex w-75 " role="search">
                                             <div class="d-flex w-100">
-                                                <input class="form-control rounded-pill form-control-sm" type="search"
-                                                    placeholder="Search Coupon..." aria-label="Search Coupon..." />
+                                                <input class="form-control rounded-pill form-control-sm"
+                                                    type="search" placeholder="Search Coupon..."
+                                                    aria-label="Search Coupon..." />
                                             </div>
                                             <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
