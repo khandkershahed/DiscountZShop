@@ -25,7 +25,7 @@
                             <div class="row gx-3">
                                 {{-- @dd($banner); --}}
                                 <div class="col-lg-12">
-                                    <a href="{{ $banner->image_one_url }}" target="_blank">
+                                    <a href="{{ $banner->image_one_url }}">
                                         <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                             src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
                                             alt=""
@@ -160,16 +160,18 @@
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1 ">
-                                                        <h5 class="discount-percentage text-center fw-bold">
+                                                        <h5 class="discount-percentage text-center fw-bold pt-2">
                                                             {{ $coupon->badge }}</h5>
-                                                        <p class="text-white text-center ps-1 coupon-text">OFF</p>
+                                                        <p class="text-white text-center ps-1 pt-1 pb-1 coupon-text">OFF
+                                                        </p>
                                                     </div>
                                                     <div>
-                                                        <p class="text-white text-center coupon-text coupon-code pt-4">
-                                                            Code: ”<span
-                                                                id="coupon-code">{{ $coupon->coupon_code }}</span>”
-                                                            <a href="javascript:void(0);" class="copy-btn"><i
-                                                                    class="fas fa-copy ps-2"></i></a>
+                                                        <p class="text-white text-center coupon-text coupon-code pt-2">
+                                                            Code:
+                                                            ”<span class="couponCode" id="coupon-code">{{ $coupon->coupon_code }}</span>”
+                                                            <a href="javascript:void(0);" class="copy-btn" data-coupon_id="{{ $coupon->coupon_code }}">
+                                                                <i class="fas fa-copy ps-2"></i>
+                                                            </a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -977,7 +979,7 @@
                 // Add input event listener for the search field
                 searchInput.addEventListener('input', function() {
                     const searchQuery = searchInput.value.toLowerCase()
-                .trim(); // Convert search input to lowercase and trim whitespace
+                        .trim(); // Convert search input to lowercase and trim whitespace
 
                     // Get all coupon items
                     const coupons = couponList.querySelectorAll('.items');
@@ -985,7 +987,7 @@
                     // Loop through each coupon and check if it matches the search query
                     coupons.forEach(function(coupon) {
                         const couponCode = coupon.getAttribute('data-coupon-code')
-                    .trim(); // Get coupon code and trim whitespace
+                            .trim(); // Get coupon code and trim whitespace
 
                         console.log('Coupon Code:', couponCode); // Debugging
                         console.log('Search Query:', searchQuery); // Debugging

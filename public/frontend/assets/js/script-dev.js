@@ -339,8 +339,8 @@ function copyCouponCode(couponCode) {
 $(document).ready(function () {
     $(".copy-btn").click(function () {
         // Get the text inside the span
-        var couponCode = $("#coupon-code").text();
-
+        var couponCode = $(this).data('coupon_id');
+        // alert(couponCode);
         // Create a temporary input element
         var tempInput = $("<input>");
         $("body").append(tempInput);
