@@ -27,7 +27,7 @@
                             <thead class="bg-dark text-light">
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                    
+
                                     <th class="min-w-10px">{{ __('category.Sl') }}</th>
                                     <th class="min-w-150px">{{ __('category.Name') }}</th>
                                     <th class="min-w-150px">{{ __('category.Slug') }}</th>
@@ -43,7 +43,7 @@
                                 @forelse ($categories as $category)
                                     <!--begin::Table row-->
                                     <tr>
-                                        
+
                                         <!--end::Checkbox-->
                                         <td>
                                             <!--begin::Sl-->
@@ -117,7 +117,7 @@
                                     <!--end::Table row-->
                                     @foreach ($category->children as $child)
                                         <tr>
-                                            
+
                                             <td>
                                                 <!--begin::Sl-->
                                                 <span class="fw-bolder">
@@ -205,7 +205,7 @@
     </div>
     <!--end::Post-->
     @push('scripts')
-        <script>
+        {{-- <script>
             $("#kt_datatable_example_5").DataTable({
                 "language": {
                     "lengthMenu": "Show _MENU_",
@@ -221,6 +221,33 @@
                     "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
                     "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
                     ">"
+            });
+        </script> --}}
+        <script>
+            $(document).ready(function() {
+                var table = $("#kt_datatable_example_5").DataTable({
+                    "language": {
+                        "lengthMenu": "Show _MENU_",
+                    },
+                    "dom": "<'row'" +
+                        "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                        "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                        ">" +
+                        "<'table-responsive'tr>" +
+                        "<'row'" +
+                        "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                        "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                        ">",
+                });
+
+                // Rebind the action buttons after table is redrawn (pagination, sorting, etc.)
+                table.on('draw', function() {
+                    // Bind actions for newly drawn table rows
+                    $(".btn-light").on("click", function() {
+                        // Your action button click logic here, for example:
+                        // console.log('Button clicked!');
+                    });
+                });
             });
         </script>
     @endpush
