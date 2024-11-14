@@ -4,8 +4,8 @@
 
         <div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
 
-            <a href="../../demo1/dist/index.html" class="mb-10 pt-lg-10">
-                <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-1.svg') }}" class="h-40px mb-5" />
+            <a href="{{ route('homePage') }}" class="mb-10 pt-lg-10">
+                <img alt="Logo" src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}" class="h-40px mb-5" />
             </a>
 
             @if (session('status') == 'verification-link-sent')
@@ -57,7 +57,7 @@
         </div>
 
 
-        
+
 
     </div>
 

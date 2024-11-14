@@ -328,7 +328,8 @@ class HomeController extends Controller
             'page_banner'   => PageBanner::where('page_name', 'brand')->latest('id')->first(),
         ];
 
-        if ($offerDetails) {
+        if ($offerDetails && $brand) {
+            Session::flash('warning', 'This Offer is not available right now.');
             return view('frontend.pages.vendor.offer_details', $data);
             // return view('frontend.pages.offerDetails', $data);
         } else {

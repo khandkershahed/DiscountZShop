@@ -1,3 +1,7 @@
+// JavaScript to hide the loader once the page is fully loaded
+// JavaScript to hide the loader once the page is fully loaded
+
+
 $(document).ready(function () {
     $(".hero-slider").slick({
         autoplay: true,

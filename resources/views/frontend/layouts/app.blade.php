@@ -35,236 +35,240 @@
 </head>
 
 <body>
-    <!-- Loader -->
-    {{-- <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." /> --}}
-
-    <!-- Main Content -->
-    <div>
-        <!-- Top Area Box -->
-        @include('frontend.layouts.header-top')
-
-        <!-- Top Area Box End -->
-        <!-- Header and Navigation -->
-        @include('frontend.layouts.header')
-        <!-- Header and Navigation End -->
-        <!-- Main Content Start -->
-        <main>
-            {{ $slot }}
-        </main>
-        <!-- Main Content End -->
-        <!-- Footer Start -->
-        @include('frontend.layouts.footer')
+    <div id="loader" class="discount_loader">
+        <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." />
     </div>
-    <!-- JavaScript Files -->
-    <!-- Bootstrap 5.3 Bundle with Popper -->
-    <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <!-- jQuery -->
-    <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script>
-    <!-- FontAwesome -->
-    <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
-    <!-- Slick Slider JavaScript -->
-    <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
-    <!-- Custom Script -->
-    <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
-    <script>
-        // Wait for DOM to load
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
-                console.log("Hiding loader and showing content.");
-                
-                // Hide loader and show content
-                document.getElementById("loader").style.setProperty("display", "none", "important");
-                document.getElementById("content").style.setProperty("display", "block", "important");
-            }, 3000); // Adjust time as needed
-        });
-    </script>
-    <script>
-        // Define your data for the map
-        var data = [
-            ["bd-da", 0],
-            ["bd-sy", 1],
-            ["bd-bk", 2],
-            ["bd-kh", 3],
-            ["bd-ba", 4],
-            ["bd-cg", 5],
-            ["bd-rp", 6],
-            ["bd-rj", 7],
-            ["bd-js", 8],
-            ["bd-lg", 9],
-            ["bd-br", 10],
-            ["bd-co", 11],
-            ["bd-hb", 12],
-            ["bd-sh", 13],
-            ["bd-dh", 14],
-            ["bd-nj", 15],
-            ["bd-pl", 16],
-            ["bd-na", 17],
-            ["bd-gb", 18],
-            ["bd-md", 19],
-            ["bd-mw", 20],
-            ["bd-ct", 21],
-            ["bd-kn", 22],
-            ["bd-sw", 23],
-            ["bd-rg", 24],
-            ["bd-nk", 25],
-            ["bd-lk", 26],
-            ["bd-pb", 27],
-            ["bd-fr", 28],
-            ["bd-gz", 29],
-            ["bd-sd", 30],
-            ["bd-ss", 31],
-            ["bd-ku", 32],
-            ["bd-ra", 33],
-            ["bd-mr", 34],
-        ];
 
-        // Create the chart
-        var chart = Highcharts.mapChart("mapcontainer", {
-            chart: {
-                type: "map",
-                map: "countries/bd/bd-all",
-                backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background color
-            },
+    <div id="content" class="discount_content" style="display: none">
+        {{-- <div> --}}
+        <!-- Loader -->
+        {{-- <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." /> --}}
 
-            title: {
-                text: "",
-                style: {
-                    color: "#fff",
+        <!-- Main Content -->
+        <div>
+            <!-- Top Area Box -->
+            @include('frontend.layouts.header-top')
+
+            <!-- Top Area Box End -->
+            <!-- Header and Navigation -->
+            @include('frontend.layouts.header')
+            <!-- Header and Navigation End -->
+            <!-- Main Content Start -->
+            <main>
+                {{ $slot }}
+            </main>
+            <!-- Main Content End -->
+            <!-- Footer Start -->
+            @include('frontend.layouts.footer')
+        </div>
+        <!-- JavaScript Files -->
+        <!-- Bootstrap 5.3 Bundle with Popper -->
+        <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {{-- <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script> --}}
+        <!-- FontAwesome -->
+        <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
+        <!-- Slick Slider JavaScript -->
+        <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
+        <!-- Custom Script -->
+        <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+
+        <script>
+            // Define your data for the map
+            var data = [
+                ["bd-da", 0],
+                ["bd-sy", 1],
+                ["bd-bk", 2],
+                ["bd-kh", 3],
+                ["bd-ba", 4],
+                ["bd-cg", 5],
+                ["bd-rp", 6],
+                ["bd-rj", 7],
+                ["bd-js", 8],
+                ["bd-lg", 9],
+                ["bd-br", 10],
+                ["bd-co", 11],
+                ["bd-hb", 12],
+                ["bd-sh", 13],
+                ["bd-dh", 14],
+                ["bd-nj", 15],
+                ["bd-pl", 16],
+                ["bd-na", 17],
+                ["bd-gb", 18],
+                ["bd-md", 19],
+                ["bd-mw", 20],
+                ["bd-ct", 21],
+                ["bd-kn", 22],
+                ["bd-sw", 23],
+                ["bd-rg", 24],
+                ["bd-nk", 25],
+                ["bd-lk", 26],
+                ["bd-pb", 27],
+                ["bd-fr", 28],
+                ["bd-gz", 29],
+                ["bd-sd", 30],
+                ["bd-ss", 31],
+                ["bd-ku", 32],
+                ["bd-ra", 33],
+                ["bd-mr", 34],
+            ];
+
+            // Create the chart
+            var chart = Highcharts.mapChart("mapcontainer", {
+                chart: {
+                    type: "map",
+                    map: "countries/bd/bd-all",
+                    backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background color
                 },
-            },
 
-            subtitle: {
-                text: "",
-                style: {
-                    color: "#fff",
+                title: {
+                    text: "",
+                    style: {
+                        color: "#fff",
+                    },
                 },
-            },
 
-            legend: {
-                enabled: false,
-            },
+                subtitle: {
+                    text: "",
+                    style: {
+                        color: "#fff",
+                    },
+                },
 
-            tooltip: {
-                enabled: false,
-            },
-
-            navigation: {
-                buttonOptions: {
+                legend: {
                     enabled: false,
                 },
-            },
 
-            credits: {
-                enabled: false,
-            },
+                tooltip: {
+                    enabled: false,
+                },
 
-            plotOptions: {
-                series: {
-                    point: {
-                        events: {
-                            click: function() {
-                                updateDetails(this.series.name, this.name, this.value);
+                navigation: {
+                    buttonOptions: {
+                        enabled: false,
+                    },
+                },
+
+                credits: {
+                    enabled: false,
+                },
+
+                plotOptions: {
+                    series: {
+                        point: {
+                            events: {
+                                click: function() {
+                                    updateDetails(this.series.name, this.name, this.value);
+                                },
                             },
                         },
                     },
                 },
-            },
 
-            series: [{
-                data: data,
-                name: "Random data",
-                allowPointSelect: true,
-                cursor: "pointer",
-                color: "#fff",
-                states: {
-                    select: {
-                        color: "#f15a2d",
+                series: [{
+                    data: data,
+                    name: "Random data",
+                    allowPointSelect: true,
+                    cursor: "pointer",
+                    color: "#fff",
+                    states: {
+                        select: {
+                            color: "#f15a2d",
+                        },
                     },
-                },
-                dataLabels: {
-                    enabled: true,
-                    format: "{point.name}",
-                },
-            }, ],
-        });
+                    dataLabels: {
+                        enabled: true,
+                        format: "{point.name}",
+                    },
+                }, ],
+            });
 
-        // Function to update details
-        function updateDetails(seriesName, pointName, pointValue) {
-            var pointNameElem = document.getElementById("pointName");
-            if (pointNameElem) {
-                pointNameElem.textContent = pointName;
+            // Function to update details
+            function updateDetails(seriesName, pointName, pointValue) {
+                var pointNameElem = document.getElementById("pointName");
+                if (pointNameElem) {
+                    pointNameElem.textContent = pointName;
+                }
             }
-        }
-    </script>
-    <script>
-        class Countdown {
-            constructor(element, expireDate) {
-                this.element = element;
-                this.expireDate = new Date(expireDate).getTime();
-                this.timerElement = this.element.querySelector(".countdown-timer");
-                this.start();
-            }
-
-            start() {
-                this.update();
-                this.interval = setInterval(() => this.update(), 1000);
-            }
-
-            update() {
-                const now = new Date().getTime();
-                const distance = this.expireDate - now;
-
-                if (distance < 0) {
-                    clearInterval(this.interval);
-                    this.timerElement.innerHTML = "EXPIRED";
-                    return;
+        </script>
+        <script>
+            class Countdown {
+                constructor(element, expireDate) {
+                    this.element = element;
+                    this.expireDate = new Date(expireDate).getTime();
+                    this.timerElement = this.element.querySelector(".countdown-timer");
+                    this.start();
                 }
 
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                this.timerElement.innerHTML = `${days}D-${hours}H-${minutes}M-${seconds}S`;
-            }
-        }
-
-        // Initialize countdowns on DOMContentLoaded
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".countdown").forEach((element) => {
-                const expireDate = element.getAttribute("data-expire-date");
-                if (expireDate) {
-                    new Countdown(element, expireDate);
-                } else {
-                    const timerElement = element.querySelector(".countdown-timer");
-                    timerElement.innerHTML = "Still Available";
+                start() {
+                    this.update();
+                    this.interval = setInterval(() => this.update(), 1000);
                 }
+
+                update() {
+                    const now = new Date().getTime();
+                    const distance = this.expireDate - now;
+
+                    if (distance < 0) {
+                        clearInterval(this.interval);
+                        this.timerElement.innerHTML = "EXPIRED";
+                        return;
+                    }
+
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    this.timerElement.innerHTML = `${days}D-${hours}H-${minutes}M-${seconds}S`;
+                }
+            }
+
+            // Initialize countdowns on DOMContentLoaded
+            document.addEventListener("DOMContentLoaded", () => {
+                document.querySelectorAll(".countdown").forEach((element) => {
+                    const expireDate = element.getAttribute("data-expire-date");
+                    if (expireDate) {
+                        new Countdown(element, expireDate);
+                    } else {
+                        const timerElement = element.querySelector(".countdown-timer");
+                        timerElement.innerHTML = "Still Available";
+                    }
+                });
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#custom_select1').select2({
-                theme: 'bootstrap-5',
-                placeholder: $(this).data('placeholder'),
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#custom_select1').select2({
+                    theme: 'bootstrap-5',
+                    placeholder: $(this).data('placeholder'),
+                });
+                $('#custom_select2').select2({
+                    theme: 'bootstrap-5',
+                    placeholder: $(this).data('placeholder'),
+                });
+                $('#custom_select3').select2({
+                    theme: 'bootstrap-5',
+                    placeholder: $(this).data('placeholder'),
+                });
             });
-            $('#custom_select2').select2({
-                theme: 'bootstrap-5',
-                placeholder: $(this).data('placeholder'),
+        </script>
+        @include('toastr')
+        @stack('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Hide the loader
+                document.getElementById("loader").style.display = "none";
+                // Show the content
+                document.getElementById("content").style.display = "block";
             });
-            $('#custom_select3').select2({
-                theme: 'bootstrap-5',
-                placeholder: $(this).data('placeholder'),
-            });
-        });
-    </script>
-    @include('toastr')
-    @stack('scripts')
+        </script>
 </body>
 
 </html>

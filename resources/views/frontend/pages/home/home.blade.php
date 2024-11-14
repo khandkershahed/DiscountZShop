@@ -159,9 +159,10 @@
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1">
-                                                        <p
+                                                        {{-- <p
                                                             class="align-items-center text-start ps-5 coupon-text text-white">
-                                                            Get Upto</p>
+                                                            Get Upto
+                                                        </p> --}}
                                                         <h5 class="discount-percentage text-center fw-bold">
                                                             {{ $coupon->badge }} %</h5>
                                                         <p class="text-white text-center ps-5 coupon-text">OFF</p>
@@ -300,20 +301,22 @@
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
                                                     <div class="col-lg-4 mb-4">
-                                                        <a href="{{ route('offer.details', $alloffer->slug) }}">
-                                                            <div class="coupon-box">
-                                                                <div class="coupon-box-content">
-                                                                    <div class="row align-items-center">
-
-                                                                        <div class="col-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <a
+                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
                                                                             <img class="img-fluid"
                                                                                 src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
                                                                                 alt="Logo"
                                                                                 onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                                        </div>
+                                                                        </a>
+                                                                    </div>
 
-                                                                        <div class="col-8 text-center">
-
+                                                                    <div class="col-8 text-center">
+                                                                        <a
+                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
                                                                             <div
                                                                                 class="d-flex justify-content-center align-items-center pb-2">
 
@@ -333,11 +336,11 @@
                                                                                             class="fa-regular fa-copy"></i></a>
                                                                                 </p>
                                                                             @endif
-                                                                        </div>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </div>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -1720,8 +1723,12 @@
                                                         {{ $offerDeal->name }}
                                                     </h6>
                                                 </a>
-                                                <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                                                <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @if (!empty($offerDeal->price))
+                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                @endif
+                                                @if (!empty($offerDeal->offer_price))
+                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                @endif
                                             </div>
                                             <div class="mt-4">
                                                 <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -1737,7 +1744,7 @@
                                     src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
                                     alt="No Content">
                             </div>
-                            <h5 class="text-center text-warning">No Course available right now.</h5>
+                            <h5 class="text-center text-warning">No Offer available right now.</h5>
                         @endforelse
 
                     </div>
