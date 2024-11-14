@@ -277,7 +277,7 @@
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                             aria-labelledby="home-tab" tabindex="0">
-                                            
+
                                             <div class="row">
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
@@ -323,7 +323,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            
+
                                         </div>
 
                                         @foreach ($categories as $offercategory)
@@ -1250,8 +1250,8 @@
                                             <div class="row">
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
-                                                    <a href="{{ route('offer.details', $alloffer->slug) }}">
-                                                        <div class="col-lg-4 mb-4">
+                                                    <div class="col-lg-4 mb-4">
+                                                            <a href="{{ route('offer.details', $alloffer->slug) }}">
                                                             <div class="coupon-box">
                                                                 <div class="coupon-box-content">
                                                                     <div class="row align-items-center">
@@ -1288,8 +1288,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </a>
                                                         </div>
-                                                    </a>
                                                 @endforeach
                                             </div>
                                         </div>
