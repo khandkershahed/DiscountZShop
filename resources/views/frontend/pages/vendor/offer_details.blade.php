@@ -14,10 +14,13 @@
                     <div>
                         <h1 class="pb-3 main-color">{{ $offerDetails->badge }}</h1>
                         <h4>{{ $offerDetails->name }}</h4>
-                        <div class="d-flex align-items-center pt-3">
+
+                        @if (!empty($offerDetails->price) && $offerDetails->price !== '0')
                             <p>Price:</p>
                             <h6 class="ps-2 main-color">BDT {{ $offerDetails->price }}</h6>
-                        </div>
+                        @endif
+
+
                         <hr />
                         <p class="pt-2">
                             {!! $offerDetails->short_description !!}
