@@ -99,13 +99,27 @@
                                 <div class="col-lg-8 col-sm-8">
                                     <div class="d-flex justify-content-space-between align-items-center mobile-none-sm">
 
-                                        <form action="" class="d-flex w-75 "
+                                        {{-- <form action="" class="d-flex w-75 "
                                             role="search" method="post">
                                             @csrf
                                             <div class="d-flex w-100">
                                                 <input class="form-control rounded-pill form-control-sm" name="search"
                                                     type="search" placeholder="Search Coupon..."
                                                     aria-label="Search Coupon..." />
+                                            </div>
+                                            <button class="btn position-relative border-0 bg-transparent coupon-action"
+                                                type="submit">
+                                                <i class="fa-solid fa-search" aria-hidden="true"></i>
+                                            </button>
+                                        </form> --}}
+
+                                        <form action="" class="d-flex w-75" role="search" method="post"
+                                            id="search-form">
+                                            @csrf
+                                            <div class="d-flex w-100">
+                                                <input class="form-control rounded-pill form-control-sm" name="search"
+                                                    type="search" placeholder="Search Coupon..."
+                                                    aria-label="Search Coupon..." id="coupon-search" />
                                             </div>
                                             <button class="btn position-relative border-0 bg-transparent coupon-action"
                                                 type="submit">
@@ -131,9 +145,9 @@
 
                         <div class="card-body py-5" style="background-color: #f8f8f8">
                             <div class="slick-slider">
-                                <div class="available-coupon-slider">
+                                <div class="available-coupon-slider" id="coupon-list">
                                     @foreach ($coupons as $coupon)
-                                        <div class="items">
+                                        <div class="items" data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                                             <div class="d-flex coupons-box align-items-center">
                                                 <div class="logo">
                                                     <div class="coupon-logo">
@@ -142,28 +156,22 @@
                                                             onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                     </div>
                                                 </div>
-
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1">
                                                         <p
                                                             class="align-items-center text-start ps-5 coupon-text text-white">
-                                                            Get Upto
-                                                        </p>
+                                                            Get Upto</p>
                                                         <h5 class="discount-percentage text-center fw-bold">
-                                                            {{ $coupon->badge }} %
-                                                        </h5>
-                                                        <p class="text-white text-center ps-5 coupon-text">
-                                                            OFF
-                                                        </p>
+                                                            {{ $coupon->badge }} %</h5>
+                                                        <p class="text-white text-center ps-5 coupon-text">OFF</p>
                                                     </div>
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-1">
                                                             Code: ”<span
                                                                 id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                                             <a href="javascript:void(0);" class="copy-btn"><i
-                                                                    class="fas fa-copy ps-2"></i>
-                                                            </a>
+                                                                    class="fas fa-copy ps-2"></i></a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -173,6 +181,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -1967,6 +1976,36 @@
                 });
             });
         </script>
+
+        <script>
+            // JavaScript for live search functionality
+            document.addEventListener("DOMContentLoaded", function() {
+                const searchInput = document.getElementById('coupon-search');
+                const couponList = document.getElementById('coupon-list');
+
+                // Add input event listener for the search field
+                searchInput.addEventListener('input', function() {
+                    const searchQuery = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive search
+
+                    // Get all coupon items
+                    const coupons = couponList.querySelectorAll('.items');
+
+                    // Loop through each coupon and check if it matches the search query
+                    coupons.forEach(function(coupon) {
+                        const couponCode = coupon.getAttribute(
+                        'data-coupon-code'); // Get the coupon code for filtering
+
+                        // If the coupon code matches the search query, show it; otherwise, hide it
+                        if (couponCode.includes(searchQuery)) {
+                            coupon.style.display = ''; // Show coupon
+                        } else {
+                            coupon.style.display = 'none'; // Hide coupon
+                        }
+                    });
+                });
+            });
+        </script>
+        
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
