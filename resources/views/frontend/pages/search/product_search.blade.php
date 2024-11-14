@@ -106,7 +106,7 @@
             <div class="row">
 
                 @foreach ($stores as $latest_store)
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body p-0 rounded-2">
                                 <!-- Store Banner -->
