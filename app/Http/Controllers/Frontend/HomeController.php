@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
 use App\Models\TermsAndCondition;
 use App\Http\Controllers\Controller;
+use App\Models\OfferType;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -33,6 +34,7 @@ class HomeController extends Controller
             'banner' => Banner::where('status', 'active')->latest('id')->first(),
             'coupons' => Coupon::latest()->get(),
             'brands' => Brand::latest()->get(),
+            'offer_types' => OfferType::latest()->get(),
 
             'categorys' => Category::latest()->limit(6)->get(),
 

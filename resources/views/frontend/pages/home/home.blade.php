@@ -13,8 +13,7 @@
                                             <a href="{{ $slider->url }}">
                                                 <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                     src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}"
-                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"
-                                                    />
+                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                             </a>
                                         </div>
                                     @endforeach
@@ -28,7 +27,8 @@
                                     <a href="{{ $banner->image_one_url }}" target="_blank">
                                         <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                             src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
-                                            alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                            alt=""
+                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                     </a>
                                 </div>
                             </div>
@@ -38,7 +38,8 @@
                                         <a href="{{ $banner->image_two_url }}">
                                             <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                 src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
-                                                alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                                alt=""
+                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                         </a>
                                     </div>
                                 </div>
@@ -47,7 +48,8 @@
                                         <a href="{{ $banner->image_three_url }}">
                                             <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
                                                 src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
-                                                alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                                alt=""
+                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                         </a>
                                     </div>
                                 </div>
@@ -126,7 +128,8 @@
                                                 <div class="logo">
                                                     <div class="coupon-logo">
                                                         <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                            class="img-fluid" alt="" onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';"/>
+                                                            class="img-fluid" alt=""
+                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                     </div>
                                                 </div>
 
@@ -214,17 +217,10 @@
                                     <div class="d-flex justify-content-space-between align-items-center">
                                         <!-- Grab Tags -->
                                         <div class="">
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Hot Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Buy 2 Get 1</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Flat 20%
-                                                    Off</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Best offer</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Super Deal</span></a>
-                                            <a href=""><span class="badge mt-2 ct-badge">Buy 1 Get 1</span></a>
+                                            @foreach ($offer_types as $offer_type)
+                                                <a href="javascript:void(0)"><span
+                                                        class="badge mt-2 ct-badge">{{ $offer_type->name }}</span></a>
+                                            @endforeach
                                         </div>
                                         <!-- Grab End -->
                                         {{-- <div class="d-flex justify-content-end align-items-center w-25">
@@ -284,42 +280,44 @@
                                                 @foreach ($alloffers as $alloffer)
                                                     <!-- Removed the limit -->
                                                     <div class="col-lg-4 mb-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <img class="img-fluid"
-                                                                            src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                            alt="Logo"
-                                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                                    </div>
-                                                                    <div class="col-8 text-center">
-                                                                        <div
-                                                                            class="d-flex justify-content-center align-items-center pb-2">
-                                                                            {{-- <p class="pe-2">
-                                                                                <span class="para-font">Get</span><br>
-                                                                                <span
-                                                                                    class="ps-2  para-font">Upto</span>
-                                                                            </p> --}}
-                                                                            @if (!empty($alloffer->badge))
-                                                                                <h1>{{ substr($alloffer->badge, 0, -4) }}
-                                                                                </h1>
-                                                                            @endif
-                                                                            {{-- <p class="coupon-off">OFF</p> --}}
+                                                        <a href="{{ route('offer.details',$alloffer->slug) }}">
+                                                            <div class="coupon-box">
+                                                                <div class="coupon-box-content">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-4">
+                                                                            <img class="img-fluid"
+                                                                                src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                                alt="Logo"
+                                                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                         </div>
+                                                                        <div class="col-8 text-center">
+                                                                            <div
+                                                                                class="d-flex justify-content-center align-items-center pb-2">
+                                                                                {{-- <p class="pe-2">
+                                                                                    <span class="para-font">Get</span><br>
+                                                                                    <span
+                                                                                        class="ps-2  para-font">Upto</span>
+                                                                                </p> --}}
+                                                                                @if (!empty($alloffer->badge))
+                                                                                    <h1>{{ substr($alloffer->badge, 0, -4) }}
+                                                                                    </h1>
+                                                                                @endif
+                                                                                {{-- <p class="coupon-off">OFF</p> --}}
+                                                                            </div>
 
-                                                                        @if (!empty($alloffer->coupon_code))
-                                                                            <p class="para-font coupon-extra">
-                                                                                Code: {{ $alloffer->coupon_code }}
-                                                                                <a href="javascript:void(0);"
-                                                                                    class="copy-btn"><i
-                                                                                        class="fa-regular fa-copy"></i></a>
-                                                                            </p>
-                                                                        @endif
+                                                                            @if (!empty($alloffer->coupon_code))
+                                                                                <p class="para-font coupon-extra">
+                                                                                    Code: {{ $alloffer->coupon_code }}
+                                                                                    <a href="javascript:void(0);"
+                                                                                        class="copy-btn"><i
+                                                                                            class="fa-regular fa-copy"></i></a>
+                                                                                </p>
+                                                                            @endif
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -551,12 +549,12 @@
                                     <div class="col-lg-7 col-sm-12">
                                         <div class="product_discount_box">
                                             <h4>{{ $offerLatest->name }}</h4>
-                                        <p class="py-3">
-                                            {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
-                                        </p>
-                                        <a class="btn btn-dark rounded-pill px-5"
-                                            href="{{ route('offer.details', $offerLatest->slug) }}">See
-                                            Details</a>
+                                            <p class="py-3">
+                                                {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
+                                            </p>
+                                            <a class="btn btn-dark rounded-pill px-5"
+                                                href="{{ route('offer.details', $offerLatest->slug) }}">See
+                                                Details</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
