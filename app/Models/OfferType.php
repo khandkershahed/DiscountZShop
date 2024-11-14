@@ -18,4 +18,9 @@ class OfferType extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class); // Assuming an Offer belongs to an OfferType
+    }
 }
