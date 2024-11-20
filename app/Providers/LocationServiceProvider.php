@@ -22,7 +22,7 @@ class LocationServiceProvider extends ServiceProvider
      * Bootstrap services.
      */
     public function boot()
-    {
+    { 
         $this->app->singleton('location', function ($app) {
             $ip = Request::ip(); // Get user's IP address
 
@@ -47,6 +47,6 @@ class LocationServiceProvider extends ServiceProvider
             $view->with('country', $location['country'] ?? 'Unknown');
         });
 
-        
+
     }
 }
