@@ -24,7 +24,7 @@
         <div class="card-body pt-0">
 
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
-                
+
                 <thead class="bg-dark text-light">
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
@@ -41,7 +41,7 @@
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $store->name }}</td>
-                            <td>{{ $store->categoryName->name }}</td>
+                            <td>{{ optional($store->categoryName)->name }}</td>
 
                             <td>{{ optional($store->added)->name }}</td>
 
