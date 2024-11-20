@@ -65,7 +65,7 @@
         <div class="col-lg-3 mb-7">
             <x-metronic.label for="country_id"
                 class="col-form-label fw-bold fs-6">{{ __('Select Country') }}</x-metronic.label>
-            <x-metronic.select-option id="country_id" name="country_id[]" data-hide-search="false" multiple
+            <x-metronic.select-option id="brand_country_id" name="country_id[]" data-hide-search="false" multiple
                 data-placeholder="Select an option">
                 <option></option>
                 @foreach ($countries as $country)
@@ -79,7 +79,7 @@
         <div class="col-lg-3 mb-7">
             <x-metronic.label for="division_id"
                 class="col-form-label fw-bold fs-6">{{ __('Select Division') }}</x-metronic.label>
-            <x-metronic.select-option id="division_id" name="division_id[]" data-hide-search="false" multiple
+            <x-metronic.select-option id="brand_division_id" name="division_id[]" data-hide-search="false" multiple
                 data-placeholder="Select an option">
                 <option></option>
                 @foreach ($divisions as $division)
@@ -93,7 +93,7 @@
         <div class="col-lg-3 mb-7">
             <x-metronic.label for="city_id"
                 class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
-            <x-metronic.select-option id="city_id" name="city_id[]" data-hide-search="false" multiple
+            <x-metronic.select-option id="brand_city_id" name="city_id[]" data-hide-search="false" multiple
                 data-placeholder="Select an option">
                 <option></option>
                 @foreach ($cities as $city)
@@ -107,7 +107,7 @@
         <div class="col-lg-3 mb-7">
             <x-metronic.label for="area_id"
                 class="col-form-label fw-bold fs-6">{{ __('Select Area') }}</x-metronic.label>
-            <x-metronic.select-option id="area_id" name="area_id[]" data-hide-search="false" multiple
+            <x-metronic.select-option id="brand_area_id" name="area_id[]" data-hide-search="false" multiple
                 data-placeholder="Select an option">
                 <option></option>
                 @foreach ($areas as $area)
@@ -261,3 +261,45 @@
         </div>
     </div>
 </form>
+
+@push('scripts')
+    <script>
+        // Initialize Select2 (or any other select plugin you're using)
+        $(document).ready(function() {
+            $('#category_id').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+
+            $('#category_type').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+
+            $('#brand_country_id').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+
+            $('#brand_division_id').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+
+            $('#brand_city_id').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+
+            $('#brand_area_id').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+
+            $('#status').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+        });
+    </script>
+@endpush
