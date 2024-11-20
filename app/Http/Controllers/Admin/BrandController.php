@@ -504,7 +504,7 @@ class BrandController extends Controller
     public function update(Request $request, string $id)
     {
         $brand = Brand::where('id',$id)->first();
-        dd($request->all());
+        // dd($request->all());
         DB::beginTransaction();
 
         try {
