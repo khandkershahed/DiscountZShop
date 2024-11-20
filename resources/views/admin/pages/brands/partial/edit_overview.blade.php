@@ -1,4 +1,4 @@
-<form class="form" id="brandForm" action="{{ route('admin.brands.update', $brand->id) }}" method="POST"
+<form class="form" id="brandeditForm" action="{{ route('admin.brands.update', $brand->id) }}" method="POST"
     enctype="multipart/form-data">
     @csrf
     @method('PUT')

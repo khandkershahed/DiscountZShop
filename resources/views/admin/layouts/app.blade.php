@@ -121,12 +121,27 @@
                     .create(element)
                     .then(editor => {
                         console.log('CKEditor initialized:', editor);
+                        element.editorInstance = editor;
                     })
                     .catch(error => {
                         console.error('CKEditor initialization error:', error);
                     });
             }
         });
+        // document.querySelectorAll('.ckeditor').forEach(element => {
+        //     if (!element.classList.contains('ck-editor__editable_inline')) {
+        //         ClassicEditor
+        //             .create(element)
+        //             .then(editor => {
+        //                 console.log('CKEditor initialized:', editor);
+        //                 // Store the editor instance on the element for later use
+        //                 element.editorInstance = editor;
+        //             })
+        //             .catch(error => {
+        //                 console.error('CKEditor initialization error:', error);
+        //             });
+        //     }
+        // });
     </script>
     <script>
         $(document).ready(function() {

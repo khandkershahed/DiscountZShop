@@ -137,21 +137,36 @@
                     }
                 });
 
-                // On click of 'Next' tab
+
+
                 // $('.tab-trigger-brand-next').on('click', function(event) {
                 //     const targetTabId = $(this).data('bs-target');
-                //     event.preventDefault(); // Prevent default action (tab switch)
+                //     event.preventDefault();
 
-                //     // Serialize form data
-                //     var formData = new FormData($('#brandForm')[0]);
-                //     // Validate the current tab first
+                //     var formData = new FormData($('#brandeditForm')[0]);
+
+
+                //     document.querySelectorAll('.ckeditor').forEach(element => {
+                //         if (element.editorInstance) {
+                //             formData.append(element.name, element.editorInstance.getData());
+                //         }
+                //     });
+
+
+                //     // if ($('#brand-name').val().trim() === "") {
+                //     //     alert("Name is required");
+                //     //     return;
+                //     // }
+
+                //     // console.log(formData);
+
                 //     if (validateAndSwitchTab(targetTabId)) {
                 //         $.ajax({
-                //             url: $('#brandForm').attr('action'), // The route to update the brand
+                //             url: $('#brandeditForm').attr('action'),
                 //             method: 'POST',
                 //             data: formData,
-                //             processData: false, // Don't process the data
-                //             contentType: false, // Don't set content-type header
+                //             processData: false,
+                //             contentType: false,
                 //             success: function(response) {
                 //                 if (response.success) {
                 //                     Swal.fire({
@@ -170,7 +185,6 @@
                 //                 }
                 //             },
                 //             error: function(xhr, status, error) {
-                //                 // If AJAX fails (e.g., server error)
                 //                 Swal.fire({
                 //                     icon: 'error',
                 //                     title: 'Error',
@@ -183,33 +197,28 @@
 
                 $('.tab-trigger-brand-next').on('click', function(event) {
                     const targetTabId = $(this).data('bs-target');
-                    event.preventDefault(); // Prevent default action (tab switch)
+                    event.preventDefault();
 
-                    // Serialize form data
-                    var formData = new FormData($('#brandForm')[0]);
+                    var formData = new FormData($('#brandeditForm')[0]);
 
-                    // Add CKEditor data to FormData only if the editor is initialized
+                    // Ensure CKEditor instances are initialized and get the data
                     document.querySelectorAll('.ckeditor').forEach(element => {
-                        // Ensure the editor instance is available
-                        if (element.editorInstance) {
-                            // Append the editor content to the FormData
-                            formData.append(element.name, element.editorInstance.getData());
+                        // Get the editor instance attached to the element
+                        const editorInstance = element.editorInstance;
+                        if (editorInstance) {
+                            // Append CKEditor data to FormData
+                            formData.append(element.name, editorInstance.getData());
                         }
                     });
 
-                    // Validate the current tab first
+                    // Proceed with form submission if validation passes
                     if (validateAndSwitchTab(targetTabId)) {
-                        // Proceed with AJAX form submission
                         $.ajax({
-                            url: $('#brandForm').attr('action'), // The route to update the brand
+                            url: $('#brandeditForm').attr('action'),
                             method: 'POST',
                             data: formData,
-                            processData: false, // Don't process the data
-                            contentType: false, // Don't set content-type header
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                    'content') // Add CSRF token
-                            },
+                            processData: false,
+                            contentType: false,
                             success: function(response) {
                                 if (response.success) {
                                     Swal.fire({
@@ -228,7 +237,6 @@
                                 }
                             },
                             error: function(xhr, status, error) {
-                                // If AJAX fails (e.g., server error)
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Error',
@@ -238,6 +246,9 @@
                         });
                     }
                 });
+
+
+
                 $('.tab-trigger-offer-next').on('click', function(event) {
                     const targetTabId = $(this).data('bs-target');
                     event.preventDefault();
