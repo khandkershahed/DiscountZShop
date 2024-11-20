@@ -303,7 +303,7 @@
         </script>
 
 
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('.stores').repeater({
                     initEmpty: false,
@@ -328,7 +328,7 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
     @endpush
 
 
