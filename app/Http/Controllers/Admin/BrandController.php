@@ -361,9 +361,9 @@ class BrandController extends Controller
 
             $admins = Admin::where('mail_status', 'mail')->get();
 
-            // foreach ($admins as $admin) {
-            //     Mail::to($admin->email)->send(new BrandCreated($brand));
-            // }
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new BrandCreated($brand));
+            }
 
             // return response()->json(['success' => true, 'redirect_url' => route('admin.brands.edit', $brand->id)]);
             return redirect()->route('admin.brands.edit', $brand->id);
@@ -411,9 +411,9 @@ class BrandController extends Controller
             // Mail Send
             $admins = Admin::where('mail_status', 'mail')->get();
 
-            // foreach ($admins as $admin) {
-            //     Mail::to($admin->email)->send(new BrandCreated($brand));
-            // }
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new BrandCreated($brand));
+            }
             // Mail Send
             $responseHtml = view('admin.pages.brands.partial.store', compact('brand'))->render();
 
