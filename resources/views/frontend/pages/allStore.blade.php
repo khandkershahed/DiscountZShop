@@ -109,8 +109,8 @@
                                     <div class="pt-4 d-flex justify-content-between store_title">
                                         <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
-                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->title }}</h5>
-                                                <p>{{ $latest_store->headquarter }}</p>
+                                                {{-- <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->title }}</h5> --}}
+                                                <h6>{{ $latest_store->title }}</h6>
                                             </div>
                                         </a>
                                         <div>
