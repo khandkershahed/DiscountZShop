@@ -79,7 +79,7 @@
         <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        
+
         <script>
             class Countdown {
                 constructor(element, expireDate) {
@@ -109,7 +109,7 @@
                     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                    this.timerElement.innerHTML = `${days}D-${hours}H-${minutes}M-${seconds}S`;
+                    this.timerElement.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
                 }
             }
 
