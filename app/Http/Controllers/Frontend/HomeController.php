@@ -29,24 +29,31 @@ class HomeController extends Controller
         // Retrieve offers and apply limits directly on queries
         $offers = Offer::where('status', 'active')->inRandomOrder()->get();
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
+        $homepage = HomePage::with('brand')->latest('id')->first();
+        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get(['image','slug']);
 
+        // Split them into two collections: one for the left and one for the right
+        $brand_offers_left = $all_brand_offers->take(2); // Take first 2 offers for left side
+        $brand_offers_right = $all_brand_offers->skip(2);
         $data = [
-            'sliders'        => Slider::where('status', 'active')->latest('id')->get(),
-            'banner'         => Banner::where('status', 'active')->latest('id')->first(),
-            'coupons'        => Coupon::latest()->get(),
-            'brands'         => Brand::latest()->get(),
-            'offer_types'    => OfferType::latest()->get(),
+            'sliders'            => Slider::where('status', 'active')->latest('id')->get(),
+            'banner'             => Banner::where('status', 'active')->latest('id')->first(),
+            'coupons'            => Coupon::latest()->get(),
+            'brands'             => Brand::latest()->get(),
+            'offer_types'        => OfferType::latest()->get(),
 
-            'categorys'      => Category::latest()->limit(6)->get(),
+            'categorys'          => Category::latest()->limit(6)->get(),
 
-            'alloffers'      => $offers,
-            'offers'         => $offers->take(5), // Use `take` instead of `limit` for collections
+            'alloffers'          => $offers,
+            'offers'             => $offers->take(5), // Use `take` instead of `limit` for collections
 
-            'offerLatests'   => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
-            'offerDealLefts' => $offers->take(5),
-            'offerDeals'     => $latestOffers->take(6),
+            'offerLatests'       => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
+            'offerDealLefts'     => $offers->take(5),
+            'offerDeals'         => $latestOffers->take(6),
 
-            'homepage'       => HomePage::with('brand')->latest('id')->first(),
+            'homepage'           => $homepage,
+            'brand_offers_left'  => $brand_offers_left,
+            'brand_offers_right' => $brand_offers_right,
         ];
 
 
@@ -377,7 +384,7 @@ class HomeController extends Controller
         $division = $request->input('division');
 
         if ($division) {
-            $division = Division::with('cities','areas')->where('name', 'like', "%{$division}%")->first();
+            $division = Division::with('cities', 'areas')->where('name', 'like', "%{$division}%")->first();
         } else {
             $division = '';
         }
