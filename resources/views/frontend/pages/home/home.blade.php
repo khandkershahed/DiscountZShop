@@ -421,7 +421,7 @@
     </section>
     <!-- Grab Your Offer End -->
     <!-- Promotion Product -->
-    @if (optional($homepage)->brand)
+    {{-- @if (optional($homepage)->brand)
         <section>
             <div class="container px-0 pb-70 biggest-deals">
                 <div class="row gx-4 promotion-container align-items-center">
@@ -441,8 +441,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="pe-2">
-                                        <h5>{{ $brand_offer_left->name }}</h5>
-                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">Headphone</p>
+                                        <h5>{{ $brand_offer_left->badge }}</h5>
+                                        <h6>{{ $brand_offer_left->name }}</h6>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offer_left->short_description !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
                                                 @if (!empty($brand_offer_left->price))
@@ -453,7 +454,7 @@
                                                 @endif
                                             </div>
                                             <div class="pe-4">
-                                                <a href="" class="btn-3">
+                                                <a href="{{ route('offer.details', $brand_offer_left->slug) }}" class="btn-3">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                         height="30" viewBox="0 0 30 30" fill="none">
                                                         <circle cx="15" cy="15" r="15" fill="#F15A2D">
@@ -489,6 +490,36 @@
                                         </a>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="pe-2">
+                                        <h5>{{ $brand_offers_right->badge }}</h5>
+                                        <h6>{{ $brand_offers_right->name }}</h6>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offers_right->short_description !!}</p>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                @if (!empty($brand_offers_right->price))
+                                                    <del class="pt-2">BDT {{ $brand_offers_right->price }}</del>
+                                                @endif
+                                                @if (!empty($brand_offers_right->offer_price))
+                                                    <h6 class="main-color">BDT {{ $brand_offers_right->offer_price }}</h6>
+                                                @endif
+                                            </div>
+                                            <div class="pe-4">
+                                                <a href="{{ route('offer.details', $brand_offer_right->slug) }}" class="btn-3">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                        height="30" viewBox="0 0 30 30" fill="none">
+                                                        <circle cx="15" cy="15" r="15" fill="#F15A2D">
+                                                        </circle>
+                                                        <path
+                                                            d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                            fill="white">
+                                                        </path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                         <!-- Repeat the product showcase for other products -->
@@ -500,11 +531,10 @@
         <!-- Fallback section for no data -->
         <section>
             <div class="container text-center py-5 deal-hbox">
-                {{-- <h2 class="my-4">No Deals Available</h2> --}}
                 <img src="{{ asset('images/NoOffers.png') }}" alt="No Data Available" class="img-fluid w-100">
             </div>
         </section>
-    @endif
+    @endif --}}
     <!-- Promotion Product End -->
     <!-- Grab By Location -->
     <section style="background-color: #f5f6f8">
