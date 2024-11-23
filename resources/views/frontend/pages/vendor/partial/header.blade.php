@@ -1,7 +1,7 @@
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" style="height: 400px; max-height: 100%;" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
+            <img class="img-fluid w-100" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
                 src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
                 alt="Khash Foods Vendor" />
         </div>

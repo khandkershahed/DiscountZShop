@@ -876,7 +876,7 @@ p {
     line-height: normal;
 }
 .partners {
-    height: 131px;
+    height:150px;
     display: flex;
     align-items: center;
     border: 1px solid #ebebeb;
@@ -1307,7 +1307,7 @@ button:hover {
 }
 /* Term & Policy Style */
 .regular-banner img {
-    height: 330px;
+    height: 100%;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1653,7 +1653,7 @@ html {
 }
 .partners-logos {
     width: 100%;
-    height: 70px;
+    height: 115px;
     object-fit: contain;
     max-height: 100%;
     padding: 10px;
