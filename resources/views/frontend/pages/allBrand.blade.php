@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row py-5 pb-0">
+            <div class="row">
                 <div class="col-lg-12 pe-0 pb-2">
                     <div class="d-flex justify-content-between">
                         {{-- <div class="d-flex align-items-center">
@@ -108,8 +108,8 @@
             <div class="row gx-5" id="servicesContainer">
                 @foreach ($categories as $category)
                     @if ($category->brands->count() > 0)
-                        <div class="col-lg-6">
-                            <div class="row bg-light mb-4">
+                        <div class="col-lg-12">
+                            <div class="row bg-light">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
@@ -124,7 +124,7 @@
                                     </div> --}}
                                 </div>
                                 @foreach ($category->brands as $brand)
-                                    <div class="col-lg-4 mb-3 mt-2">
+                                    <div class="col-lg-2 mb-3 mt-2">
                                         <a href="{{ route('brand.details', $brand->slug) }}">
                                             <div class="card shadow-sm brands-card">
                                                 <div class="card-body p-0">
@@ -149,7 +149,7 @@
     </section>
     <!-- Brands All End -->
     <section>
-        <div class="container py-5 px-0">
+        <div class="container py-5 pt-0">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
@@ -181,7 +181,7 @@
     </section>
 
     @push('scripts')
-        
+
 
         <script>
             $(document).ready(function() {
