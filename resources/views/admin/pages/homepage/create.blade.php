@@ -29,7 +29,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="top_banner" class="col-form-label fw-bold fs-6 ">{{ __('Top Banner') }}
                         </x-metronic.label>
 
@@ -37,7 +37,7 @@
                             :value="old('logo')"></x-metronic.file-input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-8 mb-7">
                         <x-metronic.label for="top_banner_link"
                             class="col-form-label fw-bold fs-6 required">{{ __('Top Banner Link') }}
                         </x-metronic.label>
@@ -237,7 +237,7 @@
 
 
                 </div>
-                
+
                 <div class="text-center pt-15">
                     <x-metronic.button type="submit" class="primary">
                         {{ __('Submit') }}

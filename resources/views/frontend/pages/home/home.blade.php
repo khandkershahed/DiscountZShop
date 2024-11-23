@@ -466,7 +466,7 @@
                         <div class="d-flex justify-content-center">
                             <img class="img-fluid w-100 middle-banner"
                                 src="{{ asset('storage/' . optional($homepage)->deal_brand_image) }}" alt=""
-                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                onerror="this.onerror=null;this.src='{{ asset('images/no-image(random).png') }}';" />
                         </div>
                     </div>
                 </div>
@@ -476,7 +476,7 @@
         <!-- Fallback section for no data -->
         <section>
             <div class="container text-center py-5 deal-hbox">
-                <h2 class="my-4">No Deals Available</h2>
+                {{-- <h2 class="my-4">No Deals Available</h2> --}}
                 <img src="{{ asset('images/NoOffers.png') }}" alt="No Data Available" class="img-fluid w-100">
             </div>
         </section>
@@ -1142,7 +1142,7 @@
                 }
             }
             function cityAreas(pointName) {
-                
+
                 if (pointName) {
                     $.ajax({
                         url: "{{ route('map.city') }}",
