@@ -986,6 +986,9 @@ del {
     .responsive-img {
         max-height: 500px !important; /* Adjust the height for smaller screens */
     }
+    .regular-banner img{
+        height: 215px !important;
+    }
 }
 @media screen and (max-width: 576px) {
     .responsive-img {
