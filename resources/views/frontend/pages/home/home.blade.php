@@ -780,10 +780,12 @@
                                             </div>
                                             <!-- Wishlist -->
                                             <div>
-                                                <a href="{{ route('offer.details', $offerDeal->slug) }}">
+                                                <a type="submit" class="add_to_wishlist" style="cursor: pointer;"
+                                                    data-product_id="{{ $offerDeal->id }}" data-tip="Wishlist">
                                                     <i class="fa-regular fa-heart fs-5"></i>
                                                 </a>
                                             </div>
+                                            
                                         </div>
                                         <!-- Product Image -->
                                         <div class="d-flex justify-content-center align-items-center py-3">

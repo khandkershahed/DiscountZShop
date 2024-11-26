@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta property="og:title" content="{{ !empty($setting->site_motto) ? $setting->site_motto : config('app.name') }}" />
     <meta property="og:url" content="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
     <meta property="og:site_name"
@@ -80,6 +82,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+        </script>
+
         <script>
             class Countdown {
                 constructor(element, expireDate) {
@@ -151,6 +161,59 @@
                 // Show the content
                 document.getElementById("content").style.display = "block";
             });
+        </script>
+
+        <script>
+            $('.add_to_wishlist').click(function() {
+
+                var product_id = $(this).data('product_id');
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+
+                    data: {
+                        product_id: product_id,
+                    },
+
+                    url: '/add-to-wishlist',
+
+                    success: function(data) {
+                        //wishlist();
+
+                        // Start Message
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+
+                            Toast.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: data.success,
+                            })
+
+                            // window.location.href = '/compare-product';
+
+                        } else {
+
+                            Toast.fire({
+                                type: 'error',
+                                icon: 'error',
+                                title: data.error,
+                            })
+                        }
+
+                        // End Message
+                    }
+                })
+
+            })
         </script>
 </body>
 

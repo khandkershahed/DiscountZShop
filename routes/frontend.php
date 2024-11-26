@@ -31,8 +31,9 @@ Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName']
 //Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
 
-
-
+//WishList
+Route::post('/add-to-wishlist', [HomeController::class, 'AddToWishlist']);
+Route::get('/get-wishlist', [HomeController::class, 'GetWishlist']);
 
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');

@@ -207,8 +207,8 @@
 
                     <div class="d-flex hdr-search align-items-center">
 
-                        <input class="form-control hdr-search-box" autocomplete="on" required name="search"  type="text" placeholder="Search"
-                            aria-label="Search" />
+                        <input class="form-control hdr-search-box" autocomplete="on" required name="search"
+                            type="text" placeholder="Search" aria-label="Search" />
                     </div>
 
                     <button class="btn position-relative border-0 bg-transparent search-action" type="submit">
@@ -217,11 +217,8 @@
 
                 </form>
 
-
-
-
                 <button class="border-0 bg-transparent bt-common bt-common-heart">
-                    <i class="fa-regular fa-heart fs-2 fw-normal">
+                    <i id="cartWishlistQty" class="fa-regular fa-heart fs-2 fw-normal">
                         <span class="cart-count">0</span>
                     </i>
                 </button>

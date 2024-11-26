@@ -20,6 +20,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\OfferType;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,7 @@ class HomeController extends Controller
         $offers = Offer::where('status', 'active')->inRandomOrder()->get();
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
         $homepage = HomePage::with('brand')->latest('id')->first();
-        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get(['image','slug']);
+        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get(['image', 'slug']);
 
         // Split them into two collections: one for the left and one for the right
         $brand_offers_left = $all_brand_offers->take(2); // Take first 2 offers for left side
@@ -490,5 +491,72 @@ class HomeController extends Controller
             ->get();
 
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+    }
+
+    public function AddToWishlist(Request $request)
+    {
+        $id = $request->product_id;
+
+        $product = Offer::findOrFail($id);
+
+        // $cartItem = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($id) {
+        //     return $cartItem->id === $id;
+        // });
+
+        // if ($cartItem->isNotEmpty()) {
+
+        //     return response()->json(['error' => 'This Product Has Already Added On Wishlist']);
+        // }
+
+        if ($product->offer_price == Null) {
+
+            Cart::instance('wishlist')->add([
+
+                'id' => $id,
+
+                'name' => $product->name,
+                'qty' => 1,
+                'price' => $product->price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $product->image,
+
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Wishlist']);
+        }
+
+        Cart::instance('wishlist')->add([
+
+            'id' => $id,
+
+            'name' => $product->name,
+            'qty' => 1,
+            'price' => $product->offer_price,
+            'weight' => 1,
+
+            'options' => [
+                'image' => $product->image,
+            ],
+
+        ]);
+
+        return response()->json(['success' => 'Successfully Added on Your Wishlist']);
+    }
+
+    public function GetWishlist()
+    {
+        $cartWishlist = Cart::instance('wishlist')->content(); // Limiting to 3 products
+        $cartWishlistQty = Cart::instance('wishlist')->count();
+        $cartTotal = Cart::instance('wishlist')->total();
+
+        return response()->json(array(
+            'cartWishlist' => $cartWishlist,
+            'cartWishlistQty' => $cartWishlistQty,
+            'cartTotal' => $cartTotal,
+        ));
     }
 }
