@@ -217,11 +217,11 @@
 
                 </form>
 
-                <button class="border-0 bg-transparent bt-common bt-common-heart">
+                <a href="{{ route('wishlist') }}" class="border-0 bg-transparent bt-common bt-common-heart">
                     <i id="cartWishlistQty" class="fa-regular fa-heart fs-2 fw-normal">
                         <span class="cart-count">0</span>
                     </i>
-                </button>
+                </a>
 
             </div>
         </div>

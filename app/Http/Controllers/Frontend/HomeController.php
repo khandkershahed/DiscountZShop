@@ -96,6 +96,7 @@ class HomeController extends Controller
         return view('frontend.pages.contact', $data);
     }
 
+
     //allBrand
     public function allBrand()
     {
@@ -491,6 +492,11 @@ class HomeController extends Controller
             ->get();
 
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+    }
+
+    public function wishlist()
+    {
+        return view('frontend.pages.wishlist');
     }
 
     public function AddToWishlist(Request $request)

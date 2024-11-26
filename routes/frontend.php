@@ -12,6 +12,7 @@ Route::get('/about', [HomeController::class, 'aboutUs'])->name('aboutUs');
 
 //Contact
 Route::get('/contact', [HomeController::class, 'contactUs'])->name('contactUs');
+Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('wishlist');
 Route::post('contact/store', [ContactController::class, 'store'])->name('contact.add');
 
 //Email
