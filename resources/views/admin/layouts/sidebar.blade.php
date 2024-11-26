@@ -60,21 +60,32 @@
                             'title' => 'Offer Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
                             'routes' => [
+                                
                                 'admin.brands.index',
                                 'admin.brands.create',
                                 'admin.brands.edit',
+
                                 'admin.categories.index',
                                 'admin.categories.create',
                                 'admin.categories.edit',
+
                                 'admin.offer.index',
                                 'admin.offer.create',
                                 'admin.offer.edit',
+
+                                'admin.special-offer.index',
+                                'admin.special-offer.create',
+                                'admin.special-offer.edit',
+
+
                                 'admin.coupon.index',
                                 'admin.coupon.create',
                                 'admin.coupon.edit',
+
                                 'admin.store.index',
                                 'admin.store.create',
                                 'admin.store.edit',
+
                                 'admin.categories.index',
                                 'admin.categories.create',
                                 'admin.categories.edit',
@@ -118,6 +129,11 @@
                                     'title' => 'Offer List',
                                     'routes' => ['admin.offer.index', 'admin.offer.create', 'admin.offer.edit'],
                                     'route' => 'admin.offer.index',
+                                ],
+                                [
+                                    'title' => 'Special Offer',
+                                    'routes' => ['admin.special-offer.index', 'admin.special-offer.create', 'admin.special-offer.edit'],
+                                    'route' => 'admin.special-offer.index',
                                 ],
                                 [
                                     'title' => 'Coupon List',
