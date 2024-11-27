@@ -136,6 +136,7 @@
                 });
             });
         </script>
+
         <script>
             $(document).ready(function() {
                 $('#custom_select1').select2({
@@ -152,8 +153,10 @@
                 });
             });
         </script>
+
         @include('toastr')
         @stack('scripts')
+
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 // Hide the loader
@@ -179,7 +182,7 @@
                     url: '/add-to-wishlist',
 
                     success: function(data) {
-                        //wishlist();
+                        wishlist();
 
                         // Start Message
 
@@ -214,6 +217,117 @@
                 })
 
             })
+        </script>
+
+        {{-- Load Wishlist --}}
+        <script>
+            function wishlist() {
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '/get-wishlist',
+
+                    success: function(response) {
+
+                        $('#cartWishlistQty').text(response.cartWishlistQty);
+
+                        var tableHtml = "";
+
+                        if (response.cartWishlist.length === 0) {
+
+                            tableHtml = `
+
+                        <h3 class="">Wishlist List is Empty</h3>
+                    `;
+
+                            $('#wishlistLink').hide();
+                        } else {
+                            $.each(response.cartWishlist, function(key, value) {
+                                tableHtml +=
+
+                                    `<tr class="">
+
+                                    <td valign="middle">01</td>
+                                    <td valign="middle">
+                                        <div>
+                                            <img class="img-fluid rounded-2" width="60px"
+                                                src="/${value.options.image}" alt="">
+                                        </div>
+                                    </td>
+                                    <td valign="middle">
+                                        <p>${value.name.length > 60 ? value.name.substring(0, 60) : value.name}</p>
+                                    </td>
+                                    <td valign="middle">
+                                        <p>$ ${value.price}</p>
+                                    </td>
+                                    <td valign="middle">
+                                        <div class="text-center">
+                                            <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                            {{-- <a href="">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </a> --}}
+                                        </div>
+                                    </td>
+
+                                </tr>`;
+
+                            });
+
+                            $('#wishlistLink').show(); // Show the comparison link when list has items
+                        }
+
+                        $('#wishlist').html(tableHtml);
+                    }
+                });
+            }
+
+            wishlist();
+        </script>
+
+        <script>
+            function wishlistRemove(rowId) {
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/wishlist/product/remove/' + rowId,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        wishlist();
+
+                        // Start Message
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+
+                            Toast.fire({
+                                type: 'success',
+                                title: data.success,
+                            })
+
+                        } else {
+
+                            Toast.fire({
+                                type: 'error',
+                                title: data.error,
+                            })
+                        }
+
+                        // End Message
+
+                    }
+
+
+                })
+            }
         </script>
 </body>
 

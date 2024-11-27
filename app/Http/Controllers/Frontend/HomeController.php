@@ -494,7 +494,8 @@ class HomeController extends Controller
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
     }
 
-    public function wishlist()
+
+    public function WishlistProduct()
     {
         return view('frontend.pages.wishlist');
     }
@@ -564,5 +565,11 @@ class HomeController extends Controller
             'cartWishlistQty' => $cartWishlistQty,
             'cartTotal' => $cartTotal,
         ));
+    }
+
+    public function RemoveWishlistTemplateOne($rowId)
+    {
+        Cart::instance('wishlist')->remove($rowId);
+        return response()->json(['success' => 'Successfully Remove From Wishlist']);
     }
 }

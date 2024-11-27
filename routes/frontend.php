@@ -35,6 +35,9 @@ Route::post('/search', [HomeController::class, 'productSearch'])->name('product.
 //WishList
 Route::post('/add-to-wishlist', [HomeController::class, 'AddToWishlist']);
 Route::get('/get-wishlist', [HomeController::class, 'GetWishlist']);
+Route::get('/wishlist-product', [HomeController::class, 'WishlistProduct'])->name('wishlist.product');
+Route::get('/wishlist/product/remove/{rowId}', [HomeController::class, 'RemoveWishlistTemplateOne']);
+
 
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');
