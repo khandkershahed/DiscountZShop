@@ -149,6 +149,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
+                                                    asd
                                                     @if (!empty($offer->badge))
                                                         {{-- <span>Upto</span> --}}
                                                         <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
@@ -298,7 +299,7 @@
             })
         </script>
 
-        
+
 
         {{-- Offer Search --}}
 
