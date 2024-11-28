@@ -2048,3 +2048,8 @@ html {
     border: 0px solid #eee;
     border-radius: 0;
 }
+.shop-heart{
+    position: relative;
+    left: 100px;
+    top: -15px;
+}

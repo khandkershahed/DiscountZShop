@@ -149,7 +149,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    asd
+                                                    <div class="shop-heart">
+                                                        <a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="44" data-tip="Wishlist">
+                                                            <i class="fa-regular fa-heart fs-5" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
                                                     @if (!empty($offer->badge))
                                                         {{-- <span>Upto</span> --}}
                                                         <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
