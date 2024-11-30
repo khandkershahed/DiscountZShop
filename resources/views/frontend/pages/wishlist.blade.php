@@ -15,7 +15,6 @@
                                     <th scope="col" style="background: #eee">Sl</th>
                                     <th scope="col" style="background: #eee">Image</th>
                                     <th scope="col" style="background: #eee">Product Name</th>
-                                    <th scope="col" style="background: #eee">Price</th>
                                     <th scope="col" class="text-center" style="background: #eee">Action</th>
                                 </tr>
                             </thead>

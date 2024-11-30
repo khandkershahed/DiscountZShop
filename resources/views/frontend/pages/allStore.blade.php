@@ -221,7 +221,6 @@
     </section>
 
     @push('scripts')
-
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
@@ -325,9 +324,6 @@
                     }
                 });
             });
-
-
-
         </script>
     @endpush
 

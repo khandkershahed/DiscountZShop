@@ -504,55 +504,25 @@ class HomeController extends Controller
     {
         $id = $request->product_id;
 
+        // Find the product by ID
         $product = Offer::findOrFail($id);
 
-        // $cartItem = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($id) {
-        //     return $cartItem->id === $id;
-        // });
-
-        // if ($cartItem->isNotEmpty()) {
-
-        //     return response()->json(['error' => 'This Product Has Already Added On Wishlist']);
-        // }
-
-        if ($product->offer_price == Null) {
-
-            Cart::instance('wishlist')->add([
-
-                'id' => $id,
-
-                'name' => $product->name,
-                'qty' => 1,
-                'price' => $product->price,
-                'weight' => 1,
-
-                'options' => [
-                    'image' => $product->image,
-
-                ],
-
-            ]);
-
-            return response()->json(['success' => 'Successfully Added on Your Wishlist']);
-        }
-
+        // Add the product to the wishlist
         Cart::instance('wishlist')->add([
-
             'id' => $id,
-
             'name' => $product->name,
             'qty' => 1,
-            'price' => $product->offer_price,
+            'price' => 0,
             'weight' => 1,
-
             'options' => [
                 'image' => $product->image,
+                // No price included
             ],
-
         ]);
 
-        return response()->json(['success' => 'Successfully Added on Your Wishlist']);
+        return response()->json(['success' => 'Successfully added to your wishlist']);
     }
+
 
     public function GetWishlist()
     {

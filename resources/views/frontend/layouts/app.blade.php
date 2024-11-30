@@ -232,22 +232,24 @@
                         $('#cartWishlistQty').text(response.cartWishlistQty);
 
                         var tableHtml = "";
+                        var serialNumber = 1;
 
                         if (response.cartWishlist.length === 0) {
 
                             tableHtml = `
-
-                        <h3 class="">Wishlist List is Empty</h3>
-                    `;
+                                <h3 class="">Wishlist List is Empty</h3>
+                            `;
 
                             $('#wishlistLink').hide();
+
                         } else {
                             $.each(response.cartWishlist, function(key, value) {
                                 tableHtml +=
 
                                     `<tr class="">
 
-                                    <td valign="middle">01</td>
+                                    <td valign="middle">${serialNumber++}.</td>
+
                                     <td valign="middle">
                                         <div>
                                             <img class="img-fluid rounded-2" width="60px"
@@ -257,9 +259,7 @@
                                     <td valign="middle">
                                         <p>${value.name.length > 60 ? value.name.substring(0, 60) : value.name}</p>
                                     </td>
-                                    <td valign="middle">
-                                        <p>$ ${value.price}</p>
-                                    </td>
+                                    
                                     <td valign="middle">
                                         <div class="text-center">
                                             <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)">

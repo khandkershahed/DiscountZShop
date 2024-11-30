@@ -150,13 +150,20 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="shop-heart">
-                                                        <a type="submit" class="add_to_wishlist" style="cursor: pointer;" data-product_id="44" data-tip="Wishlist">
-                                                            <i class="fa-regular fa-heart fs-5" aria-hidden="true"></i>
+
+                                                        {{-- wishlist  --}}
+                                                        <a type="submit" class="add_to_wishlist"
+                                                            style="cursor: pointer;"
+                                                            data-product_id="{{ $offer->id }}"
+                                                            data-tip="Wishlist">
+                                                            <i class="fa-regular fa-heart fs-5"></i>
                                                         </a>
+
                                                     </div>
                                                     @if (!empty($offer->badge))
                                                         {{-- <span>Upto</span> --}}
-                                                        <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
+                                                        <h3 class="main-color special-font-box text-end">
+                                                            {{ $offer->badge }}
                                                         </h3>
                                                     @endif
                                                 </div>
@@ -222,7 +229,8 @@
                                                         <div class="col-lg-6">
                                                             @if (!empty($offer->badge))
                                                                 {{-- <span>Upto</span> --}}
-                                                                <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
+                                                                <h3 class="main-color special-font-box text-end">
+                                                                    {{ $offer->badge }}
                                                                 </h3>
                                                             @endif
                                                         </div>
@@ -271,17 +279,19 @@
                     <div>
                         <nav>
                             <ul class="pagination justify-content-center my-5">
-                              <li class="page-item"><a class="page-link" href="#"><span>&laquo;</span> Previous</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">4</a></li>
-                              <li class="page-item"><a class="page-link" href="#">5</a></li>
-                              <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                              <li class="page-item"><a class="page-link" href="#">70</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Next <span>&raquo;</span></a></li>
+                                <li class="page-item"><a class="page-link" href="#"><span>&laquo;</span>
+                                        Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#">70</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next
+                                        <span>&raquo;</span></a></li>
                             </ul>
-                          </nav>
+                        </nav>
                     </div>
                 </div>
 
