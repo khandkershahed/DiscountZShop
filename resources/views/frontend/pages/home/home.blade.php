@@ -241,12 +241,12 @@
                                     <div class="d-flex justify-content-space-between align-items-center">
 
                                         <!-- Grab Tags -->
-                                        <div class="">
+                                        {{-- <div class="">
                                             @foreach ($offer_types as $offer_type)
                                                 <a href="javascript:void(0)"><span
                                                         class="badge mt-2 ct-badge">{{ $offer_type->name }}</span></a>
                                             @endforeach
-                                        </div>
+                                        </div> --}}
                                         <!-- Grab End -->
 
                                     </div>
@@ -318,11 +318,13 @@
                                                                         <a
                                                                             href="{{ route('offer.details', $alloffer->slug) }}">
                                                                             <div
-                                                                                class="d-flex justify-content-center align-items-center pb-2">
+                                                                                class="d-flex justify-content-center align-items-center">
 
                                                                                 @if (!empty($alloffer->badge))
-                                                                                    <h1>{{ substr($alloffer->badge, 0, -4) }}
-                                                                                    </h1>
+                                                                                    <h2>
+                                                                                        {{ $alloffer->badge }}
+                                                                                        {{-- {{ substr($alloffer->badge, 0, -4) }} --}}
+                                                                                    </h2>
                                                                                 @endif
 
                                                                             </div>
@@ -369,7 +371,7 @@
                                                                                 </div>
                                                                                 <div class="col-8 text-center">
                                                                                     <div
-                                                                                        class="d-flex justify-content-center align-items-center pb-2">
+                                                                                        class="d-flex justify-content-center align-items-center">
                                                                                         {{-- <p class="">
                                                                                             <span
                                                                                                 class="para-font">Get</span><br>
@@ -785,7 +787,7 @@
                                                     <i class="fa-regular fa-heart fs-5"></i>
                                                 </a>
                                             </div>
-                                            
+
                                         </div>
                                         <!-- Product Image -->
                                         <div class="d-flex justify-content-center align-items-center py-3">

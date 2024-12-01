@@ -17,39 +17,43 @@
 
                 @if (!empty(optional($about)->row_one_column_one_icon) || !empty(optional($about)->row_one_column_one_title))
                     <div class="col-lg-4">
-                        <div>
-                            <img style="width: 80px;height: 80px;"
-                                src="{{ !empty(optional($about)->row_one_column_one_icon) ? url('storage/' . optional($about)->row_one_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                alt="">
+                        <div class="about-box">
+                            <div>
+                                <img style="width: 80px;height: 80px;"
+                                    src="{{ !empty(optional($about)->row_one_column_one_icon) ? url('storage/' . optional($about)->row_one_column_one_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="">
+                            </div>
+                            <h4 class="pt-3">{{ optional($about)->row_one_column_one_title }}</h4>
+                            <p class="pt-3 pb-3">
+                                {{ Str::words(optional($about)->row_one_column_one_description, 20, '...') }}
+                            </p>
+                            <a href="{{ optional($about)->row_one_column_one_url }}" class="main-color">Learn More <i
+                                    class="fa-solid fa-arrow-right-long ps-2"></i></a>
                         </div>
-                        <h4 class="pt-3">{{ optional($about)->row_one_column_one_title }}</h4>
-                        <p class="pt-3 pb-3">
-                            {{ Str::words(optional($about)->row_one_column_one_description, 20, '...') }}
-                        </p>
-                        <a href="{{ optional($about)->row_one_column_one_url }}" class="main-color">Learn More <i
-                                class="fa-solid fa-arrow-right-long ps-2"></i></a>
                     </div>
                 @endif
 
                 @if (!empty(optional($about)->row_one_column_two_icon) || !empty(optional($about)->row_one_column_two_title))
                     <div class="col-lg-4">
-                        <div>
-                            <img style="width: 80px;height: 80px;"
-                                src="{{ !empty(optional($about)->row_one_column_two_icon) ? url('storage/' . optional($about)->row_one_column_two_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                alt="">
+                        <div class="about-box">
+                            <div>
+                                <img style="width: 80px;height: 80px;"
+                                    src="{{ !empty(optional($about)->row_one_column_two_icon) ? url('storage/' . optional($about)->row_one_column_two_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="">
+                            </div>
+                            <h4 class="pt-3">{{ optional($about)->row_one_column_two_title }}</h4>
+                            <p class="pt-3 pb-3">
+                                {{ Str::words(optional($about)->row_one_column_two_description, 20, '...') }}
+                            </p>
+                            <a href="{{ optional($about)->row_one_column_two_url }}" class="main-color">Learn More <i
+                                    class="fa-solid fa-arrow-right-long ps-2"></i></a>
                         </div>
-                        <h4 class="pt-3">{{ optional($about)->row_one_column_two_title }}</h4>
-                        <p class="pt-3 pb-3">
-                            {{ Str::words(optional($about)->row_one_column_two_description, 20, '...') }}
-                        </p>
-                        <a href="{{ optional($about)->row_one_column_two_url }}" class="main-color">Learn More <i
-                                class="fa-solid fa-arrow-right-long ps-2"></i></a>
                     </div>
                 @endif
 
                 @if (!empty(optional($about)->row_one_column_three_icon) || !empty(optional($about)->row_one_column_three_title))
                     <div class="col-lg-4">
-                        <div>
+                        <div class="about-box">
                             <img style="width: 80px;height: 80px;"
                                 src="{{ !empty(optional($about)->row_one_column_three_icon) ? url('storage/' . optional($about)->row_one_column_three_icon) : 'https://ui-avatars.com/api/?name=Default' }}"
                                 alt="">
@@ -81,7 +85,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <p class="main-color fw-bold pb-4">{{ optional($about)->row_two_badge }}</p>
+                        <div class="about-content">
+                            <p class="main-color fw-bold pb-4">{{ optional($about)->row_two_badge }}</p>
                         <h1 class="pb-4">{{ optional($about)->row_two_title }}</h1>
                         <p>
                             {!! optional($about)->row_two_description !!}
@@ -92,6 +97,7 @@
                                     class="btn-common-one">{{ optional($about)->row_two_button_name }}</a>
                             </div>
                         @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,5 +131,5 @@
     @endif
 
 
-    
+
 </x-frontend-app-layout>

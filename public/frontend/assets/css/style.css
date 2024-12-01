@@ -1982,6 +1982,15 @@ html {
     .vendor-logo{
         margin-left: 10px;
     }
+    .about-content{
+        text-align: center;
+    }
+    #counter{
+        flex-direction: column;
+    }
+    .fixed-background{
+        height: 100%;
+    }
 }
 
 .vendor-logo {
@@ -2119,4 +2128,7 @@ html {
     height: 300px;
     width: 100%;
     object-fit: contain;
+}
+.about-box{
+    text-align: center;
 }
