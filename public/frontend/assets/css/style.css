@@ -57,6 +57,17 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: var(--primary-color);
 }
+.brands-stores::-webkit-scrollbar {
+    width: 0.3em;
+}
+
+.brands-stores::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.brands-stores::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
 .category-menus::-webkit-scrollbar {
     width: 0.3em;
 }
@@ -98,7 +109,9 @@ body::-webkit-scrollbar-thumb {
 .product-scroll-show::-webkit-scrollbar-thumb {
     background-color: #969595;
 }
-
+.site-color{
+    color: var(--primary-color);
+}
 
 #mapsidebar::-webkit-scrollbar {
     width: 0.2em;
@@ -162,6 +175,10 @@ a:hover {
 }
 ul {
     list-style-type: circle;
+    color: #808080;
+}
+li{
+    color: #808080;
 }
 li::marker {
     color: var(--primary-color);
@@ -1924,6 +1941,47 @@ html {
     .footer-description {
         margin-bottom: 0; /* Prevent extra spacing */
     }
+    .vendor-menus {
+        background: transparent;
+        color: #252525;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        text-align: center;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        width: 100%;
+        background-color: #eee;
+    }
+    .vendor-menus.active {
+        background: #f15a2d;
+        color: #fff;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        text-align: center;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        width: 100%;
+    }
+    .vendor-menus:hover {
+        background: #e3e1e1;
+        color: #f15a2d;
+        height: 50px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        text-align: center;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        transition: 0.5s all;
+        width: 100%;
+    }
+    .vendor-logo{
+        margin-left: 10px;
+    }
 }
 
 .vendor-logo {
@@ -1937,8 +1995,10 @@ html {
     align-items: center;
     display: flex;
     text-align: center;
-    padding-left: 65px;
-    padding-right: 65px;
+    padding-left: 60px;
+    padding-right: 60px;
+    width: 100%;
+    background-color: #eee;
 }
 .vendor-menus.active {
     background: #f15a2d;
@@ -1948,8 +2008,9 @@ html {
     align-items: center;
     display: flex;
     text-align: center;
-    padding-left: 65px;
-    padding-right: 65px;
+    padding-left: 60px;
+    padding-right: 60px;
+    width: 100%;
 }
 .vendor-menus:hover {
     background: #e3e1e1;
@@ -1959,9 +2020,10 @@ html {
     align-items: center;
     display: flex;
     text-align: center;
-    padding-left: 65px;
-    padding-right: 65px;
+    padding-left: 60px;
+    padding-right: 60px;
     transition: 0.5s all;
+    width: 100%;
 }
 .vendor-banners img {
     /* height: 410px; */
@@ -2052,4 +2114,9 @@ html {
     position: relative;
     left: 100px;
     top: -15px;
+}
+.brand-imges{
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
 }

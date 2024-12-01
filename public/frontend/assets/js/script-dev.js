@@ -196,13 +196,13 @@ $(document).ready(function () {
             {
                 breakpoint: 768, // At screen widths of 768px and below
                 settings: {
-                    slidesToShow: 2, // Show 2 slides at a time
+                    slidesToShow: 3, // Show 2 slides at a time
                 },
             },
             {
                 breakpoint: 480, // At screen widths of 480px and below
                 settings: {
-                    slidesToShow: 1, // Show 1 slide at a time
+                    slidesToShow: 3, // Show 1 slide at a time
                 },
             },
         ],

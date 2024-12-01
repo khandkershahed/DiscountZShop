@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Offer Details || DiscountZShop'">
     @include('frontend.pages.vendor.partial.header')
     <section>
-        <div class="container py-5">
+        <div class="container pt-3 mb-5">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-4">
                     <div>
@@ -15,10 +15,10 @@
                         <h1 class="pb-3 main-color">{{ $offerDetails->badge }}</h1>
                         <h4>{{ $offerDetails->name }}</h4>
 
-                        @if (!empty($offerDetails->price) && $offerDetails->price !== '0')
+                        {{-- @if (!empty($offerDetails->price) && $offerDetails->price !== '0')
                             <p>Price:</p>
                             <h6 class="ps-2 main-color">BDT {{ $offerDetails->price }}</h6>
-                        @endif
+                        @endif --}}
 
 
                         <hr />
