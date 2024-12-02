@@ -46,8 +46,8 @@
                                 <div class="col-lg-6">
                                     @if (!empty($offer->badge))
                                         {{-- <span>Upto</span> --}}
-                                        <h3 class="main-color special-font-box text-end">{{ $offer->badge }}
-                                        </h3>
+                                        <h4 class="main-color special-font-box text-end">{{ $offer->badge }}
+                                        </h4>
                                     @endif
                                 </div>
                                 <div class="col-lg-12 pt-4 offer_title">
