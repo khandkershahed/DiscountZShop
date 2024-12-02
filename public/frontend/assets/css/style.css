@@ -109,7 +109,7 @@ body::-webkit-scrollbar-thumb {
 .product-scroll-show::-webkit-scrollbar-thumb {
     background-color: #969595;
 }
-.site-color{
+.site-color {
     color: var(--primary-color);
 }
 
@@ -177,7 +177,7 @@ ul {
     list-style-type: circle;
     color: #808080;
 }
-li{
+li {
     color: #808080;
 }
 li::marker {
@@ -619,7 +619,7 @@ p {
     height: 130px;
     object-fit: cover;
 }
-.servicesContainer{
+.servicesContainer {
     margin-top: 30px;
 }
 .deal-img {
@@ -918,7 +918,7 @@ p {
     line-height: normal;
 }
 .partners {
-    height:150px;
+    height: 150px;
     display: flex;
     align-items: center;
     border: 1px solid #ebebeb;
@@ -1819,6 +1819,7 @@ html {
 .deal-hbox {
     padding-bottom: 0;
 }
+
 @media (max-width: 768px) {
     .product_discount_box {
         text-align: center;
@@ -1979,16 +1980,16 @@ html {
         transition: 0.5s all;
         width: 100%;
     }
-    .vendor-logo{
+    .vendor-logo {
         margin-left: 10px;
     }
-    .about-content{
+    .about-content {
         text-align: center;
     }
-    #counter{
+    #counter {
         flex-direction: column;
     }
-    .fixed-background{
+    .fixed-background {
         height: 100%;
     }
 }
@@ -2119,16 +2120,30 @@ html {
     border: 0px solid #eee;
     border-radius: 0;
 }
-.shop-heart{
+.shop-heart {
     position: relative;
     left: 100px;
     top: -15px;
 }
-.brand-imges{
+.brand-imges {
     height: 300px;
     width: 100%;
     object-fit: contain;
 }
-.about-box{
+.about-box {
     text-align: center;
+}
+
+@media (max-width: 1260px) {
+    .h4, h4 {
+        font-size: 1.3rem;
+    }
+    .offer_title p {
+        min-height: 90px;
+    }
+    .shop-heart {
+        position: relative;
+        left: 78px ;
+        top: -15px;
+    }
 }
