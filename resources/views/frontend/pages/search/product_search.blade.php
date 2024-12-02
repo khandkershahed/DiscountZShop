@@ -60,9 +60,9 @@
                                 <div class="col-lg-6">
                                     @if (!empty($offer->badge))
                                         {{-- <span>Upto</span> --}}
-                                        <h3 class="main-color special-font-box text-end">
+                                        <h4 class="main-color special-font-box text-end">
                                             {{ $offer->badge }}
-                                        </h3>
+                                        </h4>
                                     @endif
                                 </div>
                                 <div class="col-lg-12 pt-4 offer_title">
@@ -137,7 +137,8 @@
                                     <div class="pt-4 d-flex justify-content-between store_title">
                                         <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
-                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->title }}</h5>
+                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">
+                                                    {{ $latest_store->title }}</h5>
                                                 <p>{{ $latest_store->headquarter }}</p>
                                             </div>
                                         </a>
