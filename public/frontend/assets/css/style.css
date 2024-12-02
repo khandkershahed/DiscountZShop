@@ -2134,7 +2134,11 @@ html {
     text-align: center;
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1200px) {
+    .countdown {
+        font-weight: 600;
+        font-size: 12px;
+    }
     .h4, h4 {
         font-size: 1.3rem;
     }
