@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Mail\OfferListCreated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -23,7 +24,8 @@ class OfferController extends Controller
     public function index()
     {
         $data = [
-            'offers' => Offer::latest('id')->get(),
+            'offers'        => Offer::latest('id')->get(),
+            'allCategories' => Category::latest('id')->get(),
         ];
         return view('admin.pages.offer.index', $data);
     }
@@ -33,8 +35,12 @@ class OfferController extends Controller
      */
     public function create()
     {
-        $offer_types = OfferType::latest()->get();
-        return view('admin.pages.offer.create', compact('offer_types'));
+        $data = [
+            'offer_types'   => OfferType::latest()->get(),
+            'allCategories' => Category::latest('id')->get(),
+        ];
+        // $offer_types = OfferType::latest()->get();
+        return view('admin.pages.offer.create', $data);
     }
 
     /**
@@ -195,9 +201,10 @@ class OfferController extends Controller
     {
         $data = [
             'offer' => Offer::findOrFail($id),
+            'allCategories' => Category::latest('id')->get(),
             'offer_types' => OfferType::latest()->get(),
         ];
-
+        
         return view('admin.pages.offer.edit', $data);
     }
 

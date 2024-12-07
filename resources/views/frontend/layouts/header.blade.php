@@ -64,9 +64,12 @@
                                 <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
                                     aria-labelledby="dropdownMenuButton1"
                                     style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
+
                                     <div class="container">
+
                                         <div class="row">
                                             <div class="col-lg-3 bg-white px-0 category-menus">
+
                                                 <ul class="nav nav-tabs flex-column border-0" id="myTab"
                                                     role="tablist">
                                                     @foreach ($categories as $header_category)
@@ -84,6 +87,7 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
+                                                
                                             </div>
                                             <div class="col-lg-9">
                                                 <div class="tab-content" id="myTabContent">
@@ -132,6 +136,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </ul>
                             @endif
                         </div>

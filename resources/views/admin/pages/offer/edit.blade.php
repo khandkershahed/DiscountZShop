@@ -113,7 +113,7 @@
                         <x-metronic.select-option id="category_id" name="category_id" data-hide-search="false"
                             data-placeholder="Select an option" required>
                             <option></option>
-                            @foreach ($categories as $category)
+                            @foreach ($allCategories as $category)
                                 <option value="{{ $category->id }}"
                                     {{ old('category_id', $offer->category_id) == $category->id ? 'selected' : '' }}>
                                     {{ $category->name }}
