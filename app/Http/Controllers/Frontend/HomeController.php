@@ -321,9 +321,9 @@ class HomeController extends Controller
         $categorys = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get();
         $offerss = Offer::latest()->get();
 
-        $offers = Offer::latest()->get();
+        // $offers = Offer::latest()->get();
 
-        return view('frontend.pages.allOffer', compact('page_banner', 'categorys', 'offers', 'offerss'));
+        return view('frontend.pages.allOffer', compact('page_banner', 'categorys', 'offerss'));
     }
 
     //offerDetails
@@ -346,6 +346,7 @@ class HomeController extends Controller
             return redirect()->back()->with('Offer is not available.');
         }
     }
+    
     //searchCourseNAme
     public function searchOfferName(Request $request)
     {

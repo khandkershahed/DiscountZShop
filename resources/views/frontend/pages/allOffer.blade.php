@@ -128,6 +128,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="col-lg-9 pe-0">
@@ -167,13 +168,11 @@
                                                         </h4>
                                                     @endif
                                                 </div>
+
                                                 <div class="col-lg-12 pt-4 offer_title">
                                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                    {{-- <a href="{{ route('offer.details', $offer->slug) }}"
-                                                        class="main-color">
-                                                        <small>See All In Store</small>
-                                                    </a> --}}
                                                 </div>
+
                                                 <div class="col-lg-12 pt-4">
                                                     <div class="d-flex">
                                                         <a href="{{ route('offer.details', $offer->slug) }}"
@@ -214,49 +213,45 @@
 
                                 <div class="row servicesContainer" id="servicesContainer">
                                     @if ($cateWiseOffers->count())
-                                        @foreach ($cateWiseOffers as $offer)
+                                        @foreach ($cateWiseOffers as $cateWiseOffer)
                                             <div class="col-lg-4 mt-4">
                                                 <div class="card border-0 shadow-sm bg-light">
                                                     <div class="row p-4 align-items-center">
                                                         <div class="col-lg-6">
                                                             <div>
-                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                <img src="{{ !empty($cateWiseOffer->logo) ? url('storage/' . $cateWiseOffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($cateWiseOffer->name) }}"
                                                                     width="80px" height="80px" class="rounded-2"
                                                                     style="object-fit: contain;" alt=""
                                                                     onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            @if (!empty($offer->badge))
+                                                            @if (!empty($cateWiseOffer->badge))
                                                                 {{-- <span>Upto</span> --}}
                                                                 <h4 class="main-color special-font-box text-end">
-                                                                    {{ $offer->badge }}
+                                                                    {{ $cateWiseOffer->badge }}
                                                                 </h4>
                                                             @endif
                                                         </div>
                                                         <div class="col-lg-12 pt-4 offer_title">
-                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                            {{-- <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                class="main-color">
-                                                                <small>See All In Store</small>
-                                                            </a> --}}
+                                                            <p class="pb-4 text-black">{{ $cateWiseOffer->name }}</p>
                                                         </div>
                                                         <div class="col-lg-12 pt-4">
                                                             <div class="d-flex">
-                                                                <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                <a href="{{ route('offer.details', $cateWiseOffer->slug) }}"
                                                                     class="w-100 btn-common-one rounded-3">
                                                                     <small>View</small>
                                                                 </a>
-                                                                @if (!empty($offer->coupon_code))
+                                                                @if (!empty($cateWiseOffer->coupon_code))
                                                                     <a href="javascript:void(0);"
                                                                         class="w-100 btn-common-three rounded-3 ms-2"
-                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                                        onclick="copyCouponCode('{{ $cateWiseOffer->coupon_code }}')">
                                                                         Coupon <i class="fa-solid fa-copy"></i>
                                                                     </a>
                                                                 @endif
                                                             </div>
                                                             <p class="pt-2 text-center countdown"
-                                                                data-expire-date="{{ $offer->expiry_date }}">
+                                                                data-expire-date="{{ $cateWiseOffer->expiry_date }}">
                                                                 <span class="main-color">Expire In:</span>
                                                                 <span class="countdown-timer"> Days</span>
                                                             </p>
@@ -276,7 +271,8 @@
                         @endforeach
 
                     </div>
-                    <div>
+
+                    {{-- <div>
                         <nav>
                             <ul class="pagination justify-content-center my-5">
                                 <li class="page-item"><a class="page-link" href="#"><span>&laquo;</span>
@@ -292,7 +288,8 @@
                                         <span>&raquo;</span></a></li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> --}}
+
                 </div>
 
             </div>
@@ -316,10 +313,6 @@
 
 
         {{-- Offer Search --}}
-
-        <!-- Include jQuery -->
-
-
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
@@ -337,12 +330,9 @@
                 });
             });
         </script>
-
         {{-- ============= --}}
 
         <script>
-            // === === === === === Division === === === === ===
-
             $(document).ready(function() {
                 $('#custom_select1').on('change', function() {
 
