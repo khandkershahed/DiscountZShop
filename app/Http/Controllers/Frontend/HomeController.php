@@ -102,7 +102,12 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            'categories' => Category::with('brands')->latest('id')->active()->get(),
+            'categories' => Category::with('brands') // Eager load the brands relationship
+                ->orderBy('name', 'ASC') // Order categories by name in ascending order
+                ->latest('id') // Order categories by the latest ID (newest first)
+                ->active() // Assuming you have an active scope in your Category model
+                ->get(),
+
             // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
             'brands' => Brand::latest()->get(),
         ];
@@ -441,7 +446,7 @@ class HomeController extends Controller
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
             // 'category' => Category::where('slug', $slug)->first(),
 
-            'offerss' => Offer::where('category_id',$slug)->get(),
+            'offerss' => Offer::where('category_id', $slug)->get(),
 
         ];
         return view('frontend.pages.categoryDetails', $data);
