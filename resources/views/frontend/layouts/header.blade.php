@@ -112,20 +112,13 @@
 
                                                                         <span class="divider-underline"></span>
 
-                                                                        @php
 
-                                                                            $offers = App\Models\Offer::where(
-                                                                                'category_id',
-                                                                                $header_category->id,
-                                                                            )->get();
-
-                                                                        @endphp
 
                                                                         <ul class="ps-0 pt-3 main-category-dropdown">
-                                                                            @foreach ($offers as $offer)
+                                                                            @foreach ($header_category_child->offers as $header_category_offer)
                                                                                 <li class="p-1">
                                                                                     <a
-                                                                                        href="{{ route('offer.details', $offer->slug) }}">{{ $offer->name }}</a>
+                                                                                        href="{{ route('offer.details', $header_category_offer->slug) }}">{{ $header_category_offer->name }}</a>
                                                                                 </li>
                                                                             @endforeach
                                                                         </ul>
