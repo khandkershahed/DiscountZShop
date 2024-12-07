@@ -346,7 +346,7 @@ class HomeController extends Controller
             return redirect()->back()->with('Offer is not available.');
         }
     }
-    
+
     //searchCourseNAme
     public function searchOfferName(Request $request)
     {
@@ -438,11 +438,16 @@ class HomeController extends Controller
     public function categoryDetails($slug)
     {
         $data = [
-            'offer' => Category::where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
+            // 'category' => Category::where('slug', $slug)->first(),
+
+            'offerss' => Offer::where('category_id',$slug)->get(),
+
         ];
         return view('frontend.pages.categoryDetails', $data);
     }
+
+
     public function termsCondition()
     {
         $data = [

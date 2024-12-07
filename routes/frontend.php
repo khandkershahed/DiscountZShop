@@ -18,8 +18,8 @@ Route::post('contact/store', [ContactController::class, 'store'])->name('contact
 //Email
 Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('email.subscribe');
 
-//Catewory
-Route::get('/category/{slug}', [HomeController::class, 'categoryDetails'])->name('category.details');
+//SubCatewory
+Route::get('/subcategory/{slug}', [HomeController::class, 'categoryDetails'])->name('subcategory.details');
 
 //Offer
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');

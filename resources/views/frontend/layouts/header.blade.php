@@ -87,7 +87,7 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-                                                
+
                                             </div>
                                             <div class="col-lg-9">
                                                 <div class="tab-content" id="myTabContent">
@@ -101,7 +101,7 @@
                                                                     <div class="col-lg-4">
 
                                                                         <a
-                                                                            href="{{ route('category.details', $header_category_child->slug) }}">
+                                                                            href="{{ route('subcategory.details', $header_category_child->slug) }}">
                                                                             <h6 class="divider-title">
                                                                                 {{ $header_category_child->name }}
                                                                             </h6>
@@ -122,7 +122,7 @@
                                                                             @foreach ($offers as $offer)
                                                                                 <li class="p-1">
                                                                                     <a
-                                                                                        href="{{ route('store.details', $offer->slug) }}">{{ $offer->name }}</a>
+                                                                                        href="{{ route('offer.details', $offer->slug) }}">{{ $offer->name }}</a>
                                                                                 </li>
                                                                             @endforeach
                                                                         </ul>
