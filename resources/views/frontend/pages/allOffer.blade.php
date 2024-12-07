@@ -139,7 +139,7 @@
                             <div class="row servicesContainer divisionContainer" id="servicesContainer">
                                 @foreach ($offerss as $offer)
                                     <div class="col-lg-4 mb-4 pe-2">
-                                        <div class="card border-0 shadow-sm bg-light">
+                                        <div class="card border-0 shadow-sm bg-light offer-boxes">
                                             <div class="row p-4 align-items-center">
                                                 <div class="col-lg-6">
                                                     <div>
