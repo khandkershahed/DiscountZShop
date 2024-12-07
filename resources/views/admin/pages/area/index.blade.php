@@ -202,6 +202,7 @@
                                         @endforeach
                                     </x-metronic.select-option>
                                 </div>
+
                                 <div class="col-lg-6 mb-7">
                                     <x-metronic.label for="city_id" class="col-form-label required fw-bold fs-6">
                                         {{ __('Select City') }}</x-metronic.label>
@@ -210,10 +211,11 @@
                                         <option></option>
                                         @foreach ($citys as $city)
                                             <option value="{{ $city->id }}" @selected($city->id == $area->city_id)>
-                                                {{ $area->name }}</option>
+                                                {{ $city->name }}</option>
                                         @endforeach
                                     </x-metronic.select-option>
                                 </div>
+
                                 <div class="col-lg-6 mb-7">
                                     <x-metronic.label for="name"
                                         class="col-form-label fw-bold fs-6 required">{{ __('Area Name') }}
@@ -221,6 +223,7 @@
                                     <x-metronic.input id="name" type="text" name="name" :value="old('name', $area->name)"
                                         placeholder="Enter the Name" required></x-metronic.input>
                                 </div>
+
                                 <div class="col-lg-6 mb-7">
                                     <x-metronic.label for="latitude"
                                         class="col-form-label fw-bold fs-6">{{ __('Latitude') }}
