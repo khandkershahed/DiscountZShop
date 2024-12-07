@@ -442,11 +442,11 @@ class HomeController extends Controller
 
     public function categoryDetails($slug)
     {
+        $category = Category::where('slug', $slug)->first();
         $data = [
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
-            // 'category' => Category::where('slug', $slug)->first(),
-
-            'offerss' => Offer::where('category_id', $slug)->get(),
+            'category' => $category,
+            'offerss' => Offer::where('category_id', $category->id)->get(),
 
         ];
         return view('frontend.pages.categoryDetails', $data);
