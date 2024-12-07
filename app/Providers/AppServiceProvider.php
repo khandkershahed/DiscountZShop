@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
             }
 
             if (Schema::hasTable('categories')) {
-                View::share('categories', Category::with('children', 'offers', 'coupons')->whereNull('parent_id')->get());
+                View::share('categories', Category::with('children','children.offers', 'offers', 'coupons')->whereNull('parent_id')->get());
             }
 
             if (Schema::hasTable('brands')) {
