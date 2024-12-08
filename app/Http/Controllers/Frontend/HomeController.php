@@ -34,7 +34,7 @@ class HomeController extends Controller
         $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
 
         // Split them into two collections: one for the left and one for the right
-        $brand_offers_left = $all_brand_offers->take(2); // Take first 2 offers for left side
+        $brand_offers_left = $all_brand_offers->take(2); 
         $brand_offers_right = $all_brand_offers->skip(2);
         $data = [
             'sliders'            => Slider::where('status', 'active')->latest('id')->get(),
