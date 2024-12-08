@@ -442,7 +442,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="pe-2">
+                                    <div class="pt-4 pe-2">
 
                                         <h5>{{ $brand_offer_left->name }}</h5>
                                         <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
@@ -494,7 +494,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="pe-2">
+                                    <div class="pt-4 pe-2">
                                         {{-- <h5>{{ $brand_offer_right->badge }}</h5> --}}
                                         <h5>{{ $brand_offer_right->name }}</h5>
                                         <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
