@@ -494,16 +494,16 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="pe-2">
-                                        <h5>{{ $brand_offers_right->badge }}</h5>
-                                        <h6>{{ $brand_offers_right->name }}</h6>
-                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offers_right->short_description !!}</p>
+                                        <h5>{{ $brand_offer_right->badge }}</h5>
+                                        <h6>{{ $brand_offer_right->name }}</h6>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offer_right->short_description !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
-                                                @if (!empty($brand_offers_right->price))
-                                                    <del class="pt-2">BDT {{ $brand_offers_right->price }}</del>
+                                                @if (!empty($brand_offer_right->price))
+                                                    <del class="pt-2">BDT {{ $brand_offer_right->price }}</del>
                                                 @endif
-                                                @if (!empty($brand_offers_right->offer_price))
-                                                    <h6 class="main-color">BDT {{ $brand_offers_right->offer_price }}</h6>
+                                                @if (!empty($brand_offer_right->offer_price))
+                                                    <h6 class="main-color">BDT {{ $brand_offer_right->offer_price }}</h6>
                                                 @endif
                                             </div>
                                             <div class="pe-4">
