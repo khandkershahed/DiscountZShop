@@ -31,7 +31,7 @@ class HomeController extends Controller
         $offers = Offer::where('status', 'active')->inRandomOrder()->get();
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
         $homepage = HomePage::with('brand')->latest('id')->first();
-        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get(['image', 'slug']);
+        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get(['image', 'slug','badge']);
 
         // Split them into two collections: one for the left and one for the right
         $brand_offers_left = $all_brand_offers->take(2); // Take first 2 offers for left side
