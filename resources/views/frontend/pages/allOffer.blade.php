@@ -11,12 +11,14 @@
 
     <section>
         <div class="container mb-5">
+
             <div class="row py-5 pb-2">
+
                 <div class="col-lg-12 pe-0">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
-                            <h3>All Offers</h3>
-                            <span class="store-devider"></span>
+                            <h3></h3>
+                            {{-- <span class="store-devider"></span> --}}
                         </div>
 
                         <div class="d-flex align-items-center">
@@ -77,144 +79,64 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
             <div class="row">
+
+                {{-- ================== --}}
+
                 <div class="col-lg-3 border py-2 shadow-sm">
-                    {{-- Accortion Filter Start --}}
-                    <div>
-                        <div class="accordion">
+                    {{-- Accordion Filter Start --}}
+                    <div class="accordion">
+                        @foreach ($categories as $header_category)
                             <div class="accordion-header">
                                 <div class="checkbox-wrapper-offers">
-                                    <input class="inp-cbx accordion-checkbox" id="cash-offers" type="checkbox" />
-                                    <label class="cbx" for="cash-offers"><span>
+                                    <input class="inp-cbx accordion-checkbox" id="category-{{ $header_category->id }}"
+                                        type="checkbox" />
+                                    <label class="cbx" for="category-{{ $header_category->id }}"
+                                        onclick="toggleOffers('{{ $header_category->id }}')">
+                                        <span>
                                             <svg width="12px" height="10px" viewbox="0 0 12 10">
                                                 <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                            </svg></span><span>
-                                            Main Triger</span>
+                                            </svg>
+                                        </span>
+                                        <span>{{ $header_category->name }}</span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="panel">
-                                <div class="accordion-header">
-                                    <div class="checkbox-wrapper-offers">
-                                        <input class="inp-cbx accordion-checkbox" id="subscription" type="checkbox" />
-                                        <label class="cbx" for="subscription"><span>
-                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                </svg></span><span>
-                                                Sub Triger</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="panel">
-                                    <div class="content1">
+
+                            <div class="panel" id="panel-{{ $header_category->id }}">
+                                @foreach ($header_category->children as $header_category_child)
+                                    <div class="accordion-header">
                                         <div class="checkbox-wrapper-offers">
-                                            <input class="inp-cbx" id="subscription1" type="checkbox" />
-                                            <label class="cbx" for="subscription1"><span>
+                                            <input class="inp-cbx accordion-checkbox"
+                                                id="subcategory-{{ $header_category_child->id }}" type="checkbox" />
+                                            <label class="cbx" for="subcategory-{{ $header_category_child->id }}">
+                                                <span>
                                                     <svg width="12px" height="10px" viewbox="0 0 12 10">
                                                         <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                    </svg></span><span>
-                                                    Child Element</span>
+                                                    </svg>
+                                                </span>
+                                                <span>{{ $header_category_child->name }}</span>
+                                                <!-- This is where the click happens -->
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="accordion-header">
-                                    <div class="checkbox-wrapper-offers">
-                                        <input class="inp-cbx accordion-checkbox" id="auto-publish" type="checkbox" />
-                                        <label class="cbx" for="auto-publish"><span>
-                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                </svg></span><span>
-                                                Sub Triger Two</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="panel">
-                                    <div class="content1">
-                                        <div class="checkbox-wrapper-offers">
-                                            <input class="inp-cbx" id="subscription12" type="checkbox" />
-                                            <label class="cbx" for="subscription12"><span>
-                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                    </svg></span><span>
-                                                    Child Element 3</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="content1">
-                                        <div class="checkbox-wrapper-offers">
-                                            <input class="inp-cbx" id="subscription13" type="checkbox" />
-                                            <label class="cbx" for="subscription13"><span>
-                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                    </svg></span><span>
-                                                    Child Element 4</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    {{-- Accortion Filter End --}}
-                    <div class="bg-light">
-                        <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
-                            <li class="nav-item w-100" role="presentation">
-                                <button class="nav-link custom-offer-tabs border-0 w-100 text-start active"
-                                    id="category-all" data-bs-toggle="tab" data-bs-target="#category-all-pane"
-                                    type="button" role="tab" aria-controls="category-all-pane"
-                                    aria-selected="true">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span>All Offers</span>
-                                        <span>({{ $offerss->count() }})</span>
-                                    </div>
-                                </button>
-                            </li>
-
-                            @foreach ($categorys as $category)
-                                <li class="nav-item w-100" role="presentation">
-                                    <button class="nav-link custom-offer-tabs border-0 w-100 text-start"
-                                        id="category-{{ $category->id }}" data-bs-toggle="tab"
-                                        data-bs-target="#category-{{ $category->id }}-pane" type="button"
-                                        role="tab" aria-controls="category-{{ $category->id }}-pane"
-                                        aria-selected="false">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span>{{ $category->name }}</span>
-                                            <span>({{ $category->offers_count }})</span>
-                                        </div>
-                                    </button>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-
-                    <div class="pt-4">
-                        <div class="card overlay-card rounded-2"
-                            style="background-image: url(https://htmlbeans.com/html/coupon/images/img39.jpg);">
-                            <div class="card-body text-center">
-                                <div>
-                                    <p class="pb-3">
-                                        <i class="fa-solid fa-receipt text-white"
-                                            style="rotate: 90deg; font-size: 28px"></i>
-                                    </p>
-                                    <h6 class="pt-3">SUBMIT YOUR COUPON</h6>
-                                    <a href="javascript:void(0)" class="btn-common-one mt-4">All Coupon</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="col-lg-9 pe-0">
                     <div class="tab-content" id="myTabContent">
+
+                        {{-- Category All Offers Tab --}}
                         <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                             aria-labelledby="category-all" tabindex="0">
-
                             <div class="row servicesContainer divisionContainer" id="servicesContainer">
-                                @foreach ($offerss as $offer)
+                                @foreach ($offers as $offer)
                                     <div class="col-lg-4 mb-4 pe-2">
                                         <div class="card border-0 shadow-sm bg-light offer-boxes">
                                             <div class="row p-4 align-items-center">
@@ -228,28 +150,23 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="shop-heart">
-
-                                                        {{-- wishlist  --}}
+                                                        {{-- Wishlist --}}
                                                         <a type="submit" class="add_to_wishlist"
                                                             style="cursor: pointer;"
                                                             data-product_id="{{ $offer->id }}"
                                                             data-tip="Wishlist">
                                                             <i class="fa-regular fa-heart fs-5"></i>
                                                         </a>
-
                                                     </div>
                                                     @if (!empty($offer->badge))
-                                                        {{-- <span>Upto</span> --}}
                                                         <h4 class="main-color special-font-box text-end">
                                                             {{ $offer->badge }}
                                                         </h4>
                                                     @endif
                                                 </div>
-
                                                 <div class="col-lg-12 pt-4 offer_title">
                                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                 </div>
-
                                                 <div class="col-lg-12 pt-4">
                                                     <div class="d-flex">
                                                         <a href="{{ route('offer.details', $offer->slug) }}"
@@ -277,103 +194,127 @@
                             </div>
                         </div>
 
-                        <!-- Other tabs content -->
-                        @foreach ($categorys as $category)
+                        {{-- Category-wise Offers Tabs --}}
+                        @foreach ($categories as $category)
                             <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
-
-                                @php
-                                    $cateWiseOffers = App\Models\Offer::where('category_id', $category->id)
-                                        ->orderBy('name', 'ASC')
-                                        ->get();
-                                @endphp
-
                                 <div class="row servicesContainer" id="servicesContainer">
-                                    @if ($cateWiseOffers->count())
-                                        @foreach ($cateWiseOffers as $cateWiseOffer)
-                                            <div class="col-lg-4 mt-4">
-                                                <div class="card border-0 shadow-sm bg-light">
-                                                    <div class="row p-4 align-items-center">
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="{{ !empty($cateWiseOffer->logo) ? url('storage/' . $cateWiseOffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($cateWiseOffer->name) }}"
-                                                                    width="80px" height="80px" class="rounded-2"
-                                                                    style="object-fit: contain;" alt=""
-                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                            </div>
+
+                                    @foreach ($category->offers as $offer)
+                                        <div class="col-lg-4 mt-4">
+                                            <div class="card border-0 shadow-sm bg-light">
+                                                <div class="row p-4 align-items-center">
+                                                    <div class="col-lg-6">
+                                                        <div>
+                                                            <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                width="80px" height="80px" class="rounded-2"
+                                                                style="object-fit: contain;" alt=""
+                                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                         </div>
-                                                        <div class="col-lg-6">
-                                                            @if (!empty($cateWiseOffer->badge))
-                                                                {{-- <span>Upto</span> --}}
-                                                                <h4 class="main-color special-font-box text-end">
-                                                                    {{ $cateWiseOffer->badge }}
-                                                                </h4>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        @if (!empty($offer->badge))
+                                                            <h4 class="main-color special-font-box text-end">
+                                                                {{ $offer->badge }}
+                                                            </h4>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-lg-12 pt-4 offer_title">
+                                                        <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                    </div>
+                                                    <div class="col-lg-12 pt-4">
+                                                        <div class="d-flex">
+                                                            <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                class="w-100 btn-common-one rounded-3">
+                                                                <small>View</small>
+                                                            </a>
+                                                            @if (!empty($offer->coupon_code))
+                                                                <a href="javascript:void(0);"
+                                                                    class="w-100 btn-common-three rounded-3 ms-2"
+                                                                    onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                                    Coupon <i class="fa-solid fa-copy"></i>
+                                                                </a>
                                                             @endif
                                                         </div>
-                                                        <div class="col-lg-12 pt-4 offer_title">
-                                                            <p class="pb-4 text-black">{{ $cateWiseOffer->name }}</p>
-                                                        </div>
-                                                        <div class="col-lg-12 pt-4">
-                                                            <div class="d-flex">
-                                                                <a href="{{ route('offer.details', $cateWiseOffer->slug) }}"
-                                                                    class="w-100 btn-common-one rounded-3">
-                                                                    <small>View</small>
-                                                                </a>
-                                                                @if (!empty($cateWiseOffer->coupon_code))
-                                                                    <a href="javascript:void(0);"
-                                                                        class="w-100 btn-common-three rounded-3 ms-2"
-                                                                        onclick="copyCouponCode('{{ $cateWiseOffer->coupon_code }}')">
-                                                                        Coupon <i class="fa-solid fa-copy"></i>
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                            <p class="pt-2 text-center countdown"
-                                                                data-expire-date="{{ $cateWiseOffer->expiry_date }}">
-                                                                <span class="main-color">Expire In:</span>
-                                                                <span class="countdown-timer"> Days</span>
-                                                            </p>
-                                                        </div>
+                                                        <p class="pt-2 text-center countdown"
+                                                            data-expire-date="{{ $offer->expiry_date }}">
+                                                            <span class="main-color">Expire In:</span>
+                                                            <span class="countdown-timer"> Days</span>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    @else
-                                        <div class="d-flex justify-content-ceneter flex-column">
-                                            <img src="{{ asset('images/nocoupon.jpg') }}" alt="No Offers Available"
-                                                class="img-fluid" />
                                         </div>
-                                    @endif
+                                    @endforeach
+
+
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
-
-                    {{-- <div>
-                        <nav>
-                            <ul class="pagination justify-content-center my-5">
-                                <li class="page-item"><a class="page-link" href="#"><span>&laquo;</span>
-                                        Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">70</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next
-                                        <span>&raquo;</span></a></li>
-                            </ul>
-                        </nav>
-                    </div> --}}
-
                 </div>
 
             </div>
+
         </div>
     </section>
 
     @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Toggle the checkbox when the category or subcategory is clicked
+                function toggleOffers(categoryId) {
+                    // Check the checkbox for the category
+                    const checkbox = document.getElementById('category-' + categoryId);
+                    if (checkbox) {
+                        checkbox.checked = true; // Automatically check the category checkbox
+                    }
+
+                    // Show offers for that category
+                    showOffersByCategory(categoryId);
+                }
+
+                // Show the offers for the selected category
+                function showOffersByCategory(categoryId) {
+                    // Remove the 'active' class from all category tabs
+                    document.querySelectorAll('.tab-pane').forEach(tab => {
+                        tab.classList.remove('show', 'active');
+                    });
+
+                    // Add the 'active' class to the relevant category's tab
+                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
+                    if (categoryTab) {
+                        categoryTab.classList.add('show', 'active');
+                    }
+                }
+
+                // Add event listener to all accordion checkboxes
+                document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        const categoryId = this.id.split('-')[1];
+                        if (this.checked) {
+                            showOffersByCategory(categoryId);
+                        }
+                    });
+                });
+
+                // Add click event listener to subcategory names
+                document.querySelectorAll('.accordion-header span').forEach(span => {
+                    span.addEventListener('click', function() {
+                        const categoryId = this.parentElement.querySelector('input').id.split('-')[1];
+                        toggleOffers(categoryId); // Call toggleOffers on click of subcategory
+                    });
+                });
+            });
+        </script>
+
+
+
+
+
+
+
+
         <script>
             // Bootstrap Tab Activation
             var triggerTabList = [].slice.call(document.querySelectorAll('#myTab button'))
