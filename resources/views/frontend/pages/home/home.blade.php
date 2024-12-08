@@ -697,6 +697,7 @@
                         <div class="card-body">
                             <!-- Slider Items -->
                             <div class="deal-slider">
+
                                 @forelse ($offerDealLefts as $offerDealLeft)
                                     <div class="items">
                                         <div class="py-2 d-flex justify-content-center">
@@ -763,6 +764,7 @@
                         </div>
                         {{-- </form> --}}
                     </div>
+
                     <!-- Search Box -->
                     <div class="row p-3 gx-3 pt-0" id="servicesContainer">
                         @forelse ($offerDeals as $offerDeal)
@@ -907,21 +909,6 @@
             </div>
         </section>
 
-        {{-- <section>
-            <div class="container-fluid partners">
-                <div class="container px-0">
-                    <div class="slick-slider-partners d-flex align-items-center">
-                        @foreach ($brands as $brand)
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                    alt="" />
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section> --}}
         <section>
             <div class="container-fluid partners">
                 <div class="container px-0">
@@ -940,6 +927,7 @@
         </section>
     @endif
     <!-- Footer Slider -->
+
     @if (
         !empty($homepage->bottom_banner_slider_one) ||
             !empty($homepage->bottom_banner_slider_two) ||
@@ -988,6 +976,7 @@
             </div>
         </section>
     @endif
+    
     @push('scripts')
         <script>
             $(document).ready(function() {
