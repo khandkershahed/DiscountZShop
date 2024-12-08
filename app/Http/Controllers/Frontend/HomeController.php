@@ -37,7 +37,7 @@ class HomeController extends Controller
         $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
         $brand_offers_left = $all_brand_offers->take(2);
         $brand_offers_right = $all_brand_offers->skip(2);
-        dd($brand_offers_right);
+        // dd($brand_offers_right);
         $data = [
             'sliders'            => Slider::where('status', 'active')->latest('id')->get(),
             'banner'             => Banner::where('status', 'active')->latest('id')->first(),
