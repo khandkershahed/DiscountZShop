@@ -80,7 +80,84 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 border py-2 shadow-sm">
-                    {{-- <h6 class="fw-bold pb-3">All Categories</h6> --}}
+                    {{-- Accortion Filter Start --}}
+                    <div>
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <div class="checkbox-wrapper-offers">
+                                    <input class="inp-cbx accordion-checkbox" id="cash-offers" type="checkbox" />
+                                    <label class="cbx" for="cash-offers"><span>
+                                            <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                            </svg></span><span>
+                                            Main Triger</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="accordion-header">
+                                    <div class="checkbox-wrapper-offers">
+                                        <input class="inp-cbx accordion-checkbox" id="subscription" type="checkbox" />
+                                        <label class="cbx" for="subscription"><span>
+                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </svg></span><span>
+                                                Sub Triger</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <div class="content1">
+                                        <div class="checkbox-wrapper-offers">
+                                            <input class="inp-cbx" id="subscription1" type="checkbox" />
+                                            <label class="cbx" for="subscription1"><span>
+                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                    </svg></span><span>
+                                                    Child Element</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-header">
+                                    <div class="checkbox-wrapper-offers">
+                                        <input class="inp-cbx accordion-checkbox" id="auto-publish" type="checkbox" />
+                                        <label class="cbx" for="auto-publish"><span>
+                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </svg></span><span>
+                                                Sub Triger Two</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <div class="content1">
+                                        <div class="checkbox-wrapper-offers">
+                                            <input class="inp-cbx" id="subscription12" type="checkbox" />
+                                            <label class="cbx" for="subscription12"><span>
+                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                    </svg></span><span>
+                                                    Child Element 3</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="content1">
+                                        <div class="checkbox-wrapper-offers">
+                                            <input class="inp-cbx" id="subscription13" type="checkbox" />
+                                            <label class="cbx" for="subscription13"><span>
+                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                    </svg></span><span>
+                                                    Child Element 4</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Accortion Filter End --}}
                     <div class="bg-light">
                         <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
                             <li class="nav-item w-100" role="presentation">
@@ -412,6 +489,20 @@
                         });
                     } else {
                         $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.querySelectorAll('.accordion-checkbox').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const panel = this.closest('.accordion-header').nextElementSibling;
+
+                    // Toggle the 'show' class on the panel
+                    if (this.checked) {
+                        panel.classList.add('show');
+                    } else {
+                        panel.classList.remove('show');
                     }
                 });
             });
