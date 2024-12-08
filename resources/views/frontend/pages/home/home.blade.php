@@ -443,17 +443,18 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="pe-2">
-                                        <h5>{{ $brand_offer_left->badge }}</h5>
-                                        <h6>{{ $brand_offer_left->name }}</h6>
+
+                                        <h5>{{ $brand_offer_left->name }}</h5>
                                         <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
-                                                @if (!empty($brand_offer_left->price))
+                                                <h6>{{ $brand_offer_left->badge }}</h6>
+                                                {{-- @if (!empty($brand_offer_left->price))
                                                     <del class="pt-2">BDT {{ $brand_offer_left->price }}</del>
                                                 @endif
                                                 @if (!empty($brand_offer_left->offer_price))
                                                     <h6 class="main-color">BDT {{ $brand_offer_left->offer_price }}</h6>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                             <div class="pe-4">
                                                 <a href="{{ route('offer.details', $brand_offer_left->slug) }}" class="btn-3">
@@ -494,17 +495,18 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="pe-2">
-                                        <h5>{{ $brand_offer_right->badge }}</h5>
-                                        <h6>{{ $brand_offer_right->name }}</h6>
+                                        {{-- <h5>{{ $brand_offer_right->badge }}</h5> --}}
+                                        <h5>{{ $brand_offer_right->name }}</h5>
                                         <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
-                                                @if (!empty($brand_offer_right->price))
+                                                <h6>{{ $brand_offer_right->badge }}</h6>
+                                                {{-- @if (!empty($brand_offer_right->price))
                                                     <del class="pt-2">BDT {{ $brand_offer_right->price }}</del>
                                                 @endif
                                                 @if (!empty($brand_offer_right->offer_price))
                                                     <h6 class="main-color">BDT {{ $brand_offer_right->offer_price }}</h6>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                             <div class="pe-4">
                                                 <a href="{{ route('offer.details', $brand_offer_right->slug) }}" class="btn-3">
