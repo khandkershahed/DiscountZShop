@@ -72,6 +72,7 @@
 
                                                 <ul class="nav nav-tabs flex-column border-0" id="myTab"
                                                     role="tablist">
+
                                                     @foreach ($categories as $header_category)
                                                         <li class="nav-item" role="presentation">
                                                             <button
@@ -90,7 +91,9 @@
 
                                             </div>
                                             <div class="col-lg-9">
+
                                                 <div class="tab-content" id="myTabContent">
+
                                                     @foreach ($categories as $header_category)
                                                         <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
                                                             id="home-{{ $header_category->id }}" role="tabpanel"
@@ -125,6 +128,7 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
+                                                    
                                                 </div>
                                             </div>
                                         </div>

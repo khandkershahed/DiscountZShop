@@ -57,3 +57,52 @@
     </div>
     <h5 class="text-center text-warning">No Course available right now.</h5>
 @endforelse
+
+@push('scripts')
+    <script>
+        class Countdown {
+            constructor(element, expireDate) {
+                this.element = element;
+                this.expireDate = new Date(expireDate).getTime();
+                this.timerElement = this.element.querySelector(".countdown-timer");
+                this.start();
+            }
+
+            start() {
+                this.update();
+                this.interval = setInterval(() => this.update(), 1000);
+            }
+
+            update() {
+                const now = new Date().getTime();
+                const distance = this.expireDate - now;
+
+                if (distance < 0) {
+                    clearInterval(this.interval);
+                    this.timerElement.innerHTML = "EXPIRED";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                this.timerElement.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+            }
+        }
+
+        // Initialize countdowns on DOMContentLoaded
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".countdown").forEach((element) => {
+                const expireDate = element.getAttribute("data-expire-date");
+                if (expireDate) {
+                    new Countdown(element, expireDate);
+                } else {
+                    const timerElement = element.querySelector(".countdown-timer");
+                    timerElement.innerHTML = "Still Available";
+                }
+            });
+        });
+    </script>
+@endpush

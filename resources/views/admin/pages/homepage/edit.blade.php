@@ -79,7 +79,7 @@
                             <option></option>
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->id }}"
-                                    {{ old('brand_id', $homepage->brand_id) == $brand->id ? 'selected' : '' }}>
+                                    {{ $homepage->deal_brand_id == $brand->id ? 'selected' : '' }}>
                                     {{ $brand->name }}
                                 </option>
                             @endforeach
@@ -117,7 +117,8 @@
                             class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image One Link') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="offer_slider_image_one_link" type="text" name="offer_slider_image_one_link" :value="old('offer_slider_image_one_link',$homepage->offer_slider_image_one_link)"
+                        <x-metronic.input id="offer_slider_image_one_link" type="text"
+                            name="offer_slider_image_one_link" :value="old('offer_slider_image_one_link', $homepage->offer_slider_image_one_link)"
                             placeholder="offer Slider Image One Link"></x-metronic.input>
                     </div>
 
@@ -139,7 +140,8 @@
                             class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image Two Link') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="offer_slider_image_two_link" type="text" name="offer_slider_image_two_link" :value="old('offer_slider_image_two_link',$homepage->offer_slider_image_two_link)"
+                        <x-metronic.input id="offer_slider_image_two_link" type="text"
+                            name="offer_slider_image_two_link" :value="old('offer_slider_image_two_link', $homepage->offer_slider_image_two_link)"
                             placeholder="offer Slider Image Two Link"></x-metronic.input>
                     </div>
 
@@ -161,7 +163,8 @@
                             class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image Three Link') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="offer_slider_image_three_link" type="text" name="offer_slider_image_three_link" :value="old('offer_slider_image_three_link',$homepage->offer_slider_image_three_link)"
+                        <x-metronic.input id="offer_slider_image_three_link" type="text"
+                            name="offer_slider_image_three_link" :value="old('offer_slider_image_three_link', $homepage->offer_slider_image_three_link)"
                             placeholder="offer Slider Image Three Link"></x-metronic.input>
                     </div>
 
@@ -183,7 +186,8 @@
                             class="col-form-label fw-bold fs-6">{{ __('Offer Slider Image Four Link') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="offer_slider_image_four_link" type="text" name="offer_slider_image_four_link" :value="old('offer_slider_image_four_link',$homepage->offer_slider_image_four_link)"
+                        <x-metronic.input id="offer_slider_image_four_link" type="text"
+                            name="offer_slider_image_four_link" :value="old('offer_slider_image_four_link', $homepage->offer_slider_image_four_link)"
                             placeholder="offer Slider Image Four Link"></x-metronic.input>
                     </div>
 
@@ -243,9 +247,9 @@
 
                         <x-metronic.file-input id="bottom_banner_slider_three" name="bottom_banner_slider_three"
                             :value="old('bottom_banner_slider_three')"></x-metronic.file-input>
-                            <img class="mt-3"
-                                    src="{{ !empty($homepage->bottom_banner_slider_three) ? url('storage/' . $homepage->bottom_banner_slider_three) : asset('images/no_logo.png') }}"
-                                    height="80" width="80" alt="">
+                        <img class="mt-3"
+                            src="{{ !empty($homepage->bottom_banner_slider_three) ? url('storage/' . $homepage->bottom_banner_slider_three) : asset('images/no_logo.png') }}"
+                            height="80" width="80" alt="">
                     </div>
 
 

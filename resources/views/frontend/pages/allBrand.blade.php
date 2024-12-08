@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="row gx-5" id="servicesContainer">
                 @foreach ($categories as $category)
@@ -83,9 +83,11 @@
                 <div class="slick-slider-partners">
                     @foreach ($brands as $brand)
                         <div class="items d-flex justify-content-center align-items-center partners-logos">
-                            <img class="img-fluid"
-                                src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                alt="" />
+                            <a href="{{ route('brand.details', $brand->slug) }}">
+                                <img class="img-fluid"
+                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                    alt="" />
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -94,8 +96,6 @@
     </section>
 
     @push('scripts')
-
-
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {

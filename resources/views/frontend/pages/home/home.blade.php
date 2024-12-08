@@ -423,7 +423,7 @@
     </section>
     <!-- Grab Your Offer End -->
     <!-- Promotion Product -->
-    {{-- @if (optional($homepage)->brand)
+    @if (optional($homepage)->brand)
         <section>
             <div class="container px-0 pb-70 biggest-deals">
                 <div class="row gx-4 promotion-container align-items-center">
@@ -536,7 +536,7 @@
                 <img src="{{ asset('images/NoOffers.png') }}" alt="No Data Available" class="img-fluid w-100">
             </div>
         </section>
-    @endif --}}
+    @endif
     <!-- Promotion Product End -->
     <!-- Grab By Location -->
     <section style="background-color: #f5f6f8">
@@ -697,6 +697,7 @@
                         <div class="card-body">
                             <!-- Slider Items -->
                             <div class="deal-slider">
+
                                 @forelse ($offerDealLefts as $offerDealLeft)
                                     <div class="items">
                                         <div class="py-2 d-flex justify-content-center">
@@ -763,6 +764,7 @@
                         </div>
                         {{-- </form> --}}
                     </div>
+
                     <!-- Search Box -->
                     <div class="row p-3 gx-3 pt-0" id="servicesContainer">
                         @forelse ($offerDeals as $offerDeal)
@@ -907,31 +909,18 @@
             </div>
         </section>
 
-        {{-- <section>
-            <div class="container-fluid partners">
-                <div class="container px-0">
-                    <div class="slick-slider-partners d-flex align-items-center">
-                        @foreach ($brands as $brand)
-                            <div class="items d-flex justify-content-center align-items-center">
-                                <img class="img-fluid"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                    alt="" />
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section> --}}
         <section>
             <div class="container-fluid partners">
                 <div class="container px-0">
                     <div class="slick-slider-partners">
                         @foreach ($brands as $brand)
                             <div class="items d-flex justify-content-center align-items-center partners-logos">
-                                <img class="img-fluid partners-logos-single"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                    alt=""
-                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                <a href="{{ route('brand.details', $brand->slug) }}">
+                                    <img class="img-fluid partners-logos-single"
+                                        src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                        alt=""
+                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -940,6 +929,7 @@
         </section>
     @endif
     <!-- Footer Slider -->
+
     @if (
         !empty($homepage->bottom_banner_slider_one) ||
             !empty($homepage->bottom_banner_slider_two) ||
@@ -988,6 +978,7 @@
             </div>
         </section>
     @endif
+
     @push('scripts')
         <script>
             $(document).ready(function() {
