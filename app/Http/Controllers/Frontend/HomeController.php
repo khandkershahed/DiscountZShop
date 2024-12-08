@@ -31,11 +31,13 @@ class HomeController extends Controller
         $offers = Offer::where('status', 'active')->inRandomOrder()->get();
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
         $homepage = HomePage::with('brand')->latest('id')->first();
-        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
+
 
         // Split them into two collections: one for the left and one for the right
-        $brand_offers_left = $all_brand_offers->take(2); 
+        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
+        $brand_offers_left = $all_brand_offers->take(2);
         $brand_offers_right = $all_brand_offers->skip(2);
+        dd($brand_offers_right);
         $data = [
             'sliders'            => Slider::where('status', 'active')->latest('id')->get(),
             'banner'             => Banner::where('status', 'active')->latest('id')->first(),
