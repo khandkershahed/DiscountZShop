@@ -348,7 +348,8 @@ class HomeController extends Controller
             return view('frontend.pages.vendor.offer_details', $data);
             // return view('frontend.pages.offerDetails', $data);
         } else {
-            return redirect()->back()->with('Offer is not available.');
+            Session::flash('error', 'Offer is not available.');
+            return redirect()->back();
         }
     }
 
