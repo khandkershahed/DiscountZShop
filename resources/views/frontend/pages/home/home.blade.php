@@ -445,7 +445,7 @@
                                     <div class="pe-2">
                                         <h5>{{ $brand_offer_left->badge }}</h5>
                                         <h6>{{ $brand_offer_left->name }}</h6>
-                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offer_left->short_description !!}</p>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_left->short_description, 3, '...') !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
                                                 @if (!empty($brand_offer_left->price))
@@ -496,7 +496,7 @@
                                     <div class="pe-2">
                                         <h5>{{ $brand_offer_right->badge }}</h5>
                                         <h6>{{ $brand_offer_right->name }}</h6>
-                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offer_right->short_description !!}</p>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_right->short_description, 3, '...') !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
                                                 @if (!empty($brand_offer_right->price))
