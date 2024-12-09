@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'All Stores || DiscountZShop'">
+
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
@@ -76,6 +77,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -130,6 +132,7 @@
                 </div>
 
                 <div class="col-lg-9 pe-0">
+
                     <div class="tab-content" id="myTabContent">
 
                         {{-- Category All Offers Tab --}}
@@ -199,7 +202,6 @@
                             <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                 aria-labelledby="category-{{ $category->id }}" tabindex="0">
                                 <div class="row servicesContainer" id="servicesContainer">
-
                                     @foreach ($category->offers as $offer)
                                         <div class="col-lg-4 mt-4">
                                             <div class="card border-0 shadow-sm bg-light">
@@ -246,13 +248,38 @@
                                             </div>
                                         </div>
                                     @endforeach
-
-
                                 </div>
                             </div>
                         @endforeach
                     </div>
+
+                    {{-- Dynamic Pagination --}}
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            {{-- Previous page link --}}
+                            <li class="page-item @if ($offers->onFirstPage()) disabled @endif">
+                                <a class="page-link" href="{{ $offers->previousPageUrl() }}"
+                                    aria-label="Previous">Previous</a>
+                            </li>
+
+                            {{-- Loop through the pagination links --}}
+                            @for ($i = 1; $i <= $offers->lastPage(); $i++)
+                                <li class="page-item @if ($offers->currentPage() == $i) active @endif">
+                                    <a class="page-link" href="{{ $offers->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            {{-- Next page link --}}
+                            <li class="page-item @if (!$offers->hasMorePages()) disabled @endif">
+                                <a class="page-link" href="{{ $offers->nextPageUrl() }}" aria-label="Next">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+
                 </div>
+
+
+
 
             </div>
 

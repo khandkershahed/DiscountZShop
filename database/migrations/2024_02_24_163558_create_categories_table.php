@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->string('name')->index();
             $table->string('slug')->unique();
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->string('banner_image', 150)->nullable();
             $table->text('description')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');
+            
             $table->timestamps();
         });
     }

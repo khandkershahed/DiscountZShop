@@ -114,6 +114,24 @@ class HomeController extends Controller
         return view('frontend.pages.allBrand', $data);
     }
 
+    public function searchAllBrands(Request $request)
+    {
+        $query = $request->get('query');
+
+        if ($query) {
+            $brands = Brand::where('name', 'like', "%$query%")->get();
+        } else {
+            // If query is empty, we don't need to reload all the brands
+            $brands = Brand::latest()->get();
+        }
+
+        // Return the partial view with the brand list
+        return view('frontend.pages.partials.brand-list', compact('brands'));
+    }
+
+
+
+
     //brandDetails
     public function brandDetails($slug)
     {
@@ -226,15 +244,26 @@ class HomeController extends Controller
     }
 
     //allStore
+    // public function allStore()
+    // {
+    //     $data = [
+    //         'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
+    //         'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
+    //         'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->get(),
+    //     ];
+    //     return view('frontend.pages.allStore', $data);
+    // }
+
     public function allStore()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
             'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
-            'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->get(),
+            'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->paginate(12), // Pagination added here
         ];
         return view('frontend.pages.allStore', $data);
     }
+
 
     //storeDetails
     public function storeDetails($id)
@@ -319,16 +348,24 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
-    //allOffer
+
+
     // public function allOffer(Request $request)
     // {
     //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
-    //     $categories = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->limit(10)->latest()->get();
-    //     $offerss = Offer::latest()->get();
+    //     $categories = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
 
-    //     // $offers = Offer::latest()->get();
+    //     // Get selected category if it's passed in the request
+    //     $category_id = $request->category_id;
 
-    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offerss'));
+    //     // If a category is selected, fetch offers for that category, else fetch all offers
+    //     if ($category_id) {
+    //         $offers = Offer::where('category_id', $category_id)->latest()->get();
+    //     } else {
+    //         $offers = Offer::latest()->get(); // Default to all offers if no category is selected
+    //     }
+
+    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
     // }
 
     public function allOffer(Request $request)
@@ -341,13 +378,14 @@ class HomeController extends Controller
 
         // If a category is selected, fetch offers for that category, else fetch all offers
         if ($category_id) {
-            $offers = Offer::where('category_id', $category_id)->latest()->get();
+            $offers = Offer::where('category_id', $category_id)->latest()->paginate(12); // Paginate offers with 12 items per page
         } else {
-            $offers = Offer::latest()->get(); // Default to all offers if no category is selected
+            $offers = Offer::latest()->paginate(12); // Default to paginated offers
         }
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
     }
+
 
 
     //offerDetails

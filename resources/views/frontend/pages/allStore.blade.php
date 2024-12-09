@@ -14,6 +14,7 @@
         <div class="container">
 
             <div class="row py-5">
+
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
@@ -75,6 +76,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="row pb-1 servicesContainer divisionContainer cityContainer" id="">
@@ -153,7 +155,6 @@
             </div>
 
             <div class="row pb-4">
-
                 @foreach ($stores as $store)
                     <div class="col-lg-3">
                         <div class="card border-0 shadow-sm mb-4">
@@ -167,29 +168,23 @@
                                 <!-- Store Logo And Rating -->
                                 <div class="px-3 pb-3">
                                     <div class="d-flex justify-content-between align-items-center">
-
                                         <div class="store-logo">
                                             <img class="img-fluid"
                                                 src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                 alt="arong-logo.png" />
                                         </div>
-
                                         <div class="store-rating">
                                             <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}"
                                                 class="btn btn-common-one rounded-circle store-btn"><i
                                                     class="fa-solid fa-store" aria-hidden="true"></i>
                                             </a>
                                         </div>
-
                                     </div>
                                     <!-- Store Info -->
                                     <div class="pt-4 d-flex justify-content-between store_title">
                                         <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
                                             <div>
-                                                {{-- <h5 style="width: 100%;margin-bottom: 0.75rem;">{{ optional($store->brand)->name }}</h5> --}}
                                                 <h6>{{ $store->title }}</h6>
-                                                {{-- <h6 style="width: 100%;margin-bottom: 0.75rem;">{{ $store->title }}</h6>
-                                                <p>{{ $store->headquarter }}</p> --}}
                                             </div>
                                         </a>
                                         <div>
@@ -200,22 +195,30 @@
                                             </button>
                                         </div>
                                     </div>
-                                    {{-- <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">{{ $store->badge }}</span> Off
-                                        </small>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
 
-
+                <!-- Pagination Links -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item {{ $stores->onFirstPage() ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ $stores->previousPageUrl() }}">Previous</a>
+                        </li>
+                        @for ($i = 1; $i <= $stores->lastPage(); $i++)
+                            <li class="page-item {{ $i == $stores->currentPage() ? 'active' : '' }}">
+                                <a class="page-link" href="{{ $stores->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="page-item {{ $stores->hasMorePages() ? '' : 'disabled' }}">
+                            <a class="page-link" href="{{ $stores->nextPageUrl() }}">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+
 
         </div>
     </section>

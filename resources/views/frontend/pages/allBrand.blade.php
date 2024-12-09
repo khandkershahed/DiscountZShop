@@ -6,6 +6,7 @@
                 alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
         </div>
     </section>
+
     <!-- Brands All -->
     <section>
         <div class="container py-5">
@@ -16,7 +17,22 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div class="row pb-3">
+                <div class="col-lg-8">
+                    <!-- Optional Filter or Sorting Controls -->
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="text-end">
+                        <form class="d-flex" role="search" id="searchForm">
+                            <input class="form-control me-2" type="search" id="serviceSearch" placeholder="Search"
+                                aria-label="Search">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="row gx-5" id="servicesContainer">
                 @foreach ($categories as $category)
@@ -28,13 +44,6 @@
                                         <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
                                         <span class="store-devider"></span>
                                     </div>
-                                    {{-- <div>
-                                        <div class="pt-1">
-                                            <span class="badge text-end rounded-0 store-tags">
-                                                <span>30%</span>
-                                            </span>
-                                        </div>
-                                    </div> --}}
                                 </div>
                                 @foreach ($category->brands as $brand)
                                     <div class="col-lg-2 mb-3 mt-2">
@@ -60,23 +69,20 @@
 
         </div>
     </section>
-    <!-- Brands All End -->
+
+    <!-- Big Brands Section -->
     <section>
         <div class="container py-5 pt-0">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1>Big Brands Are Here</h1>
-                        {{-- <p class="w-lg-50 w-100 pt-3">
-                            Problems trying to resolve the conflict between <br />
-                            the two major realms of Classical physics: Newtonian
-                            mechanics
-                        </p> --}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section>
         <div class="container-fluid partners">
             <div class="container px-0">
@@ -94,22 +100,32 @@
     </section>
 
     @push('scripts')
-
-
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
-                    var query = $(this).val();
-                    $.ajax({
-                        url: "{{ route('brands.search.name') }}",
-                        method: 'GET',
-                        data: {
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#servicesContainer').html(data);
-                        }
-                    });
+                    var query = $(this).val(); // Get the input value
+
+                    if (query.length >= 2) { // Start searching after 2 characters
+                        $.ajax({
+                            url: "{{ route('brands.all.search.name') }}", // The URL to send the search request
+                            method: 'GET',
+                            data: {
+                                query: query // Send the search query to the backend
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(
+                                    data); // Update the brand list with the new data
+                            }
+                        });
+                    } else if (query.length === 0) { // If the search input is cleared
+                        $.ajax({
+                            url: "{{ route('brands.all.search.name') }}", // URL to fetch all brands
+                            method: 'GET',
+                            success: function(data) {
+                                $('#servicesContainer').html(data); // Reload all brands
+                            }
+                        });
+                    }
                 });
             });
         </script>
