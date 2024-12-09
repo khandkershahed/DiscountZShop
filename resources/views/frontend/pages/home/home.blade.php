@@ -423,7 +423,7 @@
     </section>
     <!-- Grab Your Offer End -->
     <!-- Promotion Product -->
-    {{-- @if (optional($homepage)->brand)
+    @if (optional($homepage)->brand)
         <section>
             <div class="container px-0 pb-70 biggest-deals">
                 <div class="row gx-4 promotion-container align-items-center">
@@ -442,21 +442,22 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="pe-2">
-                                        <h5>{{ $brand_offer_left->badge }}</h5>
-                                        <h6>{{ $brand_offer_left->name }}</h6>
-                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offer_left->short_description !!}</p>
+                                    <div class="pt-4 pe-2">
+
+                                        <h5>{{ $brand_offer_left->name }}</h5>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
-                                                @if (!empty($brand_offer_left->price))
+                                                <h6>{{ $brand_offer_left->badge }}</h6>
+                                                {{-- @if (!empty($brand_offer_left->price))
                                                     <del class="pt-2">BDT {{ $brand_offer_left->price }}</del>
                                                 @endif
                                                 @if (!empty($brand_offer_left->offer_price))
                                                     <h6 class="main-color">BDT {{ $brand_offer_left->offer_price }}</h6>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                             <div class="pe-4">
-                                                <a href="{{ route('offer.details', $brand_offer_left->slug) }}" class="btn-3">
+                                                <a href="{{ route('offer.details', $brand_offer_left->slug) }}" class="btn-{{ $loop->iteration }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                         height="30" viewBox="0 0 30 30" fill="none">
                                                         <circle cx="15" cy="15" r="15" fill="#F15A2D">
@@ -493,21 +494,22 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="pe-2">
-                                        <h5>{{ $brand_offers_right->badge }}</h5>
-                                        <h6>{{ $brand_offers_right->name }}</h6>
-                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! $brand_offers_right->short_description !!}</p>
+                                    <div class="pt-4 pe-2">
+                                        {{-- <h5>{{ $brand_offer_right->badge }}</h5> --}}
+                                        <h5>{{ $brand_offer_right->name }}</h5>
+                                        <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
-                                                @if (!empty($brand_offers_right->price))
-                                                    <del class="pt-2">BDT {{ $brand_offers_right->price }}</del>
+                                                <h6>{{ $brand_offer_right->badge }}</h6>
+                                                {{-- @if (!empty($brand_offer_right->price))
+                                                    <del class="pt-2">BDT {{ $brand_offer_right->price }}</del>
                                                 @endif
-                                                @if (!empty($brand_offers_right->offer_price))
-                                                    <h6 class="main-color">BDT {{ $brand_offers_right->offer_price }}</h6>
-                                                @endif
+                                                @if (!empty($brand_offer_right->offer_price))
+                                                    <h6 class="main-color">BDT {{ $brand_offer_right->offer_price }}</h6>
+                                                @endif --}}
                                             </div>
                                             <div class="pe-4">
-                                                <a href="{{ route('offer.details', $brand_offer_right->slug) }}" class="btn-3">
+                                                <a href="{{ route('offer.details', $brand_offer_right->slug) }}" class="btn-{{ $loop->iteration }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                         height="30" viewBox="0 0 30 30" fill="none">
                                                         <circle cx="15" cy="15" r="15" fill="#F15A2D">
@@ -536,7 +538,7 @@
                 <img src="{{ asset('images/NoOffers.png') }}" alt="No Data Available" class="img-fluid w-100">
             </div>
         </section>
-    @endif --}}
+    @endif
     <!-- Promotion Product End -->
     <!-- Grab By Location -->
     <section style="background-color: #f5f6f8">
@@ -915,10 +917,12 @@
                     <div class="slick-slider-partners">
                         @foreach ($brands as $brand)
                             <div class="items d-flex justify-content-center align-items-center partners-logos">
-                                <img class="img-fluid partners-logos-single"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                    alt=""
-                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                <a href="{{ route('brand.details', $brand->slug) }}">
+                                    <img class="img-fluid partners-logos-single"
+                                        src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                        alt=""
+                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -976,7 +980,7 @@
             </div>
         </section>
     @endif
-    
+
     @push('scripts')
         <script>
             $(document).ready(function() {
