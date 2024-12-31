@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css') }}" />
 </head>
 
 <body>
@@ -259,7 +260,7 @@
                                     <td valign="middle">
                                         <p>${value.name.length > 60 ? value.name.substring(0, 60) : value.name}</p>
                                     </td>
-                                    
+
                                     <td valign="middle">
                                         <div class="text-center">
                                             <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)">
