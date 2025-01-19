@@ -203,7 +203,7 @@
             <div class="row align-items-center">
                 <div class="col-5">
                     <div class="d-flex justify-content-around align-items-center">
-                        <a href="">
+                        <a href="{{ route('homePage') }}">
                             <div class="d-flex flex-column">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -220,10 +220,10 @@
                                         </defs>
                                     </svg>
                                 </span>
-                                <span class="footer-menus pt-3">Stores</span>
+                                <span class="footer-menus pt-3">Home</span>
                             </div>
                         </a>
-                        <a href="">
+                        <a href="{{ route('allOffer') }}">
                             <div class="d-flex flex-column">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -249,7 +249,7 @@
                 </div>
                 <div class="col-2">
                     <div class="footer-center-menus">
-                        <a href="">
+                        <a href="{{ route('homePage') }}">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                     viewBox="0 0 80 80" fill="none">
@@ -277,7 +277,7 @@
                 </div>
                 <div class="col-5">
                     <div class="d-flex justify-content-around align-items-center">
-                        <a href="">
+                        <a href="{{ route('allStore') }}">
                             <div class="d-flex flex-column">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -297,7 +297,7 @@
                                 <span class="footer-menus pt-3">Stores</span>
                             </div>
                         </a>
-                        <a href="">
+                        <a href="{{ route('allBrand') }}">
                             <div class="d-flex flex-column">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33"
