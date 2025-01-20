@@ -19,8 +19,8 @@
                         <a href="https://www.ngenitltd.com/" target="_blank"
                             data-saferedirecturl="https://www.google.com/url?q=https://www.ngenitltd.com/&amp;source=gmail&amp;ust=1683110822015000&amp;usg=AOvVaw1oh2knrZ8dutUp_6pTWSeQ">
                             <img src="http://www.discountzshop.com/storage/webSetting/site_logo_black/oWIkHcvg6U1725872126.png"
-                                height="80px" alt="NgenIt" border="0"
-                                width="230px" data-bit="iit" style="object-fit: contain">
+                                height="80px" alt="NgenIt" border="0" width="230px" data-bit="iit"
+                                style="object-fit: contain">
                         </a>
                     </td>
                 </tr>
@@ -62,7 +62,7 @@
                                         border-right:1px solid #f1f1f1;font-size:14px;text-align:left">
                                         &nbsp; {{ $brand->added->name }}</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th
                                         style="background-color:#f1f1f1;padding:10px 15px;font-size:12px;text-align:left">
@@ -70,6 +70,18 @@
                                     <td
                                         style="padding:10px 15px;border-bottom:1px solid #f1f1f1;border-top:1px solid #f1f1f1;border-right:1px solid #f1f1f1;font-size:12px;text-align:left">
                                         &nbsp; {{ ucfirst($brand->status) }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th
+                                        style="background-color:#f1f1f1;padding:10px 15px;font-size:12px;text-align:left">
+                                        Live Link</th>
+                                    <td style="padding:10px 15px;">
+                                        <a href="{{ route('brand.details', $brand->slug) }}"
+                                            style="display: inline-block; background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                                            View Brand
+                                        </a>
+                                    </td>
                                 </tr>
 
 
