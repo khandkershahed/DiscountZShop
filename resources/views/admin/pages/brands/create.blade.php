@@ -10,15 +10,12 @@
                         <div>
                             <a href="{{ route('admin.brands.index') }}" class="btn btn-light-info">
                                 <span class="svg-icon svg-icon-3">
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
-                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
-                                            fill="currentColor" />
-                                        <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
-                                            transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
-                                        <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
-                                            fill="currentColor" />
+                                        <path fill="currentColor" d="M14 17l-5-5 5-5v10z" />
                                     </svg>
+
                                 </span>
 
                                 Back to the list
@@ -119,43 +116,96 @@
                 $('#brandForm').validate({
                     // Define the validation rules
                     rules: {
-                        category_id: { required: true },
-                        category_type: { required: true },
-                        country_id: { required: true, minlength: 1 },
-                        division_id: { required: true, minlength: 1 },
-                        city_id: { required: true, minlength: 1 },
-                        area_id: { required: true, minlength: 1 },
-                        name: { required: true, minlength: 3 },
-                        // url: { required: true, url: true },
-                        status: { required: true },
-                        // about_title: { required: true },
-                        logo: { required: true },
-                        banner_image: { required: true },
-                        // offer_description_title: { required: true },
-                        // description_title: { required: true },
-                        // about: { required: true },
-                        // offer_description: { required: true },
-                        // description: { required: true }
+                        category_id: {
+                            required: true
+                        },
+                        category_type: {
+                            required: true
+                        },
+                        country_id: {
+                            required: true,
+                            minlength: 1
+                        },
+                        division_id: {
+                            required: true,
+                            minlength: 1
+                        },
+                        city_id: {
+                            required: true,
+                            minlength: 1
+                        },
+                        area_id: {
+                            required: true,
+                            minlength: 1
+                        },
+                        name: {
+                            required: true,
+                            minlength: 3
+                        },
+                        status: {
+                            required: true
+                        },
+                        logo: {
+                            required: true
+                        },
+                        banner_image: {
+                            required: true
+                        },
                     },
                     // Define error messages
                     messages: {
-                        category_id: { required: "Please select a category." },
-                        category_type: { required: "Please select a category type." },
-                        country_id: { required: "Please select at least one country." },
-                        division_id: { required: "Please select at least one division." },
-                        city_id: { required: "Please select at least one city." },
-                        area_id: { required: "Please select at least one area." },
-                        name: { required: "Please enter a name.", minlength: "Name should be at least 3 characters." },
-                        url: { required: "Please enter a valid URL." },
-                        logo: { required: "Please enter a valid Logo Image." },
-                        banner_image: { required: "Please enter a valid Banner Image." },
-                        status: { required: "Please select a status." },
-                        about_title: { required: "Please enter a section title." },
-                        offer_description_title: { required: "Please enter the offer description title." },
-                        description_title: { required: "Please enter the description title." },
-                        about: { required: "Please provide the section one description." },
-                        offer_description: { required: "Please provide the section three description." },
-                        description: { required: "Please provide the section four description." }
+                        category_id: {
+                            required: "Please select a category."
+                        },
+                        category_type: {
+                            required: "Please select a category type."
+                        },
+                        country_id: {
+                            required: "Please select at least one country."
+                        },
+                        division_id: {
+                            required: "Please select at least one division."
+                        },
+                        city_id: {
+                            required: "Please select at least one city."
+                        },
+                        area_id: {
+                            required: "Please select at least one area."
+                        },
+                        name: {
+                            required: "Please enter a name.",
+                            // minlength:"Name should be at least 3 characters."
+                        },
+                        url: {
+                            required: "Please enter a valid URL."
+                        },
+                        logo: {
+                            required: "Please enter a valid Logo Image."
+                        },
+                        banner_image: {
+                            required: "Please enter a valid Banner Image."
+                        },
+                        status: {
+                            required: "Please select a status."
+                        },
+                        about_title: {
+                            required: "Please enter a section title."
+                        },
+                        offer_description_title: {
+                            required: "Please enter the offer description title."
+                        },
+                        description_title: {
+                            required: "Please enter the description title."
+                        },
+                        about: {
+                            required: "Please provide the section one description."
+                        },
+                        offer_description: {
+                            required: "Please provide the section three description."
+                        },
+                        description: {
+                            required: "Please provide the section four description."
+                        }
                     },
                     // Customize error display
                     errorClass: 'is-invalid',
@@ -190,7 +240,6 @@
                     }
                 });
             });
-
         </script>
     @endpush
 

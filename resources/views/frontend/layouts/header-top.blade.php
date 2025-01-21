@@ -22,23 +22,32 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu toggler-menu py-3">
+
                                 <li class="dropdown-item pb-2">
                                     <a href=""><i class="fa-solid fa-house-user main-color pe-2"></i>
                                         Dashboard</a>
                                 </li>
-                                <li class="dropdown-item pb-2">
+
+                                {{-- <li class="dropdown-item pb-2">
                                     <a href=""><i class="fa-solid fa-wallet main-color pe-2"></i>
                                         Points</a>
                                 </li>
+
                                 <li class="dropdown-item pb-2">
                                     <a href=""><i class="fa-solid fa-percent main-color pe-3"></i>My
                                         Discounts</a>
-                                </li>
+                                </li> --}}
+
                                 <div class="d-flex justify-content-center align-items-center pt-3">
-                                    <button class="btn btn-common-one rounded-pill px-4 pt-2">
-                                        <i class="fa-solid fa-right-from-bracket"></i> Log Out
-                                    </button>
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-common-one rounded-pill px-4 pt-2">
+                                            <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                                        </button>
+                                    </form>
                                 </div>
+
+
                             </ul>
                         </div>
                     @else

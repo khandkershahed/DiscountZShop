@@ -1,0 +1,338 @@
+.mobile-footer {
+    display: none;
+}
+.mobile-homepage {
+    display: none;
+}
+.mobile-header {
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    .mobile-homepage {
+        display: block;
+    }
+    .main-desktop-header {
+        display: none;
+    }
+    .mobile-header {
+        display: block;
+    }
+    .desktop-homepage {
+        display: none;
+    }
+    .desktop-footer {
+        display: none;
+    }
+    .mobile-header {
+        background-color: #f15a2d;
+    }
+    .mobile-footer {
+        display: block;
+    }
+    .wish-ammount {
+        right: 55px;
+        border-radius: 16.13px;
+        background: #fff;
+        display: flex;
+        width: 20px;
+        padding: 4px 4px 2px 5px;
+        justify-content: center;
+        align-items: end;
+        position: absolute;
+        top: 35px;
+        height: 20px;
+        text-align: center;
+        line-height: 0.8;
+    }
+    .head-icons {
+        color: #fff;
+        font-family: "Font Awesome 5 Free";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px; /* 100% */
+    }
+    .mobile-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Ensures the footer stays on top of other content */
+        background-color: #f1f2f1; /* Set the desired background color */
+        color: #fff; /* Set text color for better contrast */
+        padding: 10px 0; /* Adjust padding as needed */
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+    }
+    .footer-menus {
+        color: #121212;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 0px;
+    }
+    .footer-center-menus {
+        position: relative;
+        top: -35px;
+        left: -18px;
+    }
+    /* Search Box */
+    .wrapper-search {
+        max-width: 100%;
+        margin-top: 95px;
+    }
+
+    .wrapper-search .search-input {
+        background: #fff;
+        width: 100%;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .search-input input {
+        height: 55px;
+        width: 100%;
+        height: 45px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0 60px 0 20px;
+        font-size: 12px;
+        border-radius: 5px;
+        background: #f1f2f1;
+    }
+
+    .search-input.active input {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .search-input.active .autocom-box li {
+        display: block;
+    }
+
+    .search-input .icon {
+        position: absolute;
+        right: 5px;
+        top: 0px;
+        height: 45px;
+        width: 45px;
+        text-align: center;
+        line-height: 45px;
+        font-size: 20px;
+        color: #644bff;
+        cursor: pointer;
+    }
+    ::placeholder {
+        color: blue; /* Set your desired placeholder color */
+        opacity: 1; /* Ensures full visibility of the color */
+    }
+    /* Search Box End */
+    .category-title {
+        color: #000;
+        font-family: Poppins;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-align: center;
+    }
+    .mobile-home-banner img {
+        width: 455px;
+        position: relative;
+        left: 0px;
+        margin-top: 15px;
+        margin-bottom: 28px;
+    }
+    .load-more-btn-mobile {
+        height: 23px;
+        flex-shrink: 0;
+        border-radius: 34.132px;
+        background: #f15a2d;
+        color: #fff;
+        font-family: Poppins;
+        font-size: 10.113px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 0;
+    }
+    .load-btn-area {
+        height: 160px;
+        background: #ffffffab;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        margin-top: -115px;
+    }
+    .coupon-images-mb img {
+        width: 50px;
+        border-radius: 100%;
+        position: relative;
+        left: -30px;
+        border: 2px solid orange;
+    }
+    .second-banner-mb img {
+        width: 410px;
+        position: relative;
+        margin-top: 20px;
+    }
+    .bg-panda {
+        background: conic-gradient(
+            from 72deg at 13.41% 78.24%,
+            #ff2b85 0deg,
+            #e8287f 360deg
+        );
+    }
+    .nav-tabs .nav-item.show .mb-link-tabs,
+    .nav-tabs .mb-link-tabs.active {
+        border-radius: 28.002px;
+        background: #f15a2d;
+        color: #fff;
+
+        font-family: Poppins;
+        font-size: 9.656px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .nav-tabs .mb-link-tabs {
+        border-radius: 28.002px;
+        border: 0.966px solid #c2c2c2;
+        color: #4a4a4a;
+        font-family: Poppins;
+        font-size: 9.656px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .offers-img img {
+        width: 35px;
+        height: 33px;
+    }
+    .ticket {
+        border-radius: 20px;
+        border: 0.5px dashed #f15a2d;
+        background: #ffe5e5;
+        display: flex;
+        align-items: center;
+        color: #000;
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        justify-content: center;
+    }
+    .icons-mobile-login {
+        display: flex;
+        justify-content: end;
+        position: relative;
+        top: -36px;
+        left: -15px;
+    }
+    .mobile-login-btn {
+        border-radius: 10px;
+        background: #f15a2d;
+        height: 50px;
+        width: 300px;
+        color: white;
+        border: 0;
+        padding-top: 100px;
+    }
+    .deals_title {
+        font-size: 12px;
+    }
+    .login-mobile .mobile-login-btn {
+        margin-top: 50px;
+        border-radius: 10px;
+        background: #f15a2d;
+        width: 100%;
+        padding: 10px;
+        color: white;
+        border: 0;
+        padding-top: 10px;
+        margin-bottom: 10px;
+    }
+    .site-text {
+        color: #f15a2d !important;
+    }
+    .login-mobile p {
+        padding-top: 29px;
+        margin-bottom: 150px !important;
+    }
+    .mfs {
+        font-size: 12px;
+    }
+    .form-control {
+        border-radius: 5px;
+        background: rgba(196, 196, 196, 0.2);
+        color: rgba(0, 0, 0, 0.3);
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        height: 50px;
+        border: 0;
+        box-shadow: none !important;
+    }
+    .regi-mobile .mobile-regi-btn {
+        margin-top: 50px;
+        border-radius: 10px;
+        background: #f15a2d;
+        width: 100%;
+        padding: 10px;
+        color: white;
+        border: 0;
+        padding-top: 10px;
+        margin-bottom: 10px;
+    }
+    .search-input-store input {
+        height: 30px;
+        width: 100%;
+        outline: none;
+        border: 1px solid #25252525;
+        border-radius: 5px;
+        padding: 0 20px 0 10px;
+    }
+    .search-input-store .icon {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        line-height: 25px;
+        font-size: 10px;
+        color: var(--secondary-color-one);
+        background-color: var(--primary-color);
+        cursor: pointer;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: 1px solid var(--primary-color);
+    }
+    .store-btn {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+        background-color: #f15a2d;
+        border-radius: 100%;
+        line-height: 0;
+        padding: 3px;
+        border: 0;
+    }
+    .brand-search {
+        position: absolute;
+        right: 18px;
+        margin-top: -24px;
+    }
+    .shop-heart {
+        position: absolute;
+        top: 20px;
+        left: 125px;
+    }
+}
+
+.bodies {
+    color: red;
+}
