@@ -1,49 +1,48 @@
 <?php
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SliderController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\LogController;
-use App\Http\Controllers\Admin\AreaController;
-use App\Http\Controllers\Admin\CityController;
-use App\Http\Controllers\Admin\IconController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\OfferController;
-use App\Http\Controllers\Admin\StaffController;
-use App\Http\Controllers\Admin\StoreController;
-use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AreaController;
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Admin\Auth\NewPasswordController;
+use App\Http\Controllers\Admin\Auth\PasswordController;
+use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DivisonController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EmailSettingController;
+use App\Http\Controllers\Admin\FaqCategoryController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
-use App\Http\Controllers\Admin\OfferTypeController;
+use App\Http\Controllers\Admin\IconController;
+use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\OfferController;
+use App\Http\Controllers\Admin\OfferTypeController;
 use App\Http\Controllers\Admin\PageBannerController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\Admin\FaqCategoryController;
-use App\Http\Controllers\Admin\EmailSettingController;
-use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Admin\UserManagementController;
-use App\Http\Controllers\Admin\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\Auth\VerifyEmailController;
-use App\Http\Controllers\Admin\TermsAndConditionController;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SpecialOfferController;
+use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\StoreController;
+use App\Http\Controllers\Admin\TermsAndConditionController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\SliderController;
+use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
@@ -130,12 +129,12 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resources(
         [
-            'user'             => UserController::class, //done
-            'staff'            => StaffController::class, //done
+            'user'             => UserController::class,           //done
+            'staff'            => StaffController::class,          //done
             'user-management'  => UserManagementController::class, //done
             'admin-managemnet' => UserManagementController::class, //done
-            'categories'       => CategoryController::class, //done
-            'icons'            => IconController::class, //done
+            'categories'       => CategoryController::class,       //done
+            'icons'            => IconController::class,           //done
             'newsletters'      => NewsletterController::class,
             'brands'           => BrandController::class, //done
             'contacts'         => ContactController::class,
