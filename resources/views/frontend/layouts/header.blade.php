@@ -26,6 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item d-flex align-items-center">
+
                             <!-- Current Location -->
                             <a class="nav-link current-location shadow-sm" aria-current="page"
                                 title="Location Wise Current Discount" href="javascript:;">
@@ -44,8 +45,11 @@
                                     </g>
                                 </svg>
                             </a>
+
                             <div class="dropdown position-static">
+
                                 <p class="ms-3 mb-2">{{ $city }} , {{ $country }}</p>
+
                                 @if ($categories->count() > 0)
                                     <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu"
                                         type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
@@ -138,6 +142,7 @@
 
                                     </ul>
                                 @endif
+                                
                             </div>
                         </li>
                     </ul>

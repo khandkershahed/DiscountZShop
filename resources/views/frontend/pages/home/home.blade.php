@@ -586,7 +586,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+
+                                    {{-- <div class="col-lg-8">
                                         <div class="d-flex justify-content-space-between align-items-center">
                                             <form class="d-flex w-100" role="search">
                                                 <div class="d-flex w-100">
@@ -600,7 +601,8 @@
                                                 </button>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> --}}
+
                                 </div>
                             </div>
                             <div class="card-body p-2 py-0">
