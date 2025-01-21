@@ -23,82 +23,6 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-=======
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item d-flex align-items-center">
-
-                            <!-- Current Location -->
-                            <a class="nav-link current-location shadow-sm" aria-current="page"
-                                title="Location Wise Current Discount" href="javascript:;">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
-                                    viewBox="0 0 512 512" style="enable-background: new 0 0 512 512"
-                                    xml:space="preserve" class="">
-                                    <g>
-                                        <path
-                                            d="M341.476 338.285c54.483-85.493 47.634-74.827 49.204-77.056C410.516 233.251 421 200.322 421 166 421 74.98 347.139 0 256 0 165.158 0 91 74.832 91 166c0 34.3 10.704 68.091 31.19 96.446l48.332 75.84C118.847 346.227 31 369.892 31 422c0 18.995 12.398 46.065 71.462 67.159C143.704 503.888 198.231 512 256 512c108.025 0 225-30.472 225-90 0-52.117-87.744-75.757-139.524-83.715zm-194.227-92.34a15.57 15.57 0 0 0-.517-.758C129.685 221.735 121 193.941 121 166c0-75.018 60.406-136 135-136 74.439 0 135 61.009 135 136 0 27.986-8.521 54.837-24.646 77.671-1.445 1.906 6.094-9.806-110.354 172.918L147.249 245.945zM256 482c-117.994 0-195-34.683-195-60 0-17.016 39.568-44.995 127.248-55.901l55.102 86.463a14.998 14.998 0 0 0 25.298 0l55.101-86.463C411.431 377.005 451 404.984 451 422c0 25.102-76.313 60-195 60z"
-                                            fill="#ffffff" opacity="1" data-original="#000000" class="">
-                                        </path>
-                                        <path
-                                            d="M256 91c-41.355 0-75 33.645-75 75s33.645 75 75 75 75-33.645 75-75-33.645-75-75-75zm0 120c-24.813 0-45-20.187-45-45s20.187-45 45-45 45 20.187 45 45-20.187 45-45 45z"
-                                            fill="#ffffff" opacity="1" data-original="#000000" class=""></path>
-                                    </g>
-                                </svg>
-                            </a>
-
-                            <div class="dropdown position-static">
-
-                                <p class="ms-3 mb-2">{{ $city }} , {{ $country }}</p>
-
-                                @if ($categories->count() > 0)
-                                    <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu"
-                                        type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
-                                        data-bs-auto-close="outside" aria-expanded="false">
-                                        <span>
-                                            Categories
-                                            <div class="ps-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                                    viewBox="0 0 22 22" fill="none">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M3.2998 5.4999C3.2998 5.20816 3.4157 4.92838 3.62199 4.72209C3.82828 4.5158 4.10807 4.3999 4.3998 4.3999H17.5998C17.8915 4.3999 18.1713 4.5158 18.3776 4.72209C18.5839 4.92838 18.6998 5.20816 18.6998 5.4999C18.6998 5.79164 18.5839 6.07143 18.3776 6.27772C18.1713 6.48401 17.8915 6.5999 17.5998 6.5999H4.3998C4.10807 6.5999 3.82828 6.48401 3.62199 6.27772C3.4157 6.07143 3.2998 5.79164 3.2998 5.4999ZM3.2998 10.9999C3.2998 10.7082 3.4157 10.4284 3.62199 10.2221C3.82828 10.0158 4.10807 9.8999 4.3998 9.8999H10.9998C11.2915 9.8999 11.5713 10.0158 11.7776 10.2221C11.9839 10.4284 12.0998 10.7082 12.0998 10.9999C12.0998 11.2916 11.9839 11.5714 11.7776 11.7777C11.5713 11.984 11.2915 12.0999 10.9998 12.0999H4.3998C4.10807 12.0999 3.82828 11.984 3.62199 11.7777C3.4157 11.5714 3.2998 11.2916 3.2998 10.9999ZM3.2998 16.4999C3.2998 16.2082 3.4157 15.9284 3.62199 15.7221C3.82828 15.5158 4.10807 15.3999 4.3998 15.3999H17.5998C17.8915 15.3999 18.1713 15.5158 18.3776 15.7221C18.5839 15.9284 18.6998 16.2082 18.6998 16.4999C18.6998 16.7916 18.5839 17.0714 18.3776 17.2777C18.1713 17.484 17.8915 17.5999 17.5998 17.5999H4.3998C4.10807 17.5999 3.82828 17.484 3.62199 17.2777C3.4157 17.0714 3.2998 16.7916 3.2998 16.4999Z"
-                                                        fill="#F15A2D" />
-                                                </svg>
-                                            </div>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
-                                        aria-labelledby="dropdownMenuButton1"
-                                        style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
-
-                                        <div class="container">
-
-                                            <div class="row">
-                                                <div class="col-lg-3 bg-white px-0 category-menus">
-
-                                                    <ul class="nav nav-tabs flex-column border-0" id="myTab"
-                                                        role="tablist">
-
-                                                        @foreach ($categories as $header_category)
-                                                            <li class="nav-item" role="presentation">
-                                                                <button
-                                                                    class="nav-link main-category w-100 border-0 text-start ps-4 rounded-0 {{ $loop->first ? 'active' : '' }}"
-                                                                    id="home-{{ $header_category->id }}-tab"
-                                                                    data-bs-toggle="tab"
-                                                                    data-bs-target="#home-{{ $header_category->id }}"
-                                                                    type="button" role="tab"
-                                                                    aria-controls="home-{{ $header_category->id }}"
-                                                                    aria-selected="true">
-                                                                    {{ $header_category->name }}
-                                                                </button>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
->>>>>>> 5dcad1e3f5754ed5a192e3ee52bebac8d8dad682
 
                     <!-- Navigation Links -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -246,7 +170,7 @@
 =======
                                     </ul>
                                 @endif
-                                
+
                             </div>
                         </li>
                     </ul>
