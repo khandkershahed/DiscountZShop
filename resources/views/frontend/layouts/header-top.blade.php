@@ -3,8 +3,10 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <a href="{{ route('homePage') }}" class="logo-main">
-                    <img class="img-fluid" src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
-                        alt="">
+                    <img class="img-fluid"
+                        src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                        alt="Company Logo"
+                        onerror="this.onerror=null; console.error('Primary logo failed to load. Switching to fallback image.'); this.src='http://www.discountzshop.com/storage/webSetting/site_logo_black/oWIkHcvg6U1725872126.png';">
                 </a>
             </div>
             <div class="col-lg-6">
