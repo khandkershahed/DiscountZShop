@@ -48,7 +48,8 @@
                                     </svg>
                                 </a>
                                 <div class="dropdown position-static">
-                                    <p class="ms-3 mb-2">{{ $city }} , {{ $country }}</p>
+                                    <p class="ms-3 mb-2">{{ $city }} ,
+                                        {{ $country }}</p>
                                     @if ($categories->count() > 0)
                                         <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu"
                                             type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
@@ -140,9 +141,9 @@
                                                 </div>
                                             </div>
 
-<<<<<<< HEAD
                                         </ul>
                                     @endif
+
                                 </div>
                             </li>
                         </ul>
@@ -166,39 +167,7 @@
                                 <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
                                     href="{{ route('allStore') }}">Stores <span class="ps-3"></a>
                             </li>
-                            {{-- <li class="nav-item">
-=======
-                                    </ul>
-                                @endif
 
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link custom-nav-link {{ Route::is('homePage') ? 'active' : '' }}"
-                                href="{{ route('homePage') }}">Home <span class="ps-3"> |
-                                </span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-nav-link {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
-                                href="{{ route('allOffer') }}">Offers <span class="ps-3"> |
-                                </span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-nav-link {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
-                                href="{{ route('allBrand') }}">Brands <span class="ps-3"> |
-                                </span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
-                                href="{{ route('allStore') }}">Stores <span class="ps-3"></a>
-                        </li>
-                        {{-- <li class="nav-item">
->>>>>>> 5dcad1e3f5754ed5a192e3ee52bebac8d8dad682
-                            <a class="nav-link custom-nav-link {{ Route::is('vendors') ? 'active' : '' }}"
-                                href="{{ route('vendors') }}">Vendors</a>
-                        </li> --}}
                         </ul>
                         <!-- Search Form -->
 
@@ -341,9 +310,6 @@
                             <a href="{{ optional($setting)->twitter_url }}" class="p-2">
                                 <i class="fa-brands fa-twitter" style="font-size: 22px"></i>
                             </a>
-                            {{-- <a href="{{ $setting->instagram_url }}" class="p-2">
-                                <i class="fa-brands fa-instagram" style="font-size: 22px"></i>
-                            </a> --}}
                             <a href="{{ optional($setting)->linkedin_url }}" class="p-2">
                                 <i class="fa-brands fa-linkedin-in" style="font-size: 22px"></i>
                             </a>
@@ -371,7 +337,7 @@
         <!-- Offcanvas Menu End -->
     </div>
 </div>
-
+{{-- Mobile View --}}
 <div class="mobile-header fixed-top">
     <header>
         <div class="container-fluid">
@@ -442,3 +408,4 @@
     </div>
     {{-- Mobile Menus End --}}
 </div>
+{{-- Mobile View End --}}

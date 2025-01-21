@@ -2040,23 +2040,23 @@
         <script>
             $(document).ready(function() {
                 $('.mobile-partners').slick({
-                    infinite: true, // Allows continuous looping of the slides
-                    slidesToShow: 3, // Shows 3 slides at a time
-                    slidesToScroll: 1, // Scrolls one slide at a time
-                    autoplay: true, // Enables autoplay
-                    autoplaySpeed: 5000, // Adjust the speed of autoplay (in milliseconds)
-                    speed: 2000, // Transition speed between slides (in milliseconds)
-                    cssEase: 'linear', // Smooth transition effect (for continuous sliding)
-                    draggable: false, // Disables dragging (for continuous slide effect)
-                    swipe: false, // Disables swipe functionality (optional for continuous)
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    speed: 2000,
+                    cssEase: 'linear',
+                    draggable: false,
+                    swipe: false,
                     responsive: [{
                         breakpoint: 768,
                         settings: {
                             infinite: true,
-                            slidesToShow: 6, // On small screens, show only 1 slide at a time
+                            slidesToShow: 6,
                             slidesToScroll: 6,
-                            autoplay: true, // Ensures autoplay works on smaller screens
-                            autoplaySpeed: 5000 // Maintains autoplay speed on smaller screens
+                            autoplay: true,
+                            autoplaySpeed: 5000
                         }
                     }]
                 });
