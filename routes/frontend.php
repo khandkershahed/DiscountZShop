@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Frontend\HomeController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'homePage'])->name('homePage');
 
@@ -29,6 +29,10 @@ Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisi
 Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
 Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
+Route::get('/stores/search', [HomeController::class, 'searchOStoreName'])->name('stores.search');
+
+Route::get('/coupon/search', [HomeController::class, 'searchCouponName'])->name('coupon.search');
+
 //Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
 
@@ -38,10 +42,8 @@ Route::get('/get-wishlist', [HomeController::class, 'GetWishlist']);
 Route::get('/wishlist-product', [HomeController::class, 'WishlistProduct'])->name('wishlist.product');
 Route::get('/wishlist/product/remove/{rowId}', [HomeController::class, 'RemoveWishlistTemplateOne']);
 
-
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');
-
 
 //Brand
 Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand');
@@ -63,6 +65,7 @@ Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->nam
 Route::get('/store/search/area', [HomeController::class, 'searchAreaName'])->name('store.search.area');
 
 
+
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 
@@ -72,7 +75,6 @@ Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
 //Faq
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
-
 
 Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 

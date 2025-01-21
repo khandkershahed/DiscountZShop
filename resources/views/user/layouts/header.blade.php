@@ -25,7 +25,8 @@
             <div class="d-flex align-items-stretch" id="kt_header_nav">
             </div>
             <div class="d-flex align-items-stretch flex-shrink-0">
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
+
+                {{-- <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
                         data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                         <span class="svg-icon svg-icon-1">
@@ -278,13 +279,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
                         href="../../demo1/dist/documentation/getting-started/dark-mode.html">
                         <i class="fonticon-sun fs-2"></i>
                     </a>
                 </div>
+
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
@@ -312,8 +315,8 @@
                             <a href="{{ route('profile.edit') }}" class="menu-link px-5">My
                                 Profile</a>
                         </div>
-                        <div class="separator my-2"></div>
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
+
+                        {{-- <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
                             <a href="#" class="menu-link px-5">
                                 <span class="menu-title position-relative">Language
                                     <span
@@ -365,7 +368,8 @@
                                         </span>French</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+
                         <div class="menu-item px-5 my-1">
                             <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
                                 Settings</a>
@@ -380,7 +384,8 @@
                             </form>
                         </div>
 
-                        <div class="separator my-2"></div>
+                        {{-- <div class="separator my-2"></div>
+
                         <div class="menu-item px-5">
                             <div class="menu-content px-5">
                                 <label
@@ -393,7 +398,8 @@
                                     <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
+
                     </div>
                 </div>
             </div>

@@ -1,26 +1,25 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Faq;
-use App\Models\Brand;
-use App\Models\Offer;
-use App\Models\Store;
-use App\Models\Banner;
-use App\Models\Coupon;
-use App\Models\Slider;
-use App\Models\AboutUs;
-use App\Models\Category;
-use App\Models\HomePage;
-use App\Models\PageBanner;
-use Illuminate\Http\Request;
-use App\Models\PrivacyPolicy;
-use App\Models\TermsAndCondition;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
+use App\Models\Banner;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Coupon;
 use App\Models\Division;
+use App\Models\Faq;
+use App\Models\HomePage;
+use App\Models\Offer;
 use App\Models\OfferType;
-use Illuminate\Support\Facades\Session;
+use App\Models\PageBanner;
+use App\Models\PrivacyPolicy;
+use App\Models\Slider;
+use App\Models\Store;
+use App\Models\TermsAndCondition;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -28,14 +27,13 @@ class HomeController extends Controller
     public function homePage()
     {
         // Retrieve offers and apply limits directly on queries
-        $offers = Offer::where('status', 'active')->inRandomOrder()->get();
+        $offers       = Offer::where('status', 'active')->inRandomOrder()->get();
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
-        $homepage = HomePage::with('brand')->latest('id')->first();
-
+        $homepage     = HomePage::with('brand')->latest('id')->first();
 
         // Split them into two collections: one for the left and one for the right
-        $all_brand_offers = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
-        $brand_offers_left = $all_brand_offers->take(2);
+        $all_brand_offers   = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
+        $brand_offers_left  = $all_brand_offers->take(2);
         $brand_offers_right = $all_brand_offers->skip(2);
         // dd($brand_offers_right);
         $data = [
@@ -58,7 +56,6 @@ class HomeController extends Controller
             'brand_offers_left'  => $brand_offers_left,
             'brand_offers_right' => $brand_offers_right,
         ];
-
 
         return view('frontend.pages.home.home', $data);
     }
@@ -84,8 +81,8 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'about')->latest('id')->first(),
-            'about' => AboutUs::latest('id')->first(),
-            'brands' => Brand::latest()->get(),
+            'about'       => AboutUs::latest('id')->first(),
+            'brands'      => Brand::latest()->get(),
         ];
         return view('frontend.pages.about', $data);
     }
@@ -98,20 +95,19 @@ class HomeController extends Controller
         return view('frontend.pages.contact', $data);
     }
 
-
     //allBrand
     public function allBrand()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            'categories' => Category::with('brands') // Eager load the brands relationship
-                ->orderBy('name', 'ASC') // Order categories by name in ascending order
-                ->latest('id') // Order categories by the latest ID (newest first)
-                ->active() // Assuming you have an active scope in your Category model
+            'categories'  => Category::with('brands') // Eager load the brands relationship
+                ->orderBy('name', 'ASC')                  // Order categories by name in ascending order
+                ->latest('id')                            // Order categories by the latest ID (newest first)
+                ->active()                                // Assuming you have an active scope in your Category model
                 ->get(),
 
             // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            'brands' => Brand::latest()->get(),
+            'brands'      => Brand::latest()->get(),
         ];
         return view('frontend.pages.allBrand', $data);
     }
@@ -131,14 +127,11 @@ class HomeController extends Controller
         return view('frontend.pages.partials.brand-list', compact('brands'));
     }
 
-
-
-
     //brandDetails
     public function brandDetails($slug)
     {
         $data = [
-            'brand' => Brand::where('slug', $slug)->first(),
+            'brand'       => Brand::where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
         ];
         return view('frontend.pages.brandDetails', $data);
@@ -158,7 +151,7 @@ class HomeController extends Controller
         $brand = Brand::with('stores')->where('slug', $slug)->first();
         if ($brand) {
             $data = [
-                'brand' => $brand,
+                'brand'       => $brand,
                 'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
             ];
             return view('frontend.pages.vendor.overview', $data);
@@ -172,7 +165,7 @@ class HomeController extends Controller
         $brand = Brand::with('stores')->where('slug', $slug)->first();
         if ($brand) {
             $data = [
-                'brand' => $brand,
+                'brand'       => $brand,
                 'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
             ];
             return view('frontend.pages.vendor.stores', $data);
@@ -186,7 +179,7 @@ class HomeController extends Controller
         $brand = Brand::with('stores', 'offers')->where('slug', $slug)->first();
         if ($brand) {
             $data = [
-                'brand' => $brand,
+                'brand'       => $brand,
                 'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
             ];
             return view('frontend.pages.vendor.offers', $data);
@@ -239,7 +232,7 @@ class HomeController extends Controller
     public function couponDetails($slug)
     {
         $data = [
-            'coupon' => Coupon::where('slug', $slug)->first(),
+            'coupon'      => Coupon::where('slug', $slug)->first(),
             'page_banner' => PageBanner::where('page_name', 'coupon')->latest('id')->first(),
         ];
         return view('frontend.pages.couponDetails', $data);
@@ -259,19 +252,18 @@ class HomeController extends Controller
     public function allStore()
     {
         $data = [
-            'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
+            'page_banner'   => PageBanner::where('page_name', 'store')->latest('id')->first(),
             'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
-            'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->paginate(12), // Pagination added here
+            'stores'        => Store::where('status', 'active')->orderBy('title', 'ASC')->paginate(12), // Pagination added here
         ];
         return view('frontend.pages.allStore', $data);
     }
-
 
     //storeDetails
     public function storeDetails($id)
     {
         $data = [
-            'store' => Store::findOrFail($id),
+            'store'       => Store::findOrFail($id),
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
         ];
         return view('frontend.pages.storeDetails', $data);
@@ -297,7 +289,7 @@ class HomeController extends Controller
     public function searchDivisionName(Request $request)
     {
         $latest_stores = [];
-        $query = $request->input('division_id');
+        $query         = $request->input('division_id');
 
         if ($query) {
             $latest_stores = Store::where('division_id', 'like', "%{$query}%")
@@ -316,7 +308,7 @@ class HomeController extends Controller
     public function searchCityName(Request $request)
     {
         $latest_stores = [];
-        $query = $request->input('city_id');
+        $query         = $request->input('city_id');
 
         if ($query) {
             $latest_stores = Store::where('city_id', 'like', "%{$query}%")
@@ -335,7 +327,7 @@ class HomeController extends Controller
     public function searchAreaName(Request $request)
     {
         $latest_stores = [];
-        $query = $request->input('area_id');
+        $query         = $request->input('area_id');
 
         if ($query) {
             $latest_stores = Store::where('area_id', 'like', "%{$query}%")
@@ -349,8 +341,6 @@ class HomeController extends Controller
 
         return response()->json(['html' => $responseHtml]);
     }
-
-
 
     // public function allOffer(Request $request)
     // {
@@ -373,7 +363,7 @@ class HomeController extends Controller
     public function allOffer(Request $request)
     {
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
-        $categories = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
+        $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
 
         // Get selected category if it's passed in the request
         $category_id = $request->category_id;
@@ -388,26 +378,24 @@ class HomeController extends Controller
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
     }
 
-
-
     //offerDetails
     public function offerDetails($slug)
     {
         $offerDetails = Offer::where('slug', $slug)->first();
-        $brand = Brand::with('stores')->where('id', $offerDetails->brand_id)->first();
+        $brand        = Brand::with('stores')->where('id', $offerDetails->brand_id)->first();
 
         $data = [
-            'brand'         => $brand,
-            'offerDetails'  => $offerDetails,
-            'page_banner'   => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+            'brand'        => $brand,
+            'offerDetails' => $offerDetails,
+            'page_banner'  => PageBanner::where('page_name', 'brand')->latest('id')->first(),
         ];
 
         if ($offerDetails && $brand) {
-            Session::flash('warning', 'This Offer is not available right now.');
+            // Session::flash('warning', 'This Offer is not available right now.');
             return view('frontend.pages.vendor.offer_details', $data);
             // return view('frontend.pages.offerDetails', $data);
         } else {
-            Session::flash('error', 'Offer is not available.');
+            // Session::flash('error', 'Offer is not available.');
             return redirect()->back();
         }
     }
@@ -428,10 +416,45 @@ class HomeController extends Controller
         return view('frontend.pages.allOffer_search', compact('offers'))->render();
     }
 
+    //searchOStoreName
+    public function searchOStoreName(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search for stores based on the query, or get all stores if query is empty
+        if ($query) {
+            $latest_stores = Store::where('title', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $latest_stores = Store::latest()->get();
+        }
+
+        // Return the results as HTML to be inserted into the page
+        return view('frontend.pages.allStore_search', compact('latest_stores'))->render();
+    }
+
+    public function searchCouponName(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search for stores based on the query, or get all stores if query is empty
+        if ($query) {
+            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            // return back();
+        }
+
+        // Return the results as HTML to be inserted into the page
+        return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
+    }
+
     public function searchOfferDivisionName(Request $request)
     {
         $offerss = [];
-        $query = $request->input('division_id');
+        $query   = $request->input('division_id');
 
         if ($query) {
             $offerss = Offer::where('division_id', 'like', "%{$query}%")
@@ -466,7 +489,7 @@ class HomeController extends Controller
     public function searchOfferCityName(Request $request)
     {
         $offerss = [];
-        $query = $request->input('city_id');
+        $query   = $request->input('city_id');
 
         if ($query) {
             $offerss = Offer::where('city_id', 'like', "%{$query}%")
@@ -485,7 +508,7 @@ class HomeController extends Controller
     public function searchOfferAreaName(Request $request)
     {
         $offerss = [];
-        $query = $request->input('area_id');
+        $query   = $request->input('area_id');
 
         if ($query) {
             $offerss = Offer::where('area_id', 'like', "%{$query}%")
@@ -503,21 +526,20 @@ class HomeController extends Controller
     public function categoryDetails($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        $data = [
+        $data     = [
             'page_banner' => PageBanner::where('page_name', 'offer')->latest('id')->first(),
-            'category' => $category,
-            'offerss' => Offer::where('category_id', $category->id)->get(),
+            'category'    => $category,
+            'offerss'     => Offer::where('category_id', $category->id)->get(),
 
         ];
         return view('frontend.pages.categoryDetails', $data);
     }
 
-
     public function termsCondition()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'terms')->latest('id')->first(),
-            'terms' => TermsAndCondition::latest('id')->first(),
+            'terms'       => TermsAndCondition::latest('id')->first(),
         ];
         return view('frontend.pages.termsCondition', $data);
     }
@@ -525,7 +547,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
-            'terms' => PrivacyPolicy::latest('id')->first(),
+            'terms'       => PrivacyPolicy::latest('id')->first(),
         ];
         return view('frontend.pages.privacyPolicy', $data);
     }
@@ -533,7 +555,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs' => Faq::orderBy('order', 'ASC')->get(),
+            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }
@@ -545,7 +567,7 @@ class HomeController extends Controller
         $request->validate(['search' => "required"]);
 
         $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
-        $item = $request->search;
+        $item        = $request->search;
 
         $brands = Brand::where('name', 'LIKE', "%$item%")
             ->orWhere('offer_description_title', "LIKE", "%$item%")
@@ -565,7 +587,6 @@ class HomeController extends Controller
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
     }
 
-
     public function WishlistProduct()
     {
         return view('frontend.pages.wishlist');
@@ -580,11 +601,11 @@ class HomeController extends Controller
 
         // Add the product to the wishlist
         Cart::instance('wishlist')->add([
-            'id' => $id,
-            'name' => $product->name,
-            'qty' => 1,
-            'price' => 0,
-            'weight' => 1,
+            'id'      => $id,
+            'name'    => $product->name,
+            'qty'     => 1,
+            'price'   => 0,
+            'weight'  => 1,
             'options' => [
                 'image' => $product->image,
                 // No price included
@@ -594,18 +615,17 @@ class HomeController extends Controller
         return response()->json(['success' => 'Successfully added to your wishlist']);
     }
 
-
     public function GetWishlist()
     {
-        $cartWishlist = Cart::instance('wishlist')->content(); // Limiting to 3 products
+        $cartWishlist    = Cart::instance('wishlist')->content(); // Limiting to 3 products
         $cartWishlistQty = Cart::instance('wishlist')->count();
-        $cartTotal = Cart::instance('wishlist')->total();
+        $cartTotal       = Cart::instance('wishlist')->total();
 
-        return response()->json(array(
-            'cartWishlist' => $cartWishlist,
+        return response()->json([
+            'cartWishlist'    => $cartWishlist,
             'cartWishlistQty' => $cartWishlistQty,
-            'cartTotal' => $cartTotal,
-        ));
+            'cartTotal'       => $cartTotal,
+        ]);
     }
 
     public function RemoveWishlistTemplateOne($rowId)

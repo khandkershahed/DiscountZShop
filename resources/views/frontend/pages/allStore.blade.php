@@ -60,27 +60,28 @@
 
                                 <!-- Search Store -->
                                 <div class="wrapper-store">
+
                                     <div class="search-input-store">
-                                        <input type="text" id="serviceSearch" autocomplete="off" name=""
-                                            placeholder="Type to search..." />
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                                </path>
-                                            </svg>
-                                        </div>
+
+                                        <form action="">
+                                            <input type="text" id="serviceSearch" autocomplete="off" name="" placeholder="Type to search..." />
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+                                                </svg>
+                                            </div>
+                                        </form>
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="row pb-1 servicesContainer divisionContainer cityContainer" id="">
-
+                <div class="row pb-1 servicesContainer divisionContainer cityContainer" id="servicesContainer">
                     @foreach ($latest_stores as $latest_store)
                         <div class="col-lg-3">
                             <div class="card border-0 shadow-sm mb-4">
@@ -105,14 +106,12 @@
                                                         class="fa-solid fa-store" aria-hidden="true"></i>
                                                 </a>
                                             </div>
-
                                         </div>
                                         <!-- Store Info -->
                                         <div class="pt-4 d-flex justify-content-between store_title">
                                             <a
                                                 href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                                 <div>
-                                                    {{-- <h5 style="width: 98%;margin-bottom: 0.75rem;">{{ $latest_store->title }}</h5> --}}
                                                     <h6>{{ $latest_store->title }}</h6>
                                                 </div>
                                             </a>
@@ -124,23 +123,15 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        {{-- <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">{{ $latest_store->badge }}</span> Off
-                                        </small>
-                                    </div> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
 
             </div>
+
         </section>
 
         <!-- All Stores -->
@@ -223,7 +214,9 @@
 
             </div>
         </section>
+
     </div>
+
     <div class="mobile-homepage" style="margin-top: 6rem;margin-bottom: 8rem;">
         <div class="container">
             <div class="row align-items-center">
@@ -319,6 +312,7 @@
             </div>
         </div>
     </div>
+
     @push('scripts')
         <script>
             $(document).ready(function() {
@@ -420,6 +414,62 @@
                         });
                     } else {
                         $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
+                    }
+                });
+            });
+        </script>
+
+        {{-- //Store Title  --}}
+
+        {{-- <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ route('stores.search') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainer').html(data);
+                        }
+                    });
+                });
+            });
+        </script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+
+                    // If the input field is cleared (query is empty), fetch all stores
+                    if (query === "") {
+                        // Send an empty query to fetch all stores
+                        $.ajax({
+                            url: "{{ route('stores.search') }}",
+                            method: 'GET',
+                            data: {
+                                query: ""
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(data); // Revert to all stores
+                            }
+                        });
+                    } else {
+                        // Search with the typed query
+                        $.ajax({
+                            url: "{{ route('stores.search') }}",
+                            method: 'GET',
+                            data: {
+                                query: query
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(
+                                    data); // Update the list with search results
+                            }
+                        });
                     }
                 });
             });
