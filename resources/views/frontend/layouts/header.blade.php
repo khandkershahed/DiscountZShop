@@ -23,8 +23,6 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-=======
                 </div>
 
                 <!-- Navigation Links -->
@@ -98,7 +96,6 @@
                                                             </li>
                                                         @endforeach
                                                     </ul>
->>>>>>> 5dcad1e3f5754ed5a192e3ee52bebac8d8dad682
 
                     <!-- Navigation Links -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -216,37 +213,9 @@
                                                 </div>
                                             </div>
 
-<<<<<<< HEAD
-                                        </ul>
-                                    @endif
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link custom-nav-link {{ Route::is('homePage') ? 'active' : '' }}"
-                                    href="{{ route('homePage') }}">Home <span class="ps-3"> |
-                                    </span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link custom-nav-link {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
-                                    href="{{ route('allOffer') }}">Offers <span class="ps-3"> |
-                                    </span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link custom-nav-link {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
-                                    href="{{ route('allBrand') }}">Brands <span class="ps-3"> |
-                                    </span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
-                                    href="{{ route('allStore') }}">Stores <span class="ps-3"></a>
-                            </li>
-                            {{-- <li class="nav-item">
-=======
                                     </ul>
                                 @endif
-                                
+
                             </div>
                         </li>
                     </ul>
@@ -271,7 +240,6 @@
                                 href="{{ route('allStore') }}">Stores <span class="ps-3"></a>
                         </li>
                         {{-- <li class="nav-item">
->>>>>>> 5dcad1e3f5754ed5a192e3ee52bebac8d8dad682
                             <a class="nav-link custom-nav-link {{ Route::is('vendors') ? 'active' : '' }}"
                                 href="{{ route('vendors') }}">Vendors</a>
                         </li> --}}
