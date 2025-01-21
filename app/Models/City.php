@@ -21,6 +21,6 @@ class City extends Model
     }
     public function division()
     {
-        return $this->belongsTo(Division::class, 'country_id');
+        return $this->belongsTo(Division::class, 'division_id');
     }
 }

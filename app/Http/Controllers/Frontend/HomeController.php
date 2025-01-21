@@ -342,24 +342,7 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
-    // public function allOffer(Request $request)
-    // {
-    //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
-    //     $categories = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
-
-    //     // Get selected category if it's passed in the request
-    //     $category_id = $request->category_id;
-
-    //     // If a category is selected, fetch offers for that category, else fetch all offers
-    //     if ($category_id) {
-    //         $offers = Offer::where('category_id', $category_id)->latest()->get();
-    //     } else {
-    //         $offers = Offer::latest()->get(); // Default to all offers if no category is selected
-    //     }
-
-    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
-    // }
-
+    //allOffer
     public function allOffer(Request $request)
     {
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
@@ -469,22 +452,6 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
-    public function mapDivision(Request $request)
-    {
-
-        $division = $request->input('division');
-
-        if ($division) {
-            $division = Division::with('cities', 'areas')->where('name', 'like', "%{$division}%")->first();
-        } else {
-            $division = '';
-        }
-
-        $responseHtml = view('frontend.pages.home.partial.map_division', ['division' => $division])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
     //searchCityName
     public function searchOfferCityName(Request $request)
     {
@@ -519,6 +486,22 @@ class HomeController extends Controller
         }
 
         $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
+
+        return response()->json(['html' => $responseHtml]);
+    }
+
+    public function mapDivision(Request $request)
+    {
+
+        $division = $request->input('division');
+
+        if ($division) {
+            $division = Division::with('cities', 'areas')->where('name', 'like', "%{$division}%")->first();
+        } else {
+            $division = '';
+        }
+
+        $responseHtml = view('frontend.pages.home.partial.map_division', ['division' => $division])->render();
 
         return response()->json(['html' => $responseHtml]);
     }
