@@ -60,7 +60,7 @@
                             'title' => 'Offer Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
                             'routes' => [
-                                
+
                                 'admin.brands.index',
                                 'admin.brands.create',
                                 'admin.brands.edit',
@@ -130,11 +130,11 @@
                                     'routes' => ['admin.offer.index', 'admin.offer.create', 'admin.offer.edit'],
                                     'route' => 'admin.offer.index',
                                 ],
-                                [
-                                    'title' => 'Special Offer',
-                                    'routes' => ['admin.special-offer.index', 'admin.special-offer.create', 'admin.special-offer.edit'],
-                                    'route' => 'admin.special-offer.index',
-                                ],
+                                // [
+                                //     'title' => 'Special Offer',
+                                //     'routes' => ['admin.special-offer.index', 'admin.special-offer.create', 'admin.special-offer.edit'],
+                                //     'route' => 'admin.special-offer.index',
+                                // ],
                                 [
                                     'title' => 'Coupon List',
                                     'routes' => ['admin.coupon.index', 'admin.coupon.create', 'admin.coupon.edit'],
