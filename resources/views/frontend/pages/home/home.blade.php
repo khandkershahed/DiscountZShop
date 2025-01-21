@@ -302,7 +302,6 @@
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
                                                 aria-labelledby="home-tab" tabindex="0">
-
                                                 <div class="row">
                                                     @foreach ($alloffers as $alloffer)
                                                         <!-- Removed the limit -->
@@ -353,7 +352,6 @@
                                                         </div>
                                                     @endforeach
                                                 </div>
-
                                             </div>
 
                                             @foreach ($categories as $offercategory)
@@ -862,7 +860,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="slick-slider-normal">
-
                             <div class="items">
                                 <a href="{{ $homepage->offer_slider_image_one_link }}">
                                     <div>
@@ -1019,14 +1016,40 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="mobile-home-banner">
-                        <img src="{{ asset('images/mobile.png') }}" alt="">
+                    <div class="custom-slider pb-5 pt-3">
+                        <div>
+                            <a href="{{ $banner->image_one_url }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $banner->image_two_url }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $banner->image_three_url }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
                     </div>
+                    {{-- <div class="mobile-home-banner">
+                        <img src="{{ asset('images/mobile.png') }}" alt="">
+                    </div> --}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1062,10 +1085,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Babies & Toys</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1101,10 +1124,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1140,10 +1163,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1179,10 +1202,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1218,10 +1241,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1257,10 +1280,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1296,10 +1319,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1335,10 +1358,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1374,10 +1397,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1413,10 +1436,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1452,10 +1475,10 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-3 mb-3">
-                    <div class="">
+                    <a href="#" class="">
                         <div class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="83" height="83"
                                 viewBox="0 0 83 83" fill="none">
@@ -1491,7 +1514,7 @@
                             </svg>
                         </div>
                         <p class="category-title">Home & Decors</p>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-12">
                     <div class="load-btn-area">
@@ -1504,9 +1527,8 @@
                     <div class="row align-items-center">
                         <div class="col-6">
                             <div class="d-flex align-items-center">
-                                <h6 class="mb-0">Available Coupon...</h6>
-                                <div class="ps-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="13"
+                                <p class="mb-0">Available Coupon...
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
                                         viewBox="0 0 21 13" fill="none">
                                         <path
                                             d="M16.6934 8.21872C16.3539 8.21872 16.0781 8.48188 16.0781 8.80575C16.0781 9.12968 16.3539 9.39279 16.6934 9.39279C17.0328 9.39279 17.3086 9.12968 17.3086 8.80575C17.3086 8.48188 17.0328 8.21872 16.6934 8.21872Z"
@@ -1518,93 +1540,86 @@
                                             d="M11.7715 3.5224C11.4321 3.5224 11.1562 3.78556 11.1562 4.10946C11.1562 4.43336 11.4321 4.69651 11.7715 4.69651C12.1109 4.69651 12.3867 4.43336 12.3867 4.10946C12.3867 3.78556 12.1109 3.5224 11.7715 3.5224Z"
                                             fill="#F15A2D" />
                                     </svg>
-                                </div>
+                                </p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm rounded-pill"
                                     placeholder="Recipient's username" aria-label="Recipient's username"
-                                    aria-describedby="basic-addon2">
+                                    aria-describedby="basic-addon2" style="height: 10px;">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="row mt-4 gx-5">
-                        <div class="col-6">
-                            <div>
-                                <div class="card border-0 p-0" style="background-color: #1E1E1E;">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex align-items-center justify-content-end w-100 py-2">
-                                            <div class="coupon-images-mb">
-                                                <img class=""
-                                                    src="http://www.discountzshop.com/storage/coupon/logo/W1L8VtY8hA1729401322.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div>
-                                                <div class="text-start">
-                                                    <div class="">
-                                                        <h5 class="fw-bold" style="color: #F15A2D">50%</h5>
-                                                        <span class="text-white">OFF</span>
-                                                    </div>
+                    <div class="coupon-slide pt-4">
+                        <div>
+                            <div class="card border-0 p-0" style="background-color: #1E1E1E;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center justify-content-end w-100 py-2">
+                                        <div class="coupon-images-mb">
+                                            <img class=""
+                                                src="http://www.discountzshop.com/storage/coupon/logo/W1L8VtY8hA1729401322.jpg"
+                                                alt="">
+                                        </div>
+                                        <div>
+                                            <div class="text-start">
+                                                <div class="">
+                                                    <p class="fw-bold" style="color: #F15A2D">50% <span
+                                                            class="text-white">OFF</span></p>
                                                 </div>
-                                                <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
-                                                <span style="font-size: 12px;">
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center pe-3">
-                                                        <span class="text-white">Code: "WELBC"</span>
-                                                        <i class="fa-solid fa-copy text-white"></i>
-                                                    </div>
-                                                </span>
                                             </div>
+                                            <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
+                                            <span style="font-size: 12px;">
+                                                <div class="d-flex justify-content-between align-items-center pe-3">
+                                                    <span class="text-white pe-2"
+                                                        style="font-size: 9px"><small>Code: "WELBC"</small></span>
+                                                    <i class="fa-solid fa-copy text-white"></i>
+                                                </div>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="card border-0 p-0" style="background-color: #1E1E1E;">
-                                    <div class="card-body p-0">
-                                        <div class="d-flex align-items-center justify-content-end w-100 py-2">
-                                            <div class="coupon-images-mb">
-                                                <img class=""
-                                                    src="http://www.discountzshop.com/storage/coupon/logo/W1L8VtY8hA1729401322.jpg"
-                                                    alt="">
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    <div class="text-start">
-                                                        <h5 class="fw-bold" style="color: #F15A2D">50%</h5>
-                                                        <span class="text-white">OFF</span>
-                                                    </div>
+                        <div>
+                            <div class="card border-0 p-0" style="background-color: #1E1E1E;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center justify-content-end w-100 py-2">
+                                        <div class="coupon-images-mb">
+                                            <img class=""
+                                                src="http://www.discountzshop.com/storage/coupon/logo/W1L8VtY8hA1729401322.jpg"
+                                                alt="">
+                                        </div>
+                                        <div>
+                                            <div class="text-start">
+                                                <div class="">
+                                                    <p class="fw-bold" style="color: #F15A2D">50% <span
+                                                            class="text-white">OFF</span></p>
                                                 </div>
-                                                <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
-                                                <span style="font-size: 12px;">
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center pe-3">
-                                                        <span class="text-white">Code: "WELBC"</span>
-                                                        <i class="fa-solid fa-copy text-white"></i>
-                                                    </div>
-                                                </span>
                                             </div>
+                                            <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
+                                            <span style="font-size: 12px;">
+                                                <div class="d-flex justify-content-between align-items-center pe-3">
+                                                    <span class="text-white pe-2" style="font-size: 9px">Code:
+                                                        "WELBC"</span>
+                                                    <i class="fa-solid fa-copy text-white"></i>
+                                                </div>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="row bg-panda mt-4">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center py-3">
                         <p class="text-white">Get 20% on App</p>
-                        <div>
-                            <input type="email" class="form-control form-control-sm rounded-2"
-                                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1624,28 +1639,22 @@
                         <li class="nav-item me-1 mb-2" role="presentation">
                             <button class="nav-link mb-link-tabs active" id="home-tab" data-bs-toggle="tab"
                                 data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                aria-selected="true">Hot Deals</button>
+                                aria-selected="true" style="font-size: 10px">Hot Deals</button>
                         </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                aria-selected="false">Cashback</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="contact-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                aria-selected="false">Flat %</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="contact-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                aria-selected="false">Buy 1 Get 1</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="contact-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                aria-selected="false">Upto 50%</button>
-                        </li>
+                        @if ($categories->count() > 0)
+                            @foreach ($categories as $index => $offercategory)
+                                <li class="nav-item me-1 mb-2"
+                                    role="presentation">
+                                    <button class="nav-link mb-link-tabs" style="font-size: 10px"
+                                        id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
+                                        data-bs-target="#home-{{ $offercategory->id }}-pane" type="button"
+                                        role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
+                                        aria-selected="true">
+                                        {{ $offercategory->name }}
+                                    </button>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
@@ -1746,8 +1755,39 @@
             </div>
             <div class="row">
                 <div class="col-12 ps-0">
-                    <div class="second-banner-mb">
-                        <img clss="img-fluid" src="{{ asset('images/mobile-2.png') }}" alt="">
+                    <div class="custom-slider pb-5 pt-3">
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_one_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_two_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_three_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_four_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1794,7 +1834,8 @@
                                             <div class="p-0">
                                                 <div>
                                                     <img class="img-fluid w-100"
-                                                        src="{{ asset('images/bata-banner.png') }}" alt="">
+                                                        src="{{ asset('images/bata-banner.png') }}"
+                                                        alt="">
                                                 </div>
                                                 <div class="d-flex align-items-center py-2 px-2">
                                                     <div>
@@ -1846,7 +1887,8 @@
                                             <div class="p-0">
                                                 <div>
                                                     <img class="img-fluid w-100"
-                                                        src="{{ asset('images/bata-banner.png') }}" alt="">
+                                                        src="{{ asset('images/bata-banner.png') }}"
+                                                        alt="">
                                                 </div>
                                                 <div class="d-flex align-items-center py-2 px-2">
                                                     <div>
@@ -1898,7 +1940,8 @@
                                             <div class="p-0">
                                                 <div>
                                                     <img class="img-fluid w-100"
-                                                        src="{{ asset('images/bata-banner.png') }}" alt="">
+                                                        src="{{ asset('images/bata-banner.png') }}"
+                                                        alt="">
                                                 </div>
                                                 <div class="d-flex align-items-center py-2 px-2">
                                                     <div>
@@ -1950,7 +1993,8 @@
                                             <div class="p-0">
                                                 <div>
                                                     <img class="img-fluid w-100"
-                                                        src="{{ asset('images/bata-banner.png') }}" alt="">
+                                                        src="{{ asset('images/bata-banner.png') }}"
+                                                        alt="">
                                                 </div>
                                                 <div class="d-flex align-items-center py-2 px-2">
                                                     <div>
@@ -1997,7 +2041,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="load-btn-area mb-3">
+                                    <div class="load-btn-area mb-0 py-3">
                                         <button class="btn load-more-btn-mobile">See More</button>
                                     </div>
                                 </div>
@@ -2011,14 +2055,45 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 ps-0">
-                    <div class="second-banner-mb">
-                        <img clss="img-fluid" src="{{ asset('images/mobile-3.png') }}" alt="">
+                <div class="col-12">
+                    <div class="custom-slider pb-5 pt-3">
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_one_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_two_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_three_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $homepage->offer_slider_image_four_link }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row bg-light" style="margin-bottom: 6rem">
-                <h4 class="text-center py-4 pb-2">Partner Brands</h4>
+            <div class="row bg-light" style="margin-bottom: 10rem">
+                <h4 class="text-center py-4 pb-4">Partner Brands</h4>
                 <div class="col-12">
                     <div class="mobile-partners">
                         @foreach ($brands as $brand)
@@ -2037,6 +2112,39 @@
         </div>
     </div>
     @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                $('.coupon-slide').slick({
+                    dots: false, // Disable dots for navigation
+                    arrows: false, // Disable arrows
+                    infinite: true, // Enable infinite scrolling
+                    slidesToShow: 2, // Show 2 slides at a time
+                    slidesToScroll: 1, // Scroll 1 slide at a time
+                    adaptiveHeight: true, // Adjust height dynamically
+                    speed: 300, // Transition speed
+                    autoplay: true, // Enable autoplay
+                    autoplaySpeed: 3000, // Autoplay interval
+                    pauseOnHover: true, // Pause autoplay on hover
+                    pauseOnDotsHover: true // Pause autoplay on dots hover
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                $('.custom-slider').slick({
+                    dots: true,
+                    arrows: false,
+                    slidesToShow: 1,
+                    adaptiveHeight: true,
+                    infinite: true,
+                    speed: 300,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    pauseOnHover: true,
+                    pauseOnDotsHover: true
+                });
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 $('.mobile-partners').slick({
