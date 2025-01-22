@@ -9,40 +9,30 @@
         </div>
     </section>
     <!-- Hero End -->
-    
+
     <section class="faq-section py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center mb-5">
-                        <h2 class="main-color">FAQs</h2>
-                        {{-- <p class="w-lg-50 w-100 pt-3">
-                            Problems trying to resolve the conflict between <br />
-                            the two major realms of Classical physics: Newtonian
-                            mechanics
-                        </p> --}}
-                    </div>
-                </div>
-                <div class="col-lg-8 offset-lg-2">
+                <div class="col-lg-10 offset-lg-2">
                     <div class="accordion">
                         @if ($faqs->count() > 0)
                             @foreach ($faqs as $faq)
                                 <div class="accordion-item">
                                     <button id="accordion-button-1" aria-expanded="false">
-                                        <span class="accordion-title">{{$faq->question}}</span>
+                                        <span class="accordion-title">{{ $faq->question }}</span>
                                         <span class="icon" aria-hidden="true"></span>
                                     </button>
                                     <div class="accordion-content">
                                         <p>
-                                            {{$faq->answer}}
+                                            {{ $faq->answer }}
                                         </p>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                        <div class="accordion-item">
-                            <h5 class="text-center">No Item available</h5>
-                        </div>
+                            <div class="accordion-item">
+                                <h5 class="text-center">No Item available</h5>
+                            </div>
                         @endif
                     </div>
                 </div>

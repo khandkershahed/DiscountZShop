@@ -417,6 +417,7 @@ class HomeController extends Controller
         return view('frontend.pages.allStore_search', compact('latest_stores'))->render();
     }
 
+    //searchCouponName
     public function searchCouponName(Request $request)
     {
         $query = $request->input('query');
@@ -434,6 +435,7 @@ class HomeController extends Controller
         return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
     }
 
+    //searchOfferDivisionName
     public function searchOfferDivisionName(Request $request)
     {
         $offerss = [];
@@ -490,6 +492,41 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
+    public function filterOffers(Request $request)
+    {
+        $offersQuery = Offer::query();
+
+        // Apply filters if selected
+        if ($request->has('division_id') && $request->division_id) {
+            $offersQuery->where('division_id', $request->division_id);
+        }
+
+        if ($request->has('city_id') && $request->city_id) {
+            $offersQuery->where('city_id', $request->city_id);
+        }
+
+        if ($request->has('area_id') && $request->area_id) {
+            $offersQuery->where('area_id', $request->area_id);
+        }
+
+        if ($request->has('search') && $request->search) {
+            $offersQuery->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        // Fetch the filtered offers with pagination
+        $offers = $offersQuery->paginate(12);
+
+        // Return the filtered offers with pagination and HTML content
+        $html       = view('offers.partials.offer-list', compact('offers'))->render();
+        $pagination = view('offers.partials.pagination', compact('offers'))->render();
+
+        return response()->json([
+            'html'       => $html,
+            'pagination' => $pagination,
+        ]);
+    }
+
+    //mapDivision
     public function mapDivision(Request $request)
     {
 
@@ -506,6 +543,7 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
+    //categoryDetails
     public function categoryDetails($slug)
     {
         $category = Category::where('slug', $slug)->first();
@@ -518,6 +556,7 @@ class HomeController extends Controller
         return view('frontend.pages.categoryDetails', $data);
     }
 
+    //termsCondition
     public function termsCondition()
     {
         $data = [
@@ -526,6 +565,8 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.termsCondition', $data);
     }
+
+    //privacyPolicy
     public function privacyPolicy()
     {
         $data = [
@@ -534,6 +575,8 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.privacyPolicy', $data);
     }
+
+    //faq
     public function faq()
     {
         $data = [
