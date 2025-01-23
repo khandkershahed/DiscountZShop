@@ -109,7 +109,7 @@
                                 <ul class="ps-0 footer-link"
                                     style="list-style-type: none;position: relative;top: 10px;">
                                     <li class="mb-2">
-                                        <a href="{{ route('faq') }}">FAQ</a>
+                                        <a href="{{ route('discountZShop.faq') }}">FAQ</a>
                                     </li>
                                     {{-- <li class="mb-2">
                                         <a href="">New Offer</a>
@@ -180,10 +180,10 @@
                                         class="main-color">{{ optional($setting)->website_name }}</a>
                                 </p>
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <a href="{{ route('termsCondition') }}" class="pe-3"
+                                    <a href="{{ route('discount.termsCondition') }}" class="pe-3"
                                         style="font-size: 14px; color: #808083">Terms
                                         & Condition</a>
-                                    <a href="{{ route('privacyPolicy') }}" class=""
+                                    <a href="{{ route('discount.privacy.policy') }}" class=""
                                         style="font-size: 14px; color: #808083">Privacy
                                         Policy</a>
                                 </div>

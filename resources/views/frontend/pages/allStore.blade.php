@@ -12,9 +12,7 @@
         <!-- Top Stores -->
         <section>
             <div class="container">
-
                 <div class="row py-5">
-
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
@@ -22,10 +20,9 @@
                                 <span class="store-devider"></span>
                             </div>
                             <div class="d-flex align-items-center">
-
-                                <!-- Filter Store -->
+                                <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="custom_select1" name="division_id"
+                                    <select class="form-select cust-select" id="division_filter" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off">
                                         <option value="">Select Division</option>
                                         @forelse ($divisions as $division)
@@ -36,9 +33,9 @@
                                     </select>
                                 </div>
 
-                                <!-- Filter Store -->
+                                <!-- Filter Store - City -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="custom_select2" name="city_id"
+                                    <select class="form-select cust-select" id="city_filter" name="city_id"
                                         data-placeholder="Select City" autocomplete="off">
                                         <option value="">Select City</option>
                                         @foreach ($citys as $city)
@@ -47,9 +44,9 @@
                                     </select>
                                 </div>
 
-                                <!-- Filter Store -->
+                                <!-- Filter Store - Area -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="custom_select3" name="area_id"
+                                    <select class="form-select cust-select" id="area_filter" name="area_id"
                                         data-placeholder="Select Area">
                                         <option value="">Select Area</option>
                                         @foreach ($areas as $area)
@@ -60,28 +57,29 @@
 
                                 <!-- Search Store -->
                                 <div class="wrapper-store">
-
                                     <div class="search-input-store">
-
                                         <form action="">
-                                            <input type="text" id="serviceSearch" autocomplete="off" name="" placeholder="Type to search..." />
+                                            <input type="text" id="storeSearch" autocomplete="off" name="search"
+                                                placeholder="Type to search..." />
                                             <div class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                                    </path>
                                                 </svg>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="row pb-1 servicesContainer divisionContainer cityContainer" id="servicesContainer">
+                <!-- Store Listings Container -->
+                <div class="row pb-1 storeContainer" id="servicesContainer">
                     @foreach ($latest_stores as $latest_store)
                         <div class="col-lg-3">
                             <div class="card border-0 shadow-sm mb-4">
@@ -90,20 +88,20 @@
                                     <div class="main-store-banner">
                                         <img class="img-fluid rounded-2"
                                             src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
-                                            alt="arong-banner.jpg" />
+                                            alt="store-banner" />
                                     </div>
-                                    <!-- Store Logo And Rating -->
+                                    <!-- Store Logo and Rating -->
                                     <div class="px-3 pb-3">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="store-logo">
                                                 <img class="img-fluid"
                                                     src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                    alt="arong-logo.png" />
+                                                    alt="store-logo" />
                                             </div>
                                             <div class="store-rating">
                                                 <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
-                                                    class="btn btn-common-one rounded-circle store-btn"><i
-                                                        class="fa-solid fa-store" aria-hidden="true"></i>
+                                                    class="btn btn-common-one rounded-circle store-btn">
+                                                    <i class="fa-solid fa-store"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -111,15 +109,13 @@
                                         <div class="pt-4 d-flex justify-content-between store_title">
                                             <a
                                                 href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
-                                                <div>
-                                                    <h6>{{ $latest_store->title }}</h6>
-                                                </div>
+                                                <h6>{{ $latest_store->title }}</h6>
                                             </a>
                                             <div>
                                                 <button class="btn border-0 p-0 m-0 ps-2">
                                                     <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
                                                         title="Store Location" data-bs-toggle="modal"
-                                                        data-bs-target="#store-Location" aria-hidden="true"></i>
+                                                        data-bs-target="#store-Location"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -129,10 +125,11 @@
                         </div>
                     @endforeach
                 </div>
-
             </div>
-
         </section>
+
+
+
 
         <!-- All Stores -->
         <section>
@@ -194,28 +191,15 @@
                             </div>
                         </a>
                     @endforeach
-
-                    <!-- Pagination Links -->
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item {{ $stores->onFirstPage() ? 'disabled' : '' }}">
-                                <a class="page-link" href="{{ $stores->previousPageUrl() }}">Previous</a>
-                            </li>
-                            @for ($i = 1; $i <= $stores->lastPage(); $i++)
-                                <li class="page-item {{ $i == $stores->currentPage() ? 'active' : '' }}">
-                                    <a class="page-link" href="{{ $stores->url($i) }}">{{ $i }}</a>
-                                </li>
-                            @endfor
-                            <li class="page-item {{ $stores->hasMorePages() ? '' : 'disabled' }}">
-                                <a class="page-link" href="{{ $stores->nextPageUrl() }}">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
 
-
+                <!-- Pagination Links -->
+                <nav aria-label="Page navigation example">
+                    {{ $stores->links() }} <!-- Laravel's built-in pagination -->
+                </nav>
             </div>
         </section>
+
 
     </div>
 
@@ -318,163 +302,77 @@
     </div>
 
     @push('scripts')
+
         <script>
             $(document).ready(function() {
-                $('#serviceSearch').on('keyup', function() {
-                    var query = $(this).val();
+                // Listen for changes in the filter fields
+                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
+                    // Collect filter values
+                    let division_id = $('#division_filter').val();
+                    let city_id = $('#city_filter').val();
+                    let area_id = $('#area_filter').val();
+                    let search_query = $('#storeSearch').val();
+
+                    // Check if all fields are cleared
+                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
+                        // If cleared, fetch all stores without any filters
+                        fetchStores();
+                    } else {
+                        // AJAX request to fetch filtered stores
+                        $.ajax({
+                            url: '{{ route('store.filter') }}',
+                            method: 'GET',
+                            data: {
+                                division_id: division_id,
+                                city_id: city_id,
+                                area_id: area_id,
+                                search: search_query
+                            },
+                            success: function(response) {
+                                // Update store listings with the response
+                                $('#servicesContainer').html(response.stores);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error fetching stores: ' + error);
+                            }
+                        });
+                    }
+                });
+
+                // Fetch all stores when the page loads (in case no filter is applied)
+                function fetchStores() {
                     $.ajax({
-                        url: "{{ route('store.search.name') }}",
+                        url: '{{ route('store.filter') }}',
                         method: 'GET',
                         data: {
-                            query: query
+                            division_id: '',
+                            city_id: '',
+                            area_id: '',
+                            search: ''
                         },
-                        success: function(data) {
-                            $('.servicesContainer').html(data);
+                        success: function(response) {
+                            // Update store listings with the response
+                            $('#servicesContainer').html(response.stores);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching stores: ' + error);
                         }
                     });
-                });
-            });
-        </script>
+                }
 
-        <script>
-            // === === === === === Division === === === === ===
+                // Initially load all stores if no filters are applied
+                fetchStores();
 
-            $(document).ready(function() {
-                $('#custom_select1').on('change', function() {
+                // Clear filters button functionality
+                $('#clearFilters').click(function() {
+                    // Reset all filters and the search field
+                    $('#division_filter').val('');
+                    $('#city_filter').val('');
+                    $('#area_filter').val('');
+                    $('#storeSearch').val('');
 
-                    var divisionId = $(this).val(); // Get selected division ID
-
-                    if (divisionId) {
-
-                        $.ajax({
-                            url: "{{ route('store.search.division') }}",
-                            method: 'GET',
-                            data: {
-                                division_id: divisionId
-                            },
-                            success: function(data) {
-                                $('.divisionContainer').html(data.html);
-                            },
-                            error: function() {
-                                $('.divisionContainer').html(
-                                    '<p>An error occurred while fetching offers.</p>');
-                            }
-                        });
-                    } else {
-                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
-                    }
-                });
-            });
-
-            // ====== City ====
-
-            $(document).ready(function() {
-                $('#custom_select2').on('change', function() {
-                    var cityId = $(this).val();
-
-                    if (cityId) {
-                        $.ajax({
-                            url: "{{ route('store.search.city') }}",
-                            method: 'GET',
-                            data: {
-                                city_id: cityId
-                            },
-                            success: function(data) {
-                                $('.divisionContainer').html(data.html);
-                            },
-                            error: function() {
-                                $('.divisionContainer').html(
-                                    '<p>An error occurred while fetching offers.</p>');
-                            }
-                        });
-                    } else {
-                        $('.divisionContainer').html('<p>Please select a city to see offers.</p>');
-                    }
-                });
-            });
-
-            // ============ area ============
-
-            $(document).ready(function() {
-                $('#custom_select3').on('change', function() {
-
-                    var areaId = $(this).val(); // Get selected division ID
-
-                    if (areaId) {
-
-                        $.ajax({
-                            url: "{{ route('store.search.area') }}",
-                            method: 'GET',
-                            data: {
-                                area_id: areaId
-                            },
-                            success: function(data) {
-                                $('.divisionContainer').html(data.html);
-                            },
-                            error: function() {
-                                $('.divisionContainer').html(
-                                    '<p>An error occurred while fetching offers.</p>');
-                            }
-                        });
-                    } else {
-                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
-                    }
-                });
-            });
-        </script>
-
-        {{-- //Store Title  --}}
-
-        {{-- <script>
-            $(document).ready(function() {
-                $('#serviceSearch').on('keyup', function() {
-                    var query = $(this).val();
-                    $.ajax({
-                        url: "{{ route('stores.search') }}",
-                        method: 'GET',
-                        data: {
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#servicesContainer').html(data);
-                        }
-                    });
-                });
-            });
-        </script> --}}
-
-        <script>
-            $(document).ready(function() {
-                $('#serviceSearch').on('keyup', function() {
-                    var query = $(this).val();
-
-                    // If the input field is cleared (query is empty), fetch all stores
-                    if (query === "") {
-                        // Send an empty query to fetch all stores
-                        $.ajax({
-                            url: "{{ route('stores.search') }}",
-                            method: 'GET',
-                            data: {
-                                query: ""
-                            },
-                            success: function(data) {
-                                $('#servicesContainer').html(data); // Revert to all stores
-                            }
-                        });
-                    } else {
-                        // Search with the typed query
-                        $.ajax({
-                            url: "{{ route('stores.search') }}",
-                            method: 'GET',
-                            data: {
-                                query: query
-                            },
-                            success: function(data) {
-                                $('#servicesContainer').html(
-                                    data); // Update the list with search results
-                            }
-                        });
-                    }
+                    // Fetch all stores again
+                    fetchStores();
                 });
             });
         </script>

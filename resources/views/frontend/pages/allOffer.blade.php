@@ -16,14 +16,17 @@
 
                     <div class="col-lg-12 pe-0">
                         <div class="d-flex justify-content-between">
+
                             <div class="d-flex align-items-center">
                                 <h3></h3>
                                 {{-- <span class="store-devider"></span> --}}
                             </div>
 
-                            <div class="d-flex align-items-center">
 
-                                <!-- Filter Store -->
+                            {{-- =======================Filter ======================= --}}
+                            <!-- Filter Store -->
+                            <div class="d-flex align-items-center">
+                                <!-- Division Filter -->
                                 <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="custom_select1" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off">
@@ -36,7 +39,7 @@
                                     </select>
                                 </div>
 
-                                <!-- Filter Store -->
+                                <!-- City Filter -->
                                 <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="custom_select2" name="city_id"
                                         data-placeholder="Select City" autocomplete="off">
@@ -47,7 +50,7 @@
                                     </select>
                                 </div>
 
-                                <!-- Filter Store -->
+                                <!-- Area Filter -->
                                 <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="custom_select3" name="area_id"
                                         data-placeholder="Select Area">
@@ -58,14 +61,11 @@
                                     </select>
                                 </div>
 
-                                <!-- Search Store -->
+                                <!-- Search Field -->
                                 <div class="wrapper-store">
-
                                     <div class="search-input-store">
-
                                         <input type="text" id="serviceSearch" name=""
                                             placeholder="Type to search..." />
-
                                         <div class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -76,14 +76,18 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+                            {{-- =======================Filter ======================= --}}
+
+
                         </div>
                     </div>
 
                 </div>
 
                 <div class="row">
+
+                    {{-- ================== --}}
 
                     {{-- ================== --}}
 
@@ -102,7 +106,8 @@
                                                     <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                                 </svg>
                                             </span>
-                                            <span>{{ $header_category->name }}</span>
+                                            <span style="font-size: 14px">{{ $header_category->name }}
+                                                ({{ $header_category->offers->count() }})</span>
                                         </label>
                                     </div>
                                 </div>
@@ -121,7 +126,9 @@
                                                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                                                         </svg>
                                                     </span>
-                                                    <span>{{ $header_category_child->name }}</span>
+                                                    <span style="font-size: 14px">{{ $header_category_child->name }}
+                                                        ({{ $header_category_child->offers->count() }})
+                                                    </span>
                                                     <!-- This is where the click happens -->
                                                 </label>
                                             </div>
@@ -139,7 +146,9 @@
                             {{-- Category All Offers Tab --}}
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
-                                <div class="row servicesContainer divisionContainer" id="servicesContainer">
+
+
+                                <div class="row servicesContainer" id="servicesContainer">
                                     @foreach ($offers as $offer)
                                         <div class="col-lg-4 mb-4 pe-2">
                                             <div class="card border-0 shadow-sm bg-light offer-boxes">
@@ -148,24 +157,13 @@
                                                         <div>
                                                             <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                 width="80px" height="80px" class="rounded-2"
-                                                                style="object-fit: contain;" alt=""
-                                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                                style="object-fit: contain;" alt="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <div class="shop-heart">
-                                                            {{-- Wishlist --}}
-                                                            <a type="submit" class="add_to_wishlist"
-                                                                style="cursor: pointer;"
-                                                                data-product_id="{{ $offer->id }}"
-                                                                data-tip="Wishlist">
-                                                                <i class="fa-regular fa-heart fs-5"></i>
-                                                            </a>
-                                                        </div>
                                                         @if (!empty($offer->badge))
                                                             <h4 class="main-color special-font-box text-end">
-                                                                {{ $offer->badge }}
-                                                            </h4>
+                                                                {{ $offer->badge }}</h4>
                                                         @endif
                                                     </div>
                                                     <div class="col-lg-12 pt-4 offer_title">
@@ -174,15 +172,12 @@
                                                     <div class="col-lg-12 pt-4">
                                                         <div class="d-flex">
                                                             <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                class="w-100 btn-common-one rounded-3">
-                                                                <small>View</small>
-                                                            </a>
+                                                                class="w-100 btn-common-one rounded-3"><small>View</small></a>
                                                             @if (!empty($offer->coupon_code))
                                                                 <a href="javascript:void(0);"
                                                                     class="w-100 btn-common-three rounded-3 ms-2"
-                                                                    onclick="copyCouponCode('{{ $offer->coupon_code }}')">
-                                                                    Coupon <i class="fa-solid fa-copy"></i>
-                                                                </a>
+                                                                    onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
+                                                                    <i class="fa-solid fa-copy"></i></a>
                                                             @endif
                                                         </div>
                                                         <p class="pt-2 text-center countdown"
@@ -196,6 +191,8 @@
                                         </div>
                                     @endforeach
                                 </div>
+
+
                             </div>
 
                             {{-- Category-wise Offers Tabs --}}
@@ -252,7 +249,9 @@
                                     </div>
                                 </div>
                             @endforeach
+
                         </div>
+
 
                         {{-- Dynamic Pagination --}}
                         <nav aria-label="Page navigation">
@@ -278,117 +277,57 @@
                             </ul>
                         </nav>
 
+
                     </div>
-
-
-
 
                 </div>
 
             </div>
         </section>
     </div>
+
     {{-- For Mobile Code --}}
-    <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
-        <div class="row p-3">
-            <div class="col-lg-12">
-                <div class="d-flex align-items-center">
-                    <!-- Filter Store -->
-                    <div class="btn-group pe-2 w-50">
-                        <select class="form-select cust-select" id="custom_select3" name="area_id"
-                            data-placeholder="Select Area">
-                            <option value="">Select Area</option>
-                            @foreach ($areas as $area)
-                                <option value="{{ $area->id }}">{{ $area->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+    @include('frontend.pages.alloffer_mobile_view')
+    {{-- For Mobile Code --}}
 
-                    <!-- Search Store -->
-                    <div class="wrapper-store w-50">
-                        <div class="search-input-store">
-                            <input type="text" id="serviceSearch" name="" style="height:45px;"
-                                placeholder="Type to search..." />
-
-                            <div class="icon"
-                                style="height: 45px; width: 30px; text-align: center; line-height: 43px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                    </path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row px-3">
-            <div class="col-lg-12">
-                <div class="row servicesContainer divisionContainer mt-0" id="servicesContainer">
-                    @foreach ($offers as $offer)
-                        <div class="col-6 mb-4 pe-2">
-                            <div class="card border-0 shadow-sm offer-boxes" style="background: #FEF5F2;">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6">
-                                        <div>
-                                            <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                width="80px" height="80px" class="rounded-2"
-                                                style="object-fit: contain;" alt=""
-                                                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                        </div>
-                                    </div>
-                                    <div class="px-4">
-                                        <div class="col-lg-6">
-                                            <div class="shop-heart">
-                                                {{-- Wishlist --}}
-                                                <a type="submit" class="add_to_wishlist" style="cursor: pointer;"
-                                                    data-product_id="{{ $offer->id }}" data-tip="Wishlist">
-                                                    <i class="fa-regular fa-heart fs-5"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 pt-4 offer_title">
-                                            <p class="text-black">{{ $offer->name }}</p>
-                                            @if (!empty($offer->badge))
-                                                <h4 class="main-color special-font-box">
-                                                    {{ $offer->badge }}
-                                                </h4>
-                                            @endif
-                                        </div>
-                                        <div class="col-lg-12 pt-4 pb-3">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <a href="{{ route('offer.details', $offer->slug) }}"
-                                                        class="btn-common-one btn-sm rounded-0 py-1 mfs">
-                                                        <small>View</small>
-                                                    </a>
-                                                    @if (!empty($offer->coupon_code))
-                                                        <a href="javascript:void(0);"
-                                                            class="btn-common-three rounded-3 ms-2 mfs"
-                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">
-                                                            Coupon <i class="fa-solid fa-copy"></i>
-                                                        </a>
-                                                    @endif
-                                                </div>
-                                                <p class="text-end countdown mfs"
-                                                    data-expire-date="{{ $offer->expiry_date }}">
-                                                    <span class="main-color"><i class="fa-solid fa-clock"></i></span>
-                                                    <span class="countdown-timer"> Days</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
     @push('scripts')
+        <script>
+            $(document).ready(function() {
+                // Trigger AJAX when any filter changes
+                $('#custom_select1, #custom_select2, #custom_select3').change(function() {
+                    // Get selected values
+                    let division_id = $('#custom_select1').val();
+                    let city_id = $('#custom_select2').val();
+                    let area_id = $('#custom_select3').val();
+                    let search = $('#serviceSearch').val();
+
+                    // Send AJAX request with selected filters
+                    $.ajax({
+                        url: "{{ route('offers.filter') }}", // Adjust this route based on your backend
+                        method: "GET",
+                        data: {
+                            division_id: division_id,
+                            city_id: city_id,
+                            area_id: area_id,
+                            search: search
+                        },
+                        success: function(response) {
+                            // Update the offers container with filtered offers
+                            $('#servicesContainer').html(response.html);
+                            // Update pagination if necessary
+                            $('.pagination').html(response.pagination);
+                        }
+                    });
+                });
+
+                // Optional: Trigger search on keyup event for the search input
+                $('#serviceSearch').keyup(function() {
+                    $('#custom_select1, #custom_select2, #custom_select3').trigger('change');
+                });
+            });
+        </script>
+
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Toggle the checkbox when the category or subcategory is clicked
@@ -437,13 +376,6 @@
             });
         </script>
 
-
-
-
-
-
-
-
         <script>
             // Bootstrap Tab Activation
             var triggerTabList = [].slice.call(document.querySelectorAll('#myTab button'))
@@ -457,112 +389,6 @@
             })
         </script>
 
-
-
-        {{-- Offer Search --}}
-        <script>
-            $(document).ready(function() {
-                $('#serviceSearch').on('keyup', function() {
-                    var query = $(this).val();
-                    $.ajax({
-                        url: "{{ route('offer.search') }}",
-                        method: 'GET',
-                        data: {
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#servicesContainer').html(data);
-                        }
-                    });
-                });
-            });
-        </script>
-        {{-- ============= --}}
-
-        <script>
-            $(document).ready(function() {
-                $('#custom_select1').on('change', function() {
-
-                    var divisionId = $(this).val(); // Get selected division ID
-
-                    if (divisionId) {
-
-                        $.ajax({
-                            url: "{{ route('offer.search.division') }}",
-                            method: 'GET',
-                            data: {
-                                division_id: divisionId
-                            },
-                            success: function(data) {
-                                $('.divisionContainer').html(data.html);
-                            },
-                            error: function() {
-                                $('.divisionContainer').html(
-                                    '<p>An error occurred while fetching offers.</p>');
-                            }
-                        });
-                    } else {
-                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
-                    }
-                });
-            });
-
-            // ====== City ====
-
-            $(document).ready(function() {
-                $('#custom_select2').on('change', function() {
-                    var cityId = $(this).val();
-
-                    if (cityId) {
-                        $.ajax({
-                            url: "{{ route('offer.search.city') }}",
-                            method: 'GET',
-                            data: {
-                                city_id: cityId
-                            },
-                            success: function(data) {
-                                $('.divisionContainer').html(data.html);
-                            },
-                            error: function() {
-                                $('.divisionContainer').html(
-                                    '<p>An error occurred while fetching offers.</p>');
-                            }
-                        });
-                    } else {
-                        $('.divisionContainer').html('<p>Please select a city to see offers.</p>');
-                    }
-                });
-            });
-
-            // ============ area ============
-
-            $(document).ready(function() {
-                $('#custom_select3').on('change', function() {
-
-                    var areaId = $(this).val(); // Get selected division ID
-
-                    if (areaId) {
-
-                        $.ajax({
-                            url: "{{ route('offer.search.area') }}",
-                            method: 'GET',
-                            data: {
-                                area_id: areaId
-                            },
-                            success: function(data) {
-                                $('.divisionContainer').html(data.html);
-                            },
-                            error: function() {
-                                $('.divisionContainer').html(
-                                    '<p>An error occurred while fetching offers.</p>');
-                            }
-                        });
-                    } else {
-                        $('.divisionContainer').html('<p>Please select a division to see offers.</p>');
-                    }
-                });
-            });
-        </script>
         <script>
             document.querySelectorAll('.accordion-checkbox').forEach(function(checkbox) {
                 checkbox.addEventListener('change', function() {

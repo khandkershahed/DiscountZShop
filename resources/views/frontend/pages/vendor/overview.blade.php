@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'Overview || DiscountZShop'">
+
     @include('frontend.pages.vendor.partial.header')
     <div class="desktop-homepage">
         {{-- Overview Start --}}
