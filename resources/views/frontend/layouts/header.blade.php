@@ -170,45 +170,6 @@
 
                         </ul>
                         <!-- Search Form -->
-
-                        {{-- <a href="#" class="border-0">
-                        <div class="btn-group">
-                            <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
-                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="pe-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                        viewBox="0 0 30 30" fill="none">
-                                        <g clip-path="url(#clip0_64_445)">
-                                            <path
-                                                d="M0.9375 9.84376V7.50001C0.941711 7.35668 0.976892 7.21595 1.04063 7.08751L3.32812 2.49376C3.56197 2.02534 3.92193 1.63149 4.36747 1.35655C4.81301 1.0816 5.32645 0.936477 5.85 0.937505H24.15C24.6735 0.936477 25.187 1.0816 25.6325 1.35655C26.0781 1.63149 26.438 2.02534 26.6719 2.49376L28.9594 7.07813C29.0244 7.20943 29.0596 7.3535 29.0625 7.50001V9.84376C29.0614 10.5371 28.8898 11.2196 28.5629 11.831C28.2359 12.4425 27.7636 12.9641 27.1875 13.35V27.1875H28.125C28.3736 27.1875 28.6121 27.2863 28.7879 27.4621C28.9637 27.6379 29.0625 27.8764 29.0625 28.125C29.0625 28.3736 28.9637 28.6121 28.7879 28.7879C28.6121 28.9637 28.3736 29.0625 28.125 29.0625H1.875C1.62636 29.0625 1.3879 28.9637 1.21209 28.7879C1.03627 28.6121 0.9375 28.3736 0.9375 28.125C0.9375 27.8764 1.03627 27.6379 1.21209 27.4621C1.3879 27.2863 1.62636 27.1875 1.875 27.1875H2.8125V13.35C2.23643 12.9641 1.7641 12.4425 1.43713 11.831C1.11016 11.2196 0.938576 10.5371 0.9375 9.84376ZM2.8125 9.84376C2.8125 10.4654 3.05943 11.0615 3.49897 11.501C3.93851 11.9406 4.53465 12.1875 5.15625 12.1875C5.77785 12.1875 6.37399 11.9406 6.81353 11.501C7.25307 11.0615 7.5 10.4654 7.5 9.84376V8.43751H2.8125V9.84376ZM27.1875 9.84376V8.43751H22.5V9.84376C22.5 10.4654 22.7469 11.0615 23.1865 11.501C23.626 11.9406 24.2221 12.1875 24.8438 12.1875C25.4654 12.1875 26.0615 11.9406 26.501 11.501C26.9406 11.0615 27.1875 10.4654 27.1875 9.84376ZM20.625 8.43751H15.9375V9.84376C15.9375 10.4654 16.1844 11.0615 16.624 11.501C17.0635 11.9406 17.6596 12.1875 18.2812 12.1875C18.9029 12.1875 19.499 11.9406 19.9385 11.501C20.3781 11.0615 20.625 10.4654 20.625 9.84376V8.43751ZM14.0625 8.43751H9.375V9.84376C9.375 10.4654 9.62193 11.0615 10.0615 11.501C10.501 11.9406 11.0971 12.1875 11.7188 12.1875C12.3404 12.1875 12.9365 11.9406 13.376 11.501C13.8156 11.0615 14.0625 10.4654 14.0625 9.84376V8.43751ZM24.9937 3.32813C24.9151 3.1721 24.7945 3.04114 24.6454 2.95003C24.4963 2.85892 24.3247 2.81129 24.15 2.81251H5.85C5.67528 2.81129 5.5037 2.85892 5.35462 2.95003C5.20553 3.04114 5.08487 3.1721 5.00625 3.32813L3.39375 6.56251H26.6063L24.9937 3.32813ZM12.1875 27.1875H17.8125V21.5625C17.8125 21.3139 17.7137 21.0754 17.5379 20.8996C17.3621 20.7238 17.1236 20.625 16.875 20.625H13.125C12.8764 20.625 12.6379 20.7238 12.4621 20.8996C12.2863 21.0754 12.1875 21.3139 12.1875 21.5625V27.1875ZM4.6875 27.1875H10.3125V21.5625C10.3125 20.8166 10.6088 20.1012 11.1363 19.5738C11.6637 19.0463 12.3791 18.75 13.125 18.75H16.875C17.6209 18.75 18.3363 19.0463 18.8637 19.5738C19.3912 20.1012 19.6875 20.8166 19.6875 21.5625V27.1875H25.3125V14.0625C25.1573 14.0874 25.0008 14.1031 24.8438 14.1094C24.2109 14.1039 23.5874 13.9562 23.0194 13.677C22.4514 13.3979 21.9535 12.9946 21.5625 12.4969C21.167 12.9862 20.6671 13.3809 20.0994 13.6521C19.5316 13.9233 18.9104 14.064 18.2812 14.064C17.6521 14.064 17.0309 13.9233 16.4631 13.6521C15.8954 13.3809 15.3955 12.9862 15 12.4969C14.6045 12.9862 14.1046 13.3809 13.5369 13.6521C12.9691 13.9233 12.3479 14.064 11.7188 14.064C11.0896 14.064 10.4684 13.9233 9.90062 13.6521C9.33287 13.3809 8.83296 12.9862 8.4375 12.4969C8.04189 12.986 7.54192 13.3804 6.97418 13.6513C6.40644 13.9222 5.78531 14.0627 5.15625 14.0625C5.00014 14.0717 4.84361 14.0717 4.6875 14.0625V27.1875Z"
-                                                fill="#252525" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_64_445">
-                                                <rect width="30" height="30" fill="white"
-                                                    transform="matrix(-1 0 0 1 30 0)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </a>
-                            @php
-                                $stores = App\Models\Store::latest()->get();
-                            @endphp
-                            <ul class="dropdown-menu toggler-menu py-3">
-                                @foreach ($stores as $store)
-                                    <li class="dropdown-item pb-2">
-                                        <a href="javascript:;"><i
-                                                class="fa-solid fa-house-user main-color pe-2">{{ $store->name }}</i>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                    </a> --}}
-
-
                         <form class="d-flex" action="{{ route('product.search') }}" method="POST" role="search">
                             @csrf
 
@@ -397,13 +358,49 @@
     <div class="offcanvas offcanvas-start w-100" data-bs-backdrop="static" tabindex="-1" id="Id2"
         aria-labelledby="staticBackdropLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="staticBackdropLabel">
-                Offcanvas
-            </h5>
+            <a href="{{ route('homePage') }}" class="logo-main">
+                <img class="img-fluid"
+                    src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                    alt="">
+            </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div>I will not close if you click outside of me.</div>
+            <div>
+                <div class="pt-3">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('homePage') ? 'active' : '' }}"
+                                href="{{ route('homePage') }}">Home <span class="ps-3">
+                                </span></a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
+                                href="{{ route('allOffer') }}">Offers <span class="ps-3">
+                                </span></a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
+                                href="{{ route('allBrand') }}">Brands <span class="ps-3">
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
+                                href="{{ route('allStore') }}">Store</a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('vendors') ? 'active' : '' }}"
+                                href="{{ route('vendors') }}">Vendors</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     {{-- Mobile Menus End --}}
