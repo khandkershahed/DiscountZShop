@@ -1,11 +1,11 @@
-<x-frontend-app-layout :title="'Terms and Condition || DiscountZShop'">
-    <!-- Hero Section -->
-    {{-- <section>
+<x-frontend-app-layout :title="'Privacy Policy || DiscountZShop'">
+    <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" src="{{!empty(optional($page_banner)->image) && file_exists(public_path('storage/'.optional($page_banner)->image)) ? asset('storage/'.optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
-                alt="{{ ucfirst(optional($page_banner)->page_name)}}" />
+            <img class="img-fluid w-100"
+                src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
+                alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
         </div>
-    </section> --}}
+    </section>
     <!-- Hero End -->
     <section>
         <div class="container py-5">
@@ -30,3 +30,4 @@
         </div>
     </section>
 </x-frontend-app-layout>
+

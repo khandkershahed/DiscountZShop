@@ -21,7 +21,6 @@ Route::get('/get-wishlist', [HomeController::class, 'GetWishlist']);
 Route::get('/wishlist-product', [HomeController::class, 'WishlistProduct'])->name('wishlist.product');
 Route::get('/wishlist/product/remove/{rowId}', [HomeController::class, 'RemoveWishlistTemplateOne']);
 
-
 //Email
 Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('email.subscribe');
 
@@ -37,8 +36,6 @@ Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName']
 Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
 Route::get('/offers/filter', [HomeController::class, 'filterOffers'])->name('offers.filter');
-
-
 
 //Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
@@ -67,26 +64,32 @@ Route::get('/coupon/search', [HomeController::class, 'searchCouponName'])->name(
 //Store
 Route::get('/store/all', [HomeController::class, 'allStore'])->name('allStore');
 Route::get('/store/{id}', [HomeController::class, 'storeDetails'])->name('store.details');
-Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
+// Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
+
 Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');
 Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->name('store.search.city');
 Route::get('/store/search/area', [HomeController::class, 'searchAreaName'])->name('store.search.area');
-Route::get('/stores/search', [HomeController::class, 'searchOStoreName'])->name('stores.search');
 
+Route::get('/stores/filter', [HomeController::class, 'filterStore'])->name('store.filter');
 
+// Route::get('/stores/search', [HomeController::class, 'searchOStoreName'])->name('stores.search');
 
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 
+Route::get('/discountZShop/terms-condition', [HomeController::class, 'discounttermsCondition'])->name('discount.termsCondition');
+
 //Privacy
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/discountZShop/privacy-policy', [HomeController::class, 'discountprivacyPolicy'])->name('discount.privacy.policy');
+
 Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
 //Faq
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/discountZShop/faq', [HomeController::class, 'faqDiscountZShop'])->name('discountZShop.faq');
 
 Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
-
 
 // Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
 // Route::get('/brand/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');

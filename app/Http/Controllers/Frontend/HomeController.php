@@ -239,22 +239,12 @@ class HomeController extends Controller
     }
 
     //allStore
-    // public function allStore()
-    // {
-    //     $data = [
-    //         'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-    //         'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
-    //         'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->get(),
-    //     ];
-    //     return view('frontend.pages.allStore', $data);
-    // }
-
     public function allStore()
     {
         $data = [
             'page_banner'   => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
-            'stores'        => Store::where('status', 'active')->orderBy('title', 'ASC')->paginate(12), // Pagination added here
+            'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(8)->latest()->get(),
+            'stores'        => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30), // Pagination added here
         ];
         return view('frontend.pages.allStore', $data);
     }
@@ -270,27 +260,58 @@ class HomeController extends Controller
     }
 
     //searchStoreName
-    public function searchStoreName(Request $request)
-    {
-        $query = $request->input('query');
+    // public function searchStoreName(Request $request)
+    // {
+    //     $query = $request->input('query');
 
-        if ($query) {
-            $latest_stores = Store::where('name', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
+    //     if ($query) {
+    //         $latest_stores = Store::where('name', 'like', "%{$query}%")
+    //             ->latest()
+    //             ->get();
+    //     } else {
+    //         $latest_stores = Store::latest()->get();
+    //     }
+
+    //     return view('frontend.pages.store_search', compact('latest_stores'));
+    // }
+
+    public function filterStore(Request $request)
+    {
+        $query = Store::query();
+
+        // Apply filters
+        if ($request->has('division_id') && $request->division_id != '') {
+            $query->where('division_id', $request->division_id);
         }
 
-        return view('frontend.pages.store_search', compact('latest_stores'));
+        if ($request->has('city_id') && $request->city_id != '') {
+            $query->where('city_id', $request->city_id);
+        }
+
+        if ($request->has('area_id') && $request->area_id != '') {
+            $query->where('area_id', $request->area_id);
+        }
+
+        if ($request->has('search') && $request->search != '') {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        // Fetch stores based on the filters
+        $latest_stores = $query->limit(8)->get();
+
+        // Return the updated store listings
+        return response()->json([
+            'stores' => view('partials.store_list', compact('latest_stores'))->render(),
+        ]);
     }
 
-    //searchDivisionName
+    // Search Division
     public function searchDivisionName(Request $request)
     {
         $latest_stores = [];
         $query         = $request->input('division_id');
 
+        // Check if the division_id exists in the request and perform the query
         if ($query) {
             $latest_stores = Store::where('division_id', 'like', "%{$query}%")
                 ->latest()
@@ -299,12 +320,13 @@ class HomeController extends Controller
             $latest_stores = Store::latest()->get();
         }
 
+        // Return the filtered stores as HTML
         $responseHtml = view('frontend.pages.store_division_search', ['latest_stores' => $latest_stores])->render();
 
         return response()->json(['html' => $responseHtml]);
     }
 
-    //searchCityName
+    // Search City
     public function searchCityName(Request $request)
     {
         $latest_stores = [];
@@ -323,7 +345,7 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
-    //searchAreaName
+    // Search Area
     public function searchAreaName(Request $request)
     {
         $latest_stores = [];
@@ -399,23 +421,23 @@ class HomeController extends Controller
         return view('frontend.pages.allOffer_search', compact('offers'))->render();
     }
 
-    //searchOStoreName
-    public function searchOStoreName(Request $request)
-    {
-        $query = $request->input('query');
+    // //searchOStoreName
+    // public function searchOStoreName(Request $request)
+    // {
+    //     $query = $request->input('query');
 
-        // Search for stores based on the query, or get all stores if query is empty
-        if ($query) {
-            $latest_stores = Store::where('title', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
-        }
+    //     // Search for stores based on the query, or get all stores if query is empty
+    //     if ($query) {
+    //         $latest_stores = Store::where('title', 'like', "%{$query}%")
+    //             ->latest()
+    //             ->get();
+    //     } else {
+    //         $latest_stores = Store::latest()->get();
+    //     }
 
-        // Return the results as HTML to be inserted into the page
-        return view('frontend.pages.allStore_search', compact('latest_stores'))->render();
-    }
+    //     // Return the results as HTML to be inserted into the page
+    //     return view('frontend.pages.allStore_search', compact('latest_stores'))->render();
+    // }
 
     //searchCouponName
     public function searchCouponName(Request $request)
@@ -559,11 +581,21 @@ class HomeController extends Controller
     //termsCondition
     public function termsCondition()
     {
-        $data = [
-            'page_banner' => PageBanner::where('page_name', 'terms')->latest('id')->first(),
-            'terms'       => TermsAndCondition::latest('id')->first(),
-        ];
-        return view('frontend.pages.termsCondition', $data);
+
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        $terms       = TermsAndCondition::latest()->get();
+
+        //dd($data);
+
+        return view('frontend.pages.termsCondition', compact('page_banner', 'terms'));
+    }
+
+    public function discounttermsCondition()
+    {
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        $terms       = TermsAndCondition::where('status', 'active')->latest('id')->first();
+
+        return view('frontend.pages.discounttermsCondition', compact('page_banner', 'terms'));
     }
 
     //privacyPolicy
@@ -576,6 +608,15 @@ class HomeController extends Controller
         return view('frontend.pages.privacyPolicy', $data);
     }
 
+    public function discountprivacyPolicy()
+    {
+        $data = [
+            'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
+            'terms'       => PrivacyPolicy::latest('id')->first(),
+        ];
+        return view('frontend.pages.discountprivacyPolicy', $data);
+    }
+
     //faq
     public function faq()
     {
@@ -584,6 +625,15 @@ class HomeController extends Controller
             'faqs'        => Faq::orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
+    }
+
+    public function faqDiscountZShop()
+    {
+        $data = [
+            'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
+            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+        ];
+        return view('frontend.pages.faqDiscountZShop.faq', $data);
     }
 
     //ProductSearch
