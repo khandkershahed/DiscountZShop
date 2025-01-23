@@ -30,9 +30,10 @@ use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\OfferTypeController;
 use App\Http\Controllers\Admin\PageBannerController;
-use App\Http\Controllers\Admin\PermissionController;
+// use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\RoleController;
+// use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SpecialOfferController;
 use App\Http\Controllers\Admin\StaffController;
@@ -106,8 +107,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::resources(
         [
             'faq'             => FaqController::class,
-            'role'            => RoleController::class,
-            'permission'      => PermissionController::class,
+            // 'role'            => RoleController::class,
+            // 'permission'      => PermissionController::class,
             'email-settings'  => EmailSettingController::class,
             'page-banner'     => PageBannerController::class,
             'terms-condition' => TermsAndConditionController::class,
@@ -183,4 +184,42 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::put('banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('banner.status.update');
     Route::put('brand/status/{id}', [BrandController::class, 'updateStatusBrand'])->name('brand.status.update');
     Route::put('staff/status/{id}', [StaffController::class, 'updateStaffStatus'])->name('staff.status');
+});
+
+// Role In Permission
+Route::middleware(['auth:admin'])->group(function () {
+
+    Route::controller(RoleController::class)->group(function () {
+
+        //Permission
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::post('/store/permission', 'StorePermission')->name('store.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+        //Role
+        Route::get('/all/role', 'AllRole')->name('all.role');
+        Route::post('/store/role', 'StoreRole')->name('store.role');
+        Route::post('/update/role', 'UpdateRole')->name('update.role');
+        Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
+
+        //Role In Permission
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'RolePermissionStore')->name('store.roles.permission');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}', 'AdminRolesEdit')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}', 'AdminRolesDelete')->name('admin.delete.roles');
+
+        //Admin Role Permission
+        Route::get('/admin-all', 'AdminPermission')->name('all.admin.permission');
+        Route::post('/admin-store', 'StoreAdminPermission')->name('store.admin.permission');
+        Route::get('/admin-edit/{id}', 'EditAdminPermission')->name('edit.admin.permission');
+        Route::post('/admin-update/{id}', 'UpdateAdmin')->name('update.admin');
+        Route::get('/admin-delete/{id}', 'DeleteAdmin')->name('delete.admin');
+
+        Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
+        Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
+    });
 });

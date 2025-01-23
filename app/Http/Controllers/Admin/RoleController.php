@@ -1,122 +1,255 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\RoleRequest;
+use App\Models\Admin;
+use App\Models\GroupName;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    /**
-     * The function sets middleware permissions for specific actions in a PHP class constructor.
-     */
-    public function __construct()
+    // =========================== Role ==============================
+
+    //All Role
+    public function AllRole()
     {
-        $this->middleware('permission:view role|edit role|delete role|create role|give permission role|store permission role')->only(['index', 'create', 'edit', 'destroy', 'givePermission', 'storePermission']);
+        $roles = Role::all();
+        return view('admin.pages.roles.role.all_role', compact('roles'));
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    //Store Role
+    public function StoreRole(Request $request)
     {
-        return view('admin.pages.roles.index', ['roles' => Role::get()]);
+        Role::create(['name' => $request->name]);
+
+        return redirect()->route('all.role')->with('success', 'Role Inserted Successfully');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    //Update Role
+    public function UpdateRole(Request $request)
     {
-        $data = [
-            'permissionsByGroups' => Permission::select('group_name')
-                ->distinct()
-                ->orderBy('group_name')
-                ->get(),
+        $id = $request->id;
 
-            'permissions' => Permission::orderBy('group_name')
-                ->orderBy('name')
-                ->get(),
-        ];
-        return view('admin.pages.roles.create', $data);
+        Role::find($id)->update(['name' => $request->name]);
+
+        return redirect()->route('all.role')->with('success', 'Role Update Successfully');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(RoleRequest $request)
+    //Delete Role
+    public function DeleteRole($id)
     {
-        $role = Role::create(['name' => $request->name])->syncPermissions($request->permissions ?? []);
+        Role::find($id)->delete();
 
-        return redirect()->back()->with('success', 'Role created successfully');
+        return redirect()->route('all.role');
     }
 
+    // =============================== Permission =====================================
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    //All Permission
+    public function AllPermission()
     {
-        // deprecated
+        $permissions = Permission::orderBy('group_name', 'ASC')->get();
+        // $groups = GroupName::orderBy('group_name', 'ASC')->latest()->get();
+
+        return view('admin.pages.roles.all_permission', compact('permissions'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    //Store Permission
+    public function StorePermission(Request $request)
     {
-        $data = [
-            'role' => Role::findOrFail($id),
-            'permissionsByGroups' => Permission::select('group_name')
-                ->distinct()
-                ->orderBy('group_name')
-                ->get(),
+        Permission::create([
+            'name'       => $request->name,
+            'guard_name' => 'admin',
+            'group_name' => $request->group_name,
+        ]);
 
-            'permissions' => Permission::orderBy('group_name')
-                ->orderBy('name')
-                ->get(),
-        ];
-        return view('admin.pages.roles.edit', $data);
+        return redirect()->route('all.permission')->with('success', 'Permission Inserted Successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(RoleRequest $request, string $id)
+    //Edit Permission
+    public function EditPermission($id)
+    {
+        $permissions = Permission::find($id);
+        $groups      = GroupName::orderBy('group_name', 'ASC')->latest()->get();
+
+        return view('admin.pages.roles.edit_permission', compact('permissions', 'groups'));
+    }
+
+    //Update Permission
+    public function UpdatePermission(Request $request)
+    {
+        $id = $request->id;
+
+        Permission::find($id)->update([
+            'name'       => $request->name,
+            'group_name' => $request->group_name,
+        ]);
+
+        return redirect()->route('all.permission')->with('success', 'Permission Update Successfully');
+    }
+
+    //Delete Permission
+    public function DeletePermission($id)
+    {
+        Permission::find($id)->delete();
+
+        return redirect()->route('all.permission')->with('success', 'Permission Delete Successfully');
+    }
+
+    // ================================= Role In Permission ====================================
+
+    //All Roles Permission
+    public function AllRolesPermission()
+    {
+        $roles = Role::all();
+        return view('admin.pages.roles.rolesetup.all_roles_permission', compact('roles'));
+    }
+
+    //Add Roles Permission
+    public function AddRolesPermission()
+    {
+        $roles       = Role::all();
+        $permissions = Permission::all();
+
+        $permission_groups = Admin::getpermissionGroups();
+
+        return view('admin.pages.roles.rolesetup.add_rolepermission', compact('roles', 'permissions', 'permission_groups'));
+    }
+
+    //Role Permission Store
+    public function RolePermissionStore(Request $request)
+    {
+        $data        = [];
+        $permissions = $request->permission;
+
+        foreach ($permissions as $key => $item) {
+            $data['role_id']       = $request->role_id;
+            $data['permission_id'] = $item;
+
+            DB::table('role_has_permissions')->insert($data);
+        }
+
+        return redirect()->back()->with('success', 'Role Permission Inserted Successfully');
+    }
+
+    //AdminRolesEdit
+    public function AdminRolesEdit($id)
+    {
+
+        $role        = Role::findOrFail($id);
+        $permissions = Permission::all();
+
+        $permission_groups = Admin::getpermissionGroups();
+
+        return view('admin.pages.roles.rolesetup.edit_roles_permission', compact('role', 'permissions', 'permission_groups'));
+    }
+
+    //AdminRolesUpdate
+    public function AdminRolesUpdate(Request $request, $id)
+    {
+
+        $role        = Role::findOrFail($id);
+        $permissions = $request->permission;
+
+        if (! empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        return redirect()->route('all.roles.permission')->with('success', 'Role Permission Update Successfully');
+    }
+
+    //AdminRolesDelete
+    public function AdminRolesDelete($id)
     {
         $role = Role::findOrFail($id);
-        $role->update(['name' => $request->name]);
-        $role->syncPermissions($request->permissions ?? []);
+        if (! is_null($role)) {
+            $role->delete();
+        }
 
-        return redirect()->back()->with('success', 'Role updated successfully');
+        return redirect()->back()->with('success', 'Role Permission Delete Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        Role::findOrFail($id)->delete();
+    // ============================ Admin Permission ========================
 
-        return redirect()->back()->with('success', 'Role deleted successfully');
+    //Admin Permission
+    public function AdminPermission()
+    {
+        $users = Admin::get();
+        $roles = Role::latest()->get();
+
+        return view('admin.pages.roles.admin.admin_permission', compact('users', 'roles'));
     }
 
-    public function givePermission(string $roleId)
+    public function StoreAdminPermission(Request $request)
     {
-        return view('admin.pages.roles.give-permission', [
-            'role' => Role::find($roleId),
-            'permissions' => Permission::get()
-        ]);
+        $user       = new Admin();
+        $user->name = $request->name;
+        // $user->company_name = $request->company_name;
+        $user->designation = $request->designation;
+        $user->email       = $request->email;
+        $user->password    = Hash::make($request->password);
+        $user->phone       = $request->phone;
+        $user->address     = $request->address;
+        $user->status      = $request->status;
+
+        $user->mail_status = $request->mail_status;
+
+        $user->save();
+
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        return redirect()->route('all.admin.permission')->with('success', 'Admin Created Successfully');
     }
 
-    public function storePermission(Request $request, string $roleId)
+    //Edit Admin Permission
+    public function EditAdminPermission($id)
     {
-        $role = Role::find($roleId);
-        $role->syncPermissions($request->permissions);
+        $users = Admin::findOrFail($id);
+        $roles = Role::all();
 
-        return redirect()->back()->with('sucess', 'Permissions assigned successfully');
+        return view('admin.pages.roles.admin.edit_admin_permission', compact('users', 'roles'));
+    }
+
+    //UpdateAdmin
+    public function UpdateAdmin(Request $request, $id)
+    {
+
+        $user       = Admin::findOrFail($id);
+        $user->name = $request->name;
+        // $user->company_name = $request->company_name;
+        $user->designation = $request->designation;
+        $user->address     = $request->address;
+        $user->phone       = $request->phone;
+
+        $user->email       = $request->email;
+        $user->status      = $request->status;
+        $user->mail_status = $request->mail_status;
+
+        $user->save();
+
+        $user->roles()->detach();
+
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        return redirect()->route('all.admin.permission')->with('success', 'Data Update Successfully');
+    }
+
+    //DeleteAdmin
+    public function DeleteAdmin($id)
+    {
+        $user = Admin::findOrFail($id);
+        if (! is_null($user)) {
+            $user->delete();
+        }
+
+        return redirect()->route('all.admin.permission')->with('success', 'Data Delete Successfully');
     }
 }
