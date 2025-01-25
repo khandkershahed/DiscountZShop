@@ -45,9 +45,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return redirect()->route('admin.dashboard');
-// });
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
@@ -92,7 +89,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
         [
             'faq-category' => FaqCategoryController::class, //done
         ],
-        ['except' => ['show', 'index', 'create', 'edit']]
+        // ['except' => ['show', 'index', 'create', 'edit']]
     );
     Route::resources(
         [
@@ -102,17 +99,19 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'division'   => DivisonController::class,
             'area'       => AreaController::class,
         ],
-        ['except' => ['show', 'create', 'edit']]
+        // ['except' => ['show', 'create', 'edit']]
     );
     Route::resources(
         [
             'faq'             => FaqController::class,
-            // 'role'            => RoleController::class,
-            // 'permission'      => PermissionController::class,
+
             'email-settings'  => EmailSettingController::class,
+
             'page-banner'     => PageBannerController::class,
+
             'terms-condition' => TermsAndConditionController::class,
             'privacy-policy'  => PrivacyPolicyController::class,
+
             'store'           => StoreController::class,
 
             // Created By Ashiquzzaman
@@ -125,7 +124,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'special-offer'   => SpecialOfferController::class,
 
         ],
-        ['except' => ['show']]
+        // ['except' => ['show']]
     );
 
     Route::resources(
