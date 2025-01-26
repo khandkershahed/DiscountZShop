@@ -1,4 +1,28 @@
 <x-frontend-app-layout :title="'DiscountZShop'">
+    <style>
+        .slick-dots {
+            left: 70px;
+            position: absolute;
+            bottom: 15px;
+        }
+
+        .slick-dots li button {
+            display: block;
+            width: 30px !important;
+            height: 10px !important;
+            border: none;
+            border-radius: 5px !important;
+            background-color: orange;
+            text-indent: -9999px;
+        }
+
+        .slick-dots li.slick-active button {
+            background-color: red;
+        }
+        .slick-dots li{
+            margin: 0 8px;
+        }
+    </style>
     <div class="desktop-homepage">
 
         <!-- Hero Section -->
@@ -138,10 +162,9 @@
                                     <div class="col-lg-3 grab-offer-tabs-box">
                                         <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                             <li class="nav-item mb-2" role="presentation">
-                                                <button class="nav-link grab-tabs w-100 rounded-0 active"
-                                                    id="home-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#home-tab-pane" type="button" role="tab"
-                                                    aria-controls="home-tab-pane" aria-selected="true">
+                                                <button class="nav-link grab-tabs w-100 rounded-0 active" id="home-tab"
+                                                    data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                                                    role="tab" aria-controls="home-tab-pane" aria-selected="true">
                                                     All Offers
                                                 </button>
                                             </li>
@@ -150,8 +173,7 @@
                                                     <li class="nav-item mb-2 {{ $index >= 7 ? 'd-none more-tabs' : '' }}"
                                                         role="presentation">
                                                         <button class="nav-link grab-tabs w-100 rounded-0"
-                                                            id="home-{{ $offercategory->id }}-tab"
-                                                            data-bs-toggle="tab"
+                                                            id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
                                                             data-bs-target="#home-{{ $offercategory->id }}-pane"
                                                             type="button" role="tab"
                                                             aria-controls="home-{{ $offercategory->id }}-pane"
@@ -1448,8 +1470,8 @@
                                             <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
                                             <span style="font-size: 12px;">
                                                 <div class="d-flex justify-content-between align-items-center pe-3">
-                                                    <span class="text-white pe-2"
-                                                        style="font-size: 9px"><small>Code: "WELBC"</small></span>
+                                                    <span class="text-white pe-2" style="font-size: 9px"><small>Code:
+                                                            "WELBC"</small></span>
                                                     <i class="fa-solid fa-copy text-white"></i>
                                                 </div>
                                             </span>
@@ -1518,8 +1540,7 @@
                         </li>
                         @if ($categories->count() > 0)
                             @foreach ($categories as $index => $offercategory)
-                                <li class="nav-item me-1 mb-2"
-                                    role="presentation">
+                                <li class="nav-item me-1 mb-2" role="presentation">
                                     <button class="nav-link mb-link-tabs" style="font-size: 10px"
                                         id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
                                         data-bs-target="#home-{{ $offercategory->id }}-pane" type="button"
@@ -1967,7 +1988,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row bg-light" style="margin-bottom: 10rem">
+            <div class="row" style="margin-bottom: 9rem">
                 <h4 class="text-center py-4 pb-4">Partner Brands</h4>
                 <div class="col-12">
                     <div class="mobile-partners">
@@ -2087,7 +2108,7 @@
             });
         </script>
 
-        
+
 
         <script>
             // Define your data for the map

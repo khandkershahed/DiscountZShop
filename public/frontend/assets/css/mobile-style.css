@@ -228,7 +228,11 @@
         justify-content: end;
         position: relative;
         top: -36px;
-        left: -15px;
+        width: 50px;
+        right: -220px;
+    }
+    .form-control:focus {
+        border: 1px solid #f15a2d !important;
     }
     .mobile-login-btn {
         border-radius: 10px;
@@ -331,8 +335,35 @@
         top: 20px;
         left: 125px;
     }
-}
-
-.bodies {
-    color: red;
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+    .user-info img {
+        width: 49px;
+        height: 49px;
+    }
+    .user-info .modal-img {
+        width: 15px;
+        height: 20px;
+    }
+    .amount-value {
+        position: relative;
+        top: -14px;
+        border-radius: 100%;
+        width: 20px;
+        height: 21px;
+        text-align: center;
+        left: -15px;
+        padding-right: 16px;
+    }
+    .special-offers {
+        border-radius: 10px;
+        border: 1px solid #ffa286;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 166, 139, 0) 0%,
+            #f15a2d 100%
+        );
+    }
 }

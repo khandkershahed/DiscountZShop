@@ -14,6 +14,7 @@
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="{{ optional($setting)->site_name }}" />
     <link rel="canonical" href="{{ optional($setting)->site_url }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon"
         href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}" />
@@ -31,6 +32,7 @@
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/mobile-style.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'MD Boilarplate') }}</title>
@@ -60,7 +62,7 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
-                        <div id="kt_content_container" class="container-xxl">
+                        <div id="kt_content_container" class="bg-white">
                             <!--begin::Row-->
                             {{ $slot }}
                             <!--end::Row-->
@@ -128,7 +130,7 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     @stack('scripts')
     <!--end::Page Custom Javascript-->

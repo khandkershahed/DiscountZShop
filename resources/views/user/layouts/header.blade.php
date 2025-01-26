@@ -1,408 +1,208 @@
-
-<div id="kt_header" class="header align-items-stretch">
-    <div class="container-fluid d-flex align-items-stretch justify-content-between">
-        <div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="Show aside menu">
-            <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-                id="kt_aside_mobile_toggle">
-                <span class="svg-icon svg-icon-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none">
-                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
-                            fill="currentColor" />
-                        <path opacity="0.3"
-                            d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
-                            fill="currentColor" />
-                    </svg>
-                </span>
-            </div>
-        </div>
-        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="../../demo1/dist/index.html" class="d-lg-none">
-                <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-2.svg') }}" class="h-30px" />
-            </a>
-        </div>
-        <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
-            <div class="d-flex align-items-stretch" id="kt_header_nav">
-            </div>
-            <div class="d-flex align-items-stretch flex-shrink-0">
-
-                {{-- <div class="d-flex align-items-center ms-1 ms-lg-3">
-                    <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                        data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <span class="svg-icon svg-icon-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <path
-                                    d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
-                                    fill="currentColor" />
-                                <path
-                                    d="M11.2929 14.7071C11.6834 14.3166 12.3166 14.3166 12.7071 14.7071L15.2929 17.2929C15.6834 17.6834 15.6834 18.3166 15.2929 18.7071L12.7071 21.2929C12.3166 21.6834 11.6834 21.6834 11.2929 21.2929L8.70711 18.7071C8.31658 18.3166 8.31658 17.6834 8.70711 17.2929L11.2929 14.7071Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3"
-                                    d="M5.29289 8.70711C5.68342 8.31658 6.31658 8.31658 6.70711 8.70711L9.29289 11.2929C9.68342 11.6834 9.68342 12.3166 9.29289 12.7071L6.70711 15.2929C6.31658 15.6834 5.68342 15.6834 5.29289 15.2929L2.70711 12.7071C2.31658 12.3166 2.31658 11.6834 2.70711 11.2929L5.29289 8.70711Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3"
-                                    d="M17.2929 8.70711C17.6834 8.31658 18.3166 8.31658 18.7071 8.70711L21.2929 11.2929C21.6834 11.6834 21.6834 12.3166 21.2929 12.7071L18.7071 15.2929C18.3166 15.6834 17.6834 15.6834 17.2929 15.2929L14.7071 12.7071C14.3166 12.3166 14.3166 11.6834 14.7071 11.2929L17.2929 8.70711Z"
-                                    fill="currentColor" />
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
-                        <div class="d-flex flex-column bgi-no-repeat rounded-top"
-                            style="background-image:url('{{ asset('admin/assets/media/misc/pattern-1.jpg') }}')">
-                            <h3 class="text-white fw-bold px-9 mt-10 mb-6">Notifications
-                                <span class="fs-8 opacity-75 ps-3">24 reports</span>
-                            </h3>
-                            <ul class="nav nav-line-tabs nav-line-tabs-2x nav-stretch fw-bold px-9">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4 active"
-                                        data-bs-toggle="tab" href="#kt_topbar_notifications_1">Alerts</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="kt_topbar_notifications_1" role="tabpanel">
-                                <div class="scroll-y mh-325px my-5 px-8">
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-primary">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M11 6.5C11 9 9 11 6.5 11C4 11 2 9 2 6.5C2 4 4 2 6.5 2C9 2 11 4 11 6.5ZM17.5 2C15 2 13 4 13 6.5C13 9 15 11 17.5 11C20 11 22 9 22 6.5C22 4 20 2 17.5 2ZM6.5 13C4 13 2 15 2 17.5C2 20 4 22 6.5 22C9 22 11 20 11 17.5C11 15 9 13 6.5 13ZM17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M17.5 16C17.5 16 17.4 16 17.5 16L16.7 15.3C16.1 14.7 15.7 13.9 15.6 13.1C15.5 12.4 15.5 11.6 15.6 10.8C15.7 9.99999 16.1 9.19998 16.7 8.59998L17.4 7.90002H17.5C18.3 7.90002 19 7.20002 19 6.40002C19 5.60002 18.3 4.90002 17.5 4.90002C16.7 4.90002 16 5.60002 16 6.40002V6.5L15.3 7.20001C14.7 7.80001 13.9 8.19999 13.1 8.29999C12.4 8.39999 11.6 8.39999 10.8 8.29999C9.99999 8.19999 9.20001 7.80001 8.60001 7.20001L7.89999 6.5V6.40002C7.89999 5.60002 7.19999 4.90002 6.39999 4.90002C5.59999 4.90002 4.89999 5.60002 4.89999 6.40002C4.89999 7.20002 5.59999 7.90002 6.39999 7.90002H6.5L7.20001 8.59998C7.80001 9.19998 8.19999 9.99999 8.29999 10.8C8.39999 11.5 8.39999 12.3 8.29999 13.1C8.19999 13.9 7.80001 14.7 7.20001 15.3L6.5 16H6.39999C5.59999 16 4.89999 16.7 4.89999 17.5C4.89999 18.3 5.59999 19 6.39999 19C7.19999 19 7.89999 18.3 7.89999 17.5V17.4L8.60001 16.7C9.20001 16.1 9.99999 15.7 10.8 15.6C11.5 15.5 12.3 15.5 13.1 15.6C13.9 15.7 14.7 16.1 15.3 16.7L16 17.4V17.5C16 18.3 16.7 19 17.5 19C18.3 19 19 18.3 19 17.5C19 16.7 18.3 16 17.5 16Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
-                                                    Alice</a>
-                                                <div class="text-gray-400 fs-7">Phase 1 development
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">1 hr</span>
-                                    </div>
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-danger">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-danger">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <rect opacity="0.3" x="2" y="2" width="20"
-                                                                height="20" rx="10" fill="currentColor" />
-                                                            <rect x="11" y="14" width="7" height="2"
-                                                                rx="1" transform="rotate(-90 11 14)"
-                                                                fill="currentColor" />
-                                                            <rect x="11" y="17" width="2" height="2"
-                                                                rx="1" transform="rotate(-90 11 17)"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">HR
-                                                    Confidential</a>
-                                                <div class="text-gray-400 fs-7">Confidential staff
-                                                    documents</div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">2 hrs</span>
-                                    </div>
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-warning">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-warning">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Company
-                                                    HR</a>
-                                                <div class="text-gray-400 fs-7">Corporeate staff
-                                                    profiles</div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">5 hrs</span>
-                                    </div>
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-success">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M5 15C3.3 15 2 13.7 2 12C2 10.3 3.3 9 5 9H5.10001C5.00001 8.7 5 8.3 5 8C5 5.2 7.2 3 10 3C11.9 3 13.5 4 14.3 5.5C14.8 5.2 15.4 5 16 5C17.7 5 19 6.3 19 8C19 8.4 18.9 8.7 18.8 9C18.9 9 18.9 9 19 9C20.7 9 22 10.3 22 12C22 13.7 20.7 15 19 15H5ZM5 12.6H13L9.7 9.29999C9.3 8.89999 8.7 8.89999 8.3 9.29999L5 12.6Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M17 17.4V12C17 11.4 16.6 11 16 11C15.4 11 15 11.4 15 12V17.4H17Z"
-                                                                fill="currentColor" />
-                                                            <path opacity="0.3"
-                                                                d="M12 17.4H20L16.7 20.7C16.3 21.1 15.7 21.1 15.3 20.7L12 17.4Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M8 12.6V18C8 18.6 8.4 19 9 19C9.6 19 10 18.6 10 18V12.6H8Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
-                                                    Redux</a>
-                                                <div class="text-gray-400 fs-7">New frontend admin theme
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">2 days</span>
-                                    </div>
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-primary">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M6 22H4V3C4 2.4 4.4 2 5 2C5.6 2 6 2.4 6 3V22Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M18 14H4V4H18C18.8 4 19.2 4.9 18.7 5.5L16 9L18.8 12.5C19.3 13.1 18.8 14 18 14Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
-                                                    Breafing</a>
-                                                <div class="text-gray-400 fs-7">Product launch status
-                                                    update</div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">21 Jan</span>
-                                    </div>
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-info">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-info">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M22 5V19C22 19.6 21.6 20 21 20H19.5L11.9 12.4C11.5 12 10.9 12 10.5 12.4L3 20C2.5 20 2 19.5 2 19V5C2 4.4 2.4 4 3 4H21C21.6 4 22 4.4 22 5ZM7.5 7C6.7 7 6 7.7 6 8.5C6 9.3 6.7 10 7.5 10C8.3 10 9 9.3 9 8.5C9 7.7 8.3 7 7.5 7Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M19.1 10C18.7 9.60001 18.1 9.60001 17.7 10L10.7 17H2V19C2 19.6 2.4 20 3 20H21C21.6 20 22 19.6 22 19V12.9L19.1 10Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Banner
-                                                    Assets</a>
-                                                <div class="text-gray-400 fs-7">Collection of banner
-                                                    images</div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">21 Jan</span>
-                                    </div>
-                                    <div class="d-flex flex-stack py-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-4">
-                                                <span class="symbol-label bg-light-warning">
-                                                    <span class="svg-icon svg-icon-2 svg-icon-warning">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="25" viewBox="0 0 24 25" fill="none">
-                                                            <path opacity="0.3"
-                                                                d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z"
-                                                                fill="currentColor" />
-                                                            <path
-                                                                d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <div class="mb-0 me-2">
-                                                <a href="#"
-                                                    class="fs-6 text-gray-800 text-hover-primary fw-bolder">Icon
-                                                    Assets</a>
-                                                <div class="text-gray-400 fs-7">Collection of SVG icons
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light fs-8">20 March</span>
-                                    </div>
-                                </div>
-                                <div class="py-3 text-center border-top">
-                                    <a href="../../demo1/dist/pages/user-profile/activity.html"
-                                        class="btn btn-color-gray-600 btn-active-color-primary">View All
-                                        <span class="svg-icon svg-icon-5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <rect opacity="0.5" x="18" y="13" width="13" height="2"
-                                                    rx="1" transform="rotate(-180 18 13)"
-                                                    fill="currentColor" />
-                                                <path
-                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                                    fill="currentColor" />
-                                            </svg>
-                                        </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
-                    <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                        href="../../demo1/dist/documentation/getting-started/dark-mode.html">
-                        <i class="fonticon-sun fs-2"></i>
-                    </a>
+<style>
+    @media only screen and (max-width: 600px) {
+        .wish-ammount {
+            line-height: 1.2;
+            right: 65px;
+            border-radius: 16.13px;
+            background: #fff;
+            display: flex;
+            width: 20px;
+            padding: 4px 4px 2px 5px;
+            justify-content: center;
+            align-items: end;
+            position: absolute;
+            top: 30px;
+            height: 20px;
+        }
+    }
+</style>
+<div class="desktop-homepage">
+    <div id="kt_header" class="header align-items-stretch">
+        <div class="container-fluid d-flex align-items-stretch justify-content-between">
+            <div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="Show aside menu">
+                <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
+                    id="kt_aside_mobile_toggle">
+                    <span class="svg-icon svg-icon-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <path
+                                d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
+                                fill="currentColor" />
+                            <path opacity="0.3"
+                                d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
+                                fill="currentColor" />
+                        </svg>
+                    </span>
                 </div>
-
-                <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-                    <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-                        data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" alt="user" />
+            </div>
+            <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+                <a href="../../demo1/dist/index.html" class="d-lg-none">
+                    <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-2.svg') }}" class="h-30px" />
+                </a>
+            </div>
+            <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+                <div class="d-flex align-items-stretch" id="kt_header_nav">
+                </div>
+                <div class="d-flex align-items-stretch flex-shrink-0">
+                    <div class="d-flex align-items-center ms-1 ms-lg-3">
+                        <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
+                            href="../../demo1/dist/documentation/getting-started/dark-mode.html">
+                            <i class="fonticon-sun fs-2"></i>
+                        </a>
                     </div>
-                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
-                        data-kt-menu="true">
-                        <div class="menu-item px-3">
-                            <div class="menu-content d-flex align-items-center px-3">
-                                <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" />
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <div class="fw-bolder d-flex align-items-center fs-5">
-                                        {{ Auth::user()->name }}
+
+                    <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+                        <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+                            data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                            <img src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" alt="user" />
+                        </div>
+                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
+                            data-kt-menu="true">
+                            <div class="menu-item px-3">
+                                <div class="menu-content d-flex align-items-center px-3">
+                                    <div class="symbol symbol-50px me-5">
+                                        <img alt="Logo" src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" />
                                     </div>
-                                    <a href="#" class="fw-bold text-muted text-hover-primary fs-7">
-                                        {{ Auth::user()->email }}
-                                    </a>
+                                    <div class="d-flex flex-column">
+                                        <div class="fw-bolder d-flex align-items-center fs-5">
+                                            {{ Auth::user()->name }}
+                                        </div>
+                                        <a href="#" class="fw-bold text-muted text-hover-primary fs-7">
+                                            {{ Auth::user()->email }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="separator my-2"></div>
-                        <div class="menu-item px-5">
-                            <a href="{{ route('profile.edit') }}" class="menu-link px-5">My
-                                Profile</a>
-                        </div>
-
-                        {{-- <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title position-relative">Language
-                                    <span
-                                        class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                                        <img class="w-15px h-15px rounded-1 ms-2"
-                                            src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
-                                            alt="" /></span></span>
-                            </a>
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
-                                                alt="" />
-                                        </span>English</a>
-                                </div>
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/spain.svg') }}"
-                                                alt="" />
-                                        </span>Spanish</a>
-                                </div>
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/germany.svg') }}"
-                                                alt="" />
-                                        </span>German</a>
-                                </div>
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/japan.svg') }}"
-                                                alt="" />
-                                        </span>Japanese</a>
-                                </div>
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/france.svg') }}"
-                                                alt="" />
-                                        </span>French</a>
-                                </div>
+                            <div class="separator my-2"></div>
+                            <div class="menu-item px-5">
+                                <a href="{{ route('profile.edit') }}" class="menu-link px-5">My
+                                    Profile</a>
                             </div>
-                        </div> --}}
-
-                        <div class="menu-item px-5 my-1">
-                            <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
-                                Settings</a>
-                        </div>
-                        <div class="menu-item px-5">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                this.closest('form').submit();"
-                                    class="menu-link px-5"> {{ __('Sign Out') }}</a>
-                            </form>
-                        </div>
-
-                        {{-- <div class="separator my-2"></div>
-
-                        <div class="menu-item px-5">
-                            <div class="menu-content px-5">
-                                <label
-                                    class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
-                                    for="kt_user_menu_dark_mode_toggle">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
-                                        name="mode" id="kt_user_menu_dark_mode_toggle"
-                                        data-kt-url="../../demo1/dist/index.html" />
-                                    <span class="pulse-ring ms-n1"></span>
-                                    <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-                                </label>
+                            <div class="menu-item px-5 my-1">
+                                <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
+                                    Settings</a>
                             </div>
-                        </div> --}}
-
+                            <div class="menu-item px-5">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                    this.closest('form').submit();"
+                                        class="menu-link px-5"> {{ __('Sign Out') }}</a>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div
+</div>
+{{-- Mobile View --}}
+<div class="mobile-header fixed-top">
+    <div class="container">
+
+        <div class="row py-3 align-items-center">
+            <div class="col-6">
+                <div>
+                    <a class="btn btn-transparent" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
+                            fill="none">
+                            <g clip-path="url(#clip0_1_2050)">
+                                <path
+                                    d="M28.5036 25.8934H8.44273C8.24615 25.8934 8.0515 25.8547 7.86988 25.7794C7.68827 25.7042 7.52324 25.594 7.38424 25.455C7.24524 25.316 7.13498 25.1509 7.05975 24.9693C6.98452 24.7877 6.9458 24.593 6.9458 24.3965C6.9458 24.1999 6.98452 24.0052 7.05975 23.8236C7.13498 23.642 7.24524 23.477 7.38424 23.338C7.52324 23.199 7.68827 23.0887 7.86988 23.0135C8.0515 22.9383 8.24615 22.8995 8.44273 22.8995H28.5031C28.9001 22.8995 29.2809 23.0571 29.5617 23.3378C29.8424 23.6185 30.0002 23.9992 30.0003 24.3962C30.0004 24.7932 29.8427 25.174 29.562 25.4548C29.2813 25.7356 28.9006 25.8933 28.5036 25.8934ZM28.5036 16.4972H8.44273C8.04572 16.4972 7.66497 16.3394 7.38424 16.0587C7.10351 15.778 6.9458 15.3972 6.9458 15.0002C6.9458 14.6032 7.10351 14.2225 7.38424 13.9417C7.66497 13.661 8.04572 13.5033 8.44273 13.5033H28.5031C28.9001 13.5032 29.2809 13.6609 29.5617 13.9416C29.8424 14.2222 30.0002 14.603 30.0003 15C30.0004 15.397 29.8427 15.7778 29.562 16.0585C29.2813 16.3393 28.9006 16.4971 28.5036 16.4972ZM28.5036 7.10092H8.44273C8.24615 7.10092 8.0515 7.0622 7.86988 6.98697C7.68827 6.91174 7.52324 6.80148 7.38424 6.66248C7.24524 6.52347 7.13498 6.35845 7.05975 6.17684C6.98452 5.99522 6.9458 5.80057 6.9458 5.60399C6.9458 5.40741 6.98452 5.21275 7.05975 5.03114C7.13498 4.84952 7.24524 4.6845 7.38424 4.5455C7.52324 4.40649 7.68827 4.29623 7.86988 4.221C8.0515 4.14577 8.24615 4.10706 8.44273 4.10706H28.5031C28.9001 4.10699 29.2809 4.26464 29.5617 4.54532C29.8424 4.826 30.0002 5.20673 30.0003 5.60374C30.0004 6.00075 29.8427 6.38153 29.562 6.6623C29.2813 6.94308 28.9006 7.10085 28.5036 7.10092Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M2.01038 7.73014C3.12068 7.73014 4.02076 6.83006 4.02076 5.71976C4.02076 4.60946 3.12068 3.70938 2.01038 3.70938C0.900077 3.70938 0 4.60946 0 5.71976C0 6.83006 0.900077 7.73014 2.01038 7.73014Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M2.01038 17.0106C3.12068 17.0106 4.02076 16.1105 4.02076 15.0002C4.02076 13.8899 3.12068 12.9899 2.01038 12.9899C0.900077 12.9899 0 13.8899 0 15.0002C0 16.1105 0.900077 17.0106 2.01038 17.0106Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M2.01038 26.2911C3.12068 26.2911 4.02076 25.391 4.02076 24.2807C4.02076 23.1704 3.12068 22.2703 2.01038 22.2703C0.900077 22.2703 0 23.1704 0 24.2807C0 25.391 0.900077 26.2911 2.01038 26.2911Z"
+                                    fill="white"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_1_2050">
+                                    <rect width="30" height="30" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-end">
+                    <div class="d-flex align-items-center pe-4">
+                        <a href="" class="me-3">
+                            <i class="fa-regular fa-heart text-white head-icons" aria-hidden="true"></i>
+                            <span class="wish-ammount">0</span>
+                        </a>
+                        <a href="http://127.0.0.1:8000/login" class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="16" fill="white"></circle>
+                                <path
+                                    d="M8 28.1518H9.77778V23.6128C9.77848 22.9071 10.0556 22.2306 10.5484 21.7316C11.0412 21.2326 11.7093 20.952 12.4062 20.9513H19.5938C20.2907 20.952 20.9588 21.2326 21.4516 21.7316C21.9444 22.2306 22.2215 22.9071 22.2222 23.6128V28.1518H24V23.6128C23.9986 22.4299 23.5339 21.2959 22.7079 20.4595C21.8819 19.6231 20.7619 19.1526 19.5938 19.1512H12.4062C11.2381 19.1526 10.1181 19.6231 9.29211 20.4595C8.46609 21.2959 8.00141 22.4299 8 23.6128V28.1518ZM16 17.351C17.0548 17.351 18.086 17.0343 18.963 16.4409C19.8401 15.8475 20.5237 15.0041 20.9274 14.0173C21.331 13.0305 21.4366 11.9447 21.2309 10.8971C21.0251 9.84954 20.5171 8.88728 19.7712 8.13203C19.0254 7.37677 18.075 6.86244 17.0405 6.65406C16.0059 6.44569 14.9336 6.55263 13.959 6.96137C12.9845 7.37012 12.1515 8.06229 11.5655 8.95038C10.9795 9.83847 10.6667 10.8826 10.6667 11.9507C10.6681 13.3825 11.2304 14.7553 12.2303 15.7677C13.2302 16.7802 14.5859 17.3496 16 17.351ZM16 8.35042C16.7032 8.35042 17.3907 8.56157 17.9754 8.95717C18.5601 9.35277 19.0158 9.91505 19.2849 10.5729C19.554 11.2308 19.6244 11.9547 19.4872 12.653C19.35 13.3514 19.0114 13.9929 18.5142 14.4964C18.0169 14.9999 17.3834 15.3428 16.6937 15.4817C16.0039 15.6207 15.289 15.5494 14.6393 15.2769C13.9897 15.0044 13.4344 14.5429 13.0437 13.9509C12.653 13.3588 12.4444 12.6627 12.4444 11.9507C12.4444 10.9958 12.819 10.0801 13.4858 9.40491C14.1526 8.72973 15.057 8.35042 16 8.35042Z"
+                                    fill="#212529" fill-opacity="0.83"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Mobile Menus --}}
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <a href="{{ route('homePage') }}" class="logo-main">
+                <img class="img-fluid"
+                    src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                    alt="">
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <div class="pt-3">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('homePage') ? 'active' : '' }}"
+                                href="{{ route('homePage') }}">Home <span class="ps-3">
+                                </span></a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
+                                href="{{ route('allOffer') }}">Offers <span class="ps-3">
+                                </span></a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
+                                href="{{ route('allBrand') }}">Brands <span class="ps-3">
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
+                                href="{{ route('allStore') }}">Store</a>
+                        </li>
+                        <li class="nav-item mb-2"
+                            style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
+                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('vendors') ? 'active' : '' }}"
+                                href="{{ route('vendors') }}">Vendors</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::View component-->
+</div>
+{{-- Mobile View End --}}
