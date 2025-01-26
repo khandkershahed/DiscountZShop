@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Auth\PasswordController;
-use App\Http\Controllers\User\Auth\NewPasswordController;
-use App\Http\Controllers\User\Auth\VerifyEmailController;
-use App\Http\Controllers\User\Auth\RegisteredUserController;
-use App\Http\Controllers\User\Auth\PasswordResetLinkController;
-use App\Http\Controllers\User\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\User\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\User\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\User\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\User\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\User\Auth\NewPasswordController;
+use App\Http\Controllers\User\Auth\PasswordController;
+use App\Http\Controllers\User\Auth\PasswordResetLinkController;
+use App\Http\Controllers\User\Auth\RegisteredUserController;
+use App\Http\Controllers\User\Auth\VerifyEmailController;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -58,3 +58,17 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+// // Verification Routes
+// Route::middleware('auth')->get('/email/verify', function () {
+//     return view('auth.verify');
+// })->name('verification.notice');
+
+// Route::middleware('auth')->get('/email/verify/{id}/{hash}', function ($id, $hash) {
+//     return (new \Illuminate\Auth\Notifications\VerifyEmail)->toMail(request()->user());
+// })->name('verification.verify');
+
+// // Redirect user to dashboard after successful login
+// Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
