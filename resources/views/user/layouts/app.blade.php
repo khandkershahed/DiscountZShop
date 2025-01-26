@@ -62,11 +62,9 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
-                        <div id="kt_content_container" class="bg-white">
                             <!--begin::Row-->
                             {{ $slot }}
                             <!--end::Row-->
-                        </div>
                         <!--end::Container-->
                     </div>
                     <!--end::Post-->
