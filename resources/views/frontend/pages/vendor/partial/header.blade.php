@@ -25,6 +25,7 @@
             </div>
         </section>
     </div>
+
     <div class="mobile-homepage" style="margin-top: 4.6rem;">
         <section>
             <div class="regular-banner">
@@ -51,6 +52,7 @@
             </div>
         </section>
     </div>
+
     <section>
         <div class="container">
             <div class="row">
@@ -80,8 +82,10 @@
                             </a>
                         @endif
                     </div>
+
                     {{-- For only Mobile --}}
-                    <div class="mobile-vendor-box mb-4" style="background-color: #eee">
+
+                    {{-- <div class="mobile-vendor-box mb-4" style="background-color: #eee">
                         <a href="{{ route('brand.details', optional($brand)->slug) }}">
                             <div class="mobile-vendor {{ Route::is('brand.details') ? 'active' : '' }} rounded-2">
                                 <h6>Overview</h6>
@@ -102,7 +106,8 @@
                                 </div>
                             </a>
                         @endif
-                    </div>
+                    </div> --}}
+                    
                     {{-- For only Mobile End --}}
                 </div>
                 <div class="col-lg-7">

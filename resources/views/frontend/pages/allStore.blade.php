@@ -81,6 +81,7 @@
                 <!-- Store Listings Container -->
                 <div class="row pb-1 storeContainer" id="servicesContainer">
                     @foreach ($latest_stores as $latest_store)
+
                         <div class="col-lg-3">
                             <div class="card border-0 shadow-sm mb-4">
                                 <div class="card-body p-0 rounded-2">
@@ -111,18 +112,19 @@
                                                 href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                                 <h6>{{ $latest_store->title }}</h6>
                                             </a>
+
                                             <div>
-                                                <button class="btn border-0 p-0 m-0 ps-2">
-                                                    <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                        title="Store Location" data-bs-toggle="modal"
-                                                        data-bs-target="#store-Location"></i>
-                                                </button>
+                                                <a href="{{ $latest_store->location }}" class="btn border-0 p-0 m-0 ps-2">
+                                                    <i class="fa-solid fa-location-dot ps-1 main-color fs-3" title="Store Location"></i>
+                                                </a>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     @endforeach
                 </div>
             </div>
@@ -134,6 +136,7 @@
         <!-- All Stores -->
         <section>
             <div class="container">
+
                 <div class="row py-5">
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center">
@@ -145,8 +148,9 @@
 
                 <div class="row pb-4">
                     @foreach ($stores as $store)
-                        <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
-                            <div class="col-lg-3">
+                        <div class="col-lg-3">
+                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
+
                                 <div class="card border-0 shadow-sm mb-4">
                                     <div class="card-body p-0 rounded-2">
                                         <!-- Store Banner -->
@@ -178,18 +182,19 @@
                                                     </div>
                                                 </a>
                                                 <div>
-                                                    <button class="btn border-0 p-0 m-0 ps-2">
-                                                        <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                            title="Store Location" data-bs-toggle="modal"
-                                                            data-bs-target="#store-Location" aria-hidden="true"></i>
-                                                    </button>
+                                                    <div>
+                                                        <a href="{{ $store->location }}" class="btn border-0 p-0 m-0 ps-2">
+                                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3" title="Store Location"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+
+                            </a>
+                        </div>
                     @endforeach
                 </div>
 
@@ -302,7 +307,6 @@
     </div>
 
     @push('scripts')
-
         <script>
             $(document).ready(function() {
                 // Listen for changes in the filter fields

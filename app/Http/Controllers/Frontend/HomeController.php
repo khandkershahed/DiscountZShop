@@ -120,7 +120,20 @@ class HomeController extends Controller
             $brands = Brand::where('name', 'like', "%$query%")->get();
         } else {
             // If query is empty, we don't need to reload all the brands
-            $brands = Brand::latest()->get();
+            // $brands = Brand::latest()->get();
+
+            $data = [
+                'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+                'categories'  => Category::with('brands') // Eager load the brands relationship
+                    ->orderBy('name', 'ASC')                  // Order categories by name in ascending order
+                    ->latest('id')                            // Order categories by the latest ID (newest first)
+                    ->active()                                // Assuming you have an active scope in your Category model
+                    ->get(),
+
+                // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+                'brands'      => Brand::latest()->get(),
+            ];
+            return view('frontend.pages.allBrand', $data);
         }
 
         // Return the partial view with the brand list
@@ -622,7 +635,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }
@@ -631,7 +644,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faqDiscountZShop.faq', $data);
     }

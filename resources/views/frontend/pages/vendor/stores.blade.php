@@ -14,7 +14,8 @@
                             <div>
                                 <h3>Location</h3>
                             </div>
-                            <div class="pt-1 d-flex justify-content-space-around align-items-center footer-icons">
+
+                            {{-- <div class="pt-1 d-flex justify-content-space-around align-items-center footer-icons">
                                 <a href="" class="p-2">
                                     <i class="fas fa-globe site-color" style="font-size: 22px" aria-hidden="true"
                                         title="Website"></i>
@@ -32,7 +33,8 @@
                                     <i class="fa-brands fa-linkedin-in site-color" style="font-size: 22px"
                                         aria-hidden="true" title="Linkedin"></i>
                                 </a>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </div>
                 </div>
