@@ -1,5 +1,6 @@
 <x-frontend-app-layout :title="'All Stores || DiscountZShop'">
     <div class="desktop-homepage">
+
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">
@@ -9,6 +10,7 @@
             </div>
         </section>
         <!-- Hero End -->
+
         <section>
             <div class="container mb-5">
 
@@ -24,11 +26,10 @@
 
 
                             {{-- =======================Filter ======================= --}}
-                            <!-- Filter Store -->
                             <div class="d-flex align-items-center">
-                                <!-- Division Filter -->
+                                <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="custom_select1" name="division_id"
+                                    <select class="form-select cust-select" id="division_filter" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off">
                                         <option value="">Select Division</option>
                                         @forelse ($divisions as $division)
@@ -39,9 +40,9 @@
                                     </select>
                                 </div>
 
-                                <!-- City Filter -->
+                                <!-- Filter Store - City -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="custom_select2" name="city_id"
+                                    <select class="form-select cust-select" id="city_filter" name="city_id"
                                         data-placeholder="Select City" autocomplete="off">
                                         <option value="">Select City</option>
                                         @foreach ($citys as $city)
@@ -50,9 +51,9 @@
                                     </select>
                                 </div>
 
-                                <!-- Area Filter -->
+                                <!-- Filter Store - Area -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="custom_select3" name="area_id"
+                                    <select class="form-select cust-select" id="area_filter" name="area_id"
                                         data-placeholder="Select Area">
                                         <option value="">Select Area</option>
                                         @foreach ($areas as $area)
@@ -61,24 +62,26 @@
                                     </select>
                                 </div>
 
-                                <!-- Search Field -->
+                                <!-- Search Store -->
                                 <div class="wrapper-store">
                                     <div class="search-input-store">
-                                        <input type="text" id="serviceSearch" name=""
-                                            placeholder="Type to search..." />
-                                        <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                                </path>
-                                            </svg>
-                                        </div>
+                                        <form action="">
+                                            <input type="text" id="storeSearch" autocomplete="off" name="search"
+                                                placeholder="Type to search..." />
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
+
                             </div>
                             {{-- =======================Filter ======================= --}}
-
 
                         </div>
                     </div>
@@ -87,12 +90,9 @@
 
                 <div class="row">
 
-                    {{-- ================== --}}
-
-                    {{-- ================== --}}
-
                     <div class="col-lg-3 border py-2 shadow-sm">
                         {{-- Accordion Filter Start --}}
+
                         <div class="accordion">
                             @foreach ($categories as $header_category)
                                 <div class="accordion-header">
@@ -129,7 +129,6 @@
                                                     <span style="font-size: 14px">{{ $header_category_child->name }}
                                                         ({{ $header_category_child->offers->count() }})
                                                     </span>
-                                                    <!-- This is where the click happens -->
                                                 </label>
                                             </div>
                                         </div>
@@ -137,6 +136,7 @@
                                 </div>
                             @endforeach
                         </div>
+
                     </div>
 
                     <div class="col-lg-9 pe-0">
@@ -146,7 +146,6 @@
                             {{-- Category All Offers Tab --}}
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
-
 
                                 <div class="row servicesContainer" id="servicesContainer">
                                     @foreach ($offers as $offer)
@@ -192,7 +191,6 @@
                                     @endforeach
                                 </div>
 
-
                             </div>
 
                             {{-- Category-wise Offers Tabs --}}
@@ -208,15 +206,15 @@
                                                             <div>
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                     width="80px" height="80px" class="rounded-2"
-                                                                    style="object-fit: contain;" alt=""
+                                                                    style="object-fit: contain;"
+                                                                    alt="Offer logo for {{ $offer->name }}"
                                                                     onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             @if (!empty($offer->badge))
                                                                 <h4 class="main-color special-font-box text-end">
-                                                                    {{ $offer->badge }}
-                                                                </h4>
+                                                                    {{ $offer->badge }}</h4>
                                                             @endif
                                                         </div>
                                                         <div class="col-lg-12 pt-4 offer_title">
@@ -252,24 +250,23 @@
 
                         </div>
 
-
                         {{-- Dynamic Pagination --}}
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
-                                {{-- Previous page link --}}
+
                                 <li class="page-item @if ($offers->onFirstPage()) disabled @endif">
                                     <a class="page-link" href="{{ $offers->previousPageUrl() }}"
                                         aria-label="Previous">Previous</a>
                                 </li>
 
-                                {{-- Loop through the pagination links --}}
+
                                 @for ($i = 1; $i <= $offers->lastPage(); $i++)
                                     <li class="page-item @if ($offers->currentPage() == $i) active @endif">
                                         <a class="page-link" href="{{ $offers->url($i) }}">{{ $i }}</a>
                                     </li>
                                 @endfor
 
-                                {{-- Next page link --}}
+
                                 <li class="page-item @if (!$offers->hasMorePages()) disabled @endif">
                                     <a class="page-link" href="{{ $offers->nextPageUrl() }}"
                                         aria-label="Next">Next</a>
@@ -284,6 +281,7 @@
 
             </div>
         </section>
+
     </div>
 
     {{-- For Mobile Code --}}
@@ -292,77 +290,136 @@
 
     @push('scripts')
         <script>
+            // Check the checkbox for the category
             $(document).ready(function() {
-                // Trigger AJAX when any filter changes
-                $('#custom_select1, #custom_select2, #custom_select3').change(function() {
-                    // Get selected values
-                    let division_id = $('#custom_select1').val();
-                    let city_id = $('#custom_select2').val();
-                    let area_id = $('#custom_select3').val();
-                    let search = $('#serviceSearch').val();
+                // Listen for changes in the filter fields
+                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
+                    // Collect filter values
+                    let division_id = $('#division_filter').val();
+                    let city_id = $('#city_filter').val();
+                    let area_id = $('#area_filter').val();
+                    let search_query = $('#storeSearch').val();
 
-                    // Send AJAX request with selected filters
-                    $.ajax({
-                        url: "{{ route('offers.filter') }}", // Adjust this route based on your backend
-                        method: "GET",
-                        data: {
-                            division_id: division_id,
-                            city_id: city_id,
-                            area_id: area_id,
-                            search: search
-                        },
-                        success: function(response) {
-                            // Update the offers container with filtered offers
-                            $('#servicesContainer').html(response.html);
-                            // Update pagination if necessary
-                            $('.pagination').html(response.pagination);
-                        }
-                    });
+                    // Check if all fields are cleared
+                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
+                        // If cleared, fetch all stores without any filters
+                        fetchStores();
+                    } else {
+                        // AJAX request to fetch filtered stores
+                        $.ajax({
+                            url: '{{ route('offerss.filter') }}',
+                            method: 'GET',
+                            data: {
+                                division_id: division_id,
+                                city_id: city_id,
+                                area_id: area_id,
+                                search: search_query
+                            },
+                            success: function(response) {
+                                // Update offer listings with the response
+                                $('#servicesContainer').html(response.offers);
+                                $('.pagination').html(response
+                                    .pagination); // Update pagination links
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error fetching stores: ' + error);
+                            }
+                        });
+                    }
                 });
 
-                // Optional: Trigger search on keyup event for the search input
-                $('#serviceSearch').keyup(function() {
-                    $('#custom_select1, #custom_select2, #custom_select3').trigger('change');
+                // Fetch all stores when the page loads (in case no filter is applied)
+                function fetchStores() {
+                    $.ajax({
+                        url: '{{ route('offerss.filter') }}',
+                        method: 'GET',
+                        data: {
+                            division_id: '',
+                            city_id: '',
+                            area_id: '',
+                            search: ''
+                        },
+                        success: function(response) {
+                            // Update offer listings with the response
+                            $('#servicesContainer').html(response.offers);
+                            $('.pagination').html(response.pagination); // Update pagination links
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching stores: ' + error);
+                        }
+                    });
+                }
+
+                // Initially load all stores if no filters are applied
+                fetchStores();
+
+                // Clear filters button functionality
+                $('#clearFilters').click(function() {
+                    // Reset all filters and the search field
+                    $('#division_filter').val('');
+                    $('#city_filter').val('');
+                    $('#area_filter').val('');
+                    $('#storeSearch').val('');
+
+                    // Fetch all stores again
+                    fetchStores();
                 });
             });
         </script>
 
-
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+
                 // Toggle the checkbox when the category or subcategory is clicked
                 function toggleOffers(categoryId) {
-                    // Check the checkbox for the category
                     const checkbox = document.getElementById('category-' + categoryId);
                     if (checkbox) {
                         checkbox.checked = true; // Automatically check the category checkbox
                     }
-
-                    // Show offers for that category
                     showOffersByCategory(categoryId);
                 }
 
-                // Show the offers for the selected category
+                // Show or hide the offers for the selected category and subcategory
                 function showOffersByCategory(categoryId) {
-                    // Remove the 'active' class from all category tabs
-                    document.querySelectorAll('.tab-pane').forEach(tab => {
-                        tab.classList.remove('show', 'active');
-                    });
+                    const panel = document.getElementById('panel-' + categoryId);
+                    const checkbox = document.getElementById('category-' + categoryId);
 
-                    // Add the 'active' class to the relevant category's tab
-                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-                    if (categoryTab) {
-                        categoryTab.classList.add('show', 'active');
+                    if (checkbox && checkbox.checked) {
+                        // Show the panel for the selected category or subcategory
+                        panel.classList.add('show');
+                    } else {
+                        // Hide the panel if checkbox is unchecked
+                        panel.classList.remove('show');
+                    }
+
+                    // Also ensure that the offers tab is activated when the checkbox is checked
+                    if (checkbox.checked) {
+                        const categoryTab = document.getElementById('category-' + categoryId + '-pane');
+                        if (categoryTab) {
+                            categoryTab.classList.add('show', 'active');
+                        }
                     }
                 }
 
-                // Add event listener to all accordion checkboxes
+                // Handle checkbox changes for category and subcategory
+                function handleCheckboxChange(checkbox) {
+                    const categoryId = checkbox.id.split('-')[1];
+
+                    // Show or hide the panel depending on the checkbox state
+                    const panel = document.getElementById('panel-' + categoryId);
+                    if (checkbox.checked) {
+                        panel.classList.add('show'); // Show the panel for the selected category
+                        showOffersByCategory(categoryId); // Also ensure the offers tab is visible
+                    } else {
+                        panel.classList.remove('show'); // Hide the panel if checkbox is unchecked
+                    }
+                }
+
+                // Add event listener to all category and subcategory checkboxes
                 document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
                     checkbox.addEventListener('change', function() {
                         const categoryId = this.id.split('-')[1];
-                        if (this.checked) {
-                            showOffersByCategory(categoryId);
-                        }
+                        handleCheckboxChange(this);
                     });
                 });
 
@@ -373,28 +430,35 @@
                         toggleOffers(categoryId); // Call toggleOffers on click of subcategory
                     });
                 });
-            });
-        </script>
 
-        <script>
+                // Countdown Timer functionality (optional, if you're showing expiry times)
+                document.querySelectorAll('.countdown').forEach(function(el) {
+                    const expireDate = new Date(el.getAttribute('data-expire-date'));
+                    setInterval(function() {
+                        const now = new Date();
+                        const timeRemaining = expireDate - now;
+
+                        // Update the countdown display
+                        const daysRemaining = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                        el.querySelector('.countdown-timer').textContent = `${daysRemaining} Days`;
+                    }, 1000);
+                });
+            });
+
             // Bootstrap Tab Activation
             var triggerTabList = [].slice.call(document.querySelectorAll('#myTab button'))
             triggerTabList.forEach(function(triggerEl) {
                 var tabTrigger = new bootstrap.Tab(triggerEl)
-
                 triggerEl.addEventListener('click', function(event) {
                     event.preventDefault()
                     tabTrigger.show()
                 })
-            })
-        </script>
+            });
 
-        <script>
+            // Toggle panel visibility based on checkbox change
             document.querySelectorAll('.accordion-checkbox').forEach(function(checkbox) {
                 checkbox.addEventListener('change', function() {
                     const panel = this.closest('.accordion-header').nextElementSibling;
-
-                    // Toggle the 'show' class on the panel
                     if (this.checked) {
                         panel.classList.add('show');
                     } else {
