@@ -396,6 +396,27 @@ class HomeController extends Controller
     //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
     // }
 
+    // public function allOffer(Request $request)
+    // {
+    //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
+    //     $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
+
+    //     // Get selected category if it's passed in the request
+    //     $category_id = $request->category_id;
+
+    //     // Initialize the query for offers
+    //     $offersQuery = Offer::query();
+
+    //     // Apply category filter if provided
+    //     if ($category_id) {
+    //         $offersQuery->where('category_id', $category_id);
+    //     }
+
+    //     $offers = $offersQuery->latest()->paginate(15);
+
+    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
+    // }
+
     public function allOffer(Request $request)
     {
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
@@ -412,12 +433,71 @@ class HomeController extends Controller
             $offersQuery->where('category_id', $category_id);
         }
 
-        // $categories = Category::with(['children', 'offers'])->get();
-
-                                                        // Paginate offers
-        $offers = $offersQuery->latest()->paginate(14); // Adjust the number of items per page here
+        $offers = $offersQuery->latest()->paginate(15);
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
+    }
+
+    // public function filterOfferss(Request $request)
+    // {
+    //     $offersQuery = Offer::query();
+
+    //     // Apply filters for division_id, city_id, area_id if provided
+    //     if ($request->has('division_id') && $request->division_id != '') {
+    //         $offersQuery->whereJsonContains('division_id', $request->division_id);
+    //     }
+
+    //     if ($request->has('city_id') && $request->city_id != '') {
+    //         $offersQuery->whereJsonContains('city_id', $request->city_id);
+    //     }
+
+    //     if ($request->has('area_id') && $request->area_id != '') {
+    //         $offersQuery->whereJsonContains('area_id', $request->area_id);
+    //     }
+
+    //     // Apply search filter if provided
+    //     if ($request->has('search') && $request->search != '') {
+    //         $offersQuery->where('name', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     $offers = $offersQuery->paginate(15);
+
+    //     // Return the updated store listings with pagination
+    //     return response()->json([
+    //         'offers'     => view('offers.partials.offer-list', compact('offers'))->render(),
+    //         'pagination' => view('offers.partials.pagination', compact('offers'))->render(),
+    //     ]);
+    // }
+
+    public function filterOfferss(Request $request)
+    {
+        $offersQuery = Offer::query();
+
+        // Apply filters for division_id, city_id, area_id if provided
+        if ($request->has('division_id') && $request->division_id != '') {
+            $offersQuery->whereJsonContains('division_id', $request->division_id);
+        }
+
+        if ($request->has('city_id') && $request->city_id != '') {
+            $offersQuery->whereJsonContains('city_id', $request->city_id);
+        }
+
+        if ($request->has('area_id') && $request->area_id != '') {
+            $offersQuery->whereJsonContains('area_id', $request->area_id);
+        }
+
+        // Apply search filter if provided
+        if ($request->has('search') && $request->search != '') {
+            $offersQuery->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $offers = $offersQuery->paginate(15);
+
+        // Return the updated offer listings with pagination
+        return response()->json([
+            'offers'     => view('offers.partials.offer-list', compact('offers'))->render(),
+            'pagination' => view('offers.partials.pagination', compact('offers'))->render(),
+        ]);
     }
 
     //offerDetails
@@ -442,6 +522,37 @@ class HomeController extends Controller
         }
     }
 
+    //filterOfferss
+    // public function filterOfferss(Request $request)
+    // {
+    //     $offersQuery = Offer::query();
+
+    //     // Apply filters for division_id, city_id, area_id if provided
+    //     if ($request->has('division_id') && $request->division_id != '') {
+    //         $offersQuery->whereJsonContains('division_id', $request->division_id);
+    //     }
+
+    //     if ($request->has('city_id') && $request->city_id != '') {
+    //         $offersQuery->whereJsonContains('city_id', $request->city_id);
+    //     }
+
+    //     if ($request->has('area_id') && $request->area_id != '') {
+    //         $offersQuery->whereJsonContains('area_id', $request->area_id);
+    //     }
+
+    //     // Apply search filter if provided
+    //     if ($request->has('search') && $request->search != '') {
+    //         $offersQuery->where('name', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     $offers = $offersQuery->paginate(15);
+
+    //     // Return the updated store listings with pagination
+    //     return response()->json([
+    //         'offers' => view('offers.partials.offer-list', compact('offers'))->render(),
+    //     ]);
+    // }
+
     //searchCouponName
     public function searchCouponName(Request $request)
     {
@@ -458,38 +569,6 @@ class HomeController extends Controller
 
         // Return the results as HTML to be inserted into the page
         return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
-    }
-
-    //filterOfferss
-    public function filterOfferss(Request $request)
-    {
-        $offersQuery = Offer::query();
-
-        // Apply filters for division_id, city_id, area_id if provided
-        if ($request->has('division_id') && $request->division_id != '') {
-            $offersQuery->whereJsonContains('division_id', $request->division_id);
-        }
-
-        if ($request->has('city_id') && $request->city_id != '') {
-            $offersQuery->whereJsonContains('city_id', $request->city_id);
-        }
-
-        if ($request->has('area_id') && $request->area_id != '') {
-            $offersQuery->whereJsonContains('area_id', $request->area_id);
-        }
-
-        // Apply search filter if provided
-        if ($request->has('search') && $request->search != '') {
-            $offersQuery->where('name', 'like', '%' . $request->search . '%');
-        }
-
-        $offers = $offersQuery->paginate(12);
-
-        // Return the updated store listings with pagination
-        return response()->json([
-            'offers' => view('offers.partials.offer-list', compact('offers'))->render(),
-            // 'pagination' => (string) $offers->links(), // Pass pagination links to the frontend
-        ]);
     }
 
     //mapDivision
