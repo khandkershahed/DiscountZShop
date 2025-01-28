@@ -203,40 +203,53 @@
 
     <div class="mobile-homepage" style="margin-top: 6rem;margin-bottom: 8rem;">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-3 pe-0">
-                    <h6 class="site-text fw-bold">Top Stores</h6>
-                </div>
-                <div class="col-4 px-0">
-                    <div class="btn-group pe-2">
-                        <select class="form-select form-select-sm" id="custom_select1" name="division_id"
-                            data-placeholder="Select Division" autocomplete="off">
-                            <option value="">Select Division</option>
-                            @forelse ($divisions as $division)
-                                <option value="{{ $division->id }}">{{ $division->name }}</option>
-                            @empty
-                                <option disabled>No Division Available</option>
-                            @endforelse
-                        </select>
+            <form action="">
+                <div class="row align-items-center px-2">
+                    <div class="col-12 pe-0">
+                        <h3 class="site-text text-center pb-3 fw-bold">Top Stores</h3>
                     </div>
-                </div>
-                <div class="col-5 ps-0">
-                    <div class="wrapper-store">
-                        <div class="search-input-store">
-                            <input type="text" id="serviceSearch" autocomplete="off" name=""
-                                placeholder="Type to search..." />
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                    </path>
-                                </svg>
+                    <div class="col-4 px-0">
+                        <div class="btn-group pe-2">
+                            <select class="form-select form-select-sm" id="division_filter" name="division_id"
+                                data-placeholder="Select Division" autocomplete="off">
+                                <option value="">Select Division</option>
+                                @forelse ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                @empty
+                                    <option disabled>No Division Available</option>
+                                @endforelse
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4 px-0">
+                        <div class="btn-group pe-2">
+                            <select class="form-select form-select-sm" id="city_filter" name="city_id"
+                                data-placeholder="Select City" autocomplete="off">
+                                <option value="">Select City</option>
+                                @foreach ($citys as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4 ps-0 pe-0">
+                        <div class="wrapper-store">
+                            <div class="search-input-store">
+                                <input type="text" id="serviceSearch" autocomplete="off" name=""
+                                    placeholder="search..." />
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                        fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                        </path>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <div class="row mt-4 gx-2">
                 @foreach ($latest_stores as $latest_store)
                     <div class="col-6 mb-2">
@@ -252,7 +265,7 @@
                                 </div>
                                 <div class="card-body border-0 p-0">
                                     <div class="d-flex justify-content-between align-items-center px-2 py-3 pb-2">
-                                        <div>
+                                        <div class="store-logo-mb">
                                             <img class="img-fluid"
                                                 src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                 alt="">
@@ -301,7 +314,12 @@
             </div>
             <div class="row">
                 <div class="col-12 pe-0">
-                    <h6 class="site-text fw-bold">Top Stores</h6>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0 py-3 main-color">All Stores</h3>
+                            <span class="store-devider mt-2"></span>
+                        </div>
+                    </div>
                 </div>
                 @foreach ($stores as $store)
                     <div class="col-6 mb-2">
@@ -317,7 +335,7 @@
                                 </div>
                                 <div class="card-body border-0 p-0">
                                     <div class="d-flex justify-content-between align-items-center px-2 py-3 pb-2">
-                                        <div>
+                                        <div class="store-logo-mb">
                                             <img class="img-fluid"
                                                 src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                 alt="">
