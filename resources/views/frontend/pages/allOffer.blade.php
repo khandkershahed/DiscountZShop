@@ -148,6 +148,7 @@
                                 aria-labelledby="category-all" tabindex="0">
 
                                 <div class="row servicesContainer" id="servicesContainer">
+
                                     @foreach ($offers as $offer)
                                         <div class="col-lg-4 mb-4 pe-2">
                                             <div class="card border-0 shadow-sm bg-light offer-boxes">
@@ -189,6 +190,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+
                                 </div>
 
                             </div>
@@ -284,12 +286,15 @@
 
     </div>
 
+    {{-- Ashik ======================= --}}
+
     {{-- For Mobile Code --}}
     @include('frontend.pages.alloffer_mobile_view')
     {{-- For Mobile Code --}}
 
-    @push('scripts')
-        <script>
+
+
+    {{-- <script>
             // Check the checkbox for the category
             $(document).ready(function() {
                 // Listen for changes in the filter fields
@@ -399,6 +404,10 @@
                             categoryTab.classList.add('show', 'active');
                         }
                     }
+
+                    // Check if any category or subcategory is selected to hide the "category-all" tab pane
+                    updateCategoryAllVisibility();
+                    removeOffersWhenUnchecked(categoryId);
                 }
 
                 // Handle checkbox changes for category and subcategory
@@ -412,6 +421,44 @@
                         showOffersByCategory(categoryId); // Also ensure the offers tab is visible
                     } else {
                         panel.classList.remove('show'); // Hide the panel if checkbox is unchecked
+                    }
+
+                    // Update visibility of the "category-all" tab pane
+                    updateCategoryAllVisibility();
+                    removeOffersWhenUnchecked(categoryId);
+                }
+
+                // Update the visibility of the "category-all" tab pane
+                function updateCategoryAllVisibility() {
+                    const categoryAllPane = document.getElementById('category-all-pane');
+                    const allCheckboxes = document.querySelectorAll('.accordion-checkbox');
+
+                    let isAnyChecked = false;
+
+                    allCheckboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            isAnyChecked = true;
+                        }
+                    });
+
+                    // Hide "category-all" pane if any checkbox is checked
+                    if (categoryAllPane) {
+                        if (isAnyChecked) {
+                            categoryAllPane.classList.remove('show', 'active');
+                        } else {
+                            categoryAllPane.classList.add('show', 'active');
+                        }
+                    }
+                }
+
+                // Remove offers when the category or subcategory checkbox is unchecked
+                function removeOffersWhenUnchecked(categoryId) {
+                    const checkbox = document.getElementById('category-' + categoryId);
+                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
+
+                    // If the checkbox is unchecked, remove the offers
+                    if (checkbox && !checkbox.checked && categoryTab) {
+                        categoryTab.classList.remove('show', 'active'); // Remove the category tab
                     }
                 }
 
@@ -444,28 +491,279 @@
                     }, 1000);
                 });
             });
+        </script> --}}
 
-            // Bootstrap Tab Activation
-            var triggerTabList = [].slice.call(document.querySelectorAll('#myTab button'))
-            triggerTabList.forEach(function(triggerEl) {
-                var tabTrigger = new bootstrap.Tab(triggerEl)
-                triggerEl.addEventListener('click', function(event) {
-                    event.preventDefault()
-                    tabTrigger.show()
-                })
+    @push('scripts')
+        {{-- <script>
+                // Document ready function to handle dynamic filtering
+                $(document).ready(function() {
+                    // Listen for changes in the filter fields
+                    $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
+                        // Collect filter values
+                        let division_id = $('#division_filter').val();
+                        let city_id = $('#city_filter').val();
+                        let area_id = $('#area_filter').val();
+                        let search_query = $('#storeSearch').val();
+
+                        // Check if all fields are cleared
+                        if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
+                            // If cleared, fetch all stores without any filters
+                            fetchStores();
+                        } else {
+                            // AJAX request to fetch filtered stores
+                            $.ajax({
+                                url: '{{ route('offerss.filter') }}',
+                                method: 'GET',
+                                data: {
+                                    division_id: division_id,
+                                    city_id: city_id,
+                                    area_id: area_id,
+                                    search: search_query
+                                },
+                                success: function(response) {
+                                    // Update offer listings with the response
+                                    $('#servicesContainer').html(response.offers);
+                                    $('.pagination').html(response
+                                    .pagination); // Update pagination links
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error fetching stores: ' + error);
+                                }
+                            });
+                        }
+                    });
+
+                    // Fetch all stores when the page loads (in case no filter is applied)
+                    function fetchStores() {
+                        $.ajax({
+                            url: '{{ route('offerss.filter') }}',
+                            method: 'GET',
+                            data: {
+                                division_id: '',
+                                city_id: '',
+                                area_id: '',
+                                search: ''
+                            },
+                            success: function(response) {
+                                // Update offer listings with the response
+                                $('#servicesContainer').html(response.offers);
+                                $('.pagination').html(response.pagination); // Update pagination links
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error fetching stores: ' + error);
+                            }
+                        });
+                    }
+
+                    // Initially load all stores if no filters are applied
+                    fetchStores();
+
+                    // Clear filters button functionality
+                    $('#clearFilters').click(function() {
+                        // Reset all filters and the search field
+                        $('#division_filter').val('');
+                        $('#city_filter').val('');
+                        $('#area_filter').val('');
+                        $('#storeSearch').val('');
+
+                        // Fetch all stores again
+                        fetchStores();
+                    });
+                });
+            </script> --}}
+
+        <script>
+            $(document).ready(function() {
+                // Listen for pagination link clicks
+                $(document).on('click', '.pagination .page-link', function(e) {
+                    e.preventDefault(); // Prevent the default behavior of the link
+                    let url = $(this).attr('href'); // Get the URL for the next page
+
+                    // Make the AJAX request for the next page
+                    $.ajax({
+                        url: url,
+                        method: 'GET',
+                        success: function(response) {
+                            // Update offer listings with the response
+                            $('#servicesContainer').html(response.offers);
+                            $('.pagination').html(response.pagination); // Update pagination links
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching offers: ' + error);
+                        }
+                    });
+                });
+
+                // Other AJAX functionality as before (for filtering)
+                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
+                    // Collect filter values
+                    let division_id = $('#division_filter').val();
+                    let city_id = $('#city_filter').val();
+                    let area_id = $('#area_filter').val();
+                    let search_query = $('#storeSearch').val();
+
+                    // Check if all fields are cleared
+                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
+                        // If cleared, fetch all stores without any filters
+                        fetchStores();
+                    } else {
+                        // AJAX request to fetch filtered stores
+                        $.ajax({
+                            url: '{{ route('offerss.filter') }}',
+                            method: 'GET',
+                            data: {
+                                division_id: division_id,
+                                city_id: city_id,
+                                area_id: area_id,
+                                search: search_query
+                            },
+                            success: function(response) {
+                                // Update offer listings with the response
+                                $('#servicesContainer').html(response.offers);
+                                $('.pagination').html(response
+                                    .pagination); // Update pagination links
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error fetching stores: ' + error);
+                            }
+                        });
+                    }
+                });
+
+                // Fetch all stores when the page loads (in case no filter is applied)
+                function fetchStores() {
+                    $.ajax({
+                        url: '{{ route('offerss.filter') }}',
+                        method: 'GET',
+                        data: {
+                            division_id: '',
+                            city_id: '',
+                            area_id: '',
+                            search: ''
+                        },
+                        success: function(response) {
+                            // Update offer listings with the response
+                            $('#servicesContainer').html(response.offers);
+                            $('.pagination').html(response.pagination); // Update pagination links
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching stores: ' + error);
+                        }
+                    });
+                }
+
+                // Initially load all stores if no filters are applied
+                fetchStores();
+
+                // Clear filters button functionality
+                $('#clearFilters').click(function() {
+                    // Reset all filters and the search field
+                    $('#division_filter').val('');
+                    $('#city_filter').val('');
+                    $('#area_filter').val('');
+                    $('#storeSearch').val('');
+
+                    // Fetch all stores again
+                    fetchStores();
+                });
             });
+        </script>
 
-            // Toggle panel visibility based on checkbox change
-            document.querySelectorAll('.accordion-checkbox').forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    const panel = this.closest('.accordion-header').nextElementSibling;
-                    if (this.checked) {
+        <script>
+            // Handle the category and subcategory toggling and checkbox updates
+            document.addEventListener('DOMContentLoaded', function() {
+                // Toggle the checkbox when the category or subcategory is clicked
+                function toggleOffers(categoryId) {
+                    const checkbox = document.getElementById('category-' + categoryId);
+                    if (checkbox) {
+                        checkbox.checked = !checkbox.checked; // Toggle the checkbox state
+                    }
+                    showOffersByCategory(categoryId);
+                }
+
+                // Show or hide the offers for the selected category and subcategory
+                function showOffersByCategory(categoryId) {
+                    const panel = document.getElementById('panel-' + categoryId);
+                    const checkbox = document.getElementById('category-' + categoryId);
+
+                    if (checkbox && checkbox.checked) {
                         panel.classList.add('show');
                     } else {
                         panel.classList.remove('show');
                     }
+
+                    // Ensure the offer tab is visible when the checkbox is checked
+                    if (checkbox.checked) {
+                        const categoryTab = document.getElementById('category-' + categoryId + '-pane');
+                        if (categoryTab) {
+                            categoryTab.classList.add('show', 'active');
+                        }
+                    }
+
+                    // Check if any category or subcategory is selected to hide the "category-all" tab pane
+                    updateCategoryAllVisibility();
+                }
+
+                // Update the visibility of the "category-all" tab pane
+                function updateCategoryAllVisibility() {
+                    const categoryAllPane = document.getElementById('category-all-pane');
+                    const allCheckboxes = document.querySelectorAll('.accordion-checkbox');
+
+                    let isAnyChecked = false;
+
+                    allCheckboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            isAnyChecked = true;
+                        }
+                    });
+
+                    // Hide "category-all" pane if any checkbox is checked
+                    if (categoryAllPane) {
+                        if (isAnyChecked) {
+                            categoryAllPane.classList.remove('show', 'active');
+                        } else {
+                            categoryAllPane.classList.add('show', 'active');
+                        }
+                    }
+                }
+
+                // Handle checkbox changes for category and subcategory
+                function handleCheckboxChange(checkbox) {
+                    const categoryId = checkbox.id.split('-')[1];
+
+                    // Show or hide the panel depending on the checkbox state
+                    const panel = document.getElementById('panel-' + categoryId);
+                    if (checkbox.checked) {
+                        panel.classList.add('show'); // Show the panel for the selected category
+                        showOffersByCategory(categoryId); // Ensure the offers tab is visible
+                    } else {
+                        panel.classList.remove('show'); // Hide the panel if unchecked
+                    }
+
+                    // Update visibility of the "category-all" tab pane
+                    updateCategoryAllVisibility();
+                }
+
+                // Add event listener to all category and subcategory checkboxes
+                document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        const categoryId = this.id.split('-')[1];
+                        handleCheckboxChange(this);
+                    });
+                });
+
+                // Add click event listener to subcategory names
+                document.querySelectorAll('.accordion-header span').forEach(span => {
+                    span.addEventListener('click', function() {
+                        const categoryId = this.parentElement.querySelector('input').id.split('-')[1];
+                        toggleOffers(categoryId); // Call toggleOffers on click of subcategory
+                    });
                 });
             });
         </script>
     @endpush
+
+
+
+
 </x-frontend-app-layout>
