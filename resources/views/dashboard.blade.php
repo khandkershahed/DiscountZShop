@@ -168,7 +168,7 @@
             </div>
         </div>
     </div>
-    <div class="mobile-homepage w-100 bg-white" style="margin-bottom: 8.5rem">
+    <div class="mobile-homepage w-100 bg-white" style="padding-bottom: 9rem">
         <div class="p-0">
             <div class="container-fluid pt-5 "
                 style="background: linear-gradient(180deg, #F15A2D 10%, rgb(255 255 255 / 0%) 100%);width: 100%;height: 296px; padding-top: 80px;">
