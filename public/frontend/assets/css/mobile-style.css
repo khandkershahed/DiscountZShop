@@ -7,7 +7,58 @@
 .mobile-header {
     display: none;
 }
+/* Slick Dot design */
+.slick-dots {
+    left: 140px;
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    justify-content: center;
+    /* Ensures dots are centered */
+    gap: 5px;
+    /* Adds consistent space between dots */
+}
+
+.slick-dots li {
+    margin: 0;
+    /* Consistent margin for all dots */
+    position: relative;
+}
+
+.slick-dots li button {
+    display: block;
+    width: 8px !important;
+    height: 8px !important;
+    border: none;
+    border-radius: 100% !important;
+    background-color: #eee;
+    text-indent: -9999px;
+    transition: all 0.3s ease;
+    /* Smooth transitions */
+}
+
+.slick-dots li.slick-active button {
+    background-color: #f15a2d;
+    width: 20px !important;
+    height: 8px !important;
+    border-radius: 5px !important;
+    transform: scale(1.2);
+    /* Enlarges the active dot without disrupting alignment */
+    transition: all 0.3s ease;
+    /* Smooth transitions */
+    position: relative;
+    left: -4px;
+}
+
+/* Ensure consistent spacing */
+.slick-dots li.slick-active {
+    margin: 0;
+}
+/* Slick Dot design End */
 @media only screen and (max-width: 600px) {
+    #kt_content_container {
+        display: none;
+    }
     .mobile-homepage {
         display: block;
     }
@@ -18,7 +69,7 @@
         display: block;
     }
     .desktop-homepage {
-        display: none;
+        display: none !important;
     }
     .desktop-footer {
         display: none;
@@ -223,13 +274,17 @@
         line-height: normal;
         justify-content: center;
     }
+    .icon-parent-cnt {
+        position: relative; /* Make the parent the positioned container */
+    }
+
     .icons-mobile-login {
-        display: flex;
-        justify-content: end;
-        position: relative;
-        top: -36px;
+        position: absolute; /* Take the element out of the document flow */
+        top: 14px;
+        right: 10px;
         width: 50px;
-        right: -220px;
+        display: flex;
+        justify-content: flex-end;
     }
     .form-control:focus {
         border: 1px solid #f15a2d !important;
@@ -247,7 +302,6 @@
         font-size: 12px;
     }
     .login-mobile .mobile-login-btn {
-        margin-top: 50px;
         border-radius: 10px;
         background: #f15a2d;
         width: 100%;
@@ -259,10 +313,6 @@
     }
     .site-text {
         color: #f15a2d !important;
-    }
-    .login-mobile p {
-        padding-top: 29px;
-        margin-bottom: 150px !important;
     }
     .mfs {
         font-size: 12px;
@@ -326,9 +376,9 @@
         border: 0;
     }
     .brand-search {
-        position: absolute;
-        right: 18px;
-        margin-top: -24px;
+        position: relative;
+        top: -30px;
+        right: 20px;
     }
     .shop-heart {
         position: absolute;
@@ -351,19 +401,229 @@
         position: relative;
         top: -14px;
         border-radius: 100%;
-        width: 20px;
-        height: 21px;
+        width: 15px;
+        height: 23px;
         text-align: center;
-        left: -15px;
-        padding-right: 16px;
+        left: -14px;
+        padding-top: 5px;
+        padding-right: 17px;
+        line-height: 0px;
+        background-color:#f15a2d;
     }
     .special-offers {
         border-radius: 10px;
         border: 1px solid #ffa286;
         background: linear-gradient(
             90deg,
-            rgba(255, 166, 139, 0) 0%,
+            rgba(255, 255, 255, 0) 0%,
             #f15a2d 100%
         );
+    }
+    .nav-item {
+        white-space: nowrap;
+    }
+    .tabs-container-deal {
+        align-items: center !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .mb-link-tabs {
+        margin: auto;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        background-color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .mb-link-tabs.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .mb-link-tabs:hover {
+        background-color: #f8f9fa;
+    }
+    .mobile-partner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 0px;
+    }
+
+    .mobile-partner img {
+        width: 65px;
+        height: 65px;
+        object-fit: cover;
+        border: 1px solid #eee;
+        padding: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        background-color: #fff;
+        display: block;
+    }
+    .mobile-login-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .icons-mobile-login-tg {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .lock-mobile {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -2px;
+        position: relative;
+        border: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .lock-mobile:active {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -2px;
+        position: relative;
+        border: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .lock-mobile:hover {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -2px;
+        border: 0;
+        position: relative;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .btn-check:checked + .lock-mobile,
+    .lock-mobile.active,
+    .lock-mobile.show,
+    .lock-mobile:first-child:active,
+    :not(.btn-check) + .lock-mobile:active {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -2px;
+        border: 0;
+        position: relative;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .lock-mobile-re {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -4px;
+        position: relative;
+        border: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .lock-mobile-re:active {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -4px;
+        position: relative;
+        border: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .lock-mobile-re:hover {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -4px;
+        border: 0;
+        position: relative;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .btn-check:checked + .lock-mobile-re,
+    .lock-mobile-re.active,
+    .lock-mobile-re.show,
+    .lock-mobile-re:first-child:active,
+    :not(.btn-check) + .lock-mobile-re:active {
+        background: #f3f3f3;
+        padding: 13px;
+        border-radius: 0;
+        left: -4px;
+        border: 0;
+        position: relative;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .offers-title-mobile {
+        height: 45px;
+    }
+    .vendor-menus {
+        padding-left: 20px !important;
+        padding-right: 45px !important;
+    }
+    .brands-logo {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+    .header-tablet-and-mobile-fixed .wrapper {
+        padding-top: 0px !important;
+    }
+    .search-offers-mobile {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #f15a2d;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        overflow: hidden;
+        transition: color 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        margin: auto;
+    }
+    .full-container-dropdown {
+        transform: translate(0px, 100px) !important;
+        border-radius: 0;
+        margin: 0;
+        margin-top: 3px;
+        border: 1px solid #dddddd;
+        padding: 0px 1px;
+        width: 100%;
+        transition: all 0.5s;
+    }
+    .offers-img-mb{
+        width: 100%;
+        height: 240px;
+    }
+    .offers-img-mb img{
+        width: 100%;
+        height: 245px;
+        object-fit: cover;
     }
 }

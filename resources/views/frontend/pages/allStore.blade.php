@@ -20,7 +20,7 @@
                                 <span class="store-devider"></span>
                             </div>
                             <div class="d-flex align-items-center">
-                                
+
                                 <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="division_filter" name="division_id"
@@ -213,7 +213,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-3 pe-0">
-                    <p class="mfs site-text fw-bold">Top Stores</p>
+                    <h6 class="site-text fw-bold">Top Stores</h6>
                 </div>
                 <div class="col-4 px-0">
                     <div class="btn-group pe-2">
@@ -234,7 +234,7 @@
                             <input type="text" id="serviceSearch" autocomplete="off" name=""
                                 placeholder="Type to search..." />
                             <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
@@ -251,7 +251,7 @@
                         <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                             <div class="card p-0 border-0 shadow-none" style="border: 1px solid #F15A2D !important;">
                                 <div class="card-header p-0 border-0 shadow-none">
-                                    <div>
+                                    <div class="offers-img-mb">
                                         <img class="img-fluid"
                                             src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/demo-card-store.png') }}"
                                             alt=""

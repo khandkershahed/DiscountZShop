@@ -16,10 +16,10 @@
                 <!-- Search Store -->
                 <div class="wrapper-store w-50">
                     <div class="search-input-store">
-                        <input type="text" id="serviceSearch" name="" style="height:45px;"
+                        <input type="text" id="serviceSearch" name="" style="height:40px;"
                             placeholder="Type to search..." />
 
-                        <div class="icon" style="height: 45px; width: 30px; text-align: center; line-height: 43px;">
+                        <div class="icon" style="height: 40px; width: 30px; text-align: center; line-height: 43px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-search" viewBox="0 0 16 16">
                                 <path
@@ -44,7 +44,7 @@
                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                             width="80px" height="80px" class="rounded-2" style="object-fit: contain;"
                                             alt=""
-                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                            onerror="this.onerror=null;this.src='http://discountzshop.com/storage/offer/logo/R3WjCCfzxD1725791711.png';" />
                                     </div>
                                 </div>
                                 <div class="px-4">
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12 pt-4 offer_title">
-                                        <p class="text-black">{{ $offer->name }}</p>
+                                        <p class="text-black offers-title-mobile">{{ $offer->name }}</p>
                                         @if (!empty($offer->badge))
                                             <h4 class="main-color special-font-box">
                                                 {{ $offer->badge }}

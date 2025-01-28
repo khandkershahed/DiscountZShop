@@ -110,21 +110,18 @@
                         <img class="img-fluid" src="{{ asset('images/brand-banner.png') }}" alt="">
                     </div>
                 </div>
-                <div class="col-12 px-0">
+                <div class="col-12 px-0 pt-2">
                     <form class="d-flex" role="search" id="searchForm">
-                        <input class="form-control mx-2 mt-2" type="search" id="serviceSearch" placeholder="Search"
-                            aria-label="Search" style="height: 35px">
+                        <input class="form-control mx-2 mt-2" type="search" id="serviceSearch" placeholder="Search" aria-label="Search" style="height: 35px">
                     </form>
-                    <div>
+                    <div class="d-flex justify-content-end">
                         <span>
                             <i class="fa-solid fa-search brand-search"></i>
                         </span>
                     </div>
                 </div>
-                <div class="col-12">
-                </div>
             </div>
-            <div class="row gx-5 mt-4" id="servicesContainer">
+            <div class="row gx-5" id="servicesContainer" style="margin-top: -25px">
                 @foreach ($categories as $category)
                     @if ($category->brands->count() > 0)
                         <div class="col-12">
@@ -136,7 +133,7 @@
                                     </div>
                                 </div>
                                 @foreach ($category->brands as $brand)
-                                    <div class="col-3 mb-3 mt-2">
+                                    <div class="col-3 mb-1 mt-2 px-1">
                                         <a href="{{ route('brand.details', $brand->slug) }}">
                                             <div class="card shadow-sm brands-card p-0">
                                                 <div class="card-body p-0">
