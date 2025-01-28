@@ -178,13 +178,8 @@
                             }
                         });
                     } else if (query.length === 0) { // If the search input is cleared
-                        $.ajax({
-                            url: "{{ route('brands.all.search.name') }}", // URL to fetch all brands
-                            method: 'GET',
-                            success: function(data) {
-                                $('#servicesContainer').html(data); // Reload all brands
-                            }
-                        });
+                        // Redirect to the 'allBrand' route if the search query is empty
+                        window.location.href = "{{ route('allBrand') }}";
                     }
                 });
             });

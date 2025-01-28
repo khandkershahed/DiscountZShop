@@ -35,7 +35,8 @@ Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisi
 Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
 Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
-Route::get('/offers/filter', [HomeController::class, 'filterOffers'])->name('offers.filter');
+
+Route::get('/offerss/filter', [HomeController::class, 'filterOfferss'])->name('offerss.filter');
 
 //Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
@@ -46,7 +47,8 @@ Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.se
 //Brand
 Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand');
 Route::get('/brands/all/search', [HomeController::class, 'searchAllBrands'])->name('brands.all.search.name');
-Route::get('/brands/search/offer', [HomeController::class, 'searchBrandName'])->name('brands.search.name');
+
+// Route::get('/brands/search/offer', [HomeController::class, 'searchBrandName'])->name('brands.search.name');
 Route::get('/{brand}', [HomeController::class, 'vendorOverview'])->name('brand.details');
 Route::get('/{brand}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
 Route::get('/{brand}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');

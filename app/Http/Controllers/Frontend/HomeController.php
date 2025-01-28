@@ -120,7 +120,20 @@ class HomeController extends Controller
             $brands = Brand::where('name', 'like', "%$query%")->get();
         } else {
             // If query is empty, we don't need to reload all the brands
-            $brands = Brand::latest()->get();
+            // $brands = Brand::latest()->get();
+
+            $data = [
+                'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+                'categories'  => Category::with('brands') // Eager load the brands relationship
+                    ->orderBy('name', 'ASC')                  // Order categories by name in ascending order
+                    ->latest('id')                            // Order categories by the latest ID (newest first)
+                    ->active()                                // Assuming you have an active scope in your Category model
+                    ->get(),
+
+                // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+                'brands'      => Brand::latest()->get(),
+            ];
+            return view('frontend.pages.allBrand', $data);
         }
 
         // Return the partial view with the brand list
@@ -365,6 +378,24 @@ class HomeController extends Controller
     }
 
     //allOffer
+    // public function allOffer(Request $request)
+    // {
+    //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
+    //     $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
+
+    //     // Get selected category if it's passed in the request
+    //     $category_id = $request->category_id;
+
+    //     // If a category is selected, fetch offers for that category, else fetch all offers
+    //     if ($category_id) {
+    //         $offers = Offer::where('category_id', $category_id)->latest()->paginate(12); // Paginate offers with 12 items per page
+    //     } else {
+    //         $offers = Offer::latest()->paginate(12); // Default to paginated offers
+    //     }
+
+    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
+    // }
+
     public function allOffer(Request $request)
     {
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
@@ -373,12 +404,18 @@ class HomeController extends Controller
         // Get selected category if it's passed in the request
         $category_id = $request->category_id;
 
-        // If a category is selected, fetch offers for that category, else fetch all offers
+        // Initialize the query for offers
+        $offersQuery = Offer::query();
+
+        // Apply category filter if provided
         if ($category_id) {
-            $offers = Offer::where('category_id', $category_id)->latest()->paginate(12); // Paginate offers with 12 items per page
-        } else {
-            $offers = Offer::latest()->paginate(12); // Default to paginated offers
+            $offersQuery->where('category_id', $category_id);
         }
+
+        // $categories = Category::with(['children', 'offers'])->get();
+
+                                                        // Paginate offers
+        $offers = $offersQuery->latest()->paginate(14); // Adjust the number of items per page here
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
     }
@@ -405,40 +442,6 @@ class HomeController extends Controller
         }
     }
 
-    //searchCourseNAme
-    public function searchOfferName(Request $request)
-    {
-        $query = $request->input('query');
-
-        if ($query) {
-            $offers = Offer::where('name', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offers = Offer::latest()->get();
-        }
-
-        return view('frontend.pages.allOffer_search', compact('offers'))->render();
-    }
-
-    // //searchOStoreName
-    // public function searchOStoreName(Request $request)
-    // {
-    //     $query = $request->input('query');
-
-    //     // Search for stores based on the query, or get all stores if query is empty
-    //     if ($query) {
-    //         $latest_stores = Store::where('title', 'like', "%{$query}%")
-    //             ->latest()
-    //             ->get();
-    //     } else {
-    //         $latest_stores = Store::latest()->get();
-    //     }
-
-    //     // Return the results as HTML to be inserted into the page
-    //     return view('frontend.pages.allStore_search', compact('latest_stores'))->render();
-    // }
-
     //searchCouponName
     public function searchCouponName(Request $request)
     {
@@ -457,94 +460,35 @@ class HomeController extends Controller
         return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
     }
 
-    //searchOfferDivisionName
-    public function searchOfferDivisionName(Request $request)
-    {
-        $offerss = [];
-        $query   = $request->input('division_id');
-
-        if ($query) {
-            $offerss = Offer::where('division_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offerss = Offer::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
-    //searchCityName
-    public function searchOfferCityName(Request $request)
-    {
-        $offerss = [];
-        $query   = $request->input('city_id');
-
-        if ($query) {
-            $offerss = Offer::where('city_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offerss = Offer::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
-    //searchAreaName
-    public function searchOfferAreaName(Request $request)
-    {
-        $offerss = [];
-        $query   = $request->input('area_id');
-
-        if ($query) {
-            $offerss = Offer::where('area_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offerss = Offer::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
-    public function filterOffers(Request $request)
+    //filterOfferss
+    public function filterOfferss(Request $request)
     {
         $offersQuery = Offer::query();
 
-        // Apply filters if selected
-        if ($request->has('division_id') && $request->division_id) {
-            $offersQuery->where('division_id', $request->division_id);
+        // Apply filters for division_id, city_id, area_id if provided
+        if ($request->has('division_id') && $request->division_id != '') {
+            $offersQuery->whereJsonContains('division_id', $request->division_id);
         }
 
-        if ($request->has('city_id') && $request->city_id) {
-            $offersQuery->where('city_id', $request->city_id);
+        if ($request->has('city_id') && $request->city_id != '') {
+            $offersQuery->whereJsonContains('city_id', $request->city_id);
         }
 
-        if ($request->has('area_id') && $request->area_id) {
-            $offersQuery->where('area_id', $request->area_id);
+        if ($request->has('area_id') && $request->area_id != '') {
+            $offersQuery->whereJsonContains('area_id', $request->area_id);
         }
 
-        if ($request->has('search') && $request->search) {
+        // Apply search filter if provided
+        if ($request->has('search') && $request->search != '') {
             $offersQuery->where('name', 'like', '%' . $request->search . '%');
         }
 
-        // Fetch the filtered offers with pagination
         $offers = $offersQuery->paginate(12);
 
-        // Return the filtered offers with pagination and HTML content
-        $html       = view('offers.partials.offer-list', compact('offers'))->render();
-        $pagination = view('offers.partials.pagination', compact('offers'))->render();
-
+        // Return the updated store listings with pagination
         return response()->json([
-            'html'       => $html,
-            'pagination' => $pagination,
+            'offers' => view('offers.partials.offer-list', compact('offers'))->render(),
+            // 'pagination' => (string) $offers->links(), // Pass pagination links to the frontend
         ]);
     }
 
@@ -622,7 +566,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }
@@ -631,7 +575,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faqDiscountZShop.faq', $data);
     }
