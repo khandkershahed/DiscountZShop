@@ -107,22 +107,22 @@
                             <div>
                                 <h3>Location</h3>
                             </div>
-                            <div class="pt-1 d-flex justify-content-space-around align-items-center footer-icons">
+                            <div class="pt-1 d-flex justify-content-end align-items-center footer-icons">
                                 <a href="" class="p-2">
-                                    <i class="fas fa-globe site-color" style="font-size: 22px" aria-hidden="true"
+                                    <i class="fas fa-globe site-color" style="font-size: 18px" aria-hidden="true"
                                         title="Website"></i>
                                 </a>
                                 <a href="" class="p-2">
-                                    <i class="fa-brands fa-facebook-f site-color" style="font-size: 22px"
+                                    <i class="fa-brands fa-facebook-f site-color" style="font-size: 18px"
                                         aria-hidden="true" title="Facebook"></i>
                                 </a>
                                 <a href="" class="p-2">
-                                    <i class="fa-brands fa-twitter site-color" style="font-size: 22px"
+                                    <i class="fa-brands fa-twitter site-color" style="font-size: 18px"
                                         aria-hidden="true" title="Twitter"></i>
                                 </a>
 
                                 <a href="" class="p-2">
-                                    <i class="fa-brands fa-linkedin-in site-color" style="font-size: 22px"
+                                    <i class="fa-brands fa-linkedin-in site-color" style="font-size: 18px"
                                         aria-hidden="true" title="Linkedin"></i>
                                 </a>
                             </div>

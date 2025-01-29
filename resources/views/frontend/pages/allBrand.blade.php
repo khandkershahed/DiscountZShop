@@ -19,16 +19,24 @@
                     </div>
                 </div>
 
-                <div class="row pb-3">
-                    <div class="col-lg-8">
-                        <!-- Optional Filter or Sorting Controls -->
+                <div class="row align-items-center py-3 border">
+                    <div class="col-lg-6">
+                        <h1 class="mb-0 site-color">All Brands</h1>
                     </div>
-
+                    <div class="col-lg-2"></div>
                     <div class="col-lg-4">
                         <div class="text-end">
                             <form class="d-flex" role="search" id="searchForm">
-                                <input class="form-control me-2" type="search" id="serviceSearch" placeholder="Search"
-                                    aria-label="Search">
+                                {{-- <input class="form-control me-0" type="search" id="serviceSearch" placeholder="Search"
+                                    aria-label="Search"> --}}
+                                <div class="input-group">
+                                    <input class="form-control" type="search" id="serviceSearch" placeholder="Search Your Brand"
+                                        aria-describedby="button-addon2" aria-label="Search">
+                                    <button class="btn btn-outline-secondary rounded-0" type="button"
+                                        id="button-addon2">
+                                        <i class="fa-solid fa-search"></i>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -110,21 +118,19 @@
                         <img class="img-fluid" src="{{ asset('images/brand-banner.png') }}" alt="">
                     </div>
                 </div>
-                <div class="col-12 px-0">
+                <div class="col-12 px-0 pt-2">
                     <form class="d-flex" role="search" id="searchForm">
                         <input class="form-control mx-2 mt-2" type="search" id="serviceSearch" placeholder="Search"
                             aria-label="Search" style="height: 35px">
                     </form>
-                    <div>
+                    <div class="d-flex justify-content-end">
                         <span>
                             <i class="fa-solid fa-search brand-search"></i>
                         </span>
                     </div>
                 </div>
-                <div class="col-12">
-                </div>
             </div>
-            <div class="row gx-5 mt-4" id="servicesContainer">
+            <div class="row gx-5" id="servicesContainer" style="margin-top: -25px">
                 @foreach ($categories as $category)
                     @if ($category->brands->count() > 0)
                         <div class="col-12">
@@ -136,7 +142,7 @@
                                     </div>
                                 </div>
                                 @foreach ($category->brands as $brand)
-                                    <div class="col-3 mb-3 mt-2">
+                                    <div class="col-3 mb-1 mt-2 px-1">
                                         <a href="{{ route('brand.details', $brand->slug) }}">
                                             <div class="card shadow-sm brands-card p-0">
                                                 <div class="card-body p-0">

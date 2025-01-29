@@ -40,5 +40,7 @@
         <!--end::Container-->
     </div>
     <!--end::Toolbar-->
+</div>
+<div class="mobile-homepage">
 
 </div>

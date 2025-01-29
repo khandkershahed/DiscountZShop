@@ -49,12 +49,18 @@
                 @endif
 
                 @if (!empty(optional($brand)->offer_description_title) || !empty(optional($brand)->offer_description))
-                    <div class="row mb-4">
+                    <div class="row mb-5">
                         <div class="col-lg-12">
                             <h2 class="pb-4">{{ optional($brand)->offer_description_title }}</h2>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->offer_description !!}
                             </p>
+                        </div>
+                        <div class="col-lg-2 mt-4">
+                            <a href="{{ route('vendor.offers', optional($brand)->slug) }}" class="btn btn-common-one">
+                                See All Offers <i class="fa-solid fa-arrow-right ps-3"></i>
+
+                            </a>
                         </div>
                     </div>
                 @endif
@@ -62,6 +68,7 @@
         </section>
         {{-- Overview End --}}
     </div>
+    {{-- For Mobile Only --}}
     <div class="mobile-homepage" style="margin-bottom: 8rem">
         {{-- Overview Start --}}
         <section>
@@ -69,7 +76,8 @@
                 <div class="row mb-4">
                     <div class="col-lg-12">
                         <div>
-                            <h3 class="fw-normal" style="font-size: 20px !important;">{{ optional($brand)->about_title }}</h3>
+                            <h3 class="fw-normal" style="font-size: 20px !important;">
+                                {{ optional($brand)->about_title }}</h3>
                             <p class="pt-3">
                                 {!! optional($brand)->about !!}
                             </p>
@@ -95,7 +103,8 @@
                 @if (!empty(optional($brand)->description_title) || !empty(optional($brand)->description))
                     <div class="row mb-4">
                         <div class="col-lg-12">
-                            <h2 class="pb-4" style="font-size: 20px !important;">{{ optional($brand)->description_title }}</h2>
+                            <h2 class="pb-4" style="font-size: 20px !important;">
+                                {{ optional($brand)->description_title }}</h2>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->description !!}
                             </p>
@@ -106,7 +115,8 @@
                 @if (!empty(optional($brand)->offer_description_title) || !empty(optional($brand)->offer_description))
                     <div class="row mb-4">
                         <div class="col-lg-12">
-                            <h2 class="pb-4" style="font-size: 20px !important;">{{ optional($brand)->offer_description_title }}</h2>
+                            <h2 class="pb-4" style="font-size: 20px !important;">
+                                {{ optional($brand)->offer_description_title }}</h2>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->offer_description !!}
                             </p>

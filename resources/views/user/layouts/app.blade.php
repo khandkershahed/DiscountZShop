@@ -29,6 +29,10 @@
         type="text/css" />
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <!--end::Page Vendor Stylesheets-->
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
+    <!-- Custom CSS -->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -62,9 +66,9 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
-                            <!--begin::Row-->
-                            {{ $slot }}
-                            <!--end::Row-->
+                        <!--begin::Row-->
+                        {{ $slot }}
+                        <!--end::Row-->
                         <!--end::Container-->
                     </div>
                     <!--end::Post-->
@@ -127,6 +131,8 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/main.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
+    <!-- Slick Slider JavaScript -->
+    <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>

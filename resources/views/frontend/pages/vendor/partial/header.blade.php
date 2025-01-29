@@ -14,9 +14,13 @@
                     <div class="col-lg-12">
                         <div class="vendor-logo p-2 rounded-2"
                             style="background-color: #eee; border: 2px solid #f15a2d;">
-                            <img class="img-fluid rounded-2 p-2"
-                                src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
-                                alt="">
+                            @if (optional($brand)->offers->count() > 0)
+                                <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                                    <img class="img-fluid rounded-2 p-2"
+                                        src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
+                                        alt="">
+                                </a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -29,9 +33,13 @@
     <div class="mobile-homepage" style="margin-top: 4.6rem;">
         <section>
             <div class="regular-banner">
-                <img class="img-fluid w-100" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
-                    src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
-                    alt="Khash Foods Vendor" />
+                @if (optional($brand)->offers->count() > 0)
+                    <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                        <img class="img-fluid w-100" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
+                            src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
+                            alt="Khash Foods Vendor" />
+                    </a>
+                @endif
             </div>
         </section>
         <!-- Hero End -->
@@ -39,15 +47,19 @@
             <div class="container rounded-2 p-0" style="margin-top: -55px; position: relative; z-index: 5;">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
-                        <div class="vendor-logo p-2 rounded-2"
-                            style="background-color: #eee; border: 2px solid #f15a2d;">
-                            <img class="img-fluid rounded-2 p-2"
-                                src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
-                                alt="">
-                        </div>
+                        @if (optional($brand)->offers->count() > 0)
+                            <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                                <div class="vendor-logo p-2 rounded-2"
+                                    style="background-color: #eee; border: 2px solid #f15a2d;">
+                                    <img class="img-fluid rounded-2 p-2"
+                                        src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
+                                        alt="">
+                                </div>
+                            </a>
+                        @endif
                     </div>
-                    <div class="col-lg-8">
-                    </div>
+                    {{-- <div class="col-lg-8">
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -107,7 +119,7 @@
                             </a>
                         @endif
                     </div> --}}
-                    
+
                     {{-- For only Mobile End --}}
                 </div>
                 <div class="col-lg-7">

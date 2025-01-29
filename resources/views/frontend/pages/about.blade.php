@@ -81,22 +81,33 @@
                     <div class="col-lg-6">
                         <div>
                             <img class="w-100 img-fluid rounded-3"
-                                src="{{ !empty($about->row_two_image) ? url('storage/' . $about->row_two_image) : asset('images/no-image(random).png') }}" alt="" />
+                                src="{{ !empty($about->row_two_image) ? url('storage/' . $about->row_two_image) : asset('images/no-image(random).png') }}"
+                                alt="" />
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="about-content">
-                            <p class="main-color fw-bold pb-4">{{ optional($about)->row_two_badge }}</p>
-                        <h1 class="pb-4">{{ optional($about)->row_two_title }}</h1>
-                        <p>
-                            {!! optional($about)->row_two_description !!}
-                        </p>
-                        @if (!empty(optional($about)->row_two_button_url) || !empty(optional($about)->row_two_button_name))
-                            <div class="pt-4">
-                                <a href="{{ optional($about)->row_two_button_url }}"
-                                    class="btn-common-one">{{ optional($about)->row_two_button_name }}</a>
+                            <div class="pb-4">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="site-color">{{ optional($about)->row_two_badge }}</h5>
+                                        <span class="store-devider mt-1"></span>
+                                    </div>
+                                </div>
+                                <h1 class="mb-0">{{ optional($about)->row_two_title }}</h1>
                             </div>
-                        @endif
+                            <p class="pb-2">
+                                {!! optional($about)->row_two_description !!}
+                            </p>
+                            <div style="width: 250px;">
+                                @if (!empty(optional($about)->row_two_button_url) || !empty(optional($about)->row_two_button_name))
+                                    <div class="pt-4">
+                                        <a href="{{ optional($about)->row_two_button_url }}"
+                                            class="btn-common-one rounded-2">{{ optional($about)->row_two_button_name }}
+                                            <i class="fa-solid fa-arrow-right-long ps-2 "></i></a>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Navigation Links -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">

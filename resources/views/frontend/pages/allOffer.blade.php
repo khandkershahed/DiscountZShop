@@ -1,6 +1,5 @@
 <x-frontend-app-layout :title="'All Stores || DiscountZShop'">
     <div class="desktop-homepage">
-
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">

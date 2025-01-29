@@ -8,9 +8,10 @@
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-4">
                         <div>
-                            <img class="img-fluid"
-                                src="{{ !empty($offerDetails->image) ? url('storage/' . $offerDetails->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
-                                alt="" />
+                            <img class="img-fluid w-100 rounded-2"
+                                src="{{ !empty($offerDetails->image) ? url('storage/' . $offerDetails->image) : asset('images/demo-product.png') }}"
+                                alt=""
+                                onerror="this.onerror=null;this.src='{{ asset('images/demo-product.png') }}';" />
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -36,11 +37,17 @@
                                 <span class="text-muted">Expire :</span>
                                 <span class="countdown-timer main-color"></span>
                             </p>
-                            {{-- <div class="pt-4">
-                                <button href="" class="btn btn-common-one">
-                                    Add To Wishlist <i class="fa-solid fa-heart ps-3"></i>
-                                </button>
-                            </div> --}}
+
+                            @if (optional($brand)->offers->count() > 0)
+                                <div class="pt-4">
+                                    <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                                        <button class="btn btn-common-one"> See Offers <i
+                                                class="fa-solid fa-arrow-right ps-3"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -54,22 +61,23 @@
             <div class="container pt-3 mb-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-4">
-                        <div>
-                            <img class="img-fluid"
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img class="img-fluid w-100 rounded-2"
                                 src="{{ !empty($offerDetails->image) ? url('storage/' . $offerDetails->image) : asset('images/demo-product.png') }}"
                                 alt=""
                                 onerror="this.onerror=null;this.src='{{ asset('images/demo-product.png') }}';" />
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <div>
+                        <div class="text-center">
                             <h1 class="pt-3 main-color">{{ $offerDetails->badge }}</h1>
                             <h4>{{ $offerDetails->name }}</h4>
                             <hr />
                             <p class="pt-2">
                                 {!! $offerDetails->short_description !!}
                             </p>
-                            <p class="pt-2 countdown mobile-expire" data-expire-date="{{ $offerDetails->expiry_date }}">
+                            <p class="pt-2 countdown mobile-expire"
+                                data-expire-date="{{ $offerDetails->expiry_date }}">
                                 <span class="text-muted">Expire :</span>
                                 <span class="countdown-timer main-color"></span>
                             </p>

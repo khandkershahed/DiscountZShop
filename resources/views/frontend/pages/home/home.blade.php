@@ -1,30 +1,5 @@
 <x-frontend-app-layout :title="'DiscountZShop'">
-    <style>
-        .slick-dots {
-            left: 70px;
-            position: absolute;
-            bottom: 15px;
-        }
-
-        .slick-dots li button {
-            display: block;
-            width: 30px !important;
-            height: 10px !important;
-            border: none;
-            border-radius: 5px !important;
-            background-color: orange;
-            text-indent: -9999px;
-        }
-
-        .slick-dots li.slick-active button {
-            background-color: red;
-        }
-        .slick-dots li{
-            margin: 0 8px;
-        }
-    </style>
     <div class="desktop-homepage">
-
         <!-- Hero Section -->
         <section>
             <div class="container-fluid px-0" style="overflow: hidden">
@@ -46,7 +21,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
+                        <div class="col-lg-5">
                                 <div class="row gx-3">
                                     {{-- @dd($banner); --}}
                                     <div class="col-lg-12">
@@ -829,9 +804,9 @@
                                 <div class="items d-flex justify-content-center align-items-center partners-logos">
                                     <a href="{{ route('brand.details', $brand->slug) }}">
                                         <img class="img-fluid partners-logos-single"
-                                            src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                            src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg' }}"
                                             alt=""
-                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                            onerror="this.onerror=null;this.src='http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg';" />
                                     </a>
                                 </div>
                             @endforeach
@@ -1419,13 +1394,15 @@
                     </div>
                 </div>
             </div>
+            {{-- Mobile Category End --}}
+            {{-- Mobile Coupon Start --}}
             <div class="row mt-5 bg-light py-4">
                 <div class="col-lg-12">
                     <div class="row align-items-center">
                         <div class="col-6">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Available Coupon...
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
+                                <h6 class="mb-0 text-black">Available Coupons
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                         viewBox="0 0 21 13" fill="none">
                                         <path
                                             d="M16.6934 8.21872C16.3539 8.21872 16.0781 8.48188 16.0781 8.80575C16.0781 9.12968 16.3539 9.39279 16.6934 9.39279C17.0328 9.39279 17.3086 9.12968 17.3086 8.80575C17.3086 8.48188 17.0328 8.21872 16.6934 8.21872Z"
@@ -1437,22 +1414,24 @@
                                             d="M11.7715 3.5224C11.4321 3.5224 11.1562 3.78556 11.1562 4.10946C11.1562 4.43336 11.4321 4.69651 11.7715 4.69651C12.1109 4.69651 12.3867 4.43336 12.3867 4.10946C12.3867 3.78556 12.1109 3.5224 11.7715 3.5224Z"
                                             fill="#F15A2D" />
                                     </svg>
-                                </p>
+                                </h6>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="input-group">
-                                <input type="text" class="form-control form-control-sm rounded-pill"
-                                    placeholder="Recipient's username" aria-label="Recipient's username"
-                                    aria-describedby="basic-addon2" style="height: 10px;">
-                            </div>
+                            <form action="">
+                                <div class="input-group">
+                                    <input type="text" name="available_coupon"
+                                        class="form-control form-control-sm rounded-pill" placeholder="search.."
+                                        aria-label="search.." aria-describedby="basic-addon2" style="height: 10px;">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="coupon-slide pt-4">
                         <div>
-                            <div class="card border-0 p-0" style="background-color: #1E1E1E;">
+                            <div class="card border-0 p-0 py-3" style="background-color: #1E1E1E;">
                                 <div class="card-body p-0">
                                     <div class="d-flex align-items-center justify-content-end w-100 py-2">
                                         <div class="coupon-images-mb">
@@ -1481,7 +1460,36 @@
                             </div>
                         </div>
                         <div>
-                            <div class="card border-0 p-0" style="background-color: #1E1E1E;">
+                            <div class="card border-0 p-0 py-3" style="background-color: #1E1E1E;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center justify-content-end w-100 py-2">
+                                        <div class="coupon-images-mb">
+                                            <img class=""
+                                                src="http://www.discountzshop.com/storage/coupon/logo/W1L8VtY8hA1729401322.jpg"
+                                                alt="">
+                                        </div>
+                                        <div>
+                                            <div class="text-start">
+                                                <div class="">
+                                                    <p class="fw-bold" style="color: #F15A2D">50% <span
+                                                            class="text-white">OFF</span></p>
+                                                </div>
+                                            </div>
+                                            <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
+                                            <span style="font-size: 12px;">
+                                                <div class="d-flex justify-content-between align-items-center pe-3">
+                                                    <span class="text-white pe-2" style="font-size: 9px">Code:
+                                                        "WELBC"</span>
+                                                    <i class="fa-solid fa-copy text-white"></i>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card border-0 p-0 py-3" style="background-color: #1E1E1E;">
                                 <div class="card-body p-0">
                                     <div class="d-flex align-items-center justify-content-end w-100 py-2">
                                         <div class="coupon-images-mb">
@@ -1513,6 +1521,7 @@
 
                 </div>
             </div>
+            {{-- End Coupon --}}
             <div class="row bg-panda mt-4">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center py-3">
@@ -1523,35 +1532,88 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-12 ps-0">
-                    <div class="second-banner-mb">
-                        <img clss="img-fluid" src="{{ asset('images/mobile-2.png') }}" alt="">
+                <div class="col-12">
+                    <div class="custom-slider pb-5 pt-3">
+                        <div>
+                            <a href="{{ $banner->image_one_url }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $banner->image_two_url }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ $banner->image_three_url }}">
+                                <img class="img-fluid fixed-size rounded-2"
+                                    src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
+                                    alt=""
+                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
+                            </a>
+                        </div>
                     </div>
+                    {{-- <div class="mobile-home-banner">
+                        <img src="{{ asset('images/mobile.png') }}" alt="">
+                    </div> --}}
                 </div>
             </div>
             <div class="row mt-2 bg-light py-4">
                 <div class="col-12">
-                    <ul class="nav nav-tabs border-0 d-flex justify-content-center align-items-center"
-                        id="myTab" role="tablist">
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs active" id="home-tab" data-bs-toggle="tab"
-                                data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                aria-selected="true" style="font-size: 10px">Hot Deals</button>
-                        </li>
-                        @if ($categories->count() > 0)
-                            @foreach ($categories as $index => $offercategory)
-                                <li class="nav-item me-1 mb-2" role="presentation">
-                                    <button class="nav-link mb-link-tabs" style="font-size: 10px"
-                                        id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
-                                        data-bs-target="#home-{{ $offercategory->id }}-pane" type="button"
-                                        role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
-                                        aria-selected="true">
-                                        {{ $offercategory->name }}
-                                    </button>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
+                    <div class="relative overflow-hidden">
+                        <!-- Chevron Left Button -->
+                        {{-- <div>
+                            <button id="chevron-left-mobile"
+                                class="absolute left-0 top-0 bottom-0 z-10 bg-white shadow-md p-2 rounded-full hidden md:flex justify-center items-center"
+                                aria-label="Scroll Left">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <!-- Chevron Right Button -->
+                            <button id="chevron-right-mobile"
+                                class="absolute right-0 top-0 bottom-0 z-10 bg-white shadow-md p-2 rounded-full hidden md:flex justify-center items-center"
+                                aria-label="Scroll Right">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div> --}}
+
+                        <!-- Tabs Container -->
+                        <ul class="tabs-container-mobile nav nav-tabs pb-3 border-0 flex-nowrap flex gap-2 overflow-x-auto items-center"
+                            role="tablist">
+                            <li class="nav-item flex-shrink-0" role="presentation">
+                                <button class="nav-link mb-link-tabs active whitespace-nowrap" id="home-tab"
+                                    data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab"
+                                    aria-controls="home" aria-selected="true" style="font-size: 10px">
+                                    Hot Deals
+                                </button>
+                            </li>
+                            <!-- Loop through categories -->
+                            @if ($categories->count() > 0)
+                                @foreach ($categories as $index => $offercategory)
+                                    <li class="nav-item flex-shrink-0" role="presentation">
+                                        <button class="nav-link mb-link-tabs whitespace-nowrap"
+                                            style="font-size: 10px" id="home-{{ $offercategory->id }}-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#home-{{ $offercategory->id }}-pane" type="button"
+                                            role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
+                                            aria-selected="true">
+                                            {{ $offercategory->name }}
+                                        </button>
+                                    </li>
+                                @endforeach
+                            @endif
+                        </ul>
+
+
+                    </div>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel"
                             aria-labelledby="home-tab">
@@ -1692,34 +1754,48 @@
                     <h4 class="text-center py-4">Deals of the Day</h4>
                 </div>
                 <div class="col-12">
-                    <ul class="nav nav-tabs border-0 d-flex justify-content-center align-items-center"
-                        id="myTab" role="tablist">
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs active" id="home2-tab" data-bs-toggle="tab"
-                                data-bs-target="#home2" type="button" role="tab" aria-controls="home2"
-                                aria-selected="true">Hot Deals</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="profile2-tab" data-bs-toggle="tab"
-                                data-bs-target="#profile2" type="button" role="tab"
-                                aria-controls="profile2" aria-selected="false">Cashback</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact2" type="button" role="tab"
-                                aria-controls="contact2" aria-selected="false">Flat %</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact2" type="button" role="tab"
-                                aria-controls="contact2" aria-selected="false">Buy 1 Get 1</button>
-                        </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
-                            <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
-                                data-bs-target="#contact2" type="button" role="tab"
-                                aria-controls="contact2" aria-selected="false">Upto 50%</button>
-                        </li>
-                    </ul>
+                    <div class="relative overflow-hidden">
+                        <ul class="tabs-container-mobile tabs-container-deal nav nav-tabs border-0 d-flex justify-content-start align-items-center overflow-hidden"
+                            id="myTab" role="tablist">
+                            <li class="nav-item me-1 mb-2" role="presentation">
+                                <button class="nav-link mb-link-tabs active" id="home2-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home2" type="button" role="tab" aria-controls="home2"
+                                    aria-selected="true">
+                                    Hot Deals
+                                </button>
+                            </li>
+                            <li class="nav-item me-1 mb-2" role="presentation">
+                                <button class="nav-link mb-link-tabs" id="profile2-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile2" type="button" role="tab"
+                                    aria-controls="profile2" aria-selected="false">
+                                    Cashback
+                                </button>
+                            </li>
+                            <li class="nav-item me-1 mb-2" role="presentation">
+                                <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact2" type="button" role="tab"
+                                    aria-controls="contact2" aria-selected="false">
+                                    Flat %
+                                </button>
+                            </li>
+                            <li class="nav-item me-1 mb-2" role="presentation">
+                                <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact2" type="button" role="tab"
+                                    aria-controls="contact2" aria-selected="false">
+                                    Buy 1 Get 1
+                                </button>
+                            </li>
+                            <li class="nav-item me-1 mb-2" role="presentation">
+                                <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
+                                    data-bs-target="#contact2" type="button" role="tab"
+                                    aria-controls="contact2" aria-selected="false">
+                                    Upto 50%
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home2" role="tabpanel"
                             aria-labelledby="home2-tab">
@@ -1993,12 +2069,12 @@
                 <div class="col-12">
                     <div class="mobile-partners">
                         @foreach ($brands as $brand)
-                            <div>
+                            <div class="mobile-partner">
                                 <a href="{{ route('brand.details', $brand->slug) }}">
                                     <img class="img-fluid"
                                         src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
                                         alt=""
-                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';">
+                                        onerror="this.onerror=null;this.src='http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg';">
                                 </a>
                             </div>
                         @endforeach
@@ -2009,6 +2085,44 @@
     </div>
 
     @push('scripts')
+        <!-- Category Slide In Mobile -->
+        <script>
+            // Select elements
+            const tabsContainer = document.getElementsByClassName("tabs-container-mobile");
+            const chevronLeft = document.getElementsByClassName("chevron-left-mobile");
+            const chevronRight = document.getElementsByClassName("chevron-right-mobile");
+
+            // Function to check overflow and toggle chevron buttons
+            const checkOverflow = () => {
+                const isOverflowing = tabsContainer.scrollWidth > tabsContainer.clientWidth;
+
+                // Show or hide chevrons based on overflow
+                chevronLeft.classList.toggle("hidden", tabsContainer.scrollLeft <= 0);
+                chevronRight.classList.toggle(
+                    "hidden",
+                    tabsContainer.scrollLeft + tabsContainer.clientWidth >= tabsContainer.scrollWidth
+                );
+            };
+
+            // Function to scroll tabs
+            const scrollTabs = (direction) => {
+                const scrollAmount = 100; // Adjust scroll amount
+                tabsContainer.scrollBy({
+                    left: direction === "left" ? -scrollAmount : scrollAmount,
+                    behavior: "smooth",
+                });
+            };
+
+            // Attach event listeners for scrolling
+            chevronLeft.addEventListener("click", () => scrollTabs("left"));
+            chevronRight.addEventListener("click", () => scrollTabs("right"));
+
+            // Re-check overflow on scroll
+            tabsContainer.addEventListener("scroll", checkOverflow);
+
+            // Initial check on page load
+            window.addEventListener("DOMContentLoaded", checkOverflow);
+        </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 $('.coupon-slide').slick({
@@ -2035,7 +2149,7 @@
                     adaptiveHeight: true,
                     infinite: true,
                     speed: 300,
-                    autoplay: true,
+                    autoplay: false,
                     autoplaySpeed: 3000,
                     pauseOnHover: true,
                     pauseOnDotsHover: true
@@ -2054,6 +2168,7 @@
                     cssEase: 'linear',
                     draggable: false,
                     swipe: false,
+                    arrows: false, // Disable navigation buttons
                     responsive: [{
                         breakpoint: 768,
                         settings: {
@@ -2061,7 +2176,8 @@
                             slidesToShow: 6,
                             slidesToScroll: 6,
                             autoplay: true,
-                            autoplaySpeed: 5000
+                            autoplaySpeed: 5000,
+                            arrows: false // Ensure navigation is also disabled for smaller screens
                         }
                     }]
                 });
