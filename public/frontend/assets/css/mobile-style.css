@@ -637,4 +637,7 @@
         height: 100%;
         object-fit: cover;
     }
+    .footer-icons {
+        margin: 0;
+    }
 }

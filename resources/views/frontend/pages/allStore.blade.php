@@ -205,10 +205,10 @@
         <div class="container">
             <form action="">
                 <div class="row align-items-center px-2">
-                    <div class="col-12 pe-0">
-                        <h3 class="site-text text-center pb-3 fw-bold">Top Stores</h3>
-                    </div>
                     <div class="col-4 px-0">
+                        <h6 class="text-start">Top Stores</h6>
+                    </div>
+                    {{-- <div class="col-4 px-0">
                         <div class="btn-group pe-2">
                             <select class="form-select form-select-sm" id="division_filter" name="division_id"
                                 data-placeholder="Select Division" autocomplete="off">
@@ -220,12 +220,12 @@
                                 @endforelse
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-4 px-0">
                         <div class="btn-group pe-2">
-                            <select class="form-select form-select-sm" id="city_filter" name="city_id"
+                            <select class="form-select" id="city_filter" name="city_id"
                                 data-placeholder="Select City" autocomplete="off">
-                                <option value="">Select City</option>
+                                <option value="">Filter</option>
                                 @foreach ($citys as $city)
                                     <option value="{{ $city->id }}">{{ $city->name }}</option>
                                 @endforeach
@@ -236,8 +236,8 @@
                         <div class="wrapper-store">
                             <div class="search-input-store">
                                 <input type="text" id="serviceSearch" autocomplete="off" name=""
-                                    placeholder="search..." />
-                                <div class="icon">
+                                    placeholder="search..." style="height: 40px" />
+                                <div class="icon pt-1" style="height: 40px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                         <path

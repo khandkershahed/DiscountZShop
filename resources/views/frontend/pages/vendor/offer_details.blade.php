@@ -37,11 +37,17 @@
                                 <span class="text-muted">Expire :</span>
                                 <span class="countdown-timer main-color"></span>
                             </p>
-                            {{-- <div class="pt-4">
-                                <button href="" class="btn btn-common-one">
-                                    Add To Wishlist <i class="fa-solid fa-heart ps-3"></i>
-                                </button>
-                            </div> --}}
+
+                            @if (optional($brand)->offers->count() > 0)
+                                <div class="pt-4">
+                                    <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                                        <button class="btn btn-common-one"> See Offers <i
+                                                class="fa-solid fa-arrow-right ps-3"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -70,7 +76,8 @@
                             <p class="pt-2">
                                 {!! $offerDetails->short_description !!}
                             </p>
-                            <p class="pt-2 countdown mobile-expire" data-expire-date="{{ $offerDetails->expiry_date }}">
+                            <p class="pt-2 countdown mobile-expire"
+                                data-expire-date="{{ $offerDetails->expiry_date }}">
                                 <span class="text-muted">Expire :</span>
                                 <span class="countdown-timer main-color"></span>
                             </p>

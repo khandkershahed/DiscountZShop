@@ -1,5 +1,4 @@
 <x-frontend-app-layout :title="'Offer Details || DiscountZShop'">
-
     <section>
         <div class="container py-5">
             <div class="row gx-5 align-items-center">
