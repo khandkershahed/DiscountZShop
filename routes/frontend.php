@@ -66,6 +66,14 @@ Route::get('/coupon/search', [HomeController::class, 'searchCouponName'])->name(
 //Store
 Route::get('/store/all', [HomeController::class, 'allStore'])->name('allStore');
 Route::get('/store/{id}', [HomeController::class, 'storeDetails'])->name('store.details');
+
+
+Route::controller(HomeController::class)->group(function () {
+
+
+    Route::get('/district-get/ajax/{division_id}', 'GetCheckDistrict');
+    Route::get('/state-get/ajax/{city_id}', 'StateGetAjax');
+});
 // Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
 
 Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');

@@ -3,9 +3,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\Area;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Coupon;
 use App\Models\Division;
 use App\Models\Faq;
@@ -255,10 +257,16 @@ class HomeController extends Controller
     public function allStore()
     {
         $data = [
-            'page_banner'   => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(8)->latest()->get(),
-            'stores'        => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30), // Pagination added here
+
+            'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
+            'stores'      => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30),
+
+            'alldivs'     => Division::orderBy('name', 'asc')->get(),
+            'allcitys'    => City::orderBy('name', 'asc')->get(),
+            'allareas'    => Area::orderBy('name', 'asc')->get(),
+
         ];
+
         return view('frontend.pages.allStore', $data);
     }
 
@@ -272,50 +280,20 @@ class HomeController extends Controller
         return view('frontend.pages.storeDetails', $data);
     }
 
-    //searchStoreName
-    // public function searchStoreName(Request $request)
-    // {
-    //     $query = $request->input('query');
-
-    //     if ($query) {
-    //         $latest_stores = Store::where('name', 'like', "%{$query}%")
-    //             ->latest()
-    //             ->get();
-    //     } else {
-    //         $latest_stores = Store::latest()->get();
-    //     }
-
-    //     return view('frontend.pages.store_search', compact('latest_stores'));
-    // }
-
-    public function filterStore(Request $request)
+    public function GetCheckDistrict($division_id)
     {
-        $query = Store::query();
 
-        // Apply filters
-        if ($request->has('division_id') && $request->division_id != '') {
-            $query->where('division_id', $request->division_id);
-        }
+        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
 
-        if ($request->has('city_id') && $request->city_id != '') {
-            $query->where('city_id', $request->city_id);
-        }
+        return json_encode($subcat);
+    }
 
-        if ($request->has('area_id') && $request->area_id != '') {
-            $query->where('area_id', $request->area_id);
-        }
+    public function StateGetAjax($city_id)
+    {
 
-        if ($request->has('search') && $request->search != '') {
-            $query->where('title', 'like', '%' . $request->search . '%');
-        }
+        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
 
-        // Fetch stores based on the filters
-        $latest_stores = $query->limit(8)->get();
-
-        // Return the updated store listings
-        return response()->json([
-            'stores' => view('partials.store_list', compact('latest_stores'))->render(),
-        ]);
+        return json_encode($ship);
     }
 
     // Search Division
