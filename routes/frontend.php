@@ -30,13 +30,19 @@ Route::get('/subcategory/{slug}', [HomeController::class, 'categoryDetails'])->n
 //Offer
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
 Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
-Route::get('/offers/search', [HomeController::class, 'searchOfferName'])->name('offer.search');
-Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisionName'])->name('offer.search.division');
-Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
-Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
+// Route::get('/offers/search', [HomeController::class, 'searchOfferName'])->name('offer.search');
+// Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisionName'])->name('offer.search.division');
+// Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
+// Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
 
 
-Route::get('/offerss/filter', [HomeController::class, 'filterOfferss'])->name('offerss.filter');
+// Route::get('/offerss/filter', [HomeController::class, 'filterOfferss'])->name('offerss.filter');
+
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('/division-get/ajax/{division_id}', 'GetCheckDivision');
+    Route::get('/city-get/ajax/{city_id}', 'StateGetAjaxCity');
+});
 
 //Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
@@ -70,17 +76,16 @@ Route::get('/store/{id}', [HomeController::class, 'storeDetails'])->name('store.
 
 Route::controller(HomeController::class)->group(function () {
 
-
     Route::get('/district-get/ajax/{division_id}', 'GetCheckDistrict');
     Route::get('/state-get/ajax/{city_id}', 'StateGetAjax');
 });
 // Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
 
-Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');
-Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->name('store.search.city');
-Route::get('/store/search/area', [HomeController::class, 'searchAreaName'])->name('store.search.area');
+// Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');
+// Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->name('store.search.city');
+// Route::get('/store/search/area', [HomeController::class, 'searchAreaName'])->name('store.search.area');
 
-Route::get('/stores/filter', [HomeController::class, 'filterStore'])->name('store.filter');
+// Route::get('/stores/filter', [HomeController::class, 'filterStore'])->name('store.filter');
 
 // Route::get('/stores/search', [HomeController::class, 'searchOStoreName'])->name('stores.search');
 

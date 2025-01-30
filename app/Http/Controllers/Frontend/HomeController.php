@@ -254,17 +254,36 @@ class HomeController extends Controller
     }
 
     //allStore
-    public function allStore()
+
+    // public function allStore()
+    // {
+    //     $data = [
+
+    //         'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
+    //         'stores'      => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30),
+
+    //         'alldivs'     => Division::orderBy('name', 'asc')->get(),
+    //         'allcitys'    => City::orderBy('name', 'asc')->get(),
+    //         'allareas'    => Area::orderBy('name', 'asc')->get(),
+
+    //     ];
+
+    //     return view('frontend.pages.allStore', $data);
+    // }
+
+    public function allStore(Request $request)
     {
+        $brandSlug = $request->input('brand');
+
         $data = [
-
             'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'stores'      => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30),
-
+            'stores'      => Store::where('status', 'active')
+                ->orderBy('title', 'DESC')
+                ->paginate(30)
+                ->appends(['brand' => $brandSlug]), // Append the brand parameter
             'alldivs'     => Division::orderBy('name', 'asc')->get(),
             'allcitys'    => City::orderBy('name', 'asc')->get(),
             'allareas'    => Area::orderBy('name', 'asc')->get(),
-
         ];
 
         return view('frontend.pages.allStore', $data);
@@ -400,6 +419,10 @@ class HomeController extends Controller
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
         $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
 
+        $alldivs  = Division::orderBy('name', 'asc')->get();
+        $allcitys = City::orderBy('name', 'asc')->get();
+        $allareas = Area::orderBy('name', 'asc')->get();
+
         // Get selected category if it's passed in the request
         $category_id = $request->category_id;
 
@@ -413,7 +436,23 @@ class HomeController extends Controller
 
         $offers = $offersQuery->latest()->paginate(15);
 
-        return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
+        return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
+    }
+
+    public function GetCheckDivision($division_id)
+    {
+
+        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($subcat);
+    }
+
+    public function StateGetAjaxCity($city_id)
+    {
+
+        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($ship);
     }
 
     // public function filterOfferss(Request $request)

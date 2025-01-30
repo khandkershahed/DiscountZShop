@@ -30,8 +30,9 @@
                                 {{-- <input class="form-control me-0" type="search" id="serviceSearch" placeholder="Search"
                                     aria-label="Search"> --}}
                                 <div class="input-group">
-                                    <input class="form-control" type="search" id="serviceSearch" placeholder="Search Your Brand"
-                                        aria-describedby="button-addon2" aria-label="Search">
+                                    <input class="form-control" type="search" id="serviceSearch"
+                                        placeholder="Search Your Brand" aria-describedby="button-addon2"
+                                        aria-label="Search">
                                     <button class="btn btn-outline-secondary rounded-0" type="button"
                                         id="button-addon2">
                                         <i class="fa-solid fa-search"></i>
@@ -80,7 +81,7 @@
         </section>
 
         <!-- Big Brands Section -->
-        <section>
+        {{-- <section>
             <div class="container py-5 pt-0">
                 <div class="row">
                     <div class="col-lg-12">
@@ -108,7 +109,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
+
     </div>
     <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
         <div class="container">

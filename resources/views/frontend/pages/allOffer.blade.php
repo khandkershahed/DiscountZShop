@@ -26,38 +26,33 @@
 
                             {{-- =======================Filter ======================= --}}
                             <div class="d-flex align-items-center">
+
                                 <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="division_filter" name="division_id"
+                                    <select class="form-select cust-select" id="" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off">
                                         <option value="">Select Division</option>
-                                        @forelse ($divisions as $division)
+                                        @foreach ($alldivs as $division)
                                             <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                        @empty
-                                            <option disabled>No Division Available</option>
-                                        @endforelse
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <!-- Filter Store - City -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="city_filter" name="city_id"
+                                    <select class="form-select cust-select" id="" name="city_id"
                                         data-placeholder="Select City" autocomplete="off">
                                         <option value="">Select City</option>
-                                        @foreach ($citys as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
+                                        <!-- Dynamically filled by AJAX -->
                                     </select>
                                 </div>
 
                                 <!-- Filter Store - Area -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="area_filter" name="area_id"
+                                    <select class="form-select cust-select" id="" name="area_id"
                                         data-placeholder="Select Area">
                                         <option value="">Select Area</option>
-                                        @foreach ($areas as $area)
-                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
-                                        @endforeach
+                                        <!-- Dynamically filled by AJAX -->
                                     </select>
                                 </div>
 
@@ -65,7 +60,7 @@
                                 <div class="wrapper-store">
                                     <div class="search-input-store">
                                         <form action="">
-                                            <input type="text" id="storeSearch" autocomplete="off" name="search"
+                                            <input type="text" id="" autocomplete="off" name="search"
                                                 placeholder="Type to search..." />
                                             <div class="icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -293,285 +288,69 @@
 
 
 
-    {{-- <script>
-            // Check the checkbox for the category
+    @push('scripts')
+        <script>
             $(document).ready(function() {
-                // Listen for changes in the filter fields
-                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                    // Collect filter values
-                    let division_id = $('#division_filter').val();
-                    let city_id = $('#city_filter').val();
-                    let area_id = $('#area_filter').val();
-                    let search_query = $('#storeSearch').val();
-
-                    // Check if all fields are cleared
-                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                        // If cleared, fetch all stores without any filters
-                        fetchStores();
-                    } else {
-                        // AJAX request to fetch filtered stores
+                // When Division is selected
+                $('select[name="division_id"]').on('change', function() {
+                    var division_id = $(this).val();
+                    if (division_id) {
                         $.ajax({
-                            url: '{{ route('offerss.filter') }}',
-                            method: 'GET',
-                            data: {
-                                division_id: division_id,
-                                city_id: city_id,
-                                area_id: area_id,
-                                search: search_query
+                            url: "{{ url('/division-get/ajax') }}/" + division_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                // Empty the city dropdown before populating
+                                $('select[name="city_id"]').html(
+                                    '<option value="">Select City</option>');
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>'); // Clear area dropdown
+
+                                $.each(data, function(key, value) {
+                                    $('select[name="city_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
                             },
-                            success: function(response) {
-                                // Update offer listings with the response
-                                $('#servicesContainer').html(response.offers);
-                                $('.pagination').html(response
-                                    .pagination); // Update pagination links
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
+                            error: function() {
+                                alert("Error fetching cities");
                             }
                         });
+                    } else {
+                        alert('Please select a division');
                     }
                 });
 
-                // Fetch all stores when the page loads (in case no filter is applied)
-                function fetchStores() {
-                    $.ajax({
-                        url: '{{ route('offerss.filter') }}',
-                        method: 'GET',
-                        data: {
-                            division_id: '',
-                            city_id: '',
-                            area_id: '',
-                            search: ''
-                        },
-                        success: function(response) {
-                            // Update offer listings with the response
-                            $('#servicesContainer').html(response.offers);
-                            $('.pagination').html(response.pagination); // Update pagination links
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching stores: ' + error);
-                        }
-                    });
-                }
+                // When City is selected
+                $('select[name="city_id"]').on('change', function() {
+                    var city_id = $(this).val();
+                    if (city_id) {
+                        $.ajax({
+                            url: "{{ url('/city-get/ajax') }}/" + city_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                // Empty the area dropdown before populating
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>');
 
-                // Initially load all stores if no filters are applied
-                fetchStores();
-
-                // Clear filters button functionality
-                $('#clearFilters').click(function() {
-                    // Reset all filters and the search field
-                    $('#division_filter').val('');
-                    $('#city_filter').val('');
-                    $('#area_filter').val('');
-                    $('#storeSearch').val('');
-
-                    // Fetch all stores again
-                    fetchStores();
+                                $.each(data, function(key, value) {
+                                    $('select[name="area_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
+                            },
+                            error: function() {
+                                alert("Error fetching areas");
+                            }
+                        });
+                    } else {
+                        $('select[name="area_id"]').html('<option value="">Select Area</option>');
+                    }
                 });
             });
         </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
 
-                // Toggle the checkbox when the category or subcategory is clicked
-                function toggleOffers(categoryId) {
-                    const checkbox = document.getElementById('category-' + categoryId);
-                    if (checkbox) {
-                        checkbox.checked = true; // Automatically check the category checkbox
-                    }
-                    showOffersByCategory(categoryId);
-                }
-
-                // Show or hide the offers for the selected category and subcategory
-                function showOffersByCategory(categoryId) {
-                    const panel = document.getElementById('panel-' + categoryId);
-                    const checkbox = document.getElementById('category-' + categoryId);
-
-                    if (checkbox && checkbox.checked) {
-                        // Show the panel for the selected category or subcategory
-                        panel.classList.add('show');
-                    } else {
-                        // Hide the panel if checkbox is unchecked
-                        panel.classList.remove('show');
-                    }
-
-                    // Also ensure that the offers tab is activated when the checkbox is checked
-                    if (checkbox.checked) {
-                        const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-                        if (categoryTab) {
-                            categoryTab.classList.add('show', 'active');
-                        }
-                    }
-
-                    // Check if any category or subcategory is selected to hide the "category-all" tab pane
-                    updateCategoryAllVisibility();
-                    removeOffersWhenUnchecked(categoryId);
-                }
-
-                // Handle checkbox changes for category and subcategory
-                function handleCheckboxChange(checkbox) {
-                    const categoryId = checkbox.id.split('-')[1];
-
-                    // Show or hide the panel depending on the checkbox state
-                    const panel = document.getElementById('panel-' + categoryId);
-                    if (checkbox.checked) {
-                        panel.classList.add('show'); // Show the panel for the selected category
-                        showOffersByCategory(categoryId); // Also ensure the offers tab is visible
-                    } else {
-                        panel.classList.remove('show'); // Hide the panel if checkbox is unchecked
-                    }
-
-                    // Update visibility of the "category-all" tab pane
-                    updateCategoryAllVisibility();
-                    removeOffersWhenUnchecked(categoryId);
-                }
-
-                // Update the visibility of the "category-all" tab pane
-                function updateCategoryAllVisibility() {
-                    const categoryAllPane = document.getElementById('category-all-pane');
-                    const allCheckboxes = document.querySelectorAll('.accordion-checkbox');
-
-                    let isAnyChecked = false;
-
-                    allCheckboxes.forEach(checkbox => {
-                        if (checkbox.checked) {
-                            isAnyChecked = true;
-                        }
-                    });
-
-                    // Hide "category-all" pane if any checkbox is checked
-                    if (categoryAllPane) {
-                        if (isAnyChecked) {
-                            categoryAllPane.classList.remove('show', 'active');
-                        } else {
-                            categoryAllPane.classList.add('show', 'active');
-                        }
-                    }
-                }
-
-                // Remove offers when the category or subcategory checkbox is unchecked
-                function removeOffersWhenUnchecked(categoryId) {
-                    const checkbox = document.getElementById('category-' + categoryId);
-                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-
-                    // If the checkbox is unchecked, remove the offers
-                    if (checkbox && !checkbox.checked && categoryTab) {
-                        categoryTab.classList.remove('show', 'active'); // Remove the category tab
-                    }
-                }
-
-                // Add event listener to all category and subcategory checkboxes
-                document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
-                        const categoryId = this.id.split('-')[1];
-                        handleCheckboxChange(this);
-                    });
-                });
-
-                // Add click event listener to subcategory names
-                document.querySelectorAll('.accordion-header span').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const categoryId = this.parentElement.querySelector('input').id.split('-')[1];
-                        toggleOffers(categoryId); // Call toggleOffers on click of subcategory
-                    });
-                });
-
-                // Countdown Timer functionality (optional, if you're showing expiry times)
-                document.querySelectorAll('.countdown').forEach(function(el) {
-                    const expireDate = new Date(el.getAttribute('data-expire-date'));
-                    setInterval(function() {
-                        const now = new Date();
-                        const timeRemaining = expireDate - now;
-
-                        // Update the countdown display
-                        const daysRemaining = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                        el.querySelector('.countdown-timer').textContent = `${daysRemaining} Days`;
-                    }, 1000);
-                });
-            });
-        </script> --}}
-
-    @push('scripts')
         {{-- <script>
-                // Document ready function to handle dynamic filtering
-                $(document).ready(function() {
-                    // Listen for changes in the filter fields
-                    $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                        // Collect filter values
-                        let division_id = $('#division_filter').val();
-                        let city_id = $('#city_filter').val();
-                        let area_id = $('#area_filter').val();
-                        let search_query = $('#storeSearch').val();
-
-                        // Check if all fields are cleared
-                        if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                            // If cleared, fetch all stores without any filters
-                            fetchStores();
-                        } else {
-                            // AJAX request to fetch filtered stores
-                            $.ajax({
-                                url: '{{ route('offerss.filter') }}',
-                                method: 'GET',
-                                data: {
-                                    division_id: division_id,
-                                    city_id: city_id,
-                                    area_id: area_id,
-                                    search: search_query
-                                },
-                                success: function(response) {
-                                    // Update offer listings with the response
-                                    $('#servicesContainer').html(response.offers);
-                                    $('.pagination').html(response
-                                    .pagination); // Update pagination links
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error('Error fetching stores: ' + error);
-                                }
-                            });
-                        }
-                    });
-
-                    // Fetch all stores when the page loads (in case no filter is applied)
-                    function fetchStores() {
-                        $.ajax({
-                            url: '{{ route('offerss.filter') }}',
-                            method: 'GET',
-                            data: {
-                                division_id: '',
-                                city_id: '',
-                                area_id: '',
-                                search: ''
-                            },
-                            success: function(response) {
-                                // Update offer listings with the response
-                                $('#servicesContainer').html(response.offers);
-                                $('.pagination').html(response.pagination); // Update pagination links
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
-                            }
-                        });
-                    }
-
-                    // Initially load all stores if no filters are applied
-                    fetchStores();
-
-                    // Clear filters button functionality
-                    $('#clearFilters').click(function() {
-                        // Reset all filters and the search field
-                        $('#division_filter').val('');
-                        $('#city_filter').val('');
-                        $('#area_filter').val('');
-                        $('#storeSearch').val('');
-
-                        // Fetch all stores again
-                        fetchStores();
-                    });
-                });
-            </script> --}}
-
-        <script>
             $(document).ready(function() {
                 // Listen for pagination link clicks
                 $(document).on('click', '.pagination .page-link', function(e) {
@@ -666,9 +445,9 @@
                     fetchStores();
                 });
             });
-        </script>
+        </script> --}}
 
-        <script>
+        {{-- <script>
             // Handle the category and subcategory toggling and checkbox updates
             document.addEventListener('DOMContentLoaded', function() {
                 // Toggle the checkbox when the category or subcategory is clicked
@@ -759,7 +538,7 @@
                     });
                 });
             });
-        </script>
+        </script> --}}
     @endpush
 
 
