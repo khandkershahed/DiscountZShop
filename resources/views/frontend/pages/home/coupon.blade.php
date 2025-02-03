@@ -47,18 +47,15 @@
 
                                     <div class="d-flex w-100">
 
-                                        <form action="">
+                                        {{-- <form action="">
                                             <input type="text" class="form-control rounded-pill form-control-sm"
                                                 name="" type="search" placeholder="Search Coupon..."
                                                 aria-label="Search Coupon..." id="serviceSearchCoupon" />
-                                        </form>
+                                        </form> --}}
 
                                     </div>
 
-                                    {{-- <button class="btn position-relative border-0 bg-transparent coupon-action"
-                                        type="submit">
-                                        <i class="fa-solid fa-search" aria-hidden="true"></i>
-                                    </button> --}}
+
 
 
                                     <div class="d-flex justify-content-end align-items-center w-25 navigation-slide">

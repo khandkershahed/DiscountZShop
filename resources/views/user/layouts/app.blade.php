@@ -14,6 +14,7 @@
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="{{ optional($setting)->site_name }}" />
     <link rel="canonical" href="{{ optional($setting)->site_url }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon"
         href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}" />
@@ -28,9 +29,14 @@
         type="text/css" />
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <!--end::Page Vendor Stylesheets-->
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
+    <!-- Custom CSS -->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/mobile-style.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
     <title>{{ $title ?? config('app.name', 'MD Boilarplate') }}</title>
@@ -60,11 +66,9 @@
                     <!--begin::Post-->
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
-                        <div id="kt_content_container" class="container-xxl">
-                            <!--begin::Row-->
-                            {{ $slot }}
-                            <!--end::Row-->
-                        </div>
+                        <!--begin::Row-->
+                        {{ $slot }}
+                        <!--end::Row-->
                         <!--end::Container-->
                     </div>
                     <!--end::Post-->
@@ -127,8 +131,10 @@
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/offer-a-deal/main.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/two-factor-authentication.js') }}"></script>
     <script src="{{ asset($hostUrl . 'js/custom/utilities/modals/users-search.js') }}"></script>
+    <!-- Slick Slider JavaScript -->
+    <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     @stack('scripts')
     <!--end::Page Custom Javascript-->

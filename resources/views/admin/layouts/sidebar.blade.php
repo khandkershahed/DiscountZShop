@@ -60,7 +60,7 @@
                             'title' => 'Offer Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
                             'routes' => [
-                                
+
                                 'admin.brands.index',
                                 'admin.brands.create',
                                 'admin.brands.edit',
@@ -130,11 +130,11 @@
                                     'routes' => ['admin.offer.index', 'admin.offer.create', 'admin.offer.edit'],
                                     'route' => 'admin.offer.index',
                                 ],
-                                [
-                                    'title' => 'Special Offer',
-                                    'routes' => ['admin.special-offer.index', 'admin.special-offer.create', 'admin.special-offer.edit'],
-                                    'route' => 'admin.special-offer.index',
-                                ],
+                                // [
+                                //     'title' => 'Special Offer',
+                                //     'routes' => ['admin.special-offer.index', 'admin.special-offer.create', 'admin.special-offer.edit'],
+                                //     'route' => 'admin.special-offer.index',
+                                // ],
                                 [
                                     'title' => 'Coupon List',
                                     'routes' => ['admin.coupon.index', 'admin.coupon.create', 'admin.coupon.edit'],
@@ -274,12 +274,6 @@
                                 'admin.staff.index',
                                 'admin.staff.create',
                                 'admin.staff.edit',
-                                'admin.role.index',
-                                'admin.role.create',
-                                'admin.role.edit',
-                                'admin.permission.index',
-                                'admin.permission.create',
-                                'admin.permission.edit',
                             ],
                             'subMenu' => [
 
@@ -289,33 +283,7 @@
                                     'route' => 'admin.staff.index',
                                 ],
 
-                                [
-                                    'title' => 'Role & Permissions',
-                                    'routes' => [
-                                        'admin.role.index',
-                                        'admin.role.create',
-                                        'admin.role.edit',
-                                        'admin.permission.index',
-                                        'admin.permission.create',
-                                        'admin.permission.edit',
-                                    ],
-                                    'subMenu' => [
-                                        [
-                                            'title' => 'Roles List',
-                                            'routes' => ['admin.role.index', 'admin.role.create', 'admin.role.edit'],
-                                            'route' => 'admin.role.index',
-                                        ],
-                                        [
-                                            'title' => 'Permissions List',
-                                            'routes' => [
-                                                'admin.permission.index',
-                                                'admin.permission.create',
-                                                'admin.permission.edit',
-                                            ],
-                                            'route' => 'admin.permission.index',
-                                        ],
-                                    ],
-                                ],
+
                             ],
                         ],
 
@@ -358,6 +326,40 @@
                                     'title' => 'Area',
                                     'routes' => ['admin.area.index'],
                                     'route' => 'admin.area.index',
+                                ],
+
+                            ],
+                        ],
+
+                        // Role & Permission
+
+                        [
+                            'title' => 'Role & Permission',
+                            'icon' => 'icons/duotune/ecommerce/ecm002.svg',
+                            'routes' => [
+
+                                'all.role',
+                                'all.permission',
+                                'all.admin.permission',
+
+
+                            ],
+                            'subMenu' => [
+
+                                [
+                                    'title' => 'All Admin',
+                                    'routes' => ['all.admin.permission'],
+                                    'route' => 'all.admin.permission',
+                                ],
+                                [
+                                    'title' => 'Role',
+                                    'routes' => ['all.role'],
+                                    'route' => 'all.role',
+                                ],
+                                [
+                                    'title' => 'Permission',
+                                    'routes' => ['all.permission'],
+                                    'route' => 'all.permission',
                                 ],
 
                             ],

@@ -3,9 +3,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\Area;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Coupon;
 use App\Models\Division;
 use App\Models\Faq;
@@ -44,6 +46,9 @@ class HomeController extends Controller
             'offer_types'        => OfferType::latest()->get(),
 
             'categorys'          => Category::latest()->limit(6)->get(),
+
+            'mobile_stores'      => Store::latest()->limit(12)->get(),
+            'mobile_coupons'      => Coupon::latest()->get(),
 
             'alloffers'          => $offers,
             'offers'             => $offers->take(5), // Use `take` instead of `limit` for collections
@@ -120,7 +125,20 @@ class HomeController extends Controller
             $brands = Brand::where('name', 'like', "%$query%")->get();
         } else {
             // If query is empty, we don't need to reload all the brands
-            $brands = Brand::latest()->get();
+            // $brands = Brand::latest()->get();
+
+            $data = [
+                'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+                'categories'  => Category::with('brands') // Eager load the brands relationship
+                    ->orderBy('name', 'ASC')                  // Order categories by name in ascending order
+                    ->latest('id')                            // Order categories by the latest ID (newest first)
+                    ->active()                                // Assuming you have an active scope in your Category model
+                    ->get(),
+
+                // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+                'brands'      => Brand::latest()->get(),
+            ];
+            return view('frontend.pages.allBrand', $data);
         }
 
         // Return the partial view with the brand list
@@ -239,23 +257,38 @@ class HomeController extends Controller
     }
 
     //allStore
+
     // public function allStore()
     // {
     //     $data = [
+
     //         'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-    //         'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
-    //         'stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->get(),
+    //         'stores'      => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30),
+
+    //         'alldivs'     => Division::orderBy('name', 'asc')->get(),
+    //         'allcitys'    => City::orderBy('name', 'asc')->get(),
+    //         'allareas'    => Area::orderBy('name', 'asc')->get(),
+
     //     ];
+
     //     return view('frontend.pages.allStore', $data);
     // }
 
-    public function allStore()
+    public function allStore(Request $request)
     {
+        $brandSlug = $request->input('brand');
+
         $data = [
-            'page_banner'   => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'latest_stores' => Store::where('status', 'active')->orderBy('title', 'ASC')->limit(4)->latest()->get(),
-            'stores'        => Store::where('status', 'active')->orderBy('title', 'ASC')->paginate(12), // Pagination added here
+            'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
+            'stores'      => Store::where('status', 'active')
+                ->orderBy('title', 'DESC')
+                ->paginate(30)
+                ->appends(['brand' => $brandSlug]), // Append the brand parameter
+            'alldivs'     => Division::orderBy('name', 'asc')->get(),
+            'allcitys'    => City::orderBy('name', 'asc')->get(),
+            'allareas'    => Area::orderBy('name', 'asc')->get(),
         ];
+
         return view('frontend.pages.allStore', $data);
     }
 
@@ -269,28 +302,29 @@ class HomeController extends Controller
         return view('frontend.pages.storeDetails', $data);
     }
 
-    //searchStoreName
-    public function searchStoreName(Request $request)
+    public function GetCheckDistrict($division_id)
     {
-        $query = $request->input('query');
 
-        if ($query) {
-            $latest_stores = Store::where('name', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
-        }
+        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
 
-        return view('frontend.pages.store_search', compact('latest_stores'));
+        return json_encode($subcat);
     }
 
-    //searchDivisionName
+    public function StateGetAjax($city_id)
+    {
+
+        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($ship);
+    }
+
+    // Search Division
     public function searchDivisionName(Request $request)
     {
         $latest_stores = [];
         $query         = $request->input('division_id');
 
+        // Check if the division_id exists in the request and perform the query
         if ($query) {
             $latest_stores = Store::where('division_id', 'like', "%{$query}%")
                 ->latest()
@@ -299,12 +333,13 @@ class HomeController extends Controller
             $latest_stores = Store::latest()->get();
         }
 
+        // Return the filtered stores as HTML
         $responseHtml = view('frontend.pages.store_division_search', ['latest_stores' => $latest_stores])->render();
 
         return response()->json(['html' => $responseHtml]);
     }
 
-    //searchCityName
+    // Search City
     public function searchCityName(Request $request)
     {
         $latest_stores = [];
@@ -323,7 +358,7 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
-    //searchAreaName
+    // Search Area
     public function searchAreaName(Request $request)
     {
         $latest_stores = [];
@@ -342,20 +377,42 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
+    //allOffer
     // public function allOffer(Request $request)
     // {
     //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
-    //     $categories = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
+    //     $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
 
     //     // Get selected category if it's passed in the request
     //     $category_id = $request->category_id;
 
     //     // If a category is selected, fetch offers for that category, else fetch all offers
     //     if ($category_id) {
-    //         $offers = Offer::where('category_id', $category_id)->latest()->get();
+    //         $offers = Offer::where('category_id', $category_id)->latest()->paginate(12); // Paginate offers with 12 items per page
     //     } else {
-    //         $offers = Offer::latest()->get(); // Default to all offers if no category is selected
+    //         $offers = Offer::latest()->paginate(12); // Default to paginated offers
     //     }
+
+    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
+    // }
+
+    // public function allOffer(Request $request)
+    // {
+    //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
+    //     $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
+
+    //     // Get selected category if it's passed in the request
+    //     $category_id = $request->category_id;
+
+    //     // Initialize the query for offers
+    //     $offersQuery = Offer::query();
+
+    //     // Apply category filter if provided
+    //     if ($category_id) {
+    //         $offersQuery->where('category_id', $category_id);
+    //     }
+
+    //     $offers = $offersQuery->latest()->paginate(15);
 
     //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
     // }
@@ -365,17 +422,102 @@ class HomeController extends Controller
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
         $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
 
+        $alldivs  = Division::orderBy('name', 'asc')->get();
+        $allcitys = City::orderBy('name', 'asc')->get();
+        $allareas = Area::orderBy('name', 'asc')->get();
+
         // Get selected category if it's passed in the request
         $category_id = $request->category_id;
 
-        // If a category is selected, fetch offers for that category, else fetch all offers
+        // Initialize the query for offers
+        $offersQuery = Offer::query();
+
+        // Apply category filter if provided
         if ($category_id) {
-            $offers = Offer::where('category_id', $category_id)->latest()->paginate(12); // Paginate offers with 12 items per page
-        } else {
-            $offers = Offer::latest()->paginate(12); // Default to paginated offers
+            $offersQuery->where('category_id', $category_id);
         }
 
-        return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
+        $offers = $offersQuery->latest()->paginate(15);
+
+        return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
+    }
+
+    public function GetCheckDivision($division_id)
+    {
+
+        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($subcat);
+    }
+
+    public function StateGetAjaxCity($city_id)
+    {
+
+        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($ship);
+    }
+
+    // public function filterOfferss(Request $request)
+    // {
+    //     $offersQuery = Offer::query();
+
+    //     // Apply filters for division_id, city_id, area_id if provided
+    //     if ($request->has('division_id') && $request->division_id != '') {
+    //         $offersQuery->whereJsonContains('division_id', $request->division_id);
+    //     }
+
+    //     if ($request->has('city_id') && $request->city_id != '') {
+    //         $offersQuery->whereJsonContains('city_id', $request->city_id);
+    //     }
+
+    //     if ($request->has('area_id') && $request->area_id != '') {
+    //         $offersQuery->whereJsonContains('area_id', $request->area_id);
+    //     }
+
+    //     // Apply search filter if provided
+    //     if ($request->has('search') && $request->search != '') {
+    //         $offersQuery->where('name', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     $offers = $offersQuery->paginate(15);
+
+    //     // Return the updated store listings with pagination
+    //     return response()->json([
+    //         'offers'     => view('offers.partials.offer-list', compact('offers'))->render(),
+    //         'pagination' => view('offers.partials.pagination', compact('offers'))->render(),
+    //     ]);
+    // }
+
+    public function filterOfferss(Request $request)
+    {
+        $offersQuery = Offer::query();
+
+        // Apply filters for division_id, city_id, area_id if provided
+        if ($request->has('division_id') && $request->division_id != '') {
+            $offersQuery->whereJsonContains('division_id', $request->division_id);
+        }
+
+        if ($request->has('city_id') && $request->city_id != '') {
+            $offersQuery->whereJsonContains('city_id', $request->city_id);
+        }
+
+        if ($request->has('area_id') && $request->area_id != '') {
+            $offersQuery->whereJsonContains('area_id', $request->area_id);
+        }
+
+        // Apply search filter if provided
+        if ($request->has('search') && $request->search != '') {
+            $offersQuery->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $offers = $offersQuery->paginate(15);
+
+        // Return the updated offer listings with pagination
+        return response()->json([
+            'offers'     => view('offers.partials.offer-list', compact('offers'))->render(),
+            'pagination' => view('offers.partials.pagination', compact('offers'))->render(),
+        ]);
     }
 
     //offerDetails
@@ -400,40 +542,38 @@ class HomeController extends Controller
         }
     }
 
-    //searchCourseNAme
-    public function searchOfferName(Request $request)
-    {
-        $query = $request->input('query');
+    //filterOfferss
+    // public function filterOfferss(Request $request)
+    // {
+    //     $offersQuery = Offer::query();
 
-        if ($query) {
-            $offers = Offer::where('name', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offers = Offer::latest()->get();
-        }
+    //     // Apply filters for division_id, city_id, area_id if provided
+    //     if ($request->has('division_id') && $request->division_id != '') {
+    //         $offersQuery->whereJsonContains('division_id', $request->division_id);
+    //     }
 
-        return view('frontend.pages.allOffer_search', compact('offers'))->render();
-    }
+    //     if ($request->has('city_id') && $request->city_id != '') {
+    //         $offersQuery->whereJsonContains('city_id', $request->city_id);
+    //     }
 
-    //searchOStoreName
-    public function searchOStoreName(Request $request)
-    {
-        $query = $request->input('query');
+    //     if ($request->has('area_id') && $request->area_id != '') {
+    //         $offersQuery->whereJsonContains('area_id', $request->area_id);
+    //     }
 
-        // Search for stores based on the query, or get all stores if query is empty
-        if ($query) {
-            $latest_stores = Store::where('title', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
-        }
+    //     // Apply search filter if provided
+    //     if ($request->has('search') && $request->search != '') {
+    //         $offersQuery->where('name', 'like', '%' . $request->search . '%');
+    //     }
 
-        // Return the results as HTML to be inserted into the page
-        return view('frontend.pages.allStore_search', compact('latest_stores'))->render();
-    }
+    //     $offers = $offersQuery->paginate(15);
 
+    //     // Return the updated store listings with pagination
+    //     return response()->json([
+    //         'offers' => view('offers.partials.offer-list', compact('offers'))->render(),
+    //     ]);
+    // }
+
+    //searchCouponName
     public function searchCouponName(Request $request)
     {
         $query = $request->input('query');
@@ -451,24 +591,7 @@ class HomeController extends Controller
         return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
     }
 
-    public function searchOfferDivisionName(Request $request)
-    {
-        $offerss = [];
-        $query   = $request->input('division_id');
-
-        if ($query) {
-            $offerss = Offer::where('division_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offerss = Offer::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
+    //mapDivision
     public function mapDivision(Request $request)
     {
 
@@ -485,44 +608,7 @@ class HomeController extends Controller
         return response()->json(['html' => $responseHtml]);
     }
 
-    //searchCityName
-    public function searchOfferCityName(Request $request)
-    {
-        $offerss = [];
-        $query   = $request->input('city_id');
-
-        if ($query) {
-            $offerss = Offer::where('city_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offerss = Offer::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
-    //searchAreaName
-    public function searchOfferAreaName(Request $request)
-    {
-        $offerss = [];
-        $query   = $request->input('area_id');
-
-        if ($query) {
-            $offerss = Offer::where('area_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $offerss = Offer::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.offer_division_search', ['offerss' => $offerss])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
+    //categoryDetails
     public function categoryDetails($slug)
     {
         $category = Category::where('slug', $slug)->first();
@@ -535,14 +621,27 @@ class HomeController extends Controller
         return view('frontend.pages.categoryDetails', $data);
     }
 
+    //termsCondition
     public function termsCondition()
     {
-        $data = [
-            'page_banner' => PageBanner::where('page_name', 'terms')->latest('id')->first(),
-            'terms'       => TermsAndCondition::latest('id')->first(),
-        ];
-        return view('frontend.pages.termsCondition', $data);
+
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        $terms       = TermsAndCondition::latest()->get();
+
+        //dd($data);
+
+        return view('frontend.pages.termsCondition', compact('page_banner', 'terms'));
     }
+
+    public function discounttermsCondition()
+    {
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        $terms       = TermsAndCondition::where('status', 'active')->latest('id')->first();
+
+        return view('frontend.pages.discounttermsCondition', compact('page_banner', 'terms'));
+    }
+
+    //privacyPolicy
     public function privacyPolicy()
     {
         $data = [
@@ -551,40 +650,33 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.privacyPolicy', $data);
     }
+
+    public function discountprivacyPolicy()
+    {
+        $data = [
+            'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
+            'terms'       => PrivacyPolicy::latest('id')->first(),
+        ];
+        return view('frontend.pages.discountprivacyPolicy', $data);
+    }
+
+    //faq
     public function faq()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::orderBy('order', 'ASC')->get(),
+            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
         ];
         return view('frontend.pages.faq', $data);
     }
 
-    //ProductSearch
-    public function productSearch(Request $request)
+    public function faqDiscountZShop()
     {
-
-        $request->validate(['search' => "required"]);
-
-        $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
-        $item        = $request->search;
-
-        $brands = Brand::where('name', 'LIKE', "%$item%")
-            ->orWhere('offer_description_title', "LIKE", "%$item%")
-            ->orWhere('description_title', "LIKE", "%$item%")
-            ->get();
-
-        $offers = Offer::where('name', 'LIKE', "%$item%")
-            ->orWhere('short_description', "LIKE", "%$item%")
-            ->orWhere('description', "LIKE", "%$item%")
-            ->get();
-
-        $stores = Store::where('title', 'LIKE', "%$item%")
-            ->orWhere('slug', "LIKE", "%$item%")
-            ->orWhere('description', "LIKE", "%$item%")
-            ->get();
-
-        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+        $data = [
+            'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
+            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
+        ];
+        return view('frontend.pages.faqDiscountZShop.faq', $data);
     }
 
     public function WishlistProduct()
@@ -633,4 +725,100 @@ class HomeController extends Controller
         Cart::instance('wishlist')->remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Wishlist']);
     }
+
+    //ProductSearch
+    // public function productSearch(Request $request)
+    // {
+
+    //     $request->validate(['search' => "required"]);
+
+    //     $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
+    //     $item        = $request->search;
+
+    //     $brands = Brand::where('name', 'LIKE', "%$item%")
+    //         ->orWhere('offer_description_title', "LIKE", "%$item%")
+    //         ->orWhere('description_title', "LIKE", "%$item%")
+    //         ->get();
+
+    //     $offers = Offer::where('name', 'LIKE', "%$item%")
+    //         ->orWhere('short_description', "LIKE", "%$item%")
+    //         ->orWhere('description', "LIKE", "%$item%")
+    //         ->get();
+
+    //     $stores = Store::where('title', 'LIKE', "%$item%")
+    //         ->orWhere('slug', "LIKE", "%$item%")
+    //         ->orWhere('description', "LIKE", "%$item%")
+    //         ->get();
+
+    //     return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+    // }
+
+    public function productSearch(Request $request)
+    {
+        $request->validate(['search' => "required"]);
+
+        $item = $request->search;
+
+        // Search logic for brands, offers, and stores
+        $brands = Brand::where('name', 'LIKE', "%$item%")
+            ->orWhere('offer_description_title', "LIKE", "%$item%")
+            ->orWhere('description_title', "LIKE", "%$item%")
+            ->get();
+
+        $offers = Offer::where('name', 'LIKE', "%$item%")
+            ->orWhere('short_description', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
+
+        $stores = Store::where('title', 'LIKE', "%$item%")
+            ->orWhere('slug', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            // Return only the search results (partial view)
+            return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
+        }
+
+        // Return full view if not AJAX request
+        $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
+        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+    }
+
+    public function searchSuggestions(Request $request)
+    {
+        $request->validate(['search' => 'required']);
+
+        $item = $request->search;
+
+        // Get suggestions for brands, offers, and stores
+        $brandSuggestions = Brand::where('name', 'LIKE', "%$item%")
+            ->limit(5) // Limit to 5 suggestions
+            ->pluck('name')
+            ->toArray();
+
+        $offerSuggestions = Offer::where('name', 'LIKE', "%$item%")
+            ->limit(5)
+            ->pluck('name')
+            ->toArray();
+
+        $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
+            ->limit(5)
+            ->pluck('title')
+            ->toArray();
+
+        // Combine all suggestions with their respective categories
+        $suggestions = array_merge(
+            array_map(fn($name) => ['name' => $name, 'type' => 'brand'], $brandSuggestions),
+            array_map(fn($name) => ['name' => $name, 'type' => 'offer'], $offerSuggestions),
+            array_map(fn($name) => ['name' => $name, 'type' => 'store'], $storeSuggestions)
+        );
+
+        // Return the suggestions as JSON
+        return response()->json([
+            'suggestions' => $suggestions,
+        ]);
+    }
+
 }
