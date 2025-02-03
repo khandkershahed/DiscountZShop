@@ -118,7 +118,7 @@
 
                                         <div class="d-flex justify-content-space-between align-items-center">
 
-                                            
+
 
                                         </div>
                                     </div>

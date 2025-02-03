@@ -448,104 +448,6 @@
             });
         </script>
 
-
-        {{-- <script>
-            $(document).ready(function() {
-                // Listen for pagination link clicks
-                $(document).on('click', '.pagination .page-link', function(e) {
-                    e.preventDefault(); // Prevent the default behavior of the link
-                    let url = $(this).attr('href'); // Get the URL for the next page
-
-                    // Make the AJAX request for the next page
-                    $.ajax({
-                        url: url,
-                        method: 'GET',
-                        success: function(response) {
-                            // Update offer listings with the response
-                            $('#servicesContainer').html(response.offers);
-                            $('.pagination').html(response.pagination); // Update pagination links
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching offers: ' + error);
-                        }
-                    });
-                });
-
-                // Other AJAX functionality as before (for filtering)
-                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                    // Collect filter values
-                    let division_id = $('#division_filter').val();
-                    let city_id = $('#city_filter').val();
-                    let area_id = $('#area_filter').val();
-                    let search_query = $('#storeSearch').val();
-
-                    // Check if all fields are cleared
-                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                        // If cleared, fetch all stores without any filters
-                        fetchStores();
-                    } else {
-                        // AJAX request to fetch filtered stores
-                        $.ajax({
-                            url: '{{ route('offerss.filter') }}',
-                            method: 'GET',
-                            data: {
-                                division_id: division_id,
-                                city_id: city_id,
-                                area_id: area_id,
-                                search: search_query
-                            },
-                            success: function(response) {
-                                // Update offer listings with the response
-                                $('#servicesContainer').html(response.offers);
-                                $('.pagination').html(response
-                                    .pagination); // Update pagination links
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
-                            }
-                        });
-                    }
-                });
-
-                // Fetch all stores when the page loads (in case no filter is applied)
-                function fetchStores() {
-                    $.ajax({
-                        url: '{{ route('offerss.filter') }}',
-                        method: 'GET',
-                        data: {
-                            division_id: '',
-                            city_id: '',
-                            area_id: '',
-                            search: ''
-                        },
-                        success: function(response) {
-                            // Update offer listings with the response
-                            $('#servicesContainer').html(response.offers);
-                            $('.pagination').html(response.pagination); // Update pagination links
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching stores: ' + error);
-                        }
-                    });
-                }
-
-                // Initially load all stores if no filters are applied
-                fetchStores();
-
-                // Clear filters button functionality
-                $('#clearFilters').click(function() {
-                    // Reset all filters and the search field
-                    $('#division_filter').val('');
-                    $('#city_filter').val('');
-                    $('#area_filter').val('');
-                    $('#storeSearch').val('');
-
-                    // Fetch all stores again
-                    fetchStores();
-                });
-            });
-        </script> --}}
-
         <script>
             // Handle the category and subcategory toggling and checkbox updates
             document.addEventListener('DOMContentLoaded', function() {
@@ -638,6 +540,7 @@
                 });
             });
         </script>
+
     @endpush
 
 

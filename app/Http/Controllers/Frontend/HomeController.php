@@ -412,7 +412,6 @@ class HomeController extends Controller
     }
 
     //allOffer
-
     public function allOffer(Request $request)
     {
         $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
@@ -444,7 +443,7 @@ class HomeController extends Controller
         // $stores = $stores->get();
         // $stores = $stores->paginate(28);
 
-        $offers = $offers->paginate(18);
+        $offers = $offers->paginate(21);
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
     }

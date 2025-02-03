@@ -1,6 +1,7 @@
 <div class="mobile-homepage">
 
     <div class="container">
+
         <div class="row">
             <div class="col-12">
                 <div class="wrapper-search">
@@ -45,9 +46,7 @@
                         </a>
                     </div>
                 </div>
-                {{-- <div class="mobile-home-banner">
-                    <img src="{{ asset('images/mobile.png') }}" alt="">
-                </div> --}}
+
             </div>
         </div>
 
@@ -197,10 +196,13 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="container">
-        <div class="row">
+
+        {{-- Banner Image Section Start --}}
+        {{-- <div class="row">
             <div class="col-12">
                 <div class="custom-slider pb-5 pt-3">
                     <div>
@@ -228,11 +230,10 @@
                         </a>
                     </div>
                 </div>
-                {{-- <div class="mobile-home-banner">
-                    <img src="{{ asset('images/mobile.png') }}" alt="">
-                </div> --}}
+
             </div>
-        </div>
+        </div> --}}
+        {{-- Banner Image Section End --}}
 
         {{-- Grab Section Start --}}
         <div class="row mt-2 bg-light py-4">
@@ -343,6 +344,7 @@
         </div>
         {{-- Grab Section End --}}
 
+        {{-- Offer Slider Image Start --}}
         <div class="row">
             <div class="col-12 ps-0">
                 <div class="custom-slider pb-5 pt-3">
@@ -381,7 +383,7 @@
                 </div>
             </div>
         </div>
-
+        {{-- Offer Slider Image End --}}
 
 
         {{-- <div class="row mt-2 bg-light py-4 pt-0 pb-0">
@@ -658,45 +660,7 @@
             </div>
         </div> --}}
 
-        {{-- <div class="row">
-            <div class="col-12">
-                <div class="custom-slider pb-5 pt-3">
-                    <div>
-                        <a href="{{ $homepage->offer_slider_image_one_link }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($homepage->offer_slider_image_one) ? url('storage/' . $homepage->offer_slider_image_one) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="{{ $homepage->offer_slider_image_two_link }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($homepage->offer_slider_image_two) ? url('storage/' . $homepage->offer_slider_image_two) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="{{ $homepage->offer_slider_image_three_link }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($homepage->offer_slider_image_three) ? url('storage/' . $homepage->offer_slider_image_three) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="{{ $homepage->offer_slider_image_four_link }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($homepage->offer_slider_image_four) ? url('storage/' . $homepage->offer_slider_image_four) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
+        {{-- Brand Section Start --}}
         <div class="row" style="margin-bottom: 9rem">
             <h4 class="text-center py-4 pb-4">Partner Brands</h4>
             <div class="col-12">
@@ -714,6 +678,7 @@
                 </div>
             </div>
         </div>
+        {{-- Brand Section Ens --}}
 
     </div>
 </div>
