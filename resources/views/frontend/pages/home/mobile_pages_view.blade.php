@@ -245,7 +245,7 @@
                         role="tablist">
                         <li class="nav-item flex-shrink-0" role="presentation">
                             <button class="nav-link mb-link-tabs active whitespace-nowrap" id="home-tab"
-                                data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab"
+                                data-bs-toggle="tab" data-bs-target="#home-tab-pane-mobile" type="button" role="tab"
                                 aria-controls="home" aria-selected="true" style="font-size: 10px">
                                 All Offers
                             </button>
@@ -256,7 +256,7 @@
                                 <li class="nav-item flex-shrink-0" role="presentation">
                                     <button class="nav-link mb-link-tabs whitespace-nowrap" style="font-size: 10px"
                                         id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
-                                        data-bs-target="#home-{{ $offercategory->id }}-pane" type="button"
+                                        data-bs-target="#home-mobile-{{ $offercategory->id }}-pane" type="button"
                                         role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
                                         aria-selected="true">
                                         {{ $offercategory->name }}
@@ -273,9 +273,7 @@
 
                     <div class="tab-pane fade show active" id="home-tab-pane-mobile" role="tabpanel"
                         aria-labelledby="home-tab-mobile" tabindex="0">
-
                         <div class="row g-2 mt-3">
-
                             @foreach ($alloffers as $alloffer)
                                 <div class="col-4">
                                     <div class="card p-0" style="border: 2px dashed #eee">
@@ -296,14 +294,11 @@
                                     </div>
                                 </div>
                             @endforeach
-
-
                         </div>
-
                     </div>
 
                     @foreach ($categories as $offercategory)
-                        <div class="tab-pane fade" id="home-{{ $offercategory->id }}-tab-pane-mobile"
+                        <div class="tab-pane fade" id="home-mobile-{{ $offercategory->id }}-pane"
                             role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab-mobile"
                             tabindex="0">
 

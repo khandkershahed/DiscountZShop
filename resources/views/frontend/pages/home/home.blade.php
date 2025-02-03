@@ -234,7 +234,7 @@
 
                                                 </div>
 
-                                            </div>
+                                            </div> 
 
                                             @foreach ($categories as $offercategory)
                                                 <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane" role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab"
