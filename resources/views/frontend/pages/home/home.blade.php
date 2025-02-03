@@ -118,14 +118,7 @@
 
                                         <div class="d-flex justify-content-space-between align-items-center">
 
-                                            <!-- Grab Tags -->
-                                            {{-- <div class="">
-                                            @foreach ($offer_types as $offer_type)
-                                                <a href="javascript:void(0)"><span
-                                                        class="badge mt-2 ct-badge">{{ $offer_type->name }}</span></a>
-                                            @endforeach
-                                        </div> --}}
-                                            <!-- Grab End -->
+                                            
 
                                         </div>
                                     </div>
@@ -234,10 +227,12 @@
 
                                                 </div>
 
-                                            </div> 
+                                            </div>
 
                                             @foreach ($categories as $offercategory)
-                                                <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane" role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab"
+                                                <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane"
+                                                    role="tabpanel"
+                                                    aria-labelledby="home-{{ $offercategory->id }}-tab"
                                                     tabindex="0">
                                                     <div class="">
 

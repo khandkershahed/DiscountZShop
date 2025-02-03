@@ -48,7 +48,7 @@ class HomeController extends Controller
             'categorys'          => Category::latest()->limit(6)->get(),
 
             'mobile_stores'      => Store::latest()->limit(12)->get(),
-            'mobile_coupons'      => Coupon::latest()->get(),
+            'mobile_coupons'     => Coupon::latest()->get(),
 
             'alloffers'          => $offers,
             'offers'             => $offers->take(5), // Use `take` instead of `limit` for collections
@@ -258,38 +258,72 @@ class HomeController extends Controller
 
     //allStore
 
-    // public function allStore()
-    // {
-    //     $data = [
-
-    //         'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-    //         'stores'      => Store::where('status', 'active')->orderBy('title', 'DESC')->paginate(30),
-
-    //         'alldivs'     => Division::orderBy('name', 'asc')->get(),
-    //         'allcitys'    => City::orderBy('name', 'asc')->get(),
-    //         'allareas'    => Area::orderBy('name', 'asc')->get(),
-
-    //     ];
-
-    //     return view('frontend.pages.allStore', $data);
-    // }
-
     public function allStore(Request $request)
     {
-        $brandSlug = $request->input('brand');
 
-        $data = [
-            'page_banner' => PageBanner::where('page_name', 'store')->latest('id')->first(),
-            'stores'      => Store::where('status', 'active')
+        $divisionId = $request->input('division');
+        $cityId     = $request->input('city');
+        $areaId     = $request->input('area');
+
+        $stores = Store::with('brand')->where('status', 'active')->orderBy('title', 'DESC')->latest();
+
+        // Apply section filter if division ID is provided
+        if ($divisionId) {
+            $stores->where('division_id', $divisionId);
+        }
+
+        if ($cityId) {
+            $stores->where('city_id', $cityId);
+        }
+
+        if ($areaId) {
+            $stores->where('area_id', $areaId);
+        }
+
+        $page_banner = PageBanner::where('page_name', 'store')->latest('id')->first();
+
+                                         // $stores = $stores->get();
+        $stores = $stores->paginate(28); // 28 is an example, adjust to your needs
+
+        $alldivs  = Division::orderBy('name', 'asc')->get();
+        $allcitys = City::orderBy('name', 'asc')->get();
+        $allareas = Area::orderBy('name', 'asc')->get();
+
+        return view('frontend.pages.allStore', compact('page_banner', 'stores', 'alldivs', 'allcitys', 'allareas'));
+    }
+
+    // public function searchCourseNAme(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     if ($query) {
+    //         $stores = Store::where('title', 'like', "%{$query}%")
+    //             ->latest()
+    //             ->get();
+    //     } else {
+    //         $stores = Store::where('status', 'active')->orderBy('title', 'DESC')->latest();
+    //     }
+
+    //     return view('frontend.pages.store_all_title', compact('stores'))->render();
+    // }
+
+    public function searchStoreName(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $stores = Store::where('title', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            // If no query, load the default active stores
+            $stores = Store::where('status', 'active')
                 ->orderBy('title', 'DESC')
-                ->paginate(30)
-                ->appends(['brand' => $brandSlug]), // Append the brand parameter
-            'alldivs'     => Division::orderBy('name', 'asc')->get(),
-            'allcitys'    => City::orderBy('name', 'asc')->get(),
-            'allareas'    => Area::orderBy('name', 'asc')->get(),
-        ];
+                ->latest()
+                ->get();
+        }
 
-        return view('frontend.pages.allStore', $data);
+        return view('frontend.pages.store_all_title', compact('stores'))->render();
     }
 
     //storeDetails
@@ -378,44 +412,6 @@ class HomeController extends Controller
     }
 
     //allOffer
-    // public function allOffer(Request $request)
-    // {
-    //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
-    //     $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
-
-    //     // Get selected category if it's passed in the request
-    //     $category_id = $request->category_id;
-
-    //     // If a category is selected, fetch offers for that category, else fetch all offers
-    //     if ($category_id) {
-    //         $offers = Offer::where('category_id', $category_id)->latest()->paginate(12); // Paginate offers with 12 items per page
-    //     } else {
-    //         $offers = Offer::latest()->paginate(12); // Default to paginated offers
-    //     }
-
-    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
-    // }
-
-    // public function allOffer(Request $request)
-    // {
-    //     $page_banner = PageBanner::where('page_name', 'offer')->latest('id')->first();
-    //     $categories  = Category::withCount('offers')->where('status', 'active')->orderBy('name', 'ASC')->get();
-
-    //     // Get selected category if it's passed in the request
-    //     $category_id = $request->category_id;
-
-    //     // Initialize the query for offers
-    //     $offersQuery = Offer::query();
-
-    //     // Apply category filter if provided
-    //     if ($category_id) {
-    //         $offersQuery->where('category_id', $category_id);
-    //     }
-
-    //     $offers = $offersQuery->latest()->paginate(15);
-
-    //     return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers'));
-    // }
 
     public function allOffer(Request $request)
     {
@@ -426,20 +422,50 @@ class HomeController extends Controller
         $allcitys = City::orderBy('name', 'asc')->get();
         $allareas = Area::orderBy('name', 'asc')->get();
 
-        // Get selected category if it's passed in the request
-        $category_id = $request->category_id;
+        $divisionId = $request->input('division');
+        $cityId     = $request->input('city');
+        $areaId     = $request->input('area');
 
-        // Initialize the query for offers
-        $offersQuery = Offer::query();
+        $offers = Offer::where('status', 'active')->orderBy('name', 'DESC')->latest();
 
-        // Apply category filter if provided
-        if ($category_id) {
-            $offersQuery->where('category_id', $category_id);
+        // Apply section filter if division ID is provided
+        if ($divisionId) {
+            $offers->whereJsonContains('division_id', $divisionId); // Use whereJsonContains for JSON columns
         }
 
-        $offers = $offersQuery->latest()->paginate(15);
+        if ($cityId) {
+            $offers->whereJsonContains('city_id', $cityId);
+        }
+
+        if ($areaId) {
+            $offers->whereJsonContains('area_id', $areaId);
+        }
+
+        // $stores = $stores->get();
+        // $stores = $stores->paginate(28);
+
+        $offers = $offers->paginate(18);
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
+    }
+
+    public function searchOfferName(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $offers = Offer::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            // If no query, load the default active stores
+            $offers = Offer::where('status', 'active')
+                ->orderBy('title', 'DESC')
+                ->latest()
+                ->get();
+        }
+
+        return view('frontend.pages.offer_all_title', compact('offers'))->render();
     }
 
     public function GetCheckDivision($division_id)

@@ -244,11 +244,13 @@
                     <ul class="tabs-container-mobile nav nav-tabs pb-3 border-0 flex-nowrap flex gap-2 overflow-x-auto items-center"
                         role="tablist">
                         <li class="nav-item flex-shrink-0" role="presentation">
+
                             <button class="nav-link mb-link-tabs active whitespace-nowrap" id="home-tab"
-                                data-bs-toggle="tab" data-bs-target="#home-tab-pane-mobile" type="button" role="tab"
-                                aria-controls="home" aria-selected="true" style="font-size: 10px">
+                                data-bs-toggle="tab" data-bs-target="#home-tab-pane-mobile" type="button"
+                                role="tab" aria-controls="home" aria-selected="true" style="font-size: 10px">
                                 All Offers
                             </button>
+
                         </li>
                         <!-- Loop through categories -->
                         @if ($categories->count() > 0)
@@ -298,9 +300,8 @@
                     </div>
 
                     @foreach ($categories as $offercategory)
-                        <div class="tab-pane fade" id="home-mobile-{{ $offercategory->id }}-pane"
-                            role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab-mobile"
-                            tabindex="0">
+                        <div class="tab-pane fade" id="home-mobile-{{ $offercategory->id }}-pane" role="tabpanel"
+                            aria-labelledby="home-{{ $offercategory->id }}-tab-mobile" tabindex="0">
 
                             <div class="row">
                                 @if ($offercategory->offers->count() > 0)

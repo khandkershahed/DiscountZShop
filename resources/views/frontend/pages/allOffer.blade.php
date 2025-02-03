@@ -27,7 +27,7 @@
                             {{-- =======================Filter ======================= --}}
                             <div class="d-flex align-items-center">
 
-                                <!-- Filter Store - Division -->
+                                {{-- <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off">
@@ -72,6 +72,99 @@
                                             </div>
                                         </form>
                                     </div>
+                                </div> --}}
+
+                                <div class="d-flex align-items-center">
+
+                                    <!-- Filter Store - Division -->
+                                    <div class="btn-group pe-2">
+                                        <select class="form-select cust-select" id="" name="division_id"
+                                            data-placeholder="Select Division" autocomplete="off"
+                                            onchange="searchStoreByDivision(this.value)">
+
+                                            <option value="">Select Division</option>
+
+                                            @foreach ($alldivs as $division)
+                                                <option value="{{ $division->id }}"
+                                                    {{ request()->get('division') == $division->id ? 'selected' : '' }}>
+                                                    {{ $division->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+
+                                    <script>
+                                        function searchStoreByDivision(divisionId) {
+                                            if (divisionId) {
+                                                // Redirect to the courses page with the selected section ID
+                                                window.location.href = `/offers/all?division=${divisionId}`;
+                                            }
+                                        }
+                                    </script>
+
+                                    <div class="btn-group pe-2">
+                                        <select class="form-select cust-select" id="" name="city_id"
+                                            data-placeholder="Select City" autocomplete="off"
+                                            onchange="searchStoreByCity(this.value)">
+                                            <option value="">Select City</option>
+
+                                            @foreach ($allcitys as $allcity)
+                                                <option value="{{ $allcity->id }}"
+                                                    {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
+                                                    {{ $allcity->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <script>
+                                        function searchStoreByCity(cityId) {
+                                            if (cityId) {
+                                                // Redirect to the courses page with the selected section ID
+                                                window.location.href = `/offers/all?city=${cityId}`;
+                                            }
+                                        }
+                                    </script>
+
+                                    <div class="btn-group pe-2">
+                                        <select class="form-select cust-select" id="" name="area_id"
+                                            data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
+                                            <option value="">Select Area</option>
+                                            @foreach ($allareas as $allarea)
+                                                <option value="{{ $allarea->id }}"
+                                                    {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
+                                                    {{ $allarea->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <script>
+                                        function searchStoreByArea(areaId) {
+                                            if (areaId) {
+                                                // Redirect to the courses page with the selected section ID
+                                                window.location.href = `/offers/all?area=${areaId}`;
+                                            }
+                                        }
+                                    </script>
+
+                                    <!-- Search Store -->
+
+                                    <div class="wrapper-store">
+                                        <div class="search-input-store">
+                                            {{-- <form action=""> --}}
+                                            <input type="text" id="serviceSearch" autocomplete="off" name="search"
+                                                placeholder="Type to search..." />
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            {{-- </form> --}}
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                             </div>
@@ -141,7 +234,7 @@
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
 
-                                <div class="row servicesContainer" id="servicesContainer">
+                                <div class="row" id="servicesContainer">
 
                                     @foreach ($offers as $offer)
                                         <div class="col-lg-4 mb-4 pe-2">
@@ -247,29 +340,10 @@
                         </div>
 
                         {{-- Dynamic Pagination --}}
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-
-                                <li class="page-item @if ($offers->onFirstPage()) disabled @endif">
-                                    <a class="page-link" href="{{ $offers->previousPageUrl() }}"
-                                        aria-label="Previous">Previous</a>
-                                </li>
-
-
-                                @for ($i = 1; $i <= $offers->lastPage(); $i++)
-                                    <li class="page-item @if ($offers->currentPage() == $i) active @endif">
-                                        <a class="page-link" href="{{ $offers->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-
-
-                                <li class="page-item @if (!$offers->hasMorePages()) disabled @endif">
-                                    <a class="page-link" href="{{ $offers->nextPageUrl() }}"
-                                        aria-label="Next">Next</a>
-                                </li>
-                            </ul>
+                        <nav aria-label="Page navigation example">
+                            {{ $offers->links() }}
                         </nav>
-
+                        {{-- Dynamic Pagination --}}
 
                     </div>
 
@@ -289,6 +363,31 @@
 
 
     @push('scripts')
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+
+                    // If the input field is empty, do a search without a query
+                    if (query === '') {
+                        window.location.href = "{{ route('allOffer') }}";
+                    } else {
+                        $.ajax({
+                            url: "{{ route('offer.search.names') }}",
+                            method: 'GET',
+                            data: {
+                                query: query
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(data);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+
         <script>
             $(document).ready(function() {
                 // When Division is selected
@@ -447,7 +546,7 @@
             });
         </script> --}}
 
-        {{-- <script>
+        <script>
             // Handle the category and subcategory toggling and checkbox updates
             document.addEventListener('DOMContentLoaded', function() {
                 // Toggle the checkbox when the category or subcategory is clicked
@@ -538,7 +637,7 @@
                     });
                 });
             });
-        </script> --}}
+        </script>
     @endpush
 
 

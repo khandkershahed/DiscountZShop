@@ -37,7 +37,7 @@
         <div class="row mt-4 gx-2">
             @foreach ($stores as $store)
                 <div class="col-6 mb-2">
-                    <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
+                    <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
                         <div class="card p-0 border-0 shadow-none" style="border: 1px solid #F15A2D !important;">
                             <div class="card-header p-0 border-0 shadow-none">
                                 <div>

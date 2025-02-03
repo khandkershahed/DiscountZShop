@@ -10,6 +10,7 @@
             </div>
         </section>
         <!-- Top Stores -->
+
         <section>
             <div class="container">
                 <div class="row py-5">
@@ -26,49 +27,110 @@
                                 <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="" name="division_id"
-                                        data-placeholder="Select Division" autocomplete="off">
+                                        data-placeholder="Select Division" autocomplete="off"
+                                        onchange="searchStoreByDivision(this.value)">
+
                                         <option value="">Select Division</option>
+
                                         @foreach ($alldivs as $division)
-                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                            <option value="{{ $division->id }}"
+                                                {{ request()->get('division') == $division->id ? 'selected' : '' }}>
+                                                {{ $division->name }}</option>
                                         @endforeach
+
                                     </select>
                                 </div>
 
+                                <script>
+                                    function searchStoreByDivision(divisionId) {
+                                        if (divisionId) {
+                                            // Redirect to the courses page with the selected section ID
+                                            window.location.href = `/store/all?division=${divisionId}`;
+                                        }
+                                    }
+                                </script>
+
                                 <!-- Filter Store - City -->
-                                <div class="btn-group pe-2">
+                                {{-- <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="" name="city_id"
                                         data-placeholder="Select City" autocomplete="off">
                                         <option value="">Select City</option>
                                         <!-- Dynamically filled by AJAX -->
                                     </select>
+                                </div> --}}
+
+                                <div class="btn-group pe-2">
+                                    <select class="form-select cust-select" id="" name="city_id"
+                                        data-placeholder="Select City" autocomplete="off"
+                                        onchange="searchStoreByCity(this.value)">
+                                        <option value="">Select City</option>
+
+                                        @foreach ($allcitys as $allcity)
+                                            <option value="{{ $allcity->id }}"
+                                                {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
+                                                {{ $allcity->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <script>
+                                    function searchStoreByCity(cityId) {
+                                        if (cityId) {
+                                            // Redirect to the courses page with the selected section ID
+                                            window.location.href = `/store/all?city=${cityId}`;
+                                        }
+                                    }
+                                </script>
+
+
 
                                 <!-- Filter Store - Area -->
-                                <div class="btn-group pe-2">
+                                {{-- <div class="btn-group pe-2">
                                     <select class="form-select cust-select" id="" name="area_id"
                                         data-placeholder="Select Area">
                                         <option value="">Select Area</option>
                                         <!-- Dynamically filled by AJAX -->
                                     </select>
+                                </div> --}}
+                                <div class="btn-group pe-2">
+                                    <select class="form-select cust-select" id="" name="area_id"
+                                        data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
+                                        <option value="">Select Area</option>
+                                        @foreach ($allareas as $allarea)
+                                            <option value="{{ $allarea->id }}"
+                                                {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
+                                                {{ $allarea->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
+                                <script>
+                                    function searchStoreByArea(areaId) {
+                                        if (areaId) {
+                                            // Redirect to the courses page with the selected section ID
+                                            window.location.href = `/store/all?area=${areaId}`;
+                                        }
+                                    }
+                                </script>
+
                                 <!-- Search Store -->
+
                                 <div class="wrapper-store">
                                     <div class="search-input-store">
-                                        <form action="">
-                                            <input type="text" id="" autocomplete="off" name="search"
-                                                placeholder="Type to search..." />
-                                            <div class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </form>
+                                        {{-- <form action=""> --}}
+                                        <input type="text" id="serviceSearch" autocomplete="off" name="search"
+                                            placeholder="Type to search..." />
+                                        <div class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        {{-- </form> --}}
                                     </div>
                                 </div>
+
 
                             </div>
                             {{-- ======================= --}}
@@ -80,99 +142,109 @@
             </div>
         </section>
         <!-- All Stores -->
+
         <section>
             <div class="container">
 
-                <div class="row pb-4">
-                    @foreach ($stores as $store)
-                        <div class="col-lg-3">
-                            <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
+                @if ($stores->count() > 0)
 
-                                <div class="card border-0 shadow-sm mb-4">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2"
-                                                src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
-                                                alt="arong-banner.jpg" />
-                                        </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid"
-                                                        src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
+                    <div class="row pb-4" id="servicesContainer">
+                        @foreach ($stores as $store)
+                            <div class="col-lg-3">
+                                <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
+
+                                    <div class="card border-0 shadow-sm mb-4">
+                                        <div class="card-body p-0 rounded-2">
+                                            <!-- Store Banner -->
+                                            <div class="main-store-banner">
+                                                <img class="img-fluid rounded-2"
+                                                    src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
+                                                    alt="arong-banner.jpg" />
                                             </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between store_title">
-                                                <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
-                                                    <div>
-                                                        <h6>{{ $store->title }}</h6>
+                                            <!-- Store Logo And Rating -->
+                                            <div class="px-3 pb-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="store-logo">
+                                                        <img class="img-fluid"
+                                                            src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
+                                                            alt="arong-logo.png" />
                                                     </div>
-                                                </a>
-                                                <div>
-                                                    <div>
-                                                        <a href="{{ $store->location }}"
-                                                            class="btn border-0 p-0 m-0 ps-2">
-                                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                                title="Store Location"></i>
+                                                    <div class="store-rating">
+                                                        <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
+                                                            class="btn btn-common-one rounded-circle store-btn"><i
+                                                                class="fa-solid fa-store" aria-hidden="true"></i>
                                                         </a>
+                                                    </div>
+                                                </div>
+                                                <!-- Store Info -->
+                                                <div class="pt-4 d-flex justify-content-between store_title">
+                                                    <a
+                                                        href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
+                                                        <div>
+                                                            <h6>{{ $store->title }}</h6>
+                                                        </div>
+                                                    </a>
+                                                    <div>
+                                                        <div>
+                                                            <a href="{{ $store->location }}"
+                                                                class="btn border-0 p-0 m-0 ps-2">
+                                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
+                                                                    title="Store Location"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- Pagination Links -->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <!-- Previous Page Link -->
-                        @if ($stores->onFirstPage())
-                            <li class="page-item disabled"><span class="page-link">Previous</span></li>
-                        @else
-                            <li class="page-item"><a class="page-link"
-                                    href="{{ $stores->previousPageUrl() }}">Previous</a></li>
-                        @endif
-
-                        <!-- Pagination Numbers -->
-                        @foreach ($stores->getUrlRange(1, $stores->lastPage()) as $page => $url)
-                            <li class="page-item {{ $page == $stores->currentPage() ? 'active' : '' }}">
-                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                            </li>
+                                </a>
+                            </div>
                         @endforeach
 
-                        <!-- Next Page Link -->
-                        @if ($stores->hasMorePages())
-                            <li class="page-item"><a class="page-link" href="{{ $stores->nextPageUrl() }}">Next</a>
-                            </li>
-                        @else
-                            <li class="page-item disabled"><span class="page-link">Next</span></li>
-                        @endif
+                    </div>
 
-                    </ul>
-                </nav>
+                    <!-- Pagination Links -->
+                    <nav aria-label="Page navigation example">
+                        {{ $stores->links() }}
+                    </nav>
+                @else
+                    <p class="mb-3">No Store Avaiable</p>
+                @endif
+
 
             </div>
         </section>
+
     </div>
 
     @include('frontend.pages.allStore_mobile_view')
 
     @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+
+                    // If the input field is empty, do a search without a query
+                    if (query === '') {
+                        window.location.href = "{{ route('allStore') }}";
+                    } else {
+                        $.ajax({
+                            url: "{{ route('store.search.names') }}",
+                            method: 'GET',
+                            data: {
+                                query: query
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(data);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+
         <script>
             $(document).ready(function() {
                 // When Division is selected
