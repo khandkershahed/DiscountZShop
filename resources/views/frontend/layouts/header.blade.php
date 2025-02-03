@@ -1,3 +1,51 @@
+<!-- Styles for the search suggestions -->
+<style>
+    #search-suggestions {
+        max-height: 500px;
+        overflow-y: auto;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .suggestion-item {
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .suggestion-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .suggestion-category {
+        font-weight: bold;
+        padding: 5px 10px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+        margin-top: 10px;
+    }
+
+    .suggestion-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .suggestion-brand,
+    .suggestion-store,
+    .suggestion-offer {
+        padding: 10px;
+    }
+
+    .suggestion-brand,
+    .suggestion-store {
+        width: 50%;
+    }
+
+    .suggestion-offer {
+        width: 100%;
+    }
+</style>
+
 <div class="desktop-homepage">
     <div class="main-desktop-header">
         <header class="sticky-top bg-light">
@@ -168,22 +216,30 @@
                             </li>
 
                         </ul>
-                        <!-- Search Form -->
-                        <form class="d-flex" action="{{ route('product.search') }}" method="POST" role="search">
-                            @csrf
 
-                            <div class="d-flex hdr-search align-items-center">
 
-                                <input class="form-control hdr-search-box" autocomplete="on" required name="search"
-                                    type="text" placeholder="Search" aria-label="Search" />
+                        <div class="me-5">
+                            <!-- Search Form -->
+                            <form class="d-flex" action="{{ route('product.search') }}" method="POST"
+                                role="search" id="search-form">
+                                @csrf
+                                <div class="d-flex hdr-search align-items-center">
+                                    <input class="form-control hdr-search-box" autocomplete="off" required
+                                        name="search" type="text" placeholder="Search" aria-label="Search"
+                                        id="search-input" />
+                                </div>
+                                <button class="btn position-relative border-0 bg-transparent search-action"
+                                    type="submit" id="search-btn" style="display: none;">
+                                    <i class="fa-solid fa-search text-muted"></i>
+                                </button>
+                            </form>
+
+                            <!-- Dropdown for search suggestions -->
+                            <div id="search-suggestions" class="search-suggestions-dropdown"
+                                style="display: none; position: absolute; width: 100%; background: white; border: 1px solid #ccc; z-index: 10;">
                             </div>
+                        </div>
 
-                            <button class="btn position-relative border-0 bg-transparent search-action"
-                                type="submit">
-                                <i class="fa-solid fa-search text-muted"></i>
-                            </button>
-
-                        </form>
 
                         <a href="{{ route('wishlist.product') }}"
                             class="border-0 bg-transparent bt-common bt-common-heart">
@@ -196,6 +252,7 @@
                 </div>
             </nav>
         </header>
+
         <!-- Offcanvas Menu -->
         <div class="offcanvas menu-offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1"
             id="staticBackdrop" aria-labelledby="staticBackdropLabel">
@@ -295,8 +352,12 @@
             </div>
         </div>
         <!-- Offcanvas Menu End -->
+
     </div>
 </div>
+
+
+
 {{-- Mobile View --}}
 <div class="mobile-header fixed-top">
     <header>
@@ -405,3 +466,101 @@
     {{-- Mobile Menus End --}}
 </div>
 {{-- Mobile View End --}}
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#search-input').on('input', function() {
+                let query = $(this).val();
+
+                // If there's no input, hide the suggestions
+                if (query.length > 0) {
+                    $.ajax({
+                        url: '{{ route('product.search.suggest') }}', // Your route to fetch suggestions
+                        method: 'POST',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            search: query
+                        },
+                        success: function(response) {
+                            // Display the suggestions
+                            $('#search-suggestions').empty().show();
+                            if (response.suggestions.length > 0) {
+                                let groupedSuggestions = {
+                                    'Brands': [],
+                                    'Offers': [],
+                                    'Stores': []
+                                };
+
+                                // Group suggestions by type
+                                response.suggestions.forEach(function(suggestion) {
+                                    if (suggestion.type === 'brand') {
+                                        groupedSuggestions.Brands.push(suggestion.name);
+                                    } else if (suggestion.type === 'offer') {
+                                        groupedSuggestions.Offers.push(suggestion.name);
+                                    } else if (suggestion.type === 'store') {
+                                        groupedSuggestions.Stores.push(suggestion.name);
+                                    }
+                                });
+
+                                // Append each category with their suggestions
+                                $.each(groupedSuggestions, function(category, items) {
+                                    if (items.length > 0) {
+                                        $('#search-suggestions').append(
+                                            `<div class="suggestion-category">${category}</div>`
+                                        );
+
+                                        // Create a grid for suggestions
+                                        let grid = $(
+                                            '<div class="suggestion-grid"></div>');
+                                        items.forEach(function(item) {
+                                            let className = 'suggestion-item';
+                                            if (category === 'Brands') {
+                                                className +=
+                                                    ' suggestion-brand';
+                                            } else if (category === 'Offers') {
+                                                className +=
+                                                    ' suggestion-offer';
+                                            } else if (category === 'Stores') {
+                                                className +=
+                                                    ' suggestion-store';
+                                            }
+                                            grid.append(
+                                                `<div class="${className}">${item}</div>`
+                                            );
+                                        });
+
+                                        $('#search-suggestions').append(grid);
+                                    }
+                                });
+                            } else {
+                                $('#search-suggestions').html(
+                                    '<div style="padding: 10px;">No suggestions found</div>'
+                                );
+                            }
+                        },
+                        error: function() {
+                            console.error('Error fetching search suggestions');
+                        }
+                    });
+                } else {
+                    $('#search-suggestions').hide();
+                }
+            });
+
+            // Click event to handle selecting a suggestion
+            $(document).on('click', '.suggestion-item', function() {
+                $('#search-input').val($(this).text());
+                $('#search-suggestions').hide();
+                $('#search-form').submit(); // Optionally, submit the form after selection
+            });
+
+            // Hide suggestions if clicked outside
+            $(document).click(function(event) {
+                if (!$(event.target).closest('#search-suggestions, #search-input').length) {
+                    $('#search-suggestions').hide();
+                }
+            });
+        });
+    </script>
+@endpush

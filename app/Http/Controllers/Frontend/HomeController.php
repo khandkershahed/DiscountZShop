@@ -47,6 +47,9 @@ class HomeController extends Controller
 
             'categorys'          => Category::latest()->limit(6)->get(),
 
+            'mobile_stores'      => Store::latest()->limit(12)->get(),
+            'mobile_coupons'      => Coupon::latest()->get(),
+
             'alloffers'          => $offers,
             'offers'             => $offers->take(5), // Use `take` instead of `limit` for collections
 
@@ -676,33 +679,6 @@ class HomeController extends Controller
         return view('frontend.pages.faqDiscountZShop.faq', $data);
     }
 
-    //ProductSearch
-    public function productSearch(Request $request)
-    {
-
-        $request->validate(['search' => "required"]);
-
-        $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
-        $item        = $request->search;
-
-        $brands = Brand::where('name', 'LIKE', "%$item%")
-            ->orWhere('offer_description_title', "LIKE", "%$item%")
-            ->orWhere('description_title', "LIKE", "%$item%")
-            ->get();
-
-        $offers = Offer::where('name', 'LIKE', "%$item%")
-            ->orWhere('short_description', "LIKE", "%$item%")
-            ->orWhere('description', "LIKE", "%$item%")
-            ->get();
-
-        $stores = Store::where('title', 'LIKE', "%$item%")
-            ->orWhere('slug', "LIKE", "%$item%")
-            ->orWhere('description', "LIKE", "%$item%")
-            ->get();
-
-        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
-    }
-
     public function WishlistProduct()
     {
         return view('frontend.pages.wishlist');
@@ -749,4 +725,100 @@ class HomeController extends Controller
         Cart::instance('wishlist')->remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Wishlist']);
     }
+
+    //ProductSearch
+    // public function productSearch(Request $request)
+    // {
+
+    //     $request->validate(['search' => "required"]);
+
+    //     $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
+    //     $item        = $request->search;
+
+    //     $brands = Brand::where('name', 'LIKE', "%$item%")
+    //         ->orWhere('offer_description_title', "LIKE", "%$item%")
+    //         ->orWhere('description_title', "LIKE", "%$item%")
+    //         ->get();
+
+    //     $offers = Offer::where('name', 'LIKE', "%$item%")
+    //         ->orWhere('short_description', "LIKE", "%$item%")
+    //         ->orWhere('description', "LIKE", "%$item%")
+    //         ->get();
+
+    //     $stores = Store::where('title', 'LIKE', "%$item%")
+    //         ->orWhere('slug', "LIKE", "%$item%")
+    //         ->orWhere('description', "LIKE", "%$item%")
+    //         ->get();
+
+    //     return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+    // }
+
+    public function productSearch(Request $request)
+    {
+        $request->validate(['search' => "required"]);
+
+        $item = $request->search;
+
+        // Search logic for brands, offers, and stores
+        $brands = Brand::where('name', 'LIKE', "%$item%")
+            ->orWhere('offer_description_title', "LIKE", "%$item%")
+            ->orWhere('description_title', "LIKE", "%$item%")
+            ->get();
+
+        $offers = Offer::where('name', 'LIKE', "%$item%")
+            ->orWhere('short_description', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
+
+        $stores = Store::where('title', 'LIKE', "%$item%")
+            ->orWhere('slug', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            // Return only the search results (partial view)
+            return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
+        }
+
+        // Return full view if not AJAX request
+        $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
+        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+    }
+
+    public function searchSuggestions(Request $request)
+    {
+        $request->validate(['search' => 'required']);
+
+        $item = $request->search;
+
+        // Get suggestions for brands, offers, and stores
+        $brandSuggestions = Brand::where('name', 'LIKE', "%$item%")
+            ->limit(5) // Limit to 5 suggestions
+            ->pluck('name')
+            ->toArray();
+
+        $offerSuggestions = Offer::where('name', 'LIKE', "%$item%")
+            ->limit(5)
+            ->pluck('name')
+            ->toArray();
+
+        $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
+            ->limit(5)
+            ->pluck('title')
+            ->toArray();
+
+        // Combine all suggestions with their respective categories
+        $suggestions = array_merge(
+            array_map(fn($name) => ['name' => $name, 'type' => 'brand'], $brandSuggestions),
+            array_map(fn($name) => ['name' => $name, 'type' => 'offer'], $offerSuggestions),
+            array_map(fn($name) => ['name' => $name, 'type' => 'store'], $storeSuggestions)
+        );
+
+        // Return the suggestions as JSON
+        return response()->json([
+            'suggestions' => $suggestions,
+        ]);
+    }
+
 }

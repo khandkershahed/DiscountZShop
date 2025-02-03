@@ -44,8 +44,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/city-get/ajax/{city_id}', 'StateGetAjaxCity');
 });
 
-//Search
+//product Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
+// In web.php or routes file
+Route::post('/product/search/suggest', [HomeController::class, 'searchSuggestions'])->name('product.search.suggest');
+
 
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');
