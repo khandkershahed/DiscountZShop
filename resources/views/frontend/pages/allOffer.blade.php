@@ -180,6 +180,52 @@
                     <div class="col-lg-3 border py-2 shadow-sm">
                         {{-- Accordion Filter Start --}}
 
+                        {{-- <div class="accordion">
+
+                            @foreach ($categories as $header_category)
+                                <div class="accordion-header">
+                                    <div class="checkbox-wrapper-offers">
+                                        <input class="inp-cbx accordion-checkbox"
+                                            id="category-{{ $header_category->id }}" type="checkbox" />
+                                        <label class="cbx" for="category-{{ $header_category->id }}"
+                                            onclick="toggleOffers('{{ $header_category->id }}')">
+                                            <span>
+                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </svg>
+                                            </span>
+                                            <span style="font-size: 14px">{{ $header_category->name }}
+                                                ({{ $header_category->offers->count() }})</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="panel" id="panel-{{ $header_category->id }}">
+                                    @foreach ($header_category->children as $header_category_child)
+                                        <div class="accordion-header">
+                                            <div class="checkbox-wrapper-offers">
+                                                <input class="inp-cbx accordion-checkbox"
+                                                    id="subcategory-{{ $header_category_child->id }}"
+                                                    type="checkbox" />
+                                                <label class="cbx"
+                                                    for="subcategory-{{ $header_category_child->id }}">
+                                                    <span>
+                                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                        </svg>
+                                                    </span>
+                                                    <span style="font-size: 14px">{{ $header_category_child->name }}
+                                                        ({{ $header_category_child->offers->count() }})
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
+                        </div> --}}
+
                         <div class="accordion">
                             @foreach ($categories as $header_category)
                                 <div class="accordion-header">
@@ -234,51 +280,57 @@
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
 
-                                <div class="row" id="servicesContainer">
+                                @if ($offers->count() > 0)
+                                    <div class="row" id="servicesContainer">
 
-                                    @foreach ($offers as $offer)
-                                        <div class="col-lg-4 mb-4 pe-2">
-                                            <div class="card border-0 shadow-sm bg-light offer-boxes">
-                                                <div class="row p-4 align-items-center">
-                                                    <div class="col-lg-6">
-                                                        <div>
-                                                            <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                width="80px" height="80px" class="rounded-2"
-                                                                style="object-fit: contain;" alt="" />
+                                        @foreach ($offers as $offer)
+                                            <div class="col-lg-4 mb-4 pe-2">
+                                                <div class="card border-0 shadow-sm bg-light offer-boxes">
+                                                    <div class="row p-4 align-items-center">
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                    width="80px" height="80px" class="rounded-2"
+                                                                    style="object-fit: contain;" alt="" />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        @if (!empty($offer->badge))
-                                                            <h4 class="main-color special-font-box text-end">
-                                                                {{ $offer->badge }}</h4>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-lg-12 pt-4 offer_title">
-                                                        <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                    </div>
-                                                    <div class="col-lg-12 pt-4">
-                                                        <div class="d-flex">
-                                                            <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                class="w-100 btn-common-one rounded-3"><small>View</small></a>
-                                                            @if (!empty($offer->coupon_code))
-                                                                <a href="javascript:void(0);"
-                                                                    class="w-100 btn-common-three rounded-3 ms-2"
-                                                                    onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
-                                                                    <i class="fa-solid fa-copy"></i></a>
+                                                        <div class="col-lg-6">
+                                                            @if (!empty($offer->badge))
+                                                                <h4 class="main-color special-font-box text-end">
+                                                                    {{ $offer->badge }}</h4>
                                                             @endif
                                                         </div>
-                                                        <p class="pt-2 text-center countdown"
-                                                            data-expire-date="{{ $offer->expiry_date }}">
-                                                            <span class="main-color">Expire In:</span>
-                                                            <span class="countdown-timer"> Days</span>
-                                                        </p>
+                                                        <div class="col-lg-12 pt-4 offer_title">
+                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                        </div>
+                                                        <div class="col-lg-12 pt-4">
+                                                            <div class="d-flex">
+                                                                <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                    class="w-100 btn-common-one rounded-3"><small>View</small></a>
+                                                                @if (!empty($offer->coupon_code))
+                                                                    <a href="javascript:void(0);"
+                                                                        class="w-100 btn-common-three rounded-3 ms-2"
+                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
+                                                                        <i class="fa-solid fa-copy"></i></a>
+                                                                @endif
+                                                            </div>
+                                                            <p class="pt-2 text-center countdown"
+                                                                data-expire-date="{{ $offer->expiry_date }}">
+                                                                <span class="main-color">Expire In:</span>
+                                                                <span class="countdown-timer"> Days</span>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
 
-                                </div>
+                                    </div>
+                                @else
+                                    <p>No Offer Avaiable</p>
+                                @endif
+
+
 
                             </div>
 
@@ -340,9 +392,13 @@
                         </div>
 
                         {{-- Dynamic Pagination --}}
-                        <nav aria-label="Page navigation example">
-                            {{ $offers->links() }}
-                        </nav>
+                        {{-- @if ($offers->count() > 0) --}}
+                            <nav aria-label="Page navigation example">
+                                {{ $offers->links() }}
+                            </nav>
+                        {{-- @else
+                            <p>No Offer Avaiable</p>
+                        @endif --}}
                         {{-- Dynamic Pagination --}}
 
                     </div>
@@ -363,7 +419,7 @@
 
 
     @push('scripts')
-
+    
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
@@ -449,7 +505,6 @@
         </script>
 
         <script>
-            // Handle the category and subcategory toggling and checkbox updates
             document.addEventListener('DOMContentLoaded', function() {
                 // Toggle the checkbox when the category or subcategory is clicked
                 function toggleOffers(categoryId) {
@@ -462,32 +517,18 @@
 
                 // Show or hide the offers for the selected category and subcategory
                 function showOffersByCategory(categoryId) {
-                    const panel = document.getElementById('panel-' + categoryId);
                     const checkbox = document.getElementById('category-' + categoryId);
+                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
 
-                    if (checkbox && checkbox.checked) {
-                        panel.classList.add('show');
-                    } else {
-                        panel.classList.remove('show');
-                    }
-
-                    // Ensure the offer tab is visible when the checkbox is checked
                     if (checkbox.checked) {
-                        const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-                        if (categoryTab) {
-                            categoryTab.classList.add('show', 'active');
-                        }
+                        categoryTab.classList.add('show', 'active');
+                    } else {
+                        categoryTab.classList.remove('show', 'active');
                     }
 
-                    // Check if any category or subcategory is selected to hide the "category-all" tab pane
-                    updateCategoryAllVisibility();
-                }
-
-                // Update the visibility of the "category-all" tab pane
-                function updateCategoryAllVisibility() {
+                    // Hide "category-all" pane if any category is checked
                     const categoryAllPane = document.getElementById('category-all-pane');
                     const allCheckboxes = document.querySelectorAll('.accordion-checkbox');
-
                     let isAnyChecked = false;
 
                     allCheckboxes.forEach(checkbox => {
@@ -496,7 +537,6 @@
                         }
                     });
 
-                    // Hide "category-all" pane if any checkbox is checked
                     if (categoryAllPane) {
                         if (isAnyChecked) {
                             categoryAllPane.classList.remove('show', 'active');
@@ -504,42 +544,60 @@
                             categoryAllPane.classList.add('show', 'active');
                         }
                     }
+
+                    // Show only offers related to the checked categories
+                    filterOffersByCategory();
                 }
 
-                // Handle checkbox changes for category and subcategory
-                function handleCheckboxChange(checkbox) {
-                    const categoryId = checkbox.id.split('-')[1];
+                // Filter offers based on the selected categories
+                function filterOffersByCategory() {
+                    const allOffers = document.querySelectorAll('.offer-item');
+                    const checkedCategoryIds = [];
 
-                    // Show or hide the panel depending on the checkbox state
-                    const panel = document.getElementById('panel-' + categoryId);
-                    if (checkbox.checked) {
-                        panel.classList.add('show'); // Show the panel for the selected category
-                        showOffersByCategory(categoryId); // Ensure the offers tab is visible
-                    } else {
-                        panel.classList.remove('show'); // Hide the panel if unchecked
+                    // Collect all checked categories
+                    document.querySelectorAll('.accordion-checkbox:checked').forEach(checkbox => {
+                        const categoryId = checkbox.id.split('-')[1];
+                        checkedCategoryIds.push(categoryId);
+                    });
+
+                    // Show/hide offers based on checked categories
+                    allOffers.forEach(offer => {
+                        const offerCategories = offer.getAttribute('data-offer-category').split(',');
+                        const shouldShow = checkedCategoryIds.some(id => offerCategories.includes(id));
+                        if (shouldShow) {
+                            offer.classList.remove('d-none');
+                        } else {
+                            offer.classList.add('d-none');
+                        }
+                    });
+
+                    // Hide the pagination if any offer is selected, otherwise show it
+                    togglePaginationVisibility();
+                }
+
+                // Toggle the visibility of the pagination based on selected categories
+                function togglePaginationVisibility() {
+                    const pagination = document.querySelector('.pagination');
+                    const isAnyChecked = document.querySelectorAll('.accordion-checkbox:checked').length > 0;
+
+                    if (pagination) {
+                        if (isAnyChecked) {
+                            pagination.classList.add('d-none'); // Hide pagination
+                        } else {
+                            pagination.classList.remove('d-none'); // Show pagination
+                        }
                     }
-
-                    // Update visibility of the "category-all" tab pane
-                    updateCategoryAllVisibility();
                 }
 
                 // Add event listener to all category and subcategory checkboxes
                 document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
                     checkbox.addEventListener('change', function() {
-                        const categoryId = this.id.split('-')[1];
-                        handleCheckboxChange(this);
-                    });
-                });
-
-                // Add click event listener to subcategory names
-                document.querySelectorAll('.accordion-header span').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const categoryId = this.parentElement.querySelector('input').id.split('-')[1];
-                        toggleOffers(categoryId); // Call toggleOffers on click of subcategory
+                        showOffersByCategory(this.id.split('-')[1]);
                     });
                 });
             });
         </script>
+
 
     @endpush
 
