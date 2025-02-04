@@ -6,35 +6,41 @@
             </div>
             <div class="col-4 px-0">
                 <div class="btn-group pe-2">
-                    <select class="form-select form-select-sm" id="custom_select1" name="division_id"
-                        data-placeholder="Select Division" autocomplete="off">
+                    <select class="form-select cust-select" id="" name="division_id"
+                        data-placeholder="Select Division" autocomplete="off"
+                        onchange="searchStoreByDivision(this.value)">
+
                         <option value="">Select Division</option>
-                        @forelse ($divisions as $division)
-                            <option value="{{ $division->id }}">{{ $division->name }}</option>
-                        @empty
-                            <option disabled>No Division Available</option>
-                        @endforelse
+
+                        @foreach ($alldivs as $division)
+                            <option value="{{ $division->id }}"
+                                {{ request()->get('division') == $division->id ? 'selected' : '' }}>
+                                {{ $division->name }}</option>
+                        @endforeach
+
                     </select>
                 </div>
             </div>
             <div class="col-5 ps-0">
                 <div class="wrapper-store">
                     <div class="search-input-store">
-                        <input type="text" id="serviceSearch" autocomplete="off" name=""
+                        {{-- <form action=""> --}}
+                        <input type="text" id="serviceSearch" autocomplete="off" name="search"
                             placeholder="Type to search..." />
                         <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
                                 <path
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
                                 </path>
                             </svg>
                         </div>
+                        {{-- </form> --}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-4 gx-2">
+        <div class="row mt-4 gx-2" id="servicesContainer">
             @foreach ($stores as $store)
                 <div class="col-6 mb-2">
                     <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
@@ -50,8 +56,7 @@
                             <div class="card-body border-0">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <img class="img-fluid" src="{{ asset('images/demo-logo.png') }}"
-                                            alt="">
+                                        <img class="img-fluid" src="{{ asset('images/demo-logo.png') }}" alt="">
                                     </div>
                                     <div>
                                         <button class="store-btn">

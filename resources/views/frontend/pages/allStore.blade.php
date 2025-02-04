@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'All Store || DiscountZShop'">
-    <div class="desktop-homepage">
+    <div class="">
 
         <!-- Hero Section -->
         <section>
@@ -11,22 +11,25 @@
         </section>
         <!-- Top Stores -->
 
-        <section>
+        <section class="py-3 py-lg-5">
             <div class="container">
-                <div class="row py-5">
-                    <div class="col-lg-12">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <h3>All Stores</h3>
-                                <span class="store-devider"></span>
-                            </div>
 
-                            {{-- =============== --}}
-                            <div class="d-flex align-items-center">
+                <div class="row">
 
+                    <div class="col-lg-3">
+                        <div class="d-flex align-items-center d-none d-lg-block">
+                            <h3>All Stores</h3>
+                            <span class="store-devider"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="row">
+
+                            <div class="col-6 col-lg-3">
                                 <!-- Filter Store - Division -->
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="division_id"
+                                    <select class="form-select" id="" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off"
                                         onchange="searchStoreByDivision(this.value)">
 
@@ -49,18 +52,20 @@
                                         }
                                     }
                                 </script>
+                            </div>
 
-                                <!-- Filter Store - City -->
-                                {{-- <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="city_id"
-                                        data-placeholder="Select City" autocomplete="off">
-                                        <option value="">Select City</option>
-                                        <!-- Dynamically filled by AJAX -->
-                                    </select>
-                                </div> --}}
+                            <!-- Filter Store - City -->
+                            {{-- <div class="btn-group pe-2">
+                                        <select class="form-select cust-select" id="" name="city_id"
+                                            data-placeholder="Select City" autocomplete="off">
+                                            <option value="">Select City</option>
+                                            <!-- Dynamically filled by AJAX -->
+                                        </select>
+                                    </div> --}}
 
+                            <div class="col-6 col-lg-3">
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="city_id"
+                                    <select class="form-select" id="" name="city_id"
                                         data-placeholder="Select City" autocomplete="off"
                                         onchange="searchStoreByCity(this.value)">
                                         <option value="">Select City</option>
@@ -80,19 +85,11 @@
                                         }
                                     }
                                 </script>
+                            </div>
 
-
-
-                                <!-- Filter Store - Area -->
-                                {{-- <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="area_id"
-                                        data-placeholder="Select Area">
-                                        <option value="">Select Area</option>
-                                        <!-- Dynamically filled by AJAX -->
-                                    </select>
-                                </div> --}}
+                            <div class="col-6 col-lg-3">
                                 <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="area_id"
+                                    <select class="form-select" id="" name="area_id"
                                         data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
                                         <option value="">Select Area</option>
                                         @foreach ($allareas as $allarea)
@@ -111,9 +108,18 @@
                                         }
                                     }
                                 </script>
+                            </div>
 
-                                <!-- Search Store -->
+                            <!-- Filter Store - Area -->
+                            {{-- <div class="btn-group pe-2">
+                                        <select class="form-select cust-select" id="" name="area_id"
+                                            data-placeholder="Select Area">
+                                            <option value="">Select Area</option>
+                                            <!-- Dynamically filled by AJAX -->
+                                        </select>
+                                    </div> --}}
 
+                            <div class="col-6 col-lg-3">
                                 <div class="wrapper-store">
                                     <div class="search-input-store">
                                         {{-- <form action=""> --}}
@@ -130,13 +136,17 @@
                                         {{-- </form> --}}
                                     </div>
                                 </div>
-
-
                             </div>
-                            {{-- ======================= --}}
+
+                            <!-- Search Store -->
 
                         </div>
                     </div>
+
+                    {{-- =============== --}}
+
+                    {{-- ======================= --}}
+
                 </div>
 
             </div>
@@ -150,7 +160,7 @@
 
                     <div class="row pb-4" id="servicesContainer">
                         @foreach ($stores as $store)
-                            <div class="col-lg-3">
+                            <div class="col-lg-3 col-6">
                                 <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
 
                                     <div class="card border-0 shadow-sm mb-4">
@@ -218,7 +228,9 @@
 
     </div>
 
-    @include('frontend.pages.allStore_mobile_view')
+    {{-- @include('frontend.pages.allStore_mobile_view') --}}
+
+
 
     @push('scripts')
         <script>
