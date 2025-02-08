@@ -109,6 +109,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
+            
             'categories'  => Category::with('brands') // Eager load the brands relationship
                 ->orderBy('name', 'ASC')                  // Order categories by name in ascending order
                 ->latest('id')                            // Order categories by the latest ID (newest first)
@@ -116,7 +117,7 @@ class HomeController extends Controller
                 ->get(),
 
             // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            'brands'      => Brand::where('status','active')->latest()->get(),
+            'brands'      => Brand::latest()->get(),
         ];
         return view('frontend.pages.allBrand', $data);
     }

@@ -1,6 +1,7 @@
 <x-frontend-app-layout :title="'Overview || DiscountZShop'">
 
     @include('frontend.pages.vendor.partial.header')
+
     <div class="desktop-homepage">
         {{-- Overview Start --}}
         <section>
@@ -68,7 +69,7 @@
         </section>
         {{-- Overview End --}}
     </div>
-    
+
     {{-- For Mobile Only --}}
     <div class="mobile-homepage" style="margin-bottom: 8rem">
         {{-- Overview Start --}}
