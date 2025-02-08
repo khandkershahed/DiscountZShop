@@ -304,7 +304,7 @@
         </section>
         <!-- Grab Your Offer End -->
 
-        <!-- Promotion Product -->
+        <!-- Biggest Deals From Product -->
         @if (optional($homepage)->brand)
             <section>
                 <div class="container px-0 pb-70 biggest-deals">
@@ -426,7 +426,7 @@
                 </div>
             </section>
         @endif
-        <!-- Promotion Product End -->
+        <!-- Biggest Deals From -->
 
         <!-- Grab By Location -->
         <section style="background-color: #f5f6f8">

@@ -77,8 +77,8 @@
                                 <div class="d-flex align-items-center">
 
                                     <!-- Filter Store - Division -->
-                                    <div class="btn-group pe-2">
-                                        <select class="form-select cust-select" id="" name="division_id"
+                                    <div class="pe-2">
+                                        <select class="form-select" id="" name="division_id"
                                             data-placeholder="Select Division" autocomplete="off"
                                             onchange="searchStoreByDivision(this.value)">
 
@@ -102,8 +102,8 @@
                                         }
                                     </script>
 
-                                    <div class="btn-group pe-2">
-                                        <select class="form-select cust-select" id="" name="city_id"
+                                    <div class="pe-2">
+                                        <select class="form-select" id="" name="city_id"
                                             data-placeholder="Select City" autocomplete="off"
                                             onchange="searchStoreByCity(this.value)">
                                             <option value="">Select City</option>
@@ -124,8 +124,8 @@
                                         }
                                     </script>
 
-                                    <div class="btn-group pe-2">
-                                        <select class="form-select cust-select" id="" name="area_id"
+                                    <div class="pe-2">
+                                        <select class="form-select" id="" name="area_id"
                                             data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
                                             <option value="">Select Area</option>
                                             @foreach ($allareas as $allarea)
@@ -314,11 +314,25 @@
                                                                         <i class="fa-solid fa-copy"></i></a>
                                                                 @endif
                                                             </div>
-                                                            <p class="pt-2 text-center countdown"
-                                                                data-expire-date="{{ $offer->expiry_date }}">
-                                                                <span class="main-color">Expire In:</span>
-                                                                <span class="countdown-timer"> Days</span>
-                                                            </p>
+
+                                                            {{-- {{ Carbon\Carbon::parse($offer->expiry_date)->format('D, d F Y') }} --}}
+
+                                                            @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+                                                            @else
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+                                                            @endif
+
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -393,9 +407,9 @@
 
                         {{-- Dynamic Pagination --}}
                         {{-- @if ($offers->count() > 0) --}}
-                            <nav aria-label="Page navigation example">
-                                {{ $offers->links() }}
-                            </nav>
+                        <nav aria-label="Page navigation example">
+                            {{ $offers->links() }}
+                        </nav>
                         {{-- @else
                             <p>No Offer Avaiable</p>
                         @endif --}}
@@ -419,7 +433,6 @@
 
 
     @push('scripts')
-    
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
@@ -597,8 +610,6 @@
                 });
             });
         </script>
-
-
     @endpush
 
 

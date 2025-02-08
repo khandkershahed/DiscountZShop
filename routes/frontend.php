@@ -27,8 +27,6 @@ Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('em
 //SubCatewory
 Route::get('/subcategory/{slug}', [HomeController::class, 'categoryDetails'])->name('subcategory.details');
 
-
-
 //product Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
 // In web.php or routes file
@@ -56,13 +54,14 @@ Route::get('/map/search/city', [HomeController::class, 'mapCity'])->name('map.ci
 //Coupon
 Route::get('/coupon/all', [HomeController::class, 'allCoupon'])->name('allCoupon');
 Route::get('/coupon/{slug}', [HomeController::class, 'couponDetails'])->name('coupon.details');
-Route::get('/coupon/search', [HomeController::class, 'searchCouponName'])->name('coupon.search');
+Route::get('/coupon/search/names', [HomeController::class, 'searchCouponName'])->name('coupon.search');
 
 //Offer All Route Start
 Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
 Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
 
 Route::get('/offer/search/name', [HomeController::class, 'searchOfferName'])->name('offer.search.names');
+Route::get('/offer/search/name/mobile', [HomeController::class, 'searchOfferNameMobile'])->name('offer.search.names.mobile');
 
 Route::controller(HomeController::class)->group(function () {
 
@@ -86,7 +85,6 @@ Route::controller(HomeController::class)->group(function () {
 
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
-
 //discounttermsCondition
 Route::get('/discountZShop/terms-condition', [HomeController::class, 'discounttermsCondition'])->name('discount.termsCondition');
 

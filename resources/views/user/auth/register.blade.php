@@ -7,21 +7,21 @@
             object-fit: cover;
         }
     </style>
-    
-    <div class="container py-5 desktop-homepage">
+
+    <div class="container py-5 mb-5 mb-lg-0">
         <div class="row py-5">
             <div class="col-lg-10 offset-lg-1">
                 <div class="card">
                     <div class="card-body p-0">
                         <div class="row g-0 align-items-center">
                             <div class="col-lg-6">
-                                <div class="p-5">
+                                <div class="p-2 p-lg-5">
                                     <h2 class="fw-bold mb-5">Sign Up Now</h2>
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
                                         <!-- 2 column grid layout with text inputs for the first and last names -->
                                         <div class="row">
-                                            <div class="col-md-12 col-12 mb-4">
+                                            <div class="col-md-12 col-12 mb-2">
                                                 <div class="form-outline">
                                                     <x-input-label class="form-label" for="name"
                                                         :value="__('Name')" />
@@ -69,6 +69,13 @@
                                             </div>
                                         </div>
 
+                                        <div class="">
+                                            <!-- Submit button -->
+                                            <x-primary-button class="btn btn-common-one rounded-pill px-4 w-100">
+                                                {{ __('Register') }}
+                                            </x-primary-button>
+                                        </div>
+
                                         <!-- Checkbox -->
                                         <div class="form-check d-flex justify-content-center align-items-center mb-2">
                                             <h6 class="d-flex justify-content-start align-items-center">
@@ -78,21 +85,16 @@
                                             </h6>
                                         </div>
 
-                                        <div class="pt-4">
-                                            <!-- Submit button -->
-                                            <x-primary-button class="btn btn-common-one rounded-pill px-4 w-100 mb-4">
-                                                {{ __('Register') }}
-                                            </x-primary-button>
-                                        </div>
                                     </form>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 mb-5 mb-lg-0">
+                            <div class="col-lg-6 mb-5 mb-lg-0 d-none d-lg-block">
                                 <img class="img-fluid register-img"
                                     src="https://media.licdn.com/dms/image/v2/D4D12AQEz0JbIZ3VM0A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1680268909288?e=2147483647&v=beta&t=GsW_UsM64uuv97J6AygRVNiHfIuP4NBD259h9aLbsvU"
                                     class="w-100 rounded-4 shadow-4" alt="" />
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -102,7 +104,7 @@
 
 
     {{-- mobile-homepage --}}
-    @include('frontend.pages.register_mobile_view')
+    {{-- @include('frontend.pages.register_mobile_view') --}}
     {{-- mobile-homepage --}}
 
 </x-frontend-app-layout>

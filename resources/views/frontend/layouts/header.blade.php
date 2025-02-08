@@ -395,9 +395,9 @@
                 <div class="col-6">
                     <div class="d-flex justify-content-end">
                         <div class="d-flex align-items-center">
-                            <a href="" class="pe-3">
+                            <a href="{{ route('wishlist.product') }}" class="pe-3">
                                 <i class="fa-regular fa-heart text-white head-icons"></i>
-                                <span class="wish-ammount">0</span>
+                                <span class="wish-ammount" id="cartWishlistMobileQty">0</span>
                             </a>
                             <a href="{{ route('login') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"

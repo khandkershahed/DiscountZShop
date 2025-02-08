@@ -37,7 +37,9 @@ class HomeController extends Controller
         $all_brand_offers   = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
         $brand_offers_left  = $all_brand_offers->take(2);
         $brand_offers_right = $all_brand_offers->skip(2);
+
         // dd($brand_offers_right);
+
         $data = [
             'sliders'            => Slider::where('status', 'active')->latest('id')->get(),
             'banner'             => Banner::where('status', 'active')->latest('id')->first(),
@@ -55,6 +57,7 @@ class HomeController extends Controller
 
             'offerLatests'       => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
             'offerDealLefts'     => $offers->take(5),
+
             'offerDeals'         => $latestOffers->take(6),
 
             'homepage'           => $homepage,
@@ -63,6 +66,7 @@ class HomeController extends Controller
         ];
 
         return view('frontend.pages.home.home', $data);
+
     }
 
     // ===
@@ -112,7 +116,7 @@ class HomeController extends Controller
                 ->get(),
 
             // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            'brands'      => Brand::latest()->get(),
+            'brands'      => Brand::where('status','active')->latest()->get(),
         ];
         return view('frontend.pages.allBrand', $data);
     }
@@ -256,11 +260,31 @@ class HomeController extends Controller
         return view('frontend.pages.couponDetails', $data);
     }
 
+    //searchCouponName
+    public function searchCouponName(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search for stores based on the query, or get all stores if query is empty
+        if ($query) {
+            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $coupons = Coupon::where('status', 'active')
+                ->orderBy('name', 'DESC')
+                ->latest()
+                ->get();
+        }
+
+        // Return the results as HTML to be inserted into the page
+        return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
+    }
+
     //allStore
 
     public function allStore(Request $request)
     {
-
         $divisionId = $request->input('division');
         $cityId     = $request->input('city');
         $areaId     = $request->input('area');
@@ -282,7 +306,7 @@ class HomeController extends Controller
 
         $page_banner = PageBanner::where('page_name', 'store')->latest('id')->first();
 
-                                         // $stores = $stores->get();
+
         $stores = $stores->paginate(28); // 28 is an example, adjust to your needs
 
         $alldivs  = Division::orderBy('name', 'asc')->get();
@@ -443,7 +467,7 @@ class HomeController extends Controller
         // $stores = $stores->get();
         // $stores = $stores->paginate(28);
 
-        $offers = $offers->paginate(21);
+        $offers = $offers->paginate(12);
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
     }
@@ -465,6 +489,25 @@ class HomeController extends Controller
         }
 
         return view('frontend.pages.offer_all_title', compact('offers'))->render();
+    }
+
+    public function searchOfferNameMobile(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $offers = Offer::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            // If no query, load the default active stores
+            $offers = Offer::where('status', 'active')
+                ->orderBy('title', 'DESC')
+                ->latest()
+                ->get();
+        }
+
+        return view('frontend.pages.offer_all_title_mobile', compact('offers'))->render();
     }
 
     public function GetCheckDivision($division_id)
@@ -598,24 +641,6 @@ class HomeController extends Controller
     //     ]);
     // }
 
-    //searchCouponName
-    public function searchCouponName(Request $request)
-    {
-        $query = $request->input('query');
-
-        // Search for stores based on the query, or get all stores if query is empty
-        if ($query) {
-            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            // return back();
-        }
-
-        // Return the results as HTML to be inserted into the page
-        return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
-    }
-
     //mapDivision
     public function mapDivision(Request $request)
     {
@@ -736,11 +761,13 @@ class HomeController extends Controller
     {
         $cartWishlist    = Cart::instance('wishlist')->content(); // Limiting to 3 products
         $cartWishlistQty = Cart::instance('wishlist')->count();
+        $cartWishlistMobileQty = Cart::instance('wishlist')->count();
         $cartTotal       = Cart::instance('wishlist')->total();
 
         return response()->json([
             'cartWishlist'    => $cartWishlist,
             'cartWishlistQty' => $cartWishlistQty,
+            'cartWishlistMobileQty' => $cartWishlistMobileQty,
             'cartTotal'       => $cartTotal,
         ]);
     }

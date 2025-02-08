@@ -26,14 +26,14 @@
                     <div class="col-lg-9">
                         <div class="row">
 
-                            <div class="col-6 col-lg-3">
+                            <div class="col-6 col-lg-2">
                                 <!-- Filter Store - Division -->
-                                <div class="btn-group pe-2">
+                                <div class="">
                                     <select class="form-select" id="" name="division_id"
                                         data-placeholder="Select Division" autocomplete="off"
                                         onchange="searchStoreByDivision(this.value)">
 
-                                        <option value="">Select Division</option>
+                                        <option value="">Division</option>
 
                                         @foreach ($alldivs as $division)
                                             <option value="{{ $division->id }}"
@@ -54,21 +54,12 @@
                                 </script>
                             </div>
 
-                            <!-- Filter Store - City -->
-                            {{-- <div class="btn-group pe-2">
-                                        <select class="form-select cust-select" id="" name="city_id"
-                                            data-placeholder="Select City" autocomplete="off">
-                                            <option value="">Select City</option>
-                                            <!-- Dynamically filled by AJAX -->
-                                        </select>
-                                    </div> --}}
-
-                            <div class="col-6 col-lg-3">
-                                <div class="btn-group pe-2">
+                            <div class="col-6 col-lg-2">
+                                <div class="">
                                     <select class="form-select" id="" name="city_id"
                                         data-placeholder="Select City" autocomplete="off"
                                         onchange="searchStoreByCity(this.value)">
-                                        <option value="">Select City</option>
+                                        <option value="">City</option>
 
                                         @foreach ($allcitys as $allcity)
                                             <option value="{{ $allcity->id }}"
@@ -87,11 +78,11 @@
                                 </script>
                             </div>
 
-                            <div class="col-6 col-lg-3">
-                                <div class="btn-group pe-2">
+                            <div class="col-6 col-lg-2">
+                                <div class="">
                                     <select class="form-select" id="" name="area_id"
                                         data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
-                                        <option value="">Select Area</option>
+                                        <option value="">Area</option>
                                         @foreach ($allareas as $allarea)
                                             <option value="{{ $allarea->id }}"
                                                 {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
@@ -110,16 +101,7 @@
                                 </script>
                             </div>
 
-                            <!-- Filter Store - Area -->
-                            {{-- <div class="btn-group pe-2">
-                                        <select class="form-select cust-select" id="" name="area_id"
-                                            data-placeholder="Select Area">
-                                            <option value="">Select Area</option>
-                                            <!-- Dynamically filled by AJAX -->
-                                        </select>
-                                    </div> --}}
-
-                            <div class="col-6 col-lg-3">
+                            <div class="col-6 col-lg-6">
                                 <div class="wrapper-store">
                                     <div class="search-input-store">
                                         {{-- <form action=""> --}}

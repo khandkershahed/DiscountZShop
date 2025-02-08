@@ -45,17 +45,15 @@
                                 <div class="d-flex justify-content-space-between align-items-center mobile-none-sm">
 
 
-                                    <div class="d-flex w-100">
+                                    <div class="w-100">
 
-                                        {{-- <form action="">
+                                        <form action="">
                                             <input type="text" class="form-control rounded-pill form-control-sm"
                                                 name="" type="search" placeholder="Search Coupon..."
                                                 aria-label="Search Coupon..." id="serviceSearchCoupon" />
-                                        </form> --}}
+                                        </form>
 
                                     </div>
-
-
 
 
                                     <div class="d-flex justify-content-end align-items-center w-25 navigation-slide">
@@ -73,48 +71,55 @@
                         </div>
                     </div>
 
-                    <div class="card-body py-5" style="background-color: #f8f8f8">
-                        <div class="slick-slider">
+                    <div id="servicesContainerCoupon">
 
-                            <div class="available-coupon-slider servicesContainerCoupon" id="servicesContainerCoupon">
+                        <div class="card-body py-5" style="background-color: #f8f8f8">
 
-                                @foreach ($coupons as $coupon)
-                                    <div class="items couponCode"
-                                        data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
-                                        <div class="d-flex coupons-box align-items-center">
-                                            <div class="logo">
-                                                <div class="coupon-logo">
-                                                    <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                        class="img-fluid" alt=""
-                                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                            <div class="slick-slider">
+
+                                <div class="available-coupon-slider servicesContainerCoupon">
+
+                                    @foreach ($coupons as $coupon)
+                                        <div class="items couponCode"
+                                            data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
+                                            <div class="d-flex coupons-box align-items-center">
+                                                <div class="logo">
+                                                    <div class="coupon-logo">
+                                                        <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                                            class="img-fluid" alt=""
+                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="content-area"
-                                                style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
-                                                <div class="p-1 ">
-                                                    <h5 class="discount-percentage text-center fw-bold pt-2">
-                                                        {{ $coupon->badge }}</h5>
-                                                    <p class="text-white text-center ps-1 pt-1 pb-1 coupon-text">
-                                                        OFF
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="text-white text-center coupon-text coupon-code pt-2">
-                                                        Code:
-                                                        ”<span class="couponCode"
-                                                            id="coupon-code">{{ $coupon->coupon_code }}</span>”
-                                                        <a href="javascript:void(0);" class="copy-btn"
-                                                            data-coupon_id="{{ $coupon->coupon_code }}">
-                                                            <i class="fas fa-copy ps-2"></i>
-                                                        </a>
-                                                    </p>
+                                                <div class="content-area"
+                                                    style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
+                                                    <div class="p-1 ">
+                                                        <h5 class="discount-percentage text-center fw-bold pt-2">
+                                                            {{ $coupon->badge }}</h5>
+                                                        <p class="text-white text-center ps-1 pt-1 pb-1 coupon-text">
+                                                            OFF
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-white text-center coupon-text coupon-code pt-2">
+                                                            Code:
+                                                            ”<span class="couponCode"
+                                                                id="coupon-code">{{ $coupon->coupon_code }}</span>”
+                                                            <a href="javascript:void(0);" class="copy-btn"
+                                                                data-coupon_id="{{ $coupon->coupon_code }}">
+                                                                <i class="fas fa-copy ps-2"></i>
+                                                            </a>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
+
                             </div>
+
                         </div>
+
                     </div>
 
                 </div>
@@ -131,17 +136,9 @@
 
                 // If the input field is cleared (query is empty), fetch all stores
                 if (query === "") {
-                    // Send an empty query to fetch all stores
-                    $.ajax({
-                        url: "{{ route('coupon.search') }}",
-                        method: 'GET',
-                        data: {
-                            query: ""
-                        },
-                        success: function(data) {
-                            $('#servicesContainerCoupon').html(data); // Revert to all stores
-                        }
-                    });
+
+                    window.location.href = "{{ route('homePage') }}";
+
                 } else {
                     // Search with the typed query
                     $.ajax({

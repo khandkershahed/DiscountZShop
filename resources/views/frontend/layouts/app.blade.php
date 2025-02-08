@@ -232,6 +232,7 @@
                     success: function(response) {
 
                         $('#cartWishlistQty').text(response.cartWishlistQty);
+                        $('#cartWishlistMobileQty').text(response.cartWishlistMobileQty);
 
                         var tableHtml = "";
                         var serialNumber = 1;

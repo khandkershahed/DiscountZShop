@@ -40,7 +40,7 @@
 
                             @if (optional($brand)->offers->count() > 0)
                                 <div class="pt-4">
-                                    <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                                    <a href="{{ $offerDetails->source_url }}">
                                         <button class="btn btn-common-one"> See Offers <i
                                                 class="fa-solid fa-arrow-right ps-3"></i>
                                         </button>

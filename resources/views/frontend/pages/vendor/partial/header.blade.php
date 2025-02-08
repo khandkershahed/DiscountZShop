@@ -15,7 +15,7 @@
                         <div class="vendor-logo p-2 rounded-2"
                             style="background-color: #eee; border: 2px solid #f15a2d;">
                             @if (optional($brand)->offers->count() > 0)
-                                <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
+                                <a href="{{ optional(optional($brand)->offer)->source_url }}">
                                     <img class="img-fluid rounded-2 p-2"
                                         src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
                                         alt="">

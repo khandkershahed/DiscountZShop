@@ -46,4 +46,9 @@ class Brand extends Model
     {
         return $this->belongsTo(Admin::class, 'added_by');
     }
+
+    public function offer()
+    {
+        return $this->belongsTo(Offer::class, 'brand_id');
+    }
 }
