@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'All Stores || DiscountZShop'">
-    <div class="desktop-homepage">
+    <div class="">
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">
@@ -23,19 +23,16 @@
                                 {{-- <span class="store-devider"></span> --}}
                             </div>
 
-
                             {{-- =======================Filter ======================= --}}
-                            <div class="d-flex align-items-center">
+                            <div class="row">
 
 
-                                <div class="d-flex align-items-center">
-
-                                    <!-- Filter Store - Division -->
-                                    <div class="pe-2">
+                                <div class="col-4 col-lg-3">
+                                    <div class="">
                                         <select class="form-select" id="" name="division_id"
-                                            data-placeholder="Select Division" autocomplete="off">
+                                            data-placeholder="Division" autocomplete="off">
 
-                                            <option value="">Select Division</option>
+                                            <option value="">Division</option>
 
                                             @foreach ($alldivs as $division)
                                                 <option value="{{ $division->id }}"
@@ -45,27 +42,23 @@
 
                                         </select>
                                     </div>
+                                </div>
 
-
-
-                                    <div class="pe-2">
+                                <div class="col-4 col-lg-3">
+                                    <div class="">
                                         <select class="form-select" id="" name="city_id"
-                                            data-placeholder="Select City" autocomplete="off">
-                                            <option value="">Select City</option>
+                                            data-placeholder="City" autocomplete="off">
+                                            <option value="">City</option>
 
-                                            {{-- @foreach ($allcitys as $allcity)
-                                                <option value="{{ $allcity->id }}"
-                                                    {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
-                                                    {{ $allcity->name }}</option>
-                                            @endforeach --}}
                                         </select>
                                     </div>
+                                </div>
 
-
-                                    <div class="pe-2">
+                                <div class="col-4 col-lg-3">
+                                    <div class="">
                                         <select class="form-select" id="" name="area_id"
-                                            data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
-                                            <option value="">Select Area</option>
+                                            data-placeholder="Area" onchange="searchStoreByArea(this.value)">
+                                            <option value="">Area</option>
                                             @foreach ($allareas as $allarea)
                                                 <option value="{{ $allarea->id }}"
                                                     {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
@@ -82,6 +75,9 @@
                                             }
                                         }
                                     </script>
+                                </div>
+
+                                <div class="col-12 col-lg-3 mt-3 mt-lg-0">
 
                                     <!-- Search Store -->
                                     <div class="wrapper-store">
@@ -100,18 +96,15 @@
                                     </div>
                                     <!-- Search Store -->
 
-
                                 </div>
-
                             </div>
-                            {{-- =======================Filter ======================= --}}
 
                         </div>
                     </div>
 
                 </div>
 
-                <div class="row">
+                <div class="row pt-3">
 
                     <div class="col-lg-3 border py-2 shadow-sm">
                         {{-- Accordion Filter Start --}}
@@ -162,7 +155,7 @@
 
                         </div> --}}
 
-                        <div class="accordion">
+                        <div class="accordion d-none d-lg-block">
                             @foreach ($categories as $header_category)
                                 <div class="accordion-header">
                                     <div class="checkbox-wrapper-offers">
@@ -220,59 +213,101 @@
                                     <div class="row" id="servicesContainer">
 
                                         @foreach ($offers as $offer)
-                                            <div class="col-lg-4 mb-4 pe-2">
-                                                <div class="card border-0 shadow-sm bg-light offer-boxes">
-                                                    <div class="row p-4 align-items-center">
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px" class="rounded-2"
-                                                                    style="object-fit: contain;" alt="" />
+                                            @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
+                                                <div class="col-lg-4 mb-4 pe-2">
+                                                    <div class="card border-0 shadow-sm bg-light offer-boxes">
+                                                        <div class="row p-4 align-items-center">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                        width="80px" height="80px" class="rounded-2"
+                                                                        style="object-fit: contain;" alt="" />
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            @if (!empty($offer->badge))
-                                                                <h4 class="main-color special-font-box text-end">
-                                                                    {{ $offer->badge }}</h4>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col-lg-12 pt-4 offer_title">
-                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                        </div>
-                                                        <div class="col-lg-12 pt-4">
-                                                            <div class="d-flex">
-                                                                <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="w-100 btn-common-one rounded-3"><small>View</small></a>
-                                                                @if (!empty($offer->coupon_code))
-                                                                    <a href="javascript:void(0);"
-                                                                        class="w-100 btn-common-three rounded-3 ms-2"
-                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
-                                                                        <i class="fa-solid fa-copy"></i></a>
+                                                            <div class="col-lg-6">
+                                                                @if (!empty($offer->badge))
+                                                                    <h4 class="main-color special-font-box text-end">
+                                                                        {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
+                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4">
+                                                                <div class="d-flex">
+                                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                        class="w-100 btn-common-one rounded-3"><small>View</small></a>
+                                                                    @if (!empty($offer->coupon_code))
+                                                                        <a href="javascript:void(0);"
+                                                                            class="w-100 btn-common-three rounded-3 ms-2"
+                                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
+                                                                            <i class="fa-solid fa-copy"></i></a>
+                                                                    @endif
+                                                                </div>
 
-                                                            {{-- {{ Carbon\Carbon::parse($offer->expiry_date)->format('D, d F Y') }} --}}
+                                                                {{-- {{ Carbon\Carbon::parse($offer->expiry_date)->format('D, d F Y') }} --}}
 
-                                                            @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
+                                                                {{-- @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d')) --}}
                                                                 <p class="pt-2 text-center countdown"
                                                                     data-expire-date="{{ $offer->expiry_date }}">
                                                                     <span class="main-color">Expire In:</span>
                                                                     <span class="countdown-timer"> Days</span>
                                                                 </p>
-                                                            @else
-                                                                <p class="pt-2 text-center countdown"
-                                                                    data-expire-date="{{ $offer->expiry_date }}">
-                                                                    <span class="main-color">Expire In:</span>
-                                                                    <span class="countdown-timer"> Days</span>
-                                                                </p>
-                                                            @endif
 
 
-
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @elseif($offer->expiry_date == null)
+                                                <div class="col-lg-4 mb-4 pe-2">
+                                                    <div class="card border-0 shadow-sm bg-light offer-boxes">
+                                                        <div class="row p-4 align-items-center">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                        width="80px" height="80px"
+                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @if (!empty($offer->badge))
+                                                                    <h4 class="main-color special-font-box text-end">
+                                                                        {{ $offer->badge }}</h4>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4">
+                                                                <div class="d-flex">
+                                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                        class="w-100 btn-common-one rounded-3"><small>View</small></a>
+                                                                    @if (!empty($offer->coupon_code))
+                                                                        <a href="javascript:void(0);"
+                                                                            class="w-100 btn-common-three rounded-3 ms-2"
+                                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
+                                                                            <i class="fa-solid fa-copy"></i></a>
+                                                                    @endif
+                                                                </div>
+
+                                                                {{-- {{ Carbon\Carbon::parse($offer->expiry_date)->format('D, d F Y') }} --}}
+
+                                                                {{-- @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d')) --}}
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @else
+                                            @endif
                                         @endforeach
 
                                     </div>
@@ -396,7 +431,6 @@
                                 {{ $offers->links() }}
                             </nav>
                         @else
-                            {{-- <p>No Offer Avaiable</p> --}}
                         @endif
                         {{-- Dynamic Pagination --}}
 
@@ -418,32 +452,7 @@
 
 
     @push('scripts')
-        {{-- No Offer Found  --}}
         {{-- <script>
-            $(document).ready(function() {
-                $('#serviceSearch').on('keyup', function() {
-                    var query = $(this).val();
-
-                    // If the input field is empty, do a search without a query
-                    if (query === '') {
-                        window.location.href = "{{ route('allOffer') }}";
-                    } else {
-                        $.ajax({
-                            url: "{{ route('offer.search.names') }}",
-                            method: 'GET',
-                            data: {
-                                query: query
-                            },
-                            success: function(data) {
-                                $('#servicesContainer').html(data);
-                            }
-                        });
-                    }
-                });
-            });
-        </script> --}}
-
-        <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
                     var query = $(this).val();
@@ -473,8 +482,38 @@
                     }
                 });
             });
+        </script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+
+                    if (query === '') {
+                        window.location.href = "{{ route('allOffer') }}";
+                    } else {
+                        $.ajax({
+                            url: "{{ route('offer.search.names') }}",
+                            method: 'GET',
+                            data: {
+                                query: query
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(data); // Update offer list
+                                // Check if pagination is available
+                                if (data.indexOf('No Offers Available') !== -1 || $(
+                                        '#servicesContainer .pagination').length === 0) {
+                                    $('.pagination').hide(); // Hide pagination if no results
+                                } else {
+                                    $('.pagination').show(); // Show pagination if results exist
+                                }
+                            }
+                        });
+                    }
+                });
+            });
         </script>
-        {{-- No Offer Found  --}}
+
 
         <script>
             $(document).ready(function() {

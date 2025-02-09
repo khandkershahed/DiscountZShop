@@ -244,37 +244,39 @@
                                                                             <div class="coupon-box-content">
                                                                                 <div class="row align-items-center">
                                                                                     <div class="col-4">
-                                                                                        <img class="img-fluid"
-                                                                                            src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                                            alt="Logo"
-                                                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+
+                                                                                        <a
+                                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
+
+
+                                                                                            <img class="img-fluid"
+                                                                                                src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                                alt="Logo" />
+                                                                                        </a>
                                                                                     </div>
                                                                                     <div class="col-8 text-center">
-                                                                                        <div
-                                                                                            class="d-flex justify-content-center align-items-center">
-                                                                                            {{-- <p class="">
-                                                                                            <span
-                                                                                                class="para-font">Get</span><br>
-                                                                                            <span
-                                                                                                class="ps-2 para-font">Upto</span>
-                                                                                        </p> --}}
-                                                                                            @if (!empty($category_offer->badge))
-                                                                                                <h1>{{ substr($category_offer->badge, 0, -4) }}
-                                                                                                </h1>
-                                                                                            @endif
-                                                                                            {{-- <p class="coupon-off">OFF</p> --}}
-                                                                                        </div>
+                                                                                        <a
+                                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
+                                                                                            <div
+                                                                                                class="d-flex justify-content-center align-items-center">
+                                                                                                @if (!empty($category_offer->badge))
+                                                                                                    <h1>{{ substr($category_offer->badge, 0, -4) }}
+                                                                                                    </h1>
+                                                                                                @endif
+                                                                                                {{-- <p class="coupon-off">OFF</p> --}}
+                                                                                            </div>
 
-                                                                                        @if (!empty($category_offer->coupon_code))
-                                                                                            <p
-                                                                                                class="para-font coupon-extra">
-                                                                                                Code:
-                                                                                                {{ $category_offer->coupon_code }}
-                                                                                                <a href="javascript:void(0);"
-                                                                                                    class="copy-btn"><i
-                                                                                                        class="fa-regular fa-copy"></i></a>
-                                                                                            </p>
-                                                                                        @endif
+                                                                                            @if (!empty($category_offer->coupon_code))
+                                                                                                <p
+                                                                                                    class="para-font coupon-extra">
+                                                                                                    Code:
+                                                                                                    {{ $category_offer->coupon_code }}
+                                                                                                    <a href="javascript:void(0);"
+                                                                                                        class="copy-btn"><i
+                                                                                                            class="fa-regular fa-copy"></i></a>
+                                                                                                </p>
+                                                                                            @endif
+                                                                                        </a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

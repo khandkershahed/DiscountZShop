@@ -106,9 +106,6 @@
                         </div>
                     </div>
 
-                    {{-- =============== --}}
-
-                    {{-- ======================= --}}
 
                 </div>
 
@@ -175,15 +172,16 @@
                             </div>
                         @endforeach
 
-                    </div>
+                        <!-- Pagination Links -->
+                        <nav aria-label="Page navigation example">
+                            {{ $stores->links() }}
+                        </nav>
 
-                    <!-- Pagination Links -->
-                    <nav aria-label="Page navigation example">
-                        {{ $stores->links() }}
-                    </nav>
+                    </div>
                 @else
                     <p class="mb-3">No Store Avaiable</p>
                 @endif
+
 
 
             </div>
@@ -192,8 +190,6 @@
     </div>
 
     {{-- @include('frontend.pages.allStore_mobile_view') --}}
-
-
 
     @push('scripts')
         <script>

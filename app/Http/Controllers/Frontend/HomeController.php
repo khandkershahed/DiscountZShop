@@ -316,21 +316,6 @@ class HomeController extends Controller
         return view('frontend.pages.allStore', compact('page_banner', 'stores', 'alldivs', 'allcitys', 'allareas'));
     }
 
-    // public function searchCourseNAme(Request $request)
-    // {
-    //     $query = $request->input('query');
-
-    //     if ($query) {
-    //         $stores = Store::where('title', 'like', "%{$query}%")
-    //             ->latest()
-    //             ->get();
-    //     } else {
-    //         $stores = Store::where('status', 'active')->orderBy('title', 'DESC')->latest();
-    //     }
-
-    //     return view('frontend.pages.store_all_title', compact('stores'))->render();
-    // }
-
     public function searchStoreName(Request $request)
     {
         $query = $request->input('query');
@@ -464,29 +449,11 @@ class HomeController extends Controller
             $offers->whereJsonContains('area_id', $areaId);
         }
 
-        $offers = $offers->paginate(12);
+        $offers = $offers->paginate(35);
+        // $offers = $offers->get();
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
     }
-
-    // public function searchOfferName(Request $request)
-    // {
-    //     $query = $request->input('query');
-
-    //     if ($query) {
-    //         $offers = Offer::where('name', 'like', "%{$query}%")
-    //             ->latest()
-    //             ->get();
-    //     } else {
-    //         // If no query, load the default active stores
-    //         $offers = Offer::where('status', 'active')
-    //             ->orderBy('title', 'DESC')
-    //             ->latest()
-    //             ->get();
-    //     }
-
-    //     return view('frontend.pages.offer_all_title', compact('offers'))->render();
-    // }
 
     public function searchOfferName(Request $request)
     {
@@ -495,13 +462,13 @@ class HomeController extends Controller
         if ($query) {
             $offers = Offer::where('name', 'like', "%{$query}%")
                 ->latest()
-                ->paginate(12); // Paginate results
+                ->get();
         } else {
             // If no query, load the default active stores
             $offers = Offer::where('status', 'active')
                 ->orderBy('title', 'DESC')
                 ->latest()
-                ->paginate(12); // Paginate results
+                ->get();
         }
 
         return view('frontend.pages.offer_all_title', compact('offers'))->render();

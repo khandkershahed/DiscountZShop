@@ -1,4 +1,4 @@
-@foreach ($stores as $store)
+@forelse ($stores as $store)
     <div class="col-lg-3">
         <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
 
@@ -47,4 +47,7 @@
 
         </a>
     </div>
-@endforeach
+@empty
+    <p class="text-center text-danger mt-3">No Store Avaiable</p>
+@endforelse
+
