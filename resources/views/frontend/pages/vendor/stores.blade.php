@@ -5,7 +5,7 @@
             width: 100% !important;
         }
     </style>
-    <div class="desktop-homepage">
+    <div class="">
         <section id="location" class="mb-5">
             <div class="container pt-2">
                 <div class="row">
@@ -15,25 +15,6 @@
                                 <h3>Location</h3>
                             </div>
 
-                            {{-- <div class="pt-1 d-flex justify-content-space-around align-items-center footer-icons">
-                                <a href="" class="p-2">
-                                    <i class="fas fa-globe site-color" style="font-size: 22px" aria-hidden="true"
-                                        title="Website"></i>
-                                </a>
-                                <a href="" class="p-2">
-                                    <i class="fa-brands fa-facebook-f site-color" style="font-size: 22px"
-                                        aria-hidden="true" title="Facebook"></i>
-                                </a>
-                                <a href="" class="p-2">
-                                    <i class="fa-brands fa-twitter site-color" style="font-size: 22px"
-                                        aria-hidden="true" title="Twitter"></i>
-                                </a>
-
-                                <a href="" class="p-2">
-                                    <i class="fa-brands fa-linkedin-in site-color" style="font-size: 22px"
-                                        aria-hidden="true" title="Linkedin"></i>
-                                </a>
-                            </div> --}}
 
                         </div>
                     </div>
@@ -42,7 +23,7 @@
                     $stores = $brand->stores ?? null;
                 @endphp
                 <div class="row mt-4">
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 col-12">
                         <div class="brands-stores" style="max-height: 475px;overflow-y: auto;border: 1px solid #eee;">
                             <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
                                 @foreach ($stores as $store)
@@ -74,7 +55,7 @@
 
                     </div>
 
-                    <div class="col-lg-7">
+                    <div class="col-lg-7 col-12">
                         <div class="tab-content">
                             @foreach ($stores as $store)
                                 <div class="tab-pane {{ $loop->first ? 'show active' : '' }}"
@@ -97,8 +78,9 @@
             </div>
         </section>
     </div>
+
     {{-- Mobile View --}}
-    <div class="mobile-homepage" style="margin-bottom: 8rem">
+    {{-- <div class="mobile-homepage" style="margin-bottom: 8rem">
         <section id="location" class="mb-5">
             <div class="container pt-2">
                 <div class="row">
@@ -174,9 +156,6 @@
                                     <div class="card rounded-0 shadow-sm border">
                                         <div class="card-body p-2 w-100">
                                             {!! optional($store)->url !!}
-                                            {{-- <iframe src="{{ optional($store)->url }}" width="100%" height="400"
-                                            frameborder="0" style="border: 0" allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade" class="map-store"></iframe> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -187,6 +166,6 @@
 
             </div>
         </section>
-    </div>
+    </div> --}}
     {{-- Mobile View End --}}
 </x-frontend-app-layout>

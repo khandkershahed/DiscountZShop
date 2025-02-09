@@ -27,60 +27,13 @@
                             {{-- =======================Filter ======================= --}}
                             <div class="d-flex align-items-center">
 
-                                {{-- <!-- Filter Store - Division -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="division_id"
-                                        data-placeholder="Select Division" autocomplete="off">
-                                        <option value="">Select Division</option>
-                                        @foreach ($alldivs as $division)
-                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <!-- Filter Store - City -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="city_id"
-                                        data-placeholder="Select City" autocomplete="off">
-                                        <option value="">Select City</option>
-                                        <!-- Dynamically filled by AJAX -->
-                                    </select>
-                                </div>
-
-                                <!-- Filter Store - Area -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="" name="area_id"
-                                        data-placeholder="Select Area">
-                                        <option value="">Select Area</option>
-                                        <!-- Dynamically filled by AJAX -->
-                                    </select>
-                                </div>
-
-                                <!-- Search Store -->
-                                <div class="wrapper-store">
-                                    <div class="search-input-store">
-                                        <form action="">
-                                            <input type="text" id="" autocomplete="off" name="search"
-                                                placeholder="Type to search..." />
-                                            <div class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div> --}}
 
                                 <div class="d-flex align-items-center">
 
                                     <!-- Filter Store - Division -->
                                     <div class="pe-2">
                                         <select class="form-select" id="" name="division_id"
-                                            data-placeholder="Select Division" autocomplete="off"
-                                            onchange="searchStoreByDivision(this.value)">
+                                            data-placeholder="Select Division" autocomplete="off">
 
                                             <option value="">Select Division</option>
 
@@ -93,36 +46,21 @@
                                         </select>
                                     </div>
 
-                                    <script>
-                                        function searchStoreByDivision(divisionId) {
-                                            if (divisionId) {
-                                                // Redirect to the courses page with the selected section ID
-                                                window.location.href = `/offers/all?division=${divisionId}`;
-                                            }
-                                        }
-                                    </script>
+
 
                                     <div class="pe-2">
                                         <select class="form-select" id="" name="city_id"
-                                            data-placeholder="Select City" autocomplete="off"
-                                            onchange="searchStoreByCity(this.value)">
+                                            data-placeholder="Select City" autocomplete="off">
                                             <option value="">Select City</option>
 
-                                            @foreach ($allcitys as $allcity)
+                                            {{-- @foreach ($allcitys as $allcity)
                                                 <option value="{{ $allcity->id }}"
                                                     {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
                                                     {{ $allcity->name }}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
-                                    <script>
-                                        function searchStoreByCity(cityId) {
-                                            if (cityId) {
-                                                // Redirect to the courses page with the selected section ID
-                                                window.location.href = `/offers/all?city=${cityId}`;
-                                            }
-                                        }
-                                    </script>
+
 
                                     <div class="pe-2">
                                         <select class="form-select" id="" name="area_id"
@@ -146,10 +84,8 @@
                                     </script>
 
                                     <!-- Search Store -->
-
                                     <div class="wrapper-store">
                                         <div class="search-input-store">
-                                            {{-- <form action=""> --}}
                                             <input type="text" id="serviceSearch" autocomplete="off" name="search"
                                                 placeholder="Type to search..." />
                                             <div class="icon">
@@ -160,9 +96,9 @@
                                                     </path>
                                                 </svg>
                                             </div>
-                                            {{-- </form> --}}
                                         </div>
                                     </div>
+                                    <!-- Search Store -->
 
 
                                 </div>
@@ -341,19 +277,19 @@
 
                                     </div>
                                 @else
-                                    <p>No Offer Avaiable</p>
+                                    <p class="text-center mt-5 text-danger">No Offers Available</p>
                                 @endif
-
-
 
                             </div>
 
                             {{-- Category-wise Offers Tabs --}}
+
                             @foreach ($categories as $category)
                                 <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                     aria-labelledby="category-{{ $category->id }}" tabindex="0">
                                     <div class="row servicesContainer" id="servicesContainer">
-                                        @foreach ($category->offers as $offer)
+
+                                        {{-- @foreach ($category->offers as $offer)
                                             <div class="col-lg-4 mt-4">
                                                 <div class="card border-0 shadow-sm bg-light">
                                                     <div class="row p-4 align-items-center">
@@ -398,7 +334,56 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
+
+                                        @forelse ($category->offers as $offer)
+                                            <div class="col-lg-4 mt-4">
+                                                <div class="card border-0 shadow-sm bg-light">
+                                                    <div class="row p-4 align-items-center">
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                    width="80px" height="80px" class="rounded-2"
+                                                                    style="object-fit: contain;"
+                                                                    alt="Offer logo for {{ $offer->name }}"
+                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            @if (!empty($offer->badge))
+                                                                <h4 class="main-color special-font-box text-end">
+                                                                    {{ $offer->badge }}</h4>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-lg-12 pt-4 offer_title">
+                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                        </div>
+                                                        <div class="col-lg-12 pt-4">
+                                                            <div class="d-flex">
+                                                                <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                    class="w-100 btn-common-one rounded-3">
+                                                                    <small>View</small>
+                                                                </a>
+                                                                @if (!empty($offer->coupon_code))
+                                                                    <a href="javascript:void(0);"
+                                                                        class="w-100 btn-common-three rounded-3 ms-2"
+                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                                        Coupon <i class="fa-solid fa-copy"></i>
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                            <p class="pt-2 text-center countdown"
+                                                                data-expire-date="{{ $offer->expiry_date }}">
+                                                                <span class="main-color">Expire In:</span>
+                                                                <span class="countdown-timer"> Days</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <p class="text-center mt-5 text-danger">No Offers Available</p>
+                                        @endforelse
                                     </div>
                                 </div>
                             @endforeach
@@ -406,13 +391,13 @@
                         </div>
 
                         {{-- Dynamic Pagination --}}
-                        {{-- @if ($offers->count() > 0) --}}
-                        <nav aria-label="Page navigation example">
-                            {{ $offers->links() }}
-                        </nav>
-                        {{-- @else
-                            <p>No Offer Avaiable</p>
-                        @endif --}}
+                        @if ($offers->count() > 0)
+                            <nav aria-label="Page navigation example">
+                                {{ $offers->links() }}
+                            </nav>
+                        @else
+                            {{-- <p>No Offer Avaiable</p> --}}
+                        @endif
                         {{-- Dynamic Pagination --}}
 
                     </div>
@@ -427,13 +412,14 @@
     {{-- Ashik ======================= --}}
 
     {{-- For Mobile Code --}}
-    @include('frontend.pages.alloffer_mobile_view')
+    {{-- @include('frontend.pages.alloffer_mobile_view') --}}
     {{-- For Mobile Code --}}
 
 
 
     @push('scripts')
-        <script>
+        {{-- No Offer Found  --}}
+        {{-- <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
                     var query = $(this).val();
@@ -455,7 +441,40 @@
                     }
                 });
             });
+        </script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
+
+                    // If the input field is empty, do a search without a query
+                    if (query === '') {
+                        window.location.href = "{{ route('allOffer') }}";
+                    } else {
+                        $.ajax({
+                            url: "{{ route('offer.search.names') }}",
+                            method: 'GET',
+                            data: {
+                                query: query
+                            },
+                            success: function(data) {
+                                $('#servicesContainer').html(
+                                    data); // Update the content with the new results
+
+                                // Handle pagination visibility: Hide it if no results found
+                                if (data.indexOf('No Offers Available') !== -1) {
+                                    $('.pagination').hide(); // Hide pagination if no results
+                                } else {
+                                    $('.pagination').show(); // Show pagination if there are results
+                                }
+                            }
+                        });
+                    }
+                });
+            });
         </script>
+        {{-- No Offer Found  --}}
 
         <script>
             $(document).ready(function() {

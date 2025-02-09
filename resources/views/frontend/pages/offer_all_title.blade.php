@@ -1,4 +1,7 @@
-@foreach ($offers as $offer)
+
+
+{{-- Show the offers --}}
+@forelse ($offers as $offer)
     <div class="col-lg-4 mb-4 pe-2">
         <div class="card border-0 shadow-sm bg-light offer-boxes">
             <div class="row p-4 align-items-center">
@@ -35,4 +38,13 @@
             </div>
         </div>
     </div>
-@endforeach
+@empty
+    <p class="text-center mt-5 text-danger">No Offers Available</p>
+@endforelse
+
+{{-- Pagination only if there are results --}}
+@if ($offers->count() > 0)
+    <nav aria-label="Page navigation example">
+        {{ $offers->links() }}
+    </nav>
+@endif

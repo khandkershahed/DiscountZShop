@@ -109,7 +109,7 @@ class HomeController extends Controller
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
-            
+
             'categories'  => Category::with('brands') // Eager load the brands relationship
                 ->orderBy('name', 'ASC')                  // Order categories by name in ascending order
                 ->latest('id')                            // Order categories by the latest ID (newest first)
@@ -307,7 +307,6 @@ class HomeController extends Controller
 
         $page_banner = PageBanner::where('page_name', 'store')->latest('id')->first();
 
-
         $stores = $stores->paginate(28); // 28 is an example, adjust to your needs
 
         $alldivs  = Division::orderBy('name', 'asc')->get();
@@ -465,13 +464,29 @@ class HomeController extends Controller
             $offers->whereJsonContains('area_id', $areaId);
         }
 
-        // $stores = $stores->get();
-        // $stores = $stores->paginate(28);
-
         $offers = $offers->paginate(12);
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
     }
+
+    // public function searchOfferName(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     if ($query) {
+    //         $offers = Offer::where('name', 'like', "%{$query}%")
+    //             ->latest()
+    //             ->get();
+    //     } else {
+    //         // If no query, load the default active stores
+    //         $offers = Offer::where('status', 'active')
+    //             ->orderBy('title', 'DESC')
+    //             ->latest()
+    //             ->get();
+    //     }
+
+    //     return view('frontend.pages.offer_all_title', compact('offers'))->render();
+    // }
 
     public function searchOfferName(Request $request)
     {
@@ -480,13 +495,13 @@ class HomeController extends Controller
         if ($query) {
             $offers = Offer::where('name', 'like', "%{$query}%")
                 ->latest()
-                ->get();
+                ->paginate(12); // Paginate results
         } else {
             // If no query, load the default active stores
             $offers = Offer::where('status', 'active')
                 ->orderBy('title', 'DESC')
                 ->latest()
-                ->get();
+                ->paginate(12); // Paginate results
         }
 
         return view('frontend.pages.offer_all_title', compact('offers'))->render();
@@ -760,16 +775,16 @@ class HomeController extends Controller
 
     public function GetWishlist()
     {
-        $cartWishlist    = Cart::instance('wishlist')->content(); // Limiting to 3 products
-        $cartWishlistQty = Cart::instance('wishlist')->count();
+        $cartWishlist          = Cart::instance('wishlist')->content(); // Limiting to 3 products
+        $cartWishlistQty       = Cart::instance('wishlist')->count();
         $cartWishlistMobileQty = Cart::instance('wishlist')->count();
-        $cartTotal       = Cart::instance('wishlist')->total();
+        $cartTotal             = Cart::instance('wishlist')->total();
 
         return response()->json([
-            'cartWishlist'    => $cartWishlist,
-            'cartWishlistQty' => $cartWishlistQty,
+            'cartWishlist'          => $cartWishlist,
+            'cartWishlistQty'       => $cartWishlistQty,
             'cartWishlistMobileQty' => $cartWishlistMobileQty,
-            'cartTotal'       => $cartTotal,
+            'cartTotal'             => $cartTotal,
         ]);
     }
 

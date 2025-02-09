@@ -30,8 +30,7 @@
                                 <!-- Filter Store - Division -->
                                 <div class="">
                                     <select class="form-select" id="" name="division_id"
-                                        data-placeholder="Select Division" autocomplete="off"
-                                        onchange="searchStoreByDivision(this.value)">
+                                        data-placeholder="Select Division" autocomplete="off">
 
                                         <option value="">Division</option>
 
@@ -43,39 +42,21 @@
 
                                     </select>
                                 </div>
-
-                                <script>
-                                    function searchStoreByDivision(divisionId) {
-                                        if (divisionId) {
-                                            // Redirect to the courses page with the selected section ID
-                                            window.location.href = `/store/all?division=${divisionId}`;
-                                        }
-                                    }
-                                </script>
                             </div>
 
                             <div class="col-6 col-lg-2">
                                 <div class="">
                                     <select class="form-select" id="" name="city_id"
-                                        data-placeholder="Select City" autocomplete="off"
-                                        onchange="searchStoreByCity(this.value)">
+                                        data-placeholder="Select City" autocomplete="off">
                                         <option value="">City</option>
 
-                                        @foreach ($allcitys as $allcity)
+                                        {{-- @foreach ($allcitys as $allcity)
                                             <option value="{{ $allcity->id }}"
                                                 {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
                                                 {{ $allcity->name }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </div>
-                                <script>
-                                    function searchStoreByCity(cityId) {
-                                        if (cityId) {
-                                            // Redirect to the courses page with the selected section ID
-                                            window.location.href = `/store/all?city=${cityId}`;
-                                        }
-                                    }
-                                </script>
                             </div>
 
                             <div class="col-6 col-lg-2">
@@ -178,7 +159,7 @@
                                                     </a>
                                                     <div>
                                                         <div>
-                                                            <a href="{{ $store->location }}"
+                                                            <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
                                                                 class="btn border-0 p-0 m-0 ps-2">
                                                                 <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
                                                                     title="Store Location"></i>

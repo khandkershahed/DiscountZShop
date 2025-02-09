@@ -8,7 +8,7 @@
         </div>
         <div class="col-4 px-1">
             <select class="form-select cust-select" id="" name="division_id" data-placeholder="Select Division"
-                autocomplete="off" onchange="searchStoreByDivision(this.value)">
+                autocomplete="off">
 
                 <option value="">Select Division</option>
 
@@ -20,21 +20,46 @@
 
             </select>
         </div>
+
         <div class="col-4 px-1">
             <!-- Filter Store - City -->
             <div class="btn-group">
                 <select class="form-select cust-select" id="" name="city_id" data-placeholder="Select City"
-                    autocomplete="off" onchange="searchStoreByCity(this.value)">
+                    autocomplete="off">
                     <option value="">Select City</option>
 
-                    @foreach ($allcitys as $allcity)
+                    {{-- @foreach ($allcitys as $allcity)
                         <option value="{{ $allcity->id }}"
                             {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
                             {{ $allcity->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
         </div>
+
+        <div class="col-4 px-1">
+            <div class="pe-2">
+                <select class="form-select" id="" name="area_id"
+                    data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
+                    <option value="">Select Area</option>
+                    @foreach ($allareas as $allarea)
+                        <option value="{{ $allarea->id }}"
+                            {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
+                            {{ $allarea->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <script>
+                function searchStoreByArea(areaId) {
+                    if (areaId) {
+                        // Redirect to the courses page with the selected section ID
+                        window.location.href = `/offers/all?area=${areaId}`;
+                    }
+                }
+            </script>
+        </div>
+
         <div class="col-4 px-1">
             <!-- Search Store -->
             <div class="wrapper-store">
