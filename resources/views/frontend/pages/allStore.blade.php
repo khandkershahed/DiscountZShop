@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'All Store || DiscountZShop'">
+
     <div class="">
 
         <!-- Hero Section -->
