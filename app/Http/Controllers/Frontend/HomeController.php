@@ -316,6 +316,23 @@ class HomeController extends Controller
         return view('frontend.pages.allStore', compact('page_banner', 'stores', 'alldivs', 'allcitys', 'allareas'));
     }
 
+    public function GetCheckDistrict($division_id)
+    {
+
+        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($subcat);
+    }
+
+    public function StateGetAjax($city_id)
+    {
+
+        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($ship);
+    }
+
+
     public function searchStoreName(Request $request)
     {
         $query = $request->input('query');
@@ -345,80 +362,6 @@ class HomeController extends Controller
         return view('frontend.pages.storeDetails', $data);
     }
 
-    public function GetCheckDistrict($division_id)
-    {
-
-        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
-
-        return json_encode($subcat);
-    }
-
-    public function StateGetAjax($city_id)
-    {
-
-        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
-
-        return json_encode($ship);
-    }
-
-    // Search Division
-    public function searchDivisionName(Request $request)
-    {
-        $latest_stores = [];
-        $query         = $request->input('division_id');
-
-        // Check if the division_id exists in the request and perform the query
-        if ($query) {
-            $latest_stores = Store::where('division_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
-        }
-
-        // Return the filtered stores as HTML
-        $responseHtml = view('frontend.pages.store_division_search', ['latest_stores' => $latest_stores])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
-    // Search City
-    public function searchCityName(Request $request)
-    {
-        $latest_stores = [];
-        $query         = $request->input('city_id');
-
-        if ($query) {
-            $latest_stores = Store::where('city_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.store_division_search', ['latest_stores' => $latest_stores])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
-
-    // Search Area
-    public function searchAreaName(Request $request)
-    {
-        $latest_stores = [];
-        $query         = $request->input('area_id');
-
-        if ($query) {
-            $latest_stores = Store::where('area_id', 'like', "%{$query}%")
-                ->latest()
-                ->get();
-        } else {
-            $latest_stores = Store::latest()->get();
-        }
-
-        $responseHtml = view('frontend.pages.store_division_search', ['latest_stores' => $latest_stores])->render();
-
-        return response()->json(['html' => $responseHtml]);
-    }
 
     //allOffer
     public function allOffer(Request $request)
