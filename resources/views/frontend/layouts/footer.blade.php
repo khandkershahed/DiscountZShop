@@ -252,7 +252,7 @@
                 <div class="col-2">
                     <div class="footer-center-menus">
 
-                        <a href="{{ route('offers.byArea', ['area_id' => $areaId]) }}">
+                        <a href="">
 
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -278,7 +278,7 @@
                             </div>
 
                         </a>
-
+                        
                     </div>
                 </div>
                 {{-- Google Link  --}}

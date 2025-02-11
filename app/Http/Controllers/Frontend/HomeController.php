@@ -29,9 +29,11 @@ class HomeController extends Controller
     public function homePage()
     {
         // Retrieve offers and apply limits directly on queries
-        $offers       = Offer::where('status', 'active')->inRandomOrder()->get();
+        $offers = Offer::where('status', 'active')->inRandomOrder()->get();
+
         $latestOffers = Offer::where('status', 'active')->latest('id')->get();
-        $homepage     = HomePage::with('brand')->latest('id')->first();
+
+        $homepage = HomePage::with('brand')->latest('id')->first();
 
         // Split them into two collections: one for the left and one for the right
         $all_brand_offers   = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();

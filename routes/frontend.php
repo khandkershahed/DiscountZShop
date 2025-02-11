@@ -105,4 +105,4 @@ Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 // Route::get('/brand/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
 
 
-Route::get('/offers/area/{area_id}', [HomeController::class, 'showOffersByArea'])->name('offers.byArea');
+
