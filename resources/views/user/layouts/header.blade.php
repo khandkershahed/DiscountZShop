@@ -36,17 +36,17 @@
                 </div>
             </div>
             <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                <a href="../../demo1/dist/index.html" class="d-lg-none">
-                    <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-2.svg') }}" class="h-30px" />
+                <a href="/" class="d-lg-none">
+                    {{-- <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-2.svg') }}" class="h-30px" /> --}}
                 </a>
             </div>
             <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
                 <div class="d-flex align-items-stretch" id="kt_header_nav">
                 </div>
-                <div class="d-flex align-items-stretch flex-shrink-0">
+                <div class="flex-shrink-0 d-flex align-items-stretch">
                     <div class="d-flex align-items-center ms-1 ms-lg-3">
                         <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                            href="../../demo1/dist/documentation/getting-started/dark-mode.html">
+                            href="/">
                             <i class="fonticon-sun fs-2"></i>
                         </a>
                     </div>
@@ -56,10 +56,10 @@
                             data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                             <img src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" alt="user" />
                         </div>
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
+                        <div class="py-4 menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold fs-6 w-275px"
                             data-kt-menu="true">
-                            <div class="menu-item px-3">
-                                <div class="menu-content d-flex align-items-center px-3">
+                            <div class="px-3 menu-item">
+                                <div class="px-3 menu-content d-flex align-items-center">
                                     <div class="symbol symbol-50px me-5">
                                         <img alt="Logo" src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" />
                                     </div>
@@ -73,22 +73,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="separator my-2"></div>
-                            <div class="menu-item px-5">
-                                <a href="{{ route('profile.edit') }}" class="menu-link px-5">My
+                            <div class="my-2 separator"></div>
+                            <div class="px-5 menu-item">
+                                <a href="{{ route('profile.edit') }}" class="px-5 menu-link">My
                                     Profile</a>
                             </div>
-                            <div class="menu-item px-5 my-1">
-                                <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
+                            <div class="px-5 my-1 menu-item">
+                                <a href="../../demo1/dist/account/settings.html" class="px-5 menu-link">Account
                                     Settings</a>
                             </div>
-                            <div class="menu-item px-5">
+                            <div class="px-5 menu-item">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                     this.closest('form').submit();"
-                                        class="menu-link px-5"> {{ __('Sign Out') }}</a>
+                                        class="px-5 menu-link"> {{ __('Sign Out') }}</a>
                                 </form>
                             </div>
                         </div>

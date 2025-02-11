@@ -11,7 +11,7 @@
 
     <section>
         <div class="container mb-5">
-            <div class="row py-5 pb-2">
+            <div class="py-5 pb-2 row">
                 <div class="col-lg-12 pe-0">
                     <div class="d-flex justify-content-between">
 
@@ -90,11 +90,11 @@
                             <div class="row servicesContainer divisionContainer" id="servicesContainer">
 
                                 @forelse ($offerss as $offer)
-                                    <div class="col-lg-3 mb-4 pe-2">
-                                        <div class="card border-0 shadow-sm bg-light offer-boxes">
-                                            <div class="row p-4 align-items-center">
+                                    <div class="mb-4 col-lg-3 pe-2">
+                                        <div class="border-0 shadow-sm card bg-light offer-boxes">
+                                            <div class="p-4 row align-items-center">
                                                 <div class="col-lg-6">
-                                                    <div>
+                                                    <div class="pb-4">
                                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                             width="80px" height="80px" class="rounded-2"
                                                             style="object-fit: contain;" alt=""
@@ -120,11 +120,11 @@
                                                     @endif
                                                 </div>
 
-                                                <div class="col-lg-12 pt-4 offer_title">
+                                                <div class="pt-4 col-lg-12 offer_title">
                                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                 </div>
 
-                                                <div class="col-lg-12 pt-4">
+                                                <div class="pt-4 col-lg-12">
                                                     <div class="d-flex">
                                                         <a href="{{ route('offer.details', $offer->slug) }}"
                                                             class="w-100 btn-common-one rounded-3">
@@ -161,7 +161,7 @@
 
                     {{-- <div>
                         <nav>
-                            <ul class="pagination justify-content-center my-5">
+                            <ul class="my-5 pagination justify-content-center">
                                 <li class="page-item"><a class="page-link" href="#"><span>&laquo;</span>
                                         Previous</a></li>
                                 <li class="page-item"><a class="page-link" href="#">1</a></li>

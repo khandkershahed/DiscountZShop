@@ -1,4 +1,11 @@
 <div class="desktop-footer">
+    <style>
+        .footer-gif {
+            position: relative;
+            left: -70px;
+            width: 275px;
+        }
+    </style>
     <footer
         style="
     background-image: url('{{ asset('images/maps.png') }}');
@@ -8,7 +15,7 @@
     ">
         <section class="pt-5">
             <div class="container">
-                <div class="row gx-5 pb-5">
+                <div class="pb-5 row gx-5">
                     <div class="col-lg-4">
                         <div>
                             <div>
@@ -18,12 +25,12 @@
                                         alt="">
                                 </a>
                             </div>
-                            <p class="pt-3 mb-0 footer-description">
+                            {{-- <p class="pt-3 mb-0 footer-description">
                                 {{ optional($setting)->site_motto }}
-                            </p>
+                            </p> --}}
                             <!-- Contact Info Start -->
-                            <div class="">
-                                <div class="d-flex align-items-center pt-2 center-sm">
+                            {{-- <div class="">
+                                <div class="pt-2 d-flex align-items-center center-sm">
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12"
                                             viewBox="0 0 16 12" fill="none">
@@ -34,7 +41,7 @@
                                     </div>
                                     <p class="ps-3 company-link">Email: {{ optional($setting)->support_email }}</p>
                                 </div>
-                                <div class="d-flex align-items-center pt-2 center-sm">
+                                <div class="pt-2 d-flex align-items-center center-sm">
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15"
                                             viewBox="0 0 14 15" fill="none">
@@ -45,7 +52,7 @@
                                     </div>
                                     <p class="ps-3 company-link">Call: {{ optional($setting)->primary_phone }}</p>
                                 </div>
-                                <div class="d-flex align-items-center pt-2 center-sm">
+                                <div class="pt-2 d-flex align-items-center center-sm">
                                     <div class="mobile-none-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18"
                                             viewBox="0 0 14 18" fill="none">
@@ -59,7 +66,7 @@
                                         {{ optional($setting)->address_line_two }}
                                     </p>
                                 </div>
-                                <div class="d-flex align-items-center pt-2 center-sm">
+                                <div class="pt-2 d-flex align-items-center center-sm">
                                     <div class="mobile-none-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
                                             viewBox="0 0 16 17" fill="none">
@@ -72,8 +79,11 @@
                                         Hours: 09:00 AM - 06:00 PM
                                     </p>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- Contact Info End -->
+                            <div class="footer-gif">
+                                <img class="img-fluid" src="{{ asset('images/offers-gif.gif') }}" alt="">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -136,14 +146,14 @@
                                 </div>
                                 <form action="{{ route('email.subscribe') }}" method="POST">
                                     @csrf
-                                    <p class="pt-3 footer-description pb-2">
+                                    <p class="pt-3 pb-2 footer-description">
                                         <input type="email" class="form-control" name="email"
                                             id="exampleFormControlInput1" placeholder="name@example.com" required />
                                         @error('email')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                     </p>
-                                    <button type="submit" class="btn btn-common-one pb-2">Subscribe<i
+                                    <button type="submit" class="pb-2 mt-2 btn btn-common-one">Subscribe<i
                                             class="fa-solid fa-paper-plane ps-2"></i></button>
                                 </form>
                                 <div class="pt-4">
@@ -169,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid pt-3 pb-2" style=" background-color: #eee;">
+            <div class="pt-3 pb-2 container-fluid" style=" background-color: #eee;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -197,7 +207,7 @@
 </div>
 
 {{-- Mobile Footer --}}
-<div class="mobile-footer fixed-bottom py-2">
+<div class="py-2 mobile-footer fixed-bottom">
     <footer>
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -220,7 +230,7 @@
                                         </defs>
                                     </svg>
                                 </span>
-                                <span class="footer-menus pt-3">Home</span>
+                                <span class="pt-3 footer-menus">Home</span>
                             </div>
                         </a>
                         <a href="{{ route('allOffer') }}">
@@ -242,7 +252,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="footer-menus pt-3">Offers</span>
+                                <span class="pt-3 footer-menus">Offers</span>
                             </div>
                         </a>
                     </div>
@@ -294,7 +304,7 @@
                                         </defs>
                                     </svg>
                                 </span>
-                                <span class="footer-menus pt-3">Stores</span>
+                                <span class="pt-3 footer-menus">Stores</span>
                             </div>
                         </a>
                         <a href="{{ route('allBrand') }}">
@@ -307,7 +317,7 @@
                                             fill="black" />
                                     </svg>
                                 </span>
-                                <span class="footer-menus pt-3">Brands</span>
+                                <span class="pt-3 footer-menus">Brands</span>
                             </div>
                         </a>
                     </div>

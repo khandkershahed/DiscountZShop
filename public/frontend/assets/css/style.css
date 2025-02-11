@@ -622,6 +622,15 @@ p {
 .servicesContainer {
     margin-top: 30px;
 }
+.not-available {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+}
+
 .deal-img {
     width: 260px;
     height: 280px;
@@ -750,8 +759,18 @@ p {
     border: 1px solid #e2e2e2 !important;
     background: #fff;
     height: 568px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+}
+.deals-of-the-day-box img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    border-radius: 10px !important;
+}
+.deal-scroll-box img{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px !important;
 }
 .deal-of-the-day-header {
     height: 79px;
@@ -889,7 +908,9 @@ p {
     top: -85px;
     background: var(--primary-color);
     color: transparent;
+    visibility: hidden;
 }
+
 .footer-title {
     color: #808080;
     font-family: Poppins;
@@ -1208,6 +1229,7 @@ button:active {
     background-color: #eee;
     border-radius: 0;
     border: 1px solid #eee;
+    padding: 12px 25px;
 }
 /* Optionally, remove hover styles if needed */
 input:hover,
@@ -1605,7 +1627,7 @@ html {
 }
 .accordion button[aria-expanded="true"] + .accordion-content {
     opacity: 1;
-    max-height: 9em;
+    max-height: 100%;
     transition: all 200ms linear;
     will-change: opacity, max-height;
 }
@@ -2148,11 +2170,11 @@ html {
 
 /* Offers Nested Accordion */
 /* Button Styles */
-.content{
+.content {
     position: relative;
     left: 25px;
 }
-.content1{
+.content1 {
     position: relative;
     left: 25px;
 }
@@ -2267,3 +2289,101 @@ html {
     padding: 0px 0px 5px !important;
 }
 /* Offers Nested Accordion End */
+
+.brand-search{
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.brand-search:hover{
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+/* CSS */
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+   }
+
+   button.learn-more {
+    width: 12rem;
+    height: auto;
+   }
+
+   button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #282936;
+    border-radius: 1.625rem;
+   }
+
+   button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+   }
+
+   button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+   }
+
+   button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+   }
+
+   button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #f15a2d;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+   }
+
+   button:hover .circle {
+    width: 100%;
+   }
+
+   button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+   }
+
+   button:hover .button-text {
+    color: #fff;
+   }
+

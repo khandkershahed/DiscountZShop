@@ -90,11 +90,11 @@
                             <div class="pb-4">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="site-color">{{ optional($about)->row_two_badge }}</h5>
-                                        <span class="store-devider mt-1"></span>
+                                        <h1 class="site-color">{{ optional($about)->row_two_badge }}</h1>
+                                        <span class="mt-1 store-devider"></span>
                                     </div>
                                 </div>
-                                <h1 class="mb-0">{{ optional($about)->row_two_title }}</h1>
+                                <h5 class="pt-3 mb-0">{{ optional($about)->row_two_title }}</h5>
                             </div>
                             <p class="pb-2">
                                 {!! optional($about)->row_two_description !!}
@@ -118,7 +118,7 @@
 
     <!-- Amount Start -->
     @if (!empty(optional($about)->row_five_bg_image))
-        <section class="fixed-background py-5"
+        <section class="py-5 fixed-background"
             style="background-image: url({{ asset('storage/' . optional($about)->row_five_bg_image) }})">
             <div class="container">
                 <div id="counter">

@@ -1,7 +1,7 @@
 @forelse ($offerDeals as $offerDeal)
-    <div class="col-lg-4 mb-3">
-        <div class="card deal-card border-0">
-            <div class="card-body border-0 p-4">
+    <div class="mb-3 col-lg-4">
+        <div class="border-0 card deal-card">
+            <div class="p-4 border-0 card-body">
                 <div class="d-flex justify-content-between align-items-center">
 
                     <!-- Counter -->
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <!-- Product Image -->
-                <div class="d-flex justify-content-center align-items-center py-3">
+                <div class="py-3 d-flex justify-content-center align-items-center">
                     <img class="img-fluid"
                         src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
                         alt=""
@@ -44,18 +44,19 @@
                     </div>
                     <div class="mt-4">
                         <a href="{{ route('offer.details', $offerDeal->slug) }}"
-                            class="btn btn-common-one rounded-pill px-4">View</a>
+                            class="px-4 btn btn-common-one rounded-pill">View</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @empty
-    <div class="text-center py-3">
-        <img class="img-fluid" width="210px"
-            src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg" alt="No Content">
+<div class="not-available">
+    <div class="py-3 text-center">
+        <img width="260" class="img-fluid" src="{{ asset('images/no-data.jpg') }}" alt="No Content">
     </div>
-    <h5 class="text-center text-warning">No Course available right now.</h5>
+    <h5 class="text-warning">No Offer available right now.</h5>
+</div>
 @endforelse
 
 @push('scripts')

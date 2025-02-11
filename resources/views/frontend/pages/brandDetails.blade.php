@@ -22,7 +22,6 @@
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="text-center">
                             <h2 class="pb-2">{{ $brand->name }}</h2>
-                            {{-- <h2 class="pb-2">Arrong Exclusive Showroom Store</h2> --}}
                             <p>
                                 <i class="fa-solid fa-location-dot main-color"></i> {{ $brand->headquarter }}
                             </p>
@@ -39,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul class="brand-single pt-3 d-flex justify-content-center">
+                    <ul class="pt-3 brand-single d-flex justify-content-center">
                         <li>
                             <a href="#about">About</a>
                         </li>
@@ -101,10 +100,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 py-4">
+                <div class="py-4 col-lg-12">
                     <div class="store-offers">
-                        <div class="card border-0 shadow-sm bg-light">
-                            <div class="row p-4 align-items-center">
+                        <div class="border-0 shadow-sm card bg-light">
+                            <div class="p-4 row align-items-center">
                                 <div class="col-lg-6">
                                     <div>
                                         <img src="{{ asset('frontend') }}/assets/img/Brands/logo4.png" width="80px"
@@ -118,7 +117,7 @@
                                         {{ $brand->badge }}
                                     </h1>
                                 </div>
-                                <div class="col-lg-12 pt-4">
+                                <div class="pt-4 col-lg-12">
                                     <p class="pb-4 text-black">
                                         Premium Punjabi collections for men on online
                                     </p>
@@ -126,7 +125,7 @@
                                         <small>See all in store</small>
                                     </a>
                                 </div>
-                                <div class="col-lg-12 pt-4">
+                                <div class="pt-4 col-lg-12">
                                     <div class="d-flex">
                                         <a href="" class="w-100 btn-common-one rounded-3">View</a>
                                         <a href="" class="w-100 btn-common-three rounded-3 ms-2">Coupon <i
@@ -164,8 +163,8 @@
                 </div>
 
                 <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-2 px-3">
+                    <div class="border-0 shadow-sm card">
+                        <div class="p-2 px-3 card-body">
                             <iframe
                                 src="{{ $brand->map_url }}"
                                 width="100%" height="450" frameborder="0" style="border: 0" allowfullscreen=""
@@ -182,7 +181,7 @@
                 <div class="col-lg-12">
                     <h2>Description</h2>
                     <div class="row">
-                        <div class="col-lg-12 py-4">
+                        <div class="py-4 col-lg-12">
                             <p>{!! $brand->description !!}</p>
                         </div>
                     </div>

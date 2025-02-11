@@ -1,5 +1,6 @@
 <x-frontend-app-layout :title="'FAQs || DiscountZShop'">
 
+
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
@@ -10,9 +11,10 @@
     </section>
     <!-- Hero End -->
 
-    <section class="faq-section py-5">
+    <section class="py-5 faq-section">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-10 offset-lg-2">
                     <div class="accordion">
                         @if ($faqs->count() > 0)

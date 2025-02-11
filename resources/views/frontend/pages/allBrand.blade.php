@@ -15,13 +15,13 @@
 
                 <div class="row">
                     <div class="col-lg-12 d-none d-lg-block">
-                        <div class="text-center mb-lg-5 mb-0">
+                        <div class="mb-0 text-center mb-lg-5">
                             <h1>Discover Our Esteemed Brands</h1>
                         </div>
                     </div>
                 </div>
 
-                <div class="row align-items-center py-3 border">
+                <div class="py-3 border row align-items-center">
 
                     <div class="col-lg-6 d-none d-lg-block">
                         <h1 class="mb-0 site-color">All Brands</h1>
@@ -38,7 +38,7 @@
                                     <input class="form-control" type="search" id="serviceSearch"
                                         placeholder="Search Your Brand" aria-describedby="button-addon2"
                                         aria-label="Search">
-                                    <button class="btn btn-outline-secondary rounded-0" type="button"
+                                    <button class="btn btn-outline-secondary rounded-0 brand-search" type="button"
                                         id="button-addon2">
                                         <i class="fa-solid fa-search"></i>
                                     </button>
@@ -49,22 +49,22 @@
 
                 </div>
 
-                <div class="row gx-5 mb-5 mb-lg-0" id="servicesContainer">
+                <div class="mb-5 row gx-5 mb-lg-0" id="servicesContainer">
                     @foreach ($categories as $category)
                         @if ($category->brands->count() > 0)
                             <div class="col-lg-12 col-12">
                                 <div class="row bg-light">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
-                                            <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
+                                            <p class="py-2 mb-0 fs-5 main-color">{{ $category->name }}</p>
                                             <span class="store-devider"></span>
                                         </div>
                                     </div>
                                     @foreach ($category->brands as $brand)
-                                        <div class="col-lg-2 col-4 mb-3 mt-2">
+                                        <div class="mt-2 mb-3 col-lg-2 col-4">
                                             <a href="{{ route('brand.details', $brand->slug) }}">
-                                                <div class="card shadow-sm brands-card">
-                                                    <div class="card-body p-0">
+                                                <div class="shadow-sm card brands-card">
+                                                    <div class="p-0 card-body">
                                                         <div class="brands-logo">
                                                             <img class="img-fluid rounded-3"
                                                                 src="{{ asset('storage/' . $brand->logo) }}"
@@ -90,15 +90,15 @@
     {{-- <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
         <div class="container">
             <div class="row">
-                <div class="col-12 px-0">
+                <div class="px-0 col-12">
                     <div>
                         <img class="img-fluid" src="{{ asset('images/brand-banner.png') }}" alt="">
                     </div>
                 </div>
-                <div class="col-12 px-0 pt-2">
+                <div class="px-0 pt-2 col-12">
 
                     <form class="d-flex" role="search" id="searchForm">
-                        <input class="form-control mx-2 mt-2" type="search" id="serviceSearch" placeholder="Search"
+                        <input class="mx-2 mt-2 form-control" type="search" id="serviceSearch" placeholder="Search"
                             aria-label="Search" style="height: 35px">
                     </form>
 
@@ -116,17 +116,17 @@
                             <div class="row">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
-                                        <p class="mb-0 py-2 main-color">{{ $category->name }}</p>
+                                        <p class="py-2 mb-0 main-color">{{ $category->name }}</p>
                                         <span class="store-devider"></span>
                                     </div>
                                 </div>
                                 @foreach ($category->brands as $brand)
-                                    <div class="col-3 mb-1 mt-2 px-1">
+                                    <div class="px-1 mt-2 mb-1 col-3">
                                         <a href="{{ route('brand.details', $brand->slug) }}">
-                                            <div class="card shadow-sm brands-card p-0">
-                                                <div class="card-body p-0">
+                                            <div class="p-0 shadow-sm card brands-card">
+                                                <div class="p-0 card-body">
                                                     <div class="brands-logo">
-                                                        <img class="img-fluid p-0  h-auto"
+                                                        <img class="h-auto p-0 img-fluid"
                                                             src="{{ asset('storage/' . $brand->logo) }}"
                                                             alt="Brand Logo" title="Brand Logo"
                                                             onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />

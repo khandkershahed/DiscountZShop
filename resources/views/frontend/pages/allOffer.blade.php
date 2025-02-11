@@ -13,7 +13,7 @@
         <section>
             <div class="container mb-5">
 
-                <div class="row py-5 pb-2">
+                <div class="py-5 pb-2 row">
 
                     <div class="col-lg-12 pe-0">
                         <div class="d-flex justify-content-between">
@@ -77,7 +77,7 @@
                                     </script>
                                 </div>
 
-                                <div class="col-12 col-lg-3 mt-3 mt-lg-0">
+                                <div class="mt-3 col-12 col-lg-3 mt-lg-0">
 
                                     <!-- Search Store -->
                                     <div class="wrapper-store">
@@ -104,9 +104,9 @@
 
                 </div>
 
-                <div class="row pt-3">
+                <div class="pt-3 row">
 
-                    <div class="col-lg-3 border py-2 shadow-sm">
+                    <div class="py-2 border shadow-sm col-lg-3">
                         {{-- Accordion Filter Start --}}
 
                         {{-- <div class="accordion">
@@ -214,9 +214,9 @@
 
                                         @foreach ($offers as $offer)
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
-                                                <div class="col-lg-4 mb-4 pe-2">
-                                                    <div class="card border-0 shadow-sm bg-light offer-boxes">
-                                                        <div class="row p-4 align-items-center">
+                                                <div class="mb-4 col-lg-4 col-6 pe-2">
+                                                    <div class="border-0 shadow-sm card bg-light offer-boxes">
+                                                        <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -230,10 +230,10 @@
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
-                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                            <div class="pt-4 col-lg-12 offer_title">
                                                                 <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                             </div>
-                                                            <div class="col-lg-12 pt-4">
+                                                            <div class="pt-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3"><small>View</small></a>
@@ -260,9 +260,9 @@
                                                     </div>
                                                 </div>
                                             @elseif($offer->expiry_date == null)
-                                                <div class="col-lg-4 mb-4 pe-2">
-                                                    <div class="card border-0 shadow-sm bg-light offer-boxes">
-                                                        <div class="row p-4 align-items-center">
+                                                <div class="mb-4 col-lg-4 col-6 pe-2">
+                                                    <div class="border-0 shadow-sm card bg-light offer-boxes">
+                                                        <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -277,10 +277,10 @@
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
-                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                            <div class="pt-4 col-lg-12 offer_title">
                                                                 <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                             </div>
-                                                            <div class="col-lg-12 pt-4">
+                                                            <div class="pt-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3"><small>View</small></a>
@@ -312,7 +312,7 @@
 
                                     </div>
                                 @else
-                                    <p class="text-center mt-5 text-danger">No Offers Available</p>
+                                    <p class="mt-5 text-center text-danger">No Offers Available</p>
                                 @endif
 
                             </div>
@@ -325,9 +325,9 @@
                                     <div class="row servicesContainer" id="servicesContainer">
 
                                         {{-- @foreach ($category->offers as $offer)
-                                            <div class="col-lg-4 mt-4">
-                                                <div class="card border-0 shadow-sm bg-light">
-                                                    <div class="row p-4 align-items-center">
+                                            <div class="mt-4 col-lg-4">
+                                                <div class="border-0 shadow-sm card bg-light">
+                                                    <div class="p-4 row align-items-center">
                                                         <div class="col-lg-6">
                                                             <div>
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -343,10 +343,10 @@
                                                                     {{ $offer->badge }}</h4>
                                                             @endif
                                                         </div>
-                                                        <div class="col-lg-12 pt-4 offer_title">
+                                                        <div class="pt-4 col-lg-12 offer_title">
                                                             <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                         </div>
-                                                        <div class="col-lg-12 pt-4">
+                                                        <div class="pt-4 col-lg-12">
                                                             <div class="d-flex">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}"
                                                                     class="w-100 btn-common-one rounded-3">
@@ -372,11 +372,11 @@
                                         @endforeach --}}
 
                                         @forelse ($category->offers as $offer)
-                                        
+
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
-                                                <div class="col-lg-4 mt-4">
-                                                    <div class="card border-0 shadow-sm bg-light">
-                                                        <div class="row p-4 align-items-center">
+                                                <div class="mt-4 col-lg-4">
+                                                    <div class="border-0 shadow-sm card bg-light">
+                                                        <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -392,10 +392,10 @@
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
-                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                            <div class="pt-4 col-lg-12 offer_title">
                                                                 <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                             </div>
-                                                            <div class="col-lg-12 pt-4">
+                                                            <div class="pt-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3">
@@ -419,9 +419,9 @@
                                                     </div>
                                                 </div>
                                             @elseif($offer->expiry_date == null)
-                                                <div class="col-lg-4 mt-4">
-                                                    <div class="card border-0 shadow-sm bg-light">
-                                                        <div class="row p-4 align-items-center">
+                                                <div class="mt-4 col-lg-4">
+                                                    <div class="border-0 shadow-sm card bg-light">
+                                                        <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -437,10 +437,10 @@
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
-                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                            <div class="pt-4 col-lg-12 offer_title">
                                                                 <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                             </div>
-                                                            <div class="col-lg-12 pt-4">
+                                                            <div class="pt-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3">
@@ -466,9 +466,9 @@
                                             @else
                                             @endif
 
-                                            {{-- <div class="col-lg-4 mt-4">
-                                                <div class="card border-0 shadow-sm bg-light">
-                                                    <div class="row p-4 align-items-center">
+                                            {{-- <div class="mt-4 col-lg-4">
+                                                <div class="border-0 shadow-sm card bg-light">
+                                                    <div class="p-4 row align-items-center">
                                                         <div class="col-lg-6">
                                                             <div>
                                                                 <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -484,10 +484,10 @@
                                                                     {{ $offer->badge }}</h4>
                                                             @endif
                                                         </div>
-                                                        <div class="col-lg-12 pt-4 offer_title">
+                                                        <div class="pt-4 col-lg-12 offer_title">
                                                             <p class="pb-4 text-black">{{ $offer->name }}</p>
                                                         </div>
-                                                        <div class="col-lg-12 pt-4">
+                                                        <div class="pt-4 col-lg-12">
                                                             <div class="d-flex">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}"
                                                                     class="w-100 btn-common-one rounded-3">
@@ -511,7 +511,7 @@
                                                 </div>
                                             </div> --}}
                                         @empty
-                                            <p class="text-center mt-5 text-danger">No Offers Available</p>
+                                            <p class="mt-5 text-center text-danger">No Offers Available</p>
                                         @endforelse
                                     </div>
                                 </div>
