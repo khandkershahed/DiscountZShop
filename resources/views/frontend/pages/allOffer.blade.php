@@ -372,6 +372,7 @@
                                         @endforeach --}}
 
                                         @forelse ($category->offers as $offer)
+                                        
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <div class="col-lg-4 mt-4">
                                                     <div class="card border-0 shadow-sm bg-light">
