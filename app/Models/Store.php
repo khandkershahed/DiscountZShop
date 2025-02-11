@@ -32,4 +32,9 @@ class Store extends Model
     {
         return $this->belongsTo(Category::class,'category_id');
     }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
 }

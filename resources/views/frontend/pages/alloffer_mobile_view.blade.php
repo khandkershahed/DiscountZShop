@@ -7,35 +7,68 @@
             </div>
         </div>
         <div class="col-4 px-1">
-            <select class="form-select form-select-sm cust-select" id="division_filter" name="division_id"
-                data-placeholder="All Offers" autocomplete="off">
-                <option value="">All Offers</option>
-                @forelse ($divisions as $division)
-                    <option value="{{ $division->id }}">{{ $division->name }}</option>
-                @empty
-                    <option disabled>No Division Available</option>
-                @endforelse
+            <select class="form-select cust-select" id="" name="division_id" data-placeholder="Select Division"
+                autocomplete="off">
+
+                <option value="">Select Division</option>
+
+                @foreach ($alldivs as $division)
+                    <option value="{{ $division->id }}"
+                        {{ request()->get('division') == $division->id ? 'selected' : '' }}>
+                        {{ $division->name }}</option>
+                @endforeach
+
             </select>
         </div>
+
         <div class="col-4 px-1">
             <!-- Filter Store - City -->
             <div class="btn-group">
-                <select class="form-select form-select-sm cust-select" id="city_filter" name="city_id"
-                    data-placeholder="Select City" autocomplete="off">
-                    <option value="">Filter</option>
-                    @foreach ($citys as $city)
-                        <option value="{{ $city->id }}">{{ $city->name }}</option>
-                    @endforeach
+                <select class="form-select cust-select" id="" name="city_id" data-placeholder="Select City"
+                    autocomplete="off">
+                    <option value="">Select City</option>
+
+                    {{-- @foreach ($allcitys as $allcity)
+                        <option value="{{ $allcity->id }}"
+                            {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
+                            {{ $allcity->name }}</option>
+                    @endforeach --}}
                 </select>
             </div>
         </div>
+
+        <div class="col-4 px-1">
+            <div class="pe-2">
+                <select class="form-select" id="" name="area_id"
+                    data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
+                    <option value="">Select Area</option>
+                    @foreach ($allareas as $allarea)
+                        <option value="{{ $allarea->id }}"
+                            {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
+                            {{ $allarea->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <script>
+                function searchStoreByArea(areaId) {
+                    if (areaId) {
+                        // Redirect to the courses page with the selected section ID
+                        window.location.href = `/offers/all?area=${areaId}`;
+                    }
+                }
+            </script>
+        </div>
+
         <div class="col-4 px-1">
             <!-- Search Store -->
             <div class="wrapper-store">
                 <div class="search-input-store">
-                    <input type="text" id="serviceSearch" name="" style="height:43px;"
-                        placeholder="Type..." />
-                    <div class="icon" style="height: 43px; width: 30px; text-align: center; line-height: 43px;">
+
+                    {{-- <form action=""> --}}
+                    <input type="text" id="serviceSearchMobile" autocomplete="off" name="search"
+                        placeholder="Type to search..." />
+                    <div class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-search" viewBox="0 0 16 16">
                             <path
@@ -43,13 +76,15 @@
                             </path>
                         </svg>
                     </div>
+                    {{-- </form> --}}
+
                 </div>
             </div>
         </div>
     </div>
     <div class="row px-3">
         <div class="col-lg-12">
-            <div class="row servicesContainer divisionContainer mt-0" id="servicesContainer">
+            <div class="row mt-0" id="servicesContainerMobile">
                 @foreach ($offers as $offer)
                     <div class="col-6 mb-4 pe-2">
                         <div class="card border-0 shadow-sm offer-boxes" style="background: #FEF5F2;">
@@ -111,3 +146,30 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearchMobile').on('keyup', function() {
+                    var query = $(this).val();
+
+                    // If the input field is empty, do a search without a query
+                    if (query === '') {
+                        window.location.href = "{{ route('allOffer') }}";
+                    } else {
+                        $.ajax({
+                            url: "{{ route('offer.search.names.mobile') }}",
+                            method: 'GET',
+                            data: {
+                                query: query
+                            },
+                            success: function(data) {
+                                $('#servicesContainerMobile').html(data);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+
+    @endpush

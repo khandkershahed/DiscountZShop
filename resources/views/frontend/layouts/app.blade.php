@@ -68,7 +68,8 @@
         <!-- Bootstrap 5.3 Bundle with Popper -->
         <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         {{-- <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script> --}}
         <!-- FontAwesome -->
         <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
@@ -231,6 +232,7 @@
                     success: function(response) {
 
                         $('#cartWishlistQty').text(response.cartWishlistQty);
+                        $('#cartWishlistMobileQty').text(response.cartWishlistMobileQty);
 
                         var tableHtml = "";
                         var serialNumber = 1;

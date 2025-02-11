@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'All Stores || DiscountZShop'">
-    <div class="desktop-homepage">
+    <div class="">
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">
@@ -23,49 +23,66 @@
                                 {{-- <span class="store-devider"></span> --}}
                             </div>
 
-
                             {{-- =======================Filter ======================= --}}
-                            <div class="d-flex align-items-center">
-                                <!-- Filter Store - Division -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="division_filter" name="division_id"
-                                        data-placeholder="Select Division" autocomplete="off">
-                                        <option value="">Select Division</option>
-                                        @forelse ($divisions as $division)
-                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                        @empty
-                                            <option disabled>No Division Available</option>
-                                        @endforelse
-                                    </select>
+                            <div class="row">
+
+
+                                <div class="col-4 col-lg-3">
+                                    <div class="">
+                                        <select class="form-select" id="" name="division_id"
+                                            data-placeholder="Division" autocomplete="off">
+
+                                            <option value="">Division</option>
+
+                                            @foreach ($alldivs as $division)
+                                                <option value="{{ $division->id }}"
+                                                    {{ request()->get('division') == $division->id ? 'selected' : '' }}>
+                                                    {{ $division->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <!-- Filter Store - City -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="city_filter" name="city_id"
-                                        data-placeholder="Select City" autocomplete="off">
-                                        <option value="">Select City</option>
-                                        @foreach ($citys as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-4 col-lg-3">
+                                    <div class="">
+                                        <select class="form-select" id="" name="city_id"
+                                            data-placeholder="City" autocomplete="off">
+                                            <option value="">City</option>
+
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <!-- Filter Store - Area -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="area_filter" name="area_id"
-                                        data-placeholder="Select Area">
-                                        <option value="">Select Area</option>
-                                        @foreach ($areas as $area)
-                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-4 col-lg-3">
+                                    <div class="">
+                                        <select class="form-select" id="" name="area_id"
+                                            data-placeholder="Area" onchange="searchStoreByArea(this.value)">
+                                            <option value="">Area</option>
+                                            @foreach ($allareas as $allarea)
+                                                <option value="{{ $allarea->id }}"
+                                                    {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
+                                                    {{ $allarea->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <script>
+                                        function searchStoreByArea(areaId) {
+                                            if (areaId) {
+                                                // Redirect to the courses page with the selected section ID
+                                                window.location.href = `/offers/all?area=${areaId}`;
+                                            }
+                                        }
+                                    </script>
                                 </div>
 
-                                <!-- Search Store -->
-                                <div class="wrapper-store">
-                                    <div class="search-input-store">
-                                        <form action="">
-                                            <input type="text" id="storeSearch" autocomplete="off" name="search"
+                                <div class="col-12 col-lg-3 mt-3 mt-lg-0">
+
+                                    <!-- Search Store -->
+                                    <div class="wrapper-store">
+                                        <div class="search-input-store">
+                                            <input type="text" id="serviceSearch" autocomplete="off" name="search"
                                                 placeholder="Type to search..." />
                                             <div class="icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -75,24 +92,70 @@
                                                     </path>
                                                 </svg>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                    <!-- Search Store -->
 
+                                </div>
                             </div>
-                            {{-- =======================Filter ======================= --}}
 
                         </div>
                     </div>
 
                 </div>
 
-                <div class="row">
+                <div class="row pt-3">
 
                     <div class="col-lg-3 border py-2 shadow-sm">
                         {{-- Accordion Filter Start --}}
 
-                        <div class="accordion">
+                        {{-- <div class="accordion">
+
+                            @foreach ($categories as $header_category)
+                                <div class="accordion-header">
+                                    <div class="checkbox-wrapper-offers">
+                                        <input class="inp-cbx accordion-checkbox"
+                                            id="category-{{ $header_category->id }}" type="checkbox" />
+                                        <label class="cbx" for="category-{{ $header_category->id }}"
+                                            onclick="toggleOffers('{{ $header_category->id }}')">
+                                            <span>
+                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </svg>
+                                            </span>
+                                            <span style="font-size: 14px">{{ $header_category->name }}
+                                                ({{ $header_category->offers->count() }})</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="panel" id="panel-{{ $header_category->id }}">
+                                    @foreach ($header_category->children as $header_category_child)
+                                        <div class="accordion-header">
+                                            <div class="checkbox-wrapper-offers">
+                                                <input class="inp-cbx accordion-checkbox"
+                                                    id="subcategory-{{ $header_category_child->id }}"
+                                                    type="checkbox" />
+                                                <label class="cbx"
+                                                    for="subcategory-{{ $header_category_child->id }}">
+                                                    <span>
+                                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                        </svg>
+                                                    </span>
+                                                    <span style="font-size: 14px">{{ $header_category_child->name }}
+                                                        ({{ $header_category_child->offers->count() }})
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
+                        </div> --}}
+
+                        <div class="accordion d-none d-lg-block">
                             @foreach ($categories as $header_category)
                                 <div class="accordion-header">
                                     <div class="checkbox-wrapper-offers">
@@ -146,60 +209,122 @@
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
 
-                                <div class="row servicesContainer" id="servicesContainer">
+                                @if ($offers->count() > 0)
+                                    <div class="row" id="servicesContainer">
 
-                                    @foreach ($offers as $offer)
-                                        <div class="col-lg-4 mb-4 pe-2">
-                                            <div class="card border-0 shadow-sm bg-light offer-boxes">
-                                                <div class="row p-4 align-items-center">
-                                                    <div class="col-lg-6">
-                                                        <div>
-                                                            <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                width="80px" height="80px" class="rounded-2"
-                                                                style="object-fit: contain;" alt="" />
+                                        @foreach ($offers as $offer)
+                                            @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
+                                                <div class="col-lg-4 mb-4 pe-2">
+                                                    <div class="card border-0 shadow-sm bg-light offer-boxes">
+                                                        <div class="row p-4 align-items-center">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                        width="80px" height="80px" class="rounded-2"
+                                                                        style="object-fit: contain;" alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @if (!empty($offer->badge))
+                                                                    <h4 class="main-color special-font-box text-end">
+                                                                        {{ $offer->badge }}</h4>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4">
+                                                                <div class="d-flex">
+                                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                        class="w-100 btn-common-one rounded-3"><small>View</small></a>
+                                                                    @if (!empty($offer->coupon_code))
+                                                                        <a href="javascript:void(0);"
+                                                                            class="w-100 btn-common-three rounded-3 ms-2"
+                                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
+                                                                            <i class="fa-solid fa-copy"></i></a>
+                                                                    @endif
+                                                                </div>
+
+                                                                {{-- {{ Carbon\Carbon::parse($offer->expiry_date)->format('D, d F Y') }} --}}
+
+                                                                {{-- @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d')) --}}
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+
+
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        @if (!empty($offer->badge))
-                                                            <h4 class="main-color special-font-box text-end">
-                                                                {{ $offer->badge }}</h4>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-lg-12 pt-4 offer_title">
-                                                        <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                    </div>
-                                                    <div class="col-lg-12 pt-4">
-                                                        <div class="d-flex">
-                                                            <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                class="w-100 btn-common-one rounded-3"><small>View</small></a>
-                                                            @if (!empty($offer->coupon_code))
-                                                                <a href="javascript:void(0);"
-                                                                    class="w-100 btn-common-three rounded-3 ms-2"
-                                                                    onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
-                                                                    <i class="fa-solid fa-copy"></i></a>
-                                                            @endif
-                                                        </div>
-                                                        <p class="pt-2 text-center countdown"
-                                                            data-expire-date="{{ $offer->expiry_date }}">
-                                                            <span class="main-color">Expire In:</span>
-                                                            <span class="countdown-timer"> Days</span>
-                                                        </p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                            @elseif($offer->expiry_date == null)
+                                                <div class="col-lg-4 mb-4 pe-2">
+                                                    <div class="card border-0 shadow-sm bg-light offer-boxes">
+                                                        <div class="row p-4 align-items-center">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                        width="80px" height="80px"
+                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @if (!empty($offer->badge))
+                                                                    <h4 class="main-color special-font-box text-end">
+                                                                        {{ $offer->badge }}</h4>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4">
+                                                                <div class="d-flex">
+                                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                        class="w-100 btn-common-one rounded-3"><small>View</small></a>
+                                                                    @if (!empty($offer->coupon_code))
+                                                                        <a href="javascript:void(0);"
+                                                                            class="w-100 btn-common-three rounded-3 ms-2"
+                                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">Coupon
+                                                                            <i class="fa-solid fa-copy"></i></a>
+                                                                    @endif
+                                                                </div>
 
-                                </div>
+                                                                {{-- {{ Carbon\Carbon::parse($offer->expiry_date)->format('D, d F Y') }} --}}
+
+                                                                {{-- @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d')) --}}
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @else
+                                            @endif
+                                        @endforeach
+
+                                    </div>
+                                @else
+                                    <p class="text-center mt-5 text-danger">No Offers Available</p>
+                                @endif
 
                             </div>
 
                             {{-- Category-wise Offers Tabs --}}
+
                             @foreach ($categories as $category)
                                 <div class="tab-pane fade" id="category-{{ $category->id }}-pane" role="tabpanel"
                                     aria-labelledby="category-{{ $category->id }}" tabindex="0">
                                     <div class="row servicesContainer" id="servicesContainer">
-                                        @foreach ($category->offers as $offer)
+
+                                        {{-- @foreach ($category->offers as $offer)
                                             <div class="col-lg-4 mt-4">
                                                 <div class="card border-0 shadow-sm bg-light">
                                                     <div class="row p-4 align-items-center">
@@ -244,7 +369,150 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
+
+                                        @forelse ($category->offers as $offer)
+                                        
+                                            @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
+                                                <div class="col-lg-4 mt-4">
+                                                    <div class="card border-0 shadow-sm bg-light">
+                                                        <div class="row p-4 align-items-center">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                        width="80px" height="80px"
+                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        alt="Offer logo for {{ $offer->name }}"
+                                                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @if (!empty($offer->badge))
+                                                                    <h4 class="main-color special-font-box text-end">
+                                                                        {{ $offer->badge }}</h4>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4">
+                                                                <div class="d-flex">
+                                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                        class="w-100 btn-common-one rounded-3">
+                                                                        <small>View</small>
+                                                                    </a>
+                                                                    @if (!empty($offer->coupon_code))
+                                                                        <a href="javascript:void(0);"
+                                                                            class="w-100 btn-common-three rounded-3 ms-2"
+                                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                                            Coupon <i class="fa-solid fa-copy"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                </div>
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @elseif($offer->expiry_date == null)
+                                                <div class="col-lg-4 mt-4">
+                                                    <div class="card border-0 shadow-sm bg-light">
+                                                        <div class="row p-4 align-items-center">
+                                                            <div class="col-lg-6">
+                                                                <div>
+                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                        width="80px" height="80px"
+                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        alt="Offer logo for {{ $offer->name }}"
+                                                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @if (!empty($offer->badge))
+                                                                    <h4 class="main-color special-font-box text-end">
+                                                                        {{ $offer->badge }}</h4>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4 offer_title">
+                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                            </div>
+                                                            <div class="col-lg-12 pt-4">
+                                                                <div class="d-flex">
+                                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                        class="w-100 btn-common-one rounded-3">
+                                                                        <small>View</small>
+                                                                    </a>
+                                                                    @if (!empty($offer->coupon_code))
+                                                                        <a href="javascript:void(0);"
+                                                                            class="w-100 btn-common-three rounded-3 ms-2"
+                                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                                            Coupon <i class="fa-solid fa-copy"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                </div>
+                                                                <p class="pt-2 text-center countdown"
+                                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                                    <span class="main-color">Expire In:</span>
+                                                                    <span class="countdown-timer"> Days</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @else
+                                            @endif
+
+                                            {{-- <div class="col-lg-4 mt-4">
+                                                <div class="card border-0 shadow-sm bg-light">
+                                                    <div class="row p-4 align-items-center">
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                    width="80px" height="80px" class="rounded-2"
+                                                                    style="object-fit: contain;"
+                                                                    alt="Offer logo for {{ $offer->name }}"
+                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            @if (!empty($offer->badge))
+                                                                <h4 class="main-color special-font-box text-end">
+                                                                    {{ $offer->badge }}</h4>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-lg-12 pt-4 offer_title">
+                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                        </div>
+                                                        <div class="col-lg-12 pt-4">
+                                                            <div class="d-flex">
+                                                                <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                    class="w-100 btn-common-one rounded-3">
+                                                                    <small>View</small>
+                                                                </a>
+                                                                @if (!empty($offer->coupon_code))
+                                                                    <a href="javascript:void(0);"
+                                                                        class="w-100 btn-common-three rounded-3 ms-2"
+                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                                        Coupon <i class="fa-solid fa-copy"></i>
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                            <p class="pt-2 text-center countdown"
+                                                                data-expire-date="{{ $offer->expiry_date }}">
+                                                                <span class="main-color">Expire In:</span>
+                                                                <span class="countdown-timer"> Days</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+                                        @empty
+                                            <p class="text-center mt-5 text-danger">No Offers Available</p>
+                                        @endforelse
                                     </div>
                                 </div>
                             @endforeach
@@ -252,29 +520,13 @@
                         </div>
 
                         {{-- Dynamic Pagination --}}
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-
-                                <li class="page-item @if ($offers->onFirstPage()) disabled @endif">
-                                    <a class="page-link" href="{{ $offers->previousPageUrl() }}"
-                                        aria-label="Previous">Previous</a>
-                                </li>
-
-
-                                @for ($i = 1; $i <= $offers->lastPage(); $i++)
-                                    <li class="page-item @if ($offers->currentPage() == $i) active @endif">
-                                        <a class="page-link" href="{{ $offers->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-
-
-                                <li class="page-item @if (!$offers->hasMorePages()) disabled @endif">
-                                    <a class="page-link" href="{{ $offers->nextPageUrl() }}"
-                                        aria-label="Next">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-
+                        @if ($offers->count() > 0)
+                            <nav aria-label="Page navigation example">
+                                {{ $offers->links() }}
+                            </nav>
+                        @else
+                        @endif
+                        {{-- Dynamic Pagination --}}
 
                     </div>
 
@@ -288,388 +540,136 @@
     {{-- Ashik ======================= --}}
 
     {{-- For Mobile Code --}}
-    @include('frontend.pages.alloffer_mobile_view')
+    {{-- @include('frontend.pages.alloffer_mobile_view') --}}
     {{-- For Mobile Code --}}
 
 
 
-    {{-- <script>
-            // Check the checkbox for the category
+    @push('scripts')
+        {{-- <script>
             $(document).ready(function() {
-                // Listen for changes in the filter fields
-                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                    // Collect filter values
-                    let division_id = $('#division_filter').val();
-                    let city_id = $('#city_filter').val();
-                    let area_id = $('#area_filter').val();
-                    let search_query = $('#storeSearch').val();
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
 
-                    // Check if all fields are cleared
-                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                        // If cleared, fetch all stores without any filters
-                        fetchStores();
+                    // If the input field is empty, do a search without a query
+                    if (query === '') {
+                        window.location.href = "{{ route('allOffer') }}";
                     } else {
-                        // AJAX request to fetch filtered stores
                         $.ajax({
-                            url: '{{ route('offerss.filter') }}',
+                            url: "{{ route('offer.search.names') }}",
                             method: 'GET',
                             data: {
-                                division_id: division_id,
-                                city_id: city_id,
-                                area_id: area_id,
-                                search: search_query
+                                query: query
                             },
-                            success: function(response) {
-                                // Update offer listings with the response
-                                $('#servicesContainer').html(response.offers);
-                                $('.pagination').html(response
-                                    .pagination); // Update pagination links
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
+                            success: function(data) {
+                                $('#servicesContainer').html(
+                                    data); // Update the content with the new results
+
+                                // Handle pagination visibility: Hide it if no results found
+                                if (data.indexOf('No Offers Available') !== -1) {
+                                    $('.pagination').hide(); // Hide pagination if no results
+                                } else {
+                                    $('.pagination').show(); // Show pagination if there are results
+                                }
                             }
                         });
                     }
-                });
-
-                // Fetch all stores when the page loads (in case no filter is applied)
-                function fetchStores() {
-                    $.ajax({
-                        url: '{{ route('offerss.filter') }}',
-                        method: 'GET',
-                        data: {
-                            division_id: '',
-                            city_id: '',
-                            area_id: '',
-                            search: ''
-                        },
-                        success: function(response) {
-                            // Update offer listings with the response
-                            $('#servicesContainer').html(response.offers);
-                            $('.pagination').html(response.pagination); // Update pagination links
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching stores: ' + error);
-                        }
-                    });
-                }
-
-                // Initially load all stores if no filters are applied
-                fetchStores();
-
-                // Clear filters button functionality
-                $('#clearFilters').click(function() {
-                    // Reset all filters and the search field
-                    $('#division_filter').val('');
-                    $('#city_filter').val('');
-                    $('#area_filter').val('');
-                    $('#storeSearch').val('');
-
-                    // Fetch all stores again
-                    fetchStores();
-                });
-            });
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-
-                // Toggle the checkbox when the category or subcategory is clicked
-                function toggleOffers(categoryId) {
-                    const checkbox = document.getElementById('category-' + categoryId);
-                    if (checkbox) {
-                        checkbox.checked = true; // Automatically check the category checkbox
-                    }
-                    showOffersByCategory(categoryId);
-                }
-
-                // Show or hide the offers for the selected category and subcategory
-                function showOffersByCategory(categoryId) {
-                    const panel = document.getElementById('panel-' + categoryId);
-                    const checkbox = document.getElementById('category-' + categoryId);
-
-                    if (checkbox && checkbox.checked) {
-                        // Show the panel for the selected category or subcategory
-                        panel.classList.add('show');
-                    } else {
-                        // Hide the panel if checkbox is unchecked
-                        panel.classList.remove('show');
-                    }
-
-                    // Also ensure that the offers tab is activated when the checkbox is checked
-                    if (checkbox.checked) {
-                        const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-                        if (categoryTab) {
-                            categoryTab.classList.add('show', 'active');
-                        }
-                    }
-
-                    // Check if any category or subcategory is selected to hide the "category-all" tab pane
-                    updateCategoryAllVisibility();
-                    removeOffersWhenUnchecked(categoryId);
-                }
-
-                // Handle checkbox changes for category and subcategory
-                function handleCheckboxChange(checkbox) {
-                    const categoryId = checkbox.id.split('-')[1];
-
-                    // Show or hide the panel depending on the checkbox state
-                    const panel = document.getElementById('panel-' + categoryId);
-                    if (checkbox.checked) {
-                        panel.classList.add('show'); // Show the panel for the selected category
-                        showOffersByCategory(categoryId); // Also ensure the offers tab is visible
-                    } else {
-                        panel.classList.remove('show'); // Hide the panel if checkbox is unchecked
-                    }
-
-                    // Update visibility of the "category-all" tab pane
-                    updateCategoryAllVisibility();
-                    removeOffersWhenUnchecked(categoryId);
-                }
-
-                // Update the visibility of the "category-all" tab pane
-                function updateCategoryAllVisibility() {
-                    const categoryAllPane = document.getElementById('category-all-pane');
-                    const allCheckboxes = document.querySelectorAll('.accordion-checkbox');
-
-                    let isAnyChecked = false;
-
-                    allCheckboxes.forEach(checkbox => {
-                        if (checkbox.checked) {
-                            isAnyChecked = true;
-                        }
-                    });
-
-                    // Hide "category-all" pane if any checkbox is checked
-                    if (categoryAllPane) {
-                        if (isAnyChecked) {
-                            categoryAllPane.classList.remove('show', 'active');
-                        } else {
-                            categoryAllPane.classList.add('show', 'active');
-                        }
-                    }
-                }
-
-                // Remove offers when the category or subcategory checkbox is unchecked
-                function removeOffersWhenUnchecked(categoryId) {
-                    const checkbox = document.getElementById('category-' + categoryId);
-                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-
-                    // If the checkbox is unchecked, remove the offers
-                    if (checkbox && !checkbox.checked && categoryTab) {
-                        categoryTab.classList.remove('show', 'active'); // Remove the category tab
-                    }
-                }
-
-                // Add event listener to all category and subcategory checkboxes
-                document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
-                        const categoryId = this.id.split('-')[1];
-                        handleCheckboxChange(this);
-                    });
-                });
-
-                // Add click event listener to subcategory names
-                document.querySelectorAll('.accordion-header span').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const categoryId = this.parentElement.querySelector('input').id.split('-')[1];
-                        toggleOffers(categoryId); // Call toggleOffers on click of subcategory
-                    });
-                });
-
-                // Countdown Timer functionality (optional, if you're showing expiry times)
-                document.querySelectorAll('.countdown').forEach(function(el) {
-                    const expireDate = new Date(el.getAttribute('data-expire-date'));
-                    setInterval(function() {
-                        const now = new Date();
-                        const timeRemaining = expireDate - now;
-
-                        // Update the countdown display
-                        const daysRemaining = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                        el.querySelector('.countdown-timer').textContent = `${daysRemaining} Days`;
-                    }, 1000);
                 });
             });
         </script> --}}
 
-    @push('scripts')
-        {{-- <script>
-                // Document ready function to handle dynamic filtering
-                $(document).ready(function() {
-                    // Listen for changes in the filter fields
-                    $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                        // Collect filter values
-                        let division_id = $('#division_filter').val();
-                        let city_id = $('#city_filter').val();
-                        let area_id = $('#area_filter').val();
-                        let search_query = $('#storeSearch').val();
+        <script>
+            $(document).ready(function() {
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
 
-                        // Check if all fields are cleared
-                        if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                            // If cleared, fetch all stores without any filters
-                            fetchStores();
-                        } else {
-                            // AJAX request to fetch filtered stores
-                            $.ajax({
-                                url: '{{ route('offerss.filter') }}',
-                                method: 'GET',
-                                data: {
-                                    division_id: division_id,
-                                    city_id: city_id,
-                                    area_id: area_id,
-                                    search: search_query
-                                },
-                                success: function(response) {
-                                    // Update offer listings with the response
-                                    $('#servicesContainer').html(response.offers);
-                                    $('.pagination').html(response
-                                    .pagination); // Update pagination links
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error('Error fetching stores: ' + error);
-                                }
-                            });
-                        }
-                    });
-
-                    // Fetch all stores when the page loads (in case no filter is applied)
-                    function fetchStores() {
+                    if (query === '') {
+                        window.location.href = "{{ route('allOffer') }}";
+                    } else {
                         $.ajax({
-                            url: '{{ route('offerss.filter') }}',
+                            url: "{{ route('offer.search.names') }}",
                             method: 'GET',
                             data: {
-                                division_id: '',
-                                city_id: '',
-                                area_id: '',
-                                search: ''
+                                query: query
                             },
-                            success: function(response) {
-                                // Update offer listings with the response
-                                $('#servicesContainer').html(response.offers);
-                                $('.pagination').html(response.pagination); // Update pagination links
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
+                            success: function(data) {
+                                $('#servicesContainer').html(data); // Update offer list
+                                // Check if pagination is available
+                                if (data.indexOf('No Offers Available') !== -1 || $(
+                                        '#servicesContainer .pagination').length === 0) {
+                                    $('.pagination').hide(); // Hide pagination if no results
+                                } else {
+                                    $('.pagination').show(); // Show pagination if results exist
+                                }
                             }
                         });
                     }
-
-                    // Initially load all stores if no filters are applied
-                    fetchStores();
-
-                    // Clear filters button functionality
-                    $('#clearFilters').click(function() {
-                        // Reset all filters and the search field
-                        $('#division_filter').val('');
-                        $('#city_filter').val('');
-                        $('#area_filter').val('');
-                        $('#storeSearch').val('');
-
-                        // Fetch all stores again
-                        fetchStores();
-                    });
                 });
-            </script> --}}
+            });
+        </script>
+
 
         <script>
             $(document).ready(function() {
-                // Listen for pagination link clicks
-                $(document).on('click', '.pagination .page-link', function(e) {
-                    e.preventDefault(); // Prevent the default behavior of the link
-                    let url = $(this).attr('href'); // Get the URL for the next page
-
-                    // Make the AJAX request for the next page
-                    $.ajax({
-                        url: url,
-                        method: 'GET',
-                        success: function(response) {
-                            // Update offer listings with the response
-                            $('#servicesContainer').html(response.offers);
-                            $('.pagination').html(response.pagination); // Update pagination links
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching offers: ' + error);
-                        }
-                    });
-                });
-
-                // Other AJAX functionality as before (for filtering)
-                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                    // Collect filter values
-                    let division_id = $('#division_filter').val();
-                    let city_id = $('#city_filter').val();
-                    let area_id = $('#area_filter').val();
-                    let search_query = $('#storeSearch').val();
-
-                    // Check if all fields are cleared
-                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                        // If cleared, fetch all stores without any filters
-                        fetchStores();
-                    } else {
-                        // AJAX request to fetch filtered stores
+                // When Division is selected
+                $('select[name="division_id"]').on('change', function() {
+                    var division_id = $(this).val();
+                    if (division_id) {
                         $.ajax({
-                            url: '{{ route('offerss.filter') }}',
-                            method: 'GET',
-                            data: {
-                                division_id: division_id,
-                                city_id: city_id,
-                                area_id: area_id,
-                                search: search_query
+                            url: "{{ url('/division-get/ajax') }}/" + division_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                // Empty the city dropdown before populating
+                                $('select[name="city_id"]').html(
+                                    '<option value="">Select City</option>');
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>'); // Clear area dropdown
+
+                                $.each(data, function(key, value) {
+                                    $('select[name="city_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
                             },
-                            success: function(response) {
-                                // Update offer listings with the response
-                                $('#servicesContainer').html(response.offers);
-                                $('.pagination').html(response
-                                    .pagination); // Update pagination links
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
+                            error: function() {
+                                alert("Error fetching cities");
                             }
                         });
+                    } else {
+                        alert('Please select a division');
                     }
                 });
 
-                // Fetch all stores when the page loads (in case no filter is applied)
-                function fetchStores() {
-                    $.ajax({
-                        url: '{{ route('offerss.filter') }}',
-                        method: 'GET',
-                        data: {
-                            division_id: '',
-                            city_id: '',
-                            area_id: '',
-                            search: ''
-                        },
-                        success: function(response) {
-                            // Update offer listings with the response
-                            $('#servicesContainer').html(response.offers);
-                            $('.pagination').html(response.pagination); // Update pagination links
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching stores: ' + error);
-                        }
-                    });
-                }
+                // When City is selected
+                $('select[name="city_id"]').on('change', function() {
+                    var city_id = $(this).val();
+                    if (city_id) {
+                        $.ajax({
+                            url: "{{ url('/city-get/ajax') }}/" + city_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                // Empty the area dropdown before populating
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>');
 
-                // Initially load all stores if no filters are applied
-                fetchStores();
-
-                // Clear filters button functionality
-                $('#clearFilters').click(function() {
-                    // Reset all filters and the search field
-                    $('#division_filter').val('');
-                    $('#city_filter').val('');
-                    $('#area_filter').val('');
-                    $('#storeSearch').val('');
-
-                    // Fetch all stores again
-                    fetchStores();
+                                $.each(data, function(key, value) {
+                                    $('select[name="area_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
+                            },
+                            error: function() {
+                                alert("Error fetching areas");
+                            }
+                        });
+                    } else {
+                        $('select[name="area_id"]').html('<option value="">Select Area</option>');
+                    }
                 });
             });
         </script>
 
         <script>
-            // Handle the category and subcategory toggling and checkbox updates
             document.addEventListener('DOMContentLoaded', function() {
                 // Toggle the checkbox when the category or subcategory is clicked
                 function toggleOffers(categoryId) {
@@ -682,32 +682,18 @@
 
                 // Show or hide the offers for the selected category and subcategory
                 function showOffersByCategory(categoryId) {
-                    const panel = document.getElementById('panel-' + categoryId);
                     const checkbox = document.getElementById('category-' + categoryId);
+                    const categoryTab = document.getElementById('category-' + categoryId + '-pane');
 
-                    if (checkbox && checkbox.checked) {
-                        panel.classList.add('show');
-                    } else {
-                        panel.classList.remove('show');
-                    }
-
-                    // Ensure the offer tab is visible when the checkbox is checked
                     if (checkbox.checked) {
-                        const categoryTab = document.getElementById('category-' + categoryId + '-pane');
-                        if (categoryTab) {
-                            categoryTab.classList.add('show', 'active');
-                        }
+                        categoryTab.classList.add('show', 'active');
+                    } else {
+                        categoryTab.classList.remove('show', 'active');
                     }
 
-                    // Check if any category or subcategory is selected to hide the "category-all" tab pane
-                    updateCategoryAllVisibility();
-                }
-
-                // Update the visibility of the "category-all" tab pane
-                function updateCategoryAllVisibility() {
+                    // Hide "category-all" pane if any category is checked
                     const categoryAllPane = document.getElementById('category-all-pane');
                     const allCheckboxes = document.querySelectorAll('.accordion-checkbox');
-
                     let isAnyChecked = false;
 
                     allCheckboxes.forEach(checkbox => {
@@ -716,7 +702,6 @@
                         }
                     });
 
-                    // Hide "category-all" pane if any checkbox is checked
                     if (categoryAllPane) {
                         if (isAnyChecked) {
                             categoryAllPane.classList.remove('show', 'active');
@@ -724,38 +709,55 @@
                             categoryAllPane.classList.add('show', 'active');
                         }
                     }
+
+                    // Show only offers related to the checked categories
+                    filterOffersByCategory();
                 }
 
-                // Handle checkbox changes for category and subcategory
-                function handleCheckboxChange(checkbox) {
-                    const categoryId = checkbox.id.split('-')[1];
+                // Filter offers based on the selected categories
+                function filterOffersByCategory() {
+                    const allOffers = document.querySelectorAll('.offer-item');
+                    const checkedCategoryIds = [];
 
-                    // Show or hide the panel depending on the checkbox state
-                    const panel = document.getElementById('panel-' + categoryId);
-                    if (checkbox.checked) {
-                        panel.classList.add('show'); // Show the panel for the selected category
-                        showOffersByCategory(categoryId); // Ensure the offers tab is visible
-                    } else {
-                        panel.classList.remove('show'); // Hide the panel if unchecked
+                    // Collect all checked categories
+                    document.querySelectorAll('.accordion-checkbox:checked').forEach(checkbox => {
+                        const categoryId = checkbox.id.split('-')[1];
+                        checkedCategoryIds.push(categoryId);
+                    });
+
+                    // Show/hide offers based on checked categories
+                    allOffers.forEach(offer => {
+                        const offerCategories = offer.getAttribute('data-offer-category').split(',');
+                        const shouldShow = checkedCategoryIds.some(id => offerCategories.includes(id));
+                        if (shouldShow) {
+                            offer.classList.remove('d-none');
+                        } else {
+                            offer.classList.add('d-none');
+                        }
+                    });
+
+                    // Hide the pagination if any offer is selected, otherwise show it
+                    togglePaginationVisibility();
+                }
+
+                // Toggle the visibility of the pagination based on selected categories
+                function togglePaginationVisibility() {
+                    const pagination = document.querySelector('.pagination');
+                    const isAnyChecked = document.querySelectorAll('.accordion-checkbox:checked').length > 0;
+
+                    if (pagination) {
+                        if (isAnyChecked) {
+                            pagination.classList.add('d-none'); // Hide pagination
+                        } else {
+                            pagination.classList.remove('d-none'); // Show pagination
+                        }
                     }
-
-                    // Update visibility of the "category-all" tab pane
-                    updateCategoryAllVisibility();
                 }
 
                 // Add event listener to all category and subcategory checkboxes
                 document.querySelectorAll('.accordion-checkbox').forEach(checkbox => {
                     checkbox.addEventListener('change', function() {
-                        const categoryId = this.id.split('-')[1];
-                        handleCheckboxChange(this);
-                    });
-                });
-
-                // Add click event listener to subcategory names
-                document.querySelectorAll('.accordion-header span').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const categoryId = this.parentElement.querySelector('input').id.split('-')[1];
-                        toggleOffers(categoryId); // Call toggleOffers on click of subcategory
+                        showOffersByCategory(this.id.split('-')[1]);
                     });
                 });
             });

@@ -27,30 +27,23 @@ Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('em
 //SubCatewory
 Route::get('/subcategory/{slug}', [HomeController::class, 'categoryDetails'])->name('subcategory.details');
 
-//Offer
-Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
-Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
-Route::get('/offers/search', [HomeController::class, 'searchOfferName'])->name('offer.search');
-Route::get('/offers/search/division', [HomeController::class, 'searchOfferDivisionName'])->name('offer.search.division');
-Route::get('/offers/search/city', [HomeController::class, 'searchOfferCityName'])->name('offer.search.city');
-Route::get('/offers/search/area', [HomeController::class, 'searchOfferAreaName'])->name('offer.search.area');
-
-
-Route::get('/offerss/filter', [HomeController::class, 'filterOfferss'])->name('offerss.filter');
-
-//Search
+//product Search
 Route::post('/search', [HomeController::class, 'productSearch'])->name('product.search');
+// In web.php or routes file
+Route::post('/product/search/suggest', [HomeController::class, 'searchSuggestions'])->name('product.search.suggest');
 
 //Homepage Deal Search
 Route::get('/deal/search', [HomeController::class, 'searchDeal'])->name('deal.search');
 
-//Brand
+//Brand All Route Start
 Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand');
 Route::get('/brands/all/search', [HomeController::class, 'searchAllBrands'])->name('brands.all.search.name');
+//Brand All Route End
 
 // Route::get('/brands/search/offer', [HomeController::class, 'searchBrandName'])->name('brands.search.name');
 Route::get('/{brand}', [HomeController::class, 'vendorOverview'])->name('brand.details');
 Route::get('/{brand}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
+
 Route::get('/{brand}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
 
 Route::get('/map/search/division', [HomeController::class, 'mapDivision'])->name('map.division');
@@ -61,24 +54,38 @@ Route::get('/map/search/city', [HomeController::class, 'mapCity'])->name('map.ci
 //Coupon
 Route::get('/coupon/all', [HomeController::class, 'allCoupon'])->name('allCoupon');
 Route::get('/coupon/{slug}', [HomeController::class, 'couponDetails'])->name('coupon.details');
-Route::get('/coupon/search', [HomeController::class, 'searchCouponName'])->name('coupon.search');
+Route::get('/coupon/search/names', [HomeController::class, 'searchCouponName'])->name('coupon.search');
 
-//Store
+//Offer All Route Start
+Route::get('/offers/all', [HomeController::class, 'allOffer'])->name('allOffer');
+Route::get('/offer-details/{slug}', [HomeController::class, 'offerDetails'])->name('offer.details');
+
+Route::get('/offer/search/name', [HomeController::class, 'searchOfferName'])->name('offer.search.names');
+Route::get('/offer/search/name/mobile', [HomeController::class, 'searchOfferNameMobile'])->name('offer.search.names.mobile');
+
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('/division-get/ajax/{division_id}', 'GetCheckDivision');
+    Route::get('/city-get/ajax/{city_id}', 'StateGetAjaxCity');
+});
+//Offer All Route End
+
+//Store All Route Start
 Route::get('/store/all', [HomeController::class, 'allStore'])->name('allStore');
 Route::get('/store/{id}', [HomeController::class, 'storeDetails'])->name('store.details');
-// Route::get('/store/search/offer', [HomeController::class, 'searchStoreName'])->name('store.search.name');
 
-Route::get('/store/search/division', [HomeController::class, 'searchDivisionName'])->name('store.search.division');
-Route::get('/store/search/city', [HomeController::class, 'searchCityName'])->name('store.search.city');
-Route::get('/store/search/area', [HomeController::class, 'searchAreaName'])->name('store.search.area');
+Route::get('/store/search/name', [HomeController::class, 'searchStoreName'])->name('store.search.names');
 
-Route::get('/stores/filter', [HomeController::class, 'filterStore'])->name('store.filter');
+Route::controller(HomeController::class)->group(function () {
 
-// Route::get('/stores/search', [HomeController::class, 'searchOStoreName'])->name('stores.search');
+    Route::get('/district-get/ajax/{division_id}', 'GetCheckDistrict');
+    Route::get('/state-get/ajax/{city_id}', 'StateGetAjax');
+});
+//Store All Route End
 
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
-
+//discounttermsCondition
 Route::get('/discountZShop/terms-condition', [HomeController::class, 'discounttermsCondition'])->name('discount.termsCondition');
 
 //Privacy

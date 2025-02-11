@@ -1,5 +1,7 @@
 <x-frontend-app-layout :title="'All Store || DiscountZShop'">
-    <div class="desktop-homepage">
+
+    <div class="">
+
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">
@@ -9,453 +11,268 @@
             </div>
         </section>
         <!-- Top Stores -->
-        <section>
+
+        <section class="py-3 py-lg-5">
             <div class="container">
-                <div class="row py-5">
-                    <div class="col-lg-12">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <h3>Top Stores</h3>
-                                <span class="store-devider"></span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <!-- Filter Store - Division -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="division_filter" name="division_id"
-                                        data-placeholder="Select Division" autocomplete="off">
-                                        <option value="">Select Division</option>
-                                        @forelse ($divisions as $division)
-                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                        @empty
-                                            <option disabled>No Division Available</option>
-                                        @endforelse
-                                    </select>
-                                </div>
 
-                                <!-- Filter Store - City -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="city_filter" name="city_id"
-                                        data-placeholder="Select City" autocomplete="off">
-                                        <option value="">Select City</option>
-                                        @foreach ($citys as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                <div class="row">
 
-                                <!-- Filter Store - Area -->
-                                <div class="btn-group pe-2">
-                                    <select class="form-select cust-select" id="area_filter" name="area_id"
-                                        data-placeholder="Select Area">
-                                        <option value="">Select Area</option>
-                                        @foreach ($areas as $area)
-                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <!-- Search Store -->
-                                <div class="wrapper-store">
-                                    <div class="search-input-store">
-                                        <form action="">
-                                            <input type="text" id="storeSearch" autocomplete="off" name="search"
-                                                placeholder="Type to search..." />
-                                            <div class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Store Listings Container -->
-                <div class="row pb-1 storeContainer" id="servicesContainer">
-                    @foreach ($latest_stores as $latest_store)
-                        <div class="col-lg-3">
-                            <div class="card border-0 shadow-sm mb-4">
-                                <div class="card-body p-0 rounded-2">
-                                    <!-- Store Banner -->
-                                    <div class="main-store-banner">
-                                        <img class="img-fluid rounded-2"
-                                            src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
-                                            alt="store-banner" />
-                                    </div>
-                                    <!-- Store Logo and Rating -->
-                                    <div class="px-3 pb-3">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="store-logo">
-                                                <img class="img-fluid"
-                                                    src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                    alt="store-logo" />
-                                            </div>
-                                            <div class="store-rating">
-                                                <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
-                                                    class="btn btn-common-one rounded-circle store-btn">
-                                                    <i class="fa-solid fa-store"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Store Info -->
-                                        <div class="pt-4 d-flex justify-content-between store_title">
-                                            <a
-                                                href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
-                                                <h6>{{ $latest_store->title }}</h6>
-                                            </a>
-
-                                            <div>
-                                                <a href="{{ $latest_store->location }}"
-                                                    class="btn border-0 p-0 m-0 ps-2">
-                                                    <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                        title="Store Location"></i>
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-        <!-- All Stores -->
-        <section>
-            <div class="container">
-                <div class="row py-5">
-                    <div class="col-lg-12">
-                        <div class="d-flex align-items-center">
+                    <div class="col-lg-3">
+                        <div class="d-flex align-items-center d-none d-lg-block">
                             <h3>All Stores</h3>
                             <span class="store-devider"></span>
                         </div>
                     </div>
-                </div>
-                <div class="row pb-4">
-                    @foreach ($stores as $store)
-                        <div class="col-lg-3">
-                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
 
-                                <div class="card border-0 shadow-sm mb-4">
-                                    <div class="card-body p-0 rounded-2">
-                                        <!-- Store Banner -->
-                                        <div class="main-store-banner">
-                                            <img class="img-fluid rounded-2"
-                                                src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
-                                                alt="arong-banner.jpg" />
+                    <div class="col-lg-9">
+                        <div class="row">
+
+                            <div class="col-6 col-lg-2">
+                                <!-- Filter Store - Division -->
+                                <div class="">
+                                    <select class="form-select" id="" name="division_id"
+                                        data-placeholder="Select Division" autocomplete="off">
+
+                                        <option value="">Division</option>
+
+                                        @foreach ($alldivs as $division)
+                                            <option value="{{ $division->id }}"
+                                                {{ request()->get('division') == $division->id ? 'selected' : '' }}>
+                                                {{ $division->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-lg-2">
+                                <div class="">
+                                    <select class="form-select" id="" name="city_id"
+                                        data-placeholder="Select City" autocomplete="off">
+                                        <option value="">City</option>
+
+                                        {{-- @foreach ($allcitys as $allcity)
+                                            <option value="{{ $allcity->id }}"
+                                                {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
+                                                {{ $allcity->name }}</option>
+                                        @endforeach --}}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-lg-2">
+                                <div class="">
+                                    <select class="form-select" id="" name="area_id"
+                                        data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
+                                        <option value="">Area</option>
+                                        @foreach ($allareas as $allarea)
+                                            <option value="{{ $allarea->id }}"
+                                                {{ request()->get('area') == $allarea->id ? 'selected' : '' }}>
+                                                {{ $allarea->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <script>
+                                    function searchStoreByArea(areaId) {
+                                        if (areaId) {
+                                            // Redirect to the courses page with the selected section ID
+                                            window.location.href = `/store/all?area=${areaId}`;
+                                        }
+                                    }
+                                </script>
+                            </div>
+
+                            <div class="col-6 col-lg-6">
+                                <div class="wrapper-store">
+                                    <div class="search-input-store">
+                                        {{-- <form action=""> --}}
+                                        <input type="text" id="serviceSearch" autocomplete="off" name="search"
+                                            placeholder="Type to search..." />
+                                        <div class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                                                </path>
+                                            </svg>
                                         </div>
-                                        <!-- Store Logo And Rating -->
-                                        <div class="px-3 pb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="store-logo">
-                                                    <img class="img-fluid"
-                                                        src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                        alt="arong-logo.png" />
-                                                </div>
-                                                <div class="store-rating">
-                                                    <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}"
-                                                        class="btn btn-common-one rounded-circle store-btn"><i
-                                                            class="fa-solid fa-store" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
+                                        {{-- </form> --}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Search Store -->
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+        <!-- All Stores -->
+
+        <section>
+            <div class="container">
+
+                @if ($stores->count() > 0)
+
+                    <div class="row pb-4" id="servicesContainer">
+                        @foreach ($stores as $store)
+                            <div class="col-lg-3 col-6">
+                                <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
+
+                                    <div class="card border-0 shadow-sm mb-4">
+                                        <div class="card-body p-0 rounded-2">
+                                            <!-- Store Banner -->
+                                            <div class="main-store-banner">
+                                                <img class="img-fluid rounded-2"
+                                                    src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
+                                                    alt="arong-banner.jpg" />
                                             </div>
-                                            <!-- Store Info -->
-                                            <div class="pt-4 d-flex justify-content-between store_title">
-                                                <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
-                                                    <div>
-                                                        <h6>{{ $store->title }}</h6>
+                                            <!-- Store Logo And Rating -->
+                                            <div class="px-3 pb-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="store-logo">
+                                                        <img class="img-fluid"
+                                                            src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
+                                                            alt="arong-logo.png" />
                                                     </div>
-                                                </a>
-                                                <div>
-                                                    <div>
-                                                        <a href="{{ $store->location }}"
-                                                            class="btn border-0 p-0 m-0 ps-2">
-                                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                                title="Store Location"></i>
+                                                    <div class="store-rating">
+                                                        <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
+                                                            class="btn btn-common-one rounded-circle store-btn"><i
+                                                                class="fa-solid fa-store" aria-hidden="true"></i>
                                                         </a>
                                                     </div>
                                                 </div>
+                                                <!-- Store Info -->
+                                                <div class="pt-4 d-flex justify-content-between store_title">
+                                                    <a
+                                                        href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
+                                                        <div>
+                                                            <h6>{{ $store->title }}</h6>
+                                                        </div>
+                                                    </a>
+                                                    <div>
+                                                        <div>
+                                                            <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
+                                                                class="btn border-0 p-0 m-0 ps-2">
+                                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
+                                                                    title="Store Location"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
+                                </a>
+                            </div>
+                        @endforeach
 
-                <!-- Pagination Links -->
-                <nav aria-label="Page navigation example">
-                    {{ $stores->links() }} <!-- Laravel's built-in pagination -->
-                </nav>
+                        <!-- Pagination Links -->
+                        <nav aria-label="Page navigation example">
+                            {{ $stores->links() }}
+                        </nav>
+
+                    </div>
+                @else
+                    <p class="mb-3">No Store Avaiable</p>
+                @endif
+
+
+
             </div>
         </section>
+
     </div>
 
-    <div class="mobile-homepage" style="margin-top: 6rem;margin-bottom: 8rem;">
-        <div class="container">
-            <form action="">
-                <div class="row align-items-center px-2">
-                    <div class="col-4 px-0">
-                        <h6 class="text-start">Top Stores</h6>
-                    </div>
-                    {{-- <div class="col-4 px-0">
-                        <div class="btn-group pe-2">
-                            <select class="form-select form-select-sm" id="division_filter" name="division_id"
-                                data-placeholder="Select Division" autocomplete="off">
-                                <option value="">Select Division</option>
-                                @forelse ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                @empty
-                                    <option disabled>No Division Available</option>
-                                @endforelse
-                            </select>
-                        </div>
-                    </div> --}}
-                    <div class="col-4 px-0">
-                        <div class="btn-group pe-2">
-                            <select class="form-select" id="city_filter" name="city_id"
-                                data-placeholder="Select City" autocomplete="off">
-                                <option value="">Filter</option>
-                                @foreach ($citys as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 ps-0 pe-0">
-                        <div class="wrapper-store">
-                            <div class="search-input-store">
-                                <input type="text" id="serviceSearch" autocomplete="off" name=""
-                                    placeholder="search..." style="height: 40px" />
-                                <div class="icon pt-1" style="height: 40px">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                                        fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-                                        </path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row mt-4 gx-2">
-                @foreach ($latest_stores as $latest_store)
-                    <div class="col-6 mb-2">
-                        <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
-                            <div class="card p-0 border-0 shadow-none" style="border: 1px solid #F15A2D !important;">
-                                <div class="card-header p-0 border-0 shadow-none">
-                                    <div class="offers-img-mb">
-                                        <img class="img-fluid"
-                                            src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
-                                            alt=""
-                                            onerror="this.onerror=null;this.src='{{ asset('images/demo-card-store.png') }}';">
-                                    </div>
-                                </div>
-                                <div class="card-body border-0 p-0">
-                                    <div class="d-flex justify-content-between align-items-center px-2 py-3 pb-2">
-                                        <div class="store-logo-mb">
-                                            <img class="img-fluid"
-                                                src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                alt="">
-                                        </div>
-                                        <div>
-                                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
-                                                class="store-btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-                                                    viewBox="0 0 13 13" fill="none">
-                                                    <g clip-path="url(#clip0_1_2457)">
-                                                        <path
-                                                            d="M12.9878 4.37048L12.2524 1.4276C12.1623 1.06604 11.8373 0.812542 11.4643 0.812542H1.53638C1.16344 0.812542 0.838439 1.06604 0.747439 1.4276L0.0121265 4.37048C0.00400146 4.40217 -6.10352e-05 4.43548 -6.10352e-05 4.46879C-6.10352e-05 5.58842 0.865252 6.50004 1.92963 6.50004C2.54794 6.50004 3.09963 6.1921 3.45306 5.71435C3.8065 6.1921 4.35819 6.50004 4.9765 6.50004C5.59481 6.50004 6.1465 6.1921 6.49994 5.71435C6.85338 6.1921 7.40425 6.50004 8.02338 6.50004C8.6425 6.50004 9.19338 6.1921 9.54681 5.71435C9.90025 6.1921 10.4511 6.50004 11.0703 6.50004C12.1346 6.50004 12.9999 5.58842 12.9999 4.46879C12.9999 4.43548 12.9959 4.40217 12.9878 4.37048ZM11.0703 7.31254C10.5169 7.31254 9.99125 7.14354 9.54681 6.83479C8.65794 7.4531 7.38881 7.4531 6.49994 6.83479C5.61106 7.4531 4.34194 7.4531 3.45306 6.83479C3.00863 7.14354 2.48294 7.31254 1.92963 7.31254C1.53069 7.31254 1.1545 7.2191 0.812439 7.05985V11.375C0.812439 11.8235 1.17644 12.1875 1.62494 12.1875H4.87494V8.93754H8.12494V12.1875H11.3749C11.8234 12.1875 12.1874 11.8235 12.1874 11.375V7.05985C11.8454 7.2191 11.4692 7.31254 11.0703 7.31254Z"
-                                                            fill="white" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_1_2457">
-                                                            <rect width="13" height="13" fill="white" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-between align-items-center mt-2 px-2 py-2 shadow-sm">
-                                        <div>
-                                            <p class="mfs mb-0">
-                                                {{ \Illuminate\Support\Str::limit($latest_store->title, 10, '') }}</p>
-                                        </div>
-                                        <div class="">
-                                            <a href="{{ $latest_store->location }}" class="bg-transparent border-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20"
-                                                    viewBox="0 0 15 20" fill="none">
-                                                    <path
-                                                        d="M7.5 0C3.365 0 0 3.38833 0 7.55417C0 13.4733 6.795 19.585 7.08417 19.8417C7.19846 19.944 7.34644 20.0006 7.49984 20.0008C7.65324 20.0009 7.80133 19.9446 7.91583 19.8425C8.205 19.585 15 13.4733 15 7.55417C15 3.38833 11.635 0 7.5 0ZM7.5 11.6667C5.2025 11.6667 3.33333 9.7975 3.33333 7.5C3.33333 5.2025 5.2025 3.33333 7.5 3.33333C9.7975 3.33333 11.6667 5.2025 11.6667 7.5C11.6667 9.7975 9.7975 11.6667 7.5 11.6667Z"
-                                                        fill="#F15A2D" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-12 pe-0">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <h3 class="mb-0 py-3 main-color">All Stores</h3>
-                            <span class="store-devider mt-2"></span>
-                        </div>
-                    </div>
-                </div>
-                @foreach ($stores as $store)
-                    <div class="col-6 mb-2">
-                        <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
-                            <div class="card p-0 border-0 shadow-none" style="border: 1px solid #F15A2D !important;">
-                                <div class="card-header p-0 border-0 shadow-none">
-                                    <div class="offers-img-mb">
-                                        <img class="img-fluid"
-                                            src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
-                                            alt=""
-                                            onerror="this.onerror=null;this.src='{{ asset('images/demo-card-store.png') }}';">
-                                    </div>
-                                </div>
-                                <div class="card-body border-0 p-0">
-                                    <div class="d-flex justify-content-between align-items-center px-2 py-3 pb-2">
-                                        <div class="store-logo-mb">
-                                            <img class="img-fluid"
-                                                src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                alt="">
-                                        </div>
-                                        <div>
-                                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
-                                                class="store-btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-                                                    viewBox="0 0 13 13" fill="none">
-                                                    <g clip-path="url(#clip0_1_2457)">
-                                                        <path
-                                                            d="M12.9878 4.37048L12.2524 1.4276C12.1623 1.06604 11.8373 0.812542 11.4643 0.812542H1.53638C1.16344 0.812542 0.838439 1.06604 0.747439 1.4276L0.0121265 4.37048C0.00400146 4.40217 -6.10352e-05 4.43548 -6.10352e-05 4.46879C-6.10352e-05 5.58842 0.865252 6.50004 1.92963 6.50004C2.54794 6.50004 3.09963 6.1921 3.45306 5.71435C3.8065 6.1921 4.35819 6.50004 4.9765 6.50004C5.59481 6.50004 6.1465 6.1921 6.49994 5.71435C6.85338 6.1921 7.40425 6.50004 8.02338 6.50004C8.6425 6.50004 9.19338 6.1921 9.54681 5.71435C9.90025 6.1921 10.4511 6.50004 11.0703 6.50004C12.1346 6.50004 12.9999 5.58842 12.9999 4.46879C12.9999 4.43548 12.9959 4.40217 12.9878 4.37048ZM11.0703 7.31254C10.5169 7.31254 9.99125 7.14354 9.54681 6.83479C8.65794 7.4531 7.38881 7.4531 6.49994 6.83479C5.61106 7.4531 4.34194 7.4531 3.45306 6.83479C3.00863 7.14354 2.48294 7.31254 1.92963 7.31254C1.53069 7.31254 1.1545 7.2191 0.812439 7.05985V11.375C0.812439 11.8235 1.17644 12.1875 1.62494 12.1875H4.87494V8.93754H8.12494V12.1875H11.3749C11.8234 12.1875 12.1874 11.8235 12.1874 11.375V7.05985C11.8454 7.2191 11.4692 7.31254 11.0703 7.31254Z"
-                                                            fill="white" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_1_2457">
-                                                            <rect width="13" height="13" fill="white" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-between align-items-center mt-2 px-2 py-2 shadow-sm">
-                                        <div>
-                                            <p class="mfs mb-0">
-                                                {{ \Illuminate\Support\Str::limit($store->title, 10, '') }}</p>
-                                        </div>
-                                        <div class="">
-                                            <a href="{{ $latest_store->location }}" class="bg-transparent border-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20"
-                                                    viewBox="0 0 15 20" fill="none">
-                                                    <path
-                                                        d="M7.5 0C3.365 0 0 3.38833 0 7.55417C0 13.4733 6.795 19.585 7.08417 19.8417C7.19846 19.944 7.34644 20.0006 7.49984 20.0008C7.65324 20.0009 7.80133 19.9446 7.91583 19.8425C8.205 19.585 15 13.4733 15 7.55417C15 3.38833 11.635 0 7.5 0ZM7.5 11.6667C5.2025 11.6667 3.33333 9.7975 3.33333 7.5C3.33333 5.2025 5.2025 3.33333 7.5 3.33333C9.7975 3.33333 11.6667 5.2025 11.6667 7.5C11.6667 9.7975 9.7975 11.6667 7.5 11.6667Z"
-                                                        fill="#F15A2D" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    {{-- @include('frontend.pages.allStore_mobile_view') --}}
 
     @push('scripts')
         <script>
             $(document).ready(function() {
-                // Listen for changes in the filter fields
-                $('#division_filter, #city_filter, #area_filter, #storeSearch').on('change keyup', function() {
-                    // Collect filter values
-                    let division_id = $('#division_filter').val();
-                    let city_id = $('#city_filter').val();
-                    let area_id = $('#area_filter').val();
-                    let search_query = $('#storeSearch').val();
+                $('#serviceSearch').on('keyup', function() {
+                    var query = $(this).val();
 
-                    // Check if all fields are cleared
-                    if (division_id === '' && city_id === '' && area_id === '' && search_query === '') {
-                        // If cleared, fetch all stores without any filters
-                        fetchStores();
+                    // If the input field is empty, do a search without a query
+                    if (query === '') {
+                        window.location.href = "{{ route('allStore') }}";
                     } else {
-                        // AJAX request to fetch filtered stores
                         $.ajax({
-                            url: '{{ route('store.filter') }}',
+                            url: "{{ route('store.search.names') }}",
                             method: 'GET',
                             data: {
-                                division_id: division_id,
-                                city_id: city_id,
-                                area_id: area_id,
-                                search: search_query
+                                query: query
                             },
-                            success: function(response) {
-                                // Update store listings with the response
-                                $('#servicesContainer').html(response.stores);
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error fetching stores: ' + error);
+                            success: function(data) {
+                                $('#servicesContainer').html(data);
                             }
                         });
                     }
                 });
+            });
+        </script>
 
-                // Fetch all stores when the page loads (in case no filter is applied)
-                function fetchStores() {
-                    $.ajax({
-                        url: '{{ route('store.filter') }}',
-                        method: 'GET',
-                        data: {
-                            division_id: '',
-                            city_id: '',
-                            area_id: '',
-                            search: ''
-                        },
-                        success: function(response) {
-                            // Update store listings with the response
-                            $('#servicesContainer').html(response.stores);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching stores: ' + error);
-                        }
-                    });
-                }
+        <script>
+            $(document).ready(function() {
+                // When Division is selected
+                $('select[name="division_id"]').on('change', function() {
+                    var division_id = $(this).val();
+                    if (division_id) {
+                        $.ajax({
+                            url: "{{ url('/district-get/ajax') }}/" + division_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                // Empty the city dropdown before populating
+                                $('select[name="city_id"]').html(
+                                    '<option value="">Select City</option>');
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>'); // Clear area dropdown
 
-                // Initially load all stores if no filters are applied
-                fetchStores();
+                                $.each(data, function(key, value) {
+                                    $('select[name="city_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
+                            },
+                            error: function() {
+                                alert("Error fetching cities");
+                            }
+                        });
+                    } else {
+                        alert('Please select a division');
+                    }
+                });
 
-                // Clear filters button functionality
-                $('#clearFilters').click(function() {
-                    // Reset all filters and the search field
-                    $('#division_filter').val('');
-                    $('#city_filter').val('');
-                    $('#area_filter').val('');
-                    $('#storeSearch').val('');
+                // When City is selected
+                $('select[name="city_id"]').on('change', function() {
+                    var city_id = $(this).val();
+                    if (city_id) {
+                        $.ajax({
+                            url: "{{ url('/state-get/ajax') }}/" + city_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                // Empty the area dropdown before populating
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>');
 
-                    // Fetch all stores again
-                    fetchStores();
+                                $.each(data, function(key, value) {
+                                    $('select[name="area_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
+                            },
+                            error: function() {
+                                alert("Error fetching areas");
+                            }
+                        });
+                    } else {
+                        $('select[name="area_id"]').html('<option value="">Select Area</option>');
+                    }
                 });
             });
         </script>

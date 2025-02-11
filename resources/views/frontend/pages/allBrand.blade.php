@@ -1,5 +1,6 @@
 <x-frontend-app-layout :title="'All Brands || DiscountZShop'">
-    <div class="desktop-homepage">
+
+    <div class="mb-5">
         <section>
             <div class="regular-banner">
                 <img class="img-fluid w-100"
@@ -10,28 +11,33 @@
 
         <!-- Brands All -->
         <section>
-            <div class="container py-5">
-                <div class="row pb-5">
-                    <div class="col-lg-12">
-                        <div class="text-center">
+            <div class="container py-3 py-lg-3">
+
+                <div class="row">
+                    <div class="col-lg-12 d-none d-lg-block">
+                        <div class="text-center mb-lg-5 mb-0">
                             <h1>Discover Our Esteemed Brands</h1>
                         </div>
                     </div>
                 </div>
 
                 <div class="row align-items-center py-3 border">
-                    <div class="col-lg-6">
+
+                    <div class="col-lg-6 d-none d-lg-block">
                         <h1 class="mb-0 site-color">All Brands</h1>
                     </div>
+
                     <div class="col-lg-2"></div>
+
                     <div class="col-lg-4">
                         <div class="text-end">
                             <form class="d-flex" role="search" id="searchForm">
                                 {{-- <input class="form-control me-0" type="search" id="serviceSearch" placeholder="Search"
                                     aria-label="Search"> --}}
                                 <div class="input-group">
-                                    <input class="form-control" type="search" id="serviceSearch" placeholder="Search Your Brand"
-                                        aria-describedby="button-addon2" aria-label="Search">
+                                    <input class="form-control" type="search" id="serviceSearch"
+                                        placeholder="Search Your Brand" aria-describedby="button-addon2"
+                                        aria-label="Search">
                                     <button class="btn btn-outline-secondary rounded-0" type="button"
                                         id="button-addon2">
                                         <i class="fa-solid fa-search"></i>
@@ -43,10 +49,10 @@
 
                 </div>
 
-                <div class="row gx-5" id="servicesContainer">
+                <div class="row gx-5 mb-5 mb-lg-0" id="servicesContainer">
                     @foreach ($categories as $category)
                         @if ($category->brands->count() > 0)
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 col-12">
                                 <div class="row bg-light">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
@@ -55,7 +61,7 @@
                                         </div>
                                     </div>
                                     @foreach ($category->brands as $brand)
-                                        <div class="col-lg-2 mb-3 mt-2">
+                                        <div class="col-lg-2 col-4 mb-3 mt-2">
                                             <a href="{{ route('brand.details', $brand->slug) }}">
                                                 <div class="card shadow-sm brands-card">
                                                     <div class="card-body p-0">
@@ -79,38 +85,9 @@
             </div>
         </section>
 
-        <!-- Big Brands Section -->
-        <section>
-            <div class="container py-5 pt-0">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <h1>Big Brands Are Here</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="container-fluid partners">
-                <div class="container px-0">
-                    <div class="slick-slider-partners">
-                        @foreach ($brands as $brand)
-                            <div class="items d-flex justify-content-center align-items-center partners-logos">
-                                <a href="{{ route('brand.details', $brand->slug) }}">
-                                    <img class="img-fluid"
-                                        src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                        alt="" />
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
-    <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
+
+    {{-- <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
         <div class="container">
             <div class="row">
                 <div class="col-12 px-0">
@@ -119,10 +96,12 @@
                     </div>
                 </div>
                 <div class="col-12 px-0 pt-2">
+
                     <form class="d-flex" role="search" id="searchForm">
                         <input class="form-control mx-2 mt-2" type="search" id="serviceSearch" placeholder="Search"
                             aria-label="Search" style="height: 35px">
                     </form>
+
                     <div class="d-flex justify-content-end">
                         <span>
                             <i class="fa-solid fa-search brand-search"></i>
@@ -163,7 +142,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @push('scripts')
         <script>

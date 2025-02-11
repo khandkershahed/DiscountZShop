@@ -1,6 +1,7 @@
 <x-frontend-app-layout :title="'Overview || DiscountZShop'">
 
     @include('frontend.pages.vendor.partial.header')
+
     <div class="desktop-homepage">
         {{-- Overview Start --}}
         <section>
@@ -57,8 +58,8 @@
                             </p>
                         </div>
                         <div class="col-lg-2 mt-4">
-                            <a href="{{ route('vendor.offers', optional($brand)->slug) }}" class="btn btn-common-one">
-                                See All Offers <i class="fa-solid fa-arrow-right ps-3"></i>
+                            <a href="{{ optional($brand)->url }}" class="btn btn-common-one">
+                                View <i class="fa-solid fa-arrow-right ps-3"></i>
 
                             </a>
                         </div>
@@ -68,6 +69,7 @@
         </section>
         {{-- Overview End --}}
     </div>
+
     {{-- For Mobile Only --}}
     <div class="mobile-homepage" style="margin-bottom: 8rem">
         {{-- Overview Start --}}

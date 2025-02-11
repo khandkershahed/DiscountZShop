@@ -22,7 +22,7 @@ class Category extends Model
     // protected $casts = [
     //     'status' => 'boolean',
     // ];
-    
+
 
     public function parent()
     {
@@ -33,6 +33,7 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+    
     public function brands()
     {
         return $this->hasMany(Brand::class, 'category_id');
