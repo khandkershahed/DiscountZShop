@@ -1090,7 +1090,6 @@
                 }
             }
         </script>
-        
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>

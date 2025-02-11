@@ -11,7 +11,8 @@
             /* Adds consistent space between dots */
         }
     </style>
-    <div id="kt_content_container" class="container-xxl">
+
+    {{-- <div id="kt_content_container" class="container-xxl">
         <div class="py-5 desktop-homepage">
             <div class="row gy-5 g-xl-8">
                 <div class="col-xl-4">
@@ -167,7 +168,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
     <div class="mobile-homepage w-100 bg-white" style="padding-bottom: 9rem">
         <div class="p-0">
             <div class="container-fluid pt-5 "
@@ -175,15 +177,11 @@
                 <div class="row align-items-centers px-5 pt-10">
                     <div class="col-8">
                         <div class="user-info">
-                            <img src="{{ asset('images/user.png') }}" alt="">
+                            <img src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" alt="">
                             <div class="ps-2">
-                                <h2 class="text-white">Jaydon Lipshutz</h2>
+                                <h2 class="text-white">{{ Auth::user()->name }}</h2>
                                 <div class="d-flex align-items-centers">
-                                    <span>
-                                        <img class="modal-img img-fluid" src="{{ asset('images/vector.svg') }}"
-                                            alt="">
-                                    </span>
-                                    <span class="text-white ps-2">Gold Membar</span>
+                                    <span class="text-white">{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +201,8 @@
                                     </span>
                                 </a>
                             </div>
-                            <div class="dropdown position-static ps-3">
+
+                            {{-- <div class="dropdown position-static ps-3">
                                 <a href="javascript:void(0)" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <span class="" style="margin-right: -20px;">
@@ -221,12 +220,15 @@
                                         asdasdasd
                                     </div>
                                 </ul>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </div>
                 </div>
+
                 <div class="row pt-5 mt-5">
-                    <div class="col-lg-12">
+
+                    {{-- <div class="col-lg-12">
                         <div class="card mx-2 shadow-none"
                             style="border-radius: 20px 20px 0px 0px; margin-top: 25px;">
                             <div class="card-body shadow-none p-8 py-15">
@@ -320,9 +322,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
                 </div>
-                <div class="row mx-3">
+
+                {{-- <div class="row mx-3">
                     <div class="col-12 px-0">
                         <div class="pt-10 d-flex justify-content-between align-items-center">
                             <div>
@@ -339,10 +343,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
             </div>
         </div>
-        <div class="" style="margin-top: 13rem">
+
+        {{-- <div class="" style="margin-top: 13rem">
             <div class="container">
                 <div class="row mx-0">
                     <div class="col-lg-12">
@@ -374,8 +380,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> --}}
+
+        {{-- <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="card p-3 rounded-3 border" style="background-color: #F8F8F8;">
@@ -569,8 +576,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> --}}
+
+        {{-- <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="mt-5">
@@ -600,7 +608,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
         <!-- Modal trigger button -->
         <div class="modal fade" id="user-search" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
             role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
@@ -650,6 +659,7 @@
         </script>
 
     </div>
+
     @push('scripts')
         <script>
             document.addEventListener("DOMContentLoaded", function() {

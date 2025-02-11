@@ -2,8 +2,8 @@
     .disabled {
         pointer-events: none;
         opacity: 0.5;
-        /* Makes it look faded */
         cursor: not-allowed;
+        background-color: #a9a9a9;
     }
 </style>
 

@@ -94,10 +94,14 @@
                                         </g>
                                     </svg>
                                 </a>
+
                                 <div class="dropdown position-static">
+
                                     <p class="ms-3 mb-2">{{ $city }} ,
                                         {{ $country }}</p>
+
                                     @if ($categories->count() > 0)
+
                                         <a href="javascript:void(0)" class="dropdown-toggle ms-3 category-menu"
                                             type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
                                             data-bs-auto-close="outside" aria-expanded="false">
@@ -113,6 +117,7 @@
                                                 </div>
                                             </span>
                                         </a>
+                                        
                                         <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
                                             aria-labelledby="dropdownMenuButton1"
                                             style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
@@ -414,6 +419,7 @@
             </div>
         </div>
     </header>
+
     {{-- Mobile Menus --}}
     <div class="offcanvas offcanvas-start w-100" data-bs-backdrop="static" tabindex="-1" id="Id2"
         aria-labelledby="staticBackdropLabel">

@@ -103,3 +103,6 @@ Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 // Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
 // Route::get('/brand/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
 // Route::get('/brand/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
+
+
+Route::get('/offers/area/{area_id}', [HomeController::class, 'showOffersByArea'])->name('offers.byArea');
