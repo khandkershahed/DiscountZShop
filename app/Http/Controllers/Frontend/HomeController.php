@@ -332,7 +332,6 @@ class HomeController extends Controller
         return json_encode($ship);
     }
 
-
     public function searchStoreName(Request $request)
     {
         $query = $request->input('query');
@@ -361,7 +360,6 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.storeDetails', $data);
     }
-
 
     //allOffer
     public function allOffer(Request $request)
@@ -392,7 +390,7 @@ class HomeController extends Controller
             $offers->whereJsonContains('area_id', $areaId);
         }
 
-        $offers = $offers->paginate(35);
+        $offers = $offers->paginate(25);
         // $offers = $offers->get();
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
