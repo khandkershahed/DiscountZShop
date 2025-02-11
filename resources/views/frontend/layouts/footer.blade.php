@@ -257,9 +257,13 @@
                         </a>
                     </div>
                 </div>
+
+                {{-- Google Link  --}}
                 <div class="col-2">
                     <div class="footer-center-menus">
-                        <a href="{{ route('homePage') }}">
+
+                        <a href="">
+
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                     viewBox="0 0 80 80" fill="none">
@@ -282,9 +286,14 @@
                                         fill="white" />
                                 </svg>
                             </div>
+
                         </a>
+
+
                     </div>
                 </div>
+                {{-- Google Link  --}}
+
                 <div class="col-5">
                     <div class="d-flex justify-content-around align-items-center">
                         <a href="{{ route('allStore') }}">

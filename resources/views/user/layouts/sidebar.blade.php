@@ -32,7 +32,8 @@
         data-kt-scroll-offset="0">
         <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
             id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
-            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+
+            {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <span class="menu-link">
                     <span class="menu-icon">
                         <span class="svg-icon svg-icon-2">
@@ -53,6 +54,7 @@
                     <span class="menu-title">Category</span>
                     <span class="menu-arrow"></span>
                 </span>
+
                 <div class="menu-sub menu-sub-accordion">
                     <div class="menu-item">
                         <a class="menu-link" href="JavaScript:void(0)">
@@ -71,8 +73,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+
+            </div> --}}
+
+            {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                 <span class="menu-link">
                     <span class="menu-icon">
                         <span class="svg-icon svg-icon-2">
@@ -154,7 +158,8 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+
         </div>
     </div>
 

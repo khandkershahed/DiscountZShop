@@ -95,39 +95,6 @@
 
     <div class="container">
 
-        {{-- Banner Image Section Start --}}
-        {{-- <div class="row">
-            <div class="col-12">
-                <div class="pt-3 pb-5 custom-slider">
-                    <div>
-                        <a href="{{ $banner->image_one_url }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="{{ $banner->image_two_url }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="{{ $banner->image_three_url }}">
-                            <img class="img-fluid fixed-size rounded-2"
-                                src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
-                                alt=""
-                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}';" />
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div> --}}
-        {{-- Banner Image Section End --}}
 
         {{-- All Offers Start --}}
         <div class="py-4 mt-2 row bg-light">
@@ -150,15 +117,18 @@
                         <!-- Loop through categories -->
                         @if ($categories->count() > 0)
                             @foreach ($categories as $index => $offercategory)
-                                <li class="flex-shrink-0 nav-item" role="presentation">
-                                    <button class="nav-link mb-link-tabs whitespace-nowrap" style="font-size: 10px"
-                                        id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
-                                        data-bs-target="#home-mobile-{{ $offercategory->id }}-pane" type="button"
-                                        role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
-                                        aria-selected="true">
-                                        {{ $offercategory->name }}
-                                    </button>
-                                </li>
+                                @if ($offercategory->offers->count() > 0)
+                                    <li class="nav-item flex-shrink-0 {{ $index >= 7 ? 'd-none more-tabs' : '' }}"
+                                        role="presentation">
+                                        <button class="nav-link mb-link-tabs whitespace-nowrap" style="font-size: 10px"
+                                            id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
+                                            data-bs-target="#home-mobile-{{ $offercategory->id }}-pane" type="button"
+                                            role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
+                                            aria-selected="true">
+                                            {{ $offercategory->name }}
+                                        </button>
+                                    </li>
+                                @endif
                             @endforeach
                         @endif
                     </ul>
@@ -172,24 +142,31 @@
                         aria-labelledby="home-tab-mobile" tabindex="0">
                         <div class="mt-3 row g-2">
                             @foreach ($alloffers as $alloffer)
-                                <div class="col-4">
-                                    <div class="p-0 card" style="border: 2px dashed #eee">
-                                        <div
-                                            class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
-                                            <div class="offers-img">
-                                                <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                    alt="">
-                                            </div>
-                                            <div>
-                                                @if (!empty($alloffer->badge))
-                                                    <p class="ps-2">
-                                                        <small>{{ $alloffer->badge }}</small>
-                                                    </p>
-                                                @endif
+                                @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
+                                    <div class="col-4">
+                                        <div class="p-0 card" style="border: 2px dashed #eee">
+                                            <div
+                                                class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
+                                                <div class="offers-img">
+
+
+                                                    <a href="{{ route('offer.details', $alloffer->slug) }}">
+                                                        <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                            alt="">
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    @if (!empty($alloffer->badge))
+                                                        <h6>
+                                                            <a
+                                                                href="{{ route('offer.details', $alloffer->slug) }}">{{ $alloffer->badge }}</a>
+                                                        </h6>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -201,26 +178,38 @@
                             <div class="row">
                                 @if ($offercategory->offers->count() > 0)
                                     @foreach ($offercategory->offers as $category_offer)
-                                        <div class="col-4">
+                                        @if ($category_offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $category_offer->expiry_date == null)
+                                            <div class="col-4">
 
-                                            <div class="p-0 card" style="border: 2px dashed #eee">
-                                                <div
-                                                    class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
-                                                    <div class="offers-img">
-                                                        <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div>
-                                                        @if (!empty($category_offer->badge))
-                                                            <h6>
-                                                                {{ $category_offer->badge }}
-                                                            </h6>
-                                                        @endif
+                                                <div class="p-0 card" style="border: 2px dashed #eee">
+                                                    <div
+                                                        class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
+                                                        <div class="offers-img">
+
+                                                            <a
+                                                                href="{{ route('offer.details', $category_offer->slug) }}">
+                                                                <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                    alt="">
+                                                            </a>
+
+
+                                                        </div>
+                                                        <div>
+                                                            @if (!empty($category_offer->badge))
+                                                                <h6>
+
+                                                                    <a
+                                                                        href="{{ route('offer.details', $category_offer->slug) }}">
+                                                                        {{ $category_offer->badge }}
+                                                                    </a>
+                                                                </h6>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                        </div>
+                                            </div>
+                                        @endif
                                     @endforeach
                                 @else
                                     <img class="img-fluid" src="{{ asset('images/NoOffers.png') }}" alt="">
@@ -365,6 +354,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="p-3 card-body" style="border-top: 1px dashed #252525">
 
                                             <div class="py-2 ticket">

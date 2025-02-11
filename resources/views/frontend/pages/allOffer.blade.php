@@ -1,5 +1,6 @@
 <x-frontend-app-layout :title="'All Stores || DiscountZShop'">
     <div class="">
+
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">
@@ -156,7 +157,8 @@
                         </div> --}}
 
                         <div class="accordion d-none d-lg-block">
-                            @foreach ($categories as $header_category)
+
+                            {{-- @foreach ($categories as $header_category)
                                 <div class="accordion-header">
                                     <div class="checkbox-wrapper-offers">
                                         <input class="inp-cbx accordion-checkbox"
@@ -196,7 +198,58 @@
                                         </div>
                                     @endforeach
                                 </div>
+                            @endforeach --}}
+
+                            @foreach ($categories as $header_category)
+                                @if ($header_category->offers->count() > 0)
+                                    <!-- Check if category has offers -->
+                                    <div class="accordion-header">
+                                        <div class="checkbox-wrapper-offers">
+                                            <input class="inp-cbx accordion-checkbox"
+                                                id="category-{{ $header_category->id }}" type="checkbox" />
+                                            <label class="cbx" for="category-{{ $header_category->id }}"
+                                                onclick="toggleOffers('{{ $header_category->id }}')">
+                                                <span>
+                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                    </svg>
+                                                </span>
+                                                <span style="font-size: 14px">{{ $header_category->name }}
+                                                    ({{ $header_category->offers->count() }})</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel" id="panel-{{ $header_category->id }}">
+                                        @foreach ($header_category->children as $header_category_child)
+                                            @if ($header_category_child->offers->count() > 0)
+                                                <!-- Check if subcategory has offers -->
+                                                <div class="accordion-header">
+                                                    <div class="checkbox-wrapper-offers">
+                                                        <input class="inp-cbx accordion-checkbox"
+                                                            id="subcategory-{{ $header_category_child->id }}"
+                                                            type="checkbox" />
+                                                        <label class="cbx"
+                                                            for="subcategory-{{ $header_category_child->id }}">
+                                                            <span>
+                                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                                </svg>
+                                                            </span>
+                                                            <span
+                                                                style="font-size: 14px">{{ $header_category_child->name }}
+                                                                ({{ $header_category_child->offers->count() }})
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endif
                             @endforeach
+
+
                         </div>
 
                     </div>
@@ -372,7 +425,6 @@
                                         @endforeach --}}
 
                                         @forelse ($category->offers as $offer)
-
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <div class="mt-4 col-lg-4">
                                                     <div class="border-0 shadow-sm card bg-light">

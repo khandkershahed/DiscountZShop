@@ -47,6 +47,8 @@ class HomeController extends Controller
             'brands'             => Brand::latest()->get(),
             'offer_types'        => OfferType::latest()->get(),
 
+            'areas'              => Area::latest()->get(),
+
             'categorys'          => Category::latest()->limit(6)->get(),
 
             'mobile_stores'      => Store::latest()->limit(12)->get(),
@@ -332,7 +334,6 @@ class HomeController extends Controller
         return json_encode($ship);
     }
 
-
     public function searchStoreName(Request $request)
     {
         $query = $request->input('query');
@@ -361,7 +362,6 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.storeDetails', $data);
     }
-
 
     //allOffer
     public function allOffer(Request $request)
@@ -392,7 +392,7 @@ class HomeController extends Controller
             $offers->whereJsonContains('area_id', $areaId);
         }
 
-        $offers = $offers->paginate(35);
+        $offers = $offers->paginate(25);
         // $offers = $offers->get();
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));

@@ -82,7 +82,8 @@
                                 <a href="../../demo1/dist/account/settings.html" class="px-5 menu-link">Account
                                     Settings</a>
                             </div>
-                            <div class="px-5 menu-item">
+
+                            <div class="menu-item px-5">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a href="{{ route('logout') }}"
@@ -91,6 +92,7 @@
                                         class="px-5 menu-link"> {{ __('Sign Out') }}</a>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
