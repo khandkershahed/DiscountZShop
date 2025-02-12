@@ -1,6 +1,5 @@
 <x-frontend-app-layout :title="'DiscountZShop'">
     <div class="desktop-homepage">
-
         <!-- Hero Section -->
         <section>
             <div class="px-0 container-fluid" style="overflow: hidden">
@@ -295,6 +294,7 @@
             </div>
         </section>
         <!-- Grab Your Offer End -->
+
         <!-- Biggest Deals From Product -->
         @if (optional($homepage)->brand)
             <section>
@@ -409,7 +409,7 @@
         <!-- Biggest Deals From -->
 
         <!-- Map By Location -->
-        @include('frontend.pages.home.map')
+        {{-- @include('frontend.pages.home.map') --}}
         <!-- Map By Location End -->
 
         <!-- Product Slider -->
@@ -420,42 +420,45 @@
                         <!-- Slick Slider -->
                         <div class="slick-slider-product">
                             @forelse ($offerLatests as $offerLatest)
-                                <div class="items me-2" style="background-color: #f5f6f8">
-                                    <div class="p-4 row align-items-center product-discount-box">
-                                        <div class="col-lg-7 col-sm-12">
-                                            <div class="product_discount_box">
-                                                <h4>{{ $offerLatest->name }}</h4>
-                                                <p class="py-3">
-                                                    {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
-                                                </p>
-                                                <div class="pt-4">
-                                                    <a href="{{ route('offer.details', $offerLatest->slug) }}">
-                                                        <button class="learn-more">
-                                                            <span class="circle" aria-hidden="true">
-                                                                <span class="icon arrow"></span>
-                                                            </span>
-                                                            <span class="button-text">See Details</span>
-                                                        </button>
-                                                    </a>
+                                @if ($offerLatest->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $offerLatest->expiry_date == null)
+                                    <div class="items me-2" style="background-color: #f5f6f8">
+                                        <div class="p-4 row align-items-center product-discount-box">
+                                            <div class="col-lg-7 col-sm-12">
+                                                <div class="product_discount_box">
+                                                    <h4>{{ $offerLatest->name }}</h4>
+                                                    <p class="py-3">
+                                                        {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
+                                                    </p>
+                                                    <div class="pt-4">
+                                                        <a href="{{ route('offer.details', $offerLatest->slug) }}">
+                                                            <button class="learn-more">
+                                                                <span class="circle" aria-hidden="true">
+                                                                    <span class="icon arrow"></span>
+                                                                </span>
+                                                                <span class="button-text">See Details</span>
+                                                            </button>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <div>
-                                                <h5 class="pt-4 pb-3 text-center main-color pt-lg-0 fw-bold">
-                                                    {{ $offerLatest->badge }}
-                                                </h5>
-                                                <div class="text-center d-flex justify-content-center">
-                                                    <img class="img-fluid flat-offer-img rounded-circle"
-                                                        src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
-                                                        alt=""
-                                                        onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
+                                            <div class="col-lg-5">
+                                                <div>
+                                                    <h5 class="pt-4 pb-3 text-center main-color pt-lg-0 fw-bold">
+                                                        {{ $offerLatest->badge }}
+                                                    </h5>
+                                                    <div class="text-center d-flex justify-content-center">
+                                                        <img class="img-fluid flat-offer-img rounded-circle"
+                                                            src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
+                                                            alt=""
+                                                            onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
+
                             @empty
                                 <p>No Offer Avaiable</p>
                             @endforelse
@@ -499,46 +502,50 @@
                                 <div class="deal-slider">
 
                                     @forelse ($offerDealLefts as $offerDealLeft)
-                                        <div class="items">
-                                            <div class="py-2 d-flex justify-content-center deals-of-the-day-box">
-                                                <img class="img-fluid"
-                                                    src="{{ !empty($offerDealLeft->image) ? url('storage/' . $offerDealLeft->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
-                                                    alt=""
-                                                    onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
-                                            </div>
-                                            <div class="py-3">
+                                        @if ($offerDealLeft->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $offerDealLeft->expiry_date == null)
+                                            <div class="items">
+                                                <div class="py-2 d-flex justify-content-center deals-of-the-day-box">
+                                                    <img class="img-fluid"
+                                                        src="{{ !empty($offerDealLeft->image) ? url('storage/' . $offerDealLeft->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
+                                                        alt=""
+                                                        onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
+                                                </div>
+                                                <div class="py-3">
 
-                                                <h5 class="text-center">
-                                                    <span class="fw-bold main-color">{{ $offerDealLeft->badge }}
-                                                    </span>
-                                                    <br>
-                                                    {{ $offerDealLeft->name }}
-                                                </h5>
-
-                                            </div>
-
-                                            <div class="py-2 d-flex justify-content-center align-items-center">
-                                                <a href="{{ route('offer.details', $offerDealLeft->slug) }}"
-                                                    class="px-4 btn btn-common-one rounded-pill">See
-                                                    Details</a>
-                                            </div>
-
-                                            <div class="pt-4 pb-5 text-center">
-                                                <div>
-                                                    <h5>
-                                                        <span class="main-color">Hurry Up!</span> Offers
-                                                        end in:
+                                                    <h5 class="text-center">
+                                                        <span class="fw-bold main-color">{{ $offerDealLeft->badge }}
+                                                        </span>
+                                                        <br>
+                                                        {{ $offerDealLeft->name }}
                                                     </h5>
+
                                                 </div>
-                                                <div class="mt-4 countdown-with-days">
-                                                    <p class="pt-2 text-center countdown"
-                                                        data-expire-date="{{ $offerDealLeft->expiry_date }}">
-                                                        <span class="main-color">Expire In:</span>
-                                                        <span class="countdown-timer"> Days</span>
-                                                    </p>
+
+                                                <div class="py-2 d-flex justify-content-center align-items-center">
+                                                    <a href="{{ route('offer.details', $offerDealLeft->slug) }}"
+                                                        class="px-4 btn btn-common-one rounded-pill">See
+                                                        Details</a>
+                                                </div>
+
+                                                <div class="pt-4 pb-5 text-center">
+                                                    <div>
+                                                        <h5>
+                                                            <span class="main-color">Hurry Up!</span> Offers
+                                                            end in:
+                                                        </h5>
+                                                    </div>
+                                                    <div class="mt-4 countdown-with-days">
+                                                        <p class="pt-2 text-center countdown"
+                                                            data-expire-date="{{ $offerDealLeft->expiry_date }}">
+                                                            <span class="main-color">Expire In:</span>
+                                                            <span class="countdown-timer"> Days</span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
+
+
                                     @empty
                                         <p>No Offer Avaiable</p>
                                     @endforelse
@@ -597,8 +604,7 @@
                                                 class="py-3 d-flex justify-content-center align-items-center deal-scroll-box">
                                                 <img class="img-fluid deal-img"
                                                     src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
-                                                    alt=""
-                                                    onerror="this.onerror=null; this.src='{{ asset('http://discountzshop.com/storage/offer/image/9vi6RNBcxH1739248309.png') }}';" />
+                                                    alt="" />
                                             </div>
                                             <div>
                                                 <div>

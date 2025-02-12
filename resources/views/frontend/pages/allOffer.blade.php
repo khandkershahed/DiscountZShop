@@ -110,97 +110,11 @@
                     <div class="py-2 border shadow-sm col-lg-3">
                         {{-- Accordion Filter Start --}}
 
-                        {{-- <div class="accordion">
-
-                            @foreach ($categories as $header_category)
-                                <div class="accordion-header">
-                                    <div class="checkbox-wrapper-offers">
-                                        <input class="inp-cbx accordion-checkbox"
-                                            id="category-{{ $header_category->id }}" type="checkbox" />
-                                        <label class="cbx" for="category-{{ $header_category->id }}"
-                                            onclick="toggleOffers('{{ $header_category->id }}')">
-                                            <span>
-                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                </svg>
-                                            </span>
-                                            <span style="font-size: 14px">{{ $header_category->name }}
-                                                ({{ $header_category->offers->count() }})</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="panel" id="panel-{{ $header_category->id }}">
-                                    @foreach ($header_category->children as $header_category_child)
-                                        <div class="accordion-header">
-                                            <div class="checkbox-wrapper-offers">
-                                                <input class="inp-cbx accordion-checkbox"
-                                                    id="subcategory-{{ $header_category_child->id }}"
-                                                    type="checkbox" />
-                                                <label class="cbx"
-                                                    for="subcategory-{{ $header_category_child->id }}">
-                                                    <span>
-                                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                        </svg>
-                                                    </span>
-                                                    <span style="font-size: 14px">{{ $header_category_child->name }}
-                                                        ({{ $header_category_child->offers->count() }})
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endforeach
-
-                        </div> --}}
 
                         <div class="accordion d-none d-lg-block">
 
+
                             {{-- @foreach ($categories as $header_category)
-                                <div class="accordion-header">
-                                    <div class="checkbox-wrapper-offers">
-                                        <input class="inp-cbx accordion-checkbox"
-                                            id="category-{{ $header_category->id }}" type="checkbox" />
-                                        <label class="cbx" for="category-{{ $header_category->id }}"
-                                            onclick="toggleOffers('{{ $header_category->id }}')">
-                                            <span>
-                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                </svg>
-                                            </span>
-                                            <span style="font-size: 14px">{{ $header_category->name }}
-                                                ({{ $header_category->offers->count() }})</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="panel" id="panel-{{ $header_category->id }}">
-                                    @foreach ($header_category->children as $header_category_child)
-                                        <div class="accordion-header">
-                                            <div class="checkbox-wrapper-offers">
-                                                <input class="inp-cbx accordion-checkbox"
-                                                    id="subcategory-{{ $header_category_child->id }}"
-                                                    type="checkbox" />
-                                                <label class="cbx"
-                                                    for="subcategory-{{ $header_category_child->id }}">
-                                                    <span>
-                                                        <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                        </svg>
-                                                    </span>
-                                                    <span style="font-size: 14px">{{ $header_category_child->name }}
-                                                        ({{ $header_category_child->offers->count() }})
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endforeach --}}
-
-                            @foreach ($categories as $header_category)
                                 @if ($header_category->offers->count() > 0)
                                     <!-- Check if category has offers -->
                                     <div class="accordion-header">
@@ -247,7 +161,77 @@
                                         @endforeach
                                     </div>
                                 @endif
+                            @endforeach --}}
+
+                            @foreach ($categories as $header_category)
+                                @php
+                                    // Filter offers with expiry date greater than or equal to today
+                                    $validOffers = $header_category->offers->filter(function ($offer) {
+                                        return \Carbon\Carbon::parse($offer->expiry_date)->greaterThanOrEqualTo(
+                                            \Carbon\Carbon::now()->startOfDay(),
+                                        );
+                                    });
+                                @endphp
+
+                                @if ($validOffers->count() > 0)
+                                    <!-- Check if category has valid offers -->
+                                    <div class="accordion-header">
+                                        <div class="checkbox-wrapper-offers">
+                                            <input class="inp-cbx accordion-checkbox"
+                                                id="category-{{ $header_category->id }}" type="checkbox" />
+                                            <label class="cbx" for="category-{{ $header_category->id }}"
+                                                onclick="toggleOffers('{{ $header_category->id }}')">
+                                                <span>
+                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                    </svg>
+                                                </span>
+                                                <span style="font-size: 14px">{{ $header_category->name }}
+                                                    ({{ $validOffers->count() }})</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel" id="panel-{{ $header_category->id }}">
+                                        @foreach ($header_category->children as $header_category_child)
+                                            @php
+                                                // Filter valid offers for the child category
+                                                $validChildOffers = $header_category_child->offers->filter(function (
+                                                    $offer,
+                                                ) {
+                                                    return \Carbon\Carbon::parse(
+                                                        $offer->expiry_date,
+                                                    )->greaterThanOrEqualTo(\Carbon\Carbon::now()->startOfDay());
+                                                });
+                                            @endphp
+
+                                            @if ($validChildOffers->count() > 0)
+                                                <!-- Check if subcategory has valid offers -->
+                                                <div class="accordion-header">
+                                                    <div class="checkbox-wrapper-offers">
+                                                        <input class="inp-cbx accordion-checkbox"
+                                                            id="subcategory-{{ $header_category_child->id }}"
+                                                            type="checkbox" />
+                                                        <label class="cbx"
+                                                            for="subcategory-{{ $header_category_child->id }}">
+                                                            <span>
+                                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                                </svg>
+                                                            </span>
+                                                            <span
+                                                                style="font-size: 14px">{{ $header_category_child->name }}
+                                                                ({{ $validChildOffers->count() }})
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endif
                             @endforeach
+
 
 
                         </div>
@@ -268,7 +252,10 @@
                                         @foreach ($offers as $offer)
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <div class="mb-4 col-lg-4 col-6 pe-2">
+
+                                                    {{-- <a href="{{ route('offer.details', $offer->slug) }}"> --}}
                                                     <div class="border-0 shadow-sm card bg-light offer-boxes">
+
                                                         <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6">
                                                                 <div>
@@ -284,7 +271,10 @@
                                                                 @endif
                                                             </div>
                                                             <div class="pt-4 col-lg-12 offer_title">
-                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <p class="pb-4 text-black">{{ $offer->name }}
+                                                                    </p>
+                                                                </a>
                                                             </div>
                                                             <div class="pt-4 col-lg-12">
                                                                 <div class="d-flex">
@@ -310,11 +300,16 @@
 
                                                             </div>
                                                         </div>
+
                                                     </div>
+                                                    {{-- </a> --}}
+
                                                 </div>
                                             @elseif($offer->expiry_date == null)
                                                 <div class="mb-4 col-lg-4 col-6 pe-2">
+
                                                     <div class="border-0 shadow-sm card bg-light offer-boxes">
+
                                                         <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6">
                                                                 <div>
@@ -331,7 +326,9 @@
                                                                 @endif
                                                             </div>
                                                             <div class="pt-4 col-lg-12 offer_title">
-                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                                </a>
                                                             </div>
                                                             <div class="pt-4 col-lg-12">
                                                                 <div class="d-flex">
@@ -357,7 +354,10 @@
 
                                                             </div>
                                                         </div>
+
+
                                                     </div>
+
                                                 </div>
                                             @else
                                             @endif
@@ -377,52 +377,7 @@
                                     aria-labelledby="category-{{ $category->id }}" tabindex="0">
                                     <div class="row servicesContainer" id="servicesContainer">
 
-                                        {{-- @foreach ($category->offers as $offer)
-                                            <div class="mt-4 col-lg-4">
-                                                <div class="border-0 shadow-sm card bg-light">
-                                                    <div class="p-4 row align-items-center">
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px" class="rounded-2"
-                                                                    style="object-fit: contain;"
-                                                                    alt="Offer logo for {{ $offer->name }}"
-                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            @if (!empty($offer->badge))
-                                                                <h4 class="main-color special-font-box text-end">
-                                                                    {{ $offer->badge }}</h4>
-                                                            @endif
-                                                        </div>
-                                                        <div class="pt-4 col-lg-12 offer_title">
-                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                        </div>
-                                                        <div class="pt-4 col-lg-12">
-                                                            <div class="d-flex">
-                                                                <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="w-100 btn-common-one rounded-3">
-                                                                    <small>View</small>
-                                                                </a>
-                                                                @if (!empty($offer->coupon_code))
-                                                                    <a href="javascript:void(0);"
-                                                                        class="w-100 btn-common-three rounded-3 ms-2"
-                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
-                                                                        Coupon <i class="fa-solid fa-copy"></i>
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                            <p class="pt-2 text-center countdown"
-                                                                data-expire-date="{{ $offer->expiry_date }}">
-                                                                <span class="main-color">Expire In:</span>
-                                                                <span class="countdown-timer"> Days</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach --}}
+
 
                                         @forelse ($category->offers as $offer)
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
@@ -518,50 +473,6 @@
                                             @else
                                             @endif
 
-                                            {{-- <div class="mt-4 col-lg-4">
-                                                <div class="border-0 shadow-sm card bg-light">
-                                                    <div class="p-4 row align-items-center">
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px" class="rounded-2"
-                                                                    style="object-fit: contain;"
-                                                                    alt="Offer logo for {{ $offer->name }}"
-                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            @if (!empty($offer->badge))
-                                                                <h4 class="main-color special-font-box text-end">
-                                                                    {{ $offer->badge }}</h4>
-                                                            @endif
-                                                        </div>
-                                                        <div class="pt-4 col-lg-12 offer_title">
-                                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                                        </div>
-                                                        <div class="pt-4 col-lg-12">
-                                                            <div class="d-flex">
-                                                                <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="w-100 btn-common-one rounded-3">
-                                                                    <small>View</small>
-                                                                </a>
-                                                                @if (!empty($offer->coupon_code))
-                                                                    <a href="javascript:void(0);"
-                                                                        class="w-100 btn-common-three rounded-3 ms-2"
-                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
-                                                                        Coupon <i class="fa-solid fa-copy"></i>
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                            <p class="pt-2 text-center countdown"
-                                                                data-expire-date="{{ $offer->expiry_date }}">
-                                                                <span class="main-color">Expire In:</span>
-                                                                <span class="countdown-timer"> Days</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         @empty
                                             <p class="mt-5 text-center text-danger">No Offers Available</p>
                                         @endforelse
