@@ -133,7 +133,7 @@
                         new Countdown(element, expireDate);
                     } else {
                         const timerElement = element.querySelector(".countdown-timer");
-                        timerElement.innerHTML = "Still Available";
+                        timerElement.innerHTML = "Available";
                     }
                 });
             });
@@ -240,7 +240,7 @@
                         if (response.cartWishlist.length === 0) {
 
                             tableHtml = `
-                                <h4 class="text-center my-2">Wishlist List is Empty</h4>
+                                <h4 class="my-2 text-center">Wishlist List is Empty</h4>
                             `;
 
                             $('#wishlistLink').hide();

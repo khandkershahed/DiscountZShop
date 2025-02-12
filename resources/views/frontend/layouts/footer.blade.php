@@ -2,8 +2,9 @@
     <style>
         .footer-gif {
             position: relative;
-            left: -70px;
-            width: 275px;
+            left: -25px;
+            width: 246px;
+            top: -18px;
         }
     </style>
     <footer

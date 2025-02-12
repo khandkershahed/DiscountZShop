@@ -4,8 +4,8 @@
             <div class="col-lg-12">
                 <div class="text-center">
                     <h1>Join Us Today</h1>
-                    <p class="fw-normal pt-2 text-muted" style="font-size: 1rem;">Your Journey Starts Here</p>
-                    <p class="mfs pt-3">Sign up now to access exclusive offers and discounts.</p>
+                    <p class="pt-2 fw-normal text-muted" style="font-size: 1rem;">Your Journey Starts Here</p>
+                    <p class="pt-3 mfs">Sign up now to access exclusive offers and discounts.</p>
                 </div>
             </div>
         </div>
@@ -15,12 +15,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-outline">
-                            <div class="d-flex justify-content-center align-items-center mb-3">
+                            <div class="mb-3 d-flex justify-content-center align-items-center">
                                 <x-text-input id="name" class="form-control form-control-solid" type="text"
                                     name="name" :value="old('name')" required autofocus autocomplete="name"
                                     placeholder="Full Name" />
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                                <button type="button" class="btn px-2 lock-mobile">
+                                <button type="button" class="px-2 btn lock-mobile">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
                                         <path
@@ -37,12 +37,12 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
+                        <div class="mb-3 d-flex justify-content-center align-items-center">
                             <x-text-input id="email" class="form-control form-control-solid" type="email"
                                 name="email" :value="old('email')" required autocomplete="username"
                                 placeholder="Valid Mail" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                            <button type="button" class="btn px-2 lock-mobile">
+                            <button type="button" class="px-2 btn lock-mobile">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none">
                                     <path
@@ -56,11 +56,11 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
+                        <div class="mb-3 d-flex justify-content-center align-items-center">
                             <x-text-input id="phone_number" class="form-control form-control-solid" type="number"
                                 name="phone_number" required autocomplete="phone_number" placeholder="Phone Number" />
                             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
-                            <button type="button" class="btn px-2 lock-mobile">
+                            <button type="button" class="px-2 btn lock-mobile">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none">
                                     <path
@@ -74,12 +74,12 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
+                        <div class="mb-3 d-flex justify-content-center align-items-center">
                             <x-text-input id="password" class="form-control form-control-solid password-field"
                                 type="password" name="password" required autocomplete="new-password"
                                 placeholder="Strong Password" />
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                            <button type="button" class="btn px-2 lock-mobile toggle-password">
+                            <button type="button" class="px-2 btn lock-mobile toggle-password">
                                 <svg class="lockIcon" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <path
@@ -95,14 +95,14 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
+                        <div class="mb-3 d-flex justify-content-center align-items-center">
                             <!-- Password Field -->
                             <x-text-input type="password" class="form-control password-field"
                                 placeholder="Repeat Password" name="password_confirmation" required
                                 autocomplete="new-password" />
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                             <!-- Toggle Button with Lock Icon -->
-                            <button type="button" class="btn px-2 lock-mobile toggle-password">
+                            <button type="button" class="px-2 btn lock-mobile toggle-password">
                                 <svg class="lockIcon" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <path
@@ -130,10 +130,10 @@
                 </div>
                 <!-- Submit button -->
                 <div>
-                    <x-primary-button class="btn btn-common-one rounded-pill px-4 w-100">
+                    <x-primary-button class="px-4 btn btn-common-one rounded-pill w-100">
                         {{ __('Register') }}
                     </x-primary-button>
-                    <p class="text-center pt-3 mfs">Already Member? <a href="{{ route('login') }}"><span
+                    <p class="pt-3 text-center mfs">Already Member? <a href="{{ route('login') }}"><span
                                 class="site-text">Login Now</span></a></p>
                 </div>
             </div>

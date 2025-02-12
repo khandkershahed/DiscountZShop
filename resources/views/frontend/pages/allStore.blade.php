@@ -119,18 +119,19 @@
 
                 @if ($stores->count() > 0)
 
-                    <div class="row pb-4" id="servicesContainer">
+                    <div class="pb-4 row" id="servicesContainer">
                         @foreach ($stores as $store)
                             <div class="col-lg-3 col-6">
                                 <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
 
-                                    <div class="card border-0 shadow-sm mb-4">
-                                        <div class="card-body p-0 rounded-2">
+                                    <div class="mb-4 border-0 shadow-sm card">
+                                        <div class="p-0 card-body rounded-2">
                                             <!-- Store Banner -->
                                             <div class="main-store-banner">
                                                 <img class="img-fluid rounded-2"
                                                     src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
-                                                    alt="arong-banner.jpg" />
+                                                    alt="arong-banner.jpg"
+                                                    onerror="this.onerror=null; this.src='{{ asset('http://127.0.0.1:8090/storage/brands/image/YQEqnQLk9n1727868776.png') }}';"/>
                                             </div>
                                             <!-- Store Logo And Rating -->
                                             <div class="px-3 pb-3">
@@ -138,7 +139,8 @@
                                                     <div class="store-logo">
                                                         <img class="img-fluid"
                                                             src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                                            alt="arong-logo.png" />
+                                                            alt="arong-logo.png"
+                                                            onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';"/>
                                                     </div>
                                                     <div class="store-rating">
                                                         <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
@@ -148,20 +150,22 @@
                                                     </div>
                                                 </div>
                                                 <!-- Store Info -->
-                                                <div class="pt-4 d-flex justify-content-between store_title">
+                                                <div class="d-flex justify-content-between store_title">
                                                     <a
                                                         href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
                                                         <div>
                                                             <h6>{{ $store->title }}</h6>
                                                         </div>
                                                     </a>
-
-                                                    <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
-                                                        class="btn border-0 p-0 m-0 ps-2">
-                                                        <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                            title="Store Location"></i>
-                                                    </a>
-
+                                                    <div>
+                                                        <div>
+                                                            <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
+                                                                class="p-0 m-0 border-0 btn ps-2">
+                                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
+                                                                    title="Store Location"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

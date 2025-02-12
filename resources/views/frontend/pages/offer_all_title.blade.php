@@ -79,7 +79,7 @@
                         {{-- @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d')) --}}
                         <p class="pt-2 text-center countdown" data-expire-date="{{ $offer->expiry_date }}">
                             <span class="main-color">Expire In:</span>
-                            <span class="countdown-timer"> Still Available</span>
+                            <span class="countdown-timer"> Available</span>
                         </p>
 
 

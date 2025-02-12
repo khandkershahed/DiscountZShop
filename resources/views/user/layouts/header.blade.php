@@ -83,7 +83,7 @@
                                     Settings</a>
                             </div>
 
-                            <div class="menu-item px-5">
+                            <div class="px-5 menu-item">
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a href="{{ route('logout') }}"

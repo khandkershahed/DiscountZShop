@@ -16,10 +16,7 @@
                 <p class="category-title mt-2">{{ $mobile_brand->name }}</p>
 
             </a>
-
         </div>
     @endforeach
-
-
 </div>
 {{-- Mobile Store End --}}

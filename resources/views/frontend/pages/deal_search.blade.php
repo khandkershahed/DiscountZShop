@@ -101,7 +101,7 @@
                     new Countdown(element, expireDate);
                 } else {
                     const timerElement = element.querySelector(".countdown-timer");
-                    timerElement.innerHTML = "Still Available";
+                    timerElement.innerHTML = "Available";
                 }
             });
         });
