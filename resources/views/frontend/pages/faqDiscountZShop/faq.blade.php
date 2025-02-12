@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="pb-5 text-center">All Faqs</h1>
+                    <h1 class="pb-5 text-center">Ferequently Asked Question</h1>
                 </div>
                 <div class="col-lg-8 offset-lg-2">
                     <div class="accordion">

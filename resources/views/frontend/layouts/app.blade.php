@@ -240,37 +240,38 @@
                         if (response.cartWishlist.length === 0) {
 
                             tableHtml = `
-                                <h3 class="">Wishlist List is Empty</h3>
+                                <h4 class="text-center my-2">Wishlist List is Empty</h4>
                             `;
 
                             $('#wishlistLink').hide();
 
                         } else {
                             $.each(response.cartWishlist, function(key, value) {
+
+                                //console.log('http://127.0.0.1:8000/', value.options.image);
+
                                 tableHtml +=
 
                                     `<tr class="">
 
                                     <td valign="middle">${serialNumber++}.</td>
 
-                                    <td valign="middle">
-                                        <div>
-                                            <img class="img-fluid rounded-2" width="60px"
-                                                src="/${value.options.image}" alt="">
-                                        </div>
+                                    <td>
+                                        <img class="img-fluid rounded-2" width="60px"
+                                                src="http://www.discountzshop.com/storage/${value.options.image}"
+                                                alt="">
                                     </td>
+
                                     <td valign="middle">
-                                        <p>${value.name.length > 60 ? value.name.substring(0, 60) : value.name}</p>
+                                        <p>${value.name.length > 600 ? value.name.substring(0, 600) : value.name}</p>
                                     </td>
 
                                     <td valign="middle">
                                         <div class="text-center">
                                             <a type="submit" style="cursor:pointer" id="${value.rowId}" onclick="wishlistRemove(this.id)">
-                                                <i class="fa-solid fa-trash"></i>
+                                                <i class="fa-solid fa-trash text-danger"></i>
                                             </a>
-                                            {{-- <a href="">
-                                                <i class="fa-solid fa-cart-shopping"></i>
-                                            </a> --}}
+
                                         </div>
                                     </td>
 

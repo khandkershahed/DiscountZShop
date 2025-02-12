@@ -45,32 +45,36 @@
 
 
                     @foreach ($mobile_coupons as $mobile_coupon)
-                        <div>
-                            <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
-                                <div class="p-0 card-body">
-                                    <div class="py-2 d-flex align-items-center justify-content-end w-100">
-                                        <div class="coupon-images-mb">
-                                            <img class=""
-                                                src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                alt="">
-                                        </div>
-                                        <div>
-                                            <div class="text-start">
-                                                <div class="">
-                                                    <p class="fw-bold" style="color: #F15A2D">
-                                                        {{ $mobile_coupon->badge }} <span class="text-white">OFF</span>
-                                                    </p>
-                                                </div>
+                        <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
+                            <div class="p-0 card-body">
+                                <div class="py-2 d-flex align-items-center justify-content-end w-100">
+                                    <div class="coupon-images-mb">
+                                        <img class=""
+                                            src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                            alt="">
+                                    </div>
+                                    <div>
+                                        <div class="text-start">
+                                            <div class="">
+                                                <p class="fw-bold" style="color: #F15A2D">
+                                                    {{ $mobile_coupon->badge }} <span class="text-white">OFF</span>
+                                                </p>
                                             </div>
-                                            <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
-                                            <span style="font-size: 12px;">
-                                                <div class="d-flex justify-content-between align-items-center pe-3">
-                                                    <span class="text-white pe-2" style="font-size: 9px"><small>Code:
-                                                            {{ $mobile_coupon->coupon_code }}</small></span>
-                                                    <i class="text-white fa-solid fa-copy"></i>
-                                                </div>
-                                            </span>
                                         </div>
+
+                                        <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
+
+                                        <div>
+                                            <p class="text-white text-center coupon-text coupon-code pt-2">
+                                                Code: ”<span class="couponCode"
+                                                    id="coupon-code">{{ $mobile_coupon->coupon_code }}</span>”
+                                                <a href="javascript:void(0);" class="copy-btn"
+                                                    data-coupon_id="{{ $mobile_coupon->coupon_code }}">
+                                                    <i class="fas fa-copy ps-2"></i>
+                                                </a>
+                                            </p>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -359,8 +363,9 @@
 
                                             <div class="py-2 ticket">
 
-                                                <a href="">
-                                                    <span>
+                                                <a href="{{ route('offer.details', $offerDeal->slug) }}">
+
+                                                    {{-- <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                             height="11" viewBox="0 0 16 11" fill="none">
                                                             <path
@@ -370,8 +375,9 @@
                                                                 d="M1.45401 4.02503C1.23906 3.90974 1.05953 3.73814 0.934644 3.52863C0.809755 3.31912 0.744214 3.07957 0.74504 2.83566V1.50564C0.74545 1.14685 0.888161 0.802871 1.14186 0.549168C1.39557 0.295465 1.73954 0.152754 2.09833 0.152344H14.6467C15.0055 0.152754 15.3495 0.295465 15.6032 0.549168C15.8569 0.802871 15.9996 1.14685 16 1.50564V2.83463C16.0008 3.07854 15.9353 3.31808 15.8104 3.5276C15.6855 3.73711 15.506 3.9087 15.291 4.024C15.059 4.14821 14.8651 4.33305 14.7299 4.55881C14.5947 4.78457 14.5233 5.04278 14.5233 5.30593C14.5233 5.56908 14.5947 5.82729 14.7299 6.05305C14.8651 6.27881 15.059 6.46365 15.291 6.58786C15.5061 6.70324 15.6858 6.875 15.8107 7.08471C15.9355 7.29442 16.001 7.53418 16 7.77827V9.10726C15.9996 9.46605 15.8569 9.81002 15.6032 10.0637C15.3495 10.3174 15.0055 10.4601 14.6467 10.4606H2.09833C1.73954 10.4601 1.39557 10.3174 1.14186 10.0637C0.888161 9.81002 0.74545 9.46605 0.74504 9.10726V7.77827C0.744214 7.53436 0.809755 7.29481 0.934644 7.0853C1.05953 6.87578 1.23906 6.70419 1.45401 6.5889C2.46962 6.08057 2.46187 4.53336 1.45401 4.02503ZM2.73129 6.35826C2.52387 6.74566 2.20649 7.06304 1.81909 7.27046C1.63345 7.37078 1.51865 7.56521 1.52071 7.7762V9.10519C1.52085 9.25834 1.58175 9.40518 1.69005 9.51348C1.79834 9.62177 1.94518 9.68267 2.09833 9.68281H11.1649C11.1861 9.34668 11.0315 8.70339 11.5528 8.69046C12.0746 8.70287 11.9194 9.34927 11.9406 9.68487H14.6467C14.7998 9.68474 14.9467 9.62384 15.055 9.51554C15.1633 9.40725 15.2242 9.26041 15.2243 9.10726V7.77827C15.2253 7.67479 15.1981 7.573 15.1455 7.48387C15.0929 7.39475 15.017 7.32167 14.9259 7.27253C14.5704 7.08205 14.2732 6.79869 14.066 6.45264C13.8588 6.10659 13.7494 5.71081 13.7494 5.30748C13.7494 4.90415 13.8588 4.50837 14.066 4.16232C14.2732 3.81627 14.5704 3.53291 14.9259 3.34244C15.017 3.29329 15.0929 3.22021 15.1455 3.13109C15.1981 3.04196 15.2253 2.94017 15.2243 2.8367V1.50564C15.2238 1.18658 14.9658 0.928536 14.6467 0.928019H11.9406C11.9194 1.26466 12.0751 1.90951 11.5528 1.92243C11.031 1.91002 11.1861 1.26363 11.1649 0.928019H2.09833C1.77927 0.928536 1.52123 1.18658 1.52071 1.50564V2.83463C1.51865 3.04561 1.63345 3.24005 1.81909 3.34037C2.0772 3.47858 2.30554 3.66628 2.49108 3.89277C2.67662 4.11925 2.81572 4.38007 2.90043 4.66033C2.98514 4.94059 3.01381 5.23479 2.98478 5.52612C2.95576 5.81746 2.86962 6.10023 2.73129 6.35826Z"
                                                                 fill="black" />
                                                         </svg>
-                                                    </span>
-                                                    <span class="ps-3">View</span>
+                                                    </span> --}}
+
+                                                    <span class="">View Offer</span>
                                                 </a>
 
                                             </div>

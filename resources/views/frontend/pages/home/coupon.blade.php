@@ -80,6 +80,7 @@
                                 <div class="available-coupon-slider servicesContainerCoupon">
 
                                     @foreach ($coupons as $coupon)
+
                                         <div class="items couponCode"
                                             data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                                             <div class="d-flex coupons-box align-items-center">
@@ -101,8 +102,7 @@
                                                     </div>
                                                     <div>
                                                         <p class="text-white text-center coupon-text coupon-code pt-2">
-                                                            Code:
-                                                            ”<span class="couponCode"
+                                                            Code: ”<span class="couponCode"
                                                                 id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                                             <a href="javascript:void(0);" class="copy-btn"
                                                                 data-coupon_id="{{ $coupon->coupon_code }}">
@@ -113,6 +113,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     @endforeach
                                 </div>
 

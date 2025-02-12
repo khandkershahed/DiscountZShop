@@ -51,7 +51,9 @@ class HomeController extends Controller
 
             'categorys'          => Category::latest()->limit(6)->get(),
 
-            'mobile_stores'      => Store::latest()->limit(12)->get(),
+            //'location_offers'    => Offer::where('city_id',$offers),
+
+            'mobile_stores'      => Store::orderBy('title','DESC')->latest()->limit(12)->get(),
             'mobile_coupons'     => Coupon::latest()->get(),
 
             'alloffers'          => $offers,
@@ -676,7 +678,7 @@ class HomeController extends Controller
             'weight'  => 1,
             'options' => [
                 'image' => $product->image,
-                // No price included
+
             ],
         ]);
 
