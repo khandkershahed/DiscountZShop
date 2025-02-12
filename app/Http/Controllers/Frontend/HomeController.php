@@ -51,6 +51,8 @@ class HomeController extends Controller
 
             'categorys'          => Category::latest()->limit(6)->get(),
 
+            //'location_offers'    => Offer::where('city_id',$offers),
+
             'mobile_stores'      => Store::latest()->limit(12)->get(),
             'mobile_coupons'     => Coupon::latest()->get(),
 
