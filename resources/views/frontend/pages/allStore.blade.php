@@ -155,15 +155,13 @@
                                                             <h6>{{ $store->title }}</h6>
                                                         </div>
                                                     </a>
-                                                    <div>
-                                                        <div>
-                                                            <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
-                                                                class="btn border-0 p-0 m-0 ps-2">
-                                                                <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                                                    title="Store Location"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+
+                                                    <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
+                                                        class="btn border-0 p-0 m-0 ps-2">
+                                                        <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
+                                                            title="Store Location"></i>
+                                                    </a>
+
                                                 </div>
                                             </div>
                                         </div>

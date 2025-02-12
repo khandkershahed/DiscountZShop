@@ -1,19 +1,19 @@
 {{-- Mobile Store Start --}}
 <div class="row">
 
-    @foreach ($mobile_stores as $mobile_store)
+    @foreach ($mobile_brands as $mobile_brand)
         <div class="col-3 mb-3">
 
-            <a href="{{ route('vendor.stores', optional($mobile_store->brand)->slug ?? '') }}" class="">
+            <a href="{{ route('brand.details', $mobile_brand->slug) }}" class="">
 
                 <div class="">
 
-                    <img class="img-fluid"
-                        src="{{ !empty(optional($mobile_store->brand)->logo) ? url('storage/' . optional($mobile_store->brand)->logo) : asset('images/no-image(random).png') }}"
+                    <img class="img-fluid rounded-0"
+                        src="{{ asset('storage/' . $mobile_brand->image) }}"
                         alt="arong-logo.png" />
                 </div>
 
-                <p class="category-title">{{ $mobile_store->title }}</p>
+                <p class="category-title mt-2">{{ $mobile_brand->name }}</p>
 
             </a>
 

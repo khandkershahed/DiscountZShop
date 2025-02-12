@@ -53,7 +53,7 @@ class HomeController extends Controller
 
             //'location_offers'    => Offer::where('city_id',$offers),
 
-            'mobile_stores'      => Store::orderBy('title','DESC')->latest()->limit(12)->get(),
+            'mobile_brands'      => Brand::orderBy('name', 'ASC')->latest()->limit(8)->get(),
             'mobile_coupons'     => Coupon::latest()->get(),
 
             'alloffers'          => $offers,
