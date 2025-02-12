@@ -1,7 +1,7 @@
 @foreach ($offers as $offer)
-    <div class="col-lg-4 mb-4 pe-2">
-        <div class="card border-0 shadow-sm bg-light offer-boxes">
-            <div class="row p-4 align-items-center">
+    <div class="mb-4 col-lg-4 col-6 pe-2">
+        <div class="border-0 shadow-sm card bg-light offer-boxes">
+            <div class="p-4 row align-items-center">
                 <div class="col-lg-6">
                     <div>
                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -22,10 +22,10 @@
                         </h4>
                     @endif
                 </div>
-                <div class="col-lg-12 pt-4 offer_title">
+                <div class="pt-4 col-lg-12 offer_title">
                     <p class="pb-4 text-black">{{ $offer->name }}</p>
                 </div>
-                <div class="col-lg-12 pt-4">
+                <div class="pt-4 col-lg-12">
                     <div class="d-flex">
                         <a href="{{ route('offer.details', $offer->slug) }}" class="w-100 btn-common-one rounded-3">
                             <small>View</small>

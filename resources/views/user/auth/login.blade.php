@@ -7,19 +7,19 @@
         }
     </style>
     <div class="container py-5 desktop-homepage">
-        <div class="row py-5">
+        <div class="py-5 row">
             <div class="col-lg-10 offset-lg-1">
-                <div class="card">
-                    <div class="card-body p-0">
+                <div class="border-0 card">
+                    <div class="p-0 border-0 shadow-sm card-body">
                         <div class="row g-0 align-items-center">
                             <div class="col-lg-6">
-                                <div class="p-5">
-                                    <h2 class="fw-bold mb-5">Log In</h2>
-
+                                <div class="row">
+                                    <div class="col-lg-8 offset-lg-2">
+                                        <h2 class="mb-5 fw-bold">Log In</h2>
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <!-- 2 column grid layout with text inputs for the first and last names -->
-                                        <div class="row mb-4">
+                                        <div class="mb-4 row">
                                             <div class="form-outline">
                                                 <x-input-label class="form-label" for="email" :value="__('Email')" />
                                                 <x-text-input id="email" class="form-control form-control-solid"
@@ -28,7 +28,7 @@
                                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="mb-3 row">
                                             <div class="form-outline">
                                                 <x-input-label class="form-label" for="password" :value="__('Password')" />
 
@@ -42,7 +42,7 @@
                                         <!-- Checkbox -->
                                         <div class="row justify-content-between align-items-center">
                                             <div
-                                                class="form-check d-flex justify-content-center align-items-center mb-3">
+                                                class="mb-3 form-check d-flex justify-content-center align-items-center">
                                                 <input class="form-check-input me-2" type="checkbox" value=""
                                                     id="remember_me" name="remember" />
                                                 <label class="form-check-label" for="remember_me">
@@ -51,7 +51,7 @@
                                             </div>
                                             @if (Route::has('password.request'))
                                                 <div
-                                                    class="form-check d-flex justify-content-center align-items-center mb-3">
+                                                    class="mb-3 form-check d-flex justify-content-center align-items-center">
                                                     <h6 class="d-flex justify-content-center align-items-center">
                                                         {{ __('Forgot your password?') }}
                                                         <a href="{{ route('password.request') }}"
@@ -62,17 +62,17 @@
                                         </div>
 
                                         <!-- Submit button -->
-                                        <x-primary-button class="btn btn-common-one rounded-pill mb-4">
-                                            {{ __('Log in') }}
-                                        </x-primary-button>
+                                        <div class="mx-auto">
+                                            <button type="submit" class="mb-4 btn btn-common-one rounded-pill" style="width: 100% !important;">Log in</button>
+                                        </div>
                                     </form>
-
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 mb-5 mb-lg-0">
+                            <div class="mb-5 col-lg-6 mb-lg-0">
                                 <img class="img-fluid register-img"
-                                    src="https://media.licdn.com/dms/image/v2/D4D12AQEz0JbIZ3VM0A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1680268909288?e=2147483647&v=beta&t=GsW_UsM64uuv97J6AygRVNiHfIuP4NBD259h9aLbsvU"
+                                    src="{{ asset('images/login-img.png') }}"
                                     class="w-100 rounded-4 shadow-4" alt="" />
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div class="text-center pt-4">
+                        <div class="pt-4 text-center">
                             <h1>Welcome Back</h1>
                             <p class="pt-3">Sign in to access your account</p>
                         </div>
@@ -120,7 +120,7 @@
                                 @csrf
                                 <!-- Submit button -->
                                 <div class="icon-parent-cnt" style="margin-bottom: 25px">
-                                    <input type="email" class="form-control border-0"
+                                    <input type="email" class="border-0 form-control"
                                         placeholder="Enter your email....">
                                     <span class="icons-mobile-login">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -140,8 +140,8 @@
                                         placeholder="Password">
 
                                     <!-- Toggle Button with Lock Icon -->
-                                    <button type="button" id="toggle-password" class="btn px-0 lock-mobile-re">
-                                        <i class="fa-solid fa-lock site-text px-3" id="lockIcon"></i>
+                                    <button type="button" id="toggle-password" class="px-0 btn lock-mobile-re">
+                                        <i class="px-3 fa-solid fa-lock site-text" id="lockIcon"></i>
                                     </button>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center"
@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
 
-                                <x-primary-button class="btn btn-common-one rounded-pill mb-4 w-100">
+                                <x-primary-button class="mb-4 btn btn-common-one rounded-pill w-100">
                                     {{ __('Log in') }}
                                 </x-primary-button>
 
@@ -165,7 +165,7 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
-                                <div class="row mb-4">
+                                <div class="mb-4 row">
                                     <div class="form-outline">
                                         <x-input-label class="form-label" for="email" :value="__('Email')" />
                                         <x-text-input id="email" class="form-control form-control-solid"
@@ -174,7 +174,7 @@
                                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <div class="mb-3 row">
                                     <div class="form-outline">
                                         <x-input-label class="form-label" for="password" :value="__('Password')" />
 
@@ -186,7 +186,7 @@
 
                                 <!-- Checkbox -->
                                 {{-- <div class="row justify-content-between align-items-center">
-                                    <div class="form-check d-flex justify-content-center align-items-center mb-3">
+                                    <div class="mb-3 form-check d-flex justify-content-center align-items-center">
                                         <input class="form-check-input me-2" type="checkbox" value=""
                                             id="remember_me" name="remember" />
                                         <label class="form-check-label" for="remember_me">
@@ -194,7 +194,7 @@
                                         </label>
                                     </div>
                                     @if (Route::has('password.request'))
-                                        <div class="form-check d-flex justify-content-center align-items-center mb-3">
+                                        <div class="mb-3 form-check d-flex justify-content-center align-items-center">
                                             <h6 class="d-flex justify-content-center align-items-center">
                                                 {{ __('Forgot your password?') }}
                                                 <a href="{{ route('password.request') }}"
@@ -205,9 +205,9 @@
                                 </div> --}}
 
                                 <!-- Submit button -->
-                                <x-primary-button class="btn btn-common-one rounded-pill mb-4 w-100">
-                                    {{ __('Log in') }}
-                                </x-primary-button>
+                                <div class="mx-auto">
+                                    <button type="submit" class="mb-4 btn btn-common-one rounded-pill" style="width: 100% !important;">Log in</button>
+                                </div>
                             </form>
 
                         </div>

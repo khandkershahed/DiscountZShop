@@ -1,12 +1,12 @@
 <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
-    <div class="row py-3 px-3">
+    <div class="px-3 py-3 row">
         <div class="col-12">
-            <div class="text-center mb-4">
+            <div class="mb-4 text-center">
                 <h2 class="pb-2 site-color">All Offers</h2>
                 <p>Here You Found All Offers!</p>
             </div>
         </div>
-        <div class="col-4 px-1">
+        <div class="px-1 col-4">
             <select class="form-select cust-select" id="" name="division_id" data-placeholder="Select Division"
                 autocomplete="off">
 
@@ -21,7 +21,7 @@
             </select>
         </div>
 
-        <div class="col-4 px-1">
+        <div class="px-1 col-4">
             <!-- Filter Store - City -->
             <div class="btn-group">
                 <select class="form-select cust-select" id="" name="city_id" data-placeholder="Select City"
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="col-4 px-1">
+        <div class="px-1 col-4">
             <div class="pe-2">
                 <select class="form-select" id="" name="area_id"
                     data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
@@ -60,7 +60,7 @@
             </script>
         </div>
 
-        <div class="col-4 px-1">
+        <div class="px-1 col-4">
             <!-- Search Store -->
             <div class="wrapper-store">
                 <div class="search-input-store">
@@ -82,12 +82,12 @@
             </div>
         </div>
     </div>
-    <div class="row px-3">
+    <div class="px-3 row">
         <div class="col-lg-12">
-            <div class="row mt-0" id="servicesContainerMobile">
+            <div class="mt-0 row" id="servicesContainerMobile">
                 @foreach ($offers as $offer)
-                    <div class="col-6 mb-4 pe-2">
-                        <div class="card border-0 shadow-sm offer-boxes" style="background: #FEF5F2;">
+                    <div class="mb-4 col-6 pe-2">
+                        <div class="border-0 shadow-sm card offer-boxes" style="background: #FEF5F2;">
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div>
@@ -107,7 +107,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 pt-4 offer_title">
+                                    <div class="pt-4 col-lg-12 offer_title">
                                         <p class="text-black offers-title-mobile">{{ $offer->name }}</p>
                                         @if (!empty($offer->badge))
                                             <h4 class="main-color special-font-box">
@@ -115,11 +115,11 @@
                                             </h4>
                                         @endif
                                     </div>
-                                    <div class="col-lg-12 pt-4 pb-3">
+                                    <div class="pt-4 pb-3 col-lg-12">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>
                                                 <a href="{{ route('offer.details', $offer->slug) }}"
-                                                    class="btn-common-one btn-sm rounded-0 py-1 mfs">
+                                                    class="py-1 btn-common-one btn-sm rounded-0 mfs">
                                                     <small>View</small>
                                                 </a>
                                                 @if (!empty($offer->coupon_code))

@@ -3,22 +3,22 @@
     <section>
         <div class="regular-banner">
             <img class="img-fluid w-100"
-                src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
+                src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/contact.jpg') }}"
                 alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
         </div>
     </section>
     <!-- Hero End -->
     <section>
         <div class="container py-5">
-            <div class="row py-5 gx-5">
-                <div class="d-flex justify-content-center align-items-center pb-lg-4 pb-3">
-                    <h3 class="text-center">Your Query</h3>
+            <div class="py-5 row gx-5">
+                <div class="pb-3 d-flex justify-content-center align-items-center pb-lg-4">
+                    <h3 class="text-center">Get In Touch!</h3>
                     <span class="store-devider"></span>
                 </div>
                 <div class="col-lg-6 offset-lg-3">
                     <div>
-                        <div class="row pt-4">
-                            <div class="col-lg-6 mt-lg-4 mt-3">
+                        <div class="pt-4 row">
+                            <div class="mt-3 col-lg-6 mt-lg-4">
                                 <div class="d-flex align-items-center">
                                     <div class="p-4 shadow-sm contact-icons">
                                         <i class="fa-solid fa-phone fs-3 main-color"></i>
@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mt-lg-4 mt-3">
+                            <div class="mt-3 col-lg-6 mt-lg-4">
                                 <div class="d-flex align-items-center">
                                     <div class="p-4 shadow-sm contact-icons">
                                         <i class="fa-solid fa-envelope fs-3 main-color"></i>
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 mt-lg-4 mt-3">
+                            <div class="mt-3 col-lg-12 mt-lg-4">
                                 <div class="d-flex align-items-center">
                                     <div class="p-4 shadow-sm contact-icons">
                                         <i class="fa-solid fa-location-dot fs-3 main-color"></i>
@@ -60,9 +60,9 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="pt-5">
-                                    <div class="d-flex justify-content-center align-items-center pb-lg-4 pb-3">
-                                        <span class="main-color pt-2">Tell us about</span>
-                                        <h3 class="ps-2">yourself!</h3>
+                                    <div class="pb-3 d-flex justify-content-center align-items-center pb-lg-4">
+                                        <span class="pt-2 main-color">Tell us about</span>
+                                        <h3 class="ps-2">Your Query!</h3>
                                         <span class="store-devider"></span>
                                     </div>
                                     <form action="{{ route('contact.add') }}" method="post"
@@ -70,7 +70,7 @@
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <div class="mb-lg-4 mb-3">
+                                                <div class="mb-3 mb-lg-4">
                                                     <label for="exampleFormControlInput1" class="form-label">Name <span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="name"
                                                         id="exampleFormControlInput1" placeholder="John Doe" required/>
@@ -80,7 +80,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
-                                                <div class="mb-lg-4 mb-3">
+                                                <div class="mb-3 mb-lg-4">
                                                     <label for="exampleFormControlInput1" class="form-label">Email <span class="text-danger">*</span></label>
                                                     <input type="email" class="form-control" name="email"
                                                         id="exampleFormControlInput1" placeholder="name@example.com" required/>
@@ -90,7 +90,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <div class="mb-lg-4 mb-3">
+                                                <div class="mb-3 mb-lg-4">
                                                     <label for="exampleFormControlTextarea1" class="form-label">Message <span class="text-danger">*</span></label>
                                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3" required></textarea>
                                                 </div>

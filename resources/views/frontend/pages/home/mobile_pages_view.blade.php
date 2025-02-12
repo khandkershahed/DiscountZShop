@@ -8,7 +8,7 @@
 
 
         {{-- Mobile Coupon Start --}}
-        <div class="row mt-5 bg-light py-4">
+        <div class="py-4 mt-5 row bg-light">
             <div class="col-lg-12">
                 <div class="row align-items-center">
                     <div class="col-6">
@@ -41,14 +41,14 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="coupon-slide pt-4">
+                <div class="pt-4 coupon-slide">
 
 
                     @foreach ($mobile_coupons as $mobile_coupon)
                         <div>
-                            <div class="card border-0 p-0 py-3" style="background-color: #1E1E1E;">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center justify-content-end w-100 py-2">
+                            <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
+                                <div class="p-0 card-body">
+                                    <div class="py-2 d-flex align-items-center justify-content-end w-100">
                                         <div class="coupon-images-mb">
                                             <img class=""
                                                 src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
@@ -67,7 +67,7 @@
                                                 <div class="d-flex justify-content-between align-items-center pe-3">
                                                     <span class="text-white pe-2" style="font-size: 9px"><small>Code:
                                                             {{ $mobile_coupon->coupon_code }}</small></span>
-                                                    <i class="fa-solid fa-copy text-white"></i>
+                                                    <i class="text-white fa-solid fa-copy"></i>
                                                 </div>
                                             </span>
                                         </div>
@@ -83,9 +83,9 @@
         </div>
 
         {{-- End Coupon --}}
-        <div class="row bg-panda mt-4">
+        <div class="mt-4 row bg-panda">
             <div class="col-12">
-                <div class="d-flex justify-content-between align-items-center py-3">
+                <div class="py-3 d-flex justify-content-between align-items-center">
                     <p class="text-white">Get 20% on App</p>
                 </div>
             </div>
@@ -97,15 +97,15 @@
 
 
         {{-- All Offers Start --}}
-        <div class="row mt-2 bg-light py-4">
+        <div class="py-4 mt-2 row bg-light">
             <div class="col-12">
                 <div class="relative overflow-hidden">
 
 
                     <!-- Tabs Container -->
-                    <ul class="tabs-container-mobile nav nav-tabs pb-3 border-0 flex-nowrap flex gap-2 overflow-x-auto items-center"
+                    <ul class="flex items-center gap-2 pb-3 overflow-x-auto border-0 tabs-container-mobile nav nav-tabs flex-nowrap"
                         role="tablist">
-                        <li class="nav-item flex-shrink-0" role="presentation">
+                        <li class="flex-shrink-0 nav-item" role="presentation">
 
                             <button class="nav-link mb-link-tabs active whitespace-nowrap" id="home-tab"
                                 data-bs-toggle="tab" data-bs-target="#home-tab-pane-mobile" type="button"
@@ -140,13 +140,13 @@
 
                     <div class="tab-pane fade show active" id="home-tab-pane-mobile" role="tabpanel"
                         aria-labelledby="home-tab-mobile" tabindex="0">
-                        <div class="row g-2 mt-3">
+                        <div class="mt-3 row g-2">
                             @foreach ($alloffers as $alloffer)
                                 @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
                                     <div class="col-4">
-                                        <div class="card p-0" style="border: 2px dashed #eee">
+                                        <div class="p-0 card" style="border: 2px dashed #eee">
                                             <div
-                                                class="card-body p-1 py-3 d-flex justify-content-between align-items-center">
+                                                class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
                                                 <div class="offers-img">
 
 
@@ -181,9 +181,9 @@
                                         @if ($category_offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $category_offer->expiry_date == null)
                                             <div class="col-4">
 
-                                                <div class="card p-0" style="border: 2px dashed #eee">
+                                                <div class="p-0 card" style="border: 2px dashed #eee">
                                                     <div
-                                                        class="card-body p-1 py-3 d-flex justify-content-between align-items-center">
+                                                        class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
                                                         <div class="offers-img">
 
                                                             <a
@@ -228,21 +228,21 @@
         {{-- All Offers Section End --}}
 
         <!-- offerLatests Slider -->
-        <div class="container pb-70 pt-70 px-0 latest-offers">
+        <div class="container px-0 pb-70 pt-70 latest-offers">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Slick Slider -->
                     <div class="slick-slider-product">
                         @forelse ($offerLatests as $offerLatest)
                             <div class="items me-2" style="background-color: #f5f6f8">
-                                <div class="row p-4 align-items-center product-discount-box">
+                                <div class="p-4 row align-items-center product-discount-box">
 
                                     <div class="col-lg-5 col-sm-12">
 
-                                        <h5 class="main-color text-center pb-3 pt-2 pt-lg-0 fw-bold">
+                                        <h5 class="pt-2 pb-3 text-center main-color pt-lg-0 fw-bold">
                                             {{ $offerLatest->badge }}
                                         </h5>
-                                        <div class="d-flex justify-content-center text-center">
+                                        <div class="text-center d-flex justify-content-center">
                                             <img class="img-fluid flat-offer-img rounded-circle"
                                                 src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
                                                 alt=""
@@ -258,7 +258,7 @@
                                             <p class="py-3">
                                                 {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
                                             </p>
-                                            <a class="btn btn-dark rounded-pill px-5"
+                                            <a class="px-5 btn btn-dark rounded-pill"
                                                 href="{{ route('offer.details', $offerLatest->slug) }}">See
                                                 Details</a>
                                         </div>
@@ -277,7 +277,7 @@
         <!-- offerLatests Slider End -->
 
 
-        <div class="row mt-2 bg-light py-4 pt-3 pb-0">
+        <div class="py-4 pt-3 pb-0 mt-2 row bg-light">
 
             <div class="col-12 ">
                 <h4 class="text-center">Deals of the Day</h4>
@@ -287,37 +287,37 @@
 
                 {{-- <div class="relative overflow-hidden">
 
-                    <ul class="tabs-container-mobile tabs-container-deal nav nav-tabs border-0 d-flex justify-content-start align-items-center overflow-hidden"
+                    <ul class="overflow-hidden border-0 tabs-container-mobile tabs-container-deal nav nav-tabs d-flex justify-content-start align-items-center"
                         id="myTab" role="tablist">
-                        <li class="nav-item me-1 mb-2" role="presentation">
+                        <li class="mb-2 nav-item me-1" role="presentation">
                             <button class="nav-link mb-link-tabs active" id="home2-tab" data-bs-toggle="tab"
                                 data-bs-target="#home2" type="button" role="tab" aria-controls="home2"
                                 aria-selected="true">
                                 Hot Deals
                             </button>
                         </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
+                        <li class="mb-2 nav-item me-1" role="presentation">
                             <button class="nav-link mb-link-tabs" id="profile2-tab" data-bs-toggle="tab"
                                 data-bs-target="#profile2" type="button" role="tab" aria-controls="profile2"
                                 aria-selected="false">
                                 Cashback
                             </button>
                         </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
+                        <li class="mb-2 nav-item me-1" role="presentation">
                             <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
                                 data-bs-target="#contact2" type="button" role="tab" aria-controls="contact2"
                                 aria-selected="false">
                                 Flat %
                             </button>
                         </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
+                        <li class="mb-2 nav-item me-1" role="presentation">
                             <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
                                 data-bs-target="#contact2" type="button" role="tab" aria-controls="contact2"
                                 aria-selected="false">
                                 Buy 1 Get 1
                             </button>
                         </li>
-                        <li class="nav-item me-1 mb-2" role="presentation">
+                        <li class="mb-2 nav-item me-1" role="presentation">
                             <button class="nav-link mb-link-tabs" id="contact2-tab" data-bs-toggle="tab"
                                 data-bs-target="#contact2" type="button" role="tab" aria-controls="contact2"
                                 aria-selected="false">
@@ -331,19 +331,19 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home2" role="tabpanel"
                         aria-labelledby="home2-tab">
-                        <div class="row g-2 mt-3">
+                        <div class="mt-3 row g-2">
 
                             @foreach ($offerDeals as $offerDeal)
                                 <div class="col-6">
-                                    <div class="card p-0 rounded-3">
-                                        <div class="card-header p-0">
+                                    <div class="p-0 card rounded-3">
+                                        <div class="p-0 card-header">
                                             <div class="p-0">
                                                 <div>
                                                     <img class="img-fluid w-100" style="height: 200px;"
                                                         src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
                                                         alt="">
                                                 </div>
-                                                <div class="d-flex align-items-center py-2 px-2">
+                                                <div class="px-2 py-2 d-flex align-items-center">
                                                     <div class="ps-2">
                                                         <a href="{{ route('offer.details', $offerDeal->slug) }}">
                                                             <h6 class="mb-3 product-title">
@@ -355,9 +355,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="card-body p-3" style="border-top: 1px dashed #252525">
+                                        <div class="p-3 card-body" style="border-top: 1px dashed #252525">
 
-                                            <div class="ticket py-2">
+                                            <div class="py-2 ticket">
 
                                                 <a href="">
                                                     <span>
@@ -376,7 +376,7 @@
 
                                             </div>
 
-                                            {{-- <div class="text-center py-2">
+                                            {{-- <div class="py-2 text-center">
                                                 <p>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="11"
                                                         height="11" viewBox="0 0 11 11" fill="none">
@@ -394,14 +394,14 @@
                             @endforeach
 
                             {{-- <div class="col-6">
-                                <div class="card p-0 rounded-3">
-                                    <div class="card-header p-0">
+                                <div class="p-0 card rounded-3">
+                                    <div class="p-0 card-header">
                                         <div class="p-0">
                                             <div>
                                                 <img class="img-fluid w-100"
                                                     src="{{ asset('images/bata-banner.png') }}" alt="">
                                             </div>
-                                            <div class="d-flex align-items-center py-2 px-2">
+                                            <div class="px-2 py-2 d-flex align-items-center">
                                                 <div>
                                                     <img class="img-fluid" src="{{ asset('images/daraz.png') }}"
                                                         alt="">
@@ -410,14 +410,14 @@
                                                     <h6 class="mb-0 deals_title">Free Delivery on order</h6>
                                                 </div>
                                             </div>
-                                            <div class="py-2 pt-0 px-2">
+                                            <div class="px-2 py-2 pt-0">
                                                 <p class="mb-0"><small>Daraz's Free Delivery Festival in
                                                         2024</small></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body p-3" style="border-top: 1px dashed #252525">
-                                        <div class="ticket py-2">
+                                    <div class="p-3 card-body" style="border-top: 1px dashed #252525">
+                                        <div class="py-2 ticket">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="11"
                                                     viewBox="0 0 16 11" fill="none">
@@ -431,7 +431,7 @@
                                             </span>
                                             <span class="ps-3">FREEDEL24</span>
                                         </div>
-                                        <div class="text-center py-2">
+                                        <div class="py-2 text-center">
                                             <p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
                                                     viewBox="0 0 11 11" fill="none">
@@ -447,14 +447,14 @@
                             </div>
 
                             <div class="col-6">
-                                <div class="card p-0 rounded-3">
-                                    <div class="card-header p-0">
+                                <div class="p-0 card rounded-3">
+                                    <div class="p-0 card-header">
                                         <div class="p-0">
                                             <div>
                                                 <img class="img-fluid w-100"
                                                     src="{{ asset('images/bata-banner.png') }}" alt="">
                                             </div>
-                                            <div class="d-flex align-items-center py-2 px-2">
+                                            <div class="px-2 py-2 d-flex align-items-center">
                                                 <div>
                                                     <img class="img-fluid" src="{{ asset('images/daraz.png') }}"
                                                         alt="">
@@ -463,14 +463,14 @@
                                                     <h6 class="mb-0 deals_title">Free Delivery on order</h6>
                                                 </div>
                                             </div>
-                                            <div class="py-2 pt-0 px-2">
+                                            <div class="px-2 py-2 pt-0">
                                                 <p class="mb-0"><small>Daraz's Free Delivery Festival in
                                                         2024</small></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body p-3" style="border-top: 1px dashed #252525">
-                                        <div class="ticket py-2">
+                                    <div class="p-3 card-body" style="border-top: 1px dashed #252525">
+                                        <div class="py-2 ticket">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="11"
                                                     viewBox="0 0 16 11" fill="none">
@@ -484,7 +484,7 @@
                                             </span>
                                             <span class="ps-3">FREEDEL24</span>
                                         </div>
-                                        <div class="text-center py-2">
+                                        <div class="py-2 text-center">
                                             <p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
                                                     viewBox="0 0 11 11" fill="none">
@@ -500,14 +500,14 @@
                             </div>
 
                             <div class="col-6">
-                                <div class="card p-0 rounded-3">
-                                    <div class="card-header p-0">
+                                <div class="p-0 card rounded-3">
+                                    <div class="p-0 card-header">
                                         <div class="p-0">
                                             <div>
                                                 <img class="img-fluid w-100"
                                                     src="{{ asset('images/bata-banner.png') }}" alt="">
                                             </div>
-                                            <div class="d-flex align-items-center py-2 px-2">
+                                            <div class="px-2 py-2 d-flex align-items-center">
                                                 <div>
                                                     <img class="img-fluid" src="{{ asset('images/daraz.png') }}"
                                                         alt="">
@@ -516,14 +516,14 @@
                                                     <h6 class="mb-0 deals_title">Free Delivery on order</h6>
                                                 </div>
                                             </div>
-                                            <div class="py-2 pt-0 px-2">
+                                            <div class="px-2 py-2 pt-0">
                                                 <p class="mb-0"><small>Daraz's Free Delivery Festival in
                                                         2024</small></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body p-3" style="border-top: 1px dashed #252525">
-                                        <div class="ticket py-2">
+                                    <div class="p-3 card-body" style="border-top: 1px dashed #252525">
+                                        <div class="py-2 ticket">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="11"
                                                     viewBox="0 0 16 11" fill="none">
@@ -537,7 +537,7 @@
                                             </span>
                                             <span class="ps-3">FREEDEL24</span>
                                         </div>
-                                        <div class="text-center py-2">
+                                        <div class="py-2 text-center">
                                             <p>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
                                                     viewBox="0 0 11 11" fill="none">
@@ -553,7 +553,7 @@
                             </div> --}}
 
                             {{-- <div class="col-lg-12">
-                                <div class="load-btn-area mb-0 py-3">
+                                <div class="py-3 mb-0 load-btn-area">
                                     <button class="btn load-more-btn-mobile">See More</button>
                                 </div>
                             </div> --}}
@@ -573,9 +573,9 @@
 
 
         {{-- Offer Slider Image Start --}}
-        <div class="row mt-3">
+        <div class="mt-3 row">
             <div class="col-12 ps-0">
-                <div class="custom-slider pb-5 pt-3">
+                <div class="pt-3 pb-5 custom-slider">
                     <div>
                         <a href="{{ $homepage->offer_slider_image_one_link }}">
                             <img class="img-fluid fixed-size rounded-2"
@@ -616,7 +616,7 @@
 
         {{-- Brand Section Start --}}
         <div class="row" style="margin-bottom: 9rem">
-            <h4 class="text-center py-4 pb-4">Partner Brands</h4>
+            <h4 class="py-4 pb-4 text-center">Partner Brands</h4>
             <div class="col-12">
                 <div class="mobile-partners">
                     @foreach ($brands as $brand)

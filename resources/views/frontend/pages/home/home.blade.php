@@ -3,7 +3,7 @@
 
         <!-- Hero Section -->
         <section>
-            <div class="container-fluid px-0" style="overflow: hidden">
+            <div class="px-0 container-fluid" style="overflow: hidden">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row gx-3">
@@ -13,7 +13,7 @@
                                         @foreach ($sliders as $slider)
                                             <div class="items">
                                                 <a href="{{ $slider->url }}">
-                                                    <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
+                                                    <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                         src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}"
                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                 </a>
@@ -27,18 +27,18 @@
                                     {{-- @dd($banner); --}}
                                     <div class="col-lg-12">
                                         <a href="{{ $banner->image_one_url }}">
-                                            <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
+                                            <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                 src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
                                                 alt=""
                                                 onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
                                         </a>
                                     </div>
                                 </div>
-                                <div class="row mt-lg-3 mt-2 gx-3">
+                                <div class="mt-2 row mt-lg-3 gx-3">
                                     <div class="col-lg-6">
                                         <div>
                                             <a href="{{ $banner->image_two_url }}">
-                                                <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
+                                                <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                     src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
                                                     alt=""
                                                     onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
@@ -48,7 +48,7 @@
                                     <div class="col-lg-6">
                                         <div>
                                             <a href="{{ $banner->image_three_url }}">
-                                                <img class="img-fluid w-100 responsive-img mb-lg-0 mb-2"
+                                                <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                     src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
                                                     alt=""
                                                     onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
@@ -81,7 +81,7 @@
                             <div>
                                 <img src="{{ asset('frontend') }}/assets/img/panda.png" alt="" />
                             </div>
-                            <div class="bg-white px-3 py-2 rounded-2">
+                            <div class="px-3 py-2 bg-white rounded-2">
                                 <h4>ramadan20</h4>
                             </div>
                         </div>
@@ -93,15 +93,15 @@
 
         <!-- Grab Your Offer -->
         <section style="background: #f9f9f9">
-            <div class="container pt-70 pb-70 px-0">
+            <div class="container px-0 pt-70 pb-70">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card rounded-0 shadow-sm p-3 grab-card">
-                            <div class="card-header border-0 py-3 pb-4 bg-transparent">
+                        <div class="p-3 shadow-sm card rounded-0 grab-card">
+                            <div class="py-3 pb-4 bg-transparent border-0 card-header">
                                 <div class="row align-items-center">
                                     <div class="col-lg-3">
                                         <div class="d-flex align-items-center">
-                                            <h4 class="coupon-title mb-0 pe-3">
+                                            <h4 class="mb-0 coupon-title pe-3">
                                                 Grab Your Offer
                                             </h4>
                                             <div>
@@ -130,8 +130,8 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 grab-offer-tabs-box">
-                                        <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
-                                            <li class="nav-item mb-2" role="presentation">
+                                        <ul class="border-0 nav nav-tabs flex-column" id="myTab" role="tablist">
+                                            <li class="mb-2 nav-item" role="presentation">
                                                 <button class="nav-link grab-tabs w-100 rounded-0 active" id="home-tab"
                                                     data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
                                                     role="tab" aria-controls="home-tab-pane" aria-selected="true">
@@ -177,7 +177,7 @@
                                                 <div class="row">
                                                     @foreach ($alloffers as $alloffer)
                                                         @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
-                                                            <div class="col-lg-4 mb-4">
+                                                            <div class="mb-4 col-lg-4">
                                                                 <div class="coupon-box">
                                                                     <div class="coupon-box-content">
                                                                         <div class="row align-items-center">
@@ -190,7 +190,7 @@
                                                                                 </a>
                                                                             </div>
 
-                                                                            <div class="col-8 text-center">
+                                                                            <div class="text-center col-8">
                                                                                 <a
                                                                                     href="{{ route('offer.details', $alloffer->slug) }}">
                                                                                     <div
@@ -233,7 +233,7 @@
                                                         <div class="row">
                                                             @foreach ($offercategory->offers as $category_offer)
                                                                 @if ($category_offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $category_offer->expiry_date == null)
-                                                                    <div class="col-lg-4 mb-4">
+                                                                    <div class="mb-4 col-lg-4">
                                                                         <div class="coupon-box">
                                                                             <div class="coupon-box-content">
                                                                                 <div class="row align-items-center">
@@ -246,7 +246,7 @@
                                                                                         </a>
                                                                                     </div>
 
-                                                                                    <div class="col-8 text-center">
+                                                                                    <div class="text-center col-8">
                                                                                         <a
                                                                                             href="{{ route('offer.details', $category_offer->slug) }}">
                                                                                             <div
@@ -295,40 +295,35 @@
             </div>
         </section>
         <!-- Grab Your Offer End -->
-
         <!-- Biggest Deals From Product -->
         @if (optional($homepage)->brand)
             <section>
                 <div class="container px-0 pb-70 biggest-deals">
                     <div class="row gx-4 promotion-container align-items-center">
-                        <div class="col-lg-12 py-5">
+                        <div class="py-5 col-lg-12">
                             <h1 class="promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
+                        <div class="mt-2 col-lg-4">
+                            <div class="row d-flex align-items-stretch">
                                 @foreach ($brand_offers_left as $brand_offer_left)
-                                    <div class="col-lg-6">
-                                        <div>
+                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex align-items-center">
+                                        <div class="w-100">
                                             <a href="{{ route('offer.details', $brand_offer_left->slug) }}">
                                                 <img src="{{ !empty($brand_offer_left->image) ? url('storage/' . $brand_offer_left->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
-                                                    class="img-fluid w-100" alt="" />
+                                                    class="img-fluid w-100" alt=""
+                                                    onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/offer/image/qrGE6dP1rf1733201788.png') }}';" />
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="pt-4 pe-2">
-
+                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex">
+                                        <div class="p-3 py-4 w-100">
                                             <h5>{{ $brand_offer_left->name }}</h5>
-                                            <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
+                                            <p class="py-4 mb-0 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div>
-                                                    <h6>{{ $brand_offer_left->badge }}</h6>
-                                                    {{-- @if (!empty($brand_offer_left->price))
-                                                    <del class="pt-2">BDT {{ $brand_offer_left->price }}</del>
-                                                @endif
-                                                @if (!empty($brand_offer_left->offer_price))
-                                                    <h6 class="main-color">BDT {{ $brand_offer_left->offer_price }}</h6>
-                                                @endif --}}
+                                                    <h3 class="main-color">
+                                                        {{ str_ireplace('discount', 'off', $brand_offer_left->badge) }}
+                                                    </h3>
                                                 </div>
                                                 <div class="pe-4">
                                                     <a href="{{ route('offer.details', $brand_offer_left->slug) }}"
@@ -336,8 +331,7 @@
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                             height="30" viewBox="0 0 30 30" fill="none">
                                                             <circle cx="15" cy="15" r="15"
-                                                                fill="#F15A2D">
-                                                            </circle>
+                                                                fill="#F15A2D"></circle>
                                                             <path
                                                                 d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
                                                                 fill="white"></path>
@@ -351,39 +345,35 @@
                             </div>
                             <!-- Repeat the product showcase for other products -->
                         </div>
-                        <div class="col-lg-4 px-0">
+                        <div class="px-0 col-lg-4">
                             <div class="d-flex justify-content-center">
                                 <img class="img-fluid w-100 middle-banner"
                                     src="{{ asset('storage/' . optional($homepage)->deal_brand_image) }}"
                                     alt=""
-                                    onerror="this.onerror=null;this.src='{{ asset('images/no-image(random).png') }}';" />
+                                    onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/homepage/deal_brand_image/prLka0SI3X1733812486.jpg') }}';" />
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="row align-items-center bg-light py-4 product-showcase brand-home-img">
+                        <div class="mt-2 col-lg-4">
+                            <div class="row d-flex align-items-stretch">
                                 @foreach ($brand_offers_right as $brand_offer_right)
-                                    <div class="col-lg-6">
-                                        <div>
+                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex align-items-center">
+                                        <div class="w-100">
                                             <a href="{{ route('offer.details', $brand_offer_right->slug) }}">
                                                 <img src="{{ !empty($brand_offer_right->image) ? url('storage/' . $brand_offer_right->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
-                                                    class="img-fluid w-100" alt="" />
+                                                    class="img-fluid w-100" alt=""
+                                                    onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/offer/image/qrGE6dP1rf1733201788.png') }}';" />
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="pt-4 pe-2">
-                                            {{-- <h5>{{ $brand_offer_right->badge }}</h5> --}}
+                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex">
+                                        <div class="p-3 py-4 w-100">
                                             <h5>{{ $brand_offer_right->name }}</h5>
-                                            <p class="py-4 mb-0 main-color fs-6 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
+                                            <p class="py-4 mb-0 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div>
-                                                    <h6>{{ $brand_offer_right->badge }}</h6>
-                                                    {{-- @if (!empty($brand_offer_right->price))
-                                                    <del class="pt-2">BDT {{ $brand_offer_right->price }}</del>
-                                                @endif
-                                                @if (!empty($brand_offer_right->offer_price))
-                                                    <h6 class="main-color">BDT {{ $brand_offer_right->offer_price }}</h6>
-                                                @endif --}}
+                                                    <h3 class="main-color">
+                                                        {{ str_ireplace('discount', 'off', $brand_offer_right->badge) }}
+                                                    </h3>
                                                 </div>
                                                 <div class="pe-4">
                                                     <a href="{{ route('offer.details', $brand_offer_right->slug) }}"
@@ -391,12 +381,10 @@
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                             height="30" viewBox="0 0 30 30" fill="none">
                                                             <circle cx="15" cy="15" r="15"
-                                                                fill="#F15A2D">
-                                                            </circle>
+                                                                fill="#F15A2D"></circle>
                                                             <path
                                                                 d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                                fill="white">
-                                                            </path>
+                                                                fill="white"></path>
                                                         </svg>
                                                     </a>
                                                 </div>
@@ -413,7 +401,7 @@
         @else
             <!-- Fallback section for no data -->
             <section>
-                <div class="container text-center py-5 deal-hbox">
+                <div class="container py-5 text-center deal-hbox">
                     <img src="{{ asset('images/NoOffers.png') }}" alt="No Data Available" class="img-fluid w-100">
                 </div>
             </section>
@@ -426,31 +414,38 @@
 
         <!-- Product Slider -->
         <section>
-            <div class="container pb-70 pt-70 px-0 latest-offers">
+            <div class="container px-0 pb-70 pt-70 latest-offers">
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Slick Slider -->
                         <div class="slick-slider-product">
                             @forelse ($offerLatests as $offerLatest)
                                 <div class="items me-2" style="background-color: #f5f6f8">
-                                    <div class="row p-4 align-items-center product-discount-box">
+                                    <div class="p-4 row align-items-center product-discount-box">
                                         <div class="col-lg-7 col-sm-12">
                                             <div class="product_discount_box">
                                                 <h4>{{ $offerLatest->name }}</h4>
                                                 <p class="py-3">
                                                     {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
                                                 </p>
-                                                <a class="btn btn-dark rounded-pill px-5"
-                                                    href="{{ route('offer.details', $offerLatest->slug) }}">See
-                                                    Details</a>
+                                                <div class="pt-4">
+                                                    <a href="{{ route('offer.details', $offerLatest->slug) }}">
+                                                        <button class="learn-more">
+                                                            <span class="circle" aria-hidden="true">
+                                                                <span class="icon arrow"></span>
+                                                            </span>
+                                                            <span class="button-text">See Details</span>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div>
-                                                <h5 class="main-color text-center pb-3 pt-4 pt-lg-0 fw-bold">
+                                                <h5 class="pt-4 pb-3 text-center main-color pt-lg-0 fw-bold">
                                                     {{ $offerLatest->badge }}
                                                 </h5>
-                                                <div class="d-flex justify-content-center text-center">
+                                                <div class="text-center d-flex justify-content-center">
                                                     <img class="img-fluid flat-offer-img rounded-circle"
                                                         src="{{ !empty($offerLatest->image) ? url('storage/' . $offerLatest->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerLatest->name) }}"
                                                         alt=""
@@ -480,7 +475,7 @@
                     <div class="col-lg-3">
                         <div class="card deal-of-the-day rounded-0">
                             <!-- Card Header -->
-                            <div class="card-header border-0 text-white rounded-0 deal-of-the-day-header"
+                            <div class="text-white border-0 card-header rounded-0 deal-of-the-day-header"
                                 style="background-color: var(--primary-color)">
                                 <div class="w-100">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -505,8 +500,8 @@
 
                                     @forelse ($offerDealLefts as $offerDealLeft)
                                         <div class="items">
-                                            <div class="py-2 d-flex justify-content-center">
-                                                <img class="img-fluid rounded-2"
+                                            <div class="py-2 d-flex justify-content-center deals-of-the-day-box">
+                                                <img class="img-fluid"
                                                     src="{{ !empty($offerDealLeft->image) ? url('storage/' . $offerDealLeft->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
                                                     alt=""
                                                     onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
@@ -524,18 +519,18 @@
 
                                             <div class="py-2 d-flex justify-content-center align-items-center">
                                                 <a href="{{ route('offer.details', $offerDealLeft->slug) }}"
-                                                    class="btn btn-common-one rounded-pill px-4">See
+                                                    class="px-4 btn btn-common-one rounded-pill">See
                                                     Details</a>
                                             </div>
 
-                                            <div class="text-center pb-5 pt-4">
+                                            <div class="pt-4 pb-5 text-center">
                                                 <div>
                                                     <h5>
                                                         <span class="main-color">Hurry Up!</span> Offers
                                                         end in:
                                                     </h5>
                                                 </div>
-                                                <div class="countdown-with-days mt-4">
+                                                <div class="mt-4 countdown-with-days">
                                                     <p class="pt-2 text-center countdown"
                                                         data-expire-date="{{ $offerDealLeft->expiry_date }}">
                                                         <span class="main-color">Expire In:</span>
@@ -556,13 +551,13 @@
 
                     <div class="col-lg-9 bg-light product-scroll-show">
                         <!-- Search Box -->
-                        <div class="d-flex justify-content-center align-items-center p-3 pb-0">
+                        <div class="p-3 pb-0 d-flex justify-content-center align-items-center">
                             {{-- <form method="get" action="{{ route('courses.search') }}" class="d-flex w-100" role="search"> --}}
-                            <div class="input-group mb-3">
-                                <input type="text" id="serviceSearch" class="form-control rounded-pill p-2"
+                            <div class="mb-3 input-group">
+                                <input type="text" id="serviceSearch" class="p-2 form-control rounded-pill"
                                     placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2" />
                                 <div class="input-group-append search-btn">
-                                    <button class="btn border-0" type="button">
+                                    <button class="border-0 btn" type="button">
                                         <i class="fa-solid fa-search"></i>
                                     </button>
                                 </div>
@@ -571,11 +566,11 @@
                         </div>
 
                         <!-- Search Box -->
-                        <div class="row p-3 gx-3 pt-0" id="servicesContainer">
+                        <div class="p-3 pt-0 row gx-3" id="servicesContainer">
                             @forelse ($offerDeals as $offerDeal)
-                                <div class="col-lg-4 mb-3">
-                                    <div class="card deal-card border-0">
-                                        <div class="card-body border-0 p-4">
+                                <div class="mb-3 col-lg-4">
+                                    <div class="border-0 card deal-card">
+                                        <div class="p-4 border-0 card-body">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <!-- Counter -->
                                                 <div>
@@ -598,11 +593,12 @@
 
                                             </div>
                                             <!-- Product Image -->
-                                            <div class="d-flex justify-content-center align-items-center py-3">
+                                            <div
+                                                class="py-3 d-flex justify-content-center align-items-center deal-scroll-box">
                                                 <img class="img-fluid deal-img"
                                                     src="{{ !empty($offerDeal->image) ? url('storage/' . $offerDeal->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offerDeal->name) }}"
                                                     alt=""
-                                                    onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
+                                                    onerror="this.onerror=null; this.src='{{ asset('http://discountzshop.com/storage/offer/image/9vi6RNBcxH1739248309.png') }}';" />
                                             </div>
                                             <div>
                                                 <div>
@@ -620,19 +616,20 @@
                                                 </div>
                                                 <div class="mt-4">
                                                     <a href="{{ route('offer.details', $offerDeal->slug) }}"
-                                                        class="btn btn-common-one rounded-pill px-4">View</a>
+                                                        class="px-4 btn btn-common-one rounded-pill">View</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @empty
-                                <div class="text-center py-3">
-                                    <img class="img-fluid" width="210px"
-                                        src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
-                                        alt="No Content">
+                                <div class="not-available">
+                                    <div class="py-3 text-center">
+                                        <img width="260" class="img-fluid"
+                                            src="{{ asset('images/no-data.jpg') }}" alt="No Content">
+                                    </div>
+                                    <h5 class="text-warning">No Offer available right now.</h5>
                                 </div>
-                                <h5 class="text-center text-warning">No Offer available right now.</h5>
                             @endforelse
 
                         </div>
@@ -645,7 +642,7 @@
 
         <!-- Normal Slider Product Show -->
         <section>
-            <div class="container py-lg-5 py-0 px-0">
+            <div class="container px-0 py-0 py-lg-5">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="slick-slider-normal">
@@ -698,12 +695,12 @@
 
         @if ($brands->count() > 0)
             <section>
-                <div class="container py-5 pb-4 px-0">
+                <div class="container px-0 py-5 pb-4">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <h1>Big Brands Are Here</h1>
-                                {{-- <p class="w-lg-50 w-100 pt-3">
+                                <h1>Top Brands</h1>
+                                {{-- <p class="pt-3 w-lg-50 w-100">
                                 Problems trying to resolve the conflict between <br />
                                 the two major realms of Classical physics: Newtonian
                                 mechanics

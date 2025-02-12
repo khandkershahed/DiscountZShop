@@ -1,23 +1,26 @@
 <x-frontend-app-layout :title="'FAQs || DiscountZShop'">
 
     <!-- Hero Section -->
-    <section>
+    <section class="faq-banner-mobile">
         <div class="regular-banner">
             <img class="img-fluid w-100"
                 src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
-                alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
+                alt="{{ ucfirst(optional($page_banner)->page_name) }}"
+                onerror="this.onerror=null;this.src='{{ asset('images/faq-banner.png') }}';" />
         </div>
     </section>
     <!-- Hero End -->
-
-    <section class="faq-section py-5">
+    <section class="py-2 py-lg-5 faq-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 offset-lg-2">
+                <div class="col-lg-12">
+                    <h1 class="pb-5 text-center">All Faqs</h1>
+                </div>
+                <div class="col-lg-8 offset-lg-2">
                     <div class="accordion">
                         @if ($faqs->count() > 0)
                             @foreach ($faqs as $faq)
-                                <div class="accordion-item">
+                                <div class="accordion-item faq-items">
                                     <button id="accordion-button-1" aria-expanded="false">
                                         <span class="accordion-title">{{ $faq->question }}</span>
                                         <span class="icon" aria-hidden="true"></span>
@@ -39,7 +42,6 @@
             </div>
         </div>
     </section>
-
     @push('scripts')
         <script>
             const items = document.querySelectorAll(".accordion button");
