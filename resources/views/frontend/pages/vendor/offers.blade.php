@@ -5,7 +5,7 @@
     <div class="desktop-homepage">
         <section>
             <div class="container">
-                <div class="row mb-4">
+                <div class="mb-4 row">
                     <div class="col-lg-12 pe-0">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
@@ -35,9 +35,9 @@
                 </div>
                 <div class="row servicesContainer divisionContainer">
                     @foreach (optional($brand)->offers as $offer)
-                        <div class="col-lg-3 mb-4">
-                            <div class="card border-0 shadow-sm bg-light">
-                                <div class="row p-4 align-items-center">
+                        <div class="mb-4 col-lg-3">
+                            <div class="border-0 shadow-sm card bg-light">
+                                <div class="p-4 row align-items-center">
                                     <div class="col-lg-6">
                                         <div>
                                             <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -53,14 +53,14 @@
                                             </h4>
                                         @endif
                                     </div>
-                                    <div class="col-lg-12 pt-4 offer_title">
+                                    <div class="pt-4 col-lg-12 offer_title">
                                         <p class="pb-4 text-black">{{ $offer->name }}</p>
                                         {{-- <a href="{{ route('offer.details', $offer->slug) }}"
                                     class="main-color">
                                     <small>See All In Store</small>
                                 </a> --}}
                                     </div>
-                                    <div class="col-lg-12 pt-4">
+                                    <div class="pt-4 col-lg-12">
                                         <div class="d-flex">
                                             <a href="{{ route('offer.details', $offer->slug) }}"
                                                 class="w-100 btn-common-one rounded-3">
@@ -86,7 +86,7 @@
                     @endforeach
                     {{-- Pagination Of The Data --}}
                     {{-- <div class="col-lg-12">
-                    <div class="d-flex justify-content-center align-items-center pb-4 pt-2">
+                    <div class="pt-2 pb-4 d-flex justify-content-center align-items-center">
                         <a href="javascript:void(0)" class="btn-common-one rounded-3 ">
                             <small>Show More</small>
                         </a>
@@ -99,12 +99,12 @@
     <div class="mobile-homepage" style="margin-bottom: 8rem">
         <section>
             <div class="container">
-                <div class="row mb-4">
+                <div class="mb-4 row">
                     <div class="col-lg-12 pe-0">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <!-- Search Store -->
-                                <div class="wrapper-store">
+                                <div class="wrapper-store d-none d-lg-block">
                                     <div class="search-input-store cst-input">
                                         <input class="w-100" type="text" id="serviceSearch" name=""
                                             placeholder="Type to search...">
@@ -124,9 +124,9 @@
                 </div>
                 <div class="row servicesContainer divisionContainer">
                     @foreach (optional($brand)->offers as $offer)
-                        <div class="col-lg-3 mb-4">
-                            <div class="card border-0 shadow-sm bg-light">
-                                <div class="row p-4 align-items-center">
+                        <div class="mb-4 col-lg-3">
+                            <div class="border-0 shadow-sm card bg-light">
+                                <div class="p-4 row align-items-center">
                                     <div class="col-lg-12">
                                         <div>
                                             <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -143,7 +143,7 @@
                                             <p class="pb-4 text-black">{{ $offer->name }}</p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 pt-4">
+                                    <div class="pt-4 col-lg-12">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="w-50">
                                                 <a href="{{ route('offer.details', $offer->slug) }}"
@@ -158,7 +158,7 @@
                                                     </a>
                                                 @endif
                                             </div>
-                                            <p class="ps-5 text-center countdown w-50"
+                                            <p class="text-center ps-5 countdown w-50"
                                                 data-expire-date="{{ $offer->expiry_date }}">
                                                 <span class="main-color">
                                                     <i class="fa-solid fa-clock"></i>

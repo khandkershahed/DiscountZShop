@@ -11,23 +11,18 @@
         </section>
         <!-- Hero End -->
 
-        <section>
+        <section class="all-offers-container">
             <div class="container mb-5">
-
-                <div class="py-5 pb-2 row">
-
+                <div class="py-5 pt-2 pb-2 row pt-lg-3">
                     <div class="col-lg-12 pe-0">
                         <div class="d-flex justify-content-between">
-
-                            <div class="d-flex align-items-center">
-                                <h3></h3>
-                                {{-- <span class="store-devider"></span> --}}
+                            <div class="d-flex align-items-center d-none d-lg-block">
+                                <h3>All Offers</h3>
+                                <span class="store-devider"></span>
                             </div>
 
                             {{-- =======================Filter ======================= --}}
-                            <div class="row">
-
-
+                            <div class="row pe-2 pe-lg-0">
                                 <div class="col-4 col-lg-3">
                                     <div class="">
                                         <select class="form-select" id="" name="division_id"
@@ -81,10 +76,10 @@
                                 <div class="mt-3 col-12 col-lg-3 mt-lg-0">
 
                                     <!-- Search Store -->
-                                    <div class="wrapper-store">
+                                    <div class="wrapper-store ">
                                         <div class="search-input-store">
-                                            <input type="text" id="serviceSearch" autocomplete="off" name="search"
-                                                placeholder="Type to search..." />
+                                            <input type="text" class="py-3" id="serviceSearch" autocomplete="off"
+                                                name="search" placeholder="Type to search..." />
                                             <div class="icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -105,64 +100,10 @@
 
                 </div>
 
-                <div class="pt-3 row">
-
-                    <div class="py-2 border shadow-sm col-lg-3">
+                <div class="pt-2 row">
+                    <div class="col-lg-3">
                         {{-- Accordion Filter Start --}}
-
-
                         <div class="accordion d-none d-lg-block">
-
-
-                            {{-- @foreach ($categories as $header_category)
-                                @if ($header_category->offers->count() > 0)
-                                    <!-- Check if category has offers -->
-                                    <div class="accordion-header">
-                                        <div class="checkbox-wrapper-offers">
-                                            <input class="inp-cbx accordion-checkbox"
-                                                id="category-{{ $header_category->id }}" type="checkbox" />
-                                            <label class="cbx" for="category-{{ $header_category->id }}"
-                                                onclick="toggleOffers('{{ $header_category->id }}')">
-                                                <span>
-                                                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                    </svg>
-                                                </span>
-                                                <span style="font-size: 14px">{{ $header_category->name }}
-                                                    ({{ $header_category->offers->count() }})</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="panel" id="panel-{{ $header_category->id }}">
-                                        @foreach ($header_category->children as $header_category_child)
-                                            @if ($header_category_child->offers->count() > 0)
-                                                <!-- Check if subcategory has offers -->
-                                                <div class="accordion-header">
-                                                    <div class="checkbox-wrapper-offers">
-                                                        <input class="inp-cbx accordion-checkbox"
-                                                            id="subcategory-{{ $header_category_child->id }}"
-                                                            type="checkbox" />
-                                                        <label class="cbx"
-                                                            for="subcategory-{{ $header_category_child->id }}">
-                                                            <span>
-                                                                <svg width="12px" height="10px" viewbox="0 0 12 10">
-                                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                                                </svg>
-                                                            </span>
-                                                            <span
-                                                                style="font-size: 14px">{{ $header_category_child->name }}
-                                                                ({{ $header_category_child->offers->count() }})
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                @endif
-                            @endforeach --}}
-
                             @foreach ($categories as $header_category)
                                 @php
                                     // Filter offers with expiry date greater than or equal to today
@@ -172,7 +113,6 @@
                                         );
                                     });
                                 @endphp
-
                                 @if ($validOffers->count() > 0)
                                     <!-- Check if category has valid offers -->
                                     <div class="accordion-header">
@@ -191,7 +131,6 @@
                                             </label>
                                         </div>
                                     </div>
-
                                     <div class="panel" id="panel-{{ $header_category->id }}">
                                         @foreach ($header_category->children as $header_category_child)
                                             @php
@@ -204,7 +143,6 @@
                                                     )->greaterThanOrEqualTo(\Carbon\Carbon::now()->startOfDay());
                                                 });
                                             @endphp
-
                                             @if ($validChildOffers->count() > 0)
                                                 <!-- Check if subcategory has valid offers -->
                                                 <div class="accordion-header">
@@ -231,52 +169,52 @@
                                     </div>
                                 @endif
                             @endforeach
-
-
-
                         </div>
-
                     </div>
-
                     <div class="col-lg-9 pe-0">
-
                         <div class="tab-content" id="myTabContent">
-
                             {{-- Category All Offers Tab --}}
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
-
                                 @if ($offers->count() > 0)
                                     <div class="row" id="servicesContainer">
-
                                         @foreach ($offers as $offer)
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <div class="mb-4 col-lg-4 col-6 pe-2">
-
-                                                    {{-- <a href="{{ route('offer.details', $offer->slug) }}"> --}}
                                                     <div class="border-0 shadow-sm card bg-light offer-boxes">
-
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                        width="80px" height="80px" class="rounded-2"
-                                                                        style="object-fit: contain;" alt="" />
+                                                                        width="80px" height="80px"
+                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        alt="" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
-                                                            <div class="pt-4 col-lg-12 offer_title">
+                                                            {{-- <div class="pt-4 col-lg-12 offer_title">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}">
-                                                                    <p class="pb-4 text-black">{{ $offer->name }}
+                                                                    <p class="pb-4 text-black">
+                                                                        {{ Str::words($offer->name, 1, '') }}
                                                                     </p>
                                                                 </a>
+                                                            </div> --}}
+                                                            <div class="pt-4 col-lg-12 offer_title">
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <div
+                                                                        class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
+                                                                        <img src="{{ asset('images/heart.png') }}"
+                                                                            alt="">
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                            <div class="pt-4 col-lg-12">
+                                                            <div class="pt-0 pt-lg-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3"><small>View</small></a>
@@ -302,8 +240,6 @@
                                                         </div>
 
                                                     </div>
-                                                    {{-- </a> --}}
-
                                                 </div>
                                             @elseif($offer->expiry_date == null)
                                                 <div class="mb-4 col-lg-4 col-6 pe-2">
@@ -311,7 +247,7 @@
                                                     <div class="border-0 shadow-sm card bg-light offer-boxes">
 
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
@@ -319,7 +255,7 @@
                                                                         alt="" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
@@ -327,10 +263,15 @@
                                                             </div>
                                                             <div class="pt-4 col-lg-12 offer_title">
                                                                 <a href="{{ route('offer.details', $offer->slug) }}">
-                                                                    <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                                    <div
+                                                                        class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
+                                                                        <img src="{{ asset('images/heart.png') }}"
+                                                                            alt="">
+                                                                    </div>
                                                                 </a>
                                                             </div>
-                                                            <div class="pt-4 col-lg-12">
+                                                            <div class="pt-0 pt-lg-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3"><small>View</small></a>
@@ -384,7 +325,7 @@
                                                 <div class="mt-4 col-lg-4">
                                                     <div class="border-0 shadow-sm card bg-light">
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
@@ -393,16 +334,30 @@
                                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
+                                                            {{-- <div class="pt-4 col-lg-12 offer_title">
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <p class="pb-4 text-black">
+                                                                        {{ Str::words($offer->name, 1, '') }}
+                                                                    </p>
+                                                                </a>
+                                                            </div> --}}
                                                             <div class="pt-4 col-lg-12 offer_title">
-                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <div
+                                                                        class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
+                                                                        <img src="{{ asset('images/heart.png') }}"
+                                                                            alt="">
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                            <div class="pt-4 col-lg-12">
+                                                            <div class="pt-0 pt-lg-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3">
@@ -429,7 +384,7 @@
                                                 <div class="mt-4 col-lg-4">
                                                     <div class="border-0 shadow-sm card bg-light">
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
@@ -438,16 +393,30 @@
                                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-6">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
                                                                 @endif
                                                             </div>
+                                                            {{-- <div class="pt-4 col-lg-12 offer_title">
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <p class="pb-4 text-black">
+                                                                        {{ Str::words($offer->name, 1, '') }}
+                                                                    </p>
+                                                                </a>
+                                                            </div> --}}
                                                             <div class="pt-4 col-lg-12 offer_title">
-                                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                                    <div
+                                                                        class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
+                                                                        <img src="{{ asset('images/heart.png') }}"
+                                                                            alt="">
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                            <div class="pt-4 col-lg-12">
+                                                            <div class="pt-0 pt-lg-4 col-lg-12">
                                                                 <div class="d-flex">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3">

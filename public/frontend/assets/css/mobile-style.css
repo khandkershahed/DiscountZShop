@@ -221,6 +221,11 @@
         position: relative;
         left: -18px;
         border: 2px solid orange;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: contain;
     }
     .second-banner-mb img {
         width: 410px;
@@ -349,14 +354,30 @@
         border-radius: 5px;
         padding: 0 20px 0 10px;
     }
+    .countdown {
+        font-weight: 600;
+        font-size: 10px;
+    }
+    .offer-boxes{
+        height: 255px;
+    }
+    .main-store-banner img {
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .all-offers-container{
+        margin-bottom: 7rem !important;
+    }
     .search-input-store .icon {
         position: absolute;
         right: 0px;
         top: 0px;
-        height: 30px;
+        height: 34px;
         width: 30px;
         text-align: center;
-        line-height: 25px;
+        line-height: 32px;
         font-size: 10px;
         color: var(--secondary-color-one);
         background-color: var(--primary-color);
@@ -373,7 +394,7 @@
         border: 0;
         display: inline;
     }
-    .store_title{
+    .store_title {
         padding-top: 0 !important;
     }
     .brand-search {
@@ -589,6 +610,16 @@
         align-items: center;
         padding: 5px;
     }
+    .search-brands{
+
+    }
+    .search-store-banner-container{
+        margin-top: 5px;
+    }
+    .search-store-banner img{
+        height: 185px;
+        width: 100%;
+    }
     .header-tablet-and-mobile-fixed .wrapper {
         padding-top: 0px !important;
     }
@@ -635,7 +666,7 @@
         height: 60px;
         padding: 5px;
     }
-    .store-logo-mb img{
+    .store-logo-mb img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -643,16 +674,16 @@
     .footer-icons {
         margin: 0;
     }
-    .faq-banner-mobile{
+    .faq-banner-mobile {
         margin-top: 4rem;
     }
-    .faq-section{
+    .faq-section {
         margin-bottom: 5rem;
     }
-    .faq-items button{
+    .faq-items button {
         padding: 1em 4px;
     }
-    .offers-card{
+    .offers-card {
         height: 80px;
     }
 }

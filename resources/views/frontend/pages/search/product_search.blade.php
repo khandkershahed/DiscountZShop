@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'Search || DiscountZShop'">
 
     <!-- Hero Section -->
-    <section>
+    <section class="">
         <div class="regular-banner">
             <img class="img-fluid w-100"
                 src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/no-banner(1920-330).png') }}"
@@ -11,7 +11,7 @@
     <!-- Hero End -->
 
     <!-- Search Results Section -->
-    <div class="search-results container my-5">
+    <div class="container my-5 search-results all-offers-container">
 
         <!-- Brands Section -->
         <h3>Brand</h3>
@@ -21,11 +21,11 @@
             <div class="row">
 
                 @foreach ($brands as $brand)
-                    <div class="col-lg-2 mb-3 mt-2">
+                    <div class="mt-2 mb-3 col-lg-12 col-6">
                         <a href="{{ route('brand.details', $brand->slug) }}">
-                            <div class="card shadow-sm brands-card">
-                                <div class="card-body p-0">
-                                    <div class="brands-logo">
+                            <div class="shadow-sm card brands-card">
+                                <div class="p-0 card-body">
+                                    <div class="brands-logo search-brands">
                                         <img class="img-fluid rounded-3" src="{{ asset('storage/' . $brand->logo) }}"
                                             alt="Brand Logo" title="Brand Logo" />
                                     </div>
@@ -41,14 +41,13 @@
         <!-- Offers Section -->
         <h3>Offer</h3>
         @if ($offers->isEmpty())
-            <p class="text-danger my-3">Offer Not Found</p>
+            <p class="my-3 text-danger">Offer Not Found</p>
         @else
             <div class="row">
-
                 @foreach ($offers as $offer)
-                    <div class="col-lg-3 mb-4">
-                        <div class="card border-0 shadow-sm bg-light">
-                            <div class="row p-4 align-items-center">
+                    <div class="mb-4 col-lg-3 col-3">
+                        <div class="border-0 shadow-sm card bg-light">
+                            <div class="p-4 row align-items-center">
                                 <div class="col-lg-6">
                                     <div>
                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
@@ -65,14 +64,14 @@
                                         </h4>
                                     @endif
                                 </div>
-                                <div class="col-lg-12 pt-4 offer_title">
+                                <div class="pt-4 col-lg-12 offer_title">
                                     <p class="pb-4 text-black">{{ $offer->name }}</p>
                                     {{-- <a href="{{ route('offer.details', $offer->slug) }}"
                                                             class="main-color">
                                                             <small>See All In Store</small>
                                                         </a> --}}
                                 </div>
-                                <div class="col-lg-12 pt-4">
+                                <div class="pt-4 col-lg-12">
                                     <div class="d-flex">
                                         <a href="{{ route('offer.details', $offer->slug) }}"
                                             class="w-100 btn-common-one rounded-3">
@@ -104,13 +103,12 @@
             <p class="my-3 text-danger">Store Not Found</p>
         @else
             <div class="row">
-
                 @foreach ($stores as $latest_store)
-                    <div class="col-lg-3">
-                        <div class="card border-0 shadow-sm mb-4">
-                            <div class="card-body p-0 rounded-2">
+                    <div class="col-lg-3 col-6">
+                        <div class="mb-4 border-0 shadow-sm card search-store-banner-container">
+                            <div class="p-0 card-body rounded-2">
                                 <!-- Store Banner -->
-                                <div class="main-store-banner">
+                                <div class="main-store-banner search-store-banner">
                                     <img class="img-fluid rounded-2"
                                         src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
                                         alt="arong-banner.jpg" />
@@ -137,20 +135,21 @@
                                     <div class="pt-4 d-flex justify-content-between store_title">
                                         <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
-                                                <h5 style="width: 98%;margin-bottom: 0.75rem;">
-                                                    {{ $latest_store->title }}</h5>
+                                                <h6 style="width: 98%;margin-bottom: 0.75rem;">
+                                                    {{ Str::words($latest_store->title, 2, '...') }}
+                                                </h6>
                                                 <p>{{ $latest_store->headquarter }}</p>
                                             </div>
                                         </a>
                                         <div>
-                                            <button class="btn border-0 p-0 m-0 ps-2">
+                                            <button class="p-0 m-0 border-0 btn ps-2">
                                                 <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
                                                     title="Store Location" data-bs-toggle="modal"
                                                     data-bs-target="#store-Location" aria-hidden="true"></i>
                                             </button>
                                         </div>
                                     </div>
-                                    {{-- <div class="bg-light mt-3 d-flex justify-content-between mb-3 p-2 rounded-3">
+                                    {{-- <div class="p-2 mt-3 mb-3 bg-light d-flex justify-content-between rounded-3">
                                         <span class="bg-danger badge fw-normal">
                                             <i class="fa-solid fa-percent pe-2"></i>OFFER
                                         </span>

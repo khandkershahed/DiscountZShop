@@ -1,7 +1,6 @@
 <x-frontend-app-layout :title="'All Store || DiscountZShop'">
 
-    <div class="">
-
+    <div class="all-offers-container">
         <!-- Hero Section -->
         <section>
             <div class="regular-banner">
@@ -11,23 +10,18 @@
             </div>
         </section>
         <!-- Top Stores -->
-
         <section class="py-3 py-lg-5">
             <div class="container">
-
                 <div class="row">
-
                     <div class="col-lg-3">
                         <div class="d-flex align-items-center d-none d-lg-block">
                             <h3>All Stores</h3>
                             <span class="store-devider"></span>
                         </div>
                     </div>
-
                     <div class="col-lg-9">
-                        <div class="row">
-
-                            <div class="col-6 col-lg-2">
+                        <div class="px-2 row px-lg-0">
+                            <div class="px-1 col-4 col-lg-2 px-lg-2">
                                 <!-- Filter Store - Division -->
                                 <div class="">
                                     <select class="form-select" id="" name="division_id"
@@ -44,8 +38,7 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-6 col-lg-2">
+                            <div class="px-1 col-4 col-lg-2 px-lg-2">
                                 <div class="">
                                     <select class="form-select" id="" name="city_id"
                                         data-placeholder="Select City" autocomplete="off">
@@ -59,8 +52,7 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-6 col-lg-2">
+                            <div class="px-1 col-4 col-lg-2 px-lg-2">
                                 <div class="">
                                     <select class="form-select" id="" name="area_id"
                                         data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
@@ -82,13 +74,12 @@
                                     }
                                 </script>
                             </div>
-
-                            <div class="col-6 col-lg-6">
-                                <div class="wrapper-store">
+                            <div class="px-1 col-12 col-lg-6 px-lg-2">
+                                <div class="pt-2 wrapper-store pt-lg-0">
                                     <div class="search-input-store">
                                         {{-- <form action=""> --}}
-                                        <input type="text" id="serviceSearch" autocomplete="off" name="search"
-                                            placeholder="Type to search..." />
+                                        <input type="text" class="py-3 w-100" id="serviceSearch" autocomplete="off"
+                                            name="search" placeholder="Type to search..." />
                                         <div class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -101,29 +92,20 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Search Store -->
-
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </section>
         <!-- All Stores -->
-
         <section>
             <div class="container">
-
                 @if ($stores->count() > 0)
-
                     <div class="pb-4 row" id="servicesContainer">
                         @foreach ($stores as $store)
                             <div class="col-lg-3 col-6">
                                 <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
-
                                     <div class="mb-4 border-0 shadow-sm card">
                                         <div class="p-0 card-body rounded-2">
                                             <!-- Store Banner -->
@@ -131,16 +113,16 @@
                                                 <img class="img-fluid rounded-2"
                                                     src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
                                                     alt="arong-banner.jpg"
-                                                    onerror="this.onerror=null; this.src='{{ asset('http://127.0.0.1:8090/storage/brands/image/YQEqnQLk9n1727868776.png') }}';"/>
+                                                    onerror="this.onerror=null; this.src='{{ asset('http://127.0.0.1:8090/storage/brands/image/YQEqnQLk9n1727868776.png') }}';" />
                                             </div>
                                             <!-- Store Logo And Rating -->
-                                            <div class="px-3 pb-3">
+                                            <div class="px-3 pb-0 pb-lg-0">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="store-logo">
                                                         <img class="img-fluid"
                                                             src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : asset('images/no-image(random).png') }}"
                                                             alt="arong-logo.png"
-                                                            onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';"/>
+                                                            onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';" />
                                                     </div>
                                                     <div class="store-rating">
                                                         <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}"
@@ -154,7 +136,9 @@
                                                     <a
                                                         href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
                                                         <div>
-                                                            <h6>{{ $store->title }}</h6>
+                                                            <h6>
+                                                                {{ Str::words($store->title, 2, '...') }}
+                                                            </h6>
                                                         </div>
                                                     </a>
                                                     <div>

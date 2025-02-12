@@ -43,7 +43,7 @@
                     @foreach ($mobile_coupons as $mobile_coupon)
                         <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
                             <div class="p-0 card-body">
-                                <div class="py-2 d-flex align-items-center justify-content-end w-100">
+                                <div class="py-2 d-flex align-items-center justify-content-center w-100">
                                     <div class="coupon-images-mb">
                                         <img class=""
                                             src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
@@ -208,7 +208,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Slick Slider -->
-                    <div class="slick-slider-product">
+                    <div class="mt-4 slick-slider-product">
                         @forelse ($offerLatests as $offerLatest)
                             <div class="items me-2" style="background-color: #f5f6f8">
                                 <div class="p-4 row align-items-center product-discount-box">
@@ -277,7 +277,7 @@
                                                 <div class="px-2 py-2 d-flex align-items-center">
                                                     <div class="ps-2">
                                                         <a href="{{ route('offer.details', $offerDeal->slug) }}">
-                                                            <h6 class="mb-3 product-title">
+                                                            <h6 class="my-3 product-title">
                                                                 {{ Str::words($offerDeal->name, 2, '...') }}
                                                             </h6>
                                                         </a>
@@ -285,24 +285,16 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="p-3 card-body" style="border-top: 1px dashed #252525">
-
-                                            <div class="py-2 ticket">
-
-                                                <a href="{{ route('offer.details', $offerDeal->slug) }}">
-
-
+                                            <a href="{{ route('offer.details', $offerDeal->slug) }}">
+                                                <div class="py-2 ticket">
                                                     <span class="">View Offer</span>
-                                                </a>
-
-                                            </div>
-
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
                 </div>
