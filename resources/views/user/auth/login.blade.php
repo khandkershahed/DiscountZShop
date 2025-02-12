@@ -16,63 +16,65 @@
                                 <div class="row">
                                     <div class="col-lg-8 offset-lg-2">
                                         <h2 class="mb-5 fw-bold">Log In</h2>
-                                    <form method="POST" action="{{ route('login') }}">
-                                        @csrf
-                                        <!-- 2 column grid layout with text inputs for the first and last names -->
-                                        <div class="mb-4 row">
-                                            <div class="form-outline">
-                                                <x-input-label class="form-label" for="email" :value="__('Email')" />
-                                                <x-text-input id="email" class="form-control form-control-solid"
-                                                    type="email" name="email" :value="old('email')" required
-                                                    autocomplete="username" />
-                                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        <form method="POST" action="{{ route('login') }}">
+                                            @csrf
+                                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                                            <div class="mb-4 row">
+                                                <div class="form-outline">
+                                                    <x-input-label class="form-label" for="email"
+                                                        :value="__('Email')" />
+                                                    <x-text-input id="email" class="form-control form-control-solid"
+                                                        type="email" name="email" :value="old('email')" required
+                                                        autocomplete="username" />
+                                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <div class="form-outline">
-                                                <x-input-label class="form-label" for="password" :value="__('Password')" />
+                                            <div class="mb-3 row">
+                                                <div class="form-outline">
+                                                    <x-input-label class="form-label" for="password"
+                                                        :value="__('Password')" />
 
-                                                <x-text-input id="password" class="form-control form-control-solid"
-                                                    type="password" name="password" required
-                                                    autocomplete="new-password" />
-                                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                    <x-text-input id="password" class="form-control form-control-solid"
+                                                        type="password" name="password" required
+                                                        autocomplete="new-password" />
+                                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Checkbox -->
-                                        <div class="row justify-content-between align-items-center">
-                                            <div
-                                                class="mb-3 form-check d-flex justify-content-center align-items-center">
-                                                <input class="form-check-input me-2" type="checkbox" value=""
-                                                    id="remember_me" name="remember" />
-                                                <label class="form-check-label" for="remember_me">
-                                                    {{ __('Remember me') }}
-                                                </label>
-                                            </div>
-                                            @if (Route::has('password.request'))
+                                            <!-- Checkbox -->
+                                            <div class="row justify-content-between align-items-center">
                                                 <div
                                                     class="mb-3 form-check d-flex justify-content-center align-items-center">
-                                                    <h6 class="d-flex justify-content-center align-items-center">
-                                                        {{ __('Forgot your password?') }}
-                                                        <a href="{{ route('password.request') }}"
-                                                            class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here...') }}</a>
-                                                    </h6>
+                                                    <input class="form-check-input me-2" type="checkbox" value=""
+                                                        id="remember_me" name="remember" />
+                                                    <label class="form-check-label" for="remember_me">
+                                                        {{ __('Remember me') }}
+                                                    </label>
                                                 </div>
-                                            @endif
-                                        </div>
+                                                @if (Route::has('password.request'))
+                                                    <div
+                                                        class="mb-3 form-check d-flex justify-content-center align-items-center">
+                                                        <h6 class="d-flex justify-content-center align-items-center">
+                                                            {{ __('Forgot your password?') }}
+                                                            <a href="{{ route('password.request') }}"
+                                                                class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here...') }}</a>
+                                                        </h6>
+                                                    </div>
+                                                @endif
+                                            </div>
 
-                                        <!-- Submit button -->
-                                        <div class="mx-auto">
-                                            <button type="submit" class="mb-4 btn btn-common-one rounded-pill" style="width: 100% !important;">Log in</button>
-                                        </div>
-                                    </form>
+                                            <!-- Submit button -->
+                                            <div class="mx-auto">
+                                                <button type="submit" class="mb-4 btn btn-common-one rounded-pill"
+                                                    style="width: 100% !important;">Log in</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-5 col-lg-6 mb-lg-0">
-                                <img class="img-fluid register-img"
-                                    src="{{ asset('images/login-img.png') }}"
+                                <img class="img-fluid register-img" src="{{ asset('images/login-img.png') }}"
                                     class="w-100 rounded-4 shadow-4" alt="" />
                             </div>
                         </div>
@@ -116,7 +118,7 @@
 
                         <div class="p-5 px-4">
 
-                            {{-- <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <!-- Submit button -->
                                 <div class="icon-parent-cnt" style="margin-bottom: 25px">
@@ -159,10 +161,11 @@
                                 <x-primary-button class="mb-4 btn btn-common-one rounded-pill w-100">
                                     {{ __('Log in') }}
                                 </x-primary-button>
+                                <p class="pt-3 text-center mfs">Don't have account? <a href="{{ route('register') }}"><span
+                                            class="site-text">Register Now</span></a></p>
+                            </form>
 
-                            </form> --}}
-
-                            <form method="POST" action="{{ route('login') }}">
+                            {{-- <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
                                 <div class="mb-4 row">
@@ -185,7 +188,7 @@
                                 </div>
 
                                 <!-- Checkbox -->
-                                {{-- <div class="row justify-content-between align-items-center">
+                                <div class="row justify-content-between align-items-center">
                                     <div class="mb-3 form-check d-flex justify-content-center align-items-center">
                                         <input class="form-check-input me-2" type="checkbox" value=""
                                             id="remember_me" name="remember" />
@@ -202,13 +205,13 @@
                                             </h6>
                                         </div>
                                     @endif
-                                </div> --}}
+                                </div>
 
                                 <!-- Submit button -->
                                 <div class="mx-auto">
                                     <button type="submit" class="mb-4 btn btn-common-one rounded-pill" style="width: 100% !important;">Log in</button>
                                 </div>
-                            </form>
+                            </form> --}}
 
                         </div>
                     </div>

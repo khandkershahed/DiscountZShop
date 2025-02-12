@@ -219,7 +219,7 @@
         width: 50px;
         border-radius: 100%;
         position: relative;
-        left: -30px;
+        left: -18px;
         border: 2px solid orange;
     }
     .second-banner-mb img {
@@ -651,5 +651,8 @@
     }
     .faq-items button{
         padding: 1em 4px;
+    }
+    .offers-card{
+        height: 80px;
     }
 }

@@ -1103,7 +1103,7 @@ del {
 
 .store_title {
     align-items: center;
-    height: 7.5rem;
+    height: 75px;
 }
 .category-menus {
     height: 330px;
@@ -1858,7 +1858,8 @@ html {
     }
     .coupon-code {
         position: relative;
-        left: -18px;
+        left: -6px;
+        font-size: 9px;
     }
     .navigation-slide {
         margin-top: -25px;

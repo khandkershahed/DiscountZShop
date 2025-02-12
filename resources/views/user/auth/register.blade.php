@@ -8,7 +8,7 @@
         }
     </style>
 
-    <div class="container py-5 mb-5 mb-lg-0">
+    <div class="container py-5 mb-5 mb-lg-0 desktop-homepage">
         <div class="py-5 row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="border-0 card">
@@ -109,7 +109,7 @@
 
 
     {{-- mobile-homepage --}}
-    {{-- @include('frontend.pages.register_mobile_view') --}}
+    @include('frontend.pages.register_mobile_view')
     {{-- mobile-homepage --}}
 
 </x-frontend-app-layout>
