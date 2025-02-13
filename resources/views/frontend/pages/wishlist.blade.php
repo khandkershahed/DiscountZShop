@@ -1,4 +1,4 @@
-<x-frontend-app-layout :title="'Terms and Condition || DiscountZShop'">
+<x-frontend-app-layout :title="'WishList || DiscountZShop'">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
