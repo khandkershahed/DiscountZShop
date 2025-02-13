@@ -39,12 +39,11 @@
             <div class="col-lg-12">
                 <div class="pt-4 coupon-slide">
 
-
                     @foreach ($mobile_coupons as $mobile_coupon)
                         <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
                             <div class="p-0 card-body">
                                 <div class="py-2 d-flex align-items-center justify-content-center w-100">
-                                    <div class="coupon-images-mb">
+                                    <div class="coupon-images-mb ps-2">
                                         <img class=""
                                             src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
                                             alt="">
@@ -85,10 +84,10 @@
                 <div class="py-3 d-flex justify-content-around align-items-center">
                     <p class="text-white">Get 20% on App</p>
                     <div class="d-flex justify-content-center">
-                        <input type="text" value="ramadan20" name="coupon_name" class="border-0 ps-3 rounded-2" style="width: 60%; margin: auto;">
+                        <input type="text" value="ramadan20" name="coupon_name" class="py-2 border-0 ps-3 rounded-2" style="width: 60%; margin: auto;">
                     </div>
                     <div class="pe-3">
-                        <img class="img-fluid" src="{{ asset('images/panda.png') }}" alt="">
+                        <img class="img-fluid" width="50px" src="{{ asset('images/panda.png') }}" alt="">
                     </div>
                 </div>
             </div>

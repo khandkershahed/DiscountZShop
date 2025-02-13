@@ -49,11 +49,11 @@
 <div class="desktop-homepage">
     <div class="main-desktop-header">
         <header class="sticky-top bg-light">
-            <nav class="navbar navbar-expand-lg py-0">
+            <nav class="py-0 navbar navbar-expand-lg">
                 <div class="container px-0">
                     <!-- Toggler Button for Mobile View -->
                     <div class="mobile-show w-100">
-                        <div class="d-flex justify-content-between align-items-center w-100 p-3">
+                        <div class="p-3 d-flex justify-content-between align-items-center w-100">
                             <div>
                                 <a href="{{ route('homePage') }}" class="logo-main">
                                     <img class="img-fluid"
@@ -63,7 +63,7 @@
                                 </a>
                             </div>
                             <div>
-                                <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                                <button class="border-0 navbar-toggler" type="button" data-bs-toggle="offcanvas"
                                     data-bs-target="#staticBackdrop" aria-controls="staticBackdrop"
                                     aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -73,10 +73,10 @@
                     </div>
                     <!-- Navigation Links -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="mb-2 navbar-nav me-auto mb-lg-0">
                             <li class="nav-item d-flex align-items-center">
                                 <!-- Current Location -->
-                                <a class="nav-link current-location shadow-sm" aria-current="page"
+                                <a class="shadow-sm nav-link current-location" aria-current="page"
                                     title="Location Wise Current Discount" href="javascript:;">
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
@@ -97,7 +97,7 @@
 
                                 <div class="dropdown position-static">
 
-                                    <p class="ms-3 mb-2">{{ $city }} ,
+                                    <p class="mb-2 ms-3">{{ $city }} ,
                                         {{ $country }}</p>
 
                                     @if ($categories->count() > 0)
@@ -117,17 +117,17 @@
                                                 </div>
                                             </span>
                                         </a>
-                                        
-                                        <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
+
+                                        <ul class="py-0 mt-0 border-0 dropdown-menu w-100 bg-light rounded-0"
                                             aria-labelledby="dropdownMenuButton1"
                                             style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
 
                                             <div class="container">
 
                                                 <div class="row">
-                                                    <div class="col-lg-3 bg-white px-0 category-menus">
+                                                    <div class="px-0 bg-white col-lg-3 category-menus">
 
-                                                        <ul class="nav nav-tabs flex-column border-0" id="myTab"
+                                                        <ul class="border-0 nav nav-tabs flex-column" id="myTab"
                                                             role="tablist">
 
                                                             @foreach ($categories as $header_category)
@@ -156,7 +156,7 @@
                                                                     id="home-{{ $header_category->id }}"
                                                                     role="tabpanel"
                                                                     aria-labelledby="home-{{ $header_category->id }}-tab">
-                                                                    <div class="row py-4 category-menus-show"
+                                                                    <div class="py-4 row category-menus-show"
                                                                         style="background-color: #eee">
                                                                         @foreach ($header_category->children as $header_category_child)
                                                                             <div class="col-lg-4">
@@ -173,7 +173,7 @@
 
 
                                                                                 <ul
-                                                                                    class="ps-0 pt-3 main-category-dropdown">
+                                                                                    class="pt-3 ps-0 main-category-dropdown">
                                                                                     @foreach ($header_category_child->offers as $header_category_offer)
                                                                                         <li class="p-1">
                                                                                             <a
@@ -199,25 +199,25 @@
                                 </div>
                             </li>
                         </ul>
-                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <ul class="mx-auto mb-2 navbar-nav mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link custom-nav-link {{ Route::is('homePage') ? 'active' : '' }}"
-                                    href="{{ route('homePage') }}">Home <span class="ps-3"> |
+                                    href="{{ route('homePage') }}">Home <span class="ps-0 ps-lg-3"> |
                                     </span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link custom-nav-link {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
-                                    href="{{ route('allOffer') }}">Offers <span class="ps-3"> |
+                                    href="{{ route('allOffer') }}">Offers <span class="ps-0 ps-lg-3"> |
                                     </span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link custom-nav-link {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
-                                    href="{{ route('allBrand') }}">Brands <span class="ps-3"> |
+                                    href="{{ route('allBrand') }}">Brands <span class="ps-0 ps-lg-3"> |
                                     </span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link custom-nav-link {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
-                                    href="{{ route('allStore') }}">Stores <span class="ps-3"></a>
+                                    href="{{ route('allStore') }}">Stores <span class="ps-0 ps-lg-3"></a>
                             </li>
 
                         </ul>
@@ -233,7 +233,7 @@
                                         name="search" type="text" placeholder="Search" aria-label="Search"
                                         id="search-input" />
                                 </div>
-                                <button class="btn position-relative border-0 bg-transparent search-action"
+                                <button class="bg-transparent border-0 btn position-relative search-action"
                                     type="submit" id="search-btn" style="display: none;">
                                     <i class="fa-solid fa-search text-muted"></i>
                                 </button>
@@ -247,7 +247,7 @@
 
 
                         <a href="{{ route('wishlist.product') }}"
-                            class="border-0 bg-transparent bt-common bt-common-heart">
+                            class="bg-transparent border-0 bt-common bt-common-heart">
                             <i class="fa-regular fa-heart fs-2 fw-normal">
                                 <span class="cart-count" id="cartWishlistQty">0</span>
                             </i>
@@ -273,34 +273,34 @@
             </div>
             <div class="offcanvas-body">
                 <div class="pt-3">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item mb-2"
+                    <ul class="mx-auto mb-2 navbar-nav mb-lg-0">
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('homePage') ? 'active' : '' }}"
-                                href="{{ route('homePage') }}">Home <span class="ps-3">
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is('homePage') ? 'active' : '' }}"
+                                href="{{ route('homePage') }}">Home <span class="ps-0 ps-lg-3">
                                 </span></a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
-                                href="{{ route('allOffer') }}">Offers <span class="ps-3">
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
+                                href="{{ route('allOffer') }}">Offers <span class="ps-0 ps-lg-3">
                                 </span></a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
-                                href="{{ route('allBrand') }}">Brands <span class="ps-3">
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
+                                href="{{ route('allBrand') }}">Brands <span class="ps-0 ps-lg-3">
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
                                 href="{{ route('allStore') }}">Store</a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('vendors') ? 'active' : '' }}"
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is('vendors') ? 'active' : '' }}"
                                 href="{{ route('vendors') }}">Vendors</a>
                         </li>
                     </ul>
@@ -309,14 +309,14 @@
                     <div class="text-center">
                         <h4>Our Location</h4>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center pt-2">
+                    <div class="pt-2 d-flex justify-content-center align-items-center">
                         <p class="ps-3 company-link">Email: {{ optional($setting)->support_email }}</p>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center pt-2">
+                    <div class="pt-2 d-flex justify-content-center align-items-center">
                         <p class="ps-3 company-link">Call: {{ optional($setting)->primary_phone }}</p>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center pt-2">
-                        <p class="ps-3 company-link text-center">
+                    <div class="pt-2 d-flex justify-content-center align-items-center">
+                        <p class="text-center ps-3 company-link">
                             {{ optional($setting)->address_line_one }} <br />
                             {{ optional($setting)->address_line_two }}
                         </p>
@@ -367,7 +367,7 @@
 <div class="mobile-header fixed-top">
     <header>
         <div class="container-fluid">
-            <div class="row py-3 align-items-center">
+            <div class="py-3 row align-items-center">
                 <div class="col-6">
                     <div>
                         <button class="btn btn-transparent" type="button" data-bs-toggle="offcanvas"
@@ -401,7 +401,7 @@
                     <div class="d-flex justify-content-end">
                         <div class="d-flex align-items-center">
                             <a href="{{ route('wishlist.product') }}" class="pe-3">
-                                <i class="fa-regular fa-heart text-white head-icons"></i>
+                                <i class="text-white fa-regular fa-heart head-icons"></i>
                                 <span class="wish-ammount" id="cartWishlistMobileQty">0</span>
                             </a>
                             <a href="{{ route('login') }}">
@@ -434,34 +434,34 @@
         <div class="offcanvas-body">
             <div>
                 <div class="pt-3">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item mb-2"
+                    <ul class="mx-auto mb-2 navbar-nav mb-lg-0">
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('homePage') ? 'active' : '' }}"
-                                href="{{ route('homePage') }}">Home <span class="ps-3">
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is('homePage') ? 'active' : '' }}"
+                                href="{{ route('homePage') }}">Home <span class="ps-0 ps-lg-3">
                                 </span></a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
-                                href="{{ route('allOffer') }}">Offers <span class="ps-3">
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allOffer', 'offer.details']) ? 'active' : '' }}"
+                                href="{{ route('allOffer') }}">Offers <span class="ps-0 ps-lg-3">
                                 </span></a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
-                                href="{{ route('allBrand') }}">Brands <span class="ps-3">
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allBrand', 'brand.details']) ? 'active' : '' }}"
+                                href="{{ route('allBrand') }}">Brands <span class="ps-0 ps-lg-3">
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
                                 href="{{ route('allStore') }}">Store</a>
                         </li>
-                        <li class="nav-item mb-2"
+                        <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
-                            <a class="nav-link custom-nav-link text-center ps-3 {{ Route::is('vendors') ? 'active' : '' }}"
+                            <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is('vendors') ? 'active' : '' }}"
                                 href="{{ route('vendors') }}">Vendors</a>
                         </li>
                     </ul>
