@@ -84,7 +84,8 @@
                 <div class="py-3 d-flex justify-content-around align-items-center">
                     <p class="text-white">Get 20% on App</p>
                     <div class="d-flex justify-content-center">
-                        <input type="text" value="ramadan20" name="coupon_name" class="py-2 border-0 ps-3 rounded-2" style="width: 60%; margin: auto;">
+                        <input type="text" value="ramadan20" disabled name="coupon_name"
+                            class="border-0 ps-3 rounded-2 text-light" style="width: 60%; margin: auto;">
                     </div>
                     <div class="pe-3">
                         <img class="img-fluid" width="50px" src="{{ asset('images/panda.png') }}" alt="">
@@ -148,7 +149,8 @@
                                                 <div class="ps-2 text-start">
                                                     @if (!empty($alloffer->badge))
                                                         <p style="font-size: 12px;">
-                                                            <a href="{{ route('offer.details', $alloffer->slug) }}">{{ $alloffer->badge }}</a>
+                                                            <a
+                                                                href="{{ route('offer.details', $alloffer->slug) }}">{{ $alloffer->badge }}</a>
                                                         </p>
                                                     @endif
                                                 </div>
@@ -349,16 +351,21 @@
             <h4 class="py-4 pb-4 text-center">Partner Brands</h4>
             <div class="col-12">
                 <div class="mobile-partners">
+
                     @foreach ($brands as $brand)
+
                         <div class="mobile-partner">
+
                             <a href="{{ route('brand.details', $brand->slug) }}">
                                 <img class="img-fluid"
-                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                    alt=""
-                                    onerror="this.onerror=null;this.src='http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg';">
+                                    src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : '' }}"
+                                    alt="">
                             </a>
+
                         </div>
+
                     @endforeach
+
                 </div>
             </div>
         </div>

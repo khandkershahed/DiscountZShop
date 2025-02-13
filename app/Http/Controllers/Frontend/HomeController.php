@@ -659,8 +659,36 @@ class HomeController extends Controller
 
     public function WishlistProduct()
     {
-        return view('frontend.pages.wishlist');
+        $data = [
+            'wishlists' => Cart::instance('wishlist')->content(),
+        ];
+        return view('frontend.pages.wishlist', $data);
     }
+
+    // public function AddToWishlist(Request $request)
+    // {
+    //     $id = $request->product_id;
+
+    //     // Find the product by ID
+    //     $product = Offer::findOrFail($id);
+    //     $slug    = $product->slug;
+
+    //     // Add the product to the wishlist
+    //     Cart::instance('wishlist')->add([
+    //         'id'      => $id,
+    //         'name'    => $product->name,
+    //         'slug'    => $slug,
+    //         'qty'     => 1,
+    //         'price'   => 0,
+    //         'weight'  => 1,
+    //         'options' => [
+    //             'image' => $product->image,
+    //             'slug'  => $slug,
+    //         ],
+    //     ]);
+
+    //     return response()->json(['success' => 'Successfully added to your wishlist']);
+    // }
 
     public function AddToWishlist(Request $request)
     {
@@ -668,17 +696,27 @@ class HomeController extends Controller
 
         // Find the product by ID
         $product = Offer::findOrFail($id);
+        $slug    = $product->slug;
+
+        // Check if the product is already in the wishlist
+        $wishlist = Cart::instance('wishlist')->content()->where('id', $id)->first();
+
+        if ($wishlist) {
+            // Product is already in the wishlist
+            return response()->json(['error' => 'This product is already in your wishlist.']);
+        }
 
         // Add the product to the wishlist
         Cart::instance('wishlist')->add([
             'id'      => $id,
             'name'    => $product->name,
+            'slug'    => $slug,
             'qty'     => 1,
             'price'   => 0,
             'weight'  => 1,
             'options' => [
                 'image' => $product->image,
-
+                'slug'  => $slug,
             ],
         ]);
 
@@ -704,6 +742,12 @@ class HomeController extends Controller
     {
         Cart::instance('wishlist')->remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Wishlist']);
+    }
+
+    public function remove($rowId)
+    {
+        Cart::instance('wishlist')->remove($rowId);
+        return back()->with('success', 'Successfully Remove From Wishlist');
     }
 
     //ProductSearch
@@ -756,10 +800,10 @@ class HomeController extends Controller
             ->get();
 
         // Check if the request is an AJAX request
-        if ($request->ajax()) {
-            // Return only the search results (partial view)
-            return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
-        }
+        // if ($request->ajax()) {
+        //     // Return only the search results (partial view)
+        //     return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
+        // }
 
         // Return full view if not AJAX request
         $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();

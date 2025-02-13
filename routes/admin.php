@@ -45,7 +45,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');

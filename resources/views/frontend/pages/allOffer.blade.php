@@ -208,9 +208,16 @@
                                                                 <a href="{{ route('offer.details', $offer->slug) }}">
                                                                     <div
                                                                         class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
-                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
-                                                                        <img src="{{ asset('images/heart.png') }}"
-                                                                            alt="">
+                                                                        <p class="text-black">
+                                                                            {{ Str::words($offer->name, 1, '') }}</p>
+
+                                                                            <a type="submit" class="add_to_wishlist"
+                                                                            style="cursor: pointer;"
+                                                                            data-product_id="{{ $offer->id }}"
+                                                                            data-tip="Wishlist">
+                                                                            <i class="fa-regular fa-heart fs-5"></i>
+                                                                        </a>
+
                                                                     </div>
                                                                 </a>
                                                             </div>
@@ -265,9 +272,16 @@
                                                                 <a href="{{ route('offer.details', $offer->slug) }}">
                                                                     <div
                                                                         class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
-                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
-                                                                        <img src="{{ asset('images/heart.png') }}"
-                                                                            alt="">
+                                                                        <p class="text-black">
+                                                                            {{ Str::words($offer->name, 1, '') }}</p>
+
+                                                                        <a type="submit" class="add_to_wishlist"
+                                                                            style="cursor: pointer;"
+                                                                            data-product_id="{{ $offer->id }}"
+                                                                            data-tip="Wishlist">
+                                                                            <i class="fa-regular fa-heart fs-5"></i>
+                                                                        </a>
+
                                                                     </div>
                                                                 </a>
                                                             </div>
@@ -351,9 +365,18 @@
                                                                 <a href="{{ route('offer.details', $offer->slug) }}">
                                                                     <div
                                                                         class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
-                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
-                                                                        <img src="{{ asset('images/heart.png') }}"
-                                                                            alt="">
+                                                                        <p class="text-black">
+                                                                            {{ Str::words($offer->name, 1, '') }}</p>
+
+
+                                                                        <a type="submit" class="add_to_wishlist"
+                                                                            style="cursor: pointer;"
+                                                                            data-product_id="{{ $offer->id }}"
+                                                                            data-tip="Wishlist">
+                                                                            <i class="fa-regular fa-heart fs-5"></i>
+                                                                        </a>
+
+
                                                                     </div>
                                                                 </a>
                                                             </div>
@@ -410,9 +433,17 @@
                                                                 <a href="{{ route('offer.details', $offer->slug) }}">
                                                                     <div
                                                                         class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
-                                                                        <p class="text-black">{{ Str::words($offer->name, 1, '') }}</p>
-                                                                        <img src="{{ asset('images/heart.png') }}"
-                                                                            alt="">
+                                                                        <p class="text-black">
+                                                                            {{ Str::words($offer->name, 1, '') }}</p>
+
+
+                                                                        <a type="submit" class="add_to_wishlist"
+                                                                            style="cursor: pointer;"
+                                                                            data-product_id="{{ $offer->id }}"
+                                                                            data-tip="Wishlist">
+                                                                            <i class="fa-regular fa-heart fs-5"></i>
+                                                                        </a>
+
                                                                     </div>
                                                                 </a>
                                                             </div>

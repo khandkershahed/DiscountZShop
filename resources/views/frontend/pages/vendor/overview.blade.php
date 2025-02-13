@@ -1,10 +1,27 @@
 <x-frontend-app-layout :title="'Overview || DiscountZShop'">
 
+    <style>
+        /* Default margin for larger screens */
+        .responsive-section {
+            margin-bottom: 0;
+            /* Set a default margin for larger screens */
+        }
+
+        /* Apply the margin-bottom for small screens */
+        @media (max-width: 600px) {
+
+            /* Adjust the width to match your small screen definition */
+            .responsive-section {
+                margin-bottom: 9rem;
+            }
+        }
+    </style>
+
     @include('frontend.pages.vendor.partial.header')
 
-    <div class="desktop-homepage">
+    <div class="">
         {{-- Overview Start --}}
-        <section>
+        <section class="responsive-section">
             <div class="container">
                 <div class="mb-4 row">
                     <div class="col-lg-12">
@@ -71,8 +88,8 @@
     </div>
 
     {{-- For Mobile Only --}}
-    <div class="mobile-homepage" style="margin-bottom: 8rem">
-        {{-- Overview Start --}}
+    {{-- <div class="mobile-homepage" style="margin-bottom: 8rem">
+
         <section>
             <div class="container">
                 <div class="mb-4 row">
@@ -127,7 +144,8 @@
                 @endif
             </div>
         </section>
-        {{-- Overview End --}}
-    </div>
+
+    </div> --}}
     {{-- Overview End --}}
+
 </x-frontend-app-layout>

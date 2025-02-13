@@ -20,6 +20,7 @@ Route::post('/add-to-wishlist', [HomeController::class, 'AddToWishlist']);
 Route::get('/get-wishlist', [HomeController::class, 'GetWishlist']);
 Route::get('/wishlist-product', [HomeController::class, 'WishlistProduct'])->name('wishlist.product');
 Route::get('/wishlist/product/remove/{rowId}', [HomeController::class, 'RemoveWishlistTemplateOne']);
+Route::delete('/wishlist/{rowId}', [HomeController::class, 'remove'])->name('wishlist.remove');
 
 //Email
 Route::post('email/subscribe', [NewsletterController::class, 'store'])->name('email.subscribe');
@@ -103,6 +104,3 @@ Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 // Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
 // Route::get('/brand/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
 // Route::get('/brand/{id}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
-
-
-

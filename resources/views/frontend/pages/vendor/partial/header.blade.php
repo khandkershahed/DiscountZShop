@@ -8,10 +8,10 @@
 </style>
 
 <!-- Hero Section -->
-<div class="desktop-homepage">
+<div class="mt-5 mt-lg-block">
     <section>
         <div class="regular-banner">
-            <img class="img-fluid w-100" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
+            <img class="img-fluid w-100"
                 src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
                 alt="Khash Foods Vendor" />
         </div>
@@ -22,13 +22,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="p-2 vendor-logo rounded-2" style="background-color: #eee; border: 2px solid #f15a2d;">
-                        {{-- @if (optional($brand)->offers->count() > 0) --}}
+
                         <a href="">
                             <img class="p-2 img-fluid rounded-2"
                                 src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
                                 alt="">
                         </a>
-                        {{-- @endif --}}
+
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -38,19 +38,21 @@
     </section>
 </div>
 
-<div class="mobile-homepage" style="margin-top: 4.6rem;">
+
+{{-- <div class="mobile-homepage" style="margin-top: 4.6rem;">
+
     <section>
         <div class="regular-banner">
             @if (optional($brand)->offers->count() > 0)
                 <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
-                    <img class="img-fluid w-100" {{-- src="{{ asset('storage/' . $brand->banner_image) }}" --}}
+                    <img class="img-fluid w-100"
                         src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
                         alt="Khash Foods Vendor" />
                 </a>
             @endif
         </div>
     </section>
-    <!-- Hero End -->
+
     <section class="mb-5">
         <div class="container p-0 rounded-2" style="margin-top: -55px; position: relative; z-index: 5;">
             <div class="row align-items-center">
@@ -69,7 +71,8 @@
             </div>
         </div>
     </section>
-</div>
+</div> --}}
+
 
 <section>
     <div class="container">
@@ -113,7 +116,7 @@
                 </div>
             </div>
             <div class="col-lg-7">
-                {{-- Empty Column No Need To Add Content --}}
+
             </div>
         </div>
     </div>
