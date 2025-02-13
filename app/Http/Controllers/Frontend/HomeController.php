@@ -800,10 +800,10 @@ class HomeController extends Controller
             ->get();
 
         // Check if the request is an AJAX request
-        if ($request->ajax()) {
-            // Return only the search results (partial view)
-            return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
-        }
+        // if ($request->ajax()) {
+        //     // Return only the search results (partial view)
+        //     return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
+        // }
 
         // Return full view if not AJAX request
         $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();

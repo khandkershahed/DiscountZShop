@@ -21,7 +21,7 @@
             <div class="row">
 
                 @foreach ($brands as $brand)
-                    <div class="mt-2 mb-3 col-lg-12 col-6">
+                    <div class="mt-2 mb-3 col-lg-2 col-6">
                         <a href="{{ route('brand.details', $brand->slug) }}">
                             <div class="shadow-sm card brands-card">
                                 <div class="p-0 card-body">
@@ -50,10 +50,9 @@
                             <div class="p-4 row align-items-center">
                                 <div class="col-lg-6">
                                     <div>
-                                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' .  urlencode($offer->name) }}"
                                             width="80px" height="80px" class="rounded-2" style="object-fit: contain;"
-                                            alt=""
-                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                            alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -136,7 +135,7 @@
                                         <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
                                                 <h6 style="width: 98%;margin-bottom: 0.75rem;">
-                                                    {{ Str::words($latest_store->title, 2, '...') }}
+                                                    {{ $latest_store->title }}
                                                 </h6>
                                                 <p>{{ $latest_store->headquarter }}</p>
                                             </div>

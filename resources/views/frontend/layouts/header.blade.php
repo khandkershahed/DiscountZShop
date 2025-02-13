@@ -117,7 +117,7 @@
                                                 </div>
                                             </span>
                                         </a>
-                                        
+
                                         <ul class="dropdown-menu w-100 border-0 bg-light mt-0 rounded-0 py-0"
                                             aria-labelledby="dropdownMenuButton1"
                                             style="border-top: 2px solid #eee !important;background-image: url({{ asset('frontend') }}/assets/img/shape/shape1.avif);object-fit: fill;">
