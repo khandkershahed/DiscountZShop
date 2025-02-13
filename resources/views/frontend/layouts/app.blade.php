@@ -249,6 +249,7 @@
                             $.each(response.cartWishlist, function(key, value) {
 
                                 //console.log('http://127.0.0.1:8000/', value.options.image);
+                                var offerDetailsUrl = '/offer-details/' + value.slug;
 
                                 tableHtml +=
 
@@ -263,7 +264,7 @@
                                     </td>
 
                                     <td valign="middle">
-                                        <p>${value.name.length > 600 ? value.name.substring(0, 600) : value.name}</p>
+                                        <p><a href="${offerDetailsUrl}">${ value.name }</a></p>
                                     </td>
 
                                     <td valign="middle">

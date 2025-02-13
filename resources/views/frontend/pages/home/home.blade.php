@@ -200,7 +200,7 @@
                                                                                         @endif
                                                                                     </div>
 
-                                                                                    @if (!empty($alloffer->coupon_code))
+                                                                                    {{-- @if (!empty($alloffer->coupon_code))
                                                                                         <p
                                                                                             class="para-font coupon-extra">
                                                                                             Code:
@@ -209,7 +209,7 @@
                                                                                                 class="copy-btn"><i
                                                                                                     class="fa-regular fa-copy"></i></a>
                                                                                         </p>
-                                                                                    @endif
+                                                                                    @endif --}}
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -256,7 +256,7 @@
                                                                                                 @endif
                                                                                             </div>
 
-                                                                                            @if (!empty($category_offer->coupon_code))
+                                                                                            {{-- @if (!empty($category_offer->coupon_code))
                                                                                                 <p
                                                                                                     class="para-font coupon-extra">
                                                                                                     Code:
@@ -265,7 +265,7 @@
                                                                                                         class="copy-btn"><i
                                                                                                             class="fa-regular fa-copy"></i></a>
                                                                                                 </p>
-                                                                                            @endif
+                                                                                            @endif --}}
                                                                                         </a>
                                                                                     </div>
                                                                                 </div>

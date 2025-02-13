@@ -15,7 +15,7 @@
 
                             <div class="d-flex align-items-center">
                                 <!-- Search Store -->
-                                <div class="wrapper-store">
+                                {{-- <div class="wrapper-store">
                                     <div class="search-input-store">
                                         <input type="text" id="serviceSearch" name=""
                                             placeholder="Type to search...">
@@ -28,7 +28,7 @@
                                             </svg>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -118,6 +118,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
