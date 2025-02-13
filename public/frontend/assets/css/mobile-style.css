@@ -370,6 +370,12 @@
     .all-offers-container{
         margin-bottom: 7rem !important;
     }
+    #button-addon2 {
+        position: relative;
+        top: 0px;
+        background: #eee;
+        left: 0px;
+    }
     .search-input-store .icon {
         position: absolute;
         right: 0px;
