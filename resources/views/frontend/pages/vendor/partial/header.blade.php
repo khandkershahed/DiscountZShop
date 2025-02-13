@@ -8,16 +8,16 @@
 </style>
 
 <!-- Hero Section -->
-<div class="mt-5 mt-lg-block">
+<div class="">
     <section>
-        <div class="regular-banner">
+        <div class="regular-banner mobile-banner">
             <img class="img-fluid w-100"
                 src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
                 alt="Khash Foods Vendor" />
         </div>
     </section>
     <!-- Hero End -->
-    <section class="mb-5">
+    <section class="mb-2 mb-lg-5">
         <div class="container p-0 rounded-2" style="margin-top: -55px; position: relative; z-index: 5;">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -37,50 +37,12 @@
         </div>
     </section>
 </div>
-
-
-{{-- <div class="mobile-homepage" style="margin-top: 4.6rem;">
-
-    <section>
-        <div class="regular-banner">
-            @if (optional($brand)->offers->count() > 0)
-                <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
-                    <img class="img-fluid w-100"
-                        src="{{ !empty(optional($brand)->banner_image) && file_exists(public_path('storage/' . optional($brand)->banner_image)) ? asset('storage/' . optional($brand)->banner_image) : asset('images/banner-demo.png') }}"
-                        alt="Khash Foods Vendor" />
-                </a>
-            @endif
-        </div>
-    </section>
-
-    <section class="mb-5">
-        <div class="container p-0 rounded-2" style="margin-top: -55px; position: relative; z-index: 5;">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    @if (optional($brand)->offers->count() > 0)
-                        <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
-                            <div class="p-2 vendor-logo rounded-2"
-                                style="background-color: #eee; border: 2px solid #f15a2d;">
-                                <img class="p-2 img-fluid rounded-2"
-                                    src="{{ !empty(optional($brand)->logo) && file_exists(public_path('storage/' . optional($brand)->logo)) ? asset('storage/' . optional($brand)->logo) : asset('images/no_icon.png') }}"
-                                    alt="">
-                            </div>
-                        </a>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </section>
-</div> --}}
-
-
 <section>
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
-                <div class="mt-0 mb-4 d-flex align-items-center rounded-2 mobile-vendor-box-main"
+                <div class="mt-4 mb-4 d-flex align-items-center rounded-2 mobile-vendor-box-main"
                     style="background-color: #eee">
-
                     <a href="{{ route('brand.details', optional($brand)->slug) }}">
                         <div
                             class="vendor-menus mobile-vendor {{ Route::is('brand.details') ? 'active' : '' }} rounded-2">

@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="my-5 row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-6">
                         <div class="vendor-banners overlay-container">
                             <img class="img-fluid rounded-2 brand-imges"
                                 src="{{ !empty(optional($brand)->middle_banner_left) ? url('storage/' . optional($brand)->middle_banner_left) : asset('images/no-banner(1920-330).png') }}"
@@ -44,7 +44,7 @@
                             <div class="overlay overlay-3"></div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-6">
                         <div class="vendor-banners overlay-container">
                             <img class="pt-4 img-fluid rounded-2 brand-imges pt-lg-0"
                                 src="{{ !empty(optional($brand)->middle_banner_right) && file_exists(public_path('storage/' . optional($brand)->middle_banner_right)) ? url('storage/' . optional($brand)->middle_banner_right) : asset('images/no-banner(1920-330).png') }}"

@@ -39,12 +39,11 @@
             <div class="col-lg-12">
                 <div class="pt-4 coupon-slide">
 
-
                     @foreach ($mobile_coupons as $mobile_coupon)
                         <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
                             <div class="p-0 card-body">
                                 <div class="py-2 d-flex align-items-center justify-content-center w-100">
-                                    <div class="coupon-images-mb">
+                                    <div class="coupon-images-mb ps-2">
                                         <img class=""
                                             src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
                                             alt="">
@@ -89,7 +88,7 @@
                             class="border-0 ps-3 rounded-2 text-light" style="width: 60%; margin: auto;">
                     </div>
                     <div class="pe-3">
-                        <img class="img-fluid" src="{{ asset('images/panda.png') }}" alt="">
+                        <img class="img-fluid" width="50px" src="{{ asset('images/panda.png') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -364,7 +363,7 @@
                             </a>
 
                         </div>
-                        
+
                     @endforeach
 
                 </div>

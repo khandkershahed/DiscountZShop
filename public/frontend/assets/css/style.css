@@ -1979,8 +1979,8 @@ html {
         align-items: center;
         display: flex;
         text-align: center;
-        padding-left: 55px !important;
-        padding-right: 55px !important;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
         width: 100%;
     }
     .vendor-menus:hover {

@@ -1,4 +1,4 @@
-<div class="mobile-homepage" style="margin-top: 7rem;">
+<div class="mobile-homepage" style="margin-top: 8rem;margin-bottom: 10rem;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
