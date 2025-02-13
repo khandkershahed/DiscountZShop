@@ -18,7 +18,7 @@
         </ul>
     @endif
 
-    @if ($stores->count() > 0)
+    {{-- @if ($stores->count() > 0)
         <h5>Stores</h5>
         <ul>
             @foreach ($stores as $store)
@@ -29,5 +29,5 @@
 
     @if ($brands->isEmpty() && $offers->isEmpty() && $stores->isEmpty())
         <p>No results found.</p>
-    @endif
+    @endif --}}
 </div>

@@ -130,6 +130,7 @@
                         <th width="5%">Image</th>
                         <th width="8%">Name</th>
                         <th width="8%">Category Name</th>
+                        <th width="8%">Store Name</th>
                         <th width="8%">Added By</th>
                         <th width="5%">Status</th>
                         <th width="5%">Actions</th>
@@ -148,6 +149,7 @@
                             </td>
                             <td class="text-start">{{ $brand->name }}</td>
                             <td class="text-start">{{ optional($brand->categoryName)->name }}</td>
+                            <td class="text-start">{{ $brand->store_id }}</td>
                             <td class="text-start">{{ optional($brand->added)->name }}</td>
 
                             <td class="text-start">

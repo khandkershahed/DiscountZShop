@@ -97,7 +97,7 @@
         @endif
 
         <!-- Stores Section -->
-        <h3>Store</h3>
+        {{-- <h3>Store</h3>
         @if ($stores->isEmpty())
             <p class="my-3 text-danger">Store Not Found</p>
         @else
@@ -112,7 +112,7 @@
                                         src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
                                         alt="arong-banner.jpg" />
                                 </div>
-                                <!-- Store Logo And Rating -->
+
                                 <div class="px-3 pb-3">
                                     <div class="d-flex justify-content-between align-items-center">
 
@@ -130,7 +130,7 @@
                                         </div>
 
                                     </div>
-                                    <!-- Store Info -->
+
                                     <div class="pt-4 d-flex justify-content-between store_title">
                                         <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
                                             <div>
@@ -148,14 +148,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    {{-- <div class="p-2 mt-3 mb-3 bg-light d-flex justify-content-between rounded-3">
-                                        <span class="bg-danger badge fw-normal">
-                                            <i class="fa-solid fa-percent pe-2"></i>OFFER
-                                        </span>
-                                        <small class="text-sm">
-                                            Get UpTo <span class="main-color">{{ $latest_store->badge }}</span> Off
-                                        </small>
-                                    </div> --}}
+
                                 </div>
                             </div>
                         </div>
@@ -163,7 +156,7 @@
                 @endforeach
 
             </div>
-        @endif
+        @endif --}}
 
     </div>
 

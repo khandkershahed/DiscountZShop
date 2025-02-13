@@ -794,20 +794,20 @@ class HomeController extends Controller
             ->orWhere('description', "LIKE", "%$item%")
             ->get();
 
-        $stores = Store::where('title', 'LIKE', "%$item%")
-            ->orWhere('slug', "LIKE", "%$item%")
-            ->orWhere('description', "LIKE", "%$item%")
-            ->get();
+        // $stores = Store::where('title', 'LIKE', "%$item%")
+        //     ->orWhere('slug', "LIKE", "%$item%")
+        //     ->orWhere('description', "LIKE", "%$item%")
+        //     ->get();
 
         // Check if the request is an AJAX request
-        // if ($request->ajax()) {
-        //     // Return only the search results (partial view)
-        //     return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
-        // }
+        if ($request->ajax()) {
+            // Return only the search results (partial view)
+            return view('frontend.pages.search.partials.search_results', compact('brands', 'offers', 'stores'));
+        }
 
         // Return full view if not AJAX request
         $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
-        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'stores', 'page_banner'));
+        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers',  'page_banner'));
     }
 
     public function searchSuggestions(Request $request)
@@ -827,16 +827,16 @@ class HomeController extends Controller
             ->pluck('name')
             ->toArray();
 
-        $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
-            ->limit(5)
-            ->pluck('title')
-            ->toArray();
+        // $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
+        //     ->limit(5)
+        //     ->pluck('title')
+        //     ->toArray();
 
         // Combine all suggestions with their respective categories
         $suggestions = array_merge(
             array_map(fn($name) => ['name' => $name, 'type' => 'brand'], $brandSuggestions),
             array_map(fn($name) => ['name' => $name, 'type' => 'offer'], $offerSuggestions),
-            array_map(fn($name) => ['name' => $name, 'type' => 'store'], $storeSuggestions)
+            // array_map(fn($name) => ['name' => $name, 'type' => 'store'], $storeSuggestions)
         );
 
         // Return the suggestions as JSON
