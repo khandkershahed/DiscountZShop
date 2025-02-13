@@ -222,7 +222,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="pt-0 pt-lg-4 col-lg-12">
-                                                                <div class="d-flex">
+                                                                <div class="d-flex mobile-coupon-btn">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3"><small>View</small></a>
                                                                     @if (!empty($offer->coupon_code))

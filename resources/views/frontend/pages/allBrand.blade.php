@@ -1,5 +1,4 @@
 <x-frontend-app-layout :title="'All Brands || DiscountZShop'">
-
     <div class="mb-5">
         <section>
             <div class="regular-banner">
@@ -8,11 +7,9 @@
                     alt="{{ ucfirst(optional($page_banner)->page_name) }}" />
             </div>
         </section>
-
         <!-- Brands All -->
         <section>
             <div class="container py-3 py-lg-3">
-
                 <div class="row">
                     <div class="col-lg-12 d-none d-lg-block">
                         <div class="mb-0 text-center mb-lg-5">
@@ -20,15 +17,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="py-3 border row align-items-center">
-
                     <div class="col-lg-6 d-none d-lg-block">
                         <h1 class="mb-0 site-color">All Brands</h1>
                     </div>
-
                     <div class="col-lg-2"></div>
-
                     <div class="col-lg-4">
                         <div class="text-end">
                             <form class="d-flex" role="search" id="searchForm">

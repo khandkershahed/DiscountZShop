@@ -45,17 +45,17 @@
         @else
             <div class="row">
                 @foreach ($offers as $offer)
-                    <div class="mb-4 col-lg-3 col-3">
+                    <div class="mb-4 col-lg-3 col-6">
                         <div class="border-0 shadow-sm card bg-light">
                             <div class="p-4 row align-items-center">
-                                <div class="col-lg-6">
-                                    <div>
+                                <div class="col-lg-6 col-5">
+                                    <div class="pe-2 search-offers">
                                         <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' .  urlencode($offer->name) }}"
                                             width="80px" height="80px" class="rounded-2" style="object-fit: contain;"
                                             alt="" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-7">
                                     @if (!empty($offer->badge))
                                         {{-- <span>Upto</span> --}}
                                         <h4 class="main-color special-font-box text-end">
