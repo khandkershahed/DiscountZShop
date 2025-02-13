@@ -2,7 +2,7 @@
 <style>
     .brand-logo img {
         width: 90px;
-        height: 90px;
+        height: 85px;
         border-radius: 100%;
     }
 </style>

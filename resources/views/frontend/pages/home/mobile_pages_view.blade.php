@@ -76,16 +76,20 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
-
             </div>
         </div>
         {{-- End Coupon --}}
         <div class="mt-4 row bg-panda">
             <div class="col-12">
-                <div class="py-3 d-flex justify-content-between align-items-center">
+                <div class="py-3 d-flex justify-content-around align-items-center">
                     <p class="text-white">Get 20% on App</p>
+                    <div class="d-flex justify-content-center">
+                        <input type="text" value="ramadan20" name="coupon_name" class="border-0 ps-3 rounded-2" style="width: 60%; margin: auto;">
+                    </div>
+                    <div class="pe-3">
+                        <img class="img-fluid" src="{{ asset('images/panda.png') }}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,9 +148,8 @@
                                                 </div>
                                                 <div class="ps-2 text-start">
                                                     @if (!empty($alloffer->badge))
-                                                        <p>
-                                                            <a
-                                                                href="{{ route('offer.details', $alloffer->slug) }}">{{ $alloffer->badge }}</a>
+                                                        <p style="font-size: 12px;">
+                                                            <a href="{{ route('offer.details', $alloffer->slug) }}">{{ $alloffer->badge }}</a>
                                                         </p>
                                                     @endif
                                                 </div>
