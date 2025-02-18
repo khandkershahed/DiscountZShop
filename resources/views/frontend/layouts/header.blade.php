@@ -161,8 +161,10 @@
                                                                         @foreach ($header_category->children as $header_category_child)
                                                                             <div class="col-lg-4">
 
+                                                                                {{-- {{ route('subcategory.details', $header_category_child->slug) }} --}}
+
                                                                                 <a
-                                                                                    href="{{ route('subcategory.details', $header_category_child->slug) }}">
+                                                                                    href="javascript;;">
                                                                                     <h6 class="divider-title">
                                                                                         {{ $header_category_child->name }}
                                                                                     </h6>
