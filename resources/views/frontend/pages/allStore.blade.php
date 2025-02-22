@@ -21,11 +21,14 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="px-2 row px-lg-0">
+
+                            <!-- Filter Store - Division -->
                             <div class="px-1 col-4 col-lg-2 px-lg-2">
-                                <!-- Filter Store - Division -->
+
                                 <div class="">
                                     <select class="form-select" id="" name="division_id"
-                                        data-placeholder="Select Division" autocomplete="off">
+                                        data-placeholder="Select Division" autocomplete="off"
+                                        onchange="searchStoreByDivision(this.value)">
 
                                         <option value="">Division</option>
 
@@ -38,20 +41,26 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <!-- Filter Store - City -->
                             <div class="px-1 col-4 col-lg-2 px-lg-2">
                                 <div class="">
                                     <select class="form-select" id="" name="city_id"
-                                        data-placeholder="Select City" autocomplete="off">
+                                        data-placeholder="Select City" autocomplete="off"
+                                        onchange="searchStoreByCity(this.value)">
                                         <option value="">City</option>
 
-                                        {{-- @foreach ($allcitys as $allcity)
+                                        @foreach ($allcitys as $allcity)
                                             <option value="{{ $allcity->id }}"
                                                 {{ request()->get('city') == $allcity->id ? 'selected' : '' }}>
                                                 {{ $allcity->name }}</option>
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                 </div>
+
                             </div>
+
+                            <!-- Filter Store - Area -->
                             <div class="px-1 col-4 col-lg-2 px-lg-2">
                                 <div class="">
                                     <select class="form-select" id="" name="area_id"
@@ -65,15 +74,8 @@
                                     </select>
                                 </div>
 
-                                <script>
-                                    function searchStoreByArea(areaId) {
-                                        if (areaId) {
-                                            // Redirect to the courses page with the selected section ID
-                                            window.location.href = `/store/all?area=${areaId}`;
-                                        }
-                                    }
-                                </script>
                             </div>
+
                             <div class="px-1 col-12 col-lg-6 px-lg-2">
                                 <div class="pt-2 wrapper-store pt-lg-0">
                                     <div class="search-input-store">
@@ -98,6 +100,7 @@
                 </div>
             </div>
         </section>
+
         <!-- All Stores -->
         <section>
             <div class="container">
@@ -176,9 +179,8 @@
 
     </div>
 
-    {{-- @include('frontend.pages.allStore_mobile_view') --}}
-
     @push('scripts')
+
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
@@ -201,6 +203,26 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            function searchStoreByDivision(divisionId) {
+                if (divisionId) {
+                    window.location.href = `/store/all?division=${divisionId}`;
+                }
+            }
+
+            function searchStoreByCity(cityId) {
+                if (cityId) {
+                    window.location.href = `/store/all?city=${cityId}`;
+                }
+            }
+
+            function searchStoreByArea(areaId) {
+                if (areaId) {
+                    window.location.href = `/store/all?area=${areaId}`;
+                }
+            }
         </script>
 
         <script>
@@ -262,6 +284,7 @@
                 });
             });
         </script>
+
     @endpush
 
 </x-frontend-app-layout>

@@ -163,11 +163,11 @@
 
                                                                                 {{-- {{ route('subcategory.details', $header_category_child->slug) }} --}}
 
-                                                                                
-                                                                                    <h6 class="divider-title">
-                                                                                        {{ $header_category_child->name }}
-                                                                                    </h6>
-                                                                                
+
+                                                                                <h6 class="divider-title">
+                                                                                    {{ $header_category_child->name }}
+                                                                                </h6>
+
 
                                                                                 <span class="divider-underline"></span>
 
