@@ -140,7 +140,7 @@
                                                         href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
                                                         <div>
                                                             <h6>
-                                                                {{ Str::words($store->title, 2, '...') }}
+                                                                {{ Str::words($store->title, 5, '...') }}
                                                             </h6>
                                                         </div>
                                                     </a>

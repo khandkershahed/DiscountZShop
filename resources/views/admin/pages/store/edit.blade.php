@@ -119,7 +119,7 @@
                     </div>
 
                     <!-- City -->
-                    <div class="col-lg-3 mb-7">
+                    {{-- <div class="col-lg-3 mb-7">
                         <x-metronic.label for="city_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select City') }}</x-metronic.label>
                         <x-metronic.select-option id="city_id" name="city_id[]" data-hide-search="false" multiple
@@ -132,7 +132,7 @@
                                 </option>
                             @endforeach
                         </x-metronic.select-option>
-                    </div>
+                    </div> --}}
 
                     <!-- Area -->
                     <div class="col-lg-3 mb-7">

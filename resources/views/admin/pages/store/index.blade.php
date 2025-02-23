@@ -28,6 +28,7 @@
                 <thead class="bg-dark text-light">
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>Sl</th>
+                        <th>Brand Name</th>
                         <th>Store Name</th>
                         <th>Category Name</th>
                         <th>Added By</th>
@@ -40,7 +41,8 @@
                     @foreach ($stores as $store)
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $store->name }}</td>
+                            <td>{{ $store->brand_id }}</td>
+                            <td>{{ $store->title }}</td>
                             <td>{{ optional($store->categoryName)->name }}</td>
 
                             <td>{{ optional($store->added)->name }}</td>

@@ -41,6 +41,11 @@ class Brand extends Model
     {
         return $this->hasMany(Store::class);
     }
+    
+    public function storeName()
+    {
+        return $this->belongsTo(Store::class);
+    }
 
     public function added()
     {
