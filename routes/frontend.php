@@ -82,6 +82,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/district-get/ajax/{division_id}', 'GetCheckDistrict');
     Route::get('/state-get/ajax/{city_id}', 'StateGetAjax');
 });
+
+Route::get('/store/filter/area/{area_id}', [HomeController::class, 'filterByArea']);
+
 //Store All Route End
 
 //Terms

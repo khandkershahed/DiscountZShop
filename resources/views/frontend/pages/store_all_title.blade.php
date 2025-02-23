@@ -50,4 +50,3 @@
 @empty
     <p class="text-center text-danger mt-3">No Store Avaiable</p>
 @endforelse
-

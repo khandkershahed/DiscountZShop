@@ -180,7 +180,6 @@
     </div>
 
     @push('scripts')
-
         <script>
             $(document).ready(function() {
                 $('#serviceSearch').on('keyup', function() {
@@ -206,26 +205,26 @@
         </script>
 
         <script>
-            function searchStoreByDivision(divisionId) {
-                if (divisionId) {
-                    window.location.href = `/store/all?division=${divisionId}`;
-                }
-            }
+            // function searchStoreByDivision(divisionId) {
+            //     if (divisionId) {
+            //         window.location.href = `/store/all?division=${divisionId}`;
+            //     }
+            // }
 
-            function searchStoreByCity(cityId) {
-                if (cityId) {
-                    window.location.href = `/store/all?city=${cityId}`;
-                }
-            }
+            // function searchStoreByCity(cityId) {
+            //     if (cityId) {
+            //         window.location.href = `/store/all?city=${cityId}`;
+            //     }
+            // }
 
-            function searchStoreByArea(areaId) {
-                if (areaId) {
-                    window.location.href = `/store/all?area=${areaId}`;
-                }
-            }
+            // function searchStoreByArea(areaId) {
+            //     if (areaId) {
+            //         window.location.href = `/store/all?area=${areaId}`;
+            //     }
+            // }
         </script>
 
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 // When Division is selected
                 $('select[name="division_id"]').on('change', function() {
@@ -283,8 +282,76 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
 
+        <script>
+            $(document).ready(function() {
+                // When Division is selected
+                $('select[name="division_id"]').on('change', function() {
+                    var division_id = $(this).val();
+                    if (division_id) {
+                        $.ajax({
+                            url: "{{ url('/district-get/ajax') }}/" + division_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                $('select[name="city_id"]').html(
+                                    '<option value="">Select City</option>');
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>');
+
+                                $.each(data.cities, function(key, value) {
+                                    $('select[name="city_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
+
+                                // Update store list
+                                $('#servicesContainer').html(data.stores);
+                            }
+                        });
+                    }
+                });
+
+                // When City is selected
+                $('select[name="city_id"]').on('change', function() {
+                    var city_id = $(this).val();
+                    if (city_id) {
+                        $.ajax({
+                            url: "{{ url('/state-get/ajax') }}/" + city_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                $('select[name="area_id"]').html(
+                                    '<option value="">Select Area</option>');
+
+                                $.each(data.areas, function(key, value) {
+                                    $('select[name="area_id"]').append('<option value="' +
+                                        value.id + '">' + value.name + '</option>');
+                                });
+
+                                // Update store list
+                                $('#servicesContainer').html(data.stores);
+                            }
+                        });
+                    }
+                });
+
+
+                $('select[name="area_id"]').on('change', function() {
+                    var area_id = $(this).val();
+                    if (area_id) {
+                        $.ajax({
+                            url: "{{ url('/store/filter/area') }}/" + area_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                $('#servicesContainer').html(data.stores);
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
     @endpush
 
 </x-frontend-app-layout>

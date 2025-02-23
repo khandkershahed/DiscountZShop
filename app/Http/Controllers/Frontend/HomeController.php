@@ -322,18 +322,34 @@ class HomeController extends Controller
 
     public function GetCheckDistrict($division_id)
     {
+        $cities = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
+        $stores = Store::where('division_id', $division_id)->where('status', 'active')->get();
 
-        $subcat = City::where('division_id', $division_id)->orderBy('name', 'ASC')->get();
-
-        return json_encode($subcat);
+        return response()->json([
+            'cities' => $cities,
+            'stores' => view('frontend.pages.store_all_title', compact('stores'))->render(),
+        ]);
     }
 
     public function StateGetAjax($city_id)
     {
 
-        $ship = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
+        $areas  = Area::where('city_id', $city_id)->orderBy('name', 'ASC')->get();
+        $stores = Store::where('city_id', $city_id)->where('status', 'active')->get();
 
-        return json_encode($ship);
+        return response()->json([
+            'areas'  => $areas,
+            'stores' => view('frontend.pages.store_all_title', compact('stores'))->render(),
+        ]);
+    }
+
+    public function filterByArea($area_id)
+    {
+        $stores = Store::where('area_id', $area_id)->where('status', 'active')->get();
+
+        return response()->json([
+            'stores' => view('frontend.pages.store_all_title', compact('stores'))->render(),
+        ]);
     }
 
     public function searchStoreName(Request $request)
@@ -807,7 +823,7 @@ class HomeController extends Controller
 
         // Return full view if not AJAX request
         $page_banner = PageBanner::where('page_name', 'search')->latest('id')->first();
-        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers',  'page_banner'));
+        return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'page_banner'));
     }
 
     public function searchSuggestions(Request $request)
