@@ -825,7 +825,7 @@ p {
     background: #e1e1e145;
 }
 .grab-offer-tabs-box {
-    height: 430px;
+    height: 440px;
     overflow: auto;
 }
 ::placeholder {

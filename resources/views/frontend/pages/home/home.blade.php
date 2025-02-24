@@ -115,10 +115,21 @@
                                     </div>
 
                                     <div class="col-lg-9">
-
                                         <div class="d-flex justify-content-space-between align-items-center">
-
-                                        </div>
+                                            <!-- Grab Tags -->
+                                            <div class="w-100">
+                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Hot Deal</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Buy 2 Get 1</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Flat 20% Off</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Best offer</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Best offer</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
+                                              <a href=""><span class="mt-2 badge ct-badge">Buy 1 Get 1</span></a>
+                                            </div>
+                                          </div>
                                     </div>
 
                                 </div>
@@ -193,10 +204,10 @@
                                                                                 <a
                                                                                     href="{{ route('offer.details', $alloffer->slug) }}">
                                                                                     <div
-                                                                                        class="d-flex justify-content-center align-items-center">
+                                                                                        class="d-flex justify-content-center align-items-center text-start">
                                                                                         @if (!empty($alloffer->badge))
-                                                                                            <h2>{{ $alloffer->badge }}
-                                                                                            </h2>
+                                                                                            <h5>{{ $alloffer->badge }}
+                                                                                            </h5>
                                                                                         @endif
                                                                                     </div>
 
@@ -300,7 +311,7 @@
             <section>
                 <div class="container px-0 pb-70 biggest-deals">
                     <div class="row gx-4 promotion-container align-items-center">
-                        <div class="py-5 col-lg-12">
+                        <div class="py-2 col-lg-12">
                             <h1 class="promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
                         </div>
                         <div class="mt-2 col-lg-4">
@@ -414,7 +425,7 @@
 
         <!-- Product Slider -->
         <section>
-            <div class="container px-0 pb-70 pt-70 latest-offers">
+            <div class="container px-0 pb-70 pt-50 latest-offers">
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Slick Slider -->
@@ -473,7 +484,7 @@
 
         <!-- Deal Of The Day -->
         <section>
-            <div class="container px-0 pb-70">
+            <div class="container px-0 pb-5">
                 <div class="row gx-0">
                     <div class="col-lg-3">
                         <div class="card deal-of-the-day rounded-0">
@@ -483,7 +494,7 @@
                                 <div class="w-100">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <h4 class="mb-0">Deals Of The Day</h4>
+                                            <h4 class="py-3 mb-0">Deals Of The Day</h4>
                                         </div>
                                         <div class="d-flex justify-content-end align-items-center">
                                             <button type="button" class="deal-custom-prev rounded-circle">
@@ -560,10 +571,10 @@
                         <!-- Search Box -->
                         <div class="p-3 pb-0 d-flex justify-content-center align-items-center">
                             {{-- <form method="get" action="{{ route('courses.search') }}" class="d-flex w-100" role="search"> --}}
-                            <div class="mb-3 input-group">
+                            <div class="mb-3 input-group w-50 ms-auto">
                                 <input type="text" id="serviceSearch" class="p-2 form-control rounded-pill"
                                     placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2" />
-                                <div class="input-group-append search-btn">
+                                <div class="input-group-append search-btn" style="margin-left: -25px;">
                                     <button class="border-0 btn" type="button">
                                         <i class="fa-solid fa-search"></i>
                                     </button>
@@ -701,7 +712,7 @@
 
         @if ($brands->count() > 0)
             <section>
-                <div class="container px-0 py-5 pb-4">
+                <div class="container px-0 py-5">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">

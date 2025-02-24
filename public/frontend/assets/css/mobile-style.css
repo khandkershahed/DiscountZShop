@@ -9,7 +9,7 @@
 }
 /* Slick Dot design */
 .slick-dots {
-    left: 140px;
+    /* left: 140px; */
     position: absolute;
     bottom: 15px;
     display: flex;
