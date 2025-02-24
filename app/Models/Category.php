@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Models;
 
 use App\Traits\HasSlug;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
@@ -23,7 +22,6 @@ class Category extends Model
     //     'status' => 'boolean',
     // ];
 
-
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
@@ -33,11 +31,16 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    
+
     public function brands()
     {
         return $this->hasMany(Brand::class, 'category_id');
     }
+
+    // public function brands()
+    // {
+    //     return $this->hasMany(Brand::class, 'category_id')->where('status', 'active');
+    // }
 
     public function scopeActive($query)
     {

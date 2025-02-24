@@ -60,7 +60,6 @@
                             'title' => 'Offer Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
                             'routes' => [
-
                                 'admin.brands.index',
                                 'admin.brands.create',
                                 'admin.brands.edit',
@@ -73,10 +72,13 @@
                                 'admin.offer.create',
                                 'admin.offer.edit',
 
+                                'admin.offer-type.index',
+                                'admin.offer-type.create',
+                                'admin.offer-type.edit',
+
                                 'admin.special-offer.index',
                                 'admin.special-offer.create',
                                 'admin.special-offer.edit',
-
 
                                 'admin.coupon.index',
                                 'admin.coupon.create',
@@ -130,11 +132,6 @@
                                     'routes' => ['admin.offer.index', 'admin.offer.create', 'admin.offer.edit'],
                                     'route' => 'admin.offer.index',
                                 ],
-                                // [
-                                //     'title' => 'Special Offer',
-                                //     'routes' => ['admin.special-offer.index', 'admin.special-offer.create', 'admin.special-offer.edit'],
-                                //     'route' => 'admin.special-offer.index',
-                                // ],
                                 [
                                     'title' => 'Coupon List',
                                     'routes' => ['admin.coupon.index', 'admin.coupon.create', 'admin.coupon.edit'],
@@ -177,7 +174,6 @@
                             'title' => 'Site Contents',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
                             'routes' => [
-
                                 'admin.homepage.index',
                                 'admin.homepage.create',
                                 'admin.homepage.edit',
@@ -202,7 +198,6 @@
                                 'admin.banner.index',
                                 'admin.banner.create',
                                 'admin.banner.edit',
-
                             ],
                             'subMenu' => [
                                 [
@@ -243,13 +238,13 @@
 
                                 [
                                     'title' => 'HomePage Top Left Slider',
-                                    'routes' => ['admin.slider.index','admin.slider.create','admin.slider.edit'],
+                                    'routes' => ['admin.slider.index', 'admin.slider.create', 'admin.slider.edit'],
                                     'route' => 'admin.slider.index',
                                 ],
 
                                 [
                                     'title' => 'HomePage Top Right Banners',
-                                    'routes' => ['admin.banner.index','admin.banner.create','admin.banner.edit'],
+                                    'routes' => ['admin.banner.index', 'admin.banner.create', 'admin.banner.edit'],
                                     'route' => 'admin.banner.index',
                                 ],
 
@@ -262,31 +257,21 @@
                                     ],
                                     'route' => 'admin.page-banner.index',
                                 ],
-
-
                             ],
                         ],
 
                         [
                             'title' => 'Staff Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
-                            'routes' => [
-                                'admin.staff.index',
-                                'admin.staff.create',
-                                'admin.staff.edit',
-                            ],
+                            'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
                             'subMenu' => [
-
                                 [
                                     'title' => 'Staff List',
                                     'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
                                     'route' => 'admin.staff.index',
                                 ],
-
-
                             ],
                         ],
-
 
                         [
                             'title' => 'Settings',
@@ -299,7 +284,6 @@
                                 'admin.division.index',
                                 'admin.city.index',
                                 'admin.area.index',
-
                             ],
                             'subMenu' => [
                                 [
@@ -327,7 +311,6 @@
                                     'routes' => ['admin.area.index'],
                                     'route' => 'admin.area.index',
                                 ],
-
                             ],
                         ],
 
@@ -336,16 +319,8 @@
                         [
                             'title' => 'Role & Permission',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
-                            'routes' => [
-
-                                'all.role',
-                                'all.permission',
-                                'all.admin.permission',
-
-
-                            ],
+                            'routes' => ['all.role', 'all.permission', 'all.admin.permission'],
                             'subMenu' => [
-
                                 [
                                     'title' => 'All Admin',
                                     'routes' => ['all.admin.permission'],
@@ -361,7 +336,6 @@
                                     'routes' => ['all.permission'],
                                     'route' => 'all.permission',
                                 ],
-
                             ],
                         ],
                     ];

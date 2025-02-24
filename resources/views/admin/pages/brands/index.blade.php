@@ -153,11 +153,17 @@
                             <td class="text-start">{{ optional($brand->added)->name }}</td>
 
                             <td class="text-start">
-                                <label class="switch">
+                                {{-- <label class="switch">
                                     <input type="checkbox" class="status-toggle" data-id="{{ $brand->id }}"
                                         {{ $brand->status == 'active' ? 'checked' : '' }}>
                                     <span class="slider round"></span>
-                                </label>
+                                </label> --}}
+                                <p>
+                                    <span class="badge {{ $brand->status == 'active' ? 'bg-success' : 'bg-danger' }}">
+                                        {{ ucfirst($brand->status) }}
+                                    </span>
+                                </p>
+
                             </td>
 
 
