@@ -29,7 +29,7 @@
                             <p class="pt-2">
                                 {!! $offerDetails->short_description !!}
                             </p>
-                            {{-- <div class="d-flex align-items-center pt-3">
+                            {{-- <div class="pt-3 d-flex align-items-center">
                                 <p>Available:</p>
                                 <h6 class="ps-2 main-color">L'Oreal All Store</h6>
                             </div> --}}
@@ -40,7 +40,7 @@
 
                             @if (optional($brand)->offers->count() > 0)
                                 <div class="pt-4">
-                                    <a href="{{ $offerDetails->source_url }}">
+                                    <a target="_blank" href="{{ $offerDetails->source_url }}">
                                         <button class="btn btn-common-one"> See Offers <i
                                                 class="fa-solid fa-arrow-right ps-3"></i>
                                         </button>

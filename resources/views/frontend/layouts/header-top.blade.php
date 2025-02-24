@@ -1,4 +1,4 @@
-<div class="container-fluid py-3 mobile-none">
+<div class="py-3 container-fluid mobile-none">
     <div class="container px-0">
         <div class="row align-items-center">
             <div class="col-lg-6">
@@ -14,34 +14,35 @@
                     @auth
                         <div class="pe-3 user-name">{{ Auth::user()->name }}</div>
                         <div class="btn-group">
-                            <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
+                            <a href="javascript:void(0)" class="bg-transparent border-0 dropdown-toggle custom-toggle"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="pe-3">
-                                    <img class="profile-logo-account"
-                                        src="{{ asset('frontend') }}/assets/img/profile/profile-one.png" alt="" />
+                                    {{-- <img class="profile-logo-account"
+                                        src="{{ asset('frontend') }}/assets/img/profile/profile-one.png" alt="" /> --}}
+                                        <i class="fa-solid fa-user"></i>
                                 </div>
                             </a>
-                            <ul class="dropdown-menu toggler-menu py-3">
+                            <ul class="py-3 dropdown-menu toggler-menu">
 
-                                <li class="dropdown-item pb-2">
+                                <li class="pb-2 dropdown-item">
                                     <a href=""><i class="fa-solid fa-house-user main-color pe-2"></i>
                                         Dashboard</a>
                                 </li>
 
-                                {{-- <li class="dropdown-item pb-2">
+                                {{-- <li class="pb-2 dropdown-item">
                                     <a href=""><i class="fa-solid fa-wallet main-color pe-2"></i>
                                         Points</a>
                                 </li>
 
-                                <li class="dropdown-item pb-2">
+                                <li class="pb-2 dropdown-item">
                                     <a href=""><i class="fa-solid fa-percent main-color pe-3"></i>My
                                         Discounts</a>
                                 </li> --}}
 
-                                <div class="d-flex justify-content-center align-items-center pt-3">
+                                <div class="pt-3 d-flex justify-content-center align-items-center">
                                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
-                                        <button type="submit" class="btn btn-common-one rounded-pill px-4 pt-2">
+                                        <button type="submit" class="px-4 pt-2 btn btn-common-one rounded-pill">
                                             <i class="fa-solid fa-right-from-bracket"></i> Log Out
                                         </button>
                                     </form>
@@ -52,19 +53,18 @@
                         </div>
                     @else
                         <div class="btn-group">
-                            <a href="javascript:void(0)" class="border-0 bg-transparent dropdown-toggle custom-toggle"
+                            <a href="javascript:void(0)" class="bg-transparent border-0 dropdown-toggle custom-toggle"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="pe-3">
-                                    <img class="profile-logo-account"
-                                        src="{{ asset('admin/assets/media/svg/avatars/blank-dark.svg') }}" alt="" />
+                                <div class="pt-2 pe-3">
+                                    <i class="fa-solid fa-user text-muted" style="font-size: 24px"></i>
                                 </div>
                             </a>
-                            <ul class="dropdown-menu toggler-menu py-3">
-                                <li class="dropdown-item pb-2">
+                            <ul class="py-3 dropdown-menu toggler-menu">
+                                <li class="pb-2 dropdown-item">
                                     <a href="{{ route('login') }}"><i class="fa-solid fa-house-user main-color pe-2"></i>
                                         Sign In</a>
                                 </li>
-                                <li class="dropdown-item pb-2">
+                                <li class="pb-2 dropdown-item">
                                     <a href="{{ route('register') }}"><i class="fa-solid fa-wallet main-color pe-2"></i>
                                         Register</a>
                                 </li>
