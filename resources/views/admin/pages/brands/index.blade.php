@@ -104,20 +104,22 @@
             <div class="card-title"></div>
             <div class="card-toolbar">
 
-                <a href="{{ route('admin.brands.create') }}" class="btn btn-light-primary">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none">
-                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
-                                fill="currentColor" />
-                            <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
-                                transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
-                            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
-                                fill="currentColor" />
-                        </svg>
-                    </span>
-                    Add Brand
-                </a>
+                @if (Auth::guard('admin')->user()->can('add.brand'))
+                    <a href="{{ route('admin.brands.create') }}" class="btn btn-light-primary">
+                        <span class="svg-icon svg-icon-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                    fill="currentColor" />
+                                <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
+                                    transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
+                                <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                        Add Brand
+                    </a>
+                @endif
 
             </div>
         </div>
@@ -168,13 +170,17 @@
 
 
                             <td>
-                                <a href="{{ route('admin.brands.edit', $brand->id) }}" class="text-primary">
-                                    <i class="fa-solid fa-pencil text-primary"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.brand'))
+                                    <a href="{{ route('admin.brands.edit', $brand->id) }}" class="text-primary">
+                                        <i class="fa-solid fa-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.brands.destroy', $brand->id) }}" class="delete">
-                                    <i class="fa-solid fa-trash text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.brand'))
+                                    <a href="{{ route('admin.brands.destroy', $brand->id) }}" class="delete">
+                                        <i class="fa-solid fa-trash text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>
@@ -237,4 +243,3 @@
     @endpush
 
 </x-admin-app-layout>
-

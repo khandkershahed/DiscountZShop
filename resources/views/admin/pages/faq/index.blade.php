@@ -13,19 +13,18 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                        <a class="btn btn-sm btn-light-success rounded-0" href="{{ route('admin.faq.create') }}">
-                            Add New
-                        </a>
-                        {{-- <button type="button" class="btn btn-sm btn-light-success rounded-0"
-                            data-kt-menu-placement="bottom-end" data-bs-toggle="modal" data-bs-target="#faqAddModal">
-                            Add New
-                        </button> --}}
+                        @if (Auth::guard('admin')->user()->can('add.faq'))
+                            <a class="btn btn-sm btn-light-success rounded-0" href="{{ route('admin.faq.create') }}">
+                                Add Faq
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-body table-responsive">
-            <table class="kt_datatable_example table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
+            <table
+                class="kt_datatable_example table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
                 id="kt_datatable_example">
                 <thead class="table_header_bg">
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
@@ -53,20 +52,30 @@
                                         {{ $faq->status == 'active' ? 'Active' : 'InActive' }}</span>
                                 </td>
                                 <td class="d-flex justify-content-between align-items-center">
-                                    <a href="#"
-                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                        data-bs-toggle="modal" data-bs-target="#faqViewModal_{{ $faq->id }}">
-                                        <i class="fa-solid fa-expand"></i>
-                                    </a>
-                                    <a href="{{ route('admin.faq.edit', $faq->id) }}"
-                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
-                                    <a href="{{ route('admin.faq.destroy', $faq->id) }}"
-                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                        data-kt-docs-table-filter="delete_row">
-                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                    </a>
+
+                                    @if (Auth::guard('admin')->user()->can('show.faq'))
+                                        <a href="#"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                            data-bs-toggle="modal" data-bs-target="#faqViewModal_{{ $faq->id }}">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </a>
+                                    @endif
+
+                                    @if (Auth::guard('admin')->user()->can('edit.faq'))
+                                        <a href="{{ route('admin.faq.edit', $faq->id) }}"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                    @endif
+
+                                    @if (Auth::guard('admin')->user()->can('delete.faq'))
+                                        <a href="{{ route('admin.faq.destroy', $faq->id) }}"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                            data-kt-docs-table-filter="delete_row">
+                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                        </a>
+                                    @endif
+
                                 </td>
                             </tr>
                         @endforeach

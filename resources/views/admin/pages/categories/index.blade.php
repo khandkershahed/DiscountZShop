@@ -10,10 +10,14 @@
 
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+
                         <!--begin::Add product-->
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Add
-                            Category</a>
+                        @if (Auth::guard('admin')->user()->can('add.category'))
+                            <a href="{{ route('admin.categories.create') }}" class="btn btn-light-primary">Add
+                                Category</a>
+                        @endif
                         <!--end::Add product-->
+
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -91,24 +95,35 @@
                                             <!--begin::Menu-->
                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                 data-kt-menu="true">
+
+
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.categories.show', $category->id) }}"
-                                                        class="menu-link px-3">Show</a>
-                                                </div>
+                                                @if (Auth::guard('admin')->user()->can('show.category'))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ route('admin.categories.show', $category->id) }}"
+                                                            class="menu-link px-3">Show</a>
+                                                    </div>
+                                                @endif
                                                 <!--end::Menu item-->
+
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                                        class="menu-link px-3">Edit</a>
-                                                </div>
+                                                @if (Auth::guard('admin')->user()->can('edit.category'))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ route('admin.categories.edit', $category->id) }}"
+                                                            class="menu-link px-3">Edit</a>
+                                                    </div>
+                                                @endif
                                                 <!--end::Menu item-->
+
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.categories.destroy', $category->id) }}"
-                                                        class="menu-link px-3 delete">Delete</a>
-                                                </div>
+                                                @if (Auth::guard('admin')->user()->can('delete.category'))
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ route('admin.categories.destroy', $category->id) }}"
+                                                            class="menu-link px-3 delete">Delete</a>
+                                                    </div>
+                                                @endif
                                                 <!--end::Menu item-->
+
                                             </div>
                                             <!--end::Menu-->
                                         </td>

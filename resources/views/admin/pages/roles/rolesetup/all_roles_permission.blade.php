@@ -2,7 +2,7 @@
     <!--begin::Content-->
 
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        
+
 
         <!--begin::Post-->
         <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -22,8 +22,6 @@
 
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-
-
 
                             <!--begin::Add product-->
                             <a href="{{ route('add.roles.permission') }}" class="btn btn-light-primary btn-sm">Add

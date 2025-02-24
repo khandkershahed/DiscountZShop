@@ -48,12 +48,8 @@ class HomeController extends Controller
             'offer_types'        => OfferType::latest()->get(),
 
             'areas'              => Area::latest()->get(),
-
             'categorys'          => Category::latest()->limit(6)->get(),
-
             'offer_cat_types'    => OfferType::latest()->limit(10)->get(),
-
-            //'location_offers'    => Offer::where('city_id',$offers),
 
             'mobile_brands'      => Brand::orderBy('name', 'ASC')->latest()->limit(8)->get(),
             'mobile_coupons'     => Coupon::latest()->get(),
@@ -69,13 +65,14 @@ class HomeController extends Controller
             'homepage'           => $homepage,
             'brand_offers_left'  => $brand_offers_left,
             'brand_offers_right' => $brand_offers_right,
+
         ];
 
         return view('frontend.pages.home.home', $data);
 
     }
 
-    // ===
+    // searchDeal
     public function searchDeal(Request $request)
     {
         $query = $request->input('query');
