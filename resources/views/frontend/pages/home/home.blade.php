@@ -118,18 +118,15 @@
                                         <div class="d-flex justify-content-space-between align-items-center">
                                             <!-- Grab Tags -->
                                             <div class="w-100">
-                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Hot Deal</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Buy 2 Get 1</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Flat 20% Off</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Best offer</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Best offer</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Super Deal</span></a>
-                                              <a href=""><span class="mt-2 badge ct-badge">Buy 1 Get 1</span></a>
+
+                                                @foreach ($offer_cat_types as $offer_cat_type)
+                                                    <a href=""><span
+                                                            class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span></a>
+                                                @endforeach
+
                                             </div>
-                                          </div>
+
+                                        </div>
                                     </div>
 
                                 </div>

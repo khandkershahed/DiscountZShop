@@ -51,6 +51,8 @@ class HomeController extends Controller
 
             'categorys'          => Category::latest()->limit(6)->get(),
 
+            'offer_cat_types'    => OfferType::latest()->limit(10)->get(),
+
             //'location_offers'    => Offer::where('city_id',$offers),
 
             'mobile_brands'      => Brand::orderBy('name', 'ASC')->latest()->limit(8)->get(),
