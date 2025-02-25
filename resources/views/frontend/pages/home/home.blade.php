@@ -712,7 +712,7 @@
 
         @if ($brands->count() > 0)
             <section>
-                <div class="container px-0 py-5">
+                <div class="container px-0 py-5 pt-0">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
