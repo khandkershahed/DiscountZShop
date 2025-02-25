@@ -90,6 +90,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
         ],
         // ['except' => ['show', 'index', 'create', 'edit']]
     );
+
     Route::resources(
         [
             'offer-type' => OfferTypeController::class,
@@ -221,3 +222,6 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
 });
+
+Route::get('/admin/permission/export', [RoleController::class, 'export'])->name('admin.permission.export');
+Route::post('/admin/permission/import', [RoleController::class, 'import'])->name('admin.permission.import');

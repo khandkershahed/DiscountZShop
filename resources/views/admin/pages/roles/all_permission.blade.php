@@ -20,11 +20,49 @@
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
 
                         <!--begin::Add product-->
-                        
+
+                        <a href="{{ route('admin.permission.export') }}" class="btn btn-light-dark btn-sm">
+                            Excel Download
+                        </a>
+
+                        <!-- Button to Open Modal -->
+                        <a href="#" class="btn btn-light-success btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#importModal">
+                            Import
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="importModalLabel">Import Permissions</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('admin.permission.import') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="importFile" class="form-label">Choose Excel File</label>
+                                                <input type="file" class="form-control" name="file"
+                                                    id="importFile" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Upload</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal"
                             data-bs-target="#addModal">Add Permission</a>
 
-                        <a href="{{ route('all.roles.permission') }}" class="btn btn-light-info btn-sm">Role In Permission</a>
+                        <a href="{{ route('all.roles.permission') }}" class="btn btn-light-info btn-sm">Role In
+                            Permission</a>
                         <!--end::Add product-->
 
                     </div>
@@ -103,7 +141,8 @@
 
                                                             <div class="form-group">
                                                                 <label for="">Group Name</label>
-                                                                <input type="text" value="{{ $permission->group_name }}"
+                                                                <input type="text"
+                                                                    value="{{ $permission->group_name }}"
                                                                     name="group_name" required autocomplete="off"
                                                                     placeholder="Permission Name" class="form-control">
                                                             </div>
@@ -166,8 +205,8 @@
 
                         <div class="form-group mb-2">
                             <label for="">Permission Name</label>
-                            <input type="text" name="name" required autocomplete="off" placeholder="Permission Name"
-                                class="form-control">
+                            <input type="text" name="name" required autocomplete="off"
+                                placeholder="Permission Name" class="form-control">
                         </div>
 
                         {{-- <div class="form-group">
@@ -187,8 +226,8 @@
 
                         <div class="form-group">
                             <label for="">Group Name</label>
-                            <input type="text" name="group_name" required autocomplete="off" placeholder="Group Name"
-                                class="form-control">
+                            <input type="text" name="group_name" required autocomplete="off"
+                                placeholder="Group Name" class="form-control">
                         </div>
 
                     </div>

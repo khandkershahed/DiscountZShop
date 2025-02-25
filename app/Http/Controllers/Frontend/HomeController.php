@@ -48,10 +48,8 @@ class HomeController extends Controller
             'offer_types'        => OfferType::latest()->get(),
 
             'areas'              => Area::latest()->get(),
-
             'categorys'          => Category::latest()->limit(6)->get(),
-
-            //'location_offers'    => Offer::where('city_id',$offers),
+            'offer_cat_types'    => OfferType::latest()->limit(10)->get(),
 
             'mobile_brands'      => Brand::orderBy('name', 'ASC')->latest()->limit(8)->get(),
             'mobile_coupons'     => Coupon::latest()->get(),
@@ -67,13 +65,14 @@ class HomeController extends Controller
             'homepage'           => $homepage,
             'brand_offers_left'  => $brand_offers_left,
             'brand_offers_right' => $brand_offers_right,
+
         ];
 
         return view('frontend.pages.home.home', $data);
 
     }
 
-    // ===
+    // searchDeal
     public function searchDeal(Request $request)
     {
         $query = $request->input('query');
@@ -120,7 +119,6 @@ class HomeController extends Controller
                 ->active()                                // Assuming you have an active scope in your Category model
                 ->get(),
 
-            // 'brands' => PageBanner::where('page_name', 'brand')->latest('id')->first(),
             'brands'      => Brand::latest()->get(),
         ];
         return view('frontend.pages.allBrand', $data);
@@ -272,7 +270,7 @@ class HomeController extends Controller
 
         // Search for stores based on the query, or get all stores if query is empty
         if ($query) {
-            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")
+            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")->orWhere('name', 'like', "%{$query}%")
                 ->latest()
                 ->get();
         } else {
@@ -311,7 +309,7 @@ class HomeController extends Controller
 
         $page_banner = PageBanner::where('page_name', 'store')->latest('id')->first();
 
-        $stores = $stores->paginate(28); // 28 is an example, adjust to your needs
+        $stores = $stores->paginate(48); // 48 is an example, adjust to your needs
 
         $alldivs  = Division::orderBy('name', 'asc')->get();
         $allcitys = City::orderBy('name', 'asc')->get();

@@ -80,7 +80,6 @@
                                 <div class="available-coupon-slider servicesContainerCoupon">
 
                                     @foreach ($coupons as $coupon)
-
                                         <div class="items couponCode"
                                             data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                                             <div class="d-flex coupons-box align-items-center">
@@ -113,7 +112,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     @endforeach
                                 </div>
 

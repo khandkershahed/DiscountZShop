@@ -54,20 +54,22 @@
                                         </div>
                                     </div>
                                     @foreach ($category->brands as $brand)
-                                        <div class="mt-2 mb-3 col-lg-2 col-4">
-                                            <a href="{{ route('brand.details', $brand->slug) }}">
-                                                <div class="shadow-sm card brands-card">
-                                                    <div class="p-0 card-body">
-                                                        <div class="brands-logo">
-                                                            <img class="img-fluid rounded-3"
-                                                                src="{{ asset('storage/' . $brand->logo) }}"
-                                                                alt="Brand Logo" title="Brand Logo"
-                                                                onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
+                                        @if ($brand->status == 'active')
+                                            <div class="mt-2 mb-3 col-lg-2 col-4">
+                                                <a href="{{ route('brand.details', $brand->slug) }}">
+                                                    <div class="shadow-sm card brands-card">
+                                                        <div class="p-0 card-body">
+                                                            <div class="brands-logo">
+                                                                <img class="img-fluid rounded-3"
+                                                                    src="{{ asset('storage/' . $brand->logo) }}"
+                                                                    alt="Brand Logo" title="Brand Logo" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                                </a>
+                                            </div>
+                                        @else
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -80,62 +82,6 @@
 
     </div>
 
-    {{-- <div class="mobile-homepage" style="margin-top: 4.6rem;margin-bottom: 8rem;">
-        <div class="container">
-            <div class="row">
-                <div class="px-0 col-12">
-                    <div>
-                        <img class="img-fluid" src="{{ asset('images/brand-banner.png') }}" alt="">
-                    </div>
-                </div>
-                <div class="px-0 pt-2 col-12">
-
-                    <form class="d-flex" role="search" id="searchForm">
-                        <input class="mx-2 mt-2 form-control" type="search" id="serviceSearch" placeholder="Search"
-                            aria-label="Search" style="height: 35px">
-                    </form>
-
-                    <div class="d-flex justify-content-end">
-                        <span>
-                            <i class="fa-solid fa-search brand-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row gx-5" id="servicesContainer" style="margin-top: -25px">
-                @foreach ($categories as $category)
-                    @if ($category->brands->count() > 0)
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <p class="py-2 mb-0 main-color">{{ $category->name }}</p>
-                                        <span class="store-devider"></span>
-                                    </div>
-                                </div>
-                                @foreach ($category->brands as $brand)
-                                    <div class="px-1 mt-2 mb-1 col-3">
-                                        <a href="{{ route('brand.details', $brand->slug) }}">
-                                            <div class="p-0 shadow-sm card brands-card">
-                                                <div class="p-0 card-body">
-                                                    <div class="brands-logo">
-                                                        <img class="h-auto p-0 img-fluid"
-                                                            src="{{ asset('storage/' . $brand->logo) }}"
-                                                            alt="Brand Logo" title="Brand Logo"
-                                                            onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-        </div>
-    </div> --}}
 
     @push('scripts')
         <script>

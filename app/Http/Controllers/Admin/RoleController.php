@@ -1,12 +1,15 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PermissionExport;
 use App\Http\Controllers\Controller;
+use App\Imports\PermissionImport;
 use App\Models\Admin;
 use App\Models\GroupName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -48,6 +51,22 @@ class RoleController extends Controller
     }
 
     // =============================== Permission =====================================
+
+    public function export()
+    {
+        return Excel::download(new PermissionExport, 'permission.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv',
+        ]);
+
+        Excel::import(new PermissionImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Permissions imported successfully.');
+    }
 
     //All Permission
     public function AllPermission()

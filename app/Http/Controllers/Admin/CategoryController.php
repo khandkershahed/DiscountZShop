@@ -14,14 +14,6 @@ use App\Http\Requests\Admin\CategoryRequest;
 
 class CategoryController extends Controller
 {
-    /**
-     * The constructor function sets middleware permissions for different category-related actions in a PHP
-     * class.
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:view categories|show categories|edit categories|delete categories|create categories')->only(['index', 'create', 'show', 'edit', 'destroy']);
-    // }
 
     /**
      * Display a listing of the resource.
@@ -116,7 +108,7 @@ class CategoryController extends Controller
                 'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
 
                 'added_by' => Auth::guard('admin')->user()->id,
-                
+
                 'description'  => $request->description,
                 'status'       => $request->status,
             ]);
