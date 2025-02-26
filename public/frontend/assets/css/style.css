@@ -967,6 +967,7 @@ del {
     font-style: normal;
     font-weight: 600;
     line-height: 24px; /* 171.429% */
+    height: 35px;
 }
 .title-divider {
     background: #ebebeb;
