@@ -10,16 +10,16 @@
 </style>
 
 <section>
-    <div class="container pt-70 pb-70 px-0 biggest-deals">
+    <div class="container px-4 py-3 biggest-deals">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card rounded-0 border-0 shadow-sm">
-                    <div class="card-header py-3 px-5" style="border-bottom: 1px solid #eee">
+                <div class="border-0 shadow-sm card rounded-0">
+                    <div class="px-5 py-3 card-header" style="border-bottom: 1px solid #eee">
                         <div class="row align-items-center">
 
                             <div class="col-lg-4 col-12">
                                 <div class="d-flex align-items-center">
-                                    <h4 class="coupon-title mb-0 pe-3">
+                                    <h4 class="mb-0 coupon-title pe-3">
                                         Available Coupon
                                     </h4>
 
@@ -73,7 +73,7 @@
 
                     <div id="servicesContainerCoupon">
 
-                        <div class="card-body py-5" style="background-color: #f8f8f8">
+                        <div class="py-5 card-body" style="background-color: #f8f8f8">
 
                             <div class="slick-slider">
 
@@ -93,14 +93,14 @@
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                                                     <div class="p-1 ">
-                                                        <h5 class="discount-percentage text-center fw-bold pt-2">
+                                                        <h5 class="pt-2 text-center discount-percentage fw-bold">
                                                             {{ $coupon->badge }}</h5>
-                                                        <p class="text-white text-center ps-1 pt-1 pb-1 coupon-text">
+                                                        <p class="pt-1 pb-1 text-center text-white ps-1 coupon-text">
                                                             OFF
                                                         </p>
                                                     </div>
                                                     <div>
-                                                        <p class="text-white text-center coupon-text coupon-code pt-2">
+                                                        <p class="pt-2 text-center text-white coupon-text coupon-code">
                                                             Code: ”<span class="couponCode"
                                                                 id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                                             <a href="javascript:void(0);" class="copy-btn"

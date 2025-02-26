@@ -1,5 +1,5 @@
 <section style="background: #f9f9f9">
-    <div class="container px-0 pt-70 pb-70">
+    <div class="container px-0 py-4">
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-3 shadow-sm card rounded-0 grab-card">

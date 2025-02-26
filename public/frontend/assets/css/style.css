@@ -462,7 +462,7 @@ p {
 .discount-percentage {
     color: #f15a2d;
     font-family: Poppins;
-    font-size: 29px;
+    font-size: 26px;
     font-style: italic;
     font-weight: 700;
     line-height: 99.9%;
@@ -967,6 +967,7 @@ del {
     font-style: normal;
     font-weight: 600;
     line-height: 24px; /* 171.429% */
+    height: 35px;
 }
 .title-divider {
     background: #ebebeb;
@@ -2388,3 +2389,6 @@ button {
     color: #fff;
    }
 
+.side-product{
+    height: 500px;
+}
