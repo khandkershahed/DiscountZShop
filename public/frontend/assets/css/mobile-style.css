@@ -641,7 +641,12 @@
         padding: 5px;
     }
     .mobile-coupon-btn{
-        display: none;
+        flex-direction: column;
+    }
+    .btn-common-three{
+        margin-left: 0 !important;
+        margin-top: 4px;
+        padding: 5px 5px;
     }
     .search-store-banner-container{
         margin-top: 5px;
@@ -715,6 +720,10 @@
     }
     .offers-card {
         height: 80px;
+    }
+    .mobile-offers{
+        width: 50px !important;
+        height: 50px !important;
     }
 }
 @media only screen and (max-width: 360px) {

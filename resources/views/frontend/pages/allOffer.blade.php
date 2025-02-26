@@ -183,15 +183,15 @@
                                                 <div class="mb-4 col-lg-4 col-6 pe-2">
                                                     <div class="border-0 shadow-sm card bg-light offer-boxes">
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-4">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
                                                                         alt="" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-8">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
@@ -254,15 +254,15 @@
                                                     <div class="border-0 shadow-sm card bg-light offer-boxes">
 
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-4">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
                                                                         alt="" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-8">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
@@ -286,7 +286,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="pt-0 pt-lg-4 col-lg-12">
-                                                                <div class="d-flex">
+                                                                <div class="d-flex mobile-coupon-btn">
                                                                     <a href="{{ route('offer.details', $offer->slug) }}"
                                                                         class="w-100 btn-common-one rounded-3"><small>View</small></a>
                                                                     @if (!empty($offer->coupon_code))
@@ -339,16 +339,16 @@
                                                 <div class="mt-4 col-lg-4">
                                                     <div class="border-0 shadow-sm card bg-light">
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-4">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
                                                                         alt="Offer logo for {{ $offer->name }}"
                                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-8">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>
@@ -407,16 +407,16 @@
                                                 <div class="mt-4 col-lg-4">
                                                     <div class="border-0 shadow-sm card bg-light">
                                                         <div class="p-4 row align-items-center">
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-4">
                                                                 <div>
                                                                     <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2" style="object-fit: contain;"
+                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
                                                                         alt="Offer logo for {{ $offer->name }}"
                                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-6">
+                                                            <div class="col-lg-6 col-8">
                                                                 @if (!empty($offer->badge))
                                                                     <h4 class="main-color special-font-box text-end">
                                                                         {{ $offer->badge }}</h4>

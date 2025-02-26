@@ -92,7 +92,7 @@
 
         <!-- Grab Your Offer -->
         <section style="background: #f9f9f9">
-            <div class="container px-0 pt-70 pb-70">
+            <div class="container px-0 py-4">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="p-3 shadow-sm card rounded-0 grab-card">
@@ -260,10 +260,10 @@
                                                                                         <a
                                                                                             href="{{ route('offer.details', $category_offer->slug) }}">
                                                                                             <div
-                                                                                                class="d-flex justify-content-center align-items-center">
+                                                                                                class="d-flex justify-content-center align-items-center text-start">
                                                                                                 @if (!empty($category_offer->badge))
-                                                                                                    <h1>{{ substr($category_offer->badge, 0, -4) }}
-                                                                                                    </h1>
+                                                                                                    <h5>{{ substr($category_offer->badge, 0, -4) }}
+                                                                                                    </h5>
                                                                                                 @endif
                                                                                             </div>
 
@@ -309,13 +309,13 @@
         <!-- Biggest Deals From Product -->
         @if (optional($homepage)->brand)
             <section>
-                <div class="container px-0 pb-70 biggest-deals">
+                <div class="container px-0 py-4 biggest-deals">
                     <div class="row gx-4 promotion-container align-items-center">
                         <div class="py-2 col-lg-12">
-                            <h1 class="promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
+                            <h1 class="pt-0 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
                         </div>
                         <div class="mt-2 col-lg-4">
-                            <div class="row d-flex align-items-stretch">
+                            <div class="row d-flex align-items-stretch side-product">
                                 @foreach ($brand_offers_left as $brand_offer_left)
                                     <div class="px-0 mb-2 col-lg-6 bg-light d-flex align-items-center">
                                         <div class="w-100">
@@ -365,7 +365,7 @@
                             </div>
                         </div>
                         <div class="mt-2 col-lg-4">
-                            <div class="row d-flex align-items-stretch">
+                            <div class="row d-flex align-items-stretch side-product">
                                 @foreach ($brand_offers_right as $brand_offer_right)
                                     <div class="px-0 mb-2 col-lg-6 bg-light d-flex align-items-center">
                                         <div class="w-100">
@@ -425,7 +425,7 @@
 
         <!-- Product Slider -->
         <section>
-            <div class="container px-0 pb-70 pt-50 latest-offers">
+            <div class="container px-0 py-4 latest-offers">
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Slick Slider -->
@@ -484,7 +484,7 @@
 
         <!-- Deal Of The Day -->
         <section>
-            <div class="container px-0 pb-5">
+            <div class="container px-0 py-4">
                 <div class="row gx-0">
                     <div class="col-lg-3">
                         <div class="card deal-of-the-day rounded-0">
@@ -555,8 +555,6 @@
                                                 </div>
                                             </div>
                                         @endif
-
-
                                     @empty
                                         <p>No Offer Avaiable</p>
                                     @endforelse
@@ -659,7 +657,7 @@
 
         <!-- Normal Slider Product Show -->
         <section>
-            <div class="container px-0 py-0 py-lg-5">
+            <div class="container px-0 py-0 py-lg-4">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="slick-slider-normal">
@@ -712,7 +710,7 @@
 
         @if ($brands->count() > 0)
             <section>
-                <div class="container px-0 py-5 pt-0">
+                <div class="container px-0 py-4">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
@@ -755,7 +753,7 @@
                 !empty($homepage->bottom_banner_slider_three) ||
                 !empty($homepage->bottom_banner_slider_four))
             <section>
-                <div class="container px-0 pt-70 pb-70 latest-offers">
+                <div class="container px-0 py-4 latest-offers">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="slick-slider-footer-slider">
