@@ -56,9 +56,12 @@
                 {{-- Site Content  --}}
                 @php
                     $menuItems = [
+                        //====================== Offer Management ============================
+
                         [
                             'title' => 'Offer Management',
                             'icon' => 'icons/duotune/general/gen051.svg',
+
                             'routes' => [
                                 'admin.brands.index',
                                 'admin.brands.create',
@@ -92,6 +95,7 @@
                                 'admin.categories.create',
                                 'admin.categories.edit',
                             ],
+
                             'subMenu' => [
                                 [
                                     'title' => 'Category List',
@@ -101,23 +105,20 @@
                                         'admin.categories.edit',
                                     ],
                                     'route' => 'admin.categories.index',
-                                    // 'subMenu' => [
-                                    //     ['title' => 'Brand List', 'route' => 'admin.brands.index'],
-                                    // ],
                                 ],
+
                                 [
                                     'title' => 'Brand List',
                                     'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
                                     'route' => 'admin.brands.index',
-                                    // 'subMenu' => [
-                                    //     ['title' => 'Brand List', 'route' => 'admin.brands.index'],
-                                    // ],
                                 ],
+
                                 // [
                                 //     'title' => 'Store List',
                                 //     'routes' => ['admin.store.index', 'admin.store.create', 'admin.store.edit'],
                                 //     'route' => 'admin.store.index',
                                 // ],
+
                                 [
                                     'title' => 'Offer Type List',
                                     'routes' => [
@@ -140,14 +141,18 @@
                             ],
                         ],
 
+                        // ============== Customer Support =================================
+
                         [
                             'title' => 'Customer Support',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
                             'routes' => [
                                 'admin.contacts.index',
+
                                 'admin.faq.index',
                                 'admin.faq.create',
                                 'admin.faq.edit',
+
                                 'admin.newsletters.index',
                             ],
                             'subMenu' => [
@@ -169,7 +174,7 @@
                             ],
                         ],
 
-                        // Site Content
+                        // ======================== Site Content =========================
                         [
                             'title' => 'Site Contents',
                             'icon' => 'icons/duotune/ecommerce/ecm002.svg',
@@ -260,18 +265,7 @@
                             ],
                         ],
 
-                        [
-                            'title' => 'Staff Management',
-                            'icon' => 'icons/duotune/general/gen051.svg',
-                            'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Staff List',
-                                    'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
-                                    'route' => 'admin.staff.index',
-                                ],
-                            ],
-                        ],
+                        // ========================= Setting ==============================
 
                         [
                             'title' => 'Settings',
@@ -314,7 +308,7 @@
                             ],
                         ],
 
-                        // Role & Permission
+                        // ============================ Role & Permission ===============================
 
                         [
                             'title' => 'Role & Permission',
@@ -341,82 +335,111 @@
                     ];
                 @endphp
 
-                @foreach ($menuItems as $item)
-                    <div data-kt-menu-trigger="click"
-                        class="menu-item menu-accordion {{ Route::is(...$item['routes'] ?? []) ? 'here show' : '' }}">
-                        <span class="menu-link">
-                            <span class="menu-icon">
-                                <span class="svg-icon svg-icon-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none">
-                                        <path
-                                            d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.3"
-                                            d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.3"
-                                            d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-                                            fill="currentColor" />
-                                    </svg>
+                @if (Auth::guard('admin')->user()->can('category.menu') ||
+                        Auth::guard('admin')->user()->can('brand.menu') ||
+                        Auth::guard('admin')->user()->can('offertype.menu') ||
+                        Auth::guard('admin')->user()->can('offer.menu') ||
+                        Auth::guard('admin')->user()->can('coupon.menu') ||
+                        Auth::guard('admin')->user()->can('permission.menu') ||
+                        Auth::guard('admin')->user()->can('role.menu') ||
+                        Auth::guard('admin')->user()->can('admin.menu') ||
+                        Auth::guard('admin')->user()->can('about.menu') ||
+                        Auth::guard('admin')->user()->can('country.menu') ||
+                        Auth::guard('admin')->user()->can('division.menu') ||
+                        Auth::guard('admin')->user()->can('city.menu') ||
+                        Auth::guard('admin')->user()->can('area.menu') ||
+                        Auth::guard('admin')->user()->can('contact_message.menu') ||
+                        Auth::guard('admin')->user()->can('faq.menu') ||
+                        Auth::guard('admin')->user()->can('homapage_left_banner.menu') ||
+                        Auth::guard('admin')->user()->can('homapage_right_banner.menu') ||
+                        Auth::guard('admin')->user()->can('homepage.menu') ||
+                        Auth::guard('admin')->user()->can('page_banner.menu') ||
+                        Auth::guard('admin')->user()->can('pagebanner.menu') ||
+                        Auth::guard('admin')->user()->can('privacy.menu') ||
+                        Auth::guard('admin')->user()->can('term.menu') ||
+                        Auth::guard('admin')->user()->can('subscribe.menu') ||
+                        Auth::guard('admin')->user()->can('web_setting.menu'))
+
+                    @foreach ($menuItems as $item)
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ Route::is(...$item['routes'] ?? []) ? 'here show' : '' }}">
+                            <span class="menu-link">
+                                <span class="menu-icon">
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
+                                                fill="currentColor" />
+                                            <path opacity="0.3"
+                                                d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
+                                                fill="currentColor" />
+                                            <path opacity="0.3"
+                                                d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
                                 </span>
+                                <span class="menu-title">{{ $item['title'] }}</span>
+                                <span class="menu-arrow"></span>
                             </span>
-                            <span class="menu-title">{{ $item['title'] }}</span>
-                            <span class="menu-arrow"></span>
-                        </span>
-                        @if (!empty($item['subMenu']))
-                            <div
-                                class="menu-sub menu-sub-accordion {{ Route::is(...$item['routes'] ?? []) ? 'menu-active-bg' : '' }}">
-                                @foreach ($item['subMenu'] as $subItem)
-                                    @if (isset($subItem['subMenu']))
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                                            <span class="menu-link">
-                                                <span class="menu-bullet">
-                                                    <span class="bullet bullet-dot"></span>
-                                                </span>
-                                                <span class="menu-title">{{ $subItem['title'] }}</span>
-                                                <span class="menu-arrow"></span>
-                                            </span>
-                                            <div
-                                                class="menu-sub menu-sub-accordion {{ Route::is(...array_column($subItem['subMenu'], 'route') ?? []) ? 'here show' : '' }}">
-                                                @foreach ($subItem['subMenu'] as $subSubItem)
-                                                    <div class="menu-item">
-                                                        @if (isset($subSubItem['route']))
-                                                            <a class="menu-link {{ Route::is($subSubItem['route']) ? 'active' : '' }}"
-                                                                href="{{ route($subSubItem['route']) }}">
-                                                                <span class="menu-bullet">
-                                                                    <span class="bullet bullet-dot"></span>
-                                                                </span>
-                                                                <span
-                                                                    class="menu-title">{{ $subSubItem['title'] }}</span>
-                                                            </a>
-                                                        @else
-                                                            <span class="menu-title">{{ $subSubItem['title'] }}</span>
-                                                        @endif
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="menu-item">
-                                            @if (isset($subItem['route']))
-                                                <a class="menu-link {{ Route::is($subItem['routes']) ? 'active' : '' }}"
-                                                    href="{{ route($subItem['route']) }}">
+                            @if (!empty($item['subMenu']))
+                                <div
+                                    class="menu-sub menu-sub-accordion {{ Route::is(...$item['routes'] ?? []) ? 'menu-active-bg' : '' }}">
+                                    @foreach ($item['subMenu'] as $subItem)
+                                        @if (isset($subItem['subMenu']))
+                                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+                                                <span class="menu-link">
                                                     <span class="menu-bullet">
                                                         <span class="bullet bullet-dot"></span>
                                                     </span>
                                                     <span class="menu-title">{{ $subItem['title'] }}</span>
-                                                </a>
-                                            @else
-                                                <span class="menu-title">{{ $subItem['title'] }}</span>
-                                            @endif
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-                @endforeach
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <div
+                                                    class="menu-sub menu-sub-accordion {{ Route::is(...array_column($subItem['subMenu'], 'route') ?? []) ? 'here show' : '' }}">
+                                                    @foreach ($subItem['subMenu'] as $subSubItem)
+                                                        <div class="menu-item">
+                                                            @if (isset($subSubItem['route']))
+                                                                <a class="menu-link {{ Route::is($subSubItem['route']) ? 'active' : '' }}"
+                                                                    href="{{ route($subSubItem['route']) }}">
+                                                                    <span class="menu-bullet">
+                                                                        <span class="bullet bullet-dot"></span>
+                                                                    </span>
+                                                                    <span
+                                                                        class="menu-title">{{ $subSubItem['title'] }}</span>
+                                                                </a>
+                                                            @else
+                                                                <span
+                                                                    class="menu-title">{{ $subSubItem['title'] }}</span>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="menu-item">
+                                                @if (isset($subItem['route']))
+                                                    <a class="menu-link {{ Route::is($subItem['routes']) ? 'active' : '' }}"
+                                                        href="{{ route($subItem['route']) }}">
+                                                        <span class="menu-bullet">
+                                                            <span class="bullet bullet-dot"></span>
+                                                        </span>
+                                                        <span class="menu-title">{{ $subItem['title'] }}</span>
+                                                    </a>
+                                                @else
+                                                    <span class="menu-title">{{ $subItem['title'] }}</span>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+
+                @endif
+
             </div>
         </div>
     </div>

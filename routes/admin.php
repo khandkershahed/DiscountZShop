@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutUsController;
-use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
@@ -25,7 +24,6 @@ use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\IconController;
-use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\OfferTypeController;
@@ -93,31 +91,31 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resources(
         [
-            'offer-type' => OfferTypeController::class,////Premission
-            'country'    => CountryController::class,////permission
-            'division'   => DivisonController::class,///permission
-            'city'       => CityController::class,///permission
-            'area'       => AreaController::class,////permission
+            'offer-type' => OfferTypeController::class, ////Premission
+            'country'    => CountryController::class,   ////permission
+            'division'   => DivisonController::class,   ///permission
+            'city'       => CityController::class,      ///permission
+            'area'       => AreaController::class,      ////permission
         ],
         // ['except' => ['show', 'create', 'edit']]
     );
     Route::resources(
         [
-            'faq'             => FaqController::class,///permission
+            'faq'             => FaqController::class, ///permission
             'email-settings'  => EmailSettingController::class,
-            'page-banner'     => PageBannerController::class,///permission
+            'page-banner'     => PageBannerController::class, ///permission
             'terms-condition' => TermsAndConditionController::class,
-            'privacy-policy'  => PrivacyPolicyController::class,///permiussion
+            'privacy-policy'  => PrivacyPolicyController::class, ///permiussion
 
             'store'           => StoreController::class,
 
-            // Created By Ashiquzzaman
-            'offer'           => OfferController::class,//permission
-            'coupon'          => CouponController::class,///permission
-            'about-us'        => AboutUsController::class,///permission
-            'slider'          => SliderController::class,//permission
-            'banner'          => BannerController::class,//permission
-            'homepage'        => HomePageController::class,///permission
+                                                            // Created By Ashiquzzaman
+            'offer'           => OfferController::class,    //permission
+            'coupon'          => CouponController::class,   ///permission
+            'about-us'        => AboutUsController::class,  ///permission
+            'slider'          => SliderController::class,   //permission
+            'banner'          => BannerController::class,   //permission
+            'homepage'        => HomePageController::class, ///permission
             'special-offer'   => SpecialOfferController::class,
 
         ],
@@ -130,12 +128,12 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'staff'            => StaffController::class,
             'user-management'  => UserManagementController::class,
             'admin-managemnet' => UserManagementController::class,
-            'icons'            => IconController::class,           //done
+            'icons'            => IconController::class,
             'newsletters'      => NewsletterController::class,
 
             'categories'       => CategoryController::class, ///permission
-            'brands'           => BrandController::class, //permission
-            'contacts'         => ContactController::class,///permission
+            'brands'           => BrandController::class,    //permission
+            'contacts'         => ContactController::class,  ///permission
 
         ],
     );
@@ -155,17 +153,17 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::get('/backup', [Controller::class, 'downloadBackup']);
 
-    Route::get('role/{roleId}/give-permission', [RoleController::class, 'givePermission'])->name('role.give-permission');
-    Route::patch('role/{roleId}/give-permission', [RoleController::class, 'storePermission'])->name('role.store-permission');
+    // Route::get('role/{roleId}/give-permission', [RoleController::class, 'givePermission'])->name('role.give-permission');
+    // Route::patch('role/{roleId}/give-permission', [RoleController::class, 'storePermission'])->name('role.store-permission');
 
-    Route::get('log', [LogController::class, 'index'])->name('log.index');
-    Route::get('log/{id}', [LogController::class, 'show'])->name('log.show');
-    Route::delete('log/{id}', [LogController::class, 'destroy'])->name('log.destroy');
-    Route::get('log/download/{id}', [LogController::class, 'download'])->name('log.download');
+    // Route::get('log', [LogController::class, 'index'])->name('log.index');
+    // Route::get('log/{id}', [LogController::class, 'show'])->name('log.show');
+    // Route::delete('log/{id}', [LogController::class, 'destroy'])->name('log.destroy');
+    // Route::get('log/download/{id}', [LogController::class, 'download'])->name('log.download');
 
-    Route::get('activity_logs', [ActivityLogController::class, 'index'])->name('activity_logs.index');
-    Route::get('activity_logs/{activity_log}', [ActivityLogController::class, 'show'])->name('activity_logs.show');
-    Route::delete('activity_logs/{activity_log}', [ActivityLogController::class, 'destroy'])->name('activity_logs.destroy');
+    // Route::get('activity_logs', [ActivityLogController::class, 'index'])->name('activity_logs.index');
+    // Route::get('activity_logs/{activity_log}', [ActivityLogController::class, 'show'])->name('activity_logs.show');
+    // Route::delete('activity_logs/{activity_log}', [ActivityLogController::class, 'destroy'])->name('activity_logs.destroy');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');

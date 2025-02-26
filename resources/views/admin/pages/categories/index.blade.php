@@ -78,6 +78,7 @@
                                                 {{ $category->parent_id ? $category->parent->name : 'N/A' }}</span>
                                             <!--end::Sl-->
                                         </td>
+
                                         <!--begin::Action=-->
                                         <td class="text-end">
                                             <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
@@ -128,6 +129,7 @@
                                             <!--end::Menu-->
                                         </td>
                                         <!--end::Action=-->
+
                                     </tr>
                                     <!--end::Table row-->
                                     @foreach ($category->children as $child)
@@ -181,24 +183,34 @@
                                                 <!--begin::Menu-->
                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                                     data-kt-menu="true">
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="{{ route('admin.categories.show', $child->id) }}"
-                                                            class="menu-link px-3">Show</a>
-                                                    </div>
+
+                                                    @if (Auth::guard('admin')->user()->can('show.category'))
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="{{ route('admin.categories.show', $child->id) }}"
+                                                                class="menu-link px-3">Show</a>
+                                                        </div>
+                                                    @endif
                                                     <!--end::Menu item-->
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="{{ route('admin.categories.edit', $child->id) }}"
-                                                            class="menu-link px-3">Edit</a>
-                                                    </div>
+
+                                                    @if (Auth::guard('admin')->user()->can('show.category'))
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="{{ route('admin.categories.edit', $child->id) }}"
+                                                                class="menu-link px-3">Edit</a>
+                                                        </div>
+                                                    @endif
                                                     <!--end::Menu item-->
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="{{ route('admin.categories.destroy', $child->id) }}"
-                                                            class="menu-link px-3 delete">Delete</a>
-                                                    </div>
+
+                                                    @if (Auth::guard('admin')->user()->can('show.category'))
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="{{ route('admin.categories.destroy', $child->id) }}"
+                                                                class="menu-link px-3 delete">Delete</a>
+                                                        </div>
+                                                    @endif
                                                     <!--end::Menu item-->
+
                                                 </div>
                                                 <!--end::Menu-->
                                             </td>
