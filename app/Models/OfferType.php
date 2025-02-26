@@ -23,4 +23,5 @@ class OfferType extends Model
     {
         return $this->hasMany(Offer::class); // Assuming an Offer belongs to an OfferType
     }
+
 }

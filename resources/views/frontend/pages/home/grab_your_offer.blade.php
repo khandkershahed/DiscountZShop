@@ -27,11 +27,16 @@
                                     <div class="w-100">
 
                                         @foreach ($offer_cat_types as $offer_cat_type)
-                                            <a href=""><span
-                                                    class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span></a>
+                                            @if ($offer_cat_type->offers->count() > 0)
+                                                <a href="javascript:void(0);" class="category-tab"
+                                                    data-id="{{ $offer_cat_type->id }}">
+                                                    <span class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span>
+                                                </a>
+                                            @endif
                                         @endforeach
 
                                     </div>
+
                                 </div>
                             </div>
 
@@ -82,7 +87,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-9 grab-offer-tabs-box">
+                            <div class="col-lg-9 grab-offer-tabs-box grab-offer-tabs-box-hide">
                                 <div class="tab-content" id="myTabContent">
                                     <!-- All Offers Tab -->
                                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
@@ -109,8 +114,7 @@
                                                                             <div
                                                                                 class="d-flex justify-content-center align-items-center text-start">
                                                                                 @if (!empty($alloffer->badge))
-                                                                                    <h5>{{ $alloffer->badge }}
-                                                                                    </h5>
+                                                                                    <h5>{{ $alloffer->badge }}</h5>
                                                                                 @endif
                                                                             </div>
 
@@ -164,8 +168,8 @@
                                                                                     <div
                                                                                         class="d-flex justify-content-center align-items-center">
                                                                                         @if (!empty($category_offer->badge))
-                                                                                            <h1>{{ substr($category_offer->badge, 0, -4) }}
-                                                                                            </h1>
+                                                                                            <h5>{{ substr($category_offer->badge, 0, -4) }}
+                                                                                            </h5>
                                                                                         @endif
                                                                                     </div>
 
@@ -197,63 +201,50 @@
                             </div>
 
                             {{-- ======================== --}}
-                            <div class="col-lg-9 grab-offer-tabs-box">
-                                <div class="tab-content" id="myTabContent">
-
-                                    <!-- Categories -->
+                            <div class="col-lg-9 grab-offer-tabs-box dynamic-offer-section" style="display: none;">
+                                <div class="tab-content" id="dynamicOfferContent">
                                     @foreach ($offer_cat_types as $offer_cat_type)
-                                        <!-- Only show category if it has offers -->
-                                        <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="" tabindex="0">
-
+                                        <div class="tab-pane fade" id="offer-category-{{ $offer_cat_type->id }}"
+                                            role="tabpanel">
                                             <div class="row">
+                                                @foreach ($offer_cat_type->offers as $offerItem)
+                                                    <div class="mb-4 col-lg-4">
+                                                        <div class="coupon-box">
+                                                            <div class="coupon-box-content">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-4">
+                                                                        <a
+                                                                            href="{{ route('offer.details', $offerItem->slug) }}">
+                                                                            <img class="img-fluid"
+                                                                                src="{{ !empty($offerItem->logo) ? url('storage/' . $offerItem->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offerItem->name) }}"
+                                                                                alt="Logo" />
+                                                                        </a>
+                                                                    </div>
 
-                                                @foreach ($offer_cat_type->offerItems as $offer)
-                                                        <div class="mb-4 col-lg-4">
-                                                            <div class="coupon-box">
-                                                                <div class="coupon-box-content">
-                                                                    <div class="row align-items-center">
-                                                                        <div class="col-4">
-                                                                            <a
-                                                                                href="{{ route('offer.details', $category_offer->slug) }}">
-                                                                                <img class="img-fluid"
-                                                                                    src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                                    alt="Logo" />
-                                                                            </a>
-                                                                        </div>
-
-                                                                        <div class="text-center col-8">
-                                                                            <a
-                                                                                href="{{ route('offer.details', $category_offer->slug) }}">
-                                                                                <div
-                                                                                    class="d-flex justify-content-center align-items-center">
-                                                                                    @if (!empty($category_offer->badge))
-                                                                                        <h1>{{ substr($category_offer->badge, 0, -4) }}
-                                                                                        </h1>
-                                                                                    @endif
-                                                                                </div>
-
-                                                                                {{-- @if (!empty($category_offer->coupon_code))
-                                                                                        <p
-                                                                                            class="para-font coupon-extra">
-                                                                                            Code:
-                                                                                            {{ $category_offer->coupon_code }}
-                                                                                            <a href="javascript:void(0);"
-                                                                                                class="copy-btn"><i
-                                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                                        </p>
-                                                                                    @endif --}}
-                                                                            </a>
-                                                                        </div>
+                                                                    <div class="text-center col-8">
+                                                                        <a
+                                                                            href="{{ route('offer.details', $offerItem->slug) }}">
+                                                                            <div
+                                                                                class="d-flex justify-content-center align-items-center">
+                                                                                @if (!empty($offerItem->badge))
+                                                                                    <h5>{{ substr($offerItem->badge, 0, -4) }}
+                                                                                    </h5>
+                                                                                @endif
+                                                                            </div>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
+
                             </div>
+
 
                         </div>
 

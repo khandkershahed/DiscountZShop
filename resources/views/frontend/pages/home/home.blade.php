@@ -129,8 +129,8 @@
                                                         class="btn-{{ $loop->iteration }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                             height="30" viewBox="0 0 30 30" fill="none">
-                                                            <circle cx="15" cy="15" r="15"
-                                                                fill="#F15A2D"></circle>
+                                                            <circle cx="15" cy="15" r="15" fill="#F15A2D">
+                                                            </circle>
                                                             <path
                                                                 d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
                                                                 fill="white"></path>
@@ -892,6 +892,79 @@
                 }
             }
         </script>
+
+        {{-- <script>
+            $(document).ready(function() {
+                $(".category-tab").click(function() {
+                    var categoryId = $(this).data("id"); // Get the clicked category ID
+
+                    $(".grab-offer-tabs-box-hide").hide();
+                    $(".dynamic-offer-section").show();
+                    $("#dynamicOfferContent .tab-pane").removeClass("show active");
+                    $("#offer-category-" + categoryId).addClass("show active");
+
+                });
+            });
+        </script> --}}
+
+
+        <script>
+            $(document).ready(function() {
+                // When a category from offer_cat_types (dynamic category list) is clicked
+                $(".category-tab").click(function() {
+                    var categoryId = $(this).data("id"); // Get the clicked category ID
+
+                    // Hide the main offer tabs and show the dynamic offer section
+                    $(".grab-offer-tabs-box-hide").hide(); // Hide the left-side category tabs
+                    $(".dynamic-offer-section").show(); // Show the dynamically loaded offer section
+
+                    // Remove 'show active' class from all categories in the dynamic section
+                    $("#dynamicOfferContent .tab-pane").removeClass("show active");
+
+                    // Add 'show active' class to the clicked category's tab-pane in the dynamic section
+                    $("#offer-category-" + categoryId).addClass("show active");
+
+                    // Highlight the corresponding tab in the left-side category navigation
+                    $("#myTab .nav-item").removeClass("active"); // Remove 'active' class from all tabs
+                    $("#home-" + categoryId + "-tab").addClass(
+                        "active"); // Add 'active' class to the selected tab
+                });
+
+                // When a category from the left-side categories (nav-tabs) is clicked
+                $('#myTab .nav-link').click(function() {
+                    var targetId = $(this).attr('data-bs-target').replace('#', ''); // Get the target tab ID
+
+                    // Hide the dynamic section and show the main offer tabs
+                    $(".dynamic-offer-section").hide(); // Hide the dynamically loaded offer section
+                    $(".grab-offer-tabs-box-hide").show(); // Show the left-side category tabs
+
+                    // Reset to the "All Offers" tab view if necessary
+                    if (targetId !== 'home-tab-pane') {
+                        $("#myTabContent .tab-pane").removeClass("show active");
+                        $("#" + targetId).addClass("show active");
+                    }
+
+                    // Highlight the corresponding tab in the left-side navigation
+                    $("#myTab .nav-item").removeClass("active"); // Remove 'active' class from all tabs
+                    $(this).closest('li').addClass("active"); // Add 'active' class to the clicked tab
+                });
+
+                // Show more categories on click
+                $('#show-more-btn').click(function() {
+                    $('.more-tabs').removeClass('d-none');
+                    $(this).hide();
+                    $('#show-less-btn').show();
+                });
+
+                // Show less categories on click
+                $('#show-less-btn').click(function() {
+                    $('.more-tabs').addClass('d-none');
+                    $(this).hide();
+                    $('#show-more-btn').show();
+                });
+            });
+        </script>
+
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
