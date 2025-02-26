@@ -5,7 +5,8 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="kt_datatable_example table table-hover align-middle table-row-dashed fs-6 gy-5" id="kt_datatable_example">
+                        <table class="kt_datatable_example table table-hover align-middle table-row-dashed fs-6 gy-5"
+                            id="kt_datatable_example">
                             <thead>
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                     {{-- <th class="w-10px pe-2">
@@ -43,8 +44,10 @@
                                             <span class="fw-bolder"> {{ $contact->message }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('admin.contacts.destroy', $contact->id) }}"
-                                                class="menu-link px-3 delete">Delete</a>
+                                            @if (Auth::guard('admin')->user()->can('delete.contact_message'))
+                                                <a href="{{ route('admin.contacts.destroy', $contact->id) }}"
+                                                    class="menu-link px-3 delete">Delete</a>
+                                            @endif
                                         </td>
                                     </tr>
 

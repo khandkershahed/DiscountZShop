@@ -103,20 +103,24 @@
         <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-light-primary">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none">
-                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
-                                fill="currentColor" />
-                            <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
-                                transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
-                            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
-                                fill="currentColor" />
-                        </svg>
-                    </span>
-                    Add Slider Image
-                </a>
+
+                @if (Auth::guard('admin')->user()->can('add.homapage_left_banner'))
+                    <a href="{{ route('admin.slider.create') }}" class="btn btn-light-primary">
+                        <span class="svg-icon svg-icon-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                    fill="currentColor" />
+                                <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
+                                    transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
+                                <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                        Add Slider Image
+                    </a>
+                @endif
+
             </div>
         </div>
 
@@ -153,13 +157,16 @@
 
 
                             <td>
-                                <a href="{{ route('admin.slider.edit', $item->id) }}" class="text-primary">
-                                    <i class="fa-solid fa-pencil text-primary"></i>
-                                </a>
-
-                                <a href="{{ route('admin.slider.destroy', $item->id) }}" class="delete">
-                                    <i class="fa-solid fa-trash text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.homapage_left_banner'))
+                                    <a href="{{ route('admin.slider.edit', $item->id) }}" class="text-primary">
+                                        <i class="fa-solid fa-pencil text-primary"></i>
+                                    </a>
+                                @endif
+                                @if (Auth::guard('admin')->user()->can('delete.homapage_left_banner'))
+                                    <a href="{{ route('admin.slider.destroy', $item->id) }}" class="delete">
+                                        <i class="fa-solid fa-trash text-danger"></i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

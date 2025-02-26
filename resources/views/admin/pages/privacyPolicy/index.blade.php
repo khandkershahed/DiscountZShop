@@ -3,24 +3,28 @@
         <div class="card-header">
             <div class="card-title"></div>
             <div class="card-toolbar">
-                <a href="{{ route('admin.privacy-policy.create') }}" class="btn btn-light-primary">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none">
-                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
-                                fill="currentColor" />
-                            <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
-                                transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
-                            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
-                                fill="currentColor" />
-                        </svg>
-                    </span>
-                    Add Privacy Policy
-                </a>
+
+                @if (Auth::guard('admin')->user()->can('add.privacy'))
+                    <a href="{{ route('admin.privacy-policy.create') }}" class="btn btn-light-primary">
+                        <span class="svg-icon svg-icon-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                    fill="currentColor" />
+                                <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
+                                    transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
+                                <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                        Add Privacy Policy
+                    </a>
+                @endif
             </div>
         </div>
         <div class="card-body pt-0">
-            <table class="kt_datatable_example table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_datatable_example">
+            <table class="kt_datatable_example table align-middle table-row-dashed fs-6 gy-5 mb-0"
+                id="kt_datatable_example">
                 <thead>
                     <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th style="width: 40px;">SL</th>
@@ -35,7 +39,7 @@
                 <tbody>
                     @foreach ($policys as $key => $policy)
                         <tr class="fw-bold text-gray-400 text-center">
-                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $policy->title }}</td>
                             <td>{{ $policy->version }}</td>
                             <td>{{ Carbon\Carbon::parse($policy->effective_date)->format('D,d M Y') }}</td>
@@ -58,15 +62,19 @@
                                         <i class="bi bi-hand-thumbs-up text-success fs-3"></i>
                                     </a>
                                 @endif --}}
-                                <a href="{{ route('admin.privacy-policy.edit', $policy->id) }}"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <a href="{{ route('admin.privacy-policy.destroy', $policy->id) }}"
-                                    class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete"
-                                    data-kt-docs-table-filter="delete_row">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.privacy'))
+                                    <a href="{{ route('admin.privacy-policy.edit', $policy->id) }}"
+                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                @endif
+                                @if (Auth::guard('admin')->user()->can('delete.privacy'))
+                                    <a href="{{ route('admin.privacy-policy.destroy', $policy->id) }}"
+                                        class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete"
+                                        data-kt-docs-table-filter="delete_row">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

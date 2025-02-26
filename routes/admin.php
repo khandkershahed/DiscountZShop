@@ -103,24 +103,21 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     );
     Route::resources(
         [
-            'faq'             => FaqController::class,
-
+            'faq'             => FaqController::class,///permission
             'email-settings'  => EmailSettingController::class,
-
-            'page-banner'     => PageBannerController::class,
-
+            'page-banner'     => PageBannerController::class,///permission
             'terms-condition' => TermsAndConditionController::class,
-            'privacy-policy'  => PrivacyPolicyController::class,
+            'privacy-policy'  => PrivacyPolicyController::class,///permiussion
 
             'store'           => StoreController::class,
 
             // Created By Ashiquzzaman
-            'offer'           => OfferController::class,
-            'coupon'          => CouponController::class,
-            'about-us'        => AboutUsController::class,
-            'slider'          => SliderController::class,
-            'banner'          => BannerController::class,
-            'homepage'        => HomePageController::class,
+            'offer'           => OfferController::class,//permission
+            'coupon'          => CouponController::class,///permission
+            'about-us'        => AboutUsController::class,///permission
+            'slider'          => SliderController::class,//permission
+            'banner'          => BannerController::class,//permission
+            'homepage'        => HomePageController::class,///permission
             'special-offer'   => SpecialOfferController::class,
 
         ],
@@ -129,15 +126,16 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resources(
         [
-            'user'             => UserController::class,           //done
-            'staff'            => StaffController::class,          //done
-            'user-management'  => UserManagementController::class, //done
-            'admin-managemnet' => UserManagementController::class, //done
-            'categories'       => CategoryController::class,       //done
+            'user'             => UserController::class,
+            'staff'            => StaffController::class,
+            'user-management'  => UserManagementController::class,
+            'admin-managemnet' => UserManagementController::class,
             'icons'            => IconController::class,           //done
             'newsletters'      => NewsletterController::class,
-            'brands'           => BrandController::class, //done
-            'contacts'         => ContactController::class,
+
+            'categories'       => CategoryController::class, ///permission
+            'brands'           => BrandController::class, //permission
+            'contacts'         => ContactController::class,///permission
 
         ],
     );
