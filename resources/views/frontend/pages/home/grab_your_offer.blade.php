@@ -27,24 +27,11 @@
                                     <div class="w-100">
 
                                         @foreach ($offer_cat_types as $offer_cat_type)
-                                            <a href="javascript:void(0);" class="offer-type-category">
-                                                <span class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span>
-                                            </a>
+                                            <a href=""><span
+                                                    class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span></a>
                                         @endforeach
 
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function() {
-                                                document.querySelectorAll(".offer-type-category").forEach(function(element) {
-                                                    element.addEventListener("click", function() {
-                                                        document.querySelector(".grab-offer-tabs-box-two").style.display = "none";
-                                                        document.querySelector(".grab-offer-tabs-box-two-show").style.display = "block";
-                                                    });
-                                                });
-                                            });
-                                        </script>
-
                                     </div>
-
                                 </div>
                             </div>
 
@@ -95,7 +82,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-9 grab-offer-tabs-box grab-offer-tabs-box-two">
+                            <div class="col-lg-9 grab-offer-tabs-box">
                                 <div class="tab-content" id="myTabContent">
                                     <!-- All Offers Tab -->
                                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
@@ -209,50 +196,62 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-9 grab-offer-tabs-box-show">
+                            {{-- ======================== --}}
+                            <div class="col-lg-9 grab-offer-tabs-box">
                                 <div class="tab-content" id="myTabContent">
 
-                                    <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="" tabindex="0">
-                                        <div class="row">
+                                    <!-- Categories -->
+                                    @foreach ($offer_cat_types as $offer_cat_type)
+                                        <!-- Only show category if it has offers -->
+                                        <div class="tab-pane fade" id="" role="tabpanel" aria-labelledby="" tabindex="0">
 
-                                            <div class="mb-4 col-lg-4">
-                                                <div class="coupon-box">
-                                                    <div class="coupon-box-content">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-4">
-                                                                <a href="">
-                                                                    <img class="img-fluid"
-                                                                        src=""
-                                                                        alt="Logo" />
-                                                                </a>
-                                                            </div>
+                                            <div class="row">
 
-                                                            <div class="text-center col-8">
-                                                                <a href="">
+                                                @foreach ($offer_cat_type->offerItems as $offer)
+                                                        <div class="mb-4 col-lg-4">
+                                                            <div class="coupon-box">
+                                                                <div class="coupon-box-content">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-4">
+                                                                            <a
+                                                                                href="{{ route('offer.details', $category_offer->slug) }}">
+                                                                                <img class="img-fluid"
+                                                                                    src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                    alt="Logo" />
+                                                                            </a>
+                                                                        </div>
 
-                                                                    <div class="d-flex justify-content-center align-items-center">
+                                                                        <div class="text-center col-8">
+                                                                            <a
+                                                                                href="{{ route('offer.details', $category_offer->slug) }}">
+                                                                                <div
+                                                                                    class="d-flex justify-content-center align-items-center">
+                                                                                    @if (!empty($category_offer->badge))
+                                                                                        <h1>{{ substr($category_offer->badge, 0, -4) }}
+                                                                                        </h1>
+                                                                                    @endif
+                                                                                </div>
 
-                                                                        <h1>Name:</h1>
-
+                                                                                {{-- @if (!empty($category_offer->coupon_code))
+                                                                                        <p
+                                                                                            class="para-font coupon-extra">
+                                                                                            Code:
+                                                                                            {{ $category_offer->coupon_code }}
+                                                                                            <a href="javascript:void(0);"
+                                                                                                class="copy-btn"><i
+                                                                                                    class="fa-regular fa-copy"></i></a>
+                                                                                        </p>
+                                                                                    @endif --}}
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
-
-
-                                                                    <p class="para-font coupon-extra">
-                                                                        Code: Ashik 25254
-                                                                        <a href="javascript:void(0);" class="copy-btn"><i
-                                                                                class="fa-regular fa-copy"></i></a>
-                                                                    </p>
-
-                                                                </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
-
                                         </div>
-                                    </div>
-
+                                    @endforeach
                                 </div>
                             </div>
 
