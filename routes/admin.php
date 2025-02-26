@@ -93,11 +93,11 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resources(
         [
-            'offer-type' => OfferTypeController::class,
-            'country'    => CountryController::class,
-            'city'       => CityController::class,
-            'division'   => DivisonController::class,
-            'area'       => AreaController::class,
+            'offer-type' => OfferTypeController::class,////Premission
+            'country'    => CountryController::class,////permission
+            'division'   => DivisonController::class,///permission
+            'city'       => CityController::class,///permission
+            'area'       => AreaController::class,////permission
         ],
         // ['except' => ['show', 'create', 'edit']]
     );

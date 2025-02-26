@@ -5,21 +5,24 @@
             </div>
             <div class="card-toolbar">
 
-                <a href="javascript:void(0)" class="btn btn-light-primary" data-bs-toggle="modal"
-                    data-bs-target="#AddModal">
-                    <span class="svg-icon svg-icon-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none">
-                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
-                                fill="currentColor" />
-                            <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
-                                transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
-                            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
-                                fill="currentColor" />
-                        </svg>
-                    </span>
-                    Add City
-                </a>
+                @if (Auth::guard('admin')->user()->can('add.city'))
+                    <a href="javascript:void(0)" class="btn btn-light-primary" data-bs-toggle="modal"
+                        data-bs-target="#AddModal">
+                        <span class="svg-icon svg-icon-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                    fill="currentColor" />
+                                <rect x="10.8891" y="17.8033" width="12" height="2" rx="1"
+                                    transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
+                                <rect x="6.01041" y="10.9247" width="12" height="2" rx="1"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                        Add City
+                    </a>
+                @endif
+
             </div>
         </div>
         <div class="card-body pt-0">
@@ -47,14 +50,22 @@
                             <td><span class="badge {{ $city->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $city->status == 'active' ? 'Active' : 'InActive' }}</span></td>
                             <td>
-                                <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                    data-bs-toggle="modal" data-bs-target="#EditModal-{{ $city->id }}">
-                                    <i class="fa-solid fa-pen"></i>
-                                </a>
-                                <a href="{{ route('admin.city.destroy', $city->id) }}"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete">
-                                    <i class="fa-solid fa-trash-alt"></i>
-                                </a>
+
+                                @if (Auth::guard('admin')->user()->can('edit.city'))
+                                    <a href="#"
+                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                        data-bs-toggle="modal" data-bs-target="#EditModal-{{ $city->id }}">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.city'))
+                                    <a href="{{ route('admin.city.destroy', $city->id) }}"
+                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete">
+                                        <i class="fa-solid fa-trash-alt"></i>
+                                    </a>
+                                @endif
+                                
                             </td>
                         </tr>
                     @endforeach
