@@ -21,7 +21,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-9">
+                            <div class="col-lg-9 d-none d-lg-block">
                                 <div class="d-flex justify-content-space-between align-items-center">
                                     <!-- Grab Tags -->
                                     <div class="w-100">

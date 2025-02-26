@@ -49,7 +49,7 @@ class HomeController extends Controller
 
             'areas'              => Area::latest()->get(),
             'categorys'          => Category::latest()->limit(6)->get(),
-            'offer_cat_types'    => OfferType::where('status','active')->latest()->limit(8)->get(),
+            'offer_cat_types'    => OfferType::where('status', 'active')->latest()->limit(8)->get(),
 
             'mobile_brands'      => Brand::orderBy('name', 'ASC')->latest()->limit(8)->get(),
             'mobile_coupons'     => Coupon::latest()->get(),
