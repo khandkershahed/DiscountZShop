@@ -35,10 +35,12 @@
                             <p class="pt-2">
                                 {!! $offerDetails->short_description !!}
                             </p>
+                            
                             {{-- <div class="pt-3 d-flex align-items-center">
                                 <p>Available:</p>
                                 <h6 class="ps-2 main-color">L'Oreal All Store</h6>
                             </div> --}}
+
                             <p class="pt-2 countdown" data-expire-date="{{ $offerDetails->expiry_date }}">
                                 <span class="text-muted">Expire :</span>
                                 <span class="countdown-timer main-color"></span>
