@@ -2161,7 +2161,7 @@ html {
         font-size: 1.3rem;
     }
     .offer_title p {
-        min-height: 20px;
+        min-height: 65px;
     }
     .shop-heart {
         position: relative;
@@ -2391,4 +2391,7 @@ button {
 
 .side-product{
     height: 500px;
+}
+.special-menus{
+    background-color: #dddd !important;
 }
