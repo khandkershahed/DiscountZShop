@@ -204,7 +204,7 @@ class OfferController extends Controller
             'allCategories' => Category::latest('id')->get(),
             'offer_types' => OfferType::latest()->get(),
         ];
-        
+
         return view('admin.pages.offer.edit', $data);
     }
 
