@@ -161,11 +161,17 @@
                             <td class="text-start">{{ optional($offer->added)->name }}</td>
 
                             <td class="text-start">
-                                <label class="switch">
+                                {{-- <label class="switch">
                                     <input type="checkbox" class="status-toggle" data-id="{{ $offer->id }}"
                                         {{ $offer->status == 'active' ? 'checked' : '' }}>
                                     <span class="slider round"></span>
-                                </label>
+                                </label> --}}
+
+                                @if ($offer->status == 'active')
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-danger">Inactive</span>
+                                @endif
                             </td>
 
 

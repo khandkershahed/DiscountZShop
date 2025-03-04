@@ -1,27 +1,28 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Models\Area;
-use App\Models\Banner;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\City;
-use App\Models\Coupon;
-use App\Models\Division;
+use view;
 use App\Models\Faq;
-use App\Models\HomePage;
+use App\Models\Area;
+use App\Models\City;
+use App\Models\Brand;
 use App\Models\Offer;
+use App\Models\Store;
+use App\Models\Banner;
+use App\Models\Coupon;
+use App\Models\Slider;
+use App\Models\AboutUs;
+use App\Models\Category;
+use App\Models\Division;
+use App\Models\HomePage;
 use App\Models\OfferType;
 use App\Models\PageBanner;
-use App\Models\PrivacyPolicy;
-use App\Models\Slider;
-use App\Models\Store;
-use App\Models\TermsAndCondition;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use App\Models\PrivacyPolicy;
+use App\Models\TermsAndCondition;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
