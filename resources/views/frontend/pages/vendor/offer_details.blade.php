@@ -24,6 +24,12 @@
                                 <h6 class="ps-2 main-color">BDT {{ $offerDetails->price }}</h6>
                             @endif --}}
 
+                            @if (!empty($offerDetails->price))
+                                <del class="pt-2">BDT {{ $offerDetails->price }}</del>
+                            @endif
+                            @if (!empty($offerDetails->offer_price))
+                                <h6 class="main-color">BDT {{ $offerDetails->offer_price }}</h6>
+                            @endif
 
                             <hr />
                             <p class="pt-2">
@@ -72,6 +78,14 @@
                         <div class="text-center">
                             <h1 class="pt-3 main-color">{{ $offerDetails->badge }}</h1>
                             <h4>{{ $offerDetails->name }}</h4>
+
+                            @if (!empty($offerDetails->price))
+                                <del class="pt-2">BDT {{ $offerDetails->price }}</del>
+                            @endif
+                            @if (!empty($offerDetails->offer_price))
+                                <h6 class="main-color">BDT {{ $offerDetails->offer_price }}</h6>
+                            @endif
+
                             <hr />
                             <p class="pt-2">
                                 {!! $offerDetails->short_description !!}
