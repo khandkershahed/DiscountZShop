@@ -16,10 +16,10 @@
             <tbody>
                 <tr>
                     <td style="padding:5px 15px;border-bottom:1px solid #f1f1f1;text-align:center">
-                        <a href="https://www.ngenitltd.com/" target="_blank"
+                        <a href="https://www.discountzshop.com/" target="_blank"
                             data-saferedirecturl="https://www.google.com/url?q=https://www.ngenitltd.com/&amp;source=gmail&amp;ust=1683110822015000&amp;usg=AOvVaw1oh2knrZ8dutUp_6pTWSeQ">
                             <img src="http://www.discountzshop.com/storage/webSetting/site_logo_black/oWIkHcvg6U1725872126.png"
-                                height="80px" alt="NgenIt" border="0"
+                                height="80px" alt="DiscountZShop" border="0"
                                 width="230px" data-bit="iit" style="object-fit: contain">
                         </a>
                     </td>
@@ -45,7 +45,7 @@
                                         font-weight:700;font-size:15px;text-align:left">
                                         &nbsp; {{ $category->name }}</td>
                                 </tr>
-                                
+
 
                                 <tr>
                                     <th
@@ -56,8 +56,8 @@
                                         border-right:1px solid #f1f1f1;font-size:14px;text-align:left">
                                         &nbsp; {{ $category->added->name }}</td>
                                 </tr>
-                                
-                                
+
+
                                 <tr>
                                     <th
                                         style="background-color:#f1f1f1;padding:10px 15px;font-size:12px;text-align:left">

@@ -16,10 +16,10 @@
             <tbody>
                 <tr>
                     <td style="padding:5px 15px;border-bottom:1px solid #f1f1f1;text-align:center">
-                        <a href="https://www.ngenitltd.com/" target="_blank"
+                        <a href="https://www.discountzshop.com/" target="_blank"
                             data-saferedirecturl="https://www.google.com/url?q=https://www.ngenitltd.com/&amp;source=gmail&amp;ust=1683110822015000&amp;usg=AOvVaw1oh2knrZ8dutUp_6pTWSeQ">
                             <img src="http://www.discountzshop.com/storage/webSetting/site_logo_black/oWIkHcvg6U1725872126.png"
-                                height="80px" alt="NgenIt" border="0"
+                                height="80px" alt="DiscountZShop" border="0"
                                 width="230px" data-bit="iit" style="object-fit: contain">
                         </a>
                     </td>
@@ -32,7 +32,7 @@
 
                 <tr style="position: relative;bottom: 10px;">
                     <td style="padding:0 15px;">
-                        <p>The following is the short details of the Store:</p>
+                        {{-- <p>The following is the short details of the Store:</p> --}}
                         <table cellpadding="0" cellspacing="0" border="0" style="width:620px;">
                             <tbody>
 

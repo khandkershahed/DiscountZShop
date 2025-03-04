@@ -6,7 +6,7 @@
     <meta property="og:locale" content="en_US" />
     <meta name="description" content="{{ optional($setting)->site_slogan }}" />
     <meta name="keywords"
-        content="ngenit, training, course, web development, project, course curriculum, professional training, corporate training, web design, graphics design, IOT, machine learning" />
+        content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
