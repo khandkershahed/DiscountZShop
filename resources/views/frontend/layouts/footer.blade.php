@@ -83,7 +83,7 @@
                             </div> --}}
                             <!-- Contact Info End -->
                             <div class="footer-gif">
-                                <img class="img-fluid" src="{{ asset('images/offers-gif.gif') }}" alt="">
+                                <img class="img-fluid" src="{{ asset('images/new1.gif') }}" alt="">
                             </div>
                         </div>
                     </div>
