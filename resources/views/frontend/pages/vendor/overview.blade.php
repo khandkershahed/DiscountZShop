@@ -80,10 +80,12 @@
                 @if (!empty(optional($brand)->description_title) || !empty(optional($brand)->description))
                     <div class="mb-5 row">
                         <div class="col-lg-12">
-                            <h5 class="pb-3">{{ optional($brand)->description_title }}</h5>
+
+                            {{-- <h5 class="pb-3">{{ optional($brand)->description_title }}</h5>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->description !!}
-                            </p>
+                            </p> --}}
+
                             <h5 class="pb-4">{{ optional($brand)->description_title }}</h5>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->description !!}
