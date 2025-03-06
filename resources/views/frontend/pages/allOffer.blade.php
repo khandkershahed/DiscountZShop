@@ -101,7 +101,9 @@
                 </div>
 
                 <div class="pt-2 row">
+
                     <div class="col-lg-3">
+
                         {{-- Accordion Filter Start --}}
                         <div class="accordion d-none d-lg-block">
                             @foreach ($categories as $header_category)
@@ -171,13 +173,16 @@
                             @endforeach
                         </div>
                     </div>
+
                     <div class="col-lg-9 pe-0">
                         <div class="tab-content" id="myTabContent">
                             {{-- Category All Offers Tab --}}
                             <div class="tab-pane fade show active" id="category-all-pane" role="tabpanel"
                                 aria-labelledby="category-all" tabindex="0">
+
                                 @if ($offers->count() > 0)
                                     <div class="row" id="servicesContainer">
+
                                         @foreach ($offers as $offer)
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <div class="mb-4 col-lg-4 col-6 pe-2">
@@ -185,10 +190,10 @@
                                                         <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6 col-4">
                                                                 <div>
-                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                    <img src="{{ !empty($offer->brand->logo) ? url('storage/' . $offer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
-                                                                        alt="" />
+                                                                        class="rounded-2 mobile-offers"
+                                                                        style="object-fit: contain;" alt="" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-8">
@@ -211,7 +216,7 @@
                                                                         <p class="text-black">
                                                                             {{ Str::words($offer->name, 1, '') }}</p>
 
-                                                                            <a type="submit" class="add_to_wishlist"
+                                                                        <a type="submit" class="add_to_wishlist"
                                                                             style="cursor: pointer;"
                                                                             data-product_id="{{ $offer->id }}"
                                                                             data-tip="Wishlist">
@@ -256,10 +261,10 @@
                                                         <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6 col-4">
                                                                 <div>
-                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                    <img src="{{ !empty($offer->brand->logo) ? url('storage/' . $offer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
-                                                                        alt="" />
+                                                                        class="rounded-2 mobile-offers"
+                                                                        style="object-fit: contain;" alt="" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-8">
@@ -333,7 +338,6 @@
                                     <div class="row servicesContainer" id="servicesContainer">
 
 
-
                                         @forelse ($category->offers as $offer)
                                             @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <div class="mt-4 col-lg-4">
@@ -341,9 +345,11 @@
                                                         <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6 col-4">
                                                                 <div>
-                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+
+                                                                    <img src="{{ !empty($offer->brand->logo) ? url('storage/' . $offer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
+                                                                        class="rounded-2 mobile-offers"
+                                                                        style="object-fit: contain;"
                                                                         alt="Offer logo for {{ $offer->name }}"
                                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                 </div>
@@ -409,9 +415,10 @@
                                                         <div class="p-4 row align-items-center">
                                                             <div class="col-lg-6 col-4">
                                                                 <div>
-                                                                    <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                                    <img src="{{ !empty($offer->brand->logo) ? url('storage/' . $offer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                                                         width="80px" height="80px"
-                                                                        class="rounded-2 mobile-offers" style="object-fit: contain;"
+                                                                        class="rounded-2 mobile-offers"
+                                                                        style="object-fit: contain;"
                                                                         alt="Offer logo for {{ $offer->name }}"
                                                                         onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
                                                                 </div>
@@ -499,12 +506,6 @@
         </section>
 
     </div>
-
-    {{-- Ashik ======================= --}}
-
-    {{-- For Mobile Code --}}
-    {{-- @include('frontend.pages.alloffer_mobile_view') --}}
-    {{-- For Mobile Code --}}
 
 
 

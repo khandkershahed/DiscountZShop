@@ -147,13 +147,13 @@
                             </td>
 
                             <td>
-                                @if (Auth::guard('admin')->user()->can('edit.hompage'))
+                                @if (Auth::guard('admin')->user()->can('edit.homepage'))
                                     <a href="{{ route('admin.homepage.edit', $homepage->id) }}" class="text-primary">
                                         <i class="fa-solid fa-pencil text-primary"></i>
                                     </a>
                                 @endif
 
-                                @if (Auth::guard('admin')->user()->can('delete.hompage'))
+                                @if (Auth::guard('admin')->user()->can('delete.homepage'))
                                     <a href="{{ route('admin.homepage.destroy', $homepage->id) }}" class="delete">
                                         <i class="fa-solid fa-trash text-danger"></i>
                                     </a>

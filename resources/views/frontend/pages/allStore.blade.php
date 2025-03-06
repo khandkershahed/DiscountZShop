@@ -115,8 +115,7 @@
                                             <div class="main-store-banner">
                                                 <img class="img-fluid rounded-2"
                                                     src="{{ !empty(optional($store->brand)->image) ? url('storage/' . optional($store->brand)->image) : asset('images/no-image(random).png') }}"
-                                                    alt="arong-banner.jpg"
-                                                    onerror="this.onerror=null; this.src='{{ asset('http://127.0.0.1:8090/storage/brands/image/YQEqnQLk9n1727868776.png') }}';" />
+                                                    alt="" />
                                             </div>
                                             <!-- Store Logo And Rating -->
                                             <div class="px-3 pb-0 pb-lg-0">

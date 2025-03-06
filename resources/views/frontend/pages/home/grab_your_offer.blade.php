@@ -102,9 +102,11 @@
                                                                     <div class="col-4">
                                                                         <a
                                                                             href="{{ route('offer.details', $alloffer->slug) }}">
+
                                                                             <img class="img-fluid"
-                                                                                src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                                alt="Logo" />
+                                                                                src="{{ !empty($alloffer->brand->logo) ? url('storage/' . $alloffer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                                alt="Brand Logo" />
+
                                                                         </a>
                                                                     </div>
 
@@ -194,7 +196,7 @@
                                                                         <a
                                                                             href="{{ route('offer.details', $offerItem->slug) }}">
                                                                             <img class="img-fluid"
-                                                                                src="{{ !empty($offerItem->logo) ? url('storage/' . $offerItem->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offerItem->name) }}"
+                                                                                src="{{ !empty($offerItem->brand->logo) ? url('storage/' . $offerItem->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offerItem->name) }}"
                                                                                 alt="Logo" />
                                                                         </a>
                                                                     </div>
