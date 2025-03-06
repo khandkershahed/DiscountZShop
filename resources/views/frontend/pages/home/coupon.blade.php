@@ -12,7 +12,7 @@
 <section>
     <div class="container px-4 py-3 biggest-deals">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="px-0 col-lg-12">
                 <div class="border-0 shadow-none card rounded-0">
                     {{-- Card Header --}}
                     <div class="px-0 py-3 bg-white card-header" style="border-bottom: 1px solid #eee">
