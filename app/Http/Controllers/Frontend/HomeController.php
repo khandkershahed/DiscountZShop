@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use view;
+use Carbon\Carbon;
 use App\Models\Faq;
 use App\Models\Area;
 use App\Models\City;
@@ -393,8 +394,8 @@ class HomeController extends Controller
         $divisionId = $request->input('division');
         $cityId     = $request->input('city');
         $areaId     = $request->input('area');
-
-        $offers = Offer::where('status', 'active')->orderBy('name', 'DESC')->latest();
+        $today      = Carbon::now()->format('Y-m-d');
+        $offers     = Offer::where('status', 'active')->where('expiry_date', '>=' , $today)->orderBy('name', 'DESC')->latest();
 
         // Apply section filter if division ID is provided
         if ($divisionId) {
