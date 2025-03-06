@@ -84,11 +84,13 @@
                                             data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                                             <div class="d-flex coupons-box align-items-center">
                                                 <div class="logo">
+
                                                     <div class="coupon-logo">
-                                                        <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                                            class="img-fluid" alt=""
-                                                            onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+
+                                                        <img src="{{ !empty($coupon->brand->logo) ? url('storage/' . $coupon->brand->logo) : 'N/A' }}" class="img-fluid" alt=""/>
+
                                                     </div>
+
                                                 </div>
                                                 <div class="content-area"
                                                     style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">

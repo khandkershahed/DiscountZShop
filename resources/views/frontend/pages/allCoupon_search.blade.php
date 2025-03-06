@@ -7,7 +7,7 @@
                 <div class="d-flex coupons-box align-items-center">
                     <div class="logo">
                         <div class="coupon-logo">
-                            <img src="{{ !empty($coupon->logo) ? url('storage/' . $coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                            <img src="{{ !empty($coupon->brand->logo) ? url('storage/' . $coupon->brand->logo) : 'N/A' }}"
                                 class="img-fluid" alt="" />
                         </div>
                     </div>
