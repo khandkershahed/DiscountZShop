@@ -359,9 +359,9 @@
                             {{-- <form method="get" action="{{ route('courses.search') }}" class="d-flex w-100" role="search"> --}}
                             <div class="mb-3 input-group w-50 ms-auto">
                                 <input type="text" id="serviceSearch" class="p-2 form-control rounded-pill"
-                                    placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2" />
+                                    placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2" style="padding: 12px 25px !important;"/>
                                 <div class="input-group-append search-btn" style="margin-left: -25px;">
-                                    <button class="border-0 btn" type="button">
+                                    <button class="border-0 btn" type="button" style="position: relative; top: 8px;">
                                         <i class="fa-solid fa-search"></i>
                                     </button>
                                 </div>
