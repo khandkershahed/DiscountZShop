@@ -14,8 +14,9 @@ $(document).ready(function () {
 
     $(".available-coupon-slider").slick({
         autoplay: true,
-        slidesToShow: 4, // Default number of slides to show
+        slidesToShow: 3, // Default number of slides to show
         dots: false,
+        gap: 10,
         autoplaySpeed: 3000, // Adjust autoplay speed in milliseconds
         arrows: false,
         responsive: [

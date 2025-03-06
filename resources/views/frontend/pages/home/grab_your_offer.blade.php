@@ -118,16 +118,6 @@
                                                                                 @endif
                                                                             </div>
 
-                                                                            {{-- @if (!empty($alloffer->coupon_code))
-                                                                                <p
-                                                                                    class="para-font coupon-extra">
-                                                                                    Code:
-                                                                                    {{ $alloffer->coupon_code }}
-                                                                                    <a href="javascript:void(0);"
-                                                                                        class="copy-btn"><i
-                                                                                            class="fa-regular fa-copy"></i></a>
-                                                                                </p>
-                                                                            @endif --}}
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -142,7 +132,6 @@
                                     <!-- Categories -->
                                     @foreach ($categories as $offercategory)
                                         @if ($offercategory->offers->count() > 0)
-                                            <!-- Only show category if it has offers -->
                                             <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane"
                                                 role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab"
                                                 tabindex="0">
@@ -172,17 +161,6 @@
                                                                                             </h5>
                                                                                         @endif
                                                                                     </div>
-
-                                                                                    {{-- @if (!empty($category_offer->coupon_code))
-                                                                                        <p
-                                                                                            class="para-font coupon-extra">
-                                                                                            Code:
-                                                                                            {{ $category_offer->coupon_code }}
-                                                                                            <a href="javascript:void(0);"
-                                                                                                class="copy-btn"><i
-                                                                                                    class="fa-regular fa-copy"></i></a>
-                                                                                        </p>
-                                                                                    @endif --}}
                                                                                 </a>
                                                                             </div>
                                                                         </div>

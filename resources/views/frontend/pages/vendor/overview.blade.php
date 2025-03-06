@@ -55,10 +55,16 @@
                                 <div class="overlay overlay-3"></div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        {{-- <div class="col-lg-6">
                             <h5 class="pb-4">{{ optional($brand)->description_title}}</h5>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->description !!}
+                            </p>
+                        </div> --}}
+                        <div class="col-lg-6">
+                            <h5 class="pb-3">{{ optional($brand)->offer_description_title }}</h5>
+                            <p style="text-align: justify;">
+                                {!! optional($brand)->offer_description !!}
                             </p>
                         </div>
                     </div>
@@ -67,9 +73,13 @@
                 @if (!empty(optional($brand)->offer_description_title) || !empty(optional($brand)->offer_description))
                     <div class="mb-5 row">
                         <div class="col-lg-12">
-                            <h5 class="pb-3">{{ optional($brand)->offer_description_title }}</h5>
+                            {{-- <h5 class="pb-3">{{ optional($brand)->offer_description_title }}</h5>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->offer_description !!}
+                            </p> --}}
+                            <h5 class="pb-4">{{ optional($brand)->description_title}}</h5>
+                            <p style="text-align: justify;">
+                                {!! optional($brand)->description !!}
                             </p>
                         </div>
                         <div class="mt-4 col-lg-2">

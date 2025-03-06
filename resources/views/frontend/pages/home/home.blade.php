@@ -326,14 +326,14 @@
                                                         Details</a>
                                                 </div>
 
-                                                <div class="pt-4 pb-5 text-center">
+                                                <div class="pt-2 pb-5 text-center">
                                                     <div>
                                                         <h5>
                                                             <span class="main-color">Hurry Up!</span> Offers
                                                             end in:
                                                         </h5>
                                                     </div>
-                                                    <div class="mt-4 countdown-with-days">
+                                                    <div class="mt-2 countdown-with-days">
                                                         <p class="pt-2 text-center countdown"
                                                             data-expire-date="{{ $offerDealLeft->expiry_date }}">
                                                             <span class="main-color">Expire In:</span>
