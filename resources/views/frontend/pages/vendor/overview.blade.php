@@ -90,6 +90,7 @@
                             <p style="text-align: justify;">
                                 {!! optional($brand)->description !!}
                             </p>
+                            
                         </div>
                         <div class="mt-4 col-lg-2">
                             <a target="_blank" href="{{ optional($brand)->url }}" class="btn btn-common-one">

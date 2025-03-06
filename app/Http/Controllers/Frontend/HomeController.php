@@ -1,28 +1,28 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
-use view;
-use App\Models\Faq;
-use App\Models\Area;
-use App\Models\City;
-use App\Models\Brand;
-use App\Models\Offer;
-use App\Models\Store;
-use App\Models\Banner;
-use App\Models\Coupon;
-use App\Models\Slider;
+use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\Area;
+use App\Models\Banner;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Coupon;
 use App\Models\Division;
+use App\Models\Faq;
 use App\Models\HomePage;
+use App\Models\Offer;
 use App\Models\OfferType;
 use App\Models\PageBanner;
-use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
+use App\Models\Slider;
+use App\Models\Store;
 use App\Models\TermsAndCondition;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use view;
 
 class HomeController extends Controller
 {
@@ -271,7 +271,8 @@ class HomeController extends Controller
 
         // Search for stores based on the query, or get all stores if query is empty
         if ($query) {
-            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")->orWhere('name', 'like', "%{$query}%")
+            $coupons = Coupon::where('coupon_code', 'like', "%{$query}%")
+                ->orWhere('name', 'like', "%{$query}%")
                 ->latest()
                 ->get();
         } else {
