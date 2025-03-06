@@ -1,239 +1,253 @@
+<style>
+    /* Style for the thumbnail titles */
+    .grabThumbs {
+        width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .thumbnail-title {
+        color: var(--secondary-color-two);
+        border: 1px solid #eee !important;
+        padding: 9px;
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .thumbnail-title:hover {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+        border: 1px solid var(--primary-color) !important;
+    }
+
+    /* Active class for the selected title */
+    .slick-current .thumbnail-title {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+        border: 1px solid var(--primary-color) !important;
+    }
+
+    /* Hide default Slick navigation */
+    .slick-prev,
+    .slick-next {
+        display: none !important;
+    }
+
+    .next-thumb,
+    .prev-thumb {
+        background-color: transparent;
+        border: 1px solid #f15a2d;
+        color: #f15a2d;
+    }
+
+    .next-thumb,
+    .prev-thumb:focus {
+        background-color: transparent;
+        border: 1px solid #f15a2d;
+        color: #f15a2d;
+        box-shadow: none;
+    }
+
+
+    .next-thumb:hover {
+        background-color: transparent;
+        border: 1px solid #f15a2d;
+        color: #f15a2d !important;
+    }
+
+    .prev-thumb:hover {
+        background-color: transparent;
+        border: 1px solid #f15a2d;
+        color: #f15a2d !important;
+    }
+
+    .offers-items {
+        border: 1px dashed #f15a2d;
+    }
+</style>
+
 <section style="background: #f9f9f9">
-    <div class="container px-0 py-4">
+    <div class="container py-5">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="p-3 shadow-sm card rounded-0 grab-card">
-                    <div class="py-3 pb-4 bg-transparent border-0 card-header">
-                        <div class="row align-items-center">
-                            <div class="col-lg-3">
-                                <div class="d-flex align-items-center">
-                                    <h4 class="mb-0 coupon-title pe-3">
-                                        Grab Your Offer
-                                    </h4>
-                                    <div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="36"
-                                            viewBox="0 0 17 36" fill="none">
-                                            <path
-                                                d="M0.700195 0V19.7492H5.44065V35.9075L16.5017 14.363H10.1811L16.5017 0H0.700195Z"
-                                                fill="#F15A2D" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-9 d-none d-lg-block">
-                                <div class="d-flex justify-content-space-between align-items-center">
-                                    <!-- Grab Tags -->
-                                    <div class="w-100">
-
-                                        @foreach ($offer_cat_types as $offer_cat_type)
-                                            @if ($offer_cat_type->offers->count() > 0)
-                                                <a href="javascript:void(0);" class="category-tab"
-                                                    data-id="{{ $offer_cat_type->id }}">
-                                                    <span class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span>
-                                                </a>
-                                            @endif
-                                        @endforeach
-
-                                    </div>
-
-                                </div>
-                            </div>
-
+            <div class="p-0 shadow-sm card rounded-0 grab-card">
+                <!-- Header Section -->
+                <div class="py-3 pb-4 bg-white border-0 card-header">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 d-flex align-items-center">
+                            <h5 class="mb-0 coupon-title pe-3">Grab Your Offer</h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="36" viewBox="0 0 17 36"
+                                fill="none">
+                                <path d="M0.7 0V19.75H5.44V35.91L16.5 14.36H10.18L16.5 0H0.7Z" fill="#F15A2D" />
+                            </svg>
                         </div>
-                    </div>
-                    <div class="card-body pe-0">
-
-                        {{-- ====ASss===== --}}
-
-                        <div class="row">
-
-                            <div class="col-lg-3 grab-offer-tabs-box">
-                                <ul class="border-0 nav nav-tabs flex-column" id="myTab" role="tablist">
-                                    <li class="mb-2 nav-item" role="presentation">
-                                        <button class="nav-link grab-tabs w-100 rounded-0 active" id="home-tab"
-                                            data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
-                                            role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                                            All Offers
-                                        </button>
-                                    </li>
-                                    @if ($categories->count() > 0)
-                                        @foreach ($categories as $index => $offercategory)
-                                            @if ($offercategory->offers->count() > 0)
-                                                <!-- Only show category if there are offers -->
-                                                <li class="nav-item mb-2 {{ $index >= 7 ? 'd-none more-tabs' : '' }}"
-                                                    role="presentation">
-                                                    <button class="nav-link grab-tabs w-100 rounded-0"
-                                                        id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#home-{{ $offercategory->id }}-pane"
-                                                        type="button" role="tab"
-                                                        aria-controls="home-{{ $offercategory->id }}-pane"
-                                                        aria-selected="true">
-                                                        {{ $offercategory->name }}
-                                                    </button>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </ul>
-
-                                <div class="d-flex justify-content-center">
-                                    <button id="show-more-btn" class="arrow-btn">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <button id="show-less-btn" class="arrow-btn d-none">
-                                        <i class="fa-solid fa-chevron-up"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-9 grab-offer-tabs-box grab-offer-tabs-box-hide">
-                                <div class="tab-content" id="myTabContent">
-                                    <!-- All Offers Tab -->
-                                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                                        aria-labelledby="home-tab" tabindex="0">
-                                        <div class="row">
-                                            @foreach ($alloffers as $alloffer)
-                                                @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
-                                                    <div class="mb-4 col-lg-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <a
-                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
-
-                                                                            <img class="img-fluid"
-                                                                                src="{{ !empty($alloffer->brand->logo) ? url('storage/' . $alloffer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                                                alt="Brand Logo" />
-
-                                                                        </a>
-                                                                    </div>
-
-                                                                    <div class="text-center col-8">
-                                                                        <a
-                                                                            href="{{ route('offer.details', $alloffer->slug) }}">
-                                                                            <div
-                                                                                class="d-flex justify-content-center align-items-center text-start">
-                                                                                @if (!empty($alloffer->badge))
-                                                                                    <h5>{{ $alloffer->badge }}</h5>
-                                                                                @endif
-                                                                            </div>
-
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-
-                                    <!-- Categories -->
-                                    @foreach ($categories as $offercategory)
-                                        @if ($offercategory->offers->count() > 0)
-                                            <div class="tab-pane fade" id="home-{{ $offercategory->id }}-pane"
-                                                role="tabpanel" aria-labelledby="home-{{ $offercategory->id }}-tab"
-                                                tabindex="0">
-                                                <div class="row">
-                                                    @foreach ($offercategory->offers as $category_offer)
-                                                        @if ($category_offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $category_offer->expiry_date == null)
-                                                            <div class="mb-4 col-lg-4">
-                                                                <div class="coupon-box">
-                                                                    <div class="coupon-box-content">
-                                                                        <div class="row align-items-center">
-                                                                            <div class="col-4">
-                                                                                <a
-                                                                                    href="{{ route('offer.details', $category_offer->slug) }}">
-                                                                                    <img class="img-fluid"
-                                                                                        src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                                        alt="Logo" />
-                                                                                </a>
-                                                                            </div>
-
-                                                                            <div class="text-center col-8">
-                                                                                <a
-                                                                                    href="{{ route('offer.details', $category_offer->slug) }}">
-                                                                                    <div
-                                                                                        class="d-flex justify-content-center align-items-center">
-                                                                                        @if (!empty($category_offer->badge))
-                                                                                            <h5>{{ substr($category_offer->badge, 0, -4) }}
-                                                                                            </h5>
-                                                                                        @endif
-                                                                                    </div>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        @else
-                                                            <!-- No expired offers shown -->
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                        <div class="col-lg-10 d-none d-lg-block">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="w-100">
+                                    @foreach ($offer_cat_types as $offer_cat_type)
+                                        @if ($offer_cat_type->offers->count() > 0)
+                                            <a href="javascript:void(0);" class="category-tab"
+                                                data-id="{{ $offer_cat_type->id }}">
+                                                <span class="mt-2 badge ct-badge">{{ $offer_cat_type->name }}</span>
+                                            </a>
                                         @endif
                                     @endforeach
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            {{-- ======================== --}}
-                            <div class="col-lg-9 grab-offer-tabs-box dynamic-offer-section" style="display: none;">
-                                <div class="tab-content" id="dynamicOfferContent">
-                                    @foreach ($offer_cat_types as $offer_cat_type)
-                                        <div class="tab-pane fade" id="offer-category-{{ $offer_cat_type->id }}"
-                                            role="tabpanel">
-                                            <div class="row">
-                                                @foreach ($offer_cat_type->offers as $offerItem)
-                                                    <div class="mb-4 col-lg-4">
-                                                        <div class="coupon-box">
-                                                            <div class="coupon-box-content">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-4">
-                                                                        <a
-                                                                            href="{{ route('offer.details', $offerItem->slug) }}">
-                                                                            <img class="img-fluid"
-                                                                                src="{{ !empty($offerItem->brand->logo) ? url('storage/' . $offerItem->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offerItem->name) }}"
-                                                                                alt="Logo" />
-                                                                        </a>
-                                                                    </div>
+                <!-- Body Section -->
+                <div class="py-0 card-body pe-0">
+                    <div class="row">
+                        <div class="py-2 col-lg-2 d-flex flex-column align-items-center bg-light pe-0">
+                            <!-- Thumbnail Navigation -->
+                            <button class="mb-2 prev-thumb btn btn-primary">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
 
-                                                                    <div class="text-center col-8">
-                                                                        <a
-                                                                            href="{{ route('offer.details', $offerItem->slug) }}">
-                                                                            <div
-                                                                                class="d-flex justify-content-center align-items-center">
-                                                                                @if (!empty($offerItem->badge))
-                                                                                    <h5>{{ substr($offerItem->badge, 0, -4) }}
-                                                                                    </h5>
-                                                                                @endif
-                                                                            </div>
-                                                                        </a>
+                            <div class="grabThumbs">
+                                <div>
+                                    <p class="thumbnail-title">All Offers</p>
+                                </div>
+                                @foreach ($categories as $index => $offercategory)
+                                    @if ($offercategory->offers->count() > 0)
+                                        <div>
+                                            <p class="thumbnail-title">{{ $offercategory->name }}</p>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+
+                            <button class="mt-2 next-thumb btn btn-primary">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+
+                        <div class="col-lg-10 ps-0">
+                            <div class="grabMain grab-offer-tabs-box">
+                                {{-- All Offer Box --}}
+                                <div class="p-2 content-slide">
+                                    <div class="row gx-3">
+                                        @foreach ($alloffers as $alloffer)
+                                            @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
+                                                <div class="mb-3 col-lg-4">
+                                                    <div class="card offers-items">
+                                                        <div class="card-body">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-4">
+                                                                    <div class="grab-imgs">
+                                                                        <img class="img-fluid rounded-2"
+                                                                            src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                            alt="">
                                                                     </div>
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    @if (!empty($alloffer->badge))
+                                                                        <h4>{{ $alloffer->badge }}</h4>
+                                                                        <a href="{{ route('offer.details', $alloffer->slug) }}"
+                                                                            class="pt-3">
+                                                                            <small>Check Offers</small>
+                                                                            <i class="fas fa-arrow-right-long"></i>
+                                                                        </a>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    {{-- All Offer Box End --}}
+                                </div>
+                                @foreach ($categories as $offercategory)
+                                    @if ($offercategory->offers->count() > 0)
+                                        <div class="p-2 content-slide">
+                                            <div class="row gx-3">
+                                                @foreach ($offercategory->offers as $category_offer)
+                                                    @if ($category_offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $category_offer->expiry_date == null)
+                                                        <div class="mb-3 col-lg-4">
+                                                            <div class="card offers-items">
+                                                                <div class="card-body">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-4">
+                                                                            <div class="grab-imgs">
+                                                                                <img class="img-fluid rounded-2"
+                                                                                    src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                    alt="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-8">
+                                                                            @if (!empty($category_offer->badge))
+                                                                                <h4>{{ $category_offer->badge }}</h4>
+                                                                                <a href="{{ route('offer.details', $category_offer->slug) }}"
+                                                                                    class="pt-3">
+                                                                                    <small>Check Offers</small>
+                                                                                    <i
+                                                                                        class="fas fa-arrow-right-long"></i>
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 @endforeach
                                             </div>
+                                            {{-- All Offer Box End --}}
                                         </div>
-                                    @endforeach
-                                </div>
-
+                                    @endif
+                                @endforeach
                             </div>
-
-
                         </div>
-
-                        {{-- ====ASss===== --}}
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.grabMain').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.grabThumbs'
+            });
+
+            $('.grabThumbs').slick({
+                slidesToShow: 6, // Adjust number of titles visible
+                slidesToScroll: 1,
+                asNavFor: '.grabMain',
+                dots: false,
+                vertical: true, // Enable vertical sliding
+                focusOnSelect: true
+            });
+
+            // Custom button navigation
+            $('.prev-thumb').click(function() {
+                $('.grabThumbs').slick('slickPrev');
+            });
+
+            $('.next-thumb').click(function() {
+                $('.grabThumbs').slick('slickNext');
+            });
+
+            // Scroll main content to top when slide changes
+            $('.grabMain').on('afterChange', function(event, slick, currentSlide) {
+                $('.grab-offer-tabs-box').animate({
+                    scrollTop: 0 // Scroll to the top of the container
+                }, 300); // Adjust animation speed as needed
+            });
+        });
+    </script>
+@endpush

@@ -124,7 +124,7 @@ body::-webkit-scrollbar-thumb {
     background-color: #969595;
 }
 .grab-offer-tabs-box::-webkit-scrollbar {
-    width: 0.2em;
+    width: 0.3em;
 }
 
 .grab-offer-tabs-box::-webkit-scrollbar-track {
@@ -132,7 +132,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .grab-offer-tabs-box::-webkit-scrollbar-thumb {
-    background-color: #969595;
+    background-color: #f15a2d;
 }
 .page-link {
     color: #969595;
@@ -392,7 +392,7 @@ p {
 }
 /* Available Coupon */
 .coupon-title {
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -436,8 +436,8 @@ p {
     font-weight: 600;
 }
 .available-coupon-slider .card{
-    background-color: #fd51010a;
-    border: 1px solid #f15a2d40;
+    background-color: #1ca2fc0d;
+    border: 1px solid #1ca2fc33;
 }
 .coupon-logo {
     width: 125px;
@@ -830,8 +830,9 @@ p {
     background: #e1e1e145;
 }
 .grab-offer-tabs-box {
-    height: 440px;
-    overflow: auto;
+    height: 420px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
 }
 ::placeholder {
     color: #cbcbcb !important;
@@ -1713,6 +1714,7 @@ html {
 .grab-imgs img {
     height: 90px;
     width: 125px;
+    object-fit: contain;
 }
 .partners-logos {
     width: 100%;
