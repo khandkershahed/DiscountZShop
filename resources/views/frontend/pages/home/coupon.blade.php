@@ -42,7 +42,7 @@
                                                 placeholder="Search Coupon..." id="serviceSearchCoupon" />
                                         </form>
                                     </div>
-                                    <div class="d-flex justify-content-end align-items-center w-25 navigation-slide">
+                                    <div class="d-flex justify-content-end align-items-center navigation-slide" style="width: 11%;">
                                         <button type="button" class="custom-prev rounded-circle">
                                             <i class="fas fa-arrow-left-long"></i>
                                         </button>
@@ -54,9 +54,10 @@
                             </div>
                         </div>
                     </div>
+
                     {{-- Coupons List --}}
                     <div id="servicesContainerCoupon">
-                        <div class="px-0 py-3 bg-white card-body" >
+                        <div class="px-0 py-3 bg-white card-body">
                             <div class="slick-slider">
                                 <div class="available-coupon-slider servicesContainerCoupon">
                                     @foreach ($coupons as $coupon)
@@ -77,9 +78,10 @@
                                                                 data-coupon="{{ $coupon->coupon_code }}"
                                                                 style="cursor: pointer;">
                                                                 <div class="p-1 border rounded-2">
-                                                                    <img class="img-fluid" width="25px"
+                                                                    {{-- <img class="img-fluid" width="25px"
                                                                         src="{{ asset('images/coupon-icon.png') }}"
-                                                                        alt="">
+                                                                        alt=""> --}}
+                                                                        <i class="px-2 fas fa-copy main-color"></i>
                                                                 </div>
                                                                 <div class="ps-2">
                                                                     <small>Coupon : <span
@@ -97,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

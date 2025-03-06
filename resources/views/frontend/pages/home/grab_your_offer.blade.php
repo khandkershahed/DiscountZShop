@@ -230,9 +230,7 @@
                 asNavFor: '.grabMain',
                 dots: false,
                 vertical: true, // Enable vertical sliding
-                focusOnSelect: true,
-                autoplay: true, // Enable autoplay
-                autoplaySpeed: 2000, // Set the autoplay speed (in milliseconds)
+                focusOnSelect: true
             });
 
             // Custom button navigation
@@ -242,6 +240,13 @@
 
             $('.next-thumb').click(function() {
                 $('.grabThumbs').slick('slickNext');
+            });
+
+            // Scroll main content to top when slide changes
+            $('.grabMain').on('afterChange', function(event, slick, currentSlide) {
+                $('.grab-offer-tabs-box').animate({
+                    scrollTop: 0 // Scroll to the top of the container
+                }, 300); // Adjust animation speed as needed
             });
         });
     </script>

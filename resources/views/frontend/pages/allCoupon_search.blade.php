@@ -2,7 +2,8 @@
 
     <div class="available-coupon-slider servicesContainerCoupon">
 
-        @foreach ($coupons as $coupon)
+        @forelse ($coupons as $coupon)
+
             <div class="items couponCode" data-coupon-code="{{ strtolower($coupon->coupon_code) }}">
                 <div class="d-flex coupons-box align-items-center">
                     <div class="logo">
@@ -24,14 +25,16 @@
                             <p class="text-white coupon-text coupon-code pt-2 ms-5">
                                 Code:”<span class="couponCode" id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                 {{-- <a href="javascript:void(0);" class="copy-btn"
-                                        data-coupon_id="{{ $coupon->coupon_code }}">
-                                        <i class="fas fa-copy ps-2"></i>
-                                    </a> --}}
+                                    data-coupon_id="{{ $coupon->coupon_code }}">
+                                    <i class="fas fa-copy ps-2"></i>
+                                </a> --}}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <p class="text-danger text-center">No Coupon Avaiable</p>
+        @endforelse
     </div>
 </div>
