@@ -66,12 +66,12 @@
                     @if (optional($brand)->offers->count() > 0)
                         <a href="{{ route('vendor.offers', optional($brand)->slug) }}">
                             <div
-                                class="vendor-menus mobile-vendor {{ Route::is(['vendor.offers', 'offer.details']) ? 'active' : '' }} rounded-2">
+                                class="vendor-menus mobile-vendor {{ Route::is(['vendor.offers', 'offer.details']) ? 'active' : '' }} rounded-2 special-menus">
                                 <h6>Offers</h6>
                             </div>
                         </a>
                     @else
-                        <div class="vendor-menus mobile-vendor rounded-2 disabled">
+                        <div class="vendor-menus mobile-vendor rounded-2 disabled special-menus">
                             <h6>Offers</h6>
                         </div>
                     @endif

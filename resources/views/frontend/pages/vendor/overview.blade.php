@@ -23,8 +23,8 @@
         {{-- Overview Start --}}
         <section class="responsive-section">
             <div class="container">
-                <div class="mb-4 row">
-                    <div class="col-lg-12">
+                <div class="pb-5 mb-5 row align-items-center">
+                    <div class="col-lg-6">
                         <div>
                             <h5 class="">{{ optional($brand)->about_title }}</h5>
                             <p class="pt-3">
@@ -32,23 +32,11 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="pb-3 my-2 row">
                     <div class="col-lg-6 col-6">
                         <div class="vendor-banners overlay-container">
                             <img class="img-fluid rounded-2 brand-imges"
-                                src="{{ !empty(optional($brand)->middle_banner_left) ? url('storage/' . optional($brand)->middle_banner_left) : asset('images/no-banner(1920-330).png') }}"
-                                alt="">
-                            <div class="overlay overlay-1"></div>
-                            <div class="overlay overlay-2"></div>
-                            <div class="overlay overlay-3"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-6">
-                        <div class="vendor-banners overlay-container">
-                            <img class="pt-4 img-fluid rounded-2 brand-imges pt-lg-0"
-                                src="{{ !empty(optional($brand)->middle_banner_right) && file_exists(public_path('storage/' . optional($brand)->middle_banner_right)) ? url('storage/' . optional($brand)->middle_banner_right) : asset('images/no-banner(1920-330).png') }}"
-                                alt="">
+                                src="{{ !empty(optional($brand)->middle_banner_left) ? url('storage/' . optional($brand)->middle_banner_left) : asset('images/no-overview.jpg') }}"
+                                alt="" onerror="this.onerror=null; this.src='{{ asset('images/no-overview.jpg') }}';">
                             <div class="overlay overlay-1"></div>
                             <div class="overlay overlay-2"></div>
                             <div class="overlay overlay-3"></div>
@@ -56,9 +44,19 @@
                     </div>
                 </div>
                 @if (!empty(optional($brand)->description_title) || !empty(optional($brand)->description))
-                    <div class="mb-4 row">
-                        <div class="col-lg-12">
-                            <h2 class="pb-4">{{ optional($brand)->description_title }}</h2>
+                    <div class="mt-5 mb-4 row align-items-center">
+                        <div class="col-lg-6 col-6">
+                            <div class="vendor-banners overlay-container">
+                                <img class="pt-4 img-fluid rounded-2 brand-imges pt-lg-0"
+                                    src="{{ !empty(optional($brand)->middle_banner_right) && file_exists(public_path('storage/' . optional($brand)->middle_banner_right)) ? url('storage/' . optional($brand)->middle_banner_right) : asset('images/no-overview.jpg') }}"
+                                    alt="" onerror="this.onerror=null; this.src='{{ asset('images/no-overview.jpg') }}';">
+                                <div class="overlay overlay-1"></div>
+                                <div class="overlay overlay-2"></div>
+                                <div class="overlay overlay-3"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5 class="pb-4">{{ optional($brand)->description_title}}</h5>
                             <p style="text-align: justify;">
                                 {!! optional($brand)->description !!}
                             </p>

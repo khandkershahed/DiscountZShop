@@ -37,7 +37,6 @@ html,
 body {
     width: 100%;
     overflow-x: hidden;
-    scroll-behavior: smooth;
     font: inherit;
     font-size: 16px;
     font-weight: 400;
@@ -2161,7 +2160,7 @@ html {
         font-size: 1.3rem;
     }
     .offer_title p {
-        min-height: 20px;
+        min-height: 65px;
     }
     .shop-heart {
         position: relative;
@@ -2391,4 +2390,7 @@ button {
 
 .side-product{
     height: 500px;
+}
+.special-menus{
+    background-color: #dddd !important;
 }
