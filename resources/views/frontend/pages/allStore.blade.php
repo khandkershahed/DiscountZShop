@@ -107,8 +107,45 @@
                 @if ($stores->count() > 0)
                     <div class="pb-4 row" id="servicesContainer">
                         @foreach ($stores as $store)
-                            <div class="col-lg-3 col-6">
-                                <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
+                            <div class="col-lg-3 col-6 mb-3">
+                                <div class="border-0 shadow-sm card bg-light offer-boxes">
+                                    <div class="p-4 row align-items-center">
+                                        <div class="col-lg-6 col-4">
+                                            <div>
+                                                <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                    width="80px" height="80px" class="rounded-2 mobile-offers"
+                                                    style="object-fit: contain;" alt="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-8 text-end">
+                                            {{-- @if (!empty($store->badge))
+                                                <h4 class="main-color special-font-box text-end">
+                                                    {{ $store->badge }}</h4>
+                                            @endif --}}
+                                            <a class="add_to_wishlist" style="cursor: pointer;" data-bs-toggle="modal"
+                                                data-bs-target="#store_location_{{ $store->id }}">
+                                                <i class="fa-solid fa-store fs-5 text-danger"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="pt-4 col-lg-12 offer_title">
+                                            <a href="{{ route('vendor.stores', $store->slug) }}">
+                                                <div class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                                                    <p class="text-black">
+                                                        {{ $store->title }}</p>
+
+                                                    {{-- <a class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $store->id }}"
+                                                        data-tip="Wishlist">
+                                                        <i class="fa-regular fa-heart fs-5 text-danger"></i>
+                                                    </a> --}}
+
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {{-- <a href="{{ route('vendor.stores', optional($store->brand)->slug ?? '') }}">
                                     <div class="mb-4 border-0 shadow-sm card">
                                         <div class="p-0 card-body rounded-2">
                                             <!-- Store Banner -->
@@ -157,27 +194,81 @@
                                         </div>
                                     </div>
 
-                                </a>
+                                </a> --}}
+                            </div>
+                            <!-- Store Location Modal -->
+                            <div class="modal fade" id="store_location_{{ $store->id }}" tabindex="-1"
+                                data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                aria-labelledby="modalTitleId" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header py-4" style="background-color: #f15a2d">
+                                            <h5 class="modal-title text-white" id="modalTitleId">
+                                                Store Location
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <iframe src="{{ $store->map_url }}" width="100%" height="450" frameborder="0"
+                                                        style="border: 0" allowfullscreen="" class="map-store"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
-
                         <!-- Pagination Links -->
-                        <nav aria-label="Page navigation example">
+                        <nav aria-label="Page navigation example mt-5" style="display: flex; justify-content: center;">
                             {{ $stores->links() }}
                         </nav>
-
                     </div>
                 @else
                     <p class="mb-3">No Store Avaiable</p>
                 @endif
-
-
-
             </div>
         </section>
 
     </div>
-
+    <div class="modal fade" id="user-search" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header py-4" style="background-color: #f15a2d">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Search Your Need.
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="exampleInputSearch" class="form-label">Search Offers and
+                                        Discounts</label>
+                                    <input type="text" class="form-control" id="exampleInputSearch"
+                                        aria-describedby="searchHelp" placeholder="Search for offers and discounts">
+                                    <div id="searchHelp" class="form-text">Find the best deals and offers
+                                        available now.</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="pt-4">
+                                    <button type="submit" class="search-offers-mobile">
+                                        <small>Search</small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     @push('scripts')
         <script>
             $(document).ready(function() {
@@ -203,85 +294,7 @@
             });
         </script>
 
-        <script>
-            // function searchStoreByDivision(divisionId) {
-            //     if (divisionId) {
-            //         window.location.href = `/store/all?division=${divisionId}`;
-            //     }
-            // }
 
-            // function searchStoreByCity(cityId) {
-            //     if (cityId) {
-            //         window.location.href = `/store/all?city=${cityId}`;
-            //     }
-            // }
-
-            // function searchStoreByArea(areaId) {
-            //     if (areaId) {
-            //         window.location.href = `/store/all?area=${areaId}`;
-            //     }
-            // }
-        </script>
-
-        {{-- <script>
-            $(document).ready(function() {
-                // When Division is selected
-                $('select[name="division_id"]').on('change', function() {
-                    var division_id = $(this).val();
-                    if (division_id) {
-                        $.ajax({
-                            url: "{{ url('/district-get/ajax') }}/" + division_id,
-                            type: "GET",
-                            dataType: "json",
-                            success: function(data) {
-                                // Empty the city dropdown before populating
-                                $('select[name="city_id"]').html(
-                                    '<option value="">Select City</option>');
-                                $('select[name="area_id"]').html(
-                                    '<option value="">Select Area</option>'); // Clear area dropdown
-
-                                $.each(data, function(key, value) {
-                                    $('select[name="city_id"]').append('<option value="' +
-                                        value.id + '">' + value.name + '</option>');
-                                });
-                            },
-                            error: function() {
-                                alert("Error fetching cities");
-                            }
-                        });
-                    } else {
-                        alert('Please select a division');
-                    }
-                });
-
-                // When City is selected
-                $('select[name="city_id"]').on('change', function() {
-                    var city_id = $(this).val();
-                    if (city_id) {
-                        $.ajax({
-                            url: "{{ url('/state-get/ajax') }}/" + city_id,
-                            type: "GET",
-                            dataType: "json",
-                            success: function(data) {
-                                // Empty the area dropdown before populating
-                                $('select[name="area_id"]').html(
-                                    '<option value="">Select Area</option>');
-
-                                $.each(data, function(key, value) {
-                                    $('select[name="area_id"]').append('<option value="' +
-                                        value.id + '">' + value.name + '</option>');
-                                });
-                            },
-                            error: function() {
-                                alert("Error fetching areas");
-                            }
-                        });
-                    } else {
-                        $('select[name="area_id"]').html('<option value="">Select Area</option>');
-                    }
-                });
-            });
-        </script> --}}
 
         <script>
             $(document).ready(function() {

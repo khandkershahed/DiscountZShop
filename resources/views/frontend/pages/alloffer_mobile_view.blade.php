@@ -39,8 +39,8 @@
 
         <div class="px-1 col-4">
             <div class="pe-2">
-                <select class="form-select" id="" name="area_id"
-                    data-placeholder="Select Area" onchange="searchStoreByArea(this.value)">
+                <select class="form-select" id="" name="area_id" data-placeholder="Select Area"
+                    onchange="searchStoreByArea(this.value)">
                     <option value="">Select Area</option>
                     @foreach ($allareas as $allarea)
                         <option value="{{ $allarea->id }}"
@@ -148,28 +148,27 @@
 </div>
 
 @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('#serviceSearchMobile').on('keyup', function() {
-                    var query = $(this).val();
+    <script>
+        $(document).ready(function() {
+            $('#serviceSearchMobile').on('keyup', function() {
+                var query = $(this).val();
 
-                    // If the input field is empty, do a search without a query
-                    if (query === '') {
-                        window.location.href = "{{ route('allOffer') }}";
-                    } else {
-                        $.ajax({
-                            url: "{{ route('offer.search.names.mobile') }}",
-                            method: 'GET',
-                            data: {
-                                query: query
-                            },
-                            success: function(data) {
-                                $('#servicesContainerMobile').html(data);
-                            }
-                        });
-                    }
-                });
+                // If the input field is empty, do a search without a query
+                if (query === '') {
+                    window.location.href = "{{ route('allOffer') }}";
+                } else {
+                    $.ajax({
+                        url: "{{ route('offer.search.names.mobile') }}",
+                        method: 'GET',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#servicesContainerMobile').html(data);
+                        }
+                    });
+                }
             });
-        </script>
-
-    @endpush
+        });
+    </script>
+@endpush

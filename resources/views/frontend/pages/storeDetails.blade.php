@@ -3,17 +3,14 @@
     <section class="container px-0 mt-3">
         <div class="row">
             <div class="">
-
                 <div class="regular-banner">
                     <img class="img-fluid w-100 rounded-2"
                         src="{{ !empty($store->banner_image) ? url('storage/' . $store->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
                         alt="" />
                 </div>
-
                 {{-- <div class="regular-banner">
                     <img class="img-fluid w-100 rounded-2" src="{{ !empty($store->banner_image) ? url('storage/' . $store->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}" alt="" />
                 </div> --}}
-
             </div>
         </div>
     </section>

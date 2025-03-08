@@ -43,8 +43,8 @@
                                 alt=""
                                 onerror="this.onerror=null; this.src='{{ asset('images/no-overview.jpg') }}';">
                             <div class="overlay overlay-1"></div>
-                            <div class="overlay overlay-2"></div>
-                            <div class="overlay overlay-3"></div>
+                            {{-- <div class="overlay overlay-2"></div>
+                            <div class="overlay overlay-3"></div> --}}
                         </div>
                     </div>
                 </div>
@@ -58,8 +58,8 @@
                                     alt=""
                                     onerror="this.onerror=null; this.src='{{ asset('images/no-overview.jpg') }}';">
                                 <div class="overlay overlay-1"></div>
-                                <div class="overlay overlay-2"></div>
-                                <div class="overlay overlay-3"></div>
+                                {{-- <div class="overlay overlay-2"></div>
+                                <div class="overlay overlay-3"></div> --}}
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -77,21 +77,23 @@
                     </div>
                 @endif
 
-                @if (!empty(optional($brand)->description_title) || !empty(optional($brand)->description))
+
                     <div class="mb-5 row">
-                        <div class="col-lg-12">
+                        @if (!empty(optional($brand)->description_title) || !empty(optional($brand)->description))
+                            <div class="col-lg-12">
 
-                            {{-- <h5 class="pb-3">{{ optional($brand)->description_title }}</h5>
-                            <p style="text-align: justify;">
-                                {!! optional($brand)->description !!}
-                            </p> --}}
+                                {{-- <h5 class="pb-3">{{ optional($brand)->description_title }}</h5>
+                                <p style="text-align: justify;">
+                                    {!! optional($brand)->description !!}
+                                </p> --}}
 
-                            <h5 class="pb-4">{{ optional($brand)->description_title }}</h5>
-                            <p style="text-align: justify;">
-                                {!! optional($brand)->description !!}
-                            </p>
-                            
-                        </div>
+                                <h5 class="pb-4">{{ optional($brand)->description_title }}</h5>
+                                <p style="text-align: justify;">
+                                    {!! optional($brand)->description !!}
+                                </p>
+
+                            </div>
+                        @endif
                         <div class="mt-4 col-lg-2">
                             <a target="_blank" href="{{ optional($brand)->url }}" class="btn btn-common-one">
                                 View <i class="fa-solid fa-arrow-right ps-3"></i>
@@ -99,7 +101,6 @@
                             </a>
                         </div>
                     </div>
-                @endif
 
             </div>
         </section>

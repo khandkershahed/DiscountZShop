@@ -1,29 +1,30 @@
 <?php
+
 namespace App\Http\Controllers\Frontend;
 
 use view;
 use Carbon\Carbon;
 use App\Models\Faq;
 use App\Models\Area;
-use App\Models\Banner;
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\City;
-use App\Models\Coupon;
-use App\Models\Division;
-use App\Models\Faq;
-use App\Models\HomePage;
+use App\Models\Brand;
 use App\Models\Offer;
+use App\Models\Store;
+use App\Models\Banner;
+use App\Models\Coupon;
+use App\Models\Slider;
+use App\Models\AboutUs;
+use App\Models\Category;
+use App\Models\Division;
+use App\Models\HomePage;
 use App\Models\OfferType;
 use App\Models\PageBanner;
-use App\Models\PrivacyPolicy;
-use App\Models\Slider;
-use App\Models\Store;
-use App\Models\TermsAndCondition;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use App\Models\PrivacyPolicy;
+use App\Models\TermsAndCondition;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-use view;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
@@ -71,7 +72,6 @@ class HomeController extends Controller
         ];
 
         return view('frontend.pages.home.home', $data);
-
     }
 
     // searchDeal
@@ -312,7 +312,7 @@ class HomeController extends Controller
 
         $page_banner = PageBanner::where('page_name', 'store')->latest('id')->first();
 
-        $stores = $stores->paginate(48); // 48 is an example, adjust to your needs
+        $stores = $stores->paginate(16); // 48 is an example, adjust to your needs
 
         $alldivs  = Division::orderBy('name', 'asc')->get();
         $allcitys = City::orderBy('name', 'asc')->get();
@@ -396,7 +396,13 @@ class HomeController extends Controller
         $cityId     = $request->input('city');
         $areaId     = $request->input('area');
         $today      = Carbon::now()->format('Y-m-d');
-        $offers     = Offer::where('status', 'active')->where('expiry_date', '>=' , $today)->orderBy('name', 'DESC')->latest();
+        $offers = Offer::where('status', 'active')
+            ->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
+            ->orderBy('name', 'DESC')
+            ->latest();
 
         // Apply section filter if division ID is provided
         if ($divisionId) {
@@ -411,7 +417,7 @@ class HomeController extends Controller
             $offers->whereJsonContains('area_id', $areaId);
         }
 
-        $offers = $offers->paginate(25);
+        $offers = $offers->paginate(18);
         // $offers = $offers->get();
 
         return view('frontend.pages.allOffer', compact('page_banner', 'categories', 'offers', 'alldivs', 'allcitys', 'allareas'));
@@ -420,14 +426,20 @@ class HomeController extends Controller
     public function searchOfferName(Request $request)
     {
         $query = $request->input('query');
-
+        $today      = Carbon::now()->format('Y-m-d');
         if ($query) {
-            $offers = Offer::where('name', 'like', "%{$query}%")
+            $offers = Offer::where('name', 'like', "%{$query}%")->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
                 ->latest()
                 ->get();
         } else {
             // If no query, load the default active stores
-            $offers = Offer::where('status', 'active')
+            $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
                 ->orderBy('title', 'DESC')
                 ->latest()
                 ->get();
@@ -439,14 +451,20 @@ class HomeController extends Controller
     public function searchOfferNameMobile(Request $request)
     {
         $query = $request->input('query');
-
+        $today      = Carbon::now()->format('Y-m-d');
         if ($query) {
-            $offers = Offer::where('name', 'like', "%{$query}%")
+            $offers = Offer::where('name', 'like', "%{$query}%")->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
                 ->latest()
                 ->get();
         } else {
             // If no query, load the default active stores
-            $offers = Offer::where('status', 'active')
+            $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
                 ->orderBy('title', 'DESC')
                 ->latest()
                 ->get();
@@ -505,7 +523,7 @@ class HomeController extends Controller
     public function filterOfferss(Request $request)
     {
         $offersQuery = Offer::query();
-
+        $today       = Carbon::now()->format('Y-m-d');
         // Apply filters for division_id, city_id, area_id if provided
         if ($request->has('division_id') && $request->division_id != '') {
             $offersQuery->whereJsonContains('division_id', $request->division_id);
@@ -524,7 +542,10 @@ class HomeController extends Controller
             $offersQuery->where('name', 'like', '%' . $request->search . '%');
         }
 
-        $offers = $offersQuery->paginate(15);
+        $offers = $offersQuery->where(function ($query) use ($today) {
+            $query->whereNull('expiry_date')
+                ->orWhere('expiry_date', '>=', $today);
+        })->paginate(15);
 
         // Return the updated offer listings with pagination
         return response()->json([
@@ -861,5 +882,4 @@ class HomeController extends Controller
             'suggestions' => $suggestions,
         ]);
     }
-
 }

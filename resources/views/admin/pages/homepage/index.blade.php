@@ -100,7 +100,6 @@
     </style>
 
     <div class="card card-flash">
-
         <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
@@ -148,14 +147,14 @@
 
                             <td>
                                 @if (Auth::guard('admin')->user()->can('edit.homepage'))
-                                    <a href="{{ route('admin.homepage.edit', $homepage->id) }}" class="text-primary">
-                                        <i class="fa-solid fa-pencil text-primary"></i>
+                                    <a href="{{ route('admin.homepage.edit', $homepage->id) }}" class="text-primary me-5">
+                                        <i class="fa-solid fa-pencil text-primary fs-2"></i>
                                     </a>
                                 @endif
 
                                 @if (Auth::guard('admin')->user()->can('delete.homepage'))
                                     <a href="{{ route('admin.homepage.destroy', $homepage->id) }}" class="delete">
-                                        <i class="fa-solid fa-trash text-danger"></i>
+                                        <i class="fa-solid fa-trash text-danger fs-2"></i>
                                     </a>
                                 @endif
 

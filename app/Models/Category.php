@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\HasSlug;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -49,7 +51,11 @@ class Category extends Model
 
     public function offers()
     {
-        return $this->hasMany(Offer::class);
+        $today = Carbon::now()->format('Y-m-d');
+        return $this->hasMany(Offer::class)->where(function ($query) use ($today) {
+            $query->whereNull('expiry_date')
+                ->orWhere('expiry_date', '>=', $today);
+        });
     }
     public function coupons()
     {

@@ -101,6 +101,9 @@
                     <div class="row gx-4 promotion-container align-items-center">
                         <div class="py-2 col-lg-12">
                             <h1 class="pt-0 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
+                            <p class="text-center">
+                                {{ optional($homepage->brand)->description }}
+                              </p>
                         </div>
                         <div class="mt-2 col-lg-4">
                             <div class="row d-flex align-items-stretch side-product">

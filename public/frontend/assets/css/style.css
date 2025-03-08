@@ -2097,7 +2097,8 @@ html {
 
 /* Staggered animation for each overlay layer */
 .overlay-1 {
-    background: rgba(0, 0, 0, 0.2); /* First layer slightly lighter */
+    background: rgb(159 157 157 / 20%); /* First layer slightly lighter */
+    /* background: rgba(0, 0, 0, 0.2); */
     transition-delay: 0.1s;
 }
 
