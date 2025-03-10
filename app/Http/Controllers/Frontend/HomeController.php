@@ -51,7 +51,7 @@ class HomeController extends Controller
         $brands = Brand::select('id', 'slug', 'logo')->latest()->get();
         $sliders = Slider::where('status', 'active')->latest('id')->get();
         $banner = Banner::where('status', 'active')->latest('id')->first();
-        $coupons = Coupon::latest()->get();
+        $coupons = Coupon::select('id', 'badge', 'coupon_code')->latest()->get();
         $offerTypes = OfferType::latest()->get();
         $categories = Category::latest()->limit(6)->get();
         $offerCatTypes = OfferType::where('status', 'active')->latest()->limit(8)->get();
