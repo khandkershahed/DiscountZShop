@@ -22,9 +22,9 @@
                         <div>
 
                             <!-- Contact Info End -->
-                            <div class="">
+                            {{-- <div class="">
                                 <img class="img-fluid" src="{{ asset('images/new1.gif') }}" alt="" style="height: 160px;">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -57,7 +57,7 @@
                                 <ul class="ps-0 footer-link"
                                     style="list-style-type: none;position: relative;top: 10px;">
                                     <li class="mb-2">
-                                        <a href="{{ route('faq') }}">FAQ</a>
+                                        <a href="{{ route('discountZShop.faq') }}">FAQ</a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{{ route('login') }}">Login</a>

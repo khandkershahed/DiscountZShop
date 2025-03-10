@@ -922,12 +922,9 @@
                 });
             });
         </script> --}}
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 84ae447d3533381af92d3a5b999a33bd3797a6f7
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
