@@ -214,7 +214,7 @@
 </section>
 
 @push('scripts')
-    {{-- <script>
+    <script>
         $(document).ready(function() {
             $('.grabMain').slick({
                 slidesToShow: 1,
@@ -249,5 +249,5 @@
                 }, 300); // Adjust animation speed as needed
             });
         });
-    </script> --}}
+    </script>
 @endpush
