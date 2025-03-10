@@ -501,7 +501,7 @@
         </section>
         <!-- Normal Slider Product Show ENd -->
 
-        {{-- @if ($brands->count() > 0)
+        @if ($brands->count() > 0)
             <section>
                 <div class="container px-0 py-4">
                     <div class="row">
@@ -537,7 +537,7 @@
                     </div>
                 </div>
             </section>
-        @endif --}}
+        @endif
         <!-- Footer Slider -->
 
         @if (
