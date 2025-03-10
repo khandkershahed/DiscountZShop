@@ -673,15 +673,7 @@ class HomeController extends Controller
         return view('frontend.pages.faq', $data);
     }
 
-    public function faqDiscountZShop()
-    {
-        $data = [
-            'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
-            'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
-        ];
-        return view('frontend.pages.faqDiscountZShop.faq', $data);
-    }
-
+    
     public function WishlistProduct()
     {
         $data = [
