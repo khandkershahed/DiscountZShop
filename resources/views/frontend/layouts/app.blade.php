@@ -72,6 +72,7 @@
 
     <!-- JavaScript Dependencies -->
     <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -80,8 +81,6 @@
     <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script> --}}
     {{-- <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script> --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -114,6 +113,30 @@
         });
     </script>
     {{-- There Is No Code In Toastr --}}
+    <script>
+        // Off CSS scroll behavior
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Override CSS scroll behavior
+            document.documentElement.style.scrollBehavior = "auto";
+            document.body.style.scrollBehavior = "auto";
+
+            // Prevent JavaScript-based smooth scrolling
+            window.scrollTo = function(x, y) {
+                window.scroll({
+                    top: y,
+                    left: x,
+                    behavior: "auto",
+                });
+            };
+
+            // Handle elements that may have smooth scrolling
+            const allElements = document.querySelectorAll("*");
+            allElements.forEach((el) => {
+                el.style.scrollBehavior = "auto";
+            });
+        });
+    </script>
     @include('toastr')
     @stack('scripts')
 </body>
