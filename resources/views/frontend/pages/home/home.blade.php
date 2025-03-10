@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'DiscountZShop'">
     <div class="desktop-homepage">
         <!-- Hero Section -->
-        <section>
+        {{-- <section>
             <div class="px-0 container-fluid" style="overflow: hidden">
                 <div class="row">
                     <div class="col-lg-12">
@@ -14,7 +14,7 @@
                                                 <a href="{{ $slider->url }}">
                                                     <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                         src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}"
-                                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                        onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                                 </a>
                                             </div>
                                         @endforeach
@@ -23,13 +23,12 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="row gx-3">
-                                    {{-- @dd($banner); --}}
                                     <div class="col-lg-12">
                                         <a href="{{ $banner->image_one_url }}">
                                             <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                 src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
                                                 alt=""
-                                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
+                                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                         </a>
                                     </div>
                                 </div>
@@ -40,7 +39,7 @@
                                                 <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                     src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
                                                     alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
+                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                             </a>
                                         </div>
                                     </div>
@@ -50,7 +49,7 @@
                                                 <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                     src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
                                                     alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
+                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                             </a>
                                         </div>
                                     </div>
@@ -60,7 +59,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Hero Section End -->
 
         <!-- Available Coupon Start -->
