@@ -35,8 +35,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
+
+    <!-- Slick Slider CSS from CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
+
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css') }}" />
 </head>
@@ -67,17 +70,14 @@
     </div>
 
     <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    {{-- <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW1ZWY5Q1E"></script>
@@ -99,6 +99,7 @@
             }
         });
     </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Hide the loader
@@ -107,9 +108,47 @@
             document.getElementById("content").style.display = "block";
         });
     </script>
-    {{-- There Is No Code In Toastr --}}
+
+    {{-- Disable Smooth Scrolling --}}
+    {{-- <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Override CSS scroll behavior
+            document.documentElement.style.scrollBehavior = "auto";
+            document.body.style.scrollBehavior = "auto";
+
+            // Prevent JavaScript-based smooth scrolling
+            window.scrollTo = function(x, y) {
+                window.scroll({
+                    top: y,
+                    left: x,
+                    behavior: "auto",
+                });
+            };
+
+            // Handle elements that may have smooth scrolling
+            const allElements = document.querySelectorAll("*");
+            allElements.forEach((el) => {
+                el.style.scrollBehavior = "auto";
+            });
+        });
+    </script> --}}
+
     @include('toastr')
     @stack('scripts')
+
+    <!-- Initialize Slick Slider (Example) -->
+    {{-- <script>
+        $(document).ready(function() {
+            $('.your-slider-class').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000
+            });
+        });
+    </script> --}}
+
 </body>
 
 </html>

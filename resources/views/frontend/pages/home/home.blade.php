@@ -63,10 +63,7 @@
         <!-- Hero Section End -->
 
         <!-- Available Coupon Start -->
-        @include('frontend.pages.home.coupon')
-
-        <!-- Available Coupon End -->
-
+        {{-- @include('frontend.pages.home.coupon') --}}
         <!-- App Discount Start -->
         <section class="app-discount-box">
             <div class="container px-0">
@@ -90,7 +87,7 @@
         <!-- App Discount End -->
 
         <!-- Grab Your Offer -->
-        @include('frontend.pages.home.grab_your_offer')
+        {{-- @include('frontend.pages.home.grab_your_offer') --}}
         <!-- Grab Your Offer End -->
 
         <!-- Biggest Deals From Product -->
