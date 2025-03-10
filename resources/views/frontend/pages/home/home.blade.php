@@ -909,7 +909,7 @@
         </script> --}}
 
 
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 // When a category from offer_cat_types (dynamic category list) is clicked
                 $(".category-tab").click(function() {
@@ -964,7 +964,9 @@
                     $('#show-more-btn').show();
                 });
             });
-        </script>
+        </script> --}}
+        
+
 
     @endpush
     <!-- Footer Slider End -->
