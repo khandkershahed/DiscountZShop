@@ -640,22 +640,16 @@ class HomeController extends Controller
     //termsCondition
     public function termsCondition()
     {
+        $data = [
+            "page_banner" => PageBanner::where('page_name', 'terms')->latest('id')->first(),
+            "terms"       => TermsAndCondition::where('status', 'active')->latest('id')->first(),
+        ];
 
-        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
-        $terms       = TermsAndCondition::latest()->get();
 
-        //dd($data);
-
-        return view('frontend.pages.termsCondition', compact('page_banner', 'terms'));
+        return view('frontend.pages.termsCondition', $data);
     }
 
-    public function discounttermsCondition()
-    {
-        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
-        $terms       = TermsAndCondition::where('status', 'active')->latest('id')->first();
 
-        return view('frontend.pages.discounttermsCondition', compact('page_banner', 'terms'));
-    }
 
     //privacyPolicy
     public function privacyPolicy()
@@ -667,14 +661,7 @@ class HomeController extends Controller
         return view('frontend.pages.privacyPolicy', $data);
     }
 
-    public function discountprivacyPolicy()
-    {
-        $data = [
-            'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
-            'terms'       => PrivacyPolicy::latest('id')->first(),
-        ];
-        return view('frontend.pages.discountprivacyPolicy', $data);
-    }
+
 
     //faq
     public function faq()
