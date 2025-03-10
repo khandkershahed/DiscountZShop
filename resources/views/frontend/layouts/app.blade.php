@@ -109,7 +109,7 @@
     </script>
 
     {{-- Disable Smooth Scrolling --}}
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Override CSS scroll behavior
             document.documentElement.style.scrollBehavior = "auto";
@@ -130,13 +130,13 @@
                 el.style.scrollBehavior = "auto";
             });
         });
-    </script>
+    </script> --}}
 
     @include('toastr')
     @stack('scripts')
 
     <!-- Initialize Slick Slider (Example) -->
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('.your-slider-class').slick({
                 infinite: true,
@@ -146,7 +146,7 @@
                 autoplaySpeed: 2000
             });
         });
-    </script>
+    </script> --}}
 
 </body>
 
