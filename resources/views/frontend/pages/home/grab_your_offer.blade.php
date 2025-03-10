@@ -40,14 +40,14 @@
     .next-thumb,
     .prev-thumb {
         background-color: transparent;
-        border: 1px solid #f15a2d;
+        border: 1px solid transparent;
         color: #f15a2d;
     }
 
     .next-thumb,
     .prev-thumb:focus {
         background-color: transparent;
-        border: 1px solid #f15a2d;
+        border: 1px solid transparent;
         color: #f15a2d;
         box-shadow: none;
     }
@@ -55,13 +55,13 @@
 
     .next-thumb:hover {
         background-color: transparent;
-        border: 1px solid #f15a2d;
+        border: 1px solid transparent;
         color: #f15a2d !important;
     }
 
     .prev-thumb:hover {
         background-color: transparent;
-        border: 1px solid #f15a2d;
+        border: 1px solid transparent;
         color: #f15a2d !important;
     }
 
