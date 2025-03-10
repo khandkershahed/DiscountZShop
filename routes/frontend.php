@@ -89,8 +89,6 @@ Route::get('/store/filter/area/{area_id}', [HomeController::class, 'filterByArea
 
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
-//discounttermsCondition
-// Route::get('/discountZShop/terms-condition', [HomeController::class, 'discounttermsCondition'])->name('discount.termsCondition');
 
 //Privacy
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
