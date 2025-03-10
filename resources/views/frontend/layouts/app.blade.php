@@ -2,267 +2,261 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- Meta Information -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta property="og:title" content="{{ !empty($setting->site_motto) ? $setting->site_motto : config('app.name') }}" />
-    <meta property="og:url" content="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
-    <meta property="og:site_name"
-        content="{{ !empty($setting->site_name) ? $setting->site_name : config('app.name') }}" />
-    <link rel="canonical" href="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ $setting->site_motto ?? config('app.name') }}" />
+    <meta property="og:url" content="{{ $setting->site_url ?? config('app.url') }}" />
+    <meta property="og:site_name" content="{{ $setting->site_name ?? config('app.name') }}" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ $setting->site_url ?? config('app.url') }}" />
+
+    <!-- Favicon -->
     <link rel="shortcut icon"
-        href="{{ !empty($setting->site_favicon) && file_exists(public_path('storage/' . $setting->site_favicon)) ? asset('storage/' . $setting->site_favicon) : asset('images/no_icon.png') }}"
+        href="{{ $setting->site_favicon && file_exists(public_path('storage/' . $setting->site_favicon)) ? asset('storage/' . $setting->site_favicon) : asset('images/no_icon.png') }}"
         type="image/x-icon" />
 
+    <!-- Page Title -->
     @props(['title'])
     <title>{{ $title ?? config('app.name') }}</title>
-    <!-- CSS Links -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <!-- Bootstrap CSS -->
+
+    <!-- CSS Dependencies -->
     <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-    <!-- Slick Slider CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css') }}" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BW1ZWY5Q1E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-BW1ZWY5Q1E');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW1ZWY5Q1E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-BW1ZWY5Q1E');
+    </script>
 </head>
 
 <body>
+    <!-- Loader -->
     <div id="loader" class="discount_loader">
         <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." />
     </div>
 
+    <!-- Main Content -->
     <div id="content" class="discount_content" style="display: none">
-        {{-- <div> --}}
-        <!-- Loader -->
-        {{-- <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." /> --}}
+        <!-- Header Section -->
+        @include('frontend.layouts.header-top')
+        @include('frontend.layouts.header')
 
         <!-- Main Content -->
-        <div>
-            <!-- Top Area Box -->
-            @include('frontend.layouts.header-top')
+        <main>
+            {{ $slot }}
+        </main>
 
-            <!-- Top Area Box End -->
-            <!-- Header and Navigation -->
-            @include('frontend.layouts.header')
-            <!-- Header and Navigation End -->
-            <!-- Main Content Start -->
-            <main>
-                {{ $slot }}
-            </main>
-            <!-- Main Content End -->
-            <!-- Footer Start -->
-            @include('frontend.layouts.footer')
-        </div>
-        <!-- JavaScript Files -->
-        <!-- Bootstrap 5.3 Bundle with Popper -->
-        <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-        <!-- jQuery -->
-        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        {{-- <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script> --}}
-        <!-- FontAwesome -->
-        <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
-        <!-- Slick Slider JavaScript -->
-        <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
-        <!-- Custom Script -->
-        <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-        <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-        <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Footer -->
+        @include('frontend.layouts.footer')
+    </div>
+    <!-- JavaScript Dependencies -->
+    <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
+    {{-- Direct Cdns --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    {{-- CSRF Token --}}
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+    </script>
 
-        <script type="text/javascript">
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-        </script>
-
-        <script>
-            class Countdown {
-                constructor(element, expireDate) {
-                    this.element = element;
-                    this.expireDate = new Date(expireDate).getTime();
-                    this.timerElement = this.element.querySelector(".countdown-timer");
-                    this.start();
-                }
-
-                start() {
-                    this.update();
-                    this.interval = setInterval(() => this.update(), 1000);
-                }
-
-                update() {
-                    const now = new Date().getTime();
-                    const distance = this.expireDate - now;
-
-                    if (distance < 0) {
-                        clearInterval(this.interval);
-                        this.timerElement.innerHTML = "EXPIRED";
-                        return;
-                    }
-
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                    this.timerElement.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-                }
+    <script>
+        class Countdown {
+            constructor(element, expireDate) {
+                this.element = element;
+                this.expireDate = new Date(expireDate).getTime();
+                this.timerElement = this.element.querySelector(".countdown-timer");
+                this.start();
             }
 
-            // Initialize countdowns on DOMContentLoaded
-            document.addEventListener("DOMContentLoaded", () => {
-                document.querySelectorAll(".countdown").forEach((element) => {
-                    const expireDate = element.getAttribute("data-expire-date");
-                    if (expireDate) {
-                        new Countdown(element, expireDate);
-                    } else {
-                        const timerElement = element.querySelector(".countdown-timer");
-                        timerElement.innerHTML = "Available";
-                    }
-                });
+            start() {
+                this.update();
+                this.interval = setInterval(() => this.update(), 1000);
+            }
+
+            update() {
+                const now = new Date().getTime();
+                const distance = this.expireDate - now;
+
+                if (distance < 0) {
+                    clearInterval(this.interval);
+                    this.timerElement.innerHTML = "EXPIRED";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                this.timerElement.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+            }
+        }
+
+        // Initialize countdowns on DOMContentLoaded
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".countdown").forEach((element) => {
+                const expireDate = element.getAttribute("data-expire-date");
+                if (expireDate) {
+                    new Countdown(element, expireDate);
+                } else {
+                    const timerElement = element.querySelector(".countdown-timer");
+                    timerElement.innerHTML = "Available";
+                }
             });
-        </script>
+        });
+    </script>
 
-        <script>
-            $(document).ready(function() {
-                $('#custom_select1').select2({
-                    theme: 'bootstrap-5',
-                    placeholder: $(this).data('placeholder'),
-                });
-                $('#custom_select2').select2({
-                    theme: 'bootstrap-5',
-                    placeholder: $(this).data('placeholder'),
-                });
-                $('#custom_select3').select2({
-                    theme: 'bootstrap-5',
-                    placeholder: $(this).data('placeholder'),
-                });
+    <script>
+        $(document).ready(function() {
+            $('#custom_select1').select2({
+                theme: 'bootstrap-5',
+                placeholder: $(this).data('placeholder'),
             });
-        </script>
-
-        @include('toastr')
-        @stack('scripts')
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Hide the loader
-                document.getElementById("loader").style.display = "none";
-                // Show the content
-                document.getElementById("content").style.display = "block";
+            $('#custom_select2').select2({
+                theme: 'bootstrap-5',
+                placeholder: $(this).data('placeholder'),
             });
-        </script>
+            $('#custom_select3').select2({
+                theme: 'bootstrap-5',
+                placeholder: $(this).data('placeholder'),
+            });
+        });
+    </script>
 
-        <script>
-            $('.add_to_wishlist').click(function() {
+    @include('toastr')
+    @stack('scripts')
 
-                var product_id = $(this).data('product_id');
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hide the loader
+            document.getElementById("loader").style.display = "none";
+            // Show the content
+            document.getElementById("content").style.display = "block";
+        });
+    </script>
 
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
+    <script>
+        $('.add_to_wishlist').click(function() {
 
-                    data: {
-                        product_id: product_id,
-                    },
+            var product_id = $(this).data('product_id');
 
-                    url: '/add-to-wishlist',
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
 
-                    success: function(data) {
-                        wishlist();
+                data: {
+                    product_id: product_id,
+                },
 
-                        // Start Message
+                url: '/add-to-wishlist',
 
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
+                success: function(data) {
+                    wishlist();
 
-                            showConfirmButton: false,
-                            timer: 3000
+                    // Start Message
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
                         })
-                        if ($.isEmptyObject(data.error)) {
 
-                            Toast.fire({
-                                type: 'success',
-                                icon: 'success',
-                                title: data.success,
-                            })
+                        // window.location.href = '/compare-product';
 
-                            // window.location.href = '/compare-product';
+                    } else {
 
-                        } else {
-
-                            Toast.fire({
-                                type: 'error',
-                                icon: 'error',
-                                title: data.error,
-                            })
-                        }
-
-                        // End Message
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
                     }
-                })
 
+                    // End Message
+                }
             })
-        </script>
 
-        {{-- Load Wishlist --}}
-        <script>
-            function wishlist() {
-                $.ajax({
-                    type: 'GET',
-                    dataType: 'json',
-                    url: '/get-wishlist',
+        })
+    </script>
 
-                    success: function(response) {
+    {{-- Load Wishlist --}}
+    <script>
+        function wishlist() {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '/get-wishlist',
 
-                        $('#cartWishlistQty').text(response.cartWishlistQty);
-                        $('#cartWishlistMobileQty').text(response.cartWishlistMobileQty);
+                success: function(response) {
 
-                        var tableHtml = "";
-                        var serialNumber = 1;
+                    $('#cartWishlistQty').text(response.cartWishlistQty);
+                    $('#cartWishlistMobileQty').text(response.cartWishlistMobileQty);
 
-                        if (response.cartWishlist.length === 0) {
+                    var tableHtml = "";
+                    var serialNumber = 1;
 
-                            tableHtml = `
+                    if (response.cartWishlist.length === 0) {
+
+                        tableHtml = `
                                 <h4 class="my-2 text-center">Wishlist List is Empty</h4>
                             `;
 
-                            $('#wishlistLink').hide();
+                        $('#wishlistLink').hide();
 
-                        } else {
-                            $.each(response.cartWishlist, function(key, value) {
+                    } else {
+                        $.each(response.cartWishlist, function(key, value) {
 
-                                //console.log('http://127.0.0.1:8000/', value.options.image);
-                                var offerDetailsUrl = '/offer-details/' + value.slug;
+                            //console.log('http://127.0.0.1:8000/', value.options.image);
+                            var offerDetailsUrl = '/offer-details/' + value.slug;
 
-                                tableHtml +=
+                            tableHtml +=
 
-                                    `<tr class="">
+                                `<tr class="">
 
                                     <td valign="middle">${serialNumber++}.</td>
 
@@ -287,62 +281,84 @@
 
                                 </tr>`;
 
-                            });
+                        });
 
-                            $('#wishlistLink').show(); // Show the comparison link when list has items
-                        }
-
-                        $('#wishlist').html(tableHtml);
+                        $('#wishlistLink').show(); // Show the comparison link when list has items
                     }
-                });
-            }
 
-            wishlist();
-        </script>
+                    $('#wishlist').html(tableHtml);
+                }
+            });
+        }
 
-        <script>
-            function wishlistRemove(rowId) {
+        wishlist();
+    </script>
 
-                $.ajax({
-                    type: 'GET',
-                    url: '/wishlist/product/remove/' + rowId,
-                    dataType: 'json',
-                    success: function(data) {
+    <script>
+        function wishlistRemove(rowId) {
 
-                        wishlist();
+            $.ajax({
+                type: 'GET',
+                url: '/wishlist/product/remove/' + rowId,
+                dataType: 'json',
+                success: function(data) {
 
-                        // Start Message
+                    wishlist();
 
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 3000
+                    // Start Message
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
                         })
-                        if ($.isEmptyObject(data.error)) {
 
-                            Toast.fire({
-                                type: 'success',
-                                title: data.success,
-                            })
+                    } else {
 
-                        } else {
-
-                            Toast.fire({
-                                type: 'error',
-                                title: data.error,
-                            })
-                        }
-
-                        // End Message
-
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
                     }
 
+                    // End Message
 
-                })
-            }
-        </script>
+                }
+
+
+            })
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Override CSS scroll behavior
+            document.documentElement.style.scrollBehavior = "auto";
+            document.body.style.scrollBehavior = "auto";
+
+            // Prevent JavaScript-based smooth scrolling
+            window.scrollTo = function(x, y) {
+                window.scroll({
+                    top: y,
+                    left: x,
+                    behavior: "auto"
+                });
+            };
+
+            // Handle elements that may have smooth scrolling
+            const allElements = document.querySelectorAll("*");
+            allElements.forEach(el => {
+                el.style.scrollBehavior = "auto";
+            });
+        });
+    </script>
 </body>
 
 </html>
