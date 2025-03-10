@@ -1121,9 +1121,12 @@ del {
     overflow: auto;
 }
 .main-store-banner img {
-    height: 360px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    /* height: 360px;
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; */
 }
 .store-logo img {
     border: 2px solid #f15a2d;
