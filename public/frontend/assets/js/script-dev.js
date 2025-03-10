@@ -1,6 +1,3 @@
-// JavaScript to hide the loader once the page is fully loaded
-// JavaScript to hide the loader once the page is fully loaded
-
 $(document).ready(function () {
     $(".hero-slider").slick({
         autoplay: true,
@@ -309,8 +306,6 @@ $(document).ready(function () {
     });
 });
 
-// Copy Coupon Code
-
 function copyCouponCode(couponCode) {
     // Create a temporary input element to copy the coupon code
     var tempInput = document.createElement("input");
@@ -361,11 +356,6 @@ $(document).ready(function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".countdown-hms").forEach((element) => {
-        new CountdownHMS(element, "2024-09-30");
-    });
-});
 
 class CountdownWithDays {
     constructor(element, targetDate) {
@@ -404,17 +394,16 @@ class CountdownWithDays {
     }
 }
 
-// Usage example:
-document.querySelectorAll(".countdown-with-days").forEach((element) => {
-    new CountdownWithDays(element, "2024-09-30");
-});
-
-(function () {
-    const heart = document.getElementById("heart");
-    heart.addEventListener("click", function () {
-        heart.classList.toggle("red");
-    });
-})();
+// document.addEventListener("DOMContentLoaded", function () {
+//     const heart = document.getElementById("heart");
+//     if (heart) {
+//         heart.addEventListener("click", function () {
+//             heart.classList.toggle("red");
+//         });
+//     } else {
+//         console.log("Element with ID 'heart' not found.");
+//     }
+// });
 
 // id call
 
@@ -426,36 +415,14 @@ document.querySelectorAll(".store-single li").forEach((item) => {
         });
         // Add active class to clicked item
         this.classList.add("active");
-        // Scroll to the corresponding section
+        // Scroll to the corresponding section without smooth scroll
         const targetId = this.getAttribute("data-target");
         document
             .getElementById(targetId)
-            .scrollIntoView({ behavior: "smooth" });
+            .scrollIntoView(); // Removed the smooth scroll behavior
     });
 });
 
-// Off CSS scroll behavior
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Override CSS scroll behavior
-    document.documentElement.style.scrollBehavior = "auto";
-    document.body.style.scrollBehavior = "auto";
-
-    // Prevent JavaScript-based smooth scrolling
-    window.scrollTo = function (x, y) {
-        window.scroll({
-            top: y,
-            left: x,
-            behavior: "auto",
-        });
-    };
-
-    // Handle elements that may have smooth scrolling
-    const allElements = document.querySelectorAll("*");
-    allElements.forEach((el) => {
-        el.style.scrollBehavior = "auto";
-    });
-});
 
 // Slect Inputs Bootstrap
 $(document).ready(function () {

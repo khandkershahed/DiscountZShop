@@ -100,10 +100,11 @@
                 <div class="container px-0 py-4 biggest-deals">
                     <div class="row gx-4 promotion-container align-items-center">
                         <div class="py-2 col-lg-12">
-                            <h1 class="pt-0 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}</h1>
+                            <h1 class="pt-0 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}
+                            </h1>
                             <p class="text-center">
                                 {{ optional($homepage->brand)->description }}
-                              </p>
+                            </p>
                         </div>
                         <div class="mt-2 col-lg-4">
                             <div class="row d-flex align-items-stretch side-product">
@@ -362,9 +363,11 @@
                             {{-- <form method="get" action="{{ route('courses.search') }}" class="d-flex w-100" role="search"> --}}
                             <div class="mb-3 input-group w-50 ms-auto">
                                 <input type="text" id="serviceSearch" class="p-2 form-control rounded-pill"
-                                    placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2" style="padding: 12px 25px !important;"/>
+                                    placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2"
+                                    style="padding: 12px 25px !important;" />
                                 <div class="input-group-append search-btn" style="margin-left: -25px;">
-                                    <button class="border-0 btn" type="button" style="position: relative; top: 8px;">
+                                    <button class="border-0 btn" type="button"
+                                        style="position: relative; top: 8px;">
                                         <i class="fa-solid fa-search"></i>
                                     </button>
                                 </div>
@@ -595,42 +598,50 @@
     @push('scripts')
         <!-- Category Slide In Mobile -->
         <script>
-            // Select elements
-            const tabsContainer = document.getElementsByClassName("tabs-container-mobile");
-            const chevronLeft = document.getElementsByClassName("chevron-left-mobile");
-            const chevronRight = document.getElementsByClassName("chevron-right-mobile");
+            window.addEventListener("DOMContentLoaded", () => {
+                // Select the elements from the DOM
+                const tabsContainer = document.querySelector(".tabs-container-mobile");
+                const chevronLeft = document.querySelector(".chevron-left-mobile");
+                const chevronRight = document.querySelector(".chevron-right-mobile");
 
-            // Function to check overflow and toggle chevron buttons
-            const checkOverflow = () => {
-                const isOverflowing = tabsContainer.scrollWidth > tabsContainer.clientWidth;
+                // Ensure the elements are found before adding event listeners
+                if (tabsContainer && chevronLeft && chevronRight) {
+                    // Function to check overflow and toggle chevron buttons
+                    const checkOverflow = () => {
+                        const isOverflowing = tabsContainer.scrollWidth > tabsContainer.clientWidth;
 
-                // Show or hide chevrons based on overflow
-                chevronLeft.classList.toggle("hidden", tabsContainer.scrollLeft <= 0);
-                chevronRight.classList.toggle(
-                    "hidden",
-                    tabsContainer.scrollLeft + tabsContainer.clientWidth >= tabsContainer.scrollWidth
-                );
-            };
+                        // Show or hide chevrons based on overflow
+                        chevronLeft.classList.toggle("hidden", tabsContainer.scrollLeft <= 0);
+                        chevronRight.classList.toggle(
+                            "hidden",
+                            tabsContainer.scrollLeft + tabsContainer.clientWidth >= tabsContainer.scrollWidth
+                        );
+                    };
 
-            // Function to scroll tabs
-            const scrollTabs = (direction) => {
-                const scrollAmount = 100; // Adjust scroll amount
-                tabsContainer.scrollBy({
-                    left: direction === "left" ? -scrollAmount : scrollAmount,
-                    behavior: "smooth",
-                });
-            };
+                    // Function to scroll tabs
+                    const scrollTabs = (direction) => {
+                        const scrollAmount = 100; // Adjust scroll amount
+                        tabsContainer.scrollBy({
+                            left: direction === "left" ? -scrollAmount : scrollAmount,
+                        });
+                    };
 
-            // Attach event listeners for scrolling
-            chevronLeft.addEventListener("click", () => scrollTabs("left"));
-            chevronRight.addEventListener("click", () => scrollTabs("right"));
+                    // Attach event listeners for scrolling
+                    chevronLeft.addEventListener("click", () => scrollTabs("left"));
+                    chevronRight.addEventListener("click", () => scrollTabs("right"));
 
-            // Re-check overflow on scroll
-            tabsContainer.addEventListener("scroll", checkOverflow);
+                    // Re-check overflow on scroll
+                    tabsContainer.addEventListener("scroll", checkOverflow);
 
-            // Initial check on page load
-            window.addEventListener("DOMContentLoaded", checkOverflow);
+                    // Initial check on page load
+                    checkOverflow();
+                } else {
+                    console.error("Required elements not found.");
+                }
+            });
         </script>
+
+
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 $('.coupon-slide').slick({
@@ -708,33 +719,8 @@
                 });
             });
         </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const showMoreBtn = document.getElementById('show-more-btn');
-                const showLessBtn = document.getElementById('show-less-btn');
-                const moreTabs = document.querySelectorAll('.more-tabs');
 
-                showMoreBtn.addEventListener('click', function() {
-                    moreTabs.forEach(tab => {
-                        tab.classList.remove('d-none');
-                    });
-                    showMoreBtn.classList.add('d-none');
-                    showLessBtn.classList.remove('d-none');
-                });
-
-                showLessBtn.addEventListener('click', function() {
-                    moreTabs.forEach(tab => {
-                        tab.classList.add('d-none');
-                    });
-                    showLessBtn.classList.add('d-none');
-                    showMoreBtn.classList.remove('d-none');
-                });
-            });
-        </script>
-
-
-
-        <script>
+        {{-- <script>
             // Define your data for the map
             var data = [
                 ["bd-da", 0],
@@ -892,10 +878,10 @@
                     $('.zone-name').html('<p>Please select a division to see offers.</p>');
                 }
             }
-        </script>
+        </script> --}}
 
 
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 // When a category from offer_cat_types (dynamic category list) is clicked
                 $(".category-tab").click(function() {
@@ -935,23 +921,8 @@
                     $("#myTab .nav-item").removeClass("active"); // Remove 'active' class from all tabs
                     $(this).closest('li').addClass("active"); // Add 'active' class to the clicked tab
                 });
-
-                // Show more categories on click
-                $('#show-more-btn').click(function() {
-                    $('.more-tabs').removeClass('d-none');
-                    $(this).hide();
-                    $('#show-less-btn').show();
-                });
-
-                // Show less categories on click
-                $('#show-less-btn').click(function() {
-                    $('.more-tabs').addClass('d-none');
-                    $(this).hide();
-                    $('#show-more-btn').show();
-                });
             });
-        </script>
-
+        </script> --}}
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
