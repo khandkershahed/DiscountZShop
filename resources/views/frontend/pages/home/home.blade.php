@@ -894,20 +894,6 @@
             }
         </script>
 
-        {{-- <script>
-            $(document).ready(function() {
-                $(".category-tab").click(function() {
-                    var categoryId = $(this).data("id"); // Get the clicked category ID
-
-                    $(".grab-offer-tabs-box-hide").hide();
-                    $(".dynamic-offer-section").show();
-                    $("#dynamicOfferContent .tab-pane").removeClass("show active");
-                    $("#offer-category-" + categoryId).addClass("show active");
-
-                });
-            });
-        </script> --}}
-
 
         <script>
             $(document).ready(function() {
