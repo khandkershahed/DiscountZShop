@@ -57,7 +57,7 @@
                                 <ul class="ps-0 footer-link"
                                     style="list-style-type: none;position: relative;top: 10px;">
                                     <li class="mb-2">
-                                        <a href="{{ route('discountZShop.faq') }}">FAQ</a>
+                                        <a href="{{ route('faq') }}">FAQ</a>
                                     </li>
                                     <li class="mb-2">
                                         <a href="{{ route('login') }}">Login</a>
