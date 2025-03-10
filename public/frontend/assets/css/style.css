@@ -1536,9 +1536,6 @@ button:hover {
     color: var(--primary-color);
 }
 
-html {
-    scroll-behavior: smooth;
-}
 .store-about {
     list-style-type: disc;
 }
