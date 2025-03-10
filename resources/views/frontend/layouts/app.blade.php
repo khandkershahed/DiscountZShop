@@ -309,6 +309,28 @@
         }
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Override CSS scroll behavior
+            document.documentElement.style.scrollBehavior = "auto";
+            document.body.style.scrollBehavior = "auto";
+
+            // Prevent JavaScript-based smooth scrolling
+            window.scrollTo = function(x, y) {
+                window.scroll({
+                    top: y,
+                    left: x,
+                    behavior: "auto"
+                });
+            };
+
+            // Handle elements that may have smooth scrolling
+            const allElements = document.querySelectorAll("*");
+            allElements.forEach(el => {
+                el.style.scrollBehavior = "auto";
+            });
+        });
+    </script>
 </body>
 
 </html>
