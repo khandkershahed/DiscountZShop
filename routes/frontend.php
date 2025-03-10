@@ -90,17 +90,17 @@ Route::get('/store/filter/area/{area_id}', [HomeController::class, 'filterByArea
 //Terms
 Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 //discounttermsCondition
-Route::get('/discountZShop/terms-condition', [HomeController::class, 'discounttermsCondition'])->name('discount.termsCondition');
+// Route::get('/discountZShop/terms-condition', [HomeController::class, 'discounttermsCondition'])->name('discount.termsCondition');
 
 //Privacy
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
-Route::get('/discountZShop/privacy-policy', [HomeController::class, 'discountprivacyPolicy'])->name('discount.privacy.policy');
+// Route::get('/discountZShop/privacy-policy', [HomeController::class, 'discountprivacyPolicy'])->name('discount.privacy.policy');
 
 Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
 //Faq
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
-Route::get('/discountZShop/faq', [HomeController::class, 'faqDiscountZShop'])->name('discountZShop.faq');
+// Route::get('/discountZShop/faq', [HomeController::class, 'faqDiscountZShop'])->name('discountZShop.faq');
 
 Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 
