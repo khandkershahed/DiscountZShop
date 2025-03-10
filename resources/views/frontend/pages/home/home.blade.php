@@ -65,9 +65,6 @@
 
         <!-- Available Coupon Start -->
         @include('frontend.pages.home.coupon')
-
-        <!-- Available Coupon End -->
-
         <!-- App Discount Start -->
         <section class="app-discount-box">
             <div class="container px-0">
