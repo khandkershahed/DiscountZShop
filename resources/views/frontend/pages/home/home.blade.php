@@ -63,7 +63,7 @@
         <!-- Hero Section End -->
 
         <!-- Available Coupon Start -->
-        @include('frontend.pages.home.coupon')
+        {{-- @include('frontend.pages.home.coupon') --}}
         <!-- App Discount Start -->
         <section class="app-discount-box">
             <div class="container px-0">
