@@ -501,18 +501,18 @@
         </section>
         <!-- Normal Slider Product Show ENd -->
 
-        @if ($brands->count() > 0)
+        {{-- @if ($brands->count() > 0)
             <section>
                 <div class="container px-0 py-4">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
                                 <h1>Top Brands</h1>
-                                {{-- <p class="pt-3 w-lg-50 w-100">
+                                <p class="pt-3 w-lg-50 w-100">
                                 Problems trying to resolve the conflict between <br />
                                 the two major realms of Classical physics: Newtonian
                                 mechanics
-                            </p> --}}
+                            </p>
                             </div>
                         </div>
                     </div>
@@ -537,7 +537,7 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
         <!-- Footer Slider -->
 
         @if (
