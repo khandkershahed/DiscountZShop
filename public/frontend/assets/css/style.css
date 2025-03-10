@@ -1121,7 +1121,7 @@ del {
     overflow: auto;
 }
 .main-store-banner img {
-    height: auto;
+    height: 314px;
     width: auto;
     object-fit: contain;
     /* height: 360px;
