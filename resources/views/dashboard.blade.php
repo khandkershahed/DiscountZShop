@@ -186,7 +186,9 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-4">
+
                         <div class="d-flex justify-content-end align-items-center pt-5 text-end">
                             <div class="">
                                 <a href="javascript:void(0)" class="" data-bs-toggle="modal"
@@ -202,28 +204,18 @@
                                 </a>
                             </div>
 
-                            {{-- <div class="dropdown position-static ps-3">
-                                <a href="javascript:void(0)" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <span class="" style="margin-right: -20px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23"
-                                            viewBox="0 0 21 23" fill="none">
-                                            <path
-                                                d="M0.7456 13.1067L2.45185 6.88555C2.95197 5.063 4.03889 3.46216 5.53985 2.33749C7.04081 1.21283 8.86967 0.628873 10.7357 0.678453C12.6018 0.728033 14.3979 1.4083 15.8387 2.61113C17.2794 3.81396 18.2821 5.47031 18.6872 7.31691L20.0082 13.337C20.1542 14.0022 20.1508 14.6921 19.9984 15.3558C19.846 16.0195 19.5484 16.64 19.1277 17.1715C18.7069 17.7031 18.1737 18.1321 17.5675 18.4269C16.9612 18.7217 16.2974 18.8747 15.625 18.8747H14.6246C14.4185 19.9033 13.8678 20.8281 13.0658 21.4923C12.2639 22.1566 11.26 22.5195 10.2243 22.5195C9.18851 22.5195 8.18462 22.1566 7.38267 21.4923C6.58073 20.8281 6.03004 19.9033 5.82393 18.8747H5.07139C4.37918 18.8747 3.69633 18.7126 3.07619 18.4009C2.45605 18.0893 1.91541 17.6365 1.49651 17.0781C1.0776 16.5196 0.79178 15.8706 0.661362 15.1817C0.530945 14.4928 0.560366 13.7826 0.7456 13.1067ZM10.2243 20.6948C10.7795 20.6925 11.3204 20.5163 11.7731 20.1905C12.2257 19.8647 12.568 19.4052 12.7531 18.8747H7.69542C7.88049 19.4052 8.22277 19.8647 8.67543 20.1905C9.1281 20.5163 9.66904 20.6925 10.2243 20.6948ZM2.9269 15.9761C3.17714 16.3126 3.50135 16.5852 3.87378 16.7724C4.2462 16.9596 4.65657 17.0562 5.07229 17.0546H15.625C16.0284 17.0545 16.4266 16.9626 16.7903 16.7857C17.154 16.6088 17.4738 16.3514 17.7262 16.0325C17.9786 15.7135 18.1571 15.3413 18.2485 14.9431C18.3399 14.5449 18.3419 14.131 18.2544 13.7319L16.9343 7.71097C16.6161 6.26052 15.8286 4.9595 14.6969 4.01472C13.5653 3.06993 12.1545 2.53562 10.6887 2.4967C9.22303 2.45779 7.78654 2.91652 6.60763 3.79996C5.42873 4.6834 4.57506 5.94086 4.18234 7.37243L2.4761 13.5936C2.36335 13.9989 2.3454 14.4253 2.42365 14.8389C2.50191 15.2524 2.67422 15.6418 2.9269 15.9761Z"
-                                                fill="white" />
-                                        </svg>
-                                        <span class="badge bg-black amount-value rounded-circle">00</span>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu full-container-dropdown px-0">
-                                    <div>
-                                        asdasdasd
-                                    </div>
-                                </ul>
-                            </div> --}}
+                            <div class="dropdown position-static ps-3">
+                                <!-- Add a form to send a POST request for logout -->
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf <!-- Laravel CSRF protection -->
+                                    <button type="submit" class="btn btn-link p-0 m-0">Logout</button>
+                                </form>
+                            </div>
+
 
                         </div>
                     </div>
+
                 </div>
 
                 <div class="row pt-5 mt-5">
@@ -619,8 +611,7 @@
                         <h5 class="modal-title text-white" id="modalTitleId">
                             Search Your Need.
                         </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form action="">
@@ -630,8 +621,7 @@
                                         <label for="exampleInputSearch" class="form-label">Search Offers and
                                             Discounts</label>
                                         <input type="text" class="form-control" id="exampleInputSearch"
-                                            aria-describedby="searchHelp"
-                                            placeholder="Search for offers and discounts">
+                                            aria-describedby="searchHelp" placeholder="Search for offers and discounts">
                                         <div id="searchHelp" class="form-text">Find the best deals and offers
                                             available now.</div>
                                     </div>

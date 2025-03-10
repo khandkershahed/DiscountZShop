@@ -14,7 +14,7 @@
                                                 <a href="{{ $slider->url }}">
                                                     <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                         src="{{ !empty($slider->image) ? url('storage/' . $slider->image) : asset('images/no-banner(1920-330).png') }}"
-                                                        onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                                        onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                                 </a>
                                             </div>
                                         @endforeach
@@ -23,13 +23,12 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="row gx-3">
-                                    {{-- @dd($banner); --}}
                                     <div class="col-lg-12">
                                         <a href="{{ $banner->image_one_url }}">
                                             <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                 src="{{ !empty($banner->image_one) ? url('storage/' . $banner->image_one) : asset('images/banner-demo.png') }}"
                                                 alt=""
-                                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
+                                                onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                         </a>
                                     </div>
                                 </div>
@@ -40,7 +39,7 @@
                                                 <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                     src="{{ !empty($banner->image_two) ? url('storage/' . $banner->image_two) : asset('images/banner-demo.png') }}"
                                                     alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
+                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                             </a>
                                         </div>
                                     </div>
@@ -50,7 +49,7 @@
                                                 <img class="mb-2 img-fluid w-100 responsive-img mb-lg-0"
                                                     src="{{ !empty($banner->image_three) ? url('storage/' . $banner->image_three) : asset('images/banner-demo.png') }}"
                                                     alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}" />
+                                                    onerror="this.onerror=null;this.src='{{ asset('images/banner-demo.png') }}'" />
                                             </a>
                                         </div>
                                     </div>
@@ -506,11 +505,11 @@
                         <div class="col-lg-12">
                             <div class="text-center">
                                 <h1>Top Brands</h1>
-                                {{-- <p class="pt-3 w-lg-50 w-100">
+                                <p class="pt-3 w-lg-50 w-100">
                                 Problems trying to resolve the conflict between <br />
                                 the two major realms of Classical physics: Newtonian
                                 mechanics
-                            </p> --}}
+                            </p>
                             </div>
                         </div>
                     </div>
@@ -525,9 +524,9 @@
                                 <div class="items d-flex justify-content-center align-items-center partners-logos">
                                     <a href="{{ route('brand.details', $brand->slug) }}">
                                         <img class="img-fluid partners-logos-single"
-                                            src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg' }}"
+                                            src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : asset('images/coupon-icon.png') }}"
                                             alt=""
-                                            onerror="this.onerror=null;this.src='http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg';" />
+                                            onerror="this.onerror=null;this.src='';" />
                                     </a>
                                 </div>
                             @endforeach
@@ -920,6 +919,9 @@
                 });
             });
         </script> --}}
+
+
+
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
