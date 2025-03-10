@@ -2,45 +2,40 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <!-- Meta Information -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{ $setting->site_motto ?? config('app.name') }}" />
-    <meta property="og:url" content="{{ $setting->site_url ?? config('app.url') }}" />
-    <meta property="og:site_name" content="{{ $setting->site_name ?? config('app.name') }}" />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ $setting->site_url ?? config('app.url') }}" />
-
-    <!-- Favicon -->
+    <meta property="og:title" content="{{ !empty($setting->site_motto) ? $setting->site_motto : config('app.name') }}" />
+    <meta property="og:url" content="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
+    <meta property="og:site_name"
+        content="{{ !empty($setting->site_name) ? $setting->site_name : config('app.name') }}" />
+    <link rel="canonical" href="{{ !empty($setting->site_url) ? $setting->site_name : config('app.url') }}" />
     <link rel="shortcut icon"
-        href="{{ $setting->site_favicon && file_exists(public_path('storage/' . $setting->site_favicon)) ? asset('storage/' . $setting->site_favicon) : asset('images/no_icon.png') }}"
+        href="{{ !empty($setting->site_favicon) && file_exists(public_path('storage/' . $setting->site_favicon)) ? asset('storage/' . $setting->site_favicon) : asset('images/no_icon.png') }}"
         type="image/x-icon" />
 
-    <!-- Page Title -->
     @props(['title'])
     <title>{{ $title ?? config('app.name') }}</title>
-
-    <!-- Google Fonts -->
+    <!-- CSS Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-
-    <!-- CSS Dependencies -->
+    <!-- Bootstrap CSS -->
     <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <!-- Slick Slider CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css') }}" />
-
-    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW1ZWY5Q1E"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -49,44 +44,59 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
+
         gtag('config', 'G-BW1ZWY5Q1E');
     </script>
 </head>
 
 <body>
-    <!-- Loader -->
     <div id="loader" class="discount_loader">
         <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." />
     </div>
 
-    <!-- Main Content -->
     <div id="content" class="discount_content" style="display: none">
-        <!-- Header Section -->
-        @include('frontend.layouts.header-top')
-        @include('frontend.layouts.header')
+        {{-- <div> --}}
+        <!-- Loader -->
+        {{-- <img src="{{ asset('frontend/assets/img/loader.gif') }}" alt="Loading..." /> --}}
 
         <!-- Main Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        <div>
+            <!-- Top Area Box -->
+            @include('frontend.layouts.header-top')
 
-        <!-- Footer -->
-        @include('frontend.layouts.footer')
+            <!-- Top Area Box End -->
+            <!-- Header and Navigation -->
+            @include('frontend.layouts.header')
+            <!-- Header and Navigation End -->
+            <!-- Main Content Start -->
+            <main>
+                {{ $slot }}
+            </main>
+            <!-- Main Content End -->
+            <!-- Footer Start -->
+            @include('frontend.layouts.footer')
+        </div>
     </div>
-    <!-- JavaScript Dependencies -->
+    <!-- JavaScript Files -->
+    <!-- Bootstrap 5.3 Bundle with Popper -->
     <script src="{{ asset('frontend/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <!-- jQuery -->
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    {{-- <script src="{{ asset('frontend/assets/js/jquery-3.6.js') }}"></script> --}}
+    <!-- FontAwesome -->
     <script src="{{ asset('frontend/assets/js/icons/fontawesome.js') }}"></script>
+    <!-- Slick Slider JavaScript -->
     <script src="{{ asset('frontend/assets/js/slider/slick.min.js') }}"></script>
+    <!-- Custom Script -->
     <script src="{{ asset('frontend/assets/js/script-dev.js') }}"></script>
-    {{-- Direct Cdns --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
     <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/mapdata/countries/bd/bd-all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    {{-- CSRF Token --}}
+
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -336,28 +346,6 @@
 
             })
         }
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Override CSS scroll behavior
-            document.documentElement.style.scrollBehavior = "auto";
-            document.body.style.scrollBehavior = "auto";
-
-            // Prevent JavaScript-based smooth scrolling
-            window.scrollTo = function(x, y) {
-                window.scroll({
-                    top: y,
-                    left: x,
-                    behavior: "auto"
-                });
-            };
-
-            // Handle elements that may have smooth scrolling
-            const allElements = document.querySelectorAll("*");
-            allElements.forEach(el => {
-                el.style.scrollBehavior = "auto";
-            });
-        });
     </script>
 </body>
 
