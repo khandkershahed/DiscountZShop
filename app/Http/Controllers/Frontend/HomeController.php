@@ -31,48 +31,56 @@ class HomeController extends Controller
     //homePage
     public function homePage()
     {
-        // Retrieve offers and apply limits directly on queries
-        $offers       = Offer::where('status', 'active')->inRandomOrder()->get();
-        $latestOffers = Offer::where('status', 'active')->latest('id')->get();
-        $homepage     = HomePage::with('brand')->latest('id')->first();
+        // Eager load related models and reduce redundant queries
+        $offers = Offer::where('status', 'active')->latest('id')->get();
+        $latestOffers = $offers->shuffle(); // Randomize the offers
 
-        // Split them into two collections: one for the left and one for the right
-        $all_brand_offers   = Offer::where('brand_id', $homepage->deal_brand_id)->inRandomOrder()->limit(4)->get();
-        $brand_offers_left  = $all_brand_offers->take(2);
-        $brand_offers_right = $all_brand_offers->skip(2);
+        $homepage = HomePage::with('brand')->latest('id')->first();
 
-        // dd($brand_offers_right);
+        // Get brand offers related to the homepage's deal brand
+        $brandOffers = Offer::where('brand_id', $homepage->deal_brand_id)
+            ->inRandomOrder()
+            ->limit(4)
+            ->get();
 
+        // Split brand offers into left and right collections
+        $brandOffersLeft = $brandOffers->take(2);
+        $brandOffersRight = $brandOffers->skip(2);
+
+        // Retrieve brands, sliders, banners, categories, and offer types in fewer queries
+        $brands = Brand::select('id', 'slug', 'logo')->latest()->get();
+        $sliders = Slider::where('status', 'active')->latest('id')->get();
+        $banner = Banner::where('status', 'active')->latest('id')->first();
+        $coupons = Coupon::latest()->get();
+        $offerTypes = OfferType::latest()->get();
+        $categories = Category::latest()->limit(6)->get();
+        $offerCatTypes = OfferType::where('status', 'active')->latest()->limit(8)->get();
+
+        // Prepare the data array
         $data = [
-            'sliders'            => Slider::where('status', 'active')->latest('id')->get(),
-            'banner'             => Banner::where('status', 'active')->latest('id')->first(),
-            'coupons'            => Coupon::latest()->get(),
-            'brands'             => Brand::latest()->get(),
-            'offer_types'        => OfferType::latest()->get(),
-
-            'areas'              => Area::latest()->get(),
-            'categorys'          => Category::latest()->limit(6)->get(),
-            'offer_cat_types'    => OfferType::where('status', 'active')->latest()->limit(8)->get(),
-
-            'mobile_brands'      => Brand::orderBy('name', 'ASC')->latest()->limit(8)->get(),
-            'mobile_coupons'     => Coupon::latest()->get(),
-
+            'sliders'            => $sliders,
+            'banner'             => $banner,
+            'coupons'            => $coupons,
+            'brands'             => $brands,
+            'offer_types'        => $offerTypes,
+            'categorys'          => $categories,
+            'offer_cat_types'    => $offerCatTypes,
+            'mobile_brands'      => $brands->take(8),
+            'mobile_coupons'     => $coupons,
             'alloffers'          => $offers,
-            'offers'             => $offers->take(5), // Use `take` instead of `limit` for collections
-
-            'offerLatests'       => $latestOffers->sortBy('name')->reverse(), // Sort by name and reverse the order
+            'offers'             => $offers->take(5),
+            'offerLatests'       => $latestOffers->sortBy('name')->reverse(),
             'offerDealLefts'     => $offers->take(5),
-
             'offerDeals'         => $latestOffers->take(6),
-
             'homepage'           => $homepage,
-            'brand_offers_left'  => $brand_offers_left,
-            'brand_offers_right' => $brand_offers_right,
-
+            'brand_offers_left'  => $brandOffersLeft,
+            'brand_offers_right' => $brandOffersRight,
         ];
 
+        // Return the view with data
         return view('frontend.pages.home.home', $data);
     }
+
 
     // searchDeal
     public function searchDeal(Request $request)
