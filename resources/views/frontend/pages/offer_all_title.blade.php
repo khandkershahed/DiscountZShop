@@ -1,6 +1,6 @@
 @forelse ($offers as $offer)
     <div class="mb-4 col-lg-4 col-6 pe-2">
-        <a href="{{ route('vendor.stores', optional($offer->brand)->slug ?? '') }}">
+        <a href="{{ route('offer.details', $offer->slug) }}">
             <div class="mb-4 border-0 shadow-sm card">
                 <div class="p-0 card-body rounded-2">
                     <!-- Store Banner -->
@@ -19,30 +19,30 @@
                                     onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';" />
                             </div>
                             <div class="store-rating">
-                                <a href="{{ route('vendor.stores', optional($offer->brand)->slug ?? '') }}"
-                                    class="btn btn-common-one rounded-circle store-btn"><i class="fa-solid fa-store"
-                                        aria-hidden="true"></i>
+                                <a href="{{ route('offer.details', $offer->slug) }}"
+                                    class="btn btn-common-one rounded-circle store-btn"><i
+                                        class="fa-solid fa-arrow-right fs-5" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
                         <!-- Store Info -->
                         <div class="d-flex justify-content-between store_title">
-                            <a href="{{ route('vendor.stores', optional($offer->brand)->slug ?? '') }}">
+                            <a href="{{ route('offer.details', $offer->slug) }}">
                                 <div>
                                     <h6>
                                         {{ Str::words($offer->name, 5, '...') }}
                                     </h6>
                                 </div>
                             </a>
+                            {{-- <div>
                             <div>
-                                <div>
-                                    <a href="{{ route('vendor.stores', optional($offer->brand)->slug ?? '') }}"
-                                        class="p-0 m-0 border-0 btn ps-2">
-                                        <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
-                                            title="Store Location"></i>
-                                    </a>
-                                </div>
+                                <a href="{{ route('offer.details', $offer->slug) }}"
+                                    class="p-0 m-0 border-0 btn ps-2">
+                                    <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
+                                        title="Store Location"></i>
+                                </a>
                             </div>
+                        </div> --}}
                         </div>
                     </div>
                 </div>
