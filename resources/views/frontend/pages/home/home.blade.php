@@ -1,7 +1,7 @@
 <x-frontend-app-layout :title="'DiscountZShop'">
     <div class="desktop-homepage">
         <!-- Hero Section -->
-        {{-- <section>
+        <section>
             <div class="px-0 container-fluid" style="overflow: hidden">
                 <div class="row">
                     <div class="col-lg-12">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </section>
         <!-- Hero Section End -->
 
         <!-- Available Coupon Start -->
@@ -923,7 +923,7 @@
             });
         </script> --}}
 <<<<<<< HEAD
-        
+
 
 
 =======
