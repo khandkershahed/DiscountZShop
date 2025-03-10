@@ -48,13 +48,13 @@ class HomeController extends Controller
         $brandOffersRight = $brandOffers->skip(2);
 
         // Retrieve brands, sliders, banners, categories, and offer types in fewer queries
-        $brands        = Brand::latest()->get();
+        $brands        = Brand::select('id', 'slug', 'logo')->latest()->get();
         $sliders       = Slider::where('status', 'active')->latest('id')->get();
         $banner        = Banner::where('status', 'active')->latest('id')->first();
-        $coupons       = Coupon::select('id', 'badge', 'coupon_code')->latest()->get();
-        $offerTypes    = OfferType::latest()->get();
+        $coupons       = Coupon::latest()->get();
+        $offerTypes    = OfferType::latest()->limit(8)->get();
         $categories    = Category::latest()->limit(6)->get();
-        $offerCatTypes = OfferType::where('status', 'active')->latest()->limit(8)->get();
+        $offerCatTypes = $offerTypes;
 
         // Prepare the data array
         $data = [
