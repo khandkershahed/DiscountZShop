@@ -527,9 +527,9 @@
                                 <div class="items d-flex justify-content-center align-items-center partners-logos">
                                     <a href="{{ route('brand.details', $brand->slug) }}">
                                         <img class="img-fluid partners-logos-single"
-                                            src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : 'http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg' }}"
+                                            src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : asset('images/coupon-icon.png') }}"
                                             alt=""
-                                            onerror="this.onerror=null;this.src='http://discountzshop.com/storage/brands/logo/koQPsCroGn1737948806.jpg';" />
+                                            onerror="this.onerror=null;this.src='';" />
                                     </a>
                                 </div>
                             @endforeach

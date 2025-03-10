@@ -22,9 +22,9 @@
                         <div>
 
                             <!-- Contact Info End -->
-                            {{-- <div class="">
+                            <div class="">
                                 <img class="img-fluid" src="{{ asset('images/new1.gif') }}" alt="" style="height: 160px;">
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-9">
