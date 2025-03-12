@@ -33,7 +33,8 @@ class HomeController extends Controller
     {
         // Eager load related models and reduce redundant queries
         $offers = Offer::where('status', 'active')->latest('id')->get();
-        $latestOffers = $offers->shuffle(); // Randomize the offers
+        // $latestOffers = $offers->shuffle(); // Randomize the offers
+        $latestOffers = Offer::where('status', 'active')->latest()->limit(6)->get();
 
         $homepage = HomePage::with('brand')->latest('id')->first();
 
@@ -403,14 +404,10 @@ class HomeController extends Controller
         $divisionId = $request->input('division');
         $cityId     = $request->input('city');
         $areaId     = $request->input('area');
+
         $today      = Carbon::now()->format('Y-m-d');
-        $offers = Offer::where('status', 'active')
-            ->where(function ($query) use ($today) {
-                $query->whereNull('expiry_date')
-                    ->orWhere('expiry_date', '>=', $today);
-            })
-            ->orderBy('name', 'DESC')
-            ->latest();
+        $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {$query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);})->orderBy('name', 'DESC')->latest();
+
 
         // Apply section filter if division ID is provided
         if ($divisionId) {
@@ -588,30 +585,23 @@ class HomeController extends Controller
     }
 
     //termsCondition
-    public function termsCondition()
+    public function discounttermsCondition()
     {
-        $data = [
-            "page_banner" => PageBanner::where('page_name', 'terms')->latest('id')->first(),
-            "terms"       => TermsAndCondition::where('status', 'active')->latest('id')->first(),
-        ];
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        $terms       = TermsAndCondition::where('status', 'active')->latest('id')->first();
 
-
-        return view('frontend.pages.termsCondition', $data);
+        return view('frontend.pages.discounttermsCondition', compact('page_banner', 'terms'));
     }
 
-
-
     //privacyPolicy
-    public function privacyPolicy()
+    public function discountprivacyPolicy()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
             'terms'       => PrivacyPolicy::latest('id')->first(),
         ];
-        return view('frontend.pages.privacyPolicy', $data);
+        return view('frontend.pages.discountprivacyPolicy', $data);
     }
-
-
 
     //faq
     public function faq()
@@ -726,6 +716,7 @@ class HomeController extends Controller
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'page_banner'));
     }
 
+    //searchSuggestions
     public function searchSuggestions(Request $request)
     {
         $request->validate(['search' => 'required']);

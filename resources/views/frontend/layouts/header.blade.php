@@ -345,11 +345,11 @@
                             {{ optional($setting)->copyright_title }}
                         </p>
                         <div>
-                            <a href="{{ route('termsCondition') }}" class="pe-3"
+                            <a href="{{ route('terms.condition') }}" class="pe-3"
                                 style="font-size: 14px; color: #808083;">
                                 Terms & Condition
                             </a>
-                            <a href="{{ route('privacyPolicy') }}" style="font-size: 14px; color: #808083;">
+                            <a href="{{ route('privacy.policy') }}" style="font-size: 14px; color: #808083;">
                                 Privacy Policy
                             </a>
                         </div>

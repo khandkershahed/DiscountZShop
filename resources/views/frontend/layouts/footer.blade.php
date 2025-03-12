@@ -23,7 +23,8 @@
 
                             <!-- Contact Info End -->
                             <div class="">
-                                <img class="img-fluid" src="{{ asset('images/new1.gif') }}" alt="" style="height: 160px;">
+                                <img class="img-fluid" src="{{ asset('images/new1.gif') }}" alt=""
+                                    style="height: 160px;">
                             </div>
                         </div>
                     </div>
@@ -75,23 +76,14 @@
                                 </div>
                                 <form action="{{ route('email.subscribe') }}" method="POST">
                                     @csrf
-                                    {{-- <p class="pt-3 pb-2 footer-description">
+                                    <p class="input-group pt-2 pb-2 footer-description">
                                         <input type="email" class="form-control" name="email"
+                                            style="height: 2.5rem;border-top-left-radius: 4px;border-bottom-left-radius: 4px;"
                                             id="exampleFormControlInput1" placeholder="name@example.com" required />
                                         @error('email')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
-                                    </p>
-                                    <button type="submit" class="pb-2 mt-2 btn btn-common-one">Subscribe<i
-                                            class="fa-solid fa-paper-plane ps-2"></i></button> --}}
-                                    <p class="input-group pt-2 pb-2 footer-description">
-                                        <input type="email" class="form-control" name="email" style="height: 2.5rem;border-top-left-radius: 4px;border-bottom-left-radius: 4px;"
-                                            id="exampleFormControlInput1" placeholder="name@example.com" required />
-                                        @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                        <button class="btn btn-common-one" type="button"
-                                            id="button-addon2"> <i
+                                    <button class="btn btn-common-one" type="button" id="button-addon2"> <i
                                             class="fa-solid fa-paper-plane ps-2"></i></button>
                                     </p>
                                 </form>
@@ -126,10 +118,10 @@
                                         class="main-color">{{ optional($setting)->website_name }}</a>
                                 </p>
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <a href="{{ route('termsCondition') }}" class="pe-3"
+                                    <a href="{{ route('terms.condition') }}" class="pe-3"
                                         style="font-size: 14px; color: #808083">Terms
                                         & Condition</a>
-                                    <a href="{{ route('privacyPolicy') }}" class=""
+                                    <a href="{{ route('privacy.policy') }}" class=""
                                         style="font-size: 14px; color: #808083">Privacy
                                         Policy</a>
                                 </div>

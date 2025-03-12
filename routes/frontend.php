@@ -88,9 +88,10 @@ Route::get('/store/filter/area/{area_id}', [HomeController::class, 'filterByArea
 //Store All Route End
 
 //Terms
-Route::get('/terms-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
+Route::get('/terms/condition', [HomeController::class, 'discounttermsCondition'])->name('terms.condition');
+
 //Privacy
-Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/privacy/policy', [HomeController::class, 'discountprivacyPolicy'])->name('privacy.policy');
 
 Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
