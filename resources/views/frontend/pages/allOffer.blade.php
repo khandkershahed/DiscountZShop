@@ -305,74 +305,60 @@
                                     aria-labelledby="category-{{ $category->id }}" tabindex="0">
                                     <div class="row servicesContainer" id="servicesContainer">
                                         @forelse ($category->offers as $offer)
-                                            <div class="mt-4 col-lg-4">
-                                                <div class="border-0 shadow-sm card bg-light">
-                                                    <div class="p-4 row align-items-center">
-                                                        <div class="col-lg-6 col-4">
-                                                            <div>
-
-                                                                <img src="{{ !empty($offer->brand->logo) ? url('storage/' . $offer->brand->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                                    width="80px" height="80px"
-                                                                    class="rounded-2 mobile-offers"
-                                                                    style="object-fit: contain;"
-                                                                    alt="Offer logo for {{ $offer->name }}"
-                                                                    onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                                            <div class="mb-4 col-lg-4 col-6 pe-2">
+                                                <a href="{{ route('offer.details', $offer->slug) }}">
+                                                    <div class="mb-4 border-0 shadow-sm card">
+                                                        <div class="p-0 card-body rounded-2">
+                                                            <!-- Store Banner -->
+                                                            <div class="main-store-banner">
+                                                                <img class="img-fluid rounded-2"
+                                                                    src="{{ !empty(optional($offer)->image) ? url('storage/' . optional($offer)->image) : asset('images/no-image(random).png') }}"
+                                                                    alt="" />
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-8">
-                                                            @if (!empty($offer->badge))
-                                                                <h4 class="main-color special-font-box text-end">
-                                                                    {{ $offer->badge }}</h4>
-                                                            @endif
-                                                        </div>
-                                                        {{-- <div class="pt-4 col-lg-12 offer_title">
-                                                                <a href="{{ route('offer.details', $offer->slug) }}">
-                                                                    <p class="pb-4 text-black">
-                                                                        {{ Str::words($offer->name, 1, '') }}
-                                                                    </p>
-                                                                </a>
-                                                            </div> --}}
-                                                        <div class="pt-4 col-lg-12 offer_title">
-                                                            <a href="{{ route('offer.details', $offer->slug) }}">
+                                                            <!-- Store Logo And Rating -->
+                                                            <div class="px-3 pb-0 pb-lg-0">
                                                                 <div
-                                                                    class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
-                                                                    <p class="text-black">
-                                                                        {{ Str::words($offer->name, 1, '') }}</p>
-
-
-                                                                    <a type="submit" class="add_to_wishlist"
-                                                                        style="cursor: pointer;"
-                                                                        data-product_id="{{ $offer->id }}"
-                                                                        data-tip="Wishlist">
-                                                                        <i class="fa-regular fa-heart fs-5"></i>
-                                                                    </a>
-
-
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <div class="store-logo">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ !empty(optional($offer->brand)->logo) ? url('storage/' . optional($offer->brand)->logo) : asset('images/no-image(random).png') }}"
+                                                                            alt="arong-logo.png"
+                                                                            onerror="this.onerror=null; this.src='{{ asset('img/no-img.jpg') }}';" />
+                                                                    </div>
+                                                                    <div class="store-rating">
+                                                                        <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                            class="btn btn-common-one rounded-circle store-btn"><i
+                                                                                class="fa-solid fa-arrow-right fs-5"
+                                                                                aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="pt-0 pt-lg-4 col-lg-12">
-                                                            <div class="d-flex">
-                                                                <a href="{{ route('offer.details', $offer->slug) }}"
-                                                                    class="w-100 btn-common-one rounded-3">
-                                                                    <small>View</small>
-                                                                </a>
-                                                                @if (!empty($offer->coupon_code))
-                                                                    <a href="javascript:void(0);"
-                                                                        class="w-100 btn-common-three rounded-3 ms-2"
-                                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
-                                                                        Coupon <i class="fa-solid fa-copy"></i>
+                                                                <!-- Store Info -->
+                                                                <div
+                                                                    class="d-flex justify-content-between store_title">
+                                                                    <a
+                                                                        href="{{ route('offer.details', $offer->slug) }}">
+                                                                        <div>
+                                                                            <h6>
+                                                                                {{ Str::words($offer->name, 5, '...') }}
+                                                                            </h6>
+                                                                        </div>
                                                                     </a>
-                                                                @endif
+                                                                    {{-- <div>
+                                                                    <div>
+                                                                        <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                            class="p-0 m-0 border-0 btn ps-2">
+                                                                            <i class="fa-solid fa-location-dot ps-1 main-color fs-3"
+                                                                                title="Store Location"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div> --}}
+                                                                </div>
                                                             </div>
-                                                            <p class="pt-2 text-center countdown"
-                                                                data-expire-date="{{ $offer->expiry_date }}">
-                                                                <span class="main-color">Expire In:</span>
-                                                                <span class="countdown-timer"> Days</span>
-                                                            </p>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
+                                                
                                             </div>
                                         @empty
                                             <p class="mt-5 text-center text-danger">No Offers Available</p>
