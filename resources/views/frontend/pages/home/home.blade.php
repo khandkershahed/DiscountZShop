@@ -506,10 +506,10 @@
                             <div class="text-center">
                                 <h1>Top Brands</h1>
                                 <p class="pt-3 w-lg-50 w-100">
-                                Problems trying to resolve the conflict between <br />
-                                the two major realms of Classical physics: Newtonian
-                                mechanics
-                            </p>
+                                    Problems trying to resolve the conflict between <br />
+                                    the two major realms of Classical physics: Newtonian
+                                    mechanics
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -525,8 +525,7 @@
                                     <a href="{{ route('brand.details', $brand->slug) }}">
                                         <img class="img-fluid partners-logos-single"
                                             src="{{ !empty($brand->logo) ? url('storage/' . $brand->logo) : asset('images/coupon-icon.png') }}"
-                                            alt=""
-                                            onerror="this.onerror=null;this.src='';" />
+                                            alt="" onerror="this.onerror=null;this.src='';" />
                                     </a>
                                 </div>
                             @endforeach
@@ -919,9 +918,6 @@
                 });
             });
         </script> --}}
-
-
-
     @endpush
     <!-- Footer Slider End -->
 </x-frontend-app-layout>
