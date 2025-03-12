@@ -1,12 +1,11 @@
 <x-frontend-app-layout :title="'Privacy Policy || DiscountZShop'">
-    <section>
+    {{-- <section>
         <div class="regular-banner">
             <img class="img-fluid w-100"
                 src="{{ !empty(optional($page_banner)->image) && file_exists(public_path('storage/' . optional($page_banner)->image)) ? asset('storage/' . optional($page_banner)->image) : asset('images/privpol.jpg') }}"
-                alt="{{ ucfirst(optional($page_banner)->page_name) }}"
-                onerror="this.onerror=null;this.src='https://png.pngtree.com/png-vector/20190917/ourmid/pngtree-not-found-circle-icon-vectors-png-image_1737851.jpg';" />
+                alt="{{ ucfirst(optional($page_banner)->page_name) }}"/>
         </div>
-    </section>
+    </section> --}}
     <!-- Hero End -->
     <section>
         <div class="container py-5">
@@ -31,3 +30,4 @@
         </div>
     </section>
 </x-frontend-app-layout>
+

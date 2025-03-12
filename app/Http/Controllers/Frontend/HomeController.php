@@ -588,30 +588,23 @@ class HomeController extends Controller
     }
 
     //termsCondition
-    public function termsCondition()
+    public function discounttermsCondition()
     {
-        $data = [
-            "page_banner" => PageBanner::where('page_name', 'terms')->latest('id')->first(),
-            "terms"       => TermsAndCondition::where('status', 'active')->latest('id')->first(),
-        ];
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        $terms       = TermsAndCondition::where('status', 'active')->latest('id')->first();
 
-
-        return view('frontend.pages.termsCondition', $data);
+        return view('frontend.pages.discounttermsCondition', compact('page_banner', 'terms'));
     }
 
-
-
     //privacyPolicy
-    public function privacyPolicy()
+    public function discountprivacyPolicy()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'privacy')->latest('id')->first(),
             'terms'       => PrivacyPolicy::latest('id')->first(),
         ];
-        return view('frontend.pages.privacyPolicy', $data);
+        return view('frontend.pages.discountprivacyPolicy', $data);
     }
-
-
 
     //faq
     public function faq()
@@ -726,6 +719,7 @@ class HomeController extends Controller
         return view('frontend.pages.search.product_search', compact('item', 'brands', 'offers', 'page_banner'));
     }
 
+    //searchSuggestions
     public function searchSuggestions(Request $request)
     {
         $request->validate(['search' => 'required']);
