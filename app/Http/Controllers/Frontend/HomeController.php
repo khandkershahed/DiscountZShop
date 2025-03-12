@@ -33,7 +33,8 @@ class HomeController extends Controller
     {
         // Eager load related models and reduce redundant queries
         $offers = Offer::where('status', 'active')->latest('id')->get();
-        $latestOffers = $offers->shuffle(); // Randomize the offers
+        // $latestOffers = $offers->shuffle(); // Randomize the offers
+        $latestOffers = Offer::where('status', 'active')->latest()->limit(6)->get();
 
         $homepage = HomePage::with('brand')->latest('id')->first();
 
@@ -403,14 +404,10 @@ class HomeController extends Controller
         $divisionId = $request->input('division');
         $cityId     = $request->input('city');
         $areaId     = $request->input('area');
+
         $today      = Carbon::now()->format('Y-m-d');
-        $offers = Offer::where('status', 'active')
-            ->where(function ($query) use ($today) {
-                $query->whereNull('expiry_date')
-                    ->orWhere('expiry_date', '>=', $today);
-            })
-            ->orderBy('name', 'DESC')
-            ->latest();
+        $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {$query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);})->orderBy('name', 'DESC')->latest();
+
 
         // Apply section filter if division ID is provided
         if ($divisionId) {
