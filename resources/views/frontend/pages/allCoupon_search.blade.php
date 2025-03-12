@@ -41,8 +41,8 @@
 
 <div class="px-0 py-3 bg-white card-body">
     <div class="slick-slider">
-        <div class="available-coupon-slider servicesContainerCoupon">
-            @foreach ($coupons as $coupon)
+        <div class="available-coupon-slider">
+            @forelse ($coupons as $coupon)
                 <div class="p-4 shadow-none ms-2 me-3 card rounded-2">
                     <div class="p-0 card-body">
                         <div class="row">
@@ -75,7 +75,9 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @empty
+            <p class="text-danger text-center">No Coupon Available </p>
+            @endforelse
         </div>
     </div>
 </div>

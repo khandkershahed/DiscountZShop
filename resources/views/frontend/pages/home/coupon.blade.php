@@ -59,7 +59,7 @@
                     <div id="servicesContainerCoupon">
                         <div class="px-0 py-3 bg-white card-body">
                             <div class="slick-slider">
-                                <div class="available-coupon-slider servicesContainerCoupon">
+                                <div class="available-coupon-slider">
                                     @foreach ($coupons as $coupon)
                                         <div class="p-4 shadow-none ms-2 me-3 card rounded-2">
                                             <div class="p-0 card-body">
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
