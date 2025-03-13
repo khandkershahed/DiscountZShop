@@ -110,5 +110,5 @@
         </a>
     </div> --}}
 @empty
-    <p class="text-center text-danger mt-3">No Store Avaiable</p>
-@endforelse
+    <p class="text-center text-danger mt-3">No Store Available </p>
+@endforelse 

@@ -50,7 +50,7 @@
                             <div class="p-4 row align-items-center">
                                 <div class="col-lg-6 col-5">
                                     <div class="pe-2 search-offers">
-                                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' .  urlencode($offer->name) }}"
+                                        <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                             width="80px" height="80px" class="rounded-2" style="object-fit: contain;"
                                             alt="" />
                                     </div>
@@ -97,7 +97,7 @@
         @endif
 
         <!-- Stores Section -->
-        {{-- <h3>Store</h3>
+        <h3>Store</h3>
         @if ($stores->isEmpty())
             <p class="my-3 text-danger">Store Not Found</p>
         @else
@@ -156,7 +156,7 @@
                 @endforeach
 
             </div>
-        @endif --}}
+        @endif
 
     </div>
 

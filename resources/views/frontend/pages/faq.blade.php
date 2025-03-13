@@ -1,6 +1,5 @@
 <x-frontend-app-layout :title="'FAQs || DiscountZShop'">
-
-
+    
     <!-- Hero Section -->
     <section>
         <div class="regular-banner">
@@ -25,9 +24,7 @@
                                         <span class="icon" aria-hidden="true"></span>
                                     </button>
                                     <div class="accordion-content">
-                                        <p>
-                                            {{ $faq->answer }}
-                                        </p>
+                                        <p>{{ $faq->answer }}</p>
                                     </div>
                                 </div>
                             @endforeach

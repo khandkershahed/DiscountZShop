@@ -246,9 +246,9 @@
                                 </div>
                             </div>
                         @empty
-                            <p>No Offer Avaiable</p>
+                            <p>No Offer Available </p>
                         @endforelse
-
+ 
                     </div>
                     <!-- End Slick Slider -->
                 </div>
