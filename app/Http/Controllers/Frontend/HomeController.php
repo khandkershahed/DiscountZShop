@@ -1,30 +1,29 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
 
-use view;
-use Carbon\Carbon;
-use App\Models\Faq;
-use App\Models\Area;
-use App\Models\City;
-use App\Models\Brand;
-use App\Models\Offer;
-use App\Models\Store;
-use App\Models\Banner;
-use App\Models\Coupon;
-use App\Models\Slider;
+use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\Area;
+use App\Models\Banner;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Coupon;
 use App\Models\Division;
+use App\Models\Faq;
 use App\Models\HomePage;
+use App\Models\Offer;
 use App\Models\OfferType;
 use App\Models\PageBanner;
-use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
+use App\Models\Slider;
+use App\Models\Store;
 use App\Models\TermsAndCondition;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use view;
 
 class HomeController extends Controller
 {
@@ -45,7 +44,7 @@ class HomeController extends Controller
             ->get();
 
         // Split brand offers into left and right collections
-        $brandOffersLeft = $brandOffers->take(2);
+        $brandOffersLeft  = $brandOffers->take(2);
         $brandOffersRight = $brandOffers->skip(2);
 
         // Retrieve brands, sliders, banners, categories, and offer types in fewer queries
@@ -81,7 +80,6 @@ class HomeController extends Controller
         // Return the view with data
         return view('frontend.pages.home.home', $data);
     }
-
 
     // searchDeal
     public function searchDeal(Request $request)
@@ -405,9 +403,8 @@ class HomeController extends Controller
         $cityId     = $request->input('city');
         $areaId     = $request->input('area');
 
-        $today      = Carbon::now()->format('Y-m-d');
+        $today  = Carbon::now()->format('Y-m-d');
         $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {$query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);})->orderBy('name', 'DESC')->latest();
-
 
         // Apply section filter if division ID is provided
         if ($divisionId) {
@@ -431,7 +428,7 @@ class HomeController extends Controller
     public function searchOfferName(Request $request)
     {
         $query = $request->input('query');
-        $today      = Carbon::now()->format('Y-m-d');
+        $today = Carbon::now()->format('Y-m-d');
         if ($query) {
             $offers = Offer::where('name', 'like', "%{$query}%")->where(function ($query) use ($today) {
                 $query->whereNull('expiry_date')
@@ -456,7 +453,7 @@ class HomeController extends Controller
     public function searchOfferNameMobile(Request $request)
     {
         $query = $request->input('query');
-        $today      = Carbon::now()->format('Y-m-d');
+        $today = Carbon::now()->format('Y-m-d');
         if ($query) {
             $offers = Offer::where('name', 'like', "%{$query}%")->where(function ($query) use ($today) {
                 $query->whereNull('expiry_date')
@@ -493,8 +490,6 @@ class HomeController extends Controller
 
         return json_encode($ship);
     }
-
-
 
     public function filterOfferss(Request $request)
     {
@@ -551,8 +546,6 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
-
-
 
     //mapDivision
     public function mapDivision(Request $request)
@@ -612,7 +605,6 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.faq', $data);
     }
-
 
     public function WishlistProduct()
     {
@@ -682,7 +674,6 @@ class HomeController extends Controller
         return back()->with('success', 'Successfully Remove From Wishlist');
     }
 
-
     public function productSearch(Request $request)
     {
         $request->validate(['search' => "required"]);
@@ -700,10 +691,10 @@ class HomeController extends Controller
             ->orWhere('description', "LIKE", "%$item%")
             ->get();
 
-        // $stores = Store::where('title', 'LIKE', "%$item%")
-        //     ->orWhere('slug', "LIKE", "%$item%")
-        //     ->orWhere('description', "LIKE", "%$item%")
-        //     ->get();
+        $stores = Store::where('title', 'LIKE', "%$item%")
+            ->orWhere('slug', "LIKE", "%$item%")
+            ->orWhere('description', "LIKE", "%$item%")
+            ->get();
 
         // Check if the request is an AJAX request
         if ($request->ajax()) {
@@ -734,16 +725,16 @@ class HomeController extends Controller
             ->pluck('name')
             ->toArray();
 
-        // $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
-        //     ->limit(5)
-        //     ->pluck('title')
-        //     ->toArray();
+        $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
+            ->limit(5)
+            ->pluck('title')
+            ->toArray();
 
         // Combine all suggestions with their respective categories
         $suggestions = array_merge(
             array_map(fn($name) => ['name' => $name, 'type' => 'brand'], $brandSuggestions),
             array_map(fn($name) => ['name' => $name, 'type' => 'offer'], $offerSuggestions),
-            // array_map(fn($name) => ['name' => $name, 'type' => 'store'], $storeSuggestions)
+            array_map(fn($name) => ['name' => $name, 'type' => 'store'], $storeSuggestions)
         );
 
         // Return the suggestions as JSON

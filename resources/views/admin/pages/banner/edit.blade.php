@@ -102,9 +102,11 @@
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option></option>
+
                             <option value="active" {{ $banner->status == 'active' ? 'selected' : '' }}>Active</option>
                             <option value="inactive" {{ $banner->status == 'inactive' ? 'selected' : '' }}>Inactive
                             </option>
+                            
                         </x-metronic.select-option>
                     </div>
 

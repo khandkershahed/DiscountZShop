@@ -112,7 +112,7 @@
                                     <div class="p-4 row align-items-center">
                                         <div class="col-lg-6 col-4">
                                             <div>
-                                                <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
                                                     width="80px" height="80px" class="rounded-2 mobile-offers"
                                                     style="object-fit: contain;" alt="" />
                                             </div>
