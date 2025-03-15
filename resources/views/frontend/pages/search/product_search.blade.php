@@ -94,7 +94,7 @@
         @endif
 
         <!-- Stores Section -->
-        <h3>Store</h3>
+        {{-- <h3>Store</h3>
         @if ($stores->isEmpty())
             <p class="my-3 text-danger">Store Not Found</p>
         @else
@@ -111,10 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-8 text-end">
-                                    {{-- @if (!empty($store->badge))
-                                    <h4 class="main-color special-font-box text-end">
-                                        {{ $store->badge }}</h4>
-                                @endif --}}
+
                                     <a class="add_to_wishlist" style="cursor: pointer;" data-bs-toggle="modal"
                                         data-bs-target="#store_location_{{ $store->id }}">
                                         <i class="fa-solid fa-store fs-5 text-danger"></i>
@@ -127,10 +124,6 @@
                                             <p class="text-black">
                                                 {{ $store->title }}</p>
 
-                                            {{-- <a class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $store->id }}"
-                                            data-tip="Wishlist">
-                                            <i class="fa-regular fa-heart fs-5 text-danger"></i>
-                                        </a> --}}
 
                                         </div>
                                     </a>
@@ -141,35 +134,11 @@
 
                     </div>
                     <!-- Store Location Modal -->
-                    <div class="modal fade" id="store_location_{{ $store->id }}" tabindex="-1"
-                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
-                            role="document">
-                            <div class="modal-content">
-                                <div class="modal-header py-4" style="background-color: #f15a2d">
-                                    <h5 class="modal-title text-white" id="modalTitleId">
-                                        Store Location
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <iframe src="{{ $store->map_url }}" width="100%" height="450"
-                                                frameborder="0" style="border: 0" allowfullscreen=""
-                                                class="map-store"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 @endforeach
 
             </div>
-        @endif
+        @endif --}}
 
     </div>
 
