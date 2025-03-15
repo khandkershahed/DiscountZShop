@@ -1,36 +1,53 @@
 <div class="row pb-1 storeContainer">
     @foreach ($latest_stores as $latest_store)
-        <div class="col-lg-3">
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body p-0 rounded-2">
-                    <div class="main-store-banner">
-                        <img class="img-fluid rounded-2"
-                            src="{{ !empty(optional($latest_store->brand)->image) ? url('storage/' . optional($latest_store->brand)->image) : asset('images/no-image(random).png') }}"
-                            alt="store-banner" />
-                    </div>
-                    <div class="px-3 pb-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="store-logo">
-                                <img class="img-fluid"
-                                    src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : asset('images/no-image(random).png') }}"
-                                    alt="store-logo" />
-                            </div>
-                            <div class="store-rating">
-                                <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}"
-                                    class="btn btn-common-one rounded-circle store-btn">
-                                    <i class="fa-solid fa-store"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="pt-4 d-flex justify-content-between store_title">
-                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
-                                <h6>{{ $latest_store->title }}</h6>
-                            </a>
+        <div class="col-lg-3 col-6 mb-3">
+            <div class="border-0 shadow-sm card bg-light offer-boxes">
+                <div class="p-4 row align-items-center">
+                    <div class="col-lg-6 col-4">
+                        <a href="{{ route('brand.details', optional($latest_store->brand)->slug) }}">
                             <div>
-                                <button class="btn border-0 p-0 m-0 ps-2">
-                                    <i class="fa-solid fa-location-dot ps-1 main-color fs-3" title="Store Location"
-                                        data-bs-toggle="modal" data-bs-target="#store-Location"></i>
-                                </button>
+                                <img src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($latest_store->name) }}"
+                                    width="80px" height="80px" class="rounded-2 mobile-offers"
+                                    style="object-fit: contain;" alt="" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-8 text-end">
+
+                        <a class="add_to_wishlist" style="cursor: pointer;" data-bs-toggle="modal"
+                            data-bs-target="#store_location_{{ $latest_store->id }}">
+                            <i class="fa-solid fa-store fs-5 text-danger"></i>
+                        </a>
+                    </div>
+
+                    <div class="pt-4 col-lg-12 offer_title">
+                        <div class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('vendor.stores', optional($latest_store->brand)->slug) }}">
+                                {{ $latest_store->title }}
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- Store Location Modal -->
+        <div class="modal fade" id="store_location_{{ $latest_store->id }}" tabindex="-1" data-bs-backdrop="static"
+            data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header py-2 px-4" style="background-color: #f15a2d">
+                        <h5 class="modal-title text-white" id="modalTitleId">
+                            Store Location
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                {!! optional($latest_store)->url !!}
                             </div>
                         </div>
                     </div>
