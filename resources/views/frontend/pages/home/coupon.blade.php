@@ -42,7 +42,8 @@
                                                 placeholder="Search Coupon..." id="serviceSearchCoupon" />
                                         </form>
                                     </div>
-                                    <div class="d-flex justify-content-end align-items-center navigation-slide" style="width: 11%;">
+                                    <div class="d-flex justify-content-end align-items-center navigation-slide"
+                                        style="width: 11%;">
                                         <button type="button" class="custom-prev rounded-circle">
                                             <i class="fas fa-arrow-left-long"></i>
                                         </button>
@@ -56,9 +57,9 @@
                     </div>
 
                     {{-- Coupons List --}}
-                    <div id="servicesContainerCoupon">
+                    <div>
                         <div class="px-0 py-3 bg-white card-body">
-                            <div class="slick-slider">
+                            <div class="slick-slider-coupon" id="servicesContainerCoupon">
                                 <div class="available-coupon-slider">
                                     @foreach ($coupons as $coupon)
                                         <div class="p-4 shadow-none ms-2 me-3 card rounded-2">
@@ -81,7 +82,7 @@
                                                                     {{-- <img class="img-fluid" width="25px"
                                                                         src="{{ asset('images/coupon-icon.png') }}"
                                                                         alt=""> --}}
-                                                                        <i class="px-2 fas fa-copy main-color"></i>
+                                                                    <i class="px-2 fas fa-copy main-color"></i>
                                                                 </div>
                                                                 <div class="ps-2">
                                                                     <small>Coupon : <span
@@ -126,24 +127,52 @@
         });
     </script>
     <script>
+        // $(document).ready(function() {
+        //     $('#serviceSearchCoupon').on('keyup', function() {
+        //         var query = $(this).val().trim();
+
+        //         // if (query === "") {
+        //         //     window.location.href = "{{ route('homePage') }}";
+        //         // } else {
+        //             $.ajax({
+        //                 url: "{{ route('coupon.search') }}",
+        //                 method: 'GET',
+        //                 data: {
+        //                     query: query
+        //                 },
+        //                 success: function(data) {
+        //                     $('#servicesContainerCoupon').html(data);
+        //                 }
+        //             });
+        //         // }
+        //     });
+        // });
         $(document).ready(function() {
             $('#serviceSearchCoupon').on('keyup', function() {
                 var query = $(this).val().trim();
 
-                if (query === "") {
-                    window.location.href = "{{ route('homePage') }}";
-                } else {
-                    $.ajax({
-                        url: "{{ route('coupon.search') }}",
-                        method: 'GET',
-                        data: {
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#servicesContainerCoupon').html(data);
-                        }
-                    });
-                }
+                $.ajax({
+                    url: "{{ route('coupon.search') }}",
+                    method: 'GET',
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#servicesContainerCoupon').html(data);
+
+                        // Reinitialize the slick slider after the content is loaded
+                        $('.slick-slider').slick('unslick'); // Uninitialize the previous slider
+                        $('.slick-slider').slick({ // Reinitialize the slider
+                            // Add your existing slick options here
+                            dots: true, // Example option
+                            arrows: true, // Example option
+                            infinite: true, // Example option
+                            speed: 300, // Example option
+                            slidesToShow: 3, // Example option
+                            slidesToScroll: 3 // Example option
+                        });
+                    }
+                });
             });
         });
     </script>

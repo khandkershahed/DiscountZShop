@@ -133,4 +133,4 @@
     @endif --}}
 @empty
     <p class="mt-5 text-center text-danger">No Offer Available </p>
-@endforelse 
+@endforelse

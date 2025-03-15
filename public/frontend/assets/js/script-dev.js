@@ -304,6 +304,42 @@ $(document).ready(function () {
             },
         ],
     });
+
+    $(document).ready(function () {
+        // Initial slider setup
+        $('.slick-slider-coupon').slick({
+            autoplay: true,
+            slidesToShow: 1,
+            autoplaySpeed: 3000, // Adjust autoplay speed in milliseconds
+            arrows: false,
+            dots: true, // Dots for larger screens
+            fade: true,
+            responsive: [
+                {
+                    breakpoint: 1024, // At screen widths of 1024px and below
+                    settings: {
+                        slidesToShow: 3, // Show 3 slides at a time
+                        dots: true, // Keep dots for medium devices
+                    },
+                },
+                {
+                    breakpoint: 768, // At screen widths of 768px and below
+                    settings: {
+                        slidesToShow: 2, // Show 2 slides at a time
+                        dots: false, // Remove dots for smaller devices
+                    },
+                },
+                {
+                    breakpoint: 480, // At screen widths of 480px and below
+                    settings: {
+                        slidesToShow: 1, // Show 1 slide at a time
+                        dots: false, // Remove dots for very small devices
+                    },
+                },
+            ],
+        });
+    });
+
 });
 
 function copyCouponCode(couponCode) {
@@ -547,23 +583,20 @@ function wishlist() {
 
                             <td>
                                 <img class="img-fluid rounded-2" width="60px"
-                                        src="http://www.discountzshop.com/storage/${
-                                            value.options.image
-                                        }"
+                                        src="http://www.discountzshop.com/storage/${value.options.image
+                        }"
                                         alt="">
                             </td>
 
                             <td valign="middle">
-                                <p><a href="${offerDetailsUrl}">${
-                        value.name
-                    }</a></p>
+                                <p><a href="${offerDetailsUrl}">${value.name
+                        }</a></p>
                             </td>
 
                             <td valign="middle">
                                 <div class="text-center">
-                                    <a type="submit" style="cursor:pointer" id="${
-                                        value.rowId
-                                    }" onclick="wishlistRemove(this.id)">
+                                    <a type="submit" style="cursor:pointer" id="${value.rowId
+                        }" onclick="wishlistRemove(this.id)">
                                         <i class="fa-solid fa-trash text-danger"></i>
                                     </a>
 

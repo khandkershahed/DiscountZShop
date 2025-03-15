@@ -291,9 +291,9 @@ class HomeController extends Controller
                 ->latest()
                 ->get();
         }
-
+        return response()->json(view('frontend.pages.allCoupon_search', compact('coupons'))->render());
         // Return the results as HTML to be inserted into the page
-        return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
+        // return view('frontend.pages.allCoupon_search', compact('coupons'))->render();
     }
 
     //allStore
