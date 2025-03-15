@@ -22,7 +22,7 @@
         <h5>Stores</h5>
         <ul>
             @foreach ($stores as $store)
-                <li><a href="{{ route('vendor.stores', $store->slug) }}">{{ $store->title }}</a></li>
+                <li><a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">{{ $store->title }}</a></li>
             @endforeach
         </ul>
     @endif
