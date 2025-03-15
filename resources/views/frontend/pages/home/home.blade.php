@@ -226,7 +226,9 @@
                                         <div class="p-4 row align-items-center product-discount-box">
                                             <div class="col-lg-7 col-sm-12">
                                                 <div class="product_discount_box">
-                                                    <h4>{{ $offerLatest->name }}</h4>
+                                                    <h4>
+                                                        {{ Str::limit($offerLatest->name, 38, '...') }}
+                                                    </h4>
                                                     <p class="py-3">
                                                         {{ \Illuminate\Support\Str::words($offerLatest->short_description, 7, '...') }}
                                                     </p>
@@ -261,7 +263,7 @@
                                 @endif
 
                             @empty
-                                <p>No Offer Avaiable</p>
+                                <p>No Offer Available </p>
                             @endforelse
 
                         </div>
@@ -282,7 +284,7 @@
                             <div class="text-white border-0 card-header rounded-0 deal-of-the-day-header"
                                 style="background-color: var(--primary-color)">
                                 <div class="w-100">
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center ">
                                         <div>
                                             <h4 class="py-3 mb-0">Deals Of The Day</h4>
                                         </div>
@@ -316,7 +318,8 @@
                                                         <span class="fw-bold main-color">{{ $offerDealLeft->badge }}
                                                         </span>
                                                         <br>
-                                                        {{ $offerDealLeft->name }}
+                                                        {{-- {{ $offerDealLeft->name }} --}}
+                                                        {{ Str::limit($offerDealLeft->name, 38, '...') }}
                                                     </h5>
 
                                                 </div>
@@ -345,7 +348,7 @@
                                             </div>
                                         @endif
                                     @empty
-                                        <p>No Offer Avaiable</p>
+                                        <p>No Offer Available </p>
                                     @endforelse
 
                                 </div>
@@ -409,19 +412,22 @@
                                                         alt="" />
                                                 </div>
                                                 <div>
-                                                    <div>
+                                                    <div class="d-flex justify-content-between align-items-center grab-title-box">
                                                         <a href="{{ route('offer.details', $offerDeal->slug) }}">
-                                                            <h6 class="mb-3 product-title">
+                                                            <h6 class="mb-0 product-title">
                                                                 {{ $offerDeal->name }}
                                                             </h6>
                                                         </a>
-                                                        @if (!empty($offerDeal->price))
-                                                            <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                                                        @endif
-                                                        @if (!empty($offerDeal->offer_price))
-                                                            <h6 class="main-color">BDT {{ $offerDeal->offer_price }}
-                                                            </h6>
-                                                        @endif
+                                                        <div>
+                                                            @if (!empty($offerDeal->price))
+                                                                <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                            @endif
+                                                            @if (!empty($offerDeal->offer_price))
+                                                                <h6 class="main-color">BDT
+                                                                    {{ $offerDeal->offer_price }}
+                                                                </h6>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                     <div class="mt-4">
                                                         <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -465,19 +471,27 @@
                                                         alt="" />
                                                 </div>
                                                 <div>
-                                                    <div>
-                                                        <a href="{{ route('offer.details', $offerDeal->slug) }}">
-                                                            <h6 class="mb-3 product-title">
-                                                                {{ $offerDeal->name }}
-                                                            </h6>
-                                                        </a>
-                                                        @if (!empty($offerDeal->price))
-                                                            <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                                                        @endif
-                                                        @if (!empty($offerDeal->offer_price))
-                                                            <h6 class="main-color">BDT {{ $offerDeal->offer_price }}
-                                                            </h6>
-                                                        @endif
+                                                    <div class="row align-items-center grab-title-box">
+                                                        <div class="col-7">
+                                                            <a href="{{ route('offer.details', $offerDeal->slug) }}">
+                                                                <h6 class="mb-0 product-title">
+                                                                    {{ Str::limit($offerDeal->name, 36, '...') }}
+                                                                </h6>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            @if (!empty($offerDeal->price) || !empty($offerDeal->offer_price))
+                                                                @if (!empty($offerDeal->price))
+                                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                                @endif
+                                                                @if (!empty($offerDeal->offer_price))
+                                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                                @endif
+                                                            @else
+                                                            <h5 class="main-color fw-bold text-end">Offers</h5>
+                                                            @endif
+                                                        </div>
+
                                                     </div>
                                                     <div class="mt-4">
                                                         <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -567,11 +581,6 @@
                         <div class="col-lg-12">
                             <div class="text-center">
                                 <h1>Top Brands</h1>
-                                <p class="pt-3 w-lg-50 w-100">
-                                    Problems trying to resolve the conflict between <br />
-                                    the two major realms of Classical physics: Newtonian
-                                    mechanics
-                                </p>
                             </div>
                         </div>
                     </div>

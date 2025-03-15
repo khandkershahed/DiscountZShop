@@ -458,7 +458,7 @@
                         <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">
                             <a class="nav-link custom-nav-link text-center ps-0 ps-lg-3 {{ Route::is(['allStore', 'store.details']) ? 'active' : '' }}"
-                                href="{{ route('allStore') }}">Store</a>
+                                href="{{ route('allStore') }}">Stores</a>
                         </li>
                         <li class="mb-2 nav-item"
                             style="border-bottom: 1px solid var(--primary-color); width: 50%; margin: auto;">

@@ -227,7 +227,7 @@
                         </nav>
                     </div>
                 @else
-                    <p class="mb-3">No Store Avaiable</p>
+                    <p class="mb-3">No Store Available </p>
                 @endif
             </div>
         </section>

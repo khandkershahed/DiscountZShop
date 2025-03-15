@@ -972,8 +972,7 @@ del {
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; /* 171.429% */
-    height: 35px;
+    line-height: 24px;
 }
 .title-divider {
     background: #ebebeb;
@@ -2402,4 +2401,7 @@ button:hover .button-text {
 }
 .special-menus {
     background-color: #dddd !important;
+}
+.grab-title-box{
+    height: 55px;
 }
