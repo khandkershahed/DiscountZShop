@@ -38,7 +38,7 @@
                                                 <div class="p-2 px-3 card-body">
                                                     <h6 style="text-decoration: underline;" class="text-primary">
                                                         {{ optional($store)->title }}</h6>
-                                                    <p class="pt-2">
+                                                    <p class="pt-2 w-50">
                                                         {{ optional($store)->address_line_one }}
                                                         @if (!empty(optional($store)->address_line_two))
                                                             ,<br>

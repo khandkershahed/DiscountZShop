@@ -108,45 +108,8 @@
         });
     </script>
 
-    {{-- Disable Smooth Scrolling --}}
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Override CSS scroll behavior
-            document.documentElement.style.scrollBehavior = "auto";
-            document.body.style.scrollBehavior = "auto";
-
-            // Prevent JavaScript-based smooth scrolling
-            window.scrollTo = function(x, y) {
-                window.scroll({
-                    top: y,
-                    left: x,
-                    behavior: "auto",
-                });
-            };
-
-            // Handle elements that may have smooth scrolling
-            const allElements = document.querySelectorAll("*");
-            allElements.forEach((el) => {
-                el.style.scrollBehavior = "auto";
-            });
-        });
-    </script> --}}
-
     @include('toastr')
     @stack('scripts')
-
-    <!-- Initialize Slick Slider (Example) -->
-    {{-- <script>
-        $(document).ready(function() {
-            $('.your-slider-class').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000
-            });
-        });
-    </script> --}}
 
 </body>
 

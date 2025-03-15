@@ -1,4 +1,4 @@
-{{-- <div class="card-body py-5" style="background-color: #f8f8f8">
+{{-- <div class="py-5 card-body" style="background-color: #f8f8f8">
 
     <div class="available-coupon-slider servicesContainerCoupon">
 
@@ -15,14 +15,14 @@
                     <div class="content-area"
                         style="background-image: url('{{ asset('frontend') }}/assets/img/coupon/coupon-bg.png');background-repeat: no-repeat;">
                         <div class="p-1 ">
-                            <h5 class="discount-percentage fw-bold pt-2 ms-5">
+                            <h5 class="pt-2 discount-percentage fw-bold ms-5">
                                 {{ $coupon->badge }}</h5>
-                            <p class="text-white ps-1 pt-1 pb-1 ms-5 coupon-text">
+                            <p class="pt-1 pb-1 text-white ps-1 ms-5 coupon-text">
                                 OFF
                             </p>
                         </div>
                         <div>
-                            <p class="text-white coupon-text coupon-code pt-2 ms-5">
+                            <p class="pt-2 text-white coupon-text coupon-code ms-5">
                                 Code:”<span class="couponCode" id="coupon-code">{{ $coupon->coupon_code }}</span>”
                                 <a href="javascript:void(0);" class="copy-btn"
                                     data-coupon_id="{{ $coupon->coupon_code }}">
@@ -34,52 +34,52 @@
                 </div>
             </div>
         @empty
-            <p class="text-danger text-center">No Coupon Available </p>
+            <p class="text-center text-danger">No Coupon Available </p>
         @endforelse
     </div>
 </div> --}}
 
-{{-- <div class="px-0 py-3 bg-white card-body">
-    <div class="slick-slider"> --}}
-<div class="available-coupon-slider">
-    @if ($coupons->count() > 0)
-        @foreach ($coupons as $coupon)
-            <div class="p-4 shadow-none ms-2 me-3 card rounded-2">
-                <div class="p-0 card-body">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="shadow-sm coupon-logo">
-                                <img class="img-fluid"
-                                    src="{{ !empty($coupon->brand->logo) ? url('storage/' . $coupon->brand->logo) : 'N/A' }}"
-                                    alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="ps-4">
-                                <h3>{{ $coupon->badge }} Off</h3>
-                                <div class="mt-3 bg-white rounded-2 d-flex align-items-center copy-coupon"
-                                    data-coupon="{{ $coupon->coupon_code }}" style="cursor: pointer;">
-                                    <div class="p-1 border rounded-2">
-                                        {{-- <img class="img-fluid" width="25px"
-                                                    src="{{ asset('images/coupon-icon.png') }}"
-                                                    alt=""> --}}
-                                        <i class="px-2 fas fa-copy main-color"></i>
-                                    </div>
-                                    <div class="ps-2">
-                                        <small>Coupon : <span
-                                                class="main-color">{{ $coupon->coupon_code }}</span></small>
-                                    </div>
+<div class="px-0 py-3 bg-white card-body">
+    <div class="slick-slider">
+        <div class="available-coupon-slider row ">
+            @forelse ($coupons as $coupon)
+                <div class="p-4 shadow-none card rounded-2 col-4">
+                    <div class="p-0 card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="shadow-sm coupon-logo">
+                                    <img class="img-fluid"
+                                        src="{{ !empty($coupon->brand->logo) ? url('storage/' . $coupon->brand->logo) : 'N/A' }}"
+                                        alt="">
                                 </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="ps-4">
+                                    <h3>{{ $coupon->badge }} Off</h3>
+                                    <div class="mt-3 bg-white rounded-2 d-flex align-items-center copy-coupon"
+                                        data-coupon="{{ $coupon->coupon_code }}" style="cursor: pointer;">
+                                        <div class="p-1 border rounded-2">
+                                            {{-- <img class="img-fluid" width="25px"
+                                                src="{{ asset('images/coupon-icon.png') }}"
+                                                alt=""> --}}
+                                            <i class="px-2 fas fa-copy main-color"></i>
+                                        </div>
+                                        <div class="ps-2">
+                                            <small>Coupon : <span
+                                                    class="main-color">{{ $coupon->coupon_code }}</span></small>
+                                        </div>
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    @else
-        <p class="text-danger text-center">No Coupon Available </p>
-    @endif
+                @empty
+            <p class="text-center text-danger">No Coupon Available </p>
+            @endforelse
+        </div>
+    </div>
 </div>
 {{-- </div>
 </div> --}}

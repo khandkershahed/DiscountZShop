@@ -263,8 +263,8 @@
         line-height: normal;
     }
     .offers-img img {
-        width: 35px;
-        height: 33px;
+        width: 36px;
+        height: auto;
     }
     .ticket {
         border-radius: 20px;
@@ -500,9 +500,9 @@
     }
 
     .mobile-partner img {
-        width: 65px;
-        height: 65px;
-        object-fit: cover;
+        width: 70px;
+        height: 60px;
+        object-fit: contain;
         border: 1px solid #eee;
         padding: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
