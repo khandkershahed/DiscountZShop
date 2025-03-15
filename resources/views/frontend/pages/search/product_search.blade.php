@@ -103,6 +103,7 @@
         @else
             <div class="row">
                 @foreach ($stores as $latest_store)
+                @dd( optional($latest_store->brand)->slug)
                     <div class="col-lg-3 col-6">
                         <div class="mb-4 border-0 shadow-sm card search-store-banner-container">
                             <div class="p-0 card-body rounded-2">

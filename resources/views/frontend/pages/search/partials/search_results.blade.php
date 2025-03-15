@@ -4,7 +4,7 @@
         <h5>Brands</h5>
         <ul>
             @foreach ($brands as $brand)
-                <li>{{ $brand->name }}</li>
+                <li><a href="{{ route('brand.details',$brand->slug) }}">{{ $brand->name }}</a></li>
             @endforeach
         </ul>
     @endif
@@ -13,7 +13,7 @@
         <h5>Offers</h5>
         <ul>
             @foreach ($offers as $offer)
-                <li>{{ $offer->name }}</li>
+                <li><a href="{{ route('offer.details',$offer->slug) }}">{{ $offer->name }}</a></li>
             @endforeach
         </ul>
     @endif
@@ -22,7 +22,7 @@
         <h5>Stores</h5>
         <ul>
             @foreach ($stores as $store)
-                <li>{{ $store->title }}</li>
+                <li><a href="{{ route('vendor.stores', $store->slug) }}">{{ $store->title }}</a></li>
             @endforeach
         </ul>
     @endif
