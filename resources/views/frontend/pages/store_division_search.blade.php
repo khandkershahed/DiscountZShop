@@ -7,7 +7,7 @@
                         <a href="{{ route('brand.details', optional($latest_store->brand)->slug) }}">
                             <div>
                                 <img src="{{ !empty(optional($latest_store->brand)->logo) ? url('storage/' . optional($latest_store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($latest_store->name) }}"
-                                    width="80px" height="80px" class="rounded-2 mobile-offers"
+                                     class="rounded-2 mobile-offers"
                                     style="object-fit: contain;" alt="" />
                             </div>
                         </a>
