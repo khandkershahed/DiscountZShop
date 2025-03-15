@@ -412,13 +412,15 @@
                                                         alt="" />
                                                 </div>
                                                 <div>
-                                                    <div class="d-flex justify-content-between align-items-center grab-title-box">
-                                                        <a href="{{ route('offer.details', $offerDeal->slug) }}">
-                                                            <h6 class="mb-0 product-title">
-                                                                {{ $offerDeal->name }}
-                                                            </h6>
-                                                        </a>
-                                                        <div>
+                                                    <div class="grab-title-box row">
+                                                        <div class="col-7">
+                                                            <a href="{{ route('offer.details', $offerDeal->slug) }}">
+                                                                <h6 class="mb-0 product-title">
+                                                                    {{ $offerDeal->name }}
+                                                                </h6>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-5">
                                                             @if (!empty($offerDeal->price))
                                                                 <del class="pt-2">BDT {{ $offerDeal->price }}</del>
                                                             @endif

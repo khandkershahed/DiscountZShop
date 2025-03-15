@@ -29,18 +29,22 @@
                         onerror="this.onerror=null; this.src='{{ asset('images/brandPage-prod-no-img(376-282).png') }}';" />
                 </div>
                 <div>
-                    <div>
-                        <a href="{{ route('offer.details', $offerDeal->slug) }}">
-                            <h6 class="mb-3 product-title">
-                                {{ $offerDeal->name }}
-                            </h6>
-                        </a>
-                        @if (!empty($offerDeal->price))
-                            <del class="pt-2">BDT {{ $offerDeal->price }}</del>
-                        @endif
-                        @if (!empty($offerDeal->offer_price))
-                            <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
-                        @endif
+                    <div class="grab-title-box row">
+                        <div class="col-7">
+                            <a href="{{ route('offer.details', $offerDeal->slug) }}">
+                                <h6 class="mb-3 product-title">
+                                    {{ $offerDeal->name }}
+                                </h6>
+                            </a>
+                        </div>
+                        <div class="col-5">
+                            @if (!empty($offerDeal->price))
+                                <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                            @endif
+                            @if (!empty($offerDeal->offer_price))
+                                <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                            @endif
+                        </div>
                     </div>
                     <div class="mt-4">
                         <a href="{{ route('offer.details', $offerDeal->slug) }}"
@@ -51,12 +55,12 @@
         </div>
     </div>
 @empty
-<div class="not-available">
-    <div class="py-3 text-center">
-        <img width="260" class="img-fluid" src="{{ asset('images/no-data.jpg') }}" alt="No Content">
+    <div class="not-available">
+        <div class="py-3 text-center">
+            <img width="260" class="img-fluid" src="{{ asset('images/no-data.jpg') }}" alt="No Content">
+        </div>
+        <h5 class="text-warning">No Offer available right now.</h5>
     </div>
-    <h5 class="text-warning">No Offer available right now.</h5>
-</div>
 @endforelse
 
 @push('scripts')
