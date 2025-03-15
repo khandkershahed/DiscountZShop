@@ -412,7 +412,7 @@
                                                         alt="" />
                                                 </div>
                                                 <div>
-                                                    <div class="grab-title-box">
+                                                    <div class="grab-title-box row">
                                                         <div class="col-7">
                                                             <a href="{{ route('offer.details', $offerDeal->slug) }}">
                                                                 <h6 class="mb-0 product-title">
