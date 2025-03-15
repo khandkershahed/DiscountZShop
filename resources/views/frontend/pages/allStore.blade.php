@@ -111,11 +111,13 @@
                                 <div class="border-0 shadow-sm card bg-light offer-boxes">
                                     <div class="p-4 row align-items-center">
                                         <div class="col-lg-6 col-4">
-                                            <div>
-                                                <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
-                                                    width="80px" height="80px" class="rounded-2 mobile-offers"
-                                                    style="object-fit: contain;" alt="" />
-                                            </div>
+                                            <a href="{{ route('brand.details', optional($store->brand)->slug) }}">
+                                                <div>
+                                                    <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
+                                                        width="80px" height="80px" class="rounded-2 mobile-offers"
+                                                        style="object-fit: contain;" alt="" />
+                                                </div>
+                                            </a>
                                         </div>
                                         <div class="col-lg-6 col-8 text-end">
                                             {{-- @if (!empty($store->badge))
@@ -129,18 +131,17 @@
                                         </div>
 
                                         <div class="pt-4 col-lg-12 offer_title">
-                                            <a href="{{ route('vendor.stores', $store->slug) }}">
-                                                <div class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
-                                                    <p class="text-black">
-                                                        {{ $store->title }}</p>
+                                            <div class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
+                                                <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
+                                                    {{ $store->title }}
 
                                                     {{-- <a class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $store->id }}"
                                                         data-tip="Wishlist">
                                                         <i class="fa-regular fa-heart fs-5 text-danger"></i>
                                                     </a> --}}
+                                                </a>
 
-                                                </div>
-                                            </a>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -200,9 +201,10 @@
                             <div class="modal fade" id="store_location_{{ $store->id }}" tabindex="-1"
                                 data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
                                 aria-labelledby="modalTitleId" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                                    role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header py-4" style="background-color: #f15a2d">
+                                        <div class="modal-header py-2 px-4" style="background-color: #f15a2d">
                                             <h5 class="modal-title text-white" id="modalTitleId">
                                                 Store Location
                                             </h5>
@@ -211,9 +213,12 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-12">
-                                                    <iframe src="{{ $store->map_url }}" width="100%" height="450" frameborder="0"
-                                                        style="border: 0" allowfullscreen="" class="map-store"></iframe>
+                                                <div class="col-lg-12 text-center">
+                                                    {!! optional($store)->url !!}
+                                                    {{-- <iframe src="{{ optional($store)->url }}" width="100%" height="400"
+                                                        frameborder="0" style="border: 0" allowfullscreen="" loading="lazy"
+                                                        referrerpolicy="no-referrer-when-downgrade" class="map-store"></iframe> --}}
+
                                                 </div>
                                             </div>
                                         </div>
@@ -222,7 +227,8 @@
                             </div>
                         @endforeach
                         <!-- Pagination Links -->
-                        <nav aria-label="Page navigation example mt-5" style="display: flex; justify-content: center;">
+                        <nav aria-label="Page navigation example mt-5"
+                            style="display: flex; justify-content: center;">
                             {{ $stores->links() }}
                         </nav>
                     </div>
