@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('terms_and_conditions', function (Blueprint $table) {
             $table->id();
+
             $table->string('title')->nullable();
             $table->longText('content')->nullable();
             $table->string('version')->nullable();
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->string('status')->default('active')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
+
             $table->timestamps();
         });
     }

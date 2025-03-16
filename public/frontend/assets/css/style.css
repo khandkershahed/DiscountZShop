@@ -1979,7 +1979,7 @@ button:hover {
         background-color: #eee;
     }
     .vendor-menus.active {
-        background: #f15a2d;
+        background: #f15a2d !important;
         color: #fff;
         height: 50px;
         text-align: center;
@@ -2034,7 +2034,7 @@ button:hover {
     background-color: #eee;
 }
 .vendor-menus.active {
-    background: #f15a2d;
+    background: #f15a2d !important;
     color: #fff;
     height: 50px;
     text-align: center;
