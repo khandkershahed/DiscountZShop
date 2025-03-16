@@ -205,6 +205,13 @@
                                                                     </div>
                                                                     <div class="store-rating">
                                                                         <a href="{{ route('offer.details', $offer->slug) }}"
+                                                                            class="px-3 text-white offer-badge rounded-pill">
+                                                                            {{-- 25% Off --}}
+                                                                            {{$offer->badge }}
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="store-rating">
+                                                                        <a href="{{ route('offer.details', $offer->slug) }}"
                                                                             class="btn btn-common-one rounded-circle store-btn"><i
                                                                                 class="fa-solid fa-arrow-right fs-5"
                                                                                 aria-hidden="true"></i>
@@ -222,7 +229,7 @@
                                                                             </h6>
                                                                         </div>
                                                                     </a>
-                                                                    {{-- <div>
+                                                                    <div>
                                                                         <div>
                                                                             <a href="{{ route('offer.details', $offer->slug) }}"
                                                                                 class="p-0 m-0 border-0 btn ps-2">
@@ -230,7 +237,7 @@
                                                                                     title="Store Location"></i>
                                                                             </a>
                                                                         </div>
-                                                                    </div> --}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -358,7 +365,7 @@
                                                         </div>
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                         @empty
                                             <p class="mt-5 text-center text-danger">No Offers Available</p>

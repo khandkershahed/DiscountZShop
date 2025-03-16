@@ -416,7 +416,7 @@
                                                         <div class="col-7">
                                                             <a href="{{ route('offer.details', $offerDeal->slug) }}">
                                                                 <h6 class="mb-0 product-title">
-                                                                    {{ $offerDeal->name }}
+                                                                    {{ Str::limit($offerDeal->name, 36, '...') }}
                                                                 </h6>
                                                             </a>
                                                         </div>

@@ -435,14 +435,14 @@ p {
 .countdown {
     font-weight: 600;
 }
-.available-coupon-slider .card{
+.available-coupon-slider .card {
     background-color: #1ca2fc0d;
     border: 1px solid #1ca2fc33;
 }
 .coupon-logo {
     width: 125px;
     height: 90px;
-    background-color:#fd51010a;
+    background-color: #fd51010a;
     /* border: 1px solid #f15a2d40; */
     border-radius: 4px;
     padding: 3px;
@@ -1085,6 +1085,15 @@ del {
     background: #000000ba; /* Black overlay with 50% opacity */
     z-index: 1; /* Place it below the content */
 }
+.offer-badge {
+    background: #f15a2d;
+}
+.offer-badge {
+    background: #f15a2d;
+    width: 100%;
+    height: 100%;
+    padding: 8px 0;
+}
 .store-logo {
     /* background-color: #000; */
     margin-top: -30px;
@@ -1093,6 +1102,7 @@ del {
     padding: 5px;
     background-color: #ffff;
     border-radius: 5px;
+
 }
 .store-btn {
     padding: 8px;
@@ -2402,6 +2412,6 @@ button:hover .button-text {
 .special-menus {
     background-color: #dddd !important;
 }
-.grab-title-box{
+.grab-title-box {
     height: 55px;
 }

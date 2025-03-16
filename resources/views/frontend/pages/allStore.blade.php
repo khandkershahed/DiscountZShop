@@ -107,10 +107,10 @@
                 @if ($stores->count() > 0)
                     <div class="pb-4 row" id="servicesContainer">
                         @foreach ($stores as $store)
-                            <div class="col-lg-3 col-6 mb-3">
+                            <div class="mb-3 col-lg-3 col-6">
                                 <div class="border-0 shadow-sm card bg-light offer-boxes">
                                     <div class="p-4 row align-items-center">
-                                        <div class="col-lg-6 col-4">
+                                        <div class="col-lg-4 col-4">
                                             <a href="{{ route('brand.details', optional($store->brand)->slug) }}">
                                                 <div>
                                                     <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
@@ -119,7 +119,10 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-6 col-8 text-end">
+                                        <div class="col-lg-4">
+                                            asdasdasd
+                                        </div>
+                                        <div class="col-lg-4 col-8 text-end">
                                             {{-- @if (!empty($store->badge))
                                                 <h4 class="main-color special-font-box text-end">
                                                     {{ $store->badge }}</h4>
@@ -204,8 +207,8 @@
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
                                     role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header py-2 px-4" style="background-color: #f15a2d">
-                                            <h5 class="modal-title text-white" id="modalTitleId">
+                                        <div class="px-4 py-2 modal-header" style="background-color: #f15a2d">
+                                            <h5 class="text-white modal-title" id="modalTitleId">
                                                 Store Location
                                             </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -213,7 +216,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-lg-12 text-center">
+                                                <div class="text-center col-lg-12">
                                                     {!! optional($store)->url !!}
                                                     {{-- <iframe src="{{ optional($store)->url }}" width="100%" height="400"
                                                         frameborder="0" style="border: 0" allowfullscreen="" loading="lazy"
@@ -243,8 +246,8 @@
         role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
-                <div class="modal-header py-4" style="background-color: #f15a2d">
-                    <h5 class="modal-title text-white" id="modalTitleId">
+                <div class="py-4 modal-header" style="background-color: #f15a2d">
+                    <h5 class="text-white modal-title" id="modalTitleId">
                         Search Your Need.
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
