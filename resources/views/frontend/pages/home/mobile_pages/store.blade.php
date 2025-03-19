@@ -12,7 +12,7 @@
             <a href="{{ route('brand.details', $mobile_brand->slug) }}" class="">
                 <div class="brand-logo">
                     <img class="img-fluid" src="{{ asset('storage/' . $mobile_brand->image) }}" alt="arong-logo.png"
-                        onerror="this.onerror=null;this.src='http://www.discountzshop.com/storage/offer/logo/cDjFArhKif1737265807.png';" />
+                        onerror="this.onerror=null;this.src='https://www.discountzshop.com/images/new1.gif';" />
                 </div>
                 <p class="mt-2 category-title">{{ $mobile_brand->name }}</p>
             </a>

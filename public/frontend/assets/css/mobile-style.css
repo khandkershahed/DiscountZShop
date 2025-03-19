@@ -220,7 +220,7 @@
         width: 50px;
         border-radius: 100%;
         position: relative;
-        left: -18px;
+        left: -8px;
         border: 2px solid orange;
         height: 50px;
         display: flex;
@@ -359,7 +359,7 @@
         font-weight: 600;
         font-size: 10px;
     }
-    .offer-boxes{
+    .offer-boxes {
         height: 255px;
     }
     .main-store-banner img {
@@ -368,7 +368,7 @@
         object-fit: cover;
     }
 
-    .all-offers-container{
+    .all-offers-container {
         margin-bottom: 7rem !important;
     }
     #button-addon2 {
@@ -378,12 +378,12 @@
         left: 0px;
     }
 
-    .mobile-banner{
+    .mobile-banner {
         width: 100%;
         object-fit: contain;
         margin-top: 75px;
     }
-    .brand-imges{
+    .brand-imges {
         width: 100%;
         height: 100%;
     }
@@ -620,7 +620,7 @@
         padding-left: 40px !important;
         padding-right: 40px !important;
     }
-    .search-offers img{
+    .search-offers img {
         width: 60px !important;
         height: 60px !important;
     }
@@ -632,7 +632,7 @@
         align-items: center;
         padding: 5px;
     }
-    .brands-logo img{
+    .brands-logo img {
         width: 100%;
         height: 100%;
         display: flex;
@@ -640,18 +640,18 @@
         align-items: center;
         padding: 5px;
     }
-    .mobile-coupon-btn{
+    .mobile-coupon-btn {
         flex-direction: column;
     }
-    .btn-common-three{
+    .btn-common-three {
         margin-left: 0 !important;
         margin-top: 4px;
         padding: 5px 5px;
     }
-    .search-store-banner-container{
+    .search-store-banner-container {
         margin-top: 5px;
     }
-    .search-store-banner img{
+    .search-store-banner img {
         height: 185px;
         width: 100%;
     }
@@ -720,8 +720,17 @@
     }
     .offers-card {
         height: 80px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .mobile-offers{
+    .offers-card .card-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-offers {
         width: 50px !important;
         height: 50px !important;
     }
@@ -743,8 +752,7 @@
         padding-right: 20px !important;
         width: 100%;
     }
-    .location{
+    .location {
         margin-bottom: 9rem;
     }
-
 }
