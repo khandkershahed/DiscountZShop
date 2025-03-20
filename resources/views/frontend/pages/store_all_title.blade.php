@@ -2,7 +2,7 @@
     <div class="col-lg-3 col-6 mb-3">
         <div class="border-0 shadow-sm card bg-light offer-boxes">
             <div class="p-4 row align-items-center">
-                <div class="col-lg-6 col-4">
+                <div class="col-9">
                     <a href="{{ route('brand.details', optional($store->brand)->slug) }}">
                         <div>
                             <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
@@ -11,7 +11,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-6 col-8 text-end">
+                <div class="col-2 text-end">
 
                     <a class="add_to_wishlist" style="cursor: pointer;" data-bs-toggle="modal"
                         data-bs-target="#store_location_{{ $store->id }}">
