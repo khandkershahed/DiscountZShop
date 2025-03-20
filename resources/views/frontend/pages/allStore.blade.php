@@ -119,9 +119,9 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-4">
+                                        {{-- <div class="col-lg-4">
                                             asdasdasd
-                                        </div>
+                                        </div> --}}
                                         <div class="col-lg-4 col-8 text-end">
                                             {{-- @if (!empty($store->badge))
                                                 <h4 class="main-color special-font-box text-end">
