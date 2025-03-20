@@ -229,7 +229,7 @@
                                                                             </h6>
                                                                         </div>
                                                                     </a>
-                                                                    <div>
+                                                                    {{-- <div>
                                                                         <div>
                                                                             <a href="{{ route('offer.details', $offer->slug) }}"
                                                                                 class="p-0 m-0 border-0 btn ps-2">
@@ -237,7 +237,7 @@
                                                                                     title="Store Location"></i>
                                                                             </a>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
                                                             </div>
                                                         </div>
