@@ -65,11 +65,13 @@
                                             <div class="p-0 card-body">
                                                 <div class="row">
                                                     <div class="col-lg-4">
-                                                        <div class="shadow-sm coupon-logo">
-                                                            <img class="img-fluid"
-                                                                src="{{ !empty($coupon->brand->logo) ? url('storage/' . $coupon->brand->logo) : 'N/A' }}"
-                                                                alt="">
-                                                        </div>
+                                                        <a href="{{ route('brand.details',optional($coupon->brand)->slug) }}">
+                                                            <div class="shadow-sm coupon-logo">
+                                                                <img class="img-fluid"
+                                                                    src="{{ !empty($coupon->brand->logo) ? url('storage/' . $coupon->brand->logo) : 'N/A' }}"
+                                                                    alt="">
+                                                            </div>
+                                                        </a>
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="ps-4">
