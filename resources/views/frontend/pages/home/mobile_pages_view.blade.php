@@ -168,7 +168,7 @@
                             <div class="row" id="offers-{{ $offercategory->id }}">
                                 @php
                                     $offer_count = 0;
-                                    $visible_offer_count = 9; // Initially, show 9 offers (3 rows)
+                                    $visible_offer_count = 6; // Initially, show 9 offers (3 rows)
                                 @endphp
 
                                 @foreach ($offercategory->offers as $category_offer)
@@ -260,7 +260,7 @@
                         <div class="mt-3 row g-1" id="all-offers">
                             @php
                                 $offer_count = 0;
-                                $visible_offer_count = 9; // Initially, show 9 offers (3 rows)
+                                $visible_offer_count = 6; // Initially, show 9 offers (3 rows)
                             @endphp
 
                             @foreach ($alloffers as $alloffer)
@@ -306,7 +306,7 @@
                             <div class="row g-1" id="offers-{{ $offercategory->id }}">
                                 @php
                                     $offer_count = 0;
-                                    $visible_offer_count = 9; // Initially, show 9 offers (3 rows)
+                                    $visible_offer_count = 6; // Initially, show 9 offers (3 rows)
                                 @endphp
 
                                 @foreach ($offercategory->offers as $category_offer)
