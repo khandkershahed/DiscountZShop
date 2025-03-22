@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+
             $table->string('code')->unique();
             $table->string('name', 150)->nullable();
             $table->string('email', 150)->nullable();
@@ -30,8 +31,10 @@ return new class extends Migration
             $table->string('source', 50)->nullable();
             $table->boolean('is_banned')->default(false); // New field for banning IP addresses
             $table->boolean('call')->default(0)->nullable()->comment('0 for inactive, 1 for active');
+
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
+
             $table->timestamps();
         });
     }
