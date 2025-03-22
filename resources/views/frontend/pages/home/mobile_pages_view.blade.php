@@ -10,7 +10,7 @@
                     <div class="col-6">
                         <div class="d-flex align-items-center">
                             <h6 class="mb-0 text-black">Available Coupons
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 21 13"
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 13"
                                     fill="none">
                                     <path
                                         d="M16.6934 8.21872C16.3539 8.21872 16.0781 8.48188 16.0781 8.80575C16.0781 9.12968 16.3539 9.39279 16.6934 9.39279C17.0328 9.39279 17.3086 9.12968 17.3086 8.80575C17.3086 8.48188 17.0328 8.21872 16.6934 8.21872Z"
@@ -21,11 +21,11 @@
                                     <path
                                         d="M11.7715 3.5224C11.4321 3.5224 11.1562 3.78556 11.1562 4.10946C11.1562 4.43336 11.4321 4.69651 11.7715 4.69651C12.1109 4.69651 12.3867 4.43336 12.3867 4.10946C12.3867 3.78556 12.1109 3.5224 11.7715 3.5224Z"
                                         fill="#F15A2D" />
-                                </svg>
+                                </svg> --}}
                             </h6>
                         </div>
                     </div>
-                    {{-- <div class="col-6">
+                    <div class="col-6">
                         <form action="">
                             <div class="input-group">
                                 <input type="text" name="available_coupon"
@@ -33,7 +33,7 @@
                                     aria-label="search.." aria-describedby="basic-addon2" style="height: 10px;">
                             </div>
                         </form>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -85,7 +85,7 @@
                     <p class="text-white">Get 20% on App</p>
                     <div class="d-flex justify-content-center">
                         <input type="text" value="ramadan20" disabled name="coupon_name"
-                            class="border-0 ps-3 rounded-2 text-light" style="width: 60%; margin: auto;">
+                            class="border-0 ps-3 rounded-2 text-light" style="width: 70%; margin: auto;">
                     </div>
                     <div class="pe-3">
                         <img class="img-fluid" width="50px" src="{{ asset('images/panda.png') }}" alt="">
@@ -138,7 +138,7 @@
                                 @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
                                     <div class="col-4">
                                         <div class="p-0 card offers-card" style="border: 2px dashed #eee">
-                                            <div class="p-1 py-3 card-body d-flex align-items-center">
+                                            <div class="p-1 py-3 card-body flex-column d-flex align-items-center">
                                                 <div class="offers-img">
                                                     <a class="ps-2"
                                                         href="{{ route('offer.details', $alloffer->slug) }}">
@@ -146,7 +146,7 @@
                                                             alt="">
                                                     </a>
                                                 </div>
-                                                <div class="ps-2 text-start">
+                                                <div class="pt-3 text-center ps-2">
                                                     @if (!empty($alloffer->badge))
                                                         <p style="font-size: 12px;">
                                                             <a
@@ -172,7 +172,7 @@
 
                                                 <div class="p-0 card " style="border: 2px dashed #eee">
                                                     <div
-                                                        class="p-1 py-3 card-body d-flex justify-content-between align-items-center">
+                                                        class="p-1 py-3 card-body flex-column d-flex justify-content-between align-items-center">
                                                         <div class="offers-img">
                                                             <a
                                                                 href="{{ route('offer.details', $category_offer->slug) }}">
@@ -180,14 +180,14 @@
                                                                     alt="">
                                                             </a>
                                                         </div>
-                                                        <div>
+                                                        <div class="pt-3 text-center ps-2">
                                                             @if (!empty($category_offer->badge))
-                                                                <h6>
+                                                                <p style="font-size: 12px;">
                                                                     <a
                                                                         href="{{ route('offer.details', $category_offer->slug) }}">
                                                                         {{ $category_offer->badge }}
                                                                     </a>
-                                                                </h6>
+                                                                </p>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -202,6 +202,11 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="pt-4 d-flex justify-content-center">
+                        <a class="px-5 btn btn-dark rounded-pill" href="http://127.0.0.1:8000/offer-details/cats-eye-new-offer" tabindex="-1">
+                            See More
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -248,7 +253,7 @@
                         @empty
                             <p>No Offer Available </p>
                         @endforelse
- 
+
                     </div>
                     <!-- End Slick Slider -->
                 </div>

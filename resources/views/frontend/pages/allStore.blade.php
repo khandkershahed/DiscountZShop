@@ -110,7 +110,7 @@
                             <div class="mb-3 col-lg-3 col-6">
                                 <div class="border-0 shadow-sm card bg-light offer-boxes">
                                     <div class="p-4 row align-items-center">
-                                        <div class="col-lg-4 col-4">
+                                        <div class="col-9">
                                             <a href="{{ route('brand.details', optional($store->brand)->slug) }}">
                                                 <div>
                                                     <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
@@ -119,10 +119,10 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-4">
+                                        {{-- <div class="col-lg-4">
                                             asdasdasd
-                                        </div>
-                                        <div class="col-lg-4 col-8 text-end">
+                                        </div> --}}
+                                        <div class="col-2 text-end">
                                             {{-- @if (!empty($store->badge))
                                                 <h4 class="main-color special-font-box text-end">
                                                     {{ $store->badge }}</h4>

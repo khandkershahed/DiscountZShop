@@ -35,7 +35,7 @@ return new class extends Migration
 
             $table->longText('description')->nullable();
             $table->text('url')->nullable();
-            $table->string('category')->nullable();
+            $table->string('category_type')->nullable();
             $table->string('status')->default('active')->comment('inactive,active');
             $table->timestamps();
         });

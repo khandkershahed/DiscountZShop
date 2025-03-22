@@ -13,7 +13,7 @@
                     </option>
                 @endforeach
             </x-metronic.select-option>
-        </div>
+        </div> 
 
         <div class="col-lg-3 col-md-6 mb-7">
             <x-metronic.label for="category_type"
