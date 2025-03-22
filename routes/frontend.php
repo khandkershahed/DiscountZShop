@@ -96,7 +96,7 @@ Route::get('/privacy/policy', [HomeController::class, 'discountprivacyPolicy'])-
 Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
 //Faq
-Route::get('/faq', [HomeController::class, 'faqDetails'])->name('faq');
+Route::get('/frequently-asked-questions', [HomeController::class, 'faqDetails'])->name('faq');
 
 Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
 
