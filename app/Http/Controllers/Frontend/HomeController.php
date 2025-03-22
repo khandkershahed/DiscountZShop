@@ -597,14 +597,14 @@ class HomeController extends Controller
     }
 
     //faq
-    public function faqDetails()
+    public function frequentlyAsked()
     {
 
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
             'faqs'        => Faq::where('status', 'active')->orderBy('order', 'ASC')->get(),
         ];
-        dd($data);
+        // dd($data);
         return view('frontend.pages.faq', $data);
     }
 

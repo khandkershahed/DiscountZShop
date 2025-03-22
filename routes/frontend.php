@@ -41,11 +41,7 @@ Route::get('/brands/all', [HomeController::class, 'allBrand'])->name('allBrand')
 Route::get('/brands/all/search', [HomeController::class, 'searchAllBrands'])->name('brands.all.search.name');
 //Brand All Route End
 
-// Route::get('/brands/search/offer', [HomeController::class, 'searchBrandName'])->name('brands.search.name');
-Route::get('/{brand}', [HomeController::class, 'vendorOverview'])->name('brand.details');
-Route::get('/{brand}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
 
-Route::get('/{brand}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
 
 Route::get('/map/search/division', [HomeController::class, 'mapDivision'])->name('map.division');
 Route::get('/map/search/city', [HomeController::class, 'mapCity'])->name('map.city');
@@ -96,9 +92,16 @@ Route::get('/privacy/policy', [HomeController::class, 'discountprivacyPolicy'])-
 Route::get('/wallet', [HomeController::class, 'wallet'])->name('wallet');
 
 //Faq
-Route::get('/frequently-asked-questions', [HomeController::class, 'faqDetails'])->name('faq');
+Route::get('/frequently-asked-questions', [HomeController::class, 'frequentlyAsked'])->name('frequently.asked');
 
 Route::get('/vendors', [HomeController::class, 'vendors'])->name('vendors');
+
+
+// Route::get('/brands/search/offer', [HomeController::class, 'searchBrandName'])->name('brands.search.name');
+Route::get('/{brand}', [HomeController::class, 'vendorOverview'])->name('brand.details');
+Route::get('/{brand}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
+
+Route::get('/{brand}/offers', [HomeController::class, 'vendorOffers'])->name('vendor.offers');
 
 // Route::get('/brand/{id}/overview', [HomeController::class, 'vendorOverview'])->name('brand.details');
 // Route::get('/brand/{id}/stores', [HomeController::class, 'vendorStores'])->name('vendor.stores');
