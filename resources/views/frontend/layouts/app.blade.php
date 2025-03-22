@@ -40,8 +40,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/slider/slick.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/slider/slick-theme.min.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css?v=' . time()) }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/mobile-style.css?v=' . time()) }}" />
 </head>
 
 <body>

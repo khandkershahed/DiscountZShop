@@ -263,7 +263,8 @@
         line-height: normal;
     }
     .offers-img img {
-        width: 36px;
+        width: 100px;
+        /* width: 36px; */
         height: auto;
     }
     .ticket {

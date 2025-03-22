@@ -484,13 +484,15 @@
                                                         <div class="col-5">
                                                             @if (!empty($offerDeal->price) || !empty($offerDeal->offer_price))
                                                                 @if (!empty($offerDeal->price))
-                                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                                    <del class="pt-2">BDT
+                                                                        {{ $offerDeal->price }}</del>
                                                                 @endif
                                                                 @if (!empty($offerDeal->offer_price))
-                                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                                    <h6 class="main-color">BDT
+                                                                        {{ $offerDeal->offer_price }}</h6>
                                                                 @endif
                                                             @else
-                                                            <h5 class="main-color fw-bold text-end">Offers</h5>
+                                                                <h5 class="main-color fw-bold text-end">Offers</h5>
                                                             @endif
                                                         </div>
 
@@ -787,6 +789,7 @@
                 });
             });
         </script>
+        
 
         {{-- <script>
             // Define your data for the map
