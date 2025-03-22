@@ -597,7 +597,7 @@ class HomeController extends Controller
     }
 
     //faq
-    public function faq()
+    public function faqDetails()
     {
         $data = [
             'page_banner' => PageBanner::where('page_name', 'faq')->latest('id')->first(),
