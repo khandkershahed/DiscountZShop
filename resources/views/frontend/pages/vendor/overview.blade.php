@@ -23,7 +23,7 @@
         {{-- Overview Start --}}
         <section class="responsive-section">
             <div class="container">
-                <div class="pb-5 mb-5 row align-items-center">
+                <div class="pb-5 mb-5 row">
 
                     <div class="col-lg-6">
 
@@ -50,7 +50,7 @@
                 </div>
 
                 @if (!empty(optional($brand)->offer_description_title) || !empty(optional($brand)->offer_description))
-                    <div class="mt-5 mb-4 row align-items-center">
+                    <div class="mt-5 mb-4 row">
                         <div class="col-lg-6 col-12">
                             <div class="vendor-banners overlay-container">
                                 <img class="pt-4 img-fluid rounded-2 brand-imges pt-lg-0"
