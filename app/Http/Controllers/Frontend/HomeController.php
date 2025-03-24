@@ -714,20 +714,20 @@ class HomeController extends Controller
     {
         $request->validate(['search' => 'required']);
 
-        $item = $request->search;
+        $query = $request->search;
 
         // Get suggestions for brands, offers, and stores
-        $brandSuggestions = Brand::where('name', 'LIKE', "%$item%")
+        $brandSuggestions = Brand::where('name', 'LIKE', '%' . $query . '%')
             ->limit(5) // Limit to 5 suggestions
             ->pluck('name')
             ->toArray();
 
-        $offerSuggestions = Offer::where('name', 'LIKE', "%$item%")
+        $offerSuggestions = Offer::where('name', 'LIKE', '%' . $query . '%')
             ->limit(5)
             ->pluck('name')
             ->toArray();
 
-        $storeSuggestions = Store::where('title', 'LIKE', "%$item%")
+        $storeSuggestions = Store::where('title', 'LIKE', '%' . $query . '%')
             ->limit(5)
             ->pluck('title')
             ->toArray();

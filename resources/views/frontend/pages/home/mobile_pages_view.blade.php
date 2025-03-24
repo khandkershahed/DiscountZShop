@@ -37,12 +37,42 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="pt-4 coupon-slide">
+                <div class="pt-4 available-coupon-slider">
 
                     @foreach ($mobile_coupons as $mobile_coupon)
-                        <div class="p-0 py-3 border-0 card" style="background-color: #1E1E1E;">
+                        <div class="p-0 py-3 border-0 card" >
                             <div class="p-0 card-body">
-                                <div class="py-2 d-flex align-items-center justify-content-center w-100">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="{{ route('brand.details', optional($mobile_coupon->brand)->slug) }}">
+                                            <div class="shadow-sm coupon-logo">
+                                                <img class="img-fluid"
+                                                    src="{{ !empty($mobile_coupon->brand->logo) ? url('storage/' . $mobile_coupon->brand->logo) : 'N/A' }}"
+                                                    alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="px-2">
+                                            <h3>{{ $mobile_coupon->badge }} Off</h3>
+                                            <div class="mt-3 bg-white rounded-2 d-flex align-items-center copy-coupon"
+                                                data-coupon="{{ $mobile_coupon->coupon_code }}" style="cursor: pointer;">
+                                                <div class="p-1 border rounded-2">
+                                                    {{-- <img class="img-fluid" width="25px"
+                                                        src="{{ asset('images/coupon-icon.png') }}"
+                                                        alt=""> --}}
+                                                    <i class="px-2 fas fa-copy main-color"></i>
+                                                </div>
+                                                <div class="ps-2">
+                                                    <small>Coupon : <span
+                                                            class="main-color">{{ $mobile_coupon->coupon_code }}</span></small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="py-2 d-flex align-items-center justify-content-center w-100">
                                     <div class="coupon-images-mb ps-2">
                                         <img class=""
                                             src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
@@ -71,7 +101,7 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     @endforeach
@@ -97,130 +127,7 @@
 
     <div class="container">
         {{-- All Offers Start --}}
-        {{-- <div class="py-4 mt-2 row bg-light">
-            <div class="col-12">
-                <div class="relative overflow-hidden">
-                    <!-- Tabs Container -->
-                    <ul class="flex items-center gap-2 pb-3 overflow-x-auto border-0 tabs-container-mobile nav nav-tabs flex-nowrap"
-                        role="tablist">
-                        <li class="flex-shrink-0 nav-item" role="presentation">
 
-                            <button class="nav-link mb-link-tabs active whitespace-nowrap" id="home-tab"
-                                data-bs-toggle="tab" data-bs-target="#home-tab-pane-mobile" type="button"
-                                role="tab" aria-controls="home" aria-selected="true" style="font-size: 10px">
-                                All Offers
-                            </button>
-                        </li>
-                        <!-- Loop through categories -->
-                        @if ($categories->count() > 0)
-                            @foreach ($categories as $index => $offercategory)
-                                @if ($offercategory->offers->count() > 0)
-                                    <li class="nav-item flex-shrink-0 {{ $index >= 7 ? 'd-none more-tabs' : '' }}"
-                                        role="presentation">
-                                        <button class="nav-link mb-link-tabs whitespace-nowrap" style="font-size: 10px"
-                                            id="home-{{ $offercategory->id }}-tab" data-bs-toggle="tab"
-                                            data-bs-target="#home-mobile-{{ $offercategory->id }}-pane" type="button"
-                                            role="tab" aria-controls="home-{{ $offercategory->id }}-pane"
-                                            aria-selected="true">
-                                            {{ $offercategory->name }}
-                                        </button>
-                                    </li>
-                                @endif
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home-tab-pane-mobile" role="tabpanel"
-                        aria-labelledby="home-tab-mobile" tabindex="0">
-                        <div class="mt-3 row g-2">
-                            @foreach ($alloffers as $alloffer)
-                                @if ($alloffer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $alloffer->expiry_date == null)
-                                    <div class="col-4">
-                                        <div class="p-0 card offers-card" style="border: 2px dashed #eee">
-                                            <div class="p-1 py-3 card-body flex-column d-flex align-items-center">
-                                                <div class="offers-img">
-                                                    <a class="ps-2"
-                                                        href="{{ route('offer.details', $alloffer->slug) }}">
-                                                        <img src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
-                                                            alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="pt-3 text-center ps-2">
-                                                    @if (!empty($alloffer->badge))
-                                                        <p style="font-size: 12px;">
-                                                            <a
-                                                                href="{{ route('offer.details', $alloffer->slug) }}">{{ $alloffer->badge }}</a>
-                                                        </p>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-
-                    @foreach ($categories as $offercategory)
-                        <div class="tab-pane fade" id="home-mobile-{{ $offercategory->id }}-pane" role="tabpanel"
-                            aria-labelledby="home-{{ $offercategory->id }}-tab-mobile" tabindex="0">
-                            <div class="row" id="offers-{{ $offercategory->id }}">
-                                @php
-                                    $offer_count = 0;
-                                    $visible_offer_count = 6; // Initially, show 9 offers (3 rows)
-                                @endphp
-
-                                @foreach ($offercategory->offers as $category_offer)
-                                    @if ($category_offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $category_offer->expiry_date == null)
-                                        @php $offer_count++; @endphp
-                                        <div
-                                            class="col-4 offer-item {{ $offer_count > $visible_offer_count ? 'd-none' : '' }}">
-                                            <div class="p-0 card" style="border: 2px dashed #eee">
-                                                <div
-                                                    class="p-1 py-3 card-body flex-column d-flex justify-content-between align-items-center">
-                                                    <div class="offers-img">
-                                                        <a href="{{ route('offer.details', $category_offer->slug) }}">
-                                                            <img src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
-                                                                alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="pt-3 text-center ps-2">
-                                                        @if (!empty($category_offer->badge))
-                                                            <p style="font-size: 12px;">
-                                                                <a
-                                                                    href="{{ route('offer.details', $category_offer->slug) }}">
-                                                                    {{ $category_offer->badge }}
-                                                                </a>
-                                                            </p>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-
-                                @if ($offer_count == 0)
-                                    <img class="img-fluid" src="{{ asset('images/NoOffers.png') }}" alt="">
-                                @endif
-                            </div>
-
-                            <div class="pt-4 d-flex justify-content-center">
-                                <button class="px-5 btn btn-dark rounded-pill" id="see-more-{{ $offercategory->id }}"
-                                    onclick="toggleOffers({{ $offercategory->id }})">
-                                    See More
-                                </button>
-                            </div>
-                        </div>
-                    @endforeach
-
-
-
-                </div>
-
-            </div>
-        </div> --}}
         <div class="py-4 mt-2 row bg-light">
             <div class="col-12">
                 <div class="relative overflow-hidden">
