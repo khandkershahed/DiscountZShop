@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
@@ -48,7 +49,7 @@ class HomeController extends Controller
         $brandOffersRight = $brandOffers->skip(2);
 
         // Retrieve brands, sliders, banners, categories, and offer types in fewer queries
-        $brands        = Brand::where('category_type','top')->select('id', 'slug', 'logo')->latest()->get();
+        $brands        = Brand::where('category_type', 'top')->select('id', 'slug', 'logo')->latest()->get();
         $sliders       = Slider::where('status', 'active')->latest('id')->get();
         $banner        = Banner::where('status', 'active')->latest('id')->first();
         $coupons       = Coupon::latest()->get();
@@ -404,7 +405,9 @@ class HomeController extends Controller
         $areaId     = $request->input('area');
 
         $today  = Carbon::now()->format('Y-m-d');
-        $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {$query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);})->orderBy('name', 'DESC')->latest();
+        $offers = Offer::where('status', 'active')->where(function ($query) use ($today) {
+            $query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);
+        })->orderBy('name', 'DESC')->latest();
 
         // Apply section filter if division ID is provided
         if ($divisionId) {
@@ -718,12 +721,12 @@ class HomeController extends Controller
 
         // Get suggestions for brands, offers, and stores
         $brandSuggestions = Brand::where('name', 'LIKE', '%' . $query . '%')
-            ->limit(5) // Limit to 5 suggestions
             ->pluck('name')
             ->toArray();
+        $today  = Carbon::now()->format('Y-m-d');
 
-        $offerSuggestions = Offer::where('name', 'LIKE', '%' . $query . '%')
-            ->limit(5)
+        $offerSuggestions = Offer::where('name', 'LIKE', '%' . $query . '%')->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today)
+            ->limit(10)
             ->pluck('name')
             ->toArray();
 
