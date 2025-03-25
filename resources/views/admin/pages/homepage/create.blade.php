@@ -29,7 +29,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-4 mb-7">
+                    {{-- <div class="col-lg-4 mb-7">
                         <x-metronic.label for="top_banner" class="col-form-label fw-bold fs-6 ">{{ __('Top Banner') }}
                         </x-metronic.label>
 
@@ -44,7 +44,7 @@
 
                         <x-metronic.input id="top_banner_link" type="text" name="top_banner_link" :value="old('top_banner_link')"
                             placeholder="Enter Top Banner Link"></x-metronic.input>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="offer_banner" class="col-form-label fw-bold fs-6 ">{{ __('Offer Banner') }}
                         </x-metronic.label>
