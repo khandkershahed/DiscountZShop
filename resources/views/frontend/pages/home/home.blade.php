@@ -69,25 +69,8 @@
         <!-- App Discount Start -->
         {{-- <section class="app-discount-box"> --}}
         <section class="mb-0">
-            <div class="special-bg"
-                style="background-image: url('https://i.ibb.co.com/LzH4fBrG/bg-banner.png'); ">
-                <div class="container px-0">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <h1 class="py-4 text-white get-discounts-text">Get 20% on App</h1>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center justify-content-end get-discounts">
-                                <div>
-                                    <img src="{{ asset('frontend') }}/assets/img/panda.png" alt="" />
-                                </div>
-                                <div class="px-3 py-2 bg-white rounded-2">
-                                    <h4>ramadan20</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <img class="special-bg" src="https://i.ibb.co.com/LzH4fBrG/bg-banner.png" alt="">
             </div>
         </section>
         <!-- App Discount End -->
