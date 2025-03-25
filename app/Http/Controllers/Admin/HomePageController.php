@@ -88,6 +88,7 @@ class HomePageController extends Controller
             HomePage::create([
 
                 'top_banner_link' => $request->top_banner_link,
+                'offer_banner_link' => $request->offer_banner_link,
                 'deal_title' => $request->deal_title,
                 'deal_header' => $request->deal_header,
                 'deal_brand_id' => $request->deal_brand_id,
@@ -229,6 +230,7 @@ class HomePageController extends Controller
 
 
                 'top_banner_link' => $request->top_banner_link,
+                'offer_banner_link' => $request->offer_banner_link,
                 'deal_title' => $request->deal_title,
                 'deal_header' => $request->deal_header,
                 'deal_brand_id' => $request->deal_brand_id,
