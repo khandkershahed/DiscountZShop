@@ -83,7 +83,7 @@
                                         @error('email')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
-                                    <button class="btn btn-common-one" type="button" id="button-addon2"> <i
+                                    <button class="btn btn-common-one" type="submit" id="button-addon2"> <i
                                             class="fa-solid fa-paper-plane ps-2"></i></button>
                                     </p>
                                 </form>
