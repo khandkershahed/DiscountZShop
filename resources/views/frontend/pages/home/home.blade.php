@@ -68,11 +68,15 @@
 
         <!-- App Discount Start -->
         {{-- <section class="app-discount-box"> --}}
-        <section class="mb-0">
-            <div>
-                <img class="special-bg" src="https://i.ibb.co.com/LzH4fBrG/bg-banner.png" alt="">
-            </div>
-        </section>
+        @if (!empty($homepage->offer_banner))
+            <section class="mb-0">
+                <div>
+                    <a href="{{ $homepage->offer_banner_link ?? 'javascript:void(0)' }}">
+                        <img class="special-bg" src="{{ asset('storage/' . $homepage->offer_banner) }}" alt="">
+                    </a>
+                </div>
+            </section>
+        @endif
         <!-- App Discount End -->
 
         <!-- Grab Your Offer -->
