@@ -67,25 +67,16 @@
         @include('frontend.pages.home.coupon')
 
         <!-- App Discount Start -->
-        <section class="app-discount-box">
-            <div class="container px-0">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <h1 class="text-white get-discounts-text">Get 20% on App</h1>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex align-items-center justify-content-end get-discounts">
-                            <div>
-                                <img src="{{ asset('frontend') }}/assets/img/panda.png" alt="" />
-                            </div>
-                            <div class="px-3 py-2 bg-white rounded-2">
-                                <h4>ramadan20</h4>
-                            </div>
-                        </div>
-                    </div>
+        {{-- <section class="app-discount-box"> --}}
+        @if (!empty($homepage->offer_banner))
+            <section class="mb-0">
+                <div>
+                    <a href="{{ $homepage->offer_banner_link ?? 'javascript:void(0)' }}">
+                        <img class="special-bg" src="{{ asset('storage/' . $homepage->offer_banner) }}" alt="">
+                    </a>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
         <!-- App Discount End -->
 
         <!-- Grab Your Offer -->
@@ -484,13 +475,15 @@
                                                         <div class="col-5">
                                                             @if (!empty($offerDeal->price) || !empty($offerDeal->offer_price))
                                                                 @if (!empty($offerDeal->price))
-                                                                    <del class="pt-2">BDT {{ $offerDeal->price }}</del>
+                                                                    <del class="pt-2">BDT
+                                                                        {{ $offerDeal->price }}</del>
                                                                 @endif
                                                                 @if (!empty($offerDeal->offer_price))
-                                                                    <h6 class="main-color">BDT {{ $offerDeal->offer_price }}</h6>
+                                                                    <h6 class="main-color">BDT
+                                                                        {{ $offerDeal->offer_price }}</h6>
                                                                 @endif
                                                             @else
-                                                            <h5 class="main-color fw-bold text-end">Offers</h5>
+                                                                <h5 class="main-color fw-bold text-end">Offers</h5>
                                                             @endif
                                                         </div>
 
@@ -787,6 +780,7 @@
                 });
             });
         </script>
+
 
         {{-- <script>
             // Define your data for the map

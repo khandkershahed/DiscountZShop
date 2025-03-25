@@ -369,7 +369,7 @@
     <header>
         <div class="container-fluid">
             <div class="py-3 row align-items-center">
-                <div class="col-6">
+                <div class="col-2">
                     <div>
                         <button class="btn btn-transparent" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#Id2" aria-controls="Id2">
@@ -399,6 +399,15 @@
                     </div>
                 </div>
                 <div class="col-6">
+                    <div>
+                        <a href="{{ route('homePage') }}" class="logo-main">
+                            <img class="img-fluid"
+                                src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
+                                alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
                     <div class="d-flex justify-content-end">
                         <div class="d-flex align-items-center">
                             <a href="{{ route('wishlist.product') }}" class="pe-3">

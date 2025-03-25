@@ -51,6 +51,28 @@
                         <x-metronic.input id="top_banner_link" type="text" value="{{ $homepage->top_banner_link }}"
                             name="top_banner_link" placeholder="Enter Top Banner Link"></x-metronic.input>
                     </div>
+                    <div class="col-lg-5 mb-7">
+                        <x-metronic.label for="offer_banner"
+                            class="col-form-label fw-bold fs-6 ">{{ __('Offer Banner') }}
+                        </x-metronic.label>
+
+                        <x-metronic.file-input id="offer_banner" name="offer_banner" :source="asset('storage/' . $homepage->offer_banner)"
+                            :value="old('offer_banner')"></x-metronic.file-input>
+
+                        {{-- <img class="mt-3"
+                            src="{{ !empty($homepage->offer_banner) ? url('storage/' . $homepage->offer_banner) : asset('images/no_logo.png') }}"
+                            height="80" width="80" alt=""> --}}
+                    </div>
+
+                    <div class="col-lg-7 mb-7">
+                        <x-metronic.label for="offer_banner_link"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Offer Banner Link') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="offer_banner_link" type="text"
+                            value="{{ $homepage->offer_banner_link }}" name="offer_banner_link"
+                            placeholder="Enter Offer Banner Link"></x-metronic.input>
+                    </div>
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="deal_title"

@@ -55,6 +55,7 @@ class HomePageController extends Controller
             $files = [
 
                 'top_banner' => $request->file('top_banner'),
+                'offer_banner' => $request->file('offer_banner'),
                 'deal_brand_image' => $request->file('deal_brand_image'),
 
                 'offer_slider_image_one' => $request->file('offer_slider_image_one'),
@@ -102,6 +103,7 @@ class HomePageController extends Controller
                 'bottom_banner_slider_four_link' => $request->bottom_banner_slider_four_link,
 
                 'top_banner' => $uploadedFiles['top_banner']['status'] == 1 ? $uploadedFiles['top_banner']['file_path'] : null,
+                'offer_banner' => $uploadedFiles['offer_banner']['status'] == 1 ? $uploadedFiles['offer_banner']['file_path'] : null,
 
                 'deal_brand_image' => $uploadedFiles['deal_brand_image']['status'] == 1 ? $uploadedFiles['deal_brand_image']['file_path'] : null,
 
@@ -164,6 +166,7 @@ class HomePageController extends Controller
             $files = [
 
                 'top_banner' => $request->file('top_banner'),
+                'offer_banner' => $request->file('offer_banner'),
                 'deal_brand_image' => $request->file('deal_brand_image'),
 
                 'offer_slider_image_one' => $request->file('offer_slider_image_one'),
@@ -199,6 +202,7 @@ class HomePageController extends Controller
             $homepage->update([
 
                 'top_banner' => $uploadedFiles['top_banner']['status'] == 1 ? $uploadedFiles['top_banner']['file_path'] : $homepage->top_banner,
+                'offer_banner' => $uploadedFiles['offer_banner']['status'] == 1 ? $uploadedFiles['offer_banner']['file_path'] : $homepage->offer_banner,
 
                 'deal_brand_image' => $uploadedFiles['deal_brand_image']['status'] == 1 ? $uploadedFiles['deal_brand_image']['file_path'] : $homepage->deal_brand_image,
 
@@ -223,7 +227,7 @@ class HomePageController extends Controller
                 'offer_slider_image_three_link' => $request->offer_slider_image_three_link,
                 'offer_slider_image_four_link' => $request->offer_slider_image_four_link,
 
-                
+
                 'top_banner_link' => $request->top_banner_link,
                 'deal_title' => $request->deal_title,
                 'deal_header' => $request->deal_header,

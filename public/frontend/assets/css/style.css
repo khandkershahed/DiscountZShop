@@ -1102,7 +1102,6 @@ del {
     padding: 5px;
     background-color: #ffff;
     border-radius: 5px;
-
 }
 .store-btn {
     padding: 8px;
@@ -2414,4 +2413,11 @@ button:hover .button-text {
 }
 .grab-title-box {
     height: 55px;
+}
+.special-bg {
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    max-height: 130px;
+    object-fit: auto;
 }

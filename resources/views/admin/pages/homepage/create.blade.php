@@ -45,6 +45,22 @@
                         <x-metronic.input id="top_banner_link" type="text" name="top_banner_link" :value="old('top_banner_link')"
                             placeholder="Enter Top Banner Link"></x-metronic.input>
                     </div>
+                    <div class="col-lg-4 mb-7">
+                        <x-metronic.label for="offer_banner" class="col-form-label fw-bold fs-6 ">{{ __('Offer Banner') }}
+                        </x-metronic.label>
+
+                        <x-metronic.file-input id="offer_banner" name="offer_banner"
+                            :value="old('offer_banner')"></x-metronic.file-input>
+                    </div>
+
+                    <div class="col-lg-8 mb-7">
+                        <x-metronic.label for="offer_banner_link"
+                            class="col-form-label fw-bold fs-6 required">{{ __('Offer Banner Link') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="offer_banner_link" type="text" name="offer_banner_link" :value="old('offer_banner_link')"
+                            placeholder="Enter Offer Banner Link"></x-metronic.input>
+                    </div>
 
                     <div class="col-lg-3 mb-7">
                         <x-metronic.label for="deal_title"
