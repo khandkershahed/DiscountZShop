@@ -16,11 +16,14 @@ return new class extends Migration
 
             $table->string('top_banner')->nullable();
             $table->text('top_banner_link')->nullable();
+            $table->string('offer_banner')->nullable();
+            $table->text('offer_banner_link')->nullable();
 
             $table->string('deal_title')->nullable();
-            $table->string('deal_header')->nullable();
+            $table->text('deal_header')->nullable();
             $table->foreignId('deal_brand_id')->nullable()->constrained('brands')->onDelete('set null');
             $table->string('deal_brand_image')->nullable();
+
 
             $table->string('offer_slider_image_one')->nullable();
             $table->string('offer_slider_image_two')->nullable();
