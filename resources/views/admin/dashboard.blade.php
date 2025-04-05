@@ -12,9 +12,9 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-dark p-8 rounded-2">
+                            <div class="bg-light-dark p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-warning my-2">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
                                         viewBox="0 0 32 32" style="enable-background:new 0 0 32 32"
                                         xml:space="preserve">
@@ -31,8 +31,8 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="" class="text-dark fw-bold fs-6">Total Brand</a>
-                                <span class="float-end fw-bolder badge bg-success">{{ $brandCount }}</span>
+                                <a href="{{ route('admin.brands.index') }}" class="text-dark fw-bold fs-3">Total Brand</a>
+                                <span class="float-end fw-bolder fs-2 badge bg-success">{{ $brandCount }}</span>
                             </div>
 
                         </div>
@@ -40,9 +40,9 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-danger p-8 rounded-2">
+                            <div class="bg-light-danger p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-primary my-2">
                                     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 122.88 114.58">
                                         <title>product</title>
@@ -51,8 +51,8 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="" class="text-primary fw-bold fs-6">Total Offer</a>
-                                <span class="float-end fw-bolder badge bg-primary">{{ $offerCount }}</span>
+                                <a href="{{ route('admin.offer.index') }}" class="text-primary fw-bold fs-3">Total Offer</a>
+                                <span class="float-end fw-bolder fs-2 badge bg-primary">{{ $offerCount }}</span>
                             </div>
 
                         </div>
@@ -60,9 +60,9 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-primary p-8 rounded-2">
+                            <div class="bg-light-primary p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-danger my-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
                                         <path opacity="0.3"
@@ -74,8 +74,8 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="#" class="text-danger fw-bold fs-6 mt-2">Total Store</a>
-                                <span class="float-end fw-bolder text-danger badge bg-dark">{{ $storeCount }}</span>
+                                <a href="{{ route('admin.store.index') }}" class="text-danger fw-bold fs-3 mt-2">Total Store</a>
+                                <span class="float-end fw-bolder text-white fs-2 badge bg-danger">{{ $storeCount }}</span>
                             </div>
 
                         </div>
@@ -83,9 +83,9 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-success p-8 rounded-2">
+                            <div class="bg-light-success p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-info d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-info my-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
                                         <path
@@ -97,9 +97,9 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="" class="text-info fw-bold fs-6 mt-2">Total
+                                <a href="{{ route('admin.coupon.index') }}" class="text-info fw-bold fs-3 mt-2">Total
                                     Coupon</a>
-                                <span class="float-end fw-bolder badge bg-info"></span>
+                                <span class="float-end fw-bolder fs-2 badge bg-info"></span>
                             </div>
 
                         </div>

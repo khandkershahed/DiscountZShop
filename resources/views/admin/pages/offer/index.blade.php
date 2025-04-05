@@ -1,7 +1,7 @@
 <x-admin-app-layout :title="'Offer List'">
 
     {{-- Font Awesome CDN --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
     <!-- Toastr CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
@@ -26,7 +26,7 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-    </script>
+    </script> --}}
 
 
     <style>
@@ -129,15 +129,16 @@
                 <thead class="bg-dark text-light">
                     <tr>
                         <th width="5%">No</th>
-                        <th width="5%">Image</th>
-                        <th width="5%">Category</th>
-                        <th width="8%">Name</th>
-                        <th width="5%">Price</th>
-                        <th width="5%">Offer Price</th>
-                        <th width="8%">Coupon Code</th>
-                        <th width="5%">Added By</th>
-                        <th width="5%">Status</th>
-                        <th width="5%">Actions</th>
+                        <th width="10%">Image</th>
+                        <th width="15%">Category</th>
+                        <th width="20%">Name</th>
+                        {{-- <th width="5%">Price</th>
+                        <th width="5%">Offer Price</th> --}}
+                        <th width="10%">Coupon Code</th>
+                        <th width="10%">Added By</th>
+                        <th width="10%">Availability</th>
+                        <th width="10%">Status</th>
+                        <th width="10%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
@@ -154,8 +155,8 @@
 
                             <td class="text-start">{{ optional($offer->categoryName)->name }}</td>
                             <td class="text-start">{{ $offer->name }}</td>
-                            <td class="text-start">Tk {{ $offer->price }}</td>
-                            <td class="text-start">Tk {{ $offer->offer_price }}</td>
+                            {{-- <td class="text-start">Tk {{ $offer->price }}</td>
+                            <td class="text-start">Tk {{ $offer->offer_price }}</td> --}}
                             <td class="text-start">{{ $offer->coupon_code }}</td>
 
                             <td class="text-start">{{ optional($offer->added)->name }}</td>
@@ -173,9 +174,16 @@
                                     <span class="badge bg-danger">Inactive</span>
                                 @endif
                             </td>
+                            <td class="text-start">
+                                @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $offer->expiry_date == null)
+                                    <span class="badge bg-success">Available</span>
+                                @else
+                                    <span class="badge bg-danger">Expired</span>
+                                @endif
+                            </td>
 
 
-                            <td>
+                            <td class="text-center">
 
                                 @if (Auth::guard('admin')->user()->can('edit.offer'))
                                     <a href="{{ route('admin.offer.edit', $offer->id) }}" class="text-primary">
