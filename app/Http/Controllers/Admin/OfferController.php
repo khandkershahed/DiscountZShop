@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Offer;
+use App\Models\Category;
 use App\Models\OfferType;
 use Illuminate\Http\Request;
 use App\Mail\OfferListCreated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -28,6 +29,14 @@ class OfferController extends Controller
             'allCategories' => Category::latest('id')->get(),
         ];
         return view('admin.pages.offer.index', $data);
+    }
+    public function expiredOffers()
+    {
+        $data = [
+            'offers'        => Offer::where('expiry_date', '<=', Carbon::now()->format('Y-m-d'))->get(),
+            'allCategories' => Category::latest('id')->get(),
+        ];
+        return view('admin.pages.offer.expired_offers', $data);
     }
 
     /**
