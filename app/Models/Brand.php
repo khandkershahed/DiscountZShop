@@ -55,6 +55,6 @@ class Brand extends Model
 
     public function offer()
     {
-        return $this->belongsTo(Offer::class, 'brand_id');
+        return $this->belongsTo(Offer::class, 'brand_id')->where('expiry_date', '>=', Carbon::now()->format('Y-m-d'));
     }
 }

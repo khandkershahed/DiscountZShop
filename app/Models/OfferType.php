@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\HasSlug;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OfferType extends Model
 {
@@ -21,7 +22,7 @@ class OfferType extends Model
 
     public function offers()
     {
-        return $this->hasMany(Offer::class); // Assuming an Offer belongs to an OfferType
+        return $this->hasMany(Offer::class)->where('expiry_date', '>=', Carbon::now()->format('Y-m-d')); // Assuming an Offer belongs to an OfferType
     }
 
 }
