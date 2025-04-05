@@ -211,52 +211,54 @@
                 </div>
                 <div class="row servicesContainer divisionContainer">
                     @foreach (optional($brand)->offers as $offer)
-                        <div class="mb-4 col-lg-3">
-                            <div class="border-0 shadow-sm card bg-light">
-                                <div class="p-4 row align-items-center">
-                                    <div class="col-lg-12">
-                                        <div>
-                                            <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                                width="80px" height="80px" class="rounded-2"
-                                                style="object-fit: contain;" alt=""
-                                                onerror="this.onerror=null;this.src='{{ asset('images/demo-logo.png') }}';" />
-                                        </div>
-                                        <div class="pt-2">
-                                            @if (!empty($offer->badge))
-                                                {{-- <span>Upto</span> --}}
-                                                <h4 class="main-color special-font-box text-start">{{ $offer->badge }}
-                                                </h4>
-                                            @endif
-                                            <p class="pb-4 text-black">{{ $offer->name }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="pt-4 col-lg-12">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="w-50">
-                                                <a href="{{ route('offer.details', $offer->slug) }}"
-                                                    class="btn-common-one rounded-3">
-                                                    <small>View</small>
-                                                </a>
-                                                @if (!empty($offer->coupon_code))
-                                                    <a href="javascript:void(0);"
-                                                        class="btn-common-three rounded-3 ms-2"
-                                                        onclick="copyCouponCode('{{ $offer->coupon_code }}')">
-                                                        Coupon <i class="fa-solid fa-copy"></i>
-                                                    </a>
-                                                @endif
+                        @if ($offer->expiry_date >= Carbon\Carbon::now()->format('Y-m-d') || $offer->expiry_date == null)
+                            <div class="mb-4 col-lg-3">
+                                <div class="border-0 shadow-sm card bg-light">
+                                    <div class="p-4 row align-items-center">
+                                        <div class="col-lg-12">
+                                            <div>
+                                                <img src="{{ !empty($offer->logo) ? url('storage/' . $offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                                    width="80px" height="80px" class="rounded-2"
+                                                    style="object-fit: contain;" alt=""
+                                                    onerror="this.onerror=null;this.src='{{ asset('images/demo-logo.png') }}';" />
                                             </div>
-                                            <p class="text-center ps-5 countdown w-50"
-                                                data-expire-date="{{ $offer->expiry_date }}">
-                                                <span class="main-color">
-                                                    <i class="fa-solid fa-clock"></i>
-                                                </span>
-                                                <span class="countdown-timer"> Days</span>
-                                            </p>
+                                            <div class="pt-2">
+                                                @if (!empty($offer->badge))
+                                                    {{-- <span>Upto</span> --}}
+                                                    <h4 class="main-color special-font-box text-start">{{ $offer->badge }}
+                                                    </h4>
+                                                @endif
+                                                <p class="pb-4 text-black">{{ $offer->name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="pt-4 col-lg-12">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="w-50">
+                                                    <a href="{{ route('offer.details', $offer->slug) }}"
+                                                        class="btn-common-one rounded-3">
+                                                        <small>View</small>
+                                                    </a>
+                                                    @if (!empty($offer->coupon_code))
+                                                        <a href="javascript:void(0);"
+                                                            class="btn-common-three rounded-3 ms-2"
+                                                            onclick="copyCouponCode('{{ $offer->coupon_code }}')">
+                                                            Coupon <i class="fa-solid fa-copy"></i>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                                <p class="text-center ps-5 countdown w-50"
+                                                    data-expire-date="{{ $offer->expiry_date }}">
+                                                    <span class="main-color">
+                                                        <i class="fa-solid fa-clock"></i>
+                                                    </span>
+                                                    <span class="countdown-timer"> Days</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

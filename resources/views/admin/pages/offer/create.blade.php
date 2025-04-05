@@ -140,7 +140,7 @@
                                 <option value="{{ $offer_type->id }}">{{ $offer_type->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
-                        
+
                     </div>
 
                     <div class="col-lg-3 mb-7">
@@ -212,11 +212,11 @@
 
                     <div class="col-lg-6 mb-7">
                         <x-metronic.label for="map_url"
-                            class="col-form-label fw-bold fs-6 required">{{ __('Map Url') }}
+                            class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
                         </x-metronic.label>
 
                         <x-metronic.textarea id="map_url" type="text" name="map_url" :value="old('map_url')"
-                            placeholder="Please Map Url" required></x-metronic.textarea>
+                            placeholder="Please Map Url"></x-metronic.textarea>
                     </div>
 
                     <!-- Update for date fields -->
