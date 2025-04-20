@@ -31,7 +31,6 @@ Route::prefix('api')->group(function () {
         Route::post('/change-password', [UserApiController::class, 'updatePassword']);
         Route::get('/profile', [UserApiController::class, 'profile']);
         Route::put('/profile', [UserApiController::class, 'editProfile']);
-        Route::apiResource('categories', CategoryApiController::class);
     });
 
     // Home
