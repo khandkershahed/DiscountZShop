@@ -86,8 +86,8 @@
         <!-- Biggest Deals From Product -->
         @if (optional($homepage)->brand)
             <section>
-                <div class="container px-0 py-4 biggest-deals">
-                    <div class="row gx-4 promotion-container align-items-center">
+                <div class="container">
+                    <div class="row align-items-center gx-2">
                         <div class="py-2 col-lg-12">
                             <h1 class="pt-0 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}
                             </h1>
@@ -95,97 +95,98 @@
                                 {{ optional($homepage->brand)->description }}
                             </p>
                         </div>
-                        <div class="mt-2 col-lg-4">
-                            <div class="row d-flex align-items-stretch side-product">
+                        <div class="col-lg-4">
+                            <div class="row align-items-center">
                                 @foreach ($brand_offers_left as $brand_offer_left)
-                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex align-items-center">
-                                        <div class="w-100">
-                                            <a href="{{ route('offer.details', $brand_offer_left->slug) }}">
-                                                <img src="{{ !empty($brand_offer_left->image) ? url('storage/' . $brand_offer_left->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
-                                                    class="img-fluid w-100" alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/offer/image/qrGE6dP1rf1733201788.png') }}';" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex">
-                                        <div class="p-3 py-4 w-100">
-                                            <h5>{{ $brand_offer_left->name }}</h5>
-                                            <p class="py-4 mb-0 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <h3 class="main-color">
-                                                        {{ str_ireplace('discount', 'off', $brand_offer_left->badge) }}
-                                                    </h3>
+                                    <div class="col-lg-12 {{ !$loop->last ? 'mb-2' : '' }}">
+                                        <div class="bg-light fixed-columns">
+                                            <div class="d-flex align-items-center">
+                                                <div class="promo-img-box">
+                                                    <img class="img-fluid promo-img"
+                                                        src="{{ !empty($brand_offer_left->image) ? url('storage/' . $brand_offer_left->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
+                                                        alt=""
+                                                        onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/offer/image/qrGE6dP1rf1733201788.png') }}';">
                                                 </div>
-                                                <div class="pe-4">
-                                                    <a href="{{ route('offer.details', $brand_offer_left->slug) }}"
-                                                        class="btn-{{ $loop->iteration }}">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                            height="30" viewBox="0 0 30 30" fill="none">
-                                                            <circle cx="15" cy="15" r="15" fill="#F15A2D">
-                                                            </circle>
-                                                            <path
-                                                                d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                                fill="white"></path>
-                                                        </svg>
-                                                    </a>
+                                                <div class="promo-content">
+                                                    <h4>{{ $brand_offer_left->name }}</h4>
+                                                    <p class="py-4 mb-0 fw-bold">{!! Str::words($brand_offer_left->short_description, 8) !!}</p>
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <h3 class="main-color">
+                                                                Up to 38% off
+                                                            </h3>
+                                                        </div>
+                                                        <div class="pe-4">
+                                                            <a href="{{ route('offer.details', $brand_offer_left->slug) }}"
+                                                                class="btn-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                    height="30" viewBox="0 0 30 30" fill="none">
+                                                                    <circle cx="15" cy="15" r="15"
+                                                                        fill="#F15A2D">
+                                                                    </circle>
+                                                                    <path
+                                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                                        fill="white"></path>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
-                            <!-- Repeat the product showcase for other products -->
                         </div>
-                        <div class="px-0 col-lg-4">
-                            <div class="d-flex justify-content-center">
-                                <img class="img-fluid w-100 middle-banner"
+                        <div class="col-lg-4">
+                            <div>
+                                <img class="img-fluid"
                                     src="{{ asset('storage/' . optional($homepage)->deal_brand_image) }}"
-                                    alt=""
-                                    onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/homepage/deal_brand_image/prLka0SI3X1733812486.jpg') }}';" />
+                                    alt="" onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/homepage/deal_brand_image/prLka0SI3X1733812486.jpg') }}';">
                             </div>
                         </div>
-                        <div class="mt-2 col-lg-4">
-                            <div class="row d-flex align-items-stretch side-product">
+                        <div class="col-lg-4">
+                            <div class="row align-items-center">
                                 @foreach ($brand_offers_right as $brand_offer_right)
-                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex align-items-center">
-                                        <div class="w-100">
-                                            <a href="{{ route('offer.details', $brand_offer_right->slug) }}">
-                                                <img src="{{ !empty($brand_offer_right->image) ? url('storage/' . $brand_offer_right->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
-                                                    class="img-fluid w-100" alt=""
-                                                    onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/offer/image/qrGE6dP1rf1733201788.png') }}';" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="px-0 mb-2 col-lg-6 bg-light d-flex">
-                                        <div class="p-3 py-4 w-100">
-                                            <h5>{{ $brand_offer_right->name }}</h5>
-                                            <p class="py-4 mb-0 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <h3 class="main-color">
-                                                        {{ str_ireplace('discount', 'off', $brand_offer_right->badge) }}
-                                                    </h3>
+                                    <div class="col-lg-12 {{ !$loop->last ? 'mb-2' : '' }}">
+                                        <div class="bg-light fixed-columns">
+                                            <div class="d-flex align-items-center">
+                                                <div class="promo-img-box">
+                                                    <img class="img-fluid promo-img"
+                                                        src="{{ !empty($brand_offer_right->image) ? url('storage/' . $brand_offer_right->image) : asset('images/brandPage-prod-no-img(376-282).png') }}"
+                                                        alt=""
+                                                        onerror="this.onerror=null;this.src='{{ asset('http://discountzshop.com/storage/offer/image/qrGE6dP1rf1733201788.png') }}';">
                                                 </div>
-                                                <div class="pe-4">
-                                                    <a href="{{ route('offer.details', $brand_offer_right->slug) }}"
-                                                        class="btn-{{ $loop->iteration }}">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                            height="30" viewBox="0 0 30 30" fill="none">
-                                                            <circle cx="15" cy="15" r="15"
-                                                                fill="#F15A2D"></circle>
-                                                            <path
-                                                                d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
-                                                                fill="white"></path>
-                                                        </svg>
-                                                    </a>
+                                                <div class="promo-content">
+                                                    <h4>{{ $brand_offer_right->name }}</h4>
+                                                    <p class="py-4 mb-0 fw-bold">{!! Str::words($brand_offer_right->short_description, 8) !!}</p>
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <h3 class="main-color">
+                                                                Up to 38% off
+                                                            </h3>
+                                                        </div>
+                                                        <div class="pe-4">
+                                                            <a href="{{ route('offer.details', $brand_offer_right->slug) }}"
+                                                                class="btn-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                    height="30" viewBox="0 0 30 30" fill="none">
+                                                                    <circle cx="15" cy="15" r="15"
+                                                                        fill="#F15A2D">
+                                                                    </circle>
+                                                                    <path
+                                                                        d="M16.4218 9.10538L15.2796 10.2475L19.043 14.0109L5.80547 14.0109V15.6214H19.043L15.2796 19.3848L16.4218 20.5269L22.1326 14.8161L16.4218 9.10538Z"
+                                                                        fill="white"></path>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
-                            <!-- Repeat the product showcase for other products -->
                         </div>
                     </div>
                 </div>
@@ -352,11 +353,11 @@
                         <!-- Search Box -->
                         <div class="p-3 pb-0 d-flex justify-content-center align-items-center">
                             {{-- <form method="get" action="{{ route('courses.search') }}" class="d-flex w-100" role="search"> --}}
-                            <div class="mb-3 input-group w-50 ms-auto">
+                            <div class="input-group w-25 ms-auto input-box">
                                 <input type="text" id="serviceSearch" class="p-2 form-control rounded-pill"
                                     placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon2"
                                     style="padding: 12px 25px !important;" />
-                                <div class="input-group-append search-btn" style="margin-left: -25px;">
+                                <div class="input-group-append search-btn" style="margin-left: -40px;">
                                     <button class="border-0 btn" type="button"
                                         style="position: relative; top: 8px;">
                                         <i class="fa-solid fa-search"></i>

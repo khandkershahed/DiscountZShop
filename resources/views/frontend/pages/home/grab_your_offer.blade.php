@@ -103,7 +103,7 @@
 
                 <!-- Body Section -->
                 <div class="py-0 card-body pe-0">
-                    <div class="row">
+                    <div class="row grab-box">
                         <div class="py-2 col-lg-2 d-flex flex-column align-items-center bg-light pe-0">
                             <!-- Thumbnail Navigation -->
                             <button class="mb-2 prev-thumb btn btn-primary">
@@ -127,7 +127,6 @@
                                 <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
-
                         <div class="col-lg-10 ps-0">
                             <div class="grabMain grab-offer-tabs-box">
                                 {{-- All Offer Box --}}
@@ -214,6 +213,16 @@
 </section>
 
 @push('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let offerBox = document.querySelector(".grab-offer-tabs-box");
+        let offerItems = offerBox.querySelectorAll(".offers-items");
+
+        if (offerItems.length <= 6) { // Adjust this number as needed
+            offerBox.style.overflowY = "hidden"; // Disable scrollbar if not needed
+        }
+    });
+</script>
     <script>
         $(document).ready(function() {
             $('.grabMain').slick({
@@ -225,7 +234,7 @@
             });
 
             $('.grabThumbs').slick({
-                slidesToShow: 6, // Adjust number of titles visible
+                slidesToShow: 7, // Adjust number of titles visible
                 slidesToScroll: 1,
                 asNavFor: '.grabMain',
                 dots: false,

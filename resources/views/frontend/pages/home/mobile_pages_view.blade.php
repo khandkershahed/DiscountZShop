@@ -10,7 +10,7 @@
                     <div class="col-6">
                         <div class="d-flex align-items-center">
                             <h6 class="mb-0 text-black">Available Coupons
-                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 13"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 13"
                                     fill="none">
                                     <path
                                         d="M16.6934 8.21872C16.3539 8.21872 16.0781 8.48188 16.0781 8.80575C16.0781 9.12968 16.3539 9.39279 16.6934 9.39279C17.0328 9.39279 17.3086 9.12968 17.3086 8.80575C17.3086 8.48188 17.0328 8.21872 16.6934 8.21872Z"
@@ -21,7 +21,7 @@
                                     <path
                                         d="M11.7715 3.5224C11.4321 3.5224 11.1562 3.78556 11.1562 4.10946C11.1562 4.43336 11.4321 4.69651 11.7715 4.69651C12.1109 4.69651 12.3867 4.43336 12.3867 4.10946C12.3867 3.78556 12.1109 3.5224 11.7715 3.5224Z"
                                         fill="#F15A2D" />
-                                </svg> --}}
+                                </svg>
                             </h6>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                             </button>
                         </li>
                         <!-- Loop through categories -->
-                        @if ($categories->count() > 0)
+                        {{-- @if ($categories->count() > 0)
                             @foreach ($categories as $index => $offercategory)
                                 @if ($offercategory->offers->count() > 0)
                                     <li class="nav-item flex-shrink-0 {{ $index >= 7 ? 'd-none more-tabs' : '' }}"
@@ -157,7 +157,7 @@
                                     </li>
                                 @endif
                             @endforeach
-                        @endif
+                        @endif --}}
                     </ul>
                 </div>
                 <div class="tab-content" id="myTabContent">

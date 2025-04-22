@@ -112,9 +112,10 @@
                                     <div class="p-4 row align-items-center">
                                         <div class="col-9">
                                             <a href="{{ route('brand.details', optional($store->brand)->slug) }}">
+                                                {{-- <a href="#"> --}}
                                                 <div>
                                                     <img src="{{ !empty(optional($store->brand)->logo) ? url('storage/' . optional($store->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($store->name) }}"
-                                                        width="150px" class="rounded-2 mobile-offers"
+                                                        width="150px" class="rounded-2 mobile-offers store-logo-img"
                                                         style="object-fit: contain;" alt="" />
                                                 </div>
                                             </a>
@@ -136,6 +137,7 @@
                                         <div class="pt-4 col-lg-12 offer_title">
                                             <div class="pb-4 pb-lg-0 d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('vendor.stores', optional($store->brand)->slug) }}">
+                                                    {{-- <a href="#"> --}}
                                                     {{ $store->title }}
 
                                                     {{-- <a class="add_to_wishlist" style="cursor: pointer;" data-product_id="{{ $store->id }}"
