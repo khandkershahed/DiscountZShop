@@ -642,7 +642,7 @@ p {
     object-fit: contain;
 }
 .product-scroll-show {
-    height: 568px;
+    height: 610px;
     overflow-x: hidden;
 }
 .mapoverlay {
@@ -763,7 +763,7 @@ p {
 .deal-of-the-day {
     border: 1px solid #e2e2e2 !important;
     background: #fff;
-    height: 568px;
+    height: 610px;
 }
 .deals-of-the-day-box img {
     width: 100%;
@@ -792,10 +792,13 @@ p {
 .search-btn {
     position: absolute;
     left: 95.5%;
-    top: 3px;
+    /* top: 3px; */
     border-radius: 100%;
     /* background: #f15a2d; */
     color: #808080;
+}
+.input-box {
+    margin-bottom: 5px;
 }
 .deal-card {
     background-color: #ebebeb;
@@ -829,11 +832,22 @@ p {
     text-align: center;
     background: #e1e1e145;
 }
-.grab-offer-tabs-box {
-    height: 420px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Disable horizontal scrolling */
+
+.grab-box {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
+
+.grab-offer-tabs-box {
+    flex-grow: 1;
+    min-height: auto;
+    max-height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 ::placeholder {
     color: #cbcbcb !important;
     opacity: 0.5; /* Firefox */
@@ -2420,4 +2434,31 @@ button:hover .button-text {
     background-position: center;
     max-height: 130px;
     object-fit: auto;
+}
+.fixed-columns {
+    height: 280px;
+    display: flex;
+    align-items: center;
+}
+.promo-img {
+    width: 100%;
+    height: 100%;
+}
+
+.promo-img-box {
+    width: 40%;
+}
+
+.promo-content {
+    width: 60%;
+    padding-right: 8px;
+}
+
+.offer-boxes{
+    height: 270px;
+}
+.store-logo-img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
 }

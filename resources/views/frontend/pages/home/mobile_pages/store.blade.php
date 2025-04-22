@@ -8,7 +8,7 @@
 
     .category-logo {
         width: 100%;
-        height: 90px;
+        height: 100%;
         border-radius: 4px;
         padding: 3px;
         display: flex;
