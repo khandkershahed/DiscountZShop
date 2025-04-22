@@ -12,9 +12,9 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-dark p-8 rounded-2">
+                            <div class="bg-light-dark p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-warning my-2">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0"
                                         viewBox="0 0 32 32" style="enable-background:new 0 0 32 32"
                                         xml:space="preserve">
@@ -31,8 +31,9 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="" class="text-dark fw-bold fs-6">Total Brand</a>
-                                <span class="float-end fw-bolder badge bg-success">{{ $brandCount }}</span>
+                                <a href="{{ route('admin.brands.index') }}" class="text-dark fw-bold fs-3">Total
+                                    Brand</a>
+                                <span class="float-end fw-bolder fs-2 badge bg-success">{{ $brandCount }}</span>
                             </div>
 
                         </div>
@@ -40,9 +41,10 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-danger p-8 rounded-2">
+                            <div
+                                class="bg-light-primary p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-primary my-2">
                                     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 122.88 114.58">
                                         <title>product</title>
@@ -51,8 +53,9 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="" class="text-primary fw-bold fs-6">Total Offer</a>
-                                <span class="float-end fw-bolder badge bg-primary">{{ $offerCount }}</span>
+                                <a href="{{ route('admin.offer.index') }}" class="text-primary fw-bold fs-3">Total
+                                    Offer</a>
+                                <span class="float-end fw-bolder fs-2 badge bg-primary">{{ $offerCount }}</span>
                             </div>
 
                         </div>
@@ -60,9 +63,10 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-primary p-8 rounded-2">
+                            <div
+                                class="bg-light-info p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+                                <span class="svg-icon svg-icon-3x svg-icon-info my-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
                                         <path opacity="0.3"
@@ -74,8 +78,10 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="#" class="text-danger fw-bold fs-6 mt-2">Total Store</a>
-                                <span class="float-end fw-bolder text-danger badge bg-dark">{{ $storeCount }}</span>
+                                <a href="{{ route('admin.store.index') }}" class="text-info fw-bold fs-3 mt-2">Total
+                                    Store</a>
+                                <span
+                                    class="float-end fw-bolder text-white fs-2 badge bg-info">{{ $storeCount }}</span>
                             </div>
 
                         </div>
@@ -83,23 +89,64 @@
 
                         <!--begin::Col-->
                         <div class="col-lg-3">
-                            <div class="bg-light-success p-8 rounded-2">
+                            <div
+                                class="bg-light-danger p-8 rounded-2 d-flex align-items-center justify-content-between">
                                 <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
-                                <span class="svg-icon svg-icon-3x svg-icon-info d-block my-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none">
-                                        <path
-                                            d="M6 8.725C6 8.125 6.4 7.725 7 7.725H14L18 11.725V12.925L22 9.725L12.6 2.225C12.2 1.925 11.7 1.925 11.4 2.225L2 9.725L6 12.925V8.725Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.3"
-                                            d="M22 9.72498V20.725C22 21.325 21.6 21.725 21 21.725H3C2.4 21.725 2 21.325 2 20.725V9.72498L11.4 17.225C11.8 17.525 12.3 17.525 12.6 17.225L22 9.72498ZM15 11.725H18L14 7.72498V10.725C14 11.325 14.4 11.725 15 11.725Z"
-                                            fill="currentColor" />
+                                <span class="svg-icon svg-icon-3x svg-icon-danger my-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        version="1.1" width="256" height="256" viewBox="0 0 256 256"
+                                        xml:space="preserve">
+                                        <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                                            transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                            <path
+                                                d="M 49.886 27.623 c -1.572 -0.36 -3.206 -0.556 -4.886 -0.556 c -12.049 0 -21.816 9.767 -21.816 21.816 v 24.825 h 9.773 V 48.883 C 32.956 38.515 40.191 29.842 49.886 27.623 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(219,46,46); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path d="M 49.886 27.623"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 49.886 27.623 c -9.695 2.22 -19.862 10.892 -19.862 21.26 l -6.841 24.825 c 13.888 2.685 28.518 2.333 43.633 0 V 48.883 C 66.816 38.515 59.581 29.842 49.886 27.623 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 49.886 27.623 c -1.572 -0.36 -3.206 -0.556 -4.886 -0.556 c -12.049 0 -21.816 9.767 -21.816 21.816 v 24.825 h 9.773 V 48.883 C 32.956 38.515 40.191 29.842 49.886 27.623 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(219,46,46); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 74.768 73.708 H 30.932 v 12.102 h 47.168 v -8.769 C 78.101 75.2 76.608 73.708 74.768 73.708 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(75,95,123); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 32.887 78.651 v -4.943 H 15.232 c -1.841 0 -3.333 1.492 -3.333 3.333 v 7.29 c 0 1.841 1.492 3.333 3.333 3.333 h 59.536 c 1.841 0 3.333 -1.492 3.333 -3.333 v -0.475 H 38.092 C 35.217 83.856 32.887 81.526 32.887 78.651 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(55,70,91); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 14.389 47.336 H 2 c -1.104 0 -2 -0.895 -2 -2 c 0 -1.104 0.896 -2 2 -2 h 12.389 c 1.104 0 2 0.896 2 2 C 16.389 46.441 15.494 47.336 14.389 47.336 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 88 47.336 H 75.61 c -1.104 0 -2 -0.895 -2 -2 c 0 -1.104 0.896 -2 2 -2 H 88 c 1.104 0 2 0.896 2 2 C 90 46.441 89.104 47.336 88 47.336 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 45 16.726 c -1.104 0 -2 -0.896 -2 -2 V 2.336 c 0 -1.104 0.896 -2 2 -2 s 2 0.896 2 2 v 12.39 C 47 15.831 46.104 16.726 45 16.726 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 23.355 25.691 c -0.512 0 -1.024 -0.195 -1.414 -0.586 l -8.761 -8.761 c -0.781 -0.781 -0.781 -2.047 0 -2.828 c 0.78 -0.781 2.048 -0.781 2.828 0 l 8.761 8.761 c 0.781 0.781 0.781 2.047 0 2.828 C 24.379 25.496 23.867 25.691 23.355 25.691 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            <path
+                                                d="M 66.645 25.691 c -0.512 0 -1.023 -0.195 -1.414 -0.586 c -0.781 -0.781 -0.781 -2.047 0 -2.828 l 8.761 -8.761 c 0.781 -0.781 2.047 -0.781 2.828 0 c 0.781 0.781 0.781 2.047 0 2.828 l -8.761 8.761 C 67.668 25.496 67.156 25.691 66.645 25.691 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(241,51,51); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                        </g>
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <a href="" class="text-info fw-bold fs-6 mt-2">Total
-                                    Coupon</a>
-                                <span class="float-end fw-bolder badge bg-info"></span>
+                                <a href="{{ route('admin.expired.offers') }}" class="text-danger fw-bold fs-3 mt-2">Expired Offers</a>
+                                <span class="float-end fw-bolder fs-2 badge bg-danger">{{ $expiredoffers }}</span>
                             </div>
 
                         </div>

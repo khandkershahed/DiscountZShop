@@ -81,6 +81,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
         ->name('logout');
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['verified'])->name('dashboard');
+    Route::get('/expired_offers', [OfferController::class, 'expiredOffers'])->name('expired.offers');
 
     Route::resources(
         [

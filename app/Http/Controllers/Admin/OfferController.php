@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Offer;
+use App\Models\Category;
 use App\Models\OfferType;
 use Illuminate\Http\Request;
 use App\Mail\OfferListCreated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -28,6 +29,14 @@ class OfferController extends Controller
             'allCategories' => Category::latest('id')->get(),
         ];
         return view('admin.pages.offer.index', $data);
+    }
+    public function expiredOffers()
+    {
+        $data = [
+            'offers'        => Offer::where('expiry_date', '<=', Carbon::now()->format('Y-m-d'))->get(),
+            'allCategories' => Category::latest('id')->get(),
+        ];
+        return view('admin.pages.offer.expired_offers', $data);
     }
 
     /**
@@ -72,8 +81,8 @@ class OfferController extends Controller
             'banner_image'      => 'nullable|file|mimes:webp,jpeg,png,jpg|max:2048',
             'description'       => 'nullable|string',
             'short_description' => 'nullable|string',
-            'map_url'           => 'required|string',
-            'offer_type_id'           => 'nullable|string',
+            'map_url'           => 'nullable',
+            'offer_type_id'     => 'nullable|string',
             'price'             => 'nullable|numeric',
             'offer_price'       => 'nullable|numeric',
             'start_date'        => 'nullable|date',
@@ -244,41 +253,35 @@ class OfferController extends Controller
             // Update the brand with the new or existing file paths
             $offer->update([
 
-                'logo' => $uploadedFiles['logo']['status'] == 1 ? $uploadedFiles['logo']['file_path'] : $offer->logo,
-                'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $offer->image,
-                'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $offer->banner_image,
-
-                'country_id' => json_encode($request->country_id),
-                'division_id' => json_encode($request->division_id),
-                'city_id' => json_encode($request->city_id),
-                'area_id' => json_encode($request->area_id),
-                'notify_to' => json_encode($request->notify_to),
-
-                'tags' => $request->tags,
-
-                'added_by' => Auth::guard('admin')->user()->id,
-
-                'name' => $request->name,
-                'badge' => $request->badge,
-                'category_id' => $request->category_id,
-                'brand_id' => $request->brand_id,
-                'store_id' => $request->store_id,
-                'price' => $request->price,
-                'offer_price' => $request->offer_price,
-                'start_date' => $request->start_date,
-
-                'description' => $request->description,
+                'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : $offer->logo,
+                'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : $offer->image,
+                'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $offer->banner_image,
+                'country_id'        => json_encode($request->country_id),
+                'division_id'       => json_encode($request->division_id),
+                'city_id'           => json_encode($request->city_id),
+                'area_id'           => json_encode($request->area_id),
+                'notify_to'         => json_encode($request->notify_to),
+                'tags'              => $request->tags,
+                'added_by'          => Auth::guard('admin')->user()->id,
+                'name'              => $request->name,
+                'badge'             => $request->badge,
+                'category_id'       => $request->category_id,
+                'brand_id'          => $request->brand_id,
+                'store_id'          => $request->store_id,
+                'price'             => $request->price,
+                'offer_price'       => $request->offer_price,
+                'start_date'        => $request->start_date,
+                'description'       => $request->description,
                 'short_description' => $request->short_description,
-                'locations' => $request->locations,
-                'url' => $request->url,
-                'source_url' => $request->source_url,
-                'coupon_code' => $request->coupon_code,
-                'status' => $request->status,
-
+                'locations'         => $request->locations,
+                'url'               => $request->url,
+                'source_url'        => $request->source_url,
+                'coupon_code'       => $request->coupon_code,
+                'status'            => $request->status,
                 'notification_date' => $request->notification_date,
-                'expiry_date' => $request->expiry_date,
-                'map_url' => $request->map_url,
-                'offer_type_id' => $request->offer_type_id,
+                'expiry_date'       => $request->expiry_date,
+                'map_url'           => $request->map_url,
+                'offer_type_id'     => $request->offer_type_id,
 
             ]);
 

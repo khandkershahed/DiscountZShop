@@ -215,7 +215,7 @@
                         <x-metronic.label for="price" class="col-form-label fw-bold fs-6">{{ __('Price') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="price" type="number" s name="price"
+                        <x-metronic.input id="price" type="number" name="price"
                             value="{{ $offer->price }}" placeholder="Eg:10,000.00"></x-metronic.input>
                     </div>
 
@@ -224,7 +224,7 @@
                             class="col-form-label fw-bold fs-6">{{ __('Offer Price') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="offer_price" type="number" s name="offer_price"
+                        <x-metronic.input id="offer_price" type="number" name="offer_price"
                             value="{{ $offer->offer_price }}" placeholder="Eg:10,000.00"></x-metronic.input>
                     </div>
 
@@ -233,17 +233,17 @@
                             class="col-form-label fw-bold fs-6">{{ __('Coupon Code') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="coupon_code" type="text" s name="coupon_code"
+                        <x-metronic.input id="coupon_code" type="text" name="coupon_code"
                             value="{{ $offer->coupon_code }}" placeholder="Eg: Dis-125874"></x-metronic.input>
                     </div>
 
                     <div class="col-lg-6 mb-7">
                         <x-metronic.label for="map_url"
-                            class="col-form-label fw-bold fs-6 required">{{ __('Map Url') }}
+                            class="col-form-label fw-bold fs-6">{{ __('Map Url') }}
                         </x-metronic.label>
 
-                        <x-metronic.textarea id="map_url" type="text" s name="map_url"
-                            placeholder="Please Map Url" required>{!! $offer->map_url !!}</x-metronic.textarea>
+                        <x-metronic.textarea id="map_url" type="text" name="map_url"
+                            placeholder="Please Map Url">{!! $offer->map_url !!}</x-metronic.textarea>
                     </div>
 
                     <!-- Update for date fields -->

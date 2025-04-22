@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,7 +32,7 @@ class Brand extends Model
 
     public function offers()
     {
-        return $this->hasMany(Offer::class);
+        return $this->hasMany(Offer::class)->where('expiry_date', '>=', Carbon::now()->format('Y-m-d'));
     }
     public function coupons()
     {
@@ -41,7 +42,7 @@ class Brand extends Model
     {
         return $this->hasMany(Store::class);
     }
-    
+
     public function storeName()
     {
         return $this->belongsTo(Store::class);
@@ -54,6 +55,6 @@ class Brand extends Model
 
     public function offer()
     {
-        return $this->belongsTo(Offer::class, 'brand_id');
+        return $this->belongsTo(Offer::class, 'brand_id')->where('expiry_date', '>=', Carbon::now()->format('Y-m-d'));
     }
 }

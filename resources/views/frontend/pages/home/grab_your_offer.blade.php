@@ -141,7 +141,7 @@
                                                                 <div class="col-4">
                                                                     <div class="grab-imgs">
                                                                         <img class="img-fluid rounded-2"
-                                                                            src="{{ !empty($alloffer->logo) ? url('storage/' . $alloffer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($alloffer->name) }}"
+                                                                            src="{{ !empty(optional($alloffer->brand)->logo) ? url('storage/' . optional($alloffer->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($alloffer->brand)->name) }}"
                                                                             alt="">
                                                                     </div>
                                                                 </div>
@@ -177,7 +177,7 @@
                                                                         <div class="col-4">
                                                                             <div class="grab-imgs">
                                                                                 <img class="img-fluid rounded-2"
-                                                                                    src="{{ !empty($category_offer->logo) ? url('storage/' . $category_offer->logo) : 'https://ui-avatars.com/api/?name=' . urlencode($category_offer->name) }}"
+                                                                                    src="{{ !empty(optional($category_offer->brand)->logo) ? url('storage/' . optional($category_offer->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($category_offer->brand)->name) }}"
                                                                                     alt="">
                                                                             </div>
                                                                         </div>

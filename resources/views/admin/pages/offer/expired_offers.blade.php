@@ -129,13 +129,12 @@
                 <thead class="bg-dark text-light">
                     <tr>
                         <th width="5%">No</th>
-                        <th width="10%">Brand Logo</th>
                         <th width="10%">Image</th>
                         <th width="15%">Category</th>
                         <th width="20%">Name</th>
                         {{-- <th width="5%">Price</th>
                         <th width="5%">Offer Price</th> --}}
-                        {{-- <th width="10%">Coupon Code</th> --}}
+                        <th width="10%">Coupon Code</th>
                         <th width="10%">Added By</th>
                         <th width="10%">Availability</th>
                         <th width="10%">Status</th>
@@ -149,11 +148,6 @@
                             <td>{{ $key + 1 }}</td>
 
                             <td class="">
-                                <img src="{{ !empty(optional($offer->brand)->logo) ? url('storage/' . optional($offer->brand)->logo) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($offer->brand)->name) }}" height="40" width="40">
-
-                            </td>
-
-                            <td class="">
                                 <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
                                     height="40" width="40" alt="{{ $offer->name }}">
 
@@ -161,10 +155,9 @@
 
                             <td class="text-start">{{ optional($offer->categoryName)->name }}</td>
                             <td class="text-start">{{ $offer->name }}</td>
-
                             {{-- <td class="text-start">Tk {{ $offer->price }}</td>
                             <td class="text-start">Tk {{ $offer->offer_price }}</td> --}}
-                            {{-- <td class="text-start">{{ $offer->coupon_code }}</td> --}}
+                            <td class="text-start">{{ $offer->coupon_code }}</td>
 
                             <td class="text-start">{{ optional($offer->added)->name }}</td>
 
@@ -190,7 +183,7 @@
                             </td>
 
 
-                            <td class="text-start">
+                            <td class="text-center">
 
                                 @if (Auth::guard('admin')->user()->can('edit.offer'))
                                     <a href="{{ route('admin.offer.edit', $offer->id) }}" class="text-primary">
@@ -199,7 +192,7 @@
                                 @endif
 
                                 @if (Auth::guard('admin')->user()->can('delete.offer'))
-                                    <a href="{{ route('admin.offer.destroy', $offer->id) }}" class="delete ms-2">
+                                    <a href="{{ route('admin.offer.destroy', $offer->id) }}" class="delete">
                                         <i class="fa-solid fa-trash text-danger"></i>
                                     </a>
                                 @endif
