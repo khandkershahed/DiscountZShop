@@ -5,15 +5,30 @@ namespace App\Http\Controllers\User\Api;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Ichtrojan\Otp\Models\Otp;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use App\Mail\EmailVerificationMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 
 class UserApiController extends Controller
 {
+    private $otp;
+
+    public function __construct()
+    {
+        $this->otp = new Otp();
+    }
+
+    /**
+     * Register a new user.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     // public function register(Request $request)
     // {
     //     $request->validate([
@@ -37,28 +52,69 @@ class UserApiController extends Controller
     //         'status' => 'success'
     //     ], 201);
     // }
-    public function register(Request $request): JsonResponse
+    public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:19|',
             'password' => 'required|string|min:8|confirmed',
         ], [
             'name.required' => 'Name is required',
             'email.required' => 'Email is required',
+            'phone.required' => 'Your Phone Number is required',
             'password.required' => 'Password is required',
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
         }
         $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+        // $input['password'] = bcrypt($input['password']);
+        $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
         $success['name'] =  $user->name;
-        return $this->sendResponse($success, 'User register successfully.');
+        // $otp = Otp::generate($user->email, 6, 15);
+        // Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
+        return $this->sendResponse($success, 'User is registered successfully.');
     }
-    
+    public function sendemailVerification(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|max:255|exists:users',
+        ], [
+            'email.required' => 'Email is required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+        $user = User::where('email', $request->email)->first();
+        $otp = Otp::generate($user->email, 6, 15);
+        Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
+        return $this->sendResponse($user, 'Email verification OTP sent successfully.');
+    }
+    public function emailVerification(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|max:255|exists:users',
+            'otp' => 'required|max:6',
+        ], [
+            'email.required' => 'Email is required',
+            'otp.required' => 'OTP is required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+        $otp2 = Otp::verify($request->email, $request->otp);
+        if ($otp2) {
+            $user = User::where('email', $request->email)->first();
+            $user->update(['email_verified_at' => now()]);
+            return $this->sendResponse($user, 'Email is verified successfully.');
+        } else {
+            return $this->sendError('Validation Error.', ['otp' => 'OTP is not valid']);
+        }
+    }
+
     public function login(Request $request)
     {
         $request->validate([

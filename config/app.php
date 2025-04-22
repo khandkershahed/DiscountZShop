@@ -1,5 +1,6 @@
 <?php
 
+use Ichtrojan\Otp\OtpServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -173,6 +174,7 @@ return [
         App\Providers\LocationServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Ichtrojan\Otp\OtpServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -188,6 +190,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Otp' => Ichtrojan\Otp\Otp::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

@@ -28,6 +28,8 @@ Route::prefix('api')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [UserApiController::class, 'logout']);
+        Route::get('/email-verification', [UserApiController::class, 'sendemailVerification']);
+        Route::post('/email-verification', [UserApiController::class, 'emailVerification']);
         Route::post('/change-password', [UserApiController::class, 'updatePassword']);
         Route::get('/profile', [UserApiController::class, 'profile']);
         Route::put('/profile', [UserApiController::class, 'editProfile']);
@@ -97,8 +99,8 @@ Route::prefix('api')->group(function () {
     Route::get('/stores/area/{area_id}', [HomeApiController::class, 'filterByArea']);
 
     // Terms and Privacy
-    Route::get('/terms', [HomeApiController::class, 'discounttermsCondition']);
-    Route::get('/privacy', [HomeApiController::class, 'discountprivacyPolicy']);
+    Route::get('/terms-and-conditions', [HomeApiController::class, 'termsCondition']);
+    Route::get('/privacy', [HomeApiController::class, 'privacyPolicy']);
 
     // Wallet & FAQ
     Route::get('/wallet', [HomeApiController::class, 'wallet']);

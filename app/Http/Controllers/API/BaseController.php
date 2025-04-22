@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\API;
-
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller as Controller;
 class BaseController extends Controller
 {
     /**
@@ -12,9 +9,10 @@ class BaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function sendResponse($result, $message)
     {
-     $response = [
+    	$response = [
             'success' => true,
             'data'    => $result,
             'message' => $message,
@@ -28,7 +26,7 @@ class BaseController extends Controller
      */
     public function sendError($error, $errorMessages = [], $code = 404)
     {
-     $response = [
+    	$response = [
             'success' => false,
             'message' => $error,
         ];
@@ -36,5 +34,7 @@ class BaseController extends Controller
             $response['data'] = $errorMessages;
         }
         return response()->json($response, $code);
+
     }
+
 }

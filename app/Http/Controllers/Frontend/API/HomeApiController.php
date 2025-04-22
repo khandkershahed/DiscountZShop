@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\API;
 
 use Carbon\Carbon;
+use App\Models\Faq;
 use App\Models\Brand;
 use App\Models\Offer;
 use App\Models\Banner;
@@ -15,6 +16,8 @@ use App\Models\PageBanner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\PrivacyPolicy;
+use App\Models\TermsAndCondition;
 
 class HomeApiController extends Controller
 {
@@ -488,7 +491,57 @@ class HomeApiController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'page_banner' => $setting,
+            'data' => $setting,
+        ]);
+    }
+    public function frequentlyAsked()
+    {
+        $page_banner = PageBanner::where('page_name', 'faq')->latest('id')->first();
+        if ($page_banner) {
+            $page_banner->image = url('storage/' . $page_banner->image);
+        }
+        $faqs         = Faq::where('status', 'active')->orderBy('order', 'ASC')->get();
+        $faqs->map(function ($faq) {
+            $faq->question = html_entity_decode(strip_tags($faq->question));
+            $faq->answer   = html_entity_decode(strip_tags($faq->answer));
+            return $faq;
+        });
+
+        return response()->json([
+            'status' => 'success',
+            'page_banner' => $page_banner,
+            'data'   => $faqs,
+            'count'  => $faqs->count(),
+        ]);
+    }
+    public function termsCondition()
+    {
+        $page_banner = PageBanner::where('page_name', 'terms')->latest('id')->first();
+        if ($page_banner) {
+            $page_banner->image = url('storage/' . $page_banner->image);
+        }
+        $terms         = TermsAndCondition::where('status', 'active')->latest('id')->first();
+        $terms->terms  = html_entity_decode(strip_tags($terms->terms));
+
+        return response()->json([
+            'status' => 'success',
+            'page_banner' => $page_banner,
+            'data'   => $terms,
+        ]);
+    }
+    public function privacyPolicy()
+    {
+        $page_banner = PageBanner::where('page_name', 'privacy')->latest('id')->first();
+        if ($page_banner) {
+            $page_banner->image = url('storage/' . $page_banner->image);
+        }
+        $terms         = PrivacyPolicy::where('status', 'active')->latest('id')->first();
+        $terms->terms  = html_entity_decode(strip_tags($terms->terms));
+
+        return response()->json([
+            'status' => 'success',
+            'page_banner' => $page_banner,
+            'data'   => $terms,
         ]);
     }
 }

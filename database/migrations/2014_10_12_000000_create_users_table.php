@@ -15,6 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->nullable();
+            $table->integer('point')->nullable();
+            $table->string('membership_type')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('division')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('area')->nullable();
+            $table->string('location')->nullable();
+            $table->string('profile_image')->nullable();
+            $table->string('status')->default('active')->nullable();
+            $table->string('verification_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
