@@ -89,7 +89,7 @@
                 <div class="container">
                     <div class="row align-items-center gx-2">
                         <div class="py-2 col-lg-12">
-                            <h1 class="pt-0 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}
+                            <h1 class="pt-2 promotion-title">Biggest Deals From {{ optional($homepage->brand)->name }}
                             </h1>
                             <p class="text-center">
                                 {{ optional($homepage->brand)->description }}
