@@ -544,4 +544,22 @@ class HomeApiController extends Controller
             'data'   => $terms,
         ]);
     }
+    public function allDivision()
+    {
+        $divisions = DB::table('divisions')->where('status', 'active')->get();
+        return response()->json([
+            'status' => 'success',
+            'data'   => $divisions,
+            'count'  => $divisions->count(),
+        ]);
+    }
+    public function getCitiesByDivision($id)
+    {
+        $cities = DB::table('cities')->where('division_id', $id)->where('status', 'active')->get();
+        return response()->json([
+            'status' => 'success',
+            'data'   => $cities,
+            'count'  => $cities->count(),
+        ]);
+    }
 }

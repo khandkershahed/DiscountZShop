@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('set null');
             $table->foreignId('division_id')->nullable()->constrained('divisions')->onDelete('set null');
             $table->string('name', 255)->nullable();
+            $table->string('slug', 255)->nullable();
             $table->string('latitude', 255)->nullable();
             $table->string('longitude', 255)->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');

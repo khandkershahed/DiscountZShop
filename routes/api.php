@@ -87,9 +87,8 @@ Route::prefix('api')->group(function () {
     Route::get('/coupons/search', [HomeApiController::class, 'searchCouponName']);
 
 
-    Route::get('/division/{id}/cities', [HomeApiController::class, 'GetCheckDivision']);
-    Route::get('/city/{id}/states', [HomeApiController::class, 'StateGetAjaxCity']);
-    Route::get('/division/{id}/districts', [HomeApiController::class, 'GetCheckDistrict']);
+    Route::get('/divisions', [HomeApiController::class, 'allDivision']);
+    Route::get('/division/{id}/cities', [HomeApiController::class, 'getCitiesByDivision']);
     Route::get('/city/{id}/areas', [HomeApiController::class, 'StateGetAjax']);
 
     // Store
