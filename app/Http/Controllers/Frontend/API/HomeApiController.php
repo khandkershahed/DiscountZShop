@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\API;
 
 use Carbon\Carbon;
 use App\Models\Faq;
+use App\Models\City;
 use App\Models\Brand;
 use App\Models\Offer;
 use App\Models\Banner;
@@ -11,13 +12,14 @@ use App\Models\Coupon;
 use App\Models\Slider;
 use App\Models\AboutUs;
 use App\Models\Setting;
+use App\Models\Division;
 use App\Models\HomePage;
 use App\Models\PageBanner;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use App\Models\PrivacyPolicy;
 use App\Models\TermsAndCondition;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class HomeApiController extends Controller
 {
@@ -553,13 +555,22 @@ class HomeApiController extends Controller
             'count'  => $divisions->count(),
         ]);
     }
-    public function getCitiesByDivision($id)
+    public function getCitiesByDivision($slug)
     {
-        $cities = DB::table('cities')->where('division_id', $id)->where('status', 'active')->get();
+        $division = Division::with('cities')->where('slug', $slug)->first();
         return response()->json([
             'status' => 'success',
-            'data'   => $cities,
-            'count'  => $cities->count(),
+            'division'   => $division,
+            'cities_count'  => $division->cities->count(),
+        ]);
+    }
+    public function getAreasByCity($slug)
+    {
+        $city = City::with('areas')->where('slug', $slug)->first();
+        return response()->json([
+            'status' => 'success',
+            'city'   => $city,
+            'areas_count'  => $city->areas->count(),
         ]);
     }
 }
