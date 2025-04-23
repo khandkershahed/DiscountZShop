@@ -405,7 +405,7 @@ class HomeApiController extends Controller
     public function brandOffers($slug)
     {
         $brand  = Brand::with('offers')->where('slug', $slug)->first();
-        $stores = $brand->stores;
+        $offers = $brand->offers;
 
         if ($brand) {
             $brand->about             = html_entity_decode(strip_tags($brand->about));
@@ -436,38 +436,38 @@ class HomeApiController extends Controller
             $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
             $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
         }
-        $stores->map(function ($store) {
-            $store->description = html_entity_decode(strip_tags($store->description));
-            $store->location    = html_entity_decode(strip_tags($store->location));
-            $store->url         = html_entity_decode($store->url);
-            $countryIds         = json_decode($store->country_id, true) ?? [];
-            $divisionIds        = json_decode($store->division_id, true) ?? [];
-            $cityIds            = json_decode($store->city_id, true) ?? [];
-            $areaIds            = json_decode($store->area_id, true) ?? [];
-            $brandIds           = json_decode($store->brand_id, true) ?? [];
-            $categoryIds        = json_decode($store->category_id, true) ?? [];
-            $store->country     = DB::table('countries')->where('id', $countryIds)->value('name');
-            $store->division    = DB::table('divisions')->where('id', $divisionIds)->value('name');
-            $store->city        = DB::table('cities')->where('id', $cityIds)->value('name');
-            $store->area        = DB::table('areas')->where('id', $areaIds)->value('name');
-            $store->brand       = DB::table('brands')->where('id', $brandIds)->value('name');
-            $store->category    = DB::table('categories')->where('id', $categoryIds)->value('name');
+        $offers->map(function ($offer) {
+            $offer->description = html_entity_decode(strip_tags($offer->description));
+            $offer->location    = html_entity_decode(strip_tags($offer->location));
+            $offer->url         = html_entity_decode($offer->url);
+            $countryIds         = json_decode($offer->country_id, true) ?? [];
+            $divisionIds        = json_decode($offer->division_id, true) ?? [];
+            $cityIds            = json_decode($offer->city_id, true) ?? [];
+            $areaIds            = json_decode($offer->area_id, true) ?? [];
+            $brandIds           = json_decode($offer->brand_id, true) ?? [];
+            $categoryIds        = json_decode($offer->category_id, true) ?? [];
+            $offer->country     = DB::table('countries')->where('id', $countryIds)->value('name');
+            $offer->division    = DB::table('divisions')->where('id', $divisionIds)->value('name');
+            $offer->city        = DB::table('cities')->where('id', $cityIds)->value('name');
+            $offer->area        = DB::table('areas')->where('id', $areaIds)->value('name');
+            $offer->brand       = DB::table('brands')->where('id', $brandIds)->value('name');
+            $offer->category    = DB::table('categories')->where('id', $categoryIds)->value('name');
             unset(
-                $store->logo,
-                $store->image,
-                $store->banner_image,
-                $store->added_by,
-                $store->update_by,
-                $store->category,
-                $store->created_at,
-                $store->updated_at,
-                // $store->category,
+                $offer->logo,
+                $offer->image,
+                $offer->banner_image,
+                $offer->added_by,
+                $offer->update_by,
+                $offer->category,
+                $offer->created_at,
+                $offer->updated_at,
+                // $offer->category,
             );
-            return $store;
+            return $offer;
         });
         $data = [
             'brand'       => $brand,
-            'stores'      => $stores,
+            'offers'      => $offers,
         ];
         return response()->json([
             'status' => 'success',
