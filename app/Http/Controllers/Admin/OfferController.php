@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\Admin;
+use App\Models\Brand;
 use App\Models\Offer;
 use App\Models\Category;
 use App\Models\OfferType;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Mail\OfferListCreated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Store;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -47,6 +49,8 @@ class OfferController extends Controller
         $data = [
             'offer_types'   => OfferType::latest()->get(),
             'allCategories' => Category::latest('id')->get(),
+            'brands'        => Brand::latest()->get(),
+            'stores'        => Store::latest()->get(),
         ];
         // $offer_types = OfferType::latest()->get();
         return view('admin.pages.offer.create', $data);
@@ -209,9 +213,11 @@ class OfferController extends Controller
     public function edit(string $id)
     {
         $data = [
-            'offer' => Offer::findOrFail($id),
+            'offer'         => Offer::findOrFail($id),
+            'brands'        => Brand::latest()->get(),
+            'stores'        => Store::latest()->get(),
             'allCategories' => Category::latest('id')->get(),
-            'offer_types' => OfferType::latest()->get(),
+            'offer_types'   => OfferType::latest()->get(),
         ];
 
         return view('admin.pages.offer.edit', $data);

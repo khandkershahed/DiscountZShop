@@ -71,7 +71,12 @@ class UserApiController extends Controller
         $input = $request->all();
         // $input['password'] = bcrypt($input['password']);
         $input['password'] = Hash::make($input['password']);
-        $user = User::create($input);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
         $success['name'] =  $user->name;
         // $otp = Otp::generate($user->email, 6, 15);
