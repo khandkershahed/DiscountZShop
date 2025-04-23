@@ -123,7 +123,7 @@
                             data-placeholder="Select an option">
                             <option></option>
                             @foreach ($stores as $store)
-                                <option value="{{ $store->id }}">{{ $store->name }}</option>
+                                <option value="{{ $store->id }}">{{ $store->title }}</option>
                             @endforeach
                         </x-metronic.select-option>
                     </div>

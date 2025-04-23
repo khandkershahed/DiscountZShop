@@ -149,7 +149,7 @@
                             @foreach ($stores as $store)
                                 <option value="{{ $store->id }}"
                                     {{ old('store_id', $offer->store_id) == $store->id ? 'selected' : '' }}>
-                                    {{ $store->name }}
+                                    {{ $store->title }}
                                 </option>
                             @endforeach
                         </x-metronic.select-option>
