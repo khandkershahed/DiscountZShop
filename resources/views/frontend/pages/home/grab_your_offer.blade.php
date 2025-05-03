@@ -234,7 +234,7 @@
             });
 
             $('.grabThumbs').slick({
-                slidesToShow: 7, // Adjust number of titles visible
+                slidesToShow: 5, // Adjust number of titles visible
                 slidesToScroll: 1,
                 asNavFor: '.grabMain',
                 dots: false,
