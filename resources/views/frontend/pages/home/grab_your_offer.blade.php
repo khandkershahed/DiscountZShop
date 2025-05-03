@@ -1,6 +1,6 @@
 <style>
     /* Style for the thumbnail titles */
-    /* .grabThumbs {
+    .grabThumbs {
         width: 100%;
         max-height: 100%;
         overflow: hidden;
@@ -10,30 +10,8 @@
     .thumbnail-title {
         color: var(--secondary-color-two);
         border: 1px solid #eee !important;
-        padding: 9px;
         padding: 10px;
-        margin: 5px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    } */
-    .grabThumbs {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        /* Optional: to manage spacing */
-        padding: 0;
-        margin: 0;
-    }
-
-    .thumbnail-title {
-        width: calc(20% - 12px);
-        /* 100% / 5 - margin */
-        box-sizing: border-box;
-        margin: 6px;
-        color: var(--secondary-color-two);
-        border: 1px solid #eee;
-        padding: 10px;
+        margin: 5.6px;
         cursor: pointer;
         border-radius: 5px;
         transition: background-color 0.3s ease;
