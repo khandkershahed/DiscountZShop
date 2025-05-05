@@ -40,70 +40,72 @@
                 <div class="pt-4 available-coupon-slider">
 
                     @foreach ($mobile_coupons as $mobile_coupon)
-                        <div class="p-0 py-3 border-0 card" >
-                            <div class="p-0 card-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="{{ route('brand.details', optional($mobile_coupon->brand)->slug) }}">
-                                            <div class="shadow-sm coupon-logo">
-                                                <img class="img-fluid"
-                                                    src="{{ !empty($mobile_coupon->brand->logo) ? url('storage/' . $mobile_coupon->brand->logo) : 'N/A' }}"
-                                                    alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="px-2">
-                                            <h3>{{ $mobile_coupon->badge }} Off</h3>
-                                            <div class="mt-3 bg-white rounded-2 d-flex align-items-center copy-coupon"
-                                                data-coupon="{{ $mobile_coupon->coupon_code }}" style="cursor: pointer;">
-                                                <div class="p-1 border rounded-2">
-                                                    {{-- <img class="img-fluid" width="25px"
-                                                        src="{{ asset('images/coupon-icon.png') }}"
-                                                        alt=""> --}}
-                                                    <i class="px-2 fas fa-copy main-color"></i>
+                        @if (optional($mobile_coupon->brand)->slug))
+                            <div class="p-0 py-3 border-0 card" >
+                                <div class="p-0 card-body">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <a href="{{ route('brand.details', optional($mobile_coupon->brand)->slug) }}">
+                                                <div class="shadow-sm coupon-logo">
+                                                    <img class="img-fluid"
+                                                        src="{{ !empty($mobile_coupon->brand->logo) ? url('storage/' . $mobile_coupon->brand->logo) : 'N/A' }}"
+                                                        alt="">
                                                 </div>
-                                                <div class="ps-2">
-                                                    <small>Coupon : <span
-                                                            class="main-color">{{ $mobile_coupon->coupon_code }}</span></small>
+                                            </a>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="px-2">
+                                                <h3>{{ $mobile_coupon->badge }} Off</h3>
+                                                <div class="mt-3 bg-white rounded-2 d-flex align-items-center copy-coupon"
+                                                    data-coupon="{{ $mobile_coupon->coupon_code }}" style="cursor: pointer;">
+                                                    <div class="p-1 border rounded-2">
+                                                        {{-- <img class="img-fluid" width="25px"
+                                                            src="{{ asset('images/coupon-icon.png') }}"
+                                                            alt=""> --}}
+                                                        <i class="px-2 fas fa-copy main-color"></i>
+                                                    </div>
+                                                    <div class="ps-2">
+                                                        <small>Coupon : <span
+                                                                class="main-color">{{ $mobile_coupon->coupon_code }}</span></small>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="py-2 d-flex align-items-center justify-content-center w-100">
+                                        <div class="coupon-images-mb ps-2">
+                                            <img class=""
+                                                src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
+                                                alt="">
+                                        </div>
+                                        <div>
+                                            <div class="text-start">
+                                                <div class="">
+                                                    <p class="fw-bold" style="color: #F15A2D">
+                                                        {{ $mobile_coupon->badge }} <span class="text-white">OFF</span>
+                                                    </p>
                                                 </div>
                                             </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- <div class="py-2 d-flex align-items-center justify-content-center w-100">
-                                    <div class="coupon-images-mb ps-2">
-                                        <img class=""
-                                            src="{{ !empty($mobile_coupon->logo) ? url('storage/' . $mobile_coupon->logo) : 'https://ui-avatars.com/api/?name=Default' }}"
-                                            alt="">
-                                    </div>
-                                    <div>
-                                        <div class="text-start">
-                                            <div class="">
-                                                <p class="fw-bold" style="color: #F15A2D">
-                                                    {{ $mobile_coupon->badge }} <span class="text-white">OFF</span>
+                                            <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
+
+                                            <div>
+                                                <p class="pt-2 text-center text-white coupon-text coupon-code">
+                                                    Code: ”<span class="couponCode"
+                                                        id="coupon-code">{{ $mobile_coupon->coupon_code }}</span>”
+                                                    <a href="javascript:void(0);" class="copy-btn"
+                                                        data-coupon_id="{{ $mobile_coupon->coupon_code }}">
+                                                        <i class="fas fa-copy ps-2"></i>
+                                                    </a>
                                                 </p>
                                             </div>
+
                                         </div>
-
-                                        <hr class="py-0 my-2" style="height: 2px; color: #ffffff;">
-
-                                        <div>
-                                            <p class="pt-2 text-center text-white coupon-text coupon-code">
-                                                Code: ”<span class="couponCode"
-                                                    id="coupon-code">{{ $mobile_coupon->coupon_code }}</span>”
-                                                <a href="javascript:void(0);" class="copy-btn"
-                                                    data-coupon_id="{{ $mobile_coupon->coupon_code }}">
-                                                    <i class="fas fa-copy ps-2"></i>
-                                                </a>
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div> --}}
+                                    </div> --}}
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
