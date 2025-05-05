@@ -18,10 +18,10 @@
     </section>
     <!-- Hero End -->
     <section class="mb-2 mb-lg-5">
-        <div class="container p-0 rounded-2" style="margin-top: -55px; position: relative; z-index: 5;">
+        <div class="container p-0 rounded-2" style="margin-top: -74px; position: relative; z-index: 5;">
             <div class="row align-items-center">
                 <div class="col-lg-12">
-                    <div class="p-2 vendor-logo rounded-2" style="background-color: #eee; border: 2px solid #f15a2d;">
+                    <div class="p-2 vendor-logo rounded-2" style="background-color: #fff; border: 2px solid #f15a2d;">
 
                         <a href="">
                             <img class="p-2 img-fluid rounded-2"

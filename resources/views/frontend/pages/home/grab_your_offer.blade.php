@@ -9,8 +9,9 @@
 
     .thumbnail-title {
         color: var(--secondary-color-two);
-        padding: 6px;
-        margin: 6px;
+        border: 1px solid #eee !important;
+        padding: 10px;
+        margin: 5.6px;
         cursor: pointer;
         border-radius: 5px;
         transition: background-color 0.3s ease;
@@ -23,49 +24,49 @@
     }
 
     /* Active class for the selected title */
-        .slick-current .thumbnail-title {
-            background-color: var(--primary-color) !important;
-            color: white !important;
-            border: 1px solid var(--primary-color) !important;
-        }
+    .slick-current .thumbnail-title {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+        border: 1px solid var(--primary-color) !important;
+    }
 
-        /* Hide default Slick navigation */
-        .slick-prev,
-        .slick-next {
-            display: none !important;
-        }
+    /* Hide default Slick navigation */
+    .slick-prev,
+    .slick-next {
+        display: none !important;
+    }
 
-        .next-thumb,
-        .prev-thumb {
-            background-color: transparent;
-            border: 1px solid transparent;
-            color: #f15a2d;
-        }
+    .next-thumb,
+    .prev-thumb {
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #f15a2d;
+    }
 
-        .next-thumb,
-        .prev-thumb:focus {
-            background-color: transparent;
-            border: 1px solid transparent;
-            color: #f15a2d;
-            box-shadow: none;
-        }
+    .next-thumb,
+    .prev-thumb:focus {
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #f15a2d;
+        box-shadow: none;
+    }
 
 
-        .next-thumb:hover {
-            background-color: transparent;
-            border: 1px solid transparent;
-            color: #f15a2d !important;
-        }
+    .next-thumb:hover {
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #f15a2d !important;
+    }
 
-        .prev-thumb:hover {
-            background-color: transparent;
-            border: 1px solid transparent;
-            color: #f15a2d !important;
-        }
+    .prev-thumb:hover {
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #f15a2d !important;
+    }
 
-        .offers-items {
-            border: 1px dashed #f15a2d;
-        }
+    .offers-items {
+        border: 1px dashed #f15a2d;
+    }
 </style>
 
 <section style="background: #f9f9f9">

@@ -2047,7 +2047,11 @@ button:hover {
 }
 
 .vendor-logo {
-    width: 130px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .vendor-menus {
     background: transparent;
@@ -2460,10 +2464,10 @@ button:hover .button-text {
     padding-right: 8px;
 }
 
-.offer-boxes{
+.offer-boxes {
     height: 270px;
 }
-.store-logo-img{
+.store-logo-img {
     width: 150px;
     height: 150px;
     object-fit: contain;
