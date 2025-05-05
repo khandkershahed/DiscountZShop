@@ -834,17 +834,23 @@ p {
 }
 
 .grab-box {
-    height: 450px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.grab-offer-tabs-box {
+/* .grab-offer-tabs-box {
     flex-grow: 1;
     min-height: auto;
     max-height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
+} */
+.grab-offer-tabs-box {
+    flex-grow: 1;
+    height: 420px; /* or any fixed value */
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -2041,7 +2047,11 @@ button:hover {
 }
 
 .vendor-logo {
-    width: 130px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .vendor-menus {
     background: transparent;
@@ -2454,10 +2464,10 @@ button:hover .button-text {
     padding-right: 8px;
 }
 
-.offer-boxes{
+.offer-boxes {
     height: 270px;
 }
-.store-logo-img{
+.store-logo-img {
     width: 150px;
     height: 150px;
     object-fit: contain;

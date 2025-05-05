@@ -10,9 +10,8 @@
     .thumbnail-title {
         color: var(--secondary-color-two);
         border: 1px solid #eee !important;
-        padding: 9px;
         padding: 10px;
-        margin: 5px;
+        margin: 5.6px;
         cursor: pointer;
         border-radius: 5px;
         transition: background-color 0.3s ease;
@@ -213,16 +212,16 @@
 </section>
 
 @push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let offerBox = document.querySelector(".grab-offer-tabs-box");
-        let offerItems = offerBox.querySelectorAll(".offers-items");
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let offerBox = document.querySelector(".grab-offer-tabs-box");
+            let offerItems = offerBox.querySelectorAll(".offers-items");
 
-        if (offerItems.length <= 6) { // Adjust this number as needed
-            offerBox.style.overflowY = "hidden"; // Disable scrollbar if not needed
-        }
-    });
-</script>
+            if (offerItems.length <= 6) { // Adjust this number as needed
+                offerBox.style.overflowY = "hidden"; // Disable scrollbar if not needed
+            }
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('.grabMain').slick({
@@ -234,7 +233,7 @@
             });
 
             $('.grabThumbs').slick({
-                slidesToShow: 7, // Adjust number of titles visible
+                slidesToShow: 5, // Adjust number of titles visible
                 slidesToScroll: 1,
                 asNavFor: '.grabMain',
                 dots: false,
