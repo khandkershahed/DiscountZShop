@@ -40,7 +40,7 @@
                 <div class="pt-4 available-coupon-slider">
 
                     @foreach ($mobile_coupons as $mobile_coupon)
-                        @if (optional($mobile_coupon->brand)->slug))
+                        @if (optional($mobile_coupon->brand)->slug)
                             <div class="p-0 py-3 border-0 card" >
                                 <div class="p-0 card-body">
                                     <div class="row">
