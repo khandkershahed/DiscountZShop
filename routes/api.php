@@ -35,6 +35,8 @@ Route::prefix('api')->group(function () {
     //     Route::put('/profile', [UserApiController::class, 'editProfile']);
     // });
 
+    // Route::get('/register', [UserApiController::class, 'register']);
+    // Route::get('/login', [UserApiController::class, 'login']);
     Route::post('/register', [UserApiController::class, 'register']);
     Route::post('/login', [UserApiController::class, 'login']);
     Route::post('/reset-password/{token}', [UserApiController::class, 'reset']);
