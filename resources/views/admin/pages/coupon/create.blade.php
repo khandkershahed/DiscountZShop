@@ -18,7 +18,7 @@
                     </span>
 
                     Back to the list
-                </a>
+                </a> 
             </div>
         </div>
         <div class="card-body pt-0">

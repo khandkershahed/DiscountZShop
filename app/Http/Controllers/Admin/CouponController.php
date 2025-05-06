@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Area;
+use App\Models\City;
 use App\Models\Admin;
+use App\Models\Brand;
+use App\Models\Store;
 use App\Models\Coupon;
+use App\Models\Country;
+use App\Models\Category;
+use App\Models\Division;
 use App\Mail\CouponCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +39,15 @@ class CouponController extends Controller
      */
     public function create()
     {
+        $data = [
+            'categories' => Category::where('status', 'active')->get(),
+            'brands'     => Brand::where('status', 'active')->get(),
+            'stores'     => Store::where('status', 'active')->get(),
+            'countries'  => Country::where('status', 'active')->get(),
+            'divisions'  => Division::where('status', 'active')->get(),
+            'cities'     => City::where('status', 'active')->get(),
+            'areas'      => Area::where('status', 'active')->get(),
+        ];
         return view('admin.pages.coupon.create');
     }
 
@@ -190,7 +206,14 @@ class CouponController extends Controller
     public function edit(string $id)
     {
         $data = [
-            'coupon' => Coupon::findOrFail($id),
+            'coupon'     => Coupon::findOrFail($id),
+            'categories' => Category::where('status', 'active')->get(),
+            'brands'     => Brand::where('status', 'active')->get(),
+            'stores'     => Store::where('status', 'active')->get(),
+            'countries'  => Country::where('status', 'active')->get(),
+            'divisions'  => Division::where('status', 'active')->get(),
+            'cities'     => City::where('status', 'active')->get(),
+            'areas'      => Area::where('status', 'active')->get(),
         ];
         return view('admin.pages.coupon.edit', $data);
     }
