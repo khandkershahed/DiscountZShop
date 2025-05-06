@@ -48,7 +48,7 @@ class CouponController extends Controller
             'cities'     => City::where('status', 'active')->get(),
             'areas'      => Area::where('status', 'active')->get(),
         ];
-        return view('admin.pages.coupon.create');
+        return view('admin.pages.coupon.create',$data);
     }
 
     /**
