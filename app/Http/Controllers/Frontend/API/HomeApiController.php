@@ -642,15 +642,15 @@ class HomeApiController extends Controller
         $today  = Carbon::now()->format('Y-m-d');
 
         // Brand search
-        $brands = Brand::where('name', 'LIKE', "%{$search}%")->orWhere('slug', "LIKE", "%$search%")
+        $brands = Brand::where('name', 'LIKE', "%{$search}%")
             ->where('status', 'active')
             ->limit(10)
             ->get()
             ->map(function ($brand) {
                 return [
-                    'name'     => $brand->name,
-                    'image'    => url('storage/' . $brand->image),
-                    'logo'    => url('storage/' . $brand->logo),
+                    'brand_name'     => $brand->name,
+                    'brand_slug'     => $brand->slug,
+                    'brand_image'    => url('storage/' . $brand->logo),
                     'type'     => 'brand',
                 ];
             });
@@ -665,11 +665,14 @@ class HomeApiController extends Controller
             ->get()
             ->map(function ($offer) {
                 return [
-                    'name'     => $offer->name,
-                    'image'    => url('storage/' . $offer->image),
-                    'price'    => $offer->price ?? null,
-                    'validity' => $offer->expiry_date ?? 'No Expiry',
-                    'type'     => 'offer',
+                    'offer_name'        => $offer->name,
+                    'offer_slug'        => $offer->slug,
+                    'offer_image'       => url('storage/' . $offer->image),
+                    'brand_logo'  => url('storage/' . optional($offer->brand)->logo),
+                    'price'       => $offer->price ?? null,
+                    'offer price' => $offer->offer_price ?? null,
+                    'offer_validity'    => $offer->expiry_date ?? 'No Expiry',
+                    'type'        => 'offer',
                 ];
             });
 
@@ -680,11 +683,10 @@ class HomeApiController extends Controller
             ->get()
             ->map(function ($store) {
                 return [
-                    'name'     => $store->title,
-                    'image'    => url('storage/' . $store->image),
-                    'price'    => null, // Store has no price
-                    'validity' => null, // Store has no validity
-                    'type'     => 'store',
+                    'store_name'       => $store->title,
+                    'brand_slug' => optional($store->brand)->slug,
+                    'brand'      => optional($store->brand)->name,
+                    'type'       => 'store',
                 ];
             });
 
@@ -692,7 +694,9 @@ class HomeApiController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data'   => $mergedResults,
+            'brand'  => $brands,
+            'offer'  => $offers,
+            'store'  => $stores,
             'count'  => $mergedResults->count(),
         ]);
     }
