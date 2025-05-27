@@ -7,6 +7,7 @@ use App\Models\Faq;
 use App\Models\City;
 use App\Models\Brand;
 use App\Models\Offer;
+use App\Models\Store;
 use App\Models\Banner;
 use App\Models\Coupon;
 use App\Models\Slider;
@@ -571,6 +572,128 @@ class HomeApiController extends Controller
             'status' => 'success',
             'city'   => $city,
             'areas_count'  => $city->areas->count(),
+        ]);
+    }
+
+    public function searchSuggestions(Request $request)
+    {
+        $request->validate(['search' => 'required']);
+        $query = $request->search;
+        $today = Carbon::now()->format('Y-m-d');
+
+        // Get suggestions for brands
+        $brandSuggestions = Brand::where('status', 'active')
+            ->where('name', 'LIKE', '%' . $query . '%')
+            ->select('id', 'name', 'slug')
+            ->limit(10)
+            ->get()
+            ->map(fn($item) => [
+                'id'   => $item->id,
+                'name' => $item->name,
+                'slug' => $item->slug,
+                'type' => 'brand',
+            ]);
+
+        // Get suggestions for offers
+        $offerSuggestions = Offer::where('status', 'active')
+            ->where(function ($q) use ($today) {
+                $q->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);
+            })
+            ->where('name', 'LIKE', '%' . $query . '%')
+            ->select('id', 'name', 'slug')
+            ->limit(10)
+            ->get()
+            ->map(fn($item) => [
+                'id'   => $item->id,
+                'name' => $item->name,
+                'slug' => $item->slug,
+                'type' => 'offer',
+            ]);
+
+        // Get suggestions for stores
+        $storeSuggestions = Store::where('status', 'active')
+            ->where('title', 'LIKE', '%' . $query . '%')
+            ->select('id', 'title as name', 'slug')
+            ->limit(10)
+            ->get()
+            ->map(fn($item) => [
+                'id'   => $item->id,
+                'name' => $item->name,
+                'slug' => $item->slug,
+                'type' => 'store',
+            ]);
+
+        // Combine and return
+        $suggestions = $brandSuggestions
+            ->merge($offerSuggestions)
+            ->merge($storeSuggestions)
+            ->values();
+
+        return response()->json([
+            'status'      => 'success',
+            'suggestions' => $suggestions,
+        ]);
+    }
+
+    public function globalSearch(Request $request)
+    {
+        $request->validate(['search' => 'required']);
+        $search = $request->input('search');
+        $today  = Carbon::now()->format('Y-m-d');
+
+        // Brand search
+        $brands = Brand::where('name', 'LIKE', "%{$search}%")->orWhere('slug', "LIKE", "%$search%")
+            ->where('status', 'active')
+            ->limit(10)
+            ->get()
+            ->map(function ($brand) {
+                return [
+                    'name'     => $brand->name,
+                    'image'    => url('storage/' . $brand->image),
+                    'logo'    => url('storage/' . $brand->logo),
+                    'type'     => 'brand',
+                ];
+            });
+
+        // Offer search
+        $offers = Offer::where('name', 'LIKE', "%{$search}%")
+            ->where('status', 'active')
+            ->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);
+            })
+            ->limit(10)
+            ->get()
+            ->map(function ($offer) {
+                return [
+                    'name'     => $offer->name,
+                    'image'    => url('storage/' . $offer->image),
+                    'price'    => $offer->price ?? null,
+                    'validity' => $offer->expiry_date ?? 'No Expiry',
+                    'type'     => 'offer',
+                ];
+            });
+
+        // Store search
+        $stores = Store::where('title', 'LIKE', "%{$search}%")
+            ->where('status', 'active')
+            ->limit(10)
+            ->get()
+            ->map(function ($store) {
+                return [
+                    'name'     => $store->title,
+                    'image'    => url('storage/' . $store->image),
+                    'price'    => null, // Store has no price
+                    'validity' => null, // Store has no validity
+                    'type'     => 'store',
+                ];
+            });
+
+        $mergedResults = $brands->merge($offers)->merge($stores);
+
+        return response()->json([
+            'status' => 'success',
+            'data'   => $mergedResults,
+            'count'  => $mergedResults->count(),
         ]);
     }
 }

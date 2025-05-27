@@ -687,8 +687,8 @@ class HomeController extends Controller
 
         // Search logic for brands, offers, and stores
         $brands = Brand::where('name', 'LIKE', "%$item%")
-            ->orWhere('offer_description_title', "LIKE", "%$item%")
-            ->orWhere('description_title', "LIKE", "%$item%")
+            // ->orWhere('offer_description_title', "LIKE", "%$item%")
+            // ->orWhere('description_title', "LIKE", "%$item%")
             ->get();
 
         $offers = Offer::where('name', 'LIKE', "%$item%")

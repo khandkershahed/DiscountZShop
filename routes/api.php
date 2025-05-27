@@ -87,6 +87,10 @@ Route::prefix('api')->group(function () {
     Route::post('/search', [HomeApiController::class, 'productSearch']);
     Route::post('/search/suggestions', [HomeApiController::class, 'searchSuggestions']);
 
+    // Global Search
+    Route::get('/search/suggestions', [HomeApiController::class, 'searchSuggestions']);
+    Route::get('/global-search', [HomeApiController::class, 'globalSearch']);
+
     // Deal Search
     Route::get('/deal/search', [HomeApiController::class, 'searchDeal']);
 
