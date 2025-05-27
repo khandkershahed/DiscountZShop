@@ -24,10 +24,21 @@ use App\Http\Controllers\Controller;
 
 class HomeApiController extends Controller
 {
+    function assetify($path)
+    {
+        return $path ? url('storage/' . $path) : null;
+    }
     public function homePage()
     {
         $homePage = HomePage::with('brand')->latest('id')->first();
-
+        $offers = optional($homePage->brand)->offers;
+        $offers = $offers ? $offers->where('status', 'active')->where('expiry_date', '>=', Carbon::now()->format('Y-m-d'))->take(10) : collect();
+        $offers->map(function ($offer) {
+            $offer->logo         = url('storage/' . $offer->logo);
+            $offer->image        = url('storage/' . $offer->image);
+            $offer->banner_image = url('storage/' . $offer->banner_image);
+            return $offer;
+        });
         if ($homePage) {
             $homePage->image_one                  = url('storage/' . $homePage->image_one);
             $homePage->image_two                  = url('storage/' . $homePage->image_two);
@@ -43,11 +54,15 @@ class HomeApiController extends Controller
             $homePage->bottom_banner_slider_two   = url('storage/' . $homePage->bottom_banner_slider_two);
             $homePage->bottom_banner_slider_three = url('storage/' . $homePage->bottom_banner_slider_three);
             $homePage->bottom_banner_slider_four  = url('storage/' . $homePage->bottom_banner_slider_four);
+            unset($homePage->brand);
         }
 
+
+
         return response()->json([
-            'status' => 'success',
-            'data'   =>  $homePage,
+            'status'        => 'success',
+            'homepage_data' => $homePage,
+            'offers'        => $offers,
         ]);
     }
     public function homeSliders()
@@ -129,15 +144,16 @@ class HomeApiController extends Controller
             'count'  => $coupons->count(),
         ]);
     }
-    public function allOffers()
+    public function allOffers(Request $request)
     {
+        $paginate = $request->input('paginate', 10); // Default to 10 if not provided
         $today = Carbon::now()->format('Y-m-d');
         $offers = Offer::where('status', 'active')
             ->where(function ($query) use ($today) {
                 $query->whereNull('expiry_date')->orWhere('expiry_date', '>=', $today);
             })
             ->latest()
-            ->get()
+            ->paginate($paginate)
             ->map(function ($offer) {
                 // Decode JSON arrays
                 $offer->description       = html_entity_decode(strip_tags($offer->description));
@@ -181,47 +197,49 @@ class HomeApiController extends Controller
         ]);
     }
 
-    public function allBrands()
+    public function allBrands(Request $request)
     {
-        $brands = Brand::where('status', 'active')->latest()->get()
-            ->map(function ($brand) {
-                // Decode JSON arrays
-                $brand->about             = html_entity_decode(strip_tags($brand->about));
-                $brand->description       = html_entity_decode(strip_tags($brand->description));
-                // $brand->url            = html_entity_decode(strip_tags($brand->url));
-                $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
-                $brand->location          = html_entity_decode($brand->location);
-                $brand->url               = html_entity_decode($brand->url);
+        $paginate = $request->input('paginate', 10); // Default to 10
+        $brands = Brand::where('status', 'active')->latest()->paginate($paginate);
 
-                $countryIds               = json_decode($brand->country_id, true) ?? [];
-                $divisionIds              = json_decode($brand->division_id, true) ?? [];
-                $cityIds                  = json_decode($brand->city_id, true) ?? [];
-                $areaIds                  = json_decode($brand->area_id, true) ?? [];
-                $addedToId                = json_decode($brand->added_by, true) ?? [];
-                $categoryToId             = json_decode($brand->category_id, true) ?? [];
+        $brands->getCollection()->transform(function ($brand) {
+            // Decode HTML & strip tags
+            $brand->about             = html_entity_decode(strip_tags($brand->about));
+            $brand->description       = html_entity_decode(strip_tags($brand->description));
+            $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
+            $brand->location          = html_entity_decode($brand->location);
+            $brand->url               = html_entity_decode($brand->url);
 
-                // Fetch names from DB (assuming related tables exist)
-                $brand->countries         = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
-                $brand->divisions         = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
-                $brand->cities            = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
-                $brand->areas             = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
-                $brand->added_by_name     = DB::table('admins')->where('id', $addedToId)->value('name');
-                $brand->category_name     = DB::table('categories')->where('id', $categoryToId)->value('name');
+            // Decode JSON arrays
+            $countryIds   = json_decode($brand->country_id, true) ?? [];
+            $divisionIds  = json_decode($brand->division_id, true) ?? [];
+            $cityIds      = json_decode($brand->city_id, true) ?? [];
+            $areaIds      = json_decode($brand->area_id, true) ?? [];
+            $addedToId    = json_decode($brand->added_by, true) ?? [];
+            $categoryToId = json_decode($brand->category_id, true) ?? [];
 
-                // Fix image URLs
-                $brand->logo                = url('storage/' . $brand->logo);
-                $brand->image               = url('storage/' . $brand->image);
-                $brand->banner_image        = url('storage/' . $brand->banner_image);
-                $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
-                $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+            // Related names
+            $brand->countries      = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
+            $brand->divisions      = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
+            $brand->cities         = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
+            $brand->areas          = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
+            $brand->added_by_name  = DB::table('admins')->where('id', $addedToId)->value('name');
+            $brand->category_name  = DB::table('categories')->where('id', $categoryToId)->value('name');
 
-                return $brand;
-            });
+            // Image URLs
+            $brand->logo                = url('storage/' . $brand->logo);
+            $brand->image               = url('storage/' . $brand->image);
+            $brand->banner_image        = url('storage/' . $brand->banner_image);
+            $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
+            $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+
+            return $brand;
+        });
 
         return response()->json([
             'status' => 'success',
             'data'   => $brands,
-            'count'  => $brands->count(),
+            'count'  => $brands->total(), // total count of records
         ]);
     }
 
@@ -628,11 +646,11 @@ class HomeApiController extends Controller
             ->limit(10)
             ->get()
             ->map(fn($item) => [
-                    'id'         => $item->id,
-                    'store_name' => $item->name,
-                    'brand_slug' => optional($item->brand)->slug,
-                    'brand'      => optional($item->brand)->name,
-                    'type'       => 'store',
+                'id'         => $item->id,
+                'store_name' => $item->name,
+                'brand_slug' => optional($item->brand)->slug,
+                'brand'      => optional($item->brand)->name,
+                'type'       => 'store',
             ]);
 
         // Combine and return
