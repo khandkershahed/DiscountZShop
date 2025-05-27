@@ -588,10 +588,10 @@ class HomeApiController extends Controller
             ->limit(10)
             ->get()
             ->map(fn($item) => [
-                'id'   => $item->id,
-                'name' => $item->name,
-                'slug' => $item->slug,
-                'type' => 'brand',
+                'id'         => $item->id,
+                'brand_name' => $item->name,
+                'brand_slug' => $item->slug,
+                'type'       => 'brand',
             ]);
 
         // Get suggestions for offers
@@ -604,10 +604,10 @@ class HomeApiController extends Controller
             ->limit(10)
             ->get()
             ->map(fn($item) => [
-                'id'   => $item->id,
-                'name' => $item->name,
-                'slug' => $item->slug,
-                'type' => 'offer',
+                'id'         => $item->id,
+                'offer_name' => $item->name,
+                'offer_slug' => $item->slug,
+                'type'       => 'offer',
             ]);
 
         // Get suggestions for stores
@@ -617,10 +617,11 @@ class HomeApiController extends Controller
             ->limit(10)
             ->get()
             ->map(fn($item) => [
-                'id'   => $item->id,
-                'name' => $item->name,
-                'slug' => $item->slug,
-                'type' => 'store',
+                    'id'         => $item->id,
+                    'store_name' => $item->name,
+                    'brand_slug' => optional($item->brand)->slug,
+                    'brand'      => optional($item->brand)->name,
+                    'type'       => 'store',
             ]);
 
         // Combine and return
@@ -665,14 +666,14 @@ class HomeApiController extends Controller
             ->get()
             ->map(function ($offer) {
                 return [
-                    'offer_name'        => $offer->name,
-                    'offer_slug'        => $offer->slug,
-                    'offer_image'       => url('storage/' . $offer->image),
-                    'brand_logo'  => url('storage/' . optional($offer->brand)->logo),
-                    'price'       => $offer->price ?? null,
-                    'offer price' => $offer->offer_price ?? null,
-                    'offer_validity'    => $offer->expiry_date ?? 'No Expiry',
-                    'type'        => 'offer',
+                    'offer_name'     => $offer->name,
+                    'offer_slug'     => $offer->slug,
+                    'offer_image'    => url('storage/' . $offer->image),
+                    'brand_logo'     => url('storage/' . optional($offer->brand)->logo),
+                    'price'          => $offer->price ?? null,
+                    'offer price'    => $offer->offer_price ?? null,
+                    'offer_validity' => $offer->expiry_date ?? 'No Expiry',
+                    'type'           => 'offer',
                 ];
             });
 
@@ -683,7 +684,7 @@ class HomeApiController extends Controller
             ->get()
             ->map(function ($store) {
                 return [
-                    'store_name'       => $store->title,
+                    'store_name' => $store->title,
                     'brand_slug' => optional($store->brand)->slug,
                     'brand'      => optional($store->brand)->name,
                     'type'       => 'store',
