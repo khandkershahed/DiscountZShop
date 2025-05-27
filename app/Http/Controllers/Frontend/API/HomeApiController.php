@@ -29,9 +29,20 @@ class HomeApiController extends Controller
         $homePage = HomePage::with('brand')->latest('id')->first();
 
         if ($homePage) {
-            $homePage->image_one   = url('storage/' . $homePage->image_one);
-            $homePage->image_two   = url('storage/' . $homePage->image_two);
-            $homePage->image_three = url('storage/' . $homePage->image_three);
+            $homePage->image_one                  = url('storage/' . $homePage->image_one);
+            $homePage->image_two                  = url('storage/' . $homePage->image_two);
+            $homePage->image_three                = url('storage/' . $homePage->image_three);
+            $homePage->top_banner                 = url('storage/' . $homePage->top_banner);
+            $homePage->offer_banner               = url('storage/' . $homePage->offer_banner);
+            $homePage->deal_brand_image           = url('storage/' . $homePage->deal_brand_image);
+            $homePage->offer_slider_image_one     = url('storage/' . $homePage->offer_slider_image_one);
+            $homePage->offer_slider_image_two     = url('storage/' . $homePage->offer_slider_image_two);
+            $homePage->offer_slider_image_three   = url('storage/' . $homePage->offer_slider_image_three);
+            $homePage->offer_slider_image_four    = url('storage/' . $homePage->offer_slider_image_four);
+            $homePage->bottom_banner_slider_one   = url('storage/' . $homePage->bottom_banner_slider_one);
+            $homePage->bottom_banner_slider_two   = url('storage/' . $homePage->bottom_banner_slider_two);
+            $homePage->bottom_banner_slider_three = url('storage/' . $homePage->bottom_banner_slider_three);
+            $homePage->bottom_banner_slider_four  = url('storage/' . $homePage->bottom_banner_slider_four);
         }
 
         return response()->json([
