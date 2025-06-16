@@ -302,7 +302,6 @@ class HomeApiController extends Controller
                 $category->status,
                 $category->added_by,
             );
-            return $category;
         };
         $brands  = DB::table('brands')
             ->where('category_id', $category->id)
