@@ -264,6 +264,12 @@ class HomeApiController extends Controller
                 $category->logo         = url('storage/' . $category->logo);
                 $category->image        = url('storage/' . $category->image);
                 $category->banner_image = url('storage/' . $category->banner_image);
+                unset(
+                    $category->created_at,
+                    $category->updated_at,
+                    $category->status,
+                    $category->added_by,
+                );
                 return $category;
             });
 
@@ -290,9 +296,14 @@ class HomeApiController extends Controller
             $category->image        = url('storage/' . $category->image);
             $category->banner_image = url('storage/' . $category->banner_image);
             $category->description  = html_entity_decode(strip_tags($category->description));
-
+            unset(
+                $category->created_at,
+                $category->updated_at,
+                $category->status,
+                $category->added_by,
+            );
             $brands  = $category->brands; // Default to 10
-            $brands->getCollection()->transform(function ($brand) {
+            $brands->map(function ($brand) {
                 // Decode JSON arrays
                 $countryIds   = json_decode($brand->country_id, true) ?? [];
                 $divisionIds  = json_decode($brand->division_id, true) ?? [];
@@ -385,9 +396,14 @@ class HomeApiController extends Controller
 
 
         $data = [
-            'brand'       => $brand,
-            'offers'      => $offers,
+            'category'  => $category,
+            'brands'    => $brands,
+            'offers'    => $offers,
         ];
+        return response()->json([
+            'status' => 'success',
+            'data'   => $data,
+        ]);
     }
 
     public function allBrands(Request $request)
