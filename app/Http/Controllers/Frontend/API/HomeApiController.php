@@ -197,6 +197,78 @@ class HomeApiController extends Controller
         ]);
     }
 
+    public function allStore()
+    {
+        $stores = Store::with(['country', 'division', 'city', 'area', 'brand', 'category'])
+            ->where('status', 'active')
+            ->latest()
+            ->get();
+
+        $stores = $stores->map(function ($store) {
+            $store->description  = html_entity_decode(strip_tags($store->description));
+            $store->location     = html_entity_decode(strip_tags($store->location));
+            $store->url          = html_entity_decode($store->url);
+
+            // Attach readable names via relationships (use optional() for nullables)
+            $store->country_name  = optional($store->country)->name;
+            $store->division_name = optional($store->division)->name;
+            $store->city_name     = optional($store->city)->name;
+            $store->area_name     = optional($store->area)->name;
+            $store->brand_name    = optional($store->brand)->name;
+            $store->category_name = optional($store->category)->name;
+
+            // Fix image URLs
+            $store->logo         = $store->logo ? url('storage/' . $store->logo) : null;
+            $store->image        = $store->image ? url('storage/' . $store->image) : null;
+            $store->banner_image = $store->banner_image ? url('storage/' . $store->banner_image) : null;
+
+            // Remove unnecessary attributes
+            unset(
+                $store->added_by,
+                $store->update_by,
+                $store->created_at,
+                $store->updated_at
+            );
+
+            return $store;
+        });
+
+        // Optionally, include brand info if needed from first store’s brand
+        $brandInfo = null;
+        if ($stores->isNotEmpty() && $stores[0]->brand) {
+            $brand = $stores[0]->brand;
+            $brand->about             = html_entity_decode(strip_tags($brand->about));
+            $brand->description       = html_entity_decode(strip_tags($brand->description));
+            $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
+            $brand->location          = html_entity_decode($brand->location);
+            $brand->url               = html_entity_decode($brand->url);
+
+            $brand->countries     = DB::table('countries')->whereIn('id', json_decode($brand->country_id, true) ?? [])->pluck('name');
+            $brand->divisions     = DB::table('divisions')->whereIn('id', json_decode($brand->division_id, true) ?? [])->pluck('name');
+            $brand->cities        = DB::table('cities')->whereIn('id', json_decode($brand->city_id, true) ?? [])->pluck('name');
+            $brand->areas         = DB::table('areas')->whereIn('id', json_decode($brand->area_id, true) ?? [])->pluck('name');
+            $brand->added_by_name = DB::table('admins')->where('id', $brand->added_by)->value('name');
+            $brand->category_name = DB::table('categories')->where('id', $brand->category_id)->value('name');
+
+            $brand->logo                = $brand->logo ? url('storage/' . $brand->logo) : null;
+            $brand->image               = $brand->image ? url('storage/' . $brand->image) : null;
+            $brand->banner_image        = $brand->banner_image ? url('storage/' . $brand->banner_image) : null;
+            $brand->middle_banner_left  = $brand->middle_banner_left ? url('storage/' . $brand->middle_banner_left) : null;
+            $brand->middle_banner_right = $brand->middle_banner_right ? url('storage/' . $brand->middle_banner_right) : null;
+
+            $brandInfo = $brand;
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data'   => [
+                'brand'  => $brandInfo,
+                'stores' => $stores,
+            ]
+        ]);
+    }
+
+
     public function allBrands(Request $request)
     {
         $paginate = $request->input('paginate', 10); // Default to 10
