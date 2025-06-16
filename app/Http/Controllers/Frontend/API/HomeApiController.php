@@ -304,7 +304,11 @@ class HomeApiController extends Controller
             );
             return $category;
         };
-        $brands  = $category->brands;
+        $brands  = DB::table('brands')
+            ->where('category_id', $category->id)
+            ->where('status', 'active')
+            ->latest()
+            ->get();
 
         $brands->map(function ($brand) {
             // Decode JSON arrays
@@ -347,7 +351,12 @@ class HomeApiController extends Controller
             return $brand;
         });
 
-        $offers = $category->offers;
+        $offers = DB::table('offers')
+            ->where('category_id', $category->id)
+            ->where('status', 'active')
+            ->where('expiry_date', '>=', Carbon::now()->format('Y-m-d'))
+            ->latest()
+            ->get();
 
         $offers->map(function ($offer) {
             $offer->url         = html_entity_decode($offer->url);
