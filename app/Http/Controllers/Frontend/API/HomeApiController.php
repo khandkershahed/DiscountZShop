@@ -199,40 +199,48 @@ class HomeApiController extends Controller
 
     public function allStore()
     {
-        $stores = Store::with(['country', 'division', 'city', 'area', 'brand', 'category'])
-            ->where('status', 'active')
+        $stores = Store::where('status', 'active')
             ->latest()
-            ->get();
+            ->get()
+            ->map(function ($store) {
+                // Decode & clean up fields
+                $store->description = html_entity_decode(strip_tags($store->description ?? ''));
+                $store->location    = html_entity_decode(strip_tags($store->location ?? ''));
+                $store->url         = html_entity_decode($store->url ?? '');
 
-        $stores = $stores->map(function ($store) {
-            $store->title        = $store->title;
-            $store->brand_slug   = optional($store->brand)->slug;
-            $store->description  = html_entity_decode(strip_tags($store->description));
-            $store->location     = html_entity_decode(strip_tags($store->location));
-            $store->url          = html_entity_decode($store->url);
+                // Retrieve and attach related names and slug
+                $brand = DB::table('brands')->find($store->brand_id);
+                $store->brand_slug = $brand?->slug;
+                $store->brand      = $brand?->name;
 
-            // Attach readable names via relationships (use optional() for nullables)
-            $store->country_name  = optional($store->country)->name;
-            $store->division_name = optional($store->division)->name;
-            $store->city_name     = optional($store->city)->name;
-            $store->area_name     = optional($store->area)->name;
-            $store->brand_name    = optional($store->brand)->name;
-            $store->category_name = optional($store->category)->name;
+                $store->country  = DB::table('countries')->where('id', $store->country_id)->value('name');
+                $store->division = DB::table('divisions')->where('id', $store->division_id)->value('name');
+                $store->city     = DB::table('cities')->where('id', $store->city_id)->value('name');
+                $store->area     = DB::table('areas')->where('id', $store->area_id)->value('name');
+                $store->category = DB::table('categories')->where('id', $store->category_id)->value('name');
 
-            // Fix image URLs
-            $store->logo         = $store->logo ? url('storage/' . $store->logo) : null;
-            $store->image        = $store->image ? url('storage/' . $store->image) : null;
-            $store->banner_image = $store->banner_image ? url('storage/' . $store->banner_image) : null;
-            // Remove unnecessary attributes
-            unset(
-                $store->added_by,
-                $store->update_by,
-                $store->created_at,
-                $store->updated_at
-            );
+                // Fix image URLs
+                $store->logo         = $store->logo ? url('storage/' . $store->logo) : null;
+                $store->image        = $store->image ? url('storage/' . $store->image) : null;
+                $store->banner_image = $store->banner_image ? url('storage/' . $store->banner_image) : null;
 
-            return $store;
-        });
+                // Optionally unset internal fields
+                unset(
+                    $store->added_by,
+                    $store->update_by,
+                    $store->created_at,
+                    $store->updated_at,
+                    $store->country_id,
+                    $store->division_id,
+                    $store->city_id,
+                    $store->area_id,
+                    $store->brand_id,
+                    $store->category_id
+                );
+
+                return $store;
+            });
+
         return response()->json([
             'status' => 'success',
             'data'   => [
@@ -240,6 +248,7 @@ class HomeApiController extends Controller
             ]
         ]);
     }
+
 
 
     public function allBrands(Request $request)
