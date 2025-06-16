@@ -220,9 +220,9 @@ class HomeApiController extends Controller
                 $store->category = DB::table('categories')->where('id', $store->category_id)->value('name');
 
                 // Fix image URLs
-                $store->logo         = $store->logo ? url('storage/' . $store->logo) : null;
-                $store->image        = $store->image ? url('storage/' . $store->image) : null;
-                $store->banner_image = $store->banner_image ? url('storage/' . $store->banner_image) : null;
+                $store->logo     = $brand->logo ? url('storage/' . $brand->logo) : null;
+                // $store->image        = $store->image ? url('storage/' . $store->image) : null;
+                // $store->banner_image = $store->banner_image ? url('storage/' . $store->banner_image) : null;
 
                 // Optionally unset internal fields
                 unset(
@@ -235,7 +235,10 @@ class HomeApiController extends Controller
                     $store->city_id,
                     $store->area_id,
                     $store->brand_id,
-                    $store->category_id
+                    $store->category_id,
+                    $store->image,
+                    $store->banner_image,
+                    $store->status,
                 );
 
                 return $store;
