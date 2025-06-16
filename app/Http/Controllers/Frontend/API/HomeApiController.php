@@ -204,13 +204,13 @@ class HomeApiController extends Controller
             ->get()
             ->map(function ($store) {
                 // Decode & clean up fields
+                $brand = DB::table('brands')->find($store->brand_id);
+                $store->brand_slug  = $brand?->slug;
                 $store->description = html_entity_decode(strip_tags($store->description ?? ''));
                 $store->location    = html_entity_decode(strip_tags($store->location ?? ''));
                 $store->url         = html_entity_decode($store->url ?? '');
 
                 // Retrieve and attach related names and slug
-                $brand = DB::table('brands')->find($store->brand_id);
-                $store->brand_slug = $brand?->slug;
                 $store->brand      = $brand?->name;
 
                 $store->country  = DB::table('countries')->where('id', $store->country_id)->value('name');
