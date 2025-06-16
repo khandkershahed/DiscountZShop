@@ -220,7 +220,7 @@ class HomeApiController extends Controller
                 $store->category = DB::table('categories')->where('id', $store->category_id)->value('name');
 
                 // Fix image URLs
-                $store->logo     = $brand->logo ? url('storage/' . $brand->logo) : null;
+                $store->logo     = $brand?->logo ? url('storage/' . $brand?->logo) : null;
                 // $store->image        = $store->image ? url('storage/' . $store->image) : null;
                 // $store->banner_image = $store->banner_image ? url('storage/' . $store->banner_image) : null;
 
