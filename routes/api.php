@@ -57,6 +57,8 @@ Route::prefix('api')->group(function () {
     Route::get('/home-banners', [HomeApiController::class, 'homeBanners']);
     Route::get('/coupons-all', [HomeApiController::class, 'allCoupons']);
     Route::get('/brands-all', [HomeApiController::class, 'allBrands']);
+    Route::get('/categories', [HomeApiController::class, 'allCategories']);
+    Route::get('/category/{slug}', [HomeApiController::class, 'categoryDetails']);
 
 
     // Offers

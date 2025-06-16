@@ -13,6 +13,7 @@ use App\Models\Coupon;
 use App\Models\Slider;
 use App\Models\AboutUs;
 use App\Models\Setting;
+use App\Models\Category;
 use App\Models\Division;
 use App\Models\HomePage;
 use App\Models\PageBanner;
@@ -253,7 +254,141 @@ class HomeApiController extends Controller
         ]);
     }
 
+    public function allCategories()
+    {
+        $categories = DB::table('categories')
+            ->where('status', 'active')
+            ->latest()
+            ->get()
+            ->map(function ($category) {
+                $category->logo         = url('storage/' . $category->logo);
+                $category->image        = url('storage/' . $category->image);
+                $category->banner_image = url('storage/' . $category->banner_image);
+                return $category;
+            });
 
+        return response()->json([
+            'status' => 'success',
+            'data'   => [
+                'categories' => $categories,
+                'status' => 'success',
+            ]
+        ]);
+    }
+
+    public function categoryDetails($slug)
+    {
+        $category = Category::with('brands')->where('slug', $slug)->first();
+        if (!$category) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Category not found',
+            ], 404);
+        };
+        if ($category) {
+            $category->logo         = url('storage/' . $category->logo);
+            $category->image        = url('storage/' . $category->image);
+            $category->banner_image = url('storage/' . $category->banner_image);
+            $category->description  = html_entity_decode(strip_tags($category->description));
+
+            $brands  = $category->brands; // Default to 10
+            $brands->getCollection()->transform(function ($brand) {
+                // Decode JSON arrays
+                $countryIds   = json_decode($brand->country_id, true) ?? [];
+                $divisionIds  = json_decode($brand->division_id, true) ?? [];
+                $cityIds      = json_decode($brand->city_id, true) ?? [];
+                $areaIds      = json_decode($brand->area_id, true) ?? [];
+
+                // Related names
+                $brand->countries      = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
+                $brand->divisions      = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
+                $brand->cities         = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
+                $brand->areas          = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
+
+                // Image URLs
+                $brand->logo                = url('storage/' . $brand->logo);
+                $brand->image               = url('storage/' . $brand->image);
+                unset(
+                    $brand->country_id,
+                    $brand->division_id,
+                    $brand->city_id,
+                    $brand->area_id,
+                    $brand->category_id,
+                    $brand->banner_image,
+                    $brand->middle_banner_left,
+                    $brand->middle_banner_right,
+                    $brand->about_title,
+                    $brand->about,
+                    $brand->offer_description_title,
+                    $brand->offer_description,
+                    $brand->location,
+                    $brand->description_title,
+                    $brand->added_by,
+                    $brand->update_by,
+                    $brand->description,
+                    $brand->url,
+                    $brand->category_type,
+                    $brand->status,
+                );
+                return $brand;
+            });
+            $offers = $category->offers;
+
+            $offers->map(function ($offer) {
+                $offer->url         = html_entity_decode($offer->url);
+                $offer->logo         = url('storage/' . $offer->logo);
+                $offer->image        = url('storage/' . $offer->image);
+                $countryIds         = json_decode($offer->country_id, true) ?? [];
+                $divisionIds        = json_decode($offer->division_id, true) ?? [];
+                $cityIds            = json_decode($offer->city_id, true) ?? [];
+                $areaIds            = json_decode($offer->area_id, true) ?? [];
+                $brandIds           = json_decode($offer->brand_id, true) ?? [];
+                $categoryIds        = json_decode($offer->category_id, true) ?? [];
+                $offer->country     = DB::table('countries')->where('id', $countryIds)->value('name');
+                $offer->division    = DB::table('divisions')->where('id', $divisionIds)->value('name');
+                $offer->city        = DB::table('cities')->where('id', $cityIds)->value('name');
+                $offer->area        = DB::table('areas')->where('id', $areaIds)->value('name');
+                $offer->brand       = DB::table('brands')->where('id', $brandIds)->value('name');
+                $offer->category    = DB::table('categories')->where('id', $categoryIds)->value('name');
+                unset(
+                    $offer->country_id,
+                    $offer->division_id,
+                    $offer->city_id,
+                    $offer->area_id,
+                    $offer->notify_to,
+                    $offer->category_id,
+                    $offer->brand_id,
+                    $offer->store_id,
+                    $offer->added_by,
+                    $offer->update_by,
+                    $offer->offer_type_id,
+                    $offer->banner_image,
+                    $offer->price,
+                    $offer->offer_price,
+                    $offer->description,
+                    $offer->short_description,
+                    $offer->locations,
+                    $offer->url,
+                    $offer->source_url,
+                    $offer->coupon_code,
+                    $offer->map_url,
+                    $offer->tags,
+                    $offer->start_date,
+                    $offer->notification_date,
+                    $offer->expiry_date,
+                    $offer->status,
+                );
+                return $offer;
+            });
+        };
+
+
+
+        $data = [
+            'brand'       => $brand,
+            'offers'      => $offers,
+        ];
+    }
 
     public function allBrands(Request $request)
     {
