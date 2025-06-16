@@ -197,11 +197,12 @@ class HomeApiController extends Controller
         ]);
     }
 
-    public function allStore()
+    public function allStore(Request $request)
     {
+        $paginate = $request->input('paginate', 10);
         $stores = Store::where('status', 'active')
             ->latest()
-            ->get()
+            ->paginate($paginate)
             ->map(function ($store) {
                 // Decode & clean up fields
                 $brand = DB::table('brands')->find($store->brand_id);
