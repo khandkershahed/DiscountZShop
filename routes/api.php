@@ -21,6 +21,21 @@ use App\Http\Controllers\Admin\Api\CategoryApiController;
 
 Route::prefix('api')->group(function () {
 
+    Route::controller(UserApiController::class)->group(function () {
+        Route::post('/register', 'register');
+        Route::post('/login', 'login');
+        Route::post('/forgot-password', 'forgotPassword');
+        Route::post('/reset-password/{token}', 'reset');
+
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::post('/logout', 'logout');
+            Route::post('/email-verification/send', 'sendEmailVerification');
+            Route::post('/email-verification/verify', 'emailVerification');
+            Route::post('/change-password', 'updatePassword');
+            Route::get('/profile', 'profile');
+            Route::put('/profile', 'editProfile');
+        });
+    });
     // Route::post('/register', [UserApiController::class, 'register']);
     // Route::post('/login', [UserApiController::class, 'login']);
     // Route::post('/reset-password/{token}', [UserApiController::class, 'reset']);
@@ -34,22 +49,6 @@ Route::prefix('api')->group(function () {
     //     Route::get('/profile', [UserApiController::class, 'profile']);
     //     Route::put('/profile', [UserApiController::class, 'editProfile']);
     // });
-
-    // Route::get('/register', [UserApiController::class, 'register']);
-    // Route::get('/login', [UserApiController::class, 'login']);
-    Route::post('/register', [UserApiController::class, 'register']);
-    Route::post('/login', [UserApiController::class, 'login']);
-    Route::post('/reset-password/{token}', [UserApiController::class, 'reset']);
-    Route::post('/forgot-password', [UserApiController::class, 'forgotPassword']);
-
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/logout', [UserApiController::class, 'logout']);
-        Route::get('/email-verification', [UserApiController::class, 'sendemailVerification']);
-        Route::post('/email-verification', [UserApiController::class, 'emailVerification']);
-        Route::post('/change-password', [UserApiController::class, 'updatePassword']);
-        Route::get('/profile', [UserApiController::class, 'profile']);
-        Route::put('/profile', [UserApiController::class, 'editProfile']);
-    });
 
     // Home
     Route::get('/homepage', [HomeApiController::class, 'homePage']);

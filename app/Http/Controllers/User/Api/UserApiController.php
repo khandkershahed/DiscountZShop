@@ -24,523 +24,294 @@ class UserApiController extends Controller
         $this->otp = new Otp();
     }
 
-    /**
-     * Register a new user.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    // public function register(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:8|confirmed',
-    //     ], [
-    //         'name.required' => 'Name is required',
-    //         'email.required' => 'Email is required',
-    //         'password.required' => 'Password is required',
-    //     ]);
-
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-
-    //     return response()->json([
-    //         'message' => 'Registration Success',
-    //         'status' => 'success'
-    //     ], 201);
-    // }
-    // public function register(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'phone' => 'required|string|max:19|',
-    //         'password' => 'required|string|min:8|confirmed',
-    //     ], [
-    //         'name.required' => 'Name is required',
-    //         'email.required' => 'Email is required',
-    //         'phone.required' => 'Your Phone Number is required',
-    //         'password.required' => 'Password is required',
-    //     ]);
-    //     if ($validator->fails()) {
-    //         return $this->sendError('Validation Error.', $validator->errors());
-    //     }
-    //     $input = $request->all();
-    //     // $input['password'] = bcrypt($input['password']);
-    //     $input['password'] = Hash::make($input['password']);
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'phone' => $request->phone,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-    //     $success['token'] =  $user->createToken('apiToken')->plainTextToken;
-    //     $success['name'] =  $user->name;
-    //     // $otp = Otp::generate($user->email, 6, 15);
-    //     // Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
-    //     return $this->sendResponse($success, 'User is registered successfully.');
-    // }
-    // public function sendemailVerification(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'email' => 'required|email|max:255|exists:users',
-    //     ], [
-    //         'email.required' => 'Email is required',
-    //     ]);
-    //     if ($validator->fails()) {
-    //         return $this->sendError('Validation Error.', $validator->errors());
-    //     }
-    //     $user = User::where('email', $request->email)->first();
-    //     $otp = Otp::generate($user->email, 6, 15);
-    //     Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
-    //     return $this->sendResponse($user, 'Email verification OTP sent successfully.');
-    // }
-    // public function emailVerification(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'email' => 'required|email|max:255|exists:users',
-    //         'otp' => 'required|max:6',
-    //     ], [
-    //         'email.required' => 'Email is required',
-    //         'otp.required' => 'OTP is required',
-    //     ]);
-    //     if ($validator->fails()) {
-    //         return $this->sendError('Validation Error.', $validator->errors());
-    //     }
-    //     $otp2 = Otp::verify($request->email, $request->otp);
-    //     if ($otp2) {
-    //         $user = User::where('email', $request->email)->first();
-    //         $user->update(['email_verified_at' => now()]);
-    //         return $this->sendResponse($user, 'Email is verified successfully.');
-    //     } else {
-    //         return $this->sendError('Validation Error.', ['otp' => 'OTP is not valid']);
-    //     }
-    // }
-
-    // public function login(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ], [
-    //         'email.required' => 'Email is required',
-    //         'password.required' => 'Password is required',
-    //     ]);
-
-    //     $user = User::where('email', $request->email)->first();
-
-    //     if (!$user || !Hash::check($request->password, $user->password)) {
-    //         return response()->json([
-    //             'message' => 'The provided credentials are incorrect.',
-    //             'status' => 'error'
-    //         ], 401);
-    //     }
-
-    //     return response()->json([
-    //         'token' => $user->createToken('apiToken')->plainTextToken,
-    //         'message' => 'Login Success',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
-    // public function logout(Request $request)
-    // {
-    //     // $request->user()->currentAccessToken()->delete();
-    //     $request->user()->tokens()->delete();
-    //     return response()->json([
-    //         'message' => 'User Logged Out Successfully',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
-    // public function updatePassword(Request $request)
-    // {
-    //     $request->validate([
-    //         'current_password' => ['required', 'string'],
-    //         'new_password' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-
-    //     if (!Hash::check($request->current_password, $request->user()->password)) {
-    //         return response()->json([
-    //             'message' => 'Current password is incorrect',
-    //             'status' => 'error'
-    //         ], 400);
-    //     }
-
-    //     $request->user()->update(['password' => Hash::make($request->new_password)]);
-
-    //     return response()->json([
-    //         'message' => 'Password changed successfully',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
-    // public function reset(Request $request, $token)
-    // {
-    //     // Delete Token older than 2 minute
-    //     $formatted = now()->subMinutes(2)->toDateTimeString();
-    //     DB::table('password_reset_tokens')->where('created_at', '<=', $formatted)->delete();
-
-    //     $request->validate([
-    //         'password' => 'required|confirmed',
-    //     ]);
-
-    //     $passwordreset = DB::table('password_reset_tokens')->where('token', $token)->first();
-
-    //     if (!$passwordreset) {
-    //         return response([
-    //             'message' => 'Token is Invalid or Expired',
-    //             'status' => 'failed'
-    //         ], 404);
-    //     }
-
-    //     // Update the user's password
-    //     User::where('email', $passwordreset->email)->update([
-    //         'password' => Hash::make($request->password),
-    //     ]);
-
-    //     // Delete the token after resetting password
-    //     DB::table('password_reset_tokens')->where('email', $passwordreset->email)->delete();
-
-    //     return response([
-    //         'message' => 'Password Reset Success',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
-    // public function forgotPassword(Request $request)
-    // {
-    //     $request->validate(['email' => 'required|email']);
-
-    //     $email = $request->email;
-
-    //     // Check if the email exists
-    //     $user = User::where('email', $email)->first();
-    //     if (!$user) {
-    //         return response([
-    //             'message' => 'Email does not exist',
-    //             'status' => 'failed'
-    //         ], 404);
-    //     }
-
-    //     // Generate Token
-    //     $token = Str::random(60);
-
-    //     // Saving Data to Password Reset Table
-    //     DB::table('password_reset_tokens')->upsert([
-    //         'email' => $email,
-    //         'token' => $token,
-    //         'created_at' => now()
-    //     ], ['email'], ['token', 'created_at']);
-
-    //     // Sending EMail with Password Reset Token
-    //     Mail::raw("Your password reset token is: $token", function ($message) use ($email) {
-    //         $message->subject('Reset Your Password');
-    //         $message->to($email);
-    //     });
-
-    //     return response([
-    //         'message' => 'Password Reset Email Sent... Check Your Email',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
-    // public function profile(Request $request)
-    // {
-    //     return response()->json([
-    //         'user' => $request->user(),
-    //         'message' => 'User profile retrieved successfully.',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
-    // public function editProfile(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users,email,' . $request->user()->id,
-    //     ], [
-    //         'name.required' => 'Name is required',
-    //         'email.required' => 'Email is required',
-    //     ]);
-
-    //     $user = $request->user();
-
-    //     $user->update([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //     ]);
-
-    //     return response()->json([
-    //         'user' => $user,
-    //         'message' => 'Profile updated successfully',
-    //         'status' => 'success'
-    //     ], 200);
-    // }
-
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:19',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'name'     => 'required|string|max:255',
+                'email'    => 'required|email|max:255|unique:users',
+                'phone'    => 'required|string|max:19|unique:users',
+                'password' => 'required|string|min:8|confirmed',
+            ]);
 
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 'error',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            $user = User::create([
+                'name'     => $request->name,
+                'email'    => $request->email,
+                'phone'    => $request->phone,
+                'password' => Hash::make($request->password),
+            ]);
+
+            $token = $user->createToken('apiToken')->plainTextToken;
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'User registered successfully.',
+                'token'   => $token,
+                'user'    => $user
+            ], 201);
+
+        } catch (\Throwable $e) {
+            // Log::error('Register error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Registration failed.'], 500);
         }
-
-        $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'phone'    => $request->phone,
-            'password' => Hash::make($request->password),
-        ]);
-
-        $success['token'] = $user->createToken('apiToken')->plainTextToken;
-        $success['name']  = $user->name;
-
-        return $this->sendResponse($success, 'User registered successfully.');
     }
 
+    /**
+     * ✅ User Login
+     */
     public function login(Request $request)
     {
-        $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'email'    => 'required|email',
+                'password' => 'required',
+            ]);
 
-        $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => 'Invalid credentials.'
+                ], 401);
+            }
+
+            $token = $user->createToken('apiToken')->plainTextToken;
+
             return response()->json([
-                'message' => 'The provided credentials are incorrect.',
-                'status'  => 'error'
-            ], 401);
+                'status'  => 'success',
+                'message' => 'Login successful.',
+                'token'   => $token,
+                'user'    => $user
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Login error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Login failed.'], 500);
         }
-        // dd($request->user());
-        return response()->json([
-            'token'   => $user->createToken('apiToken')->plainTextToken,
-            'message' => 'Login success',
-            'status'  => 'success'
-        ]);
     }
 
+    /**
+     * ✅ Logout
+     */
     public function logout(Request $request)
     {
-        // dd($request->user());
-        $request->user()->tokens()->delete();
+        try {
+            $request->user()->tokens()->delete();
 
-        return response()->json([
-            'message' => 'User logged out successfully.',
-            'status'  => 'success'
-        ]);
-    }
-
-    public function sendemailVerification(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|max:255|exists:users',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Logged out successfully.'
+            ]);
+        } catch (\Throwable $e) {
+            // Log::error('Logout error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Logout failed.'], 500);
         }
-
-        $user = User::where('email', $request->email)->first();
-        $otp  = Otp::generate($user->email, 6, 15);
-
-        Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
-
-        return $this->sendResponse([], 'Email verification OTP sent successfully.');
     }
 
+    /**
+     * ✅ Send Email Verification OTP
+     */
+    public function sendEmailVerification(Request $request)
+    {
+        try {
+            $request->validate(['email' => 'required|email|exists:users']);
+
+            $user = User::where('email', $request->email)->first();
+            $otp  = $this->otp->generate($user->email, 6, 15);
+
+            Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Verification OTP sent successfully.'
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Send Email Verification error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Failed to send OTP.'], 500);
+        }
+    }
+
+    /**
+     * ✅ Verify Email
+     */
     public function emailVerification(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users',
-            'otp'   => 'required|string|max:6',
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|email|exists:users',
+                'otp'   => 'required|string|max:6',
+            ]);
 
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            $otpCheck = $this->otp->validate($request->email, $request->otp);
+
+            if (!$otpCheck->status) {
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => 'Invalid or expired OTP.'
+                ], 400);
+            }
+
+            $user = User::where('email', $request->email)->first();
+            $user->update(['email_verified_at' => now()]);
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Email verified successfully.'
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Email Verification error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Email verification failed.'], 500);
         }
-
-        $otp2 = Otp::validate($request->email, $request->otp);
-
-        if (!$otp2->status) {
-            return $this->sendError('Invalid OTP.', ['otp' => 'The provided OTP is not valid or expired']);
-        }
-
-        $user = User::where('email', $request->email)->first();
-        $user->email_verified_at = now();
-        $user->save();
-
-        return $this->sendResponse($user, 'Email verified successfully.');
     }
 
+    /**
+     * ✅ Forgot Password
+     */
     public function forgotPassword(Request $request)
     {
-        $request->validate(['email' => 'required|email']);
+        try {
+            $request->validate(['email' => 'required|email|exists:users']);
 
-        $user = User::where('email', $request->email)->first();
+            $token = Str::random(60);
+            DB::table('password_reset_tokens')->upsert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => now()
+            ], ['email'], ['token', 'created_at']);
 
-        if (!$user) {
-            return response()->json(['message' => 'Email does not exist', 'status' => 'error'], 404);
+            Mail::raw("Your password reset token is: $token", function ($msg) use ($request) {
+                $msg->to($request->email)->subject('Password Reset');
+            });
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Password reset token sent.'
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Forgot Password error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Failed to send reset token.'], 500);
         }
-
-        $token = Str::random(60);
-
-        DB::table('password_reset_tokens')->upsert([
-            'email'      => $request->email,
-            'token'      => $token,
-            'created_at' => now()
-        ], ['email'], ['token', 'created_at']);
-
-        Mail::raw("Your password reset token is: $token", function ($message) use ($request) {
-            $message->to($request->email)->subject('Password Reset');
-        });
-
-        return response()->json([
-            'message' => 'Password reset token sent.',
-            'status'  => 'success'
-        ]);
     }
 
+    /**
+     * ✅ Reset Password
+     */
     public function reset(Request $request, $token)
     {
-        $request->validate([
-            'password' => 'required|confirmed',
-        ]);
+        try {
+            $request->validate(['password' => 'required|confirmed|min:8']);
 
-        DB::table('password_reset_tokens')
-            ->where('created_at', '<=', now()->subMinutes(2))
-            ->delete();
+            DB::table('password_reset_tokens')
+                ->where('created_at', '<=', now()->subMinutes(10))
+                ->delete();
 
-        $record = DB::table('password_reset_tokens')->where('token', $token)->first();
+            $record = DB::table('password_reset_tokens')->where('token', $token)->first();
+            if (!$record) {
+                return response()->json(['status' => 'error', 'message' => 'Invalid or expired token.'], 404);
+            }
 
-        if (!$record) {
-            return response()->json(['message' => 'Invalid or expired token.', 'status' => 'error'], 404);
+            $user = User::where('email', $record->email)->firstOrFail();
+            $user->update(['password' => Hash::make($request->password)]);
+
+            DB::table('password_reset_tokens')->where('email', $user->email)->delete();
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Password reset successfully.'
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Reset Password error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Password reset failed.'], 500);
         }
-
-        $user = User::where('email', $record->email)->first();
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        DB::table('password_reset_tokens')->where('email', $user->email)->delete();
-
-        return response()->json([
-            'message' => 'Password reset successfully.',
-            'status'  => 'success'
-        ]);
     }
 
+    /**
+     * ✅ Update Password (Authenticated)
+     */
     public function updatePassword(Request $request)
     {
-        $request->validate([
-            'current_password' => 'required',
-            'new_password'     => 'required|confirmed|min:8',
-        ]);
+        try {
+            $request->validate([
+                'current_password' => 'required',
+                'new_password'     => 'required|confirmed|min:8',
+            ]);
 
-        if (!Hash::check($request->current_password, $request->user()->password)) {
+            if (!Hash::check($request->current_password, $request->user()->password)) {
+                return response()->json(['status' => 'error', 'message' => 'Incorrect current password.'], 400);
+            }
+
+            $request->user()->update(['password' => Hash::make($request->new_password)]);
+
             return response()->json([
-                'message' => 'Current password is incorrect.',
-                'status'  => 'error'
-            ], 400);
+                'status'  => 'success',
+                'message' => 'Password updated successfully.'
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Update Password error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Failed to update password.'], 500);
         }
-
-        $request->user()->update([
-            'password' => Hash::make($request->new_password),
-        ]);
-
-        return response()->json([
-            'message' => 'Password updated successfully.',
-            'status'  => 'success'
-        ]);
     }
 
+    /**
+     * ✅ User Profile
+     */
     public function profile(Request $request)
     {
         return response()->json([
-            'user'    => $request->user(),
-            'message' => 'User profile retrieved successfully.',
-            'status'  => 'success'
+            'status'  => 'success',
+            'message' => 'Profile retrieved successfully.',
+            'user'    => $request->user()
         ]);
     }
 
-
+    /**
+     * ✅ Edit Profile
+     */
     public function editProfile(Request $request)
     {
-        $user = User::findOrFail($request->user_id);
-        $request->validate([
-            'user_id'          => 'required|exists:users,id',
-            'name'             => 'required|string|max:255',
-            'email'            => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'phone'            => 'nullable|string|max:20',
-            'gender'           => 'nullable|in:male,female,other',
-            'division'         => 'nullable|string|max:255',
-            'district'         => 'nullable|string|max:255',
-            'city'             => 'nullable|string|max:255',
-            'area'             => 'nullable|string|max:255',
-            'location'         => 'nullable|string|max:255',
-            'membership_type'  => 'nullable|string|max:255',
-            'profile_image'    => 'nullable|image|max:2048', // optional file upload
-        ]);
-        $files = [
-            'profile_image' => $request->file('profile_image'),
-        ];
-        $uploadedFiles = [];
-        foreach ($files as $key => $file) {
-            if (!empty($file)) {
-                $filePath = 'offer/' . $key;
-                $oldFile = $brand->$key ?? null;
+        try {
+            $user = $request->user();
 
-                if ($oldFile) {
-                    Storage::delete("public/" . $oldFile);
-                }
-                $uploadedFiles[$key] = customUpload($file, $filePath);
-                if ($uploadedFiles[$key]['status'] === 0) {
-                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
-                }
-            } else {
-                $uploadedFiles[$key] = ['status' => 0];
+            $request->validate([
+                'name'  => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+                'phone' => 'nullable|string|max:19|unique:users,phone,' . $user->id,
+                'profile_image' => 'nullable|image|max:2048',
+            ]);
+
+            $data = $request->only(['name', 'email', 'phone', 'gender', 'city', 'area', 'location']);
+
+            if ($request->hasFile('profile_image')) {
+                if ($user->profile_image) Storage::delete('public/' . $user->profile_image);
+                $data['profile_image'] = $request->file('profile_image')->store('profile_images', 'public');
             }
+
+            $user->update($data);
+
+            $user->profile_image = $user->profile_image ? url('storage/' . $user->profile_image) : null;
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Profile updated successfully.',
+                'user'    => $user
+            ]);
+
+        } catch (\Throwable $e) {
+            // Log::error('Edit Profile error: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Failed to update profile.'], 500);
         }
-        $data = $request->only([
-            'name',
-            'email',
-            'phone',
-            'gender',
-            'division',
-            'district',
-            'city',
-            'area',
-            'location',
-            'membership_type',
-        ]);
-
-        // Handle profile image upload if present
-        if ($request->hasFile('profile_image')) {
-            $imagePath = $request->file('profile_image')->store('profile_images', 'public');
-            $data['profile_image'] = $imagePath;
-        }
-
-        $user->update($data);
-
-        // Return full URL for profile image
-        if ($user->profile_image) {
-            $user->profile_image = url('storage/' . $user->profile_image);
-        }
-
-        return response()->json([
-            'status'  => 'success',
-            'message' => 'Profile updated successfully.',
-            'user'    => $user,
-        ]);
     }
 }
