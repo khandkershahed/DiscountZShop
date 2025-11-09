@@ -416,6 +416,91 @@ class HomeApiController extends Controller
         ]);
     }
 
+    //homepageCategories
+
+
+    public function homepageCategories()
+    {
+        $categories = Category::with(['offers' => function ($query) {
+            $query->where('status', 'active')->latest();
+        }])
+            ->where('status', 'active')
+            ->whereHas('offers') // ✅ Only include categories that have offers
+            ->latest()
+            ->take(4)
+            ->get()
+            ->map(function ($category) {
+                // Format category image URLs
+                $category->logo         = url('storage/' . $category->logo);
+                $category->image        = url('storage/' . $category->image);
+                $category->banner_image = url('storage/' . $category->banner_image);
+
+                // Remove unwanted fields
+                unset(
+                    $category->created_at,
+                    $category->updated_at,
+                    $category->status,
+                    $category->added_by,
+                );
+
+                // Process each offer
+                $category->offers = $category->offers->map(function ($offer) {
+                    // Clean text fields
+                    $offer->description       = html_entity_decode(strip_tags($offer->description));
+                    $offer->short_description = html_entity_decode(strip_tags($offer->short_description));
+                    $offer->locations         = html_entity_decode($offer->locations);
+                    $offer->map_url           = html_entity_decode($offer->map_url);
+
+                    // Helper to decode JSON safely
+
+                    // Decode and fetch related names
+                    unset(
+                        $offer->country_id,
+                        $offer->division_id,
+                        $offer->city_id,
+                        $offer->area_id,
+                        $offer->notify_to,
+                        $offer->category_id,
+                        $offer->brand_id,
+                        $offer->store_id,
+                        $offer->added_by,
+                        $offer->update_by,
+                        $offer->offer_type_id,
+                        $offer->description,
+                        $offer->short_description,
+                        $offer->locations,
+                        $offer->url,
+                        $offer->source_url,
+                        $offer->coupon_code,
+                        $offer->map_url,
+                        $offer->tags,
+                        $offer->start_date,
+                        $offer->notification_date,
+                        $offer->expiry_date,
+                        $offer->created_at,
+                        $offer->updated_at,
+                        $offer->status
+                    );
+
+                    // Format offer images
+                    $offer->logo         = url('storage/' . $offer->logo);
+                    $offer->image        = url('storage/' . $offer->image);
+                    $offer->banner_image = url('storage/' . $offer->banner_image);
+
+                    return $offer;
+                });
+
+                return $category;
+            });
+
+        return response()->json([
+            'status' => 'success',
+            'data'   => [
+                'categories' => $categories,
+            ]
+        ]);
+    }
+
     public function allBrands(Request $request)
     {
         $paginate = $request->input('paginate', 10); // Default to 10
@@ -499,34 +584,34 @@ class HomeApiController extends Controller
             $offer->banner_image = url('storage/' . $offer->banner_image);
         }
         if ($brand) {
-            $brand->about             = html_entity_decode(strip_tags($brand->about));
-            $brand->description       = html_entity_decode(strip_tags($brand->description));
-            // $brand->url               = html_entity_decode(strip_tags($brand->url));
-            $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
-            $brand->location          = html_entity_decode($brand->location);
+            // $brand->about             = html_entity_decode(strip_tags($brand->about));
+            // $brand->description       = html_entity_decode(strip_tags($brand->description));
+            // // $brand->url               = html_entity_decode(strip_tags($brand->url));
+            // $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
+            // $brand->location          = html_entity_decode($brand->location);
             $brand->url               = html_entity_decode($brand->url);
 
-            $countryIds   = json_decode($brand->country_id, true) ?? [];
-            $divisionIds  = json_decode($brand->division_id, true) ?? [];
-            $cityIds      = json_decode($brand->city_id, true) ?? [];
-            $areaIds      = json_decode($brand->area_id, true) ?? [];
-            $addedToId    = json_decode($brand->added_by, true) ?? [];
-            $categoryToId = json_decode($brand->category_id, true) ?? [];
+            // $countryIds   = json_decode($brand->country_id, true) ?? [];
+            // $divisionIds  = json_decode($brand->division_id, true) ?? [];
+            // $cityIds      = json_decode($brand->city_id, true) ?? [];
+            // $areaIds      = json_decode($brand->area_id, true) ?? [];
+            // $addedToId    = json_decode($brand->added_by, true) ?? [];
+            // $categoryToId = json_decode($brand->category_id, true) ?? [];
 
             // Fetch names from DB (assuming related tables exist)
-            $brand->countries     = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
-            $brand->divisions     = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
-            $brand->cities        = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
-            $brand->areas         = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
-            $brand->added_by_name = DB::table('admins')->where('id', $addedToId)->pluck('name');
-            $brand->category_name = DB::table('categories')->where('id', $categoryToId)->pluck('name');
+            // $brand->countries     = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
+            // $brand->divisions     = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
+            // $brand->cities        = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
+            // $brand->areas         = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
+            // $brand->added_by_name = DB::table('admins')->where('id', $addedToId)->pluck('name');
+            // $brand->category_name = DB::table('categories')->where('id', $categoryToId)->pluck('name');
 
             // Fix image URLs
             $brand->logo                = url('storage/' . $brand->logo);
             $brand->image               = url('storage/' . $brand->image);
             $brand->banner_image        = url('storage/' . $brand->banner_image);
-            $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
-            $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+            // $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
+            // $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
         }
         $data = [
             'brand' => $brand,

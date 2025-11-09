@@ -12,6 +12,7 @@ use App\Mail\EmailVerificationMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserApiController extends Controller
@@ -332,7 +333,7 @@ class UserApiController extends Controller
 
     public function logout(Request $request)
     {
-        dd($request->user());
+        // dd($request->user());
         $request->user()->tokens()->delete();
 
         return response()->json([
@@ -472,23 +473,74 @@ class UserApiController extends Controller
         ]);
     }
 
+
     public function editProfile(Request $request)
     {
+        $user = User::findOrFail($request->user_id);
         $request->validate([
-            'name'  => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $request->user()->id,
+            'user_id'          => 'required|exists:users,id',
+            'name'             => 'required|string|max:255',
+            'email'            => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'phone'            => 'nullable|string|max:20',
+            'gender'           => 'nullable|in:male,female,other',
+            'division'         => 'nullable|string|max:255',
+            'district'         => 'nullable|string|max:255',
+            'city'             => 'nullable|string|max:255',
+            'area'             => 'nullable|string|max:255',
+            'location'         => 'nullable|string|max:255',
+            'membership_type'  => 'nullable|string|max:255',
+            'profile_image'    => 'nullable|image|max:2048', // optional file upload
+        ]);
+        $files = [
+            'profile_image' => $request->file('profile_image'),
+        ];
+        $uploadedFiles = [];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $filePath = 'offer/' . $key;
+                $oldFile = $brand->$key ?? null;
+
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
+                }
+                $uploadedFiles[$key] = customUpload($file, $filePath);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
+                }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
+            }
+        }
+        $data = $request->only([
+            'name',
+            'email',
+            'phone',
+            'gender',
+            'division',
+            'district',
+            'city',
+            'area',
+            'location',
+            'membership_type',
         ]);
 
-        $user = $request->user();
-        $user->update([
-            'name'  => $request->name,
-            'email' => $request->email,
-        ]);
+        // Handle profile image upload if present
+        if ($request->hasFile('profile_image')) {
+            $imagePath = $request->file('profile_image')->store('profile_images', 'public');
+            $data['profile_image'] = $imagePath;
+        }
+
+        $user->update($data);
+
+        // Return full URL for profile image
+        if ($user->profile_image) {
+            $user->profile_image = url('storage/' . $user->profile_image);
+        }
 
         return response()->json([
-            'user'    => $user,
+            'status'  => 'success',
             'message' => 'Profile updated successfully.',
-            'status'  => 'success'
+            'user'    => $user,
         ]);
     }
 }
