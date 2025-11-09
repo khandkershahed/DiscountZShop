@@ -536,9 +536,9 @@ class HomeApiController extends Controller
                 }])
                 ->latest()
                 ->get()->map(function ($category) {
-                $category->logo         = url('storage/' . $category->logo);
-                return $category;
-            });
+                    $category->logo         = url('storage/' . $category->logo);
+                    return $category;
+                });
 
             // ✅ 2. Handle “no data found”
             if ($categories->isEmpty()) {
@@ -617,7 +617,7 @@ class HomeApiController extends Controller
     public function offerDetails($slug)
     {
         $offer = Offer::where('slug', $slug)->first();
-        $brand = Brand::select('url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
+        $brand = Brand::select('slug','name','url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
         if ($offer) {
             $offer->description       = html_entity_decode(strip_tags($offer->description));
             $offer->short_description = html_entity_decode(strip_tags($offer->short_description));
@@ -656,8 +656,10 @@ class HomeApiController extends Controller
             // // $brand->url               = html_entity_decode(strip_tags($brand->url));
             // $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
             // $brand->location          = html_entity_decode($brand->location);
-            $brand->url               = html_entity_decode($brand->url);
-
+            $brand->url                 = html_entity_decode($brand->url);
+            $brand->logo                = url('storage/' . $brand->logo);
+            $brand->image               = url('storage/' . $brand->image);
+            $brand->banner_image        = url('storage/' . $brand->banner_image);
             // $countryIds   = json_decode($brand->country_id, true) ?? [];
             // $divisionIds  = json_decode($brand->division_id, true) ?? [];
             // $cityIds      = json_decode($brand->city_id, true) ?? [];
@@ -674,9 +676,7 @@ class HomeApiController extends Controller
             // $brand->category_name = DB::table('categories')->where('id', $categoryToId)->pluck('name');
 
             // Fix image URLs
-            $brand->logo                = url('storage/' . $brand->logo);
-            $brand->image               = url('storage/' . $brand->image);
-            $brand->banner_image        = url('storage/' . $brand->banner_image);
+
             // $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
             // $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
 
@@ -734,37 +734,37 @@ class HomeApiController extends Controller
 
     public function brandStores($slug)
     {
-        $brand  = Brand::with('stores')->where('slug', $slug)->first();
+        $brand  = Brand::select('slug','name','url', 'logo', 'image', 'banner_image')->with('stores')->where('slug', $slug)->first();
         $stores = $brand->stores;
 
         if ($brand) {
-            $brand->about             = html_entity_decode(strip_tags($brand->about));
-            $brand->description       = html_entity_decode(strip_tags($brand->description));
-            $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
-            $brand->location          = html_entity_decode($brand->location);
-            $brand->url               = html_entity_decode($brand->url);
+            // $brand->about             = html_entity_decode(strip_tags($brand->about));
+            // $brand->description       = html_entity_decode(strip_tags($brand->description));
+            // $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
+            // $brand->location          = html_entity_decode($brand->location);
+            // $brand->url               = html_entity_decode($brand->url);
 
-            $countryIds               = json_decode($brand->country_id, true) ?? [];
-            $divisionIds              = json_decode($brand->division_id, true) ?? [];
-            $cityIds                  = json_decode($brand->city_id, true) ?? [];
-            $areaIds                  = json_decode($brand->area_id, true) ?? [];
-            $addedToId                = json_decode($brand->added_by, true) ?? [];
-            $categoryToId             = json_decode($brand->category_id, true) ?? [];
+            // $countryIds               = json_decode($brand->country_id, true) ?? [];
+            // $divisionIds              = json_decode($brand->division_id, true) ?? [];
+            // $cityIds                  = json_decode($brand->city_id, true) ?? [];
+            // $areaIds                  = json_decode($brand->area_id, true) ?? [];
+            // $addedToId                = json_decode($brand->added_by, true) ?? [];
+            // $categoryToId             = json_decode($brand->category_id, true) ?? [];
 
-            // Fetch names from DB (assuming related tables exist)
-            $brand->countries         = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
-            $brand->divisions         = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
-            $brand->cities            = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
-            $brand->areas             = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
-            $brand->added_by_name     = DB::table('admins')->where('id', $addedToId)->value('name');
-            $brand->category_name     = DB::table('categories')->where('id', $categoryToId)->value('name');
+            // // Fetch names from DB (assuming related tables exist)
+            // $brand->countries         = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
+            // $brand->divisions         = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
+            // $brand->cities            = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
+            // $brand->areas             = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
+            // $brand->added_by_name     = DB::table('admins')->where('id', $addedToId)->value('name');
+            // $brand->category_name     = DB::table('categories')->where('id', $categoryToId)->value('name');
 
             // Fix image URLs
             $brand->logo                = url('storage/' . $brand->logo);
             $brand->image               = url('storage/' . $brand->image);
             $brand->banner_image        = url('storage/' . $brand->banner_image);
-            $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
-            $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+            // $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
+            // $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
         }
         $stores->map(function ($store) {
             $store->description = html_entity_decode(strip_tags($store->description));
@@ -806,37 +806,37 @@ class HomeApiController extends Controller
     }
     public function brandOffers($slug)
     {
-        $brand  = Brand::with('offers')->where('slug', $slug)->first();
+        $brand  = Brand::select('slug','name','url', 'logo', 'image', 'banner_image')->with('offers')->where('slug', $slug)->first();
         $offers = $brand->offers;
 
         if ($brand) {
-            $brand->about             = html_entity_decode(strip_tags($brand->about));
-            $brand->description       = html_entity_decode(strip_tags($brand->description));
-            $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
-            $brand->location          = html_entity_decode($brand->location);
+            // $brand->about             = html_entity_decode(strip_tags($brand->about));
+            // $brand->description       = html_entity_decode(strip_tags($brand->description));
+            // $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
+            // $brand->location          = html_entity_decode($brand->location);
             $brand->url               = html_entity_decode($brand->url);
 
-            $countryIds               = json_decode($brand->country_id, true) ?? [];
-            $divisionIds              = json_decode($brand->division_id, true) ?? [];
-            $cityIds                  = json_decode($brand->city_id, true) ?? [];
-            $areaIds                  = json_decode($brand->area_id, true) ?? [];
-            $addedToId                = json_decode($brand->added_by, true) ?? [];
-            $categoryToId             = json_decode($brand->category_id, true) ?? [];
+            // $countryIds               = json_decode($brand->country_id, true) ?? [];
+            // $divisionIds              = json_decode($brand->division_id, true) ?? [];
+            // $cityIds                  = json_decode($brand->city_id, true) ?? [];
+            // $areaIds                  = json_decode($brand->area_id, true) ?? [];
+            // $addedToId                = json_decode($brand->added_by, true) ?? [];
+            // $categoryToId             = json_decode($brand->category_id, true) ?? [];
 
-            // Fetch names from DB (assuming related tables exist)
-            $brand->countries         = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
-            $brand->divisions         = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
-            $brand->cities            = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
-            $brand->areas             = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
-            $brand->added_by_name     = DB::table('admins')->where('id', $addedToId)->value('name');
-            $brand->category_name     = DB::table('categories')->where('id', $categoryToId)->value('name');
+            // // Fetch names from DB (assuming related tables exist)
+            // $brand->countries         = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
+            // $brand->divisions         = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
+            // $brand->cities            = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
+            // $brand->areas             = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
+            // $brand->added_by_name     = DB::table('admins')->where('id', $addedToId)->value('name');
+            // $brand->category_name     = DB::table('categories')->where('id', $categoryToId)->value('name');
 
             // Fix image URLs
             $brand->logo                = url('storage/' . $brand->logo);
             $brand->image               = url('storage/' . $brand->image);
             $brand->banner_image        = url('storage/' . $brand->banner_image);
-            $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
-            $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+            // $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
+            // $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
         }
         $offers->map(function ($offer) {
             $offer->description = html_entity_decode(strip_tags($offer->description));
