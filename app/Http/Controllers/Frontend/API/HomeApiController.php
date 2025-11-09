@@ -617,7 +617,7 @@ class HomeApiController extends Controller
     public function offerDetails($slug)
     {
         $offer = Offer::where('slug', $slug)->first();
-        $brand = Brand::select('slug','name','url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
+        $brand = Brand::select('id','slug','name','url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
         if ($offer) {
             $offer->description       = html_entity_decode(strip_tags($offer->description));
             $offer->short_description = html_entity_decode(strip_tags($offer->short_description));
@@ -734,7 +734,7 @@ class HomeApiController extends Controller
 
     public function brandStores($slug)
     {
-        $brand  = Brand::select('slug','name','url', 'logo', 'image', 'banner_image')->with('stores')->where('slug', $slug)->first();
+        $brand  = Brand::select('id','slug','name','url', 'logo', 'image', 'banner_image')->with('stores')->where('slug', $slug)->first();
         $stores = $brand->stores;
 
         if ($brand) {
@@ -806,7 +806,7 @@ class HomeApiController extends Controller
     }
     public function brandOffers($slug)
     {
-        $brand  = Brand::select('slug','name','url', 'logo', 'image', 'banner_image')->with('offers')->where('slug', $slug)->first();
+        $brand  = Brand::select('id','slug','name','url', 'logo', 'image', 'banner_image')->with('offers')->where('slug', $slug)->first();
         $offers = $brand->offers;
 
         if ($brand) {
