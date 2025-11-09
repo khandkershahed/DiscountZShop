@@ -22,6 +22,7 @@ use App\Models\PrivacyPolicy;
 use App\Models\TermsAndCondition;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class HomeApiController extends Controller
 {
@@ -503,54 +504,120 @@ class HomeApiController extends Controller
 
     public function allBrands(Request $request)
     {
-        $paginate = $request->input('paginate', 10); // Default to 10
-        $brands = Brand::where('status', 'active')->latest()->paginate($paginate);
+        try {
+            $paginate = (int) $request->input('paginate', 10);
 
-        $brands->getCollection()->transform(function ($brand) {
-            // Decode HTML & strip tags
-            $brand->about             = html_entity_decode(strip_tags($brand->about));
-            $brand->description       = html_entity_decode(strip_tags($brand->description));
-            $brand->offer_description = html_entity_decode(strip_tags($brand->offer_description));
-            $brand->location          = html_entity_decode($brand->location);
-            $brand->url               = html_entity_decode($brand->url);
+            // ✅ 1. Eager load only needed fields
+            $categories = Category::select('id', 'name', 'slug', 'logo')
+                ->where('status', 'active')
+                ->with(['brands' => function ($query) {
+                    $query->select(
+                        'id',
+                        'name',
+                        'about',
+                        'description',
+                        'offer_description',
+                        'location',
+                        'url',
+                        'country_id',
+                        'division_id',
+                        'city_id',
+                        'area_id',
+                        'added_by',
+                        'category_id',
+                        'logo',
+                        'image',
+                        'banner_image',
+                        'middle_banner_left',
+                        'middle_banner_right'
+                    )
+                        ->where('status', 'active')
+                        ->latest();
+                }])
+                ->latest()
+                ->get()->map(function ($category) {
+                $category->logo         = url('storage/' . $category->logo);
+                return $category;
+            });
 
-            // Decode JSON arrays
-            $countryIds   = json_decode($brand->country_id, true) ?? [];
-            $divisionIds  = json_decode($brand->division_id, true) ?? [];
-            $cityIds      = json_decode($brand->city_id, true) ?? [];
-            $areaIds      = json_decode($brand->area_id, true) ?? [];
-            $addedToId    = json_decode($brand->added_by, true) ?? [];
-            $categoryToId = json_decode($brand->category_id, true) ?? [];
+            // ✅ 2. Handle “no data found”
+            if ($categories->isEmpty()) {
+                return response()->json([
+                    'status'  => 'success',
+                    'message' => 'No active categories or brands found.',
+                    'data'    => [],
+                    'count'   => 0,
+                ], 200);
+            }
 
-            // Related names
-            $brand->countries      = DB::table('countries')->whereIn('id', $countryIds)->pluck('name');
-            $brand->divisions      = DB::table('divisions')->whereIn('id', $divisionIds)->pluck('name');
-            $brand->cities         = DB::table('cities')->whereIn('id', $cityIds)->pluck('name');
-            $brand->areas          = DB::table('areas')->whereIn('id', $areaIds)->pluck('name');
-            $brand->added_by_name  = DB::table('admins')->where('id', $addedToId)->value('name');
-            $brand->category_name  = DB::table('categories')->where('id', $categoryToId)->value('name');
+            // ✅ 3. Cache static lookup data for speed
+            $countries = Cache::rememberForever('countries', fn() => DB::table('countries')->pluck('name', 'id'));
+            $divisions = Cache::rememberForever('divisions', fn() => DB::table('divisions')->pluck('name', 'id'));
+            $cities    = Cache::rememberForever('cities', fn() => DB::table('cities')->pluck('name', 'id'));
+            $areas     = Cache::rememberForever('areas', fn() => DB::table('areas')->pluck('name', 'id'));
+            $admins    = Cache::rememberForever('admins', fn() => DB::table('admins')->pluck('name', 'id'));
+            $catNames  = Cache::rememberForever('categories', fn() => DB::table('categories')->pluck('name', 'id'));
 
-            // Image URLs
-            $brand->logo                = url('storage/' . $brand->logo);
-            $brand->image               = url('storage/' . $brand->image);
-            $brand->banner_image        = url('storage/' . $brand->banner_image);
-            $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
-            $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+            // ✅ 4. Transform data safely
+            foreach ($categories as $category) {
+                foreach ($category->brands as $brand) {
+                    $brand->about             = self::cleanText($brand->about);
+                    $brand->description       = self::cleanText($brand->description);
+                    $brand->offer_description = self::cleanText($brand->offer_description);
+                    $brand->location          = self::cleanText($brand->location);
+                    $brand->url               = self::cleanText($brand->url);
 
-            return $brand;
-        });
+                    $countryIds  = json_decode($brand->country_id, true) ?? [];
+                    $divisionIds = json_decode($brand->division_id, true) ?? [];
+                    $cityIds     = json_decode($brand->city_id, true) ?? [];
+                    $areaIds     = json_decode($brand->area_id, true) ?? [];
+                    $addedById   = json_decode($brand->added_by, true) ?? null;
+                    $categoryId  = json_decode($brand->category_id, true) ?? null;
 
-        return response()->json([
-            'status' => 'success',
-            'data'   => $brands,
-            'count'  => $brands->total(), // total count of records
-        ]);
+                    $brand->countries      = collect($countryIds)->map(fn($id) => $countries[$id] ?? null)->filter()->values();
+                    $brand->divisions      = collect($divisionIds)->map(fn($id) => $divisions[$id] ?? null)->filter()->values();
+                    $brand->cities         = collect($cityIds)->map(fn($id) => $cities[$id] ?? null)->filter()->values();
+                    $brand->areas          = collect($areaIds)->map(fn($id) => $areas[$id] ?? null)->filter()->values();
+                    $brand->added_by_name  = $admins[$addedById] ?? null;
+                    $brand->category_name  = $catNames[$categoryId] ?? null;
+
+                    foreach (['logo', 'image', 'banner_image', 'middle_banner_left', 'middle_banner_right'] as $imgField) {
+                        $brand->{$imgField} = $brand->{$imgField}
+                            ? url("storage/{$brand->{$imgField}}")
+                            : null;
+                    }
+                }
+            }
+
+            $totalBrands = $categories->pluck('brands')->flatten()->count();
+
+            return response()->json([
+                'status' => 'success',
+                'count'  => $totalBrands,
+                'data'   => $categories,
+            ], 200);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'status'       => 'error',
+                'message'      => 'Something went wrong while loading brands. Please try again later.',
+                'errorMessage' => $e->getMessage(),
+                'trace'        => $e->getTraceAsString(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Helper to clean up HTML and entities.
+     */
+    private static function cleanText(?string $text): ?string
+    {
+        return $text ? html_entity_decode(strip_tags($text)) : null;
     }
 
     public function offerDetails($slug)
     {
         $offer = Offer::where('slug', $slug)->first();
-        $brand = Brand::where('id', $offer->brand_id)->first();
+        $brand = Brand::select('url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
         if ($offer) {
             $offer->description       = html_entity_decode(strip_tags($offer->description));
             $offer->short_description = html_entity_decode(strip_tags($offer->short_description));
@@ -612,6 +679,7 @@ class HomeApiController extends Controller
             $brand->banner_image        = url('storage/' . $brand->banner_image);
             // $brand->middle_banner_left  = url('storage/' . $brand->middle_banner_left);
             // $brand->middle_banner_right = url('storage/' . $brand->middle_banner_right);
+
         }
         $data = [
             'brand' => $brand,
