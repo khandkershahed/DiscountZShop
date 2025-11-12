@@ -56,7 +56,6 @@ class UserApiController extends Controller
                 'token'   => $token,
                 'user'    => $user
             ], 201);
-
         } catch (\Throwable $e) {
             // Log::error('Register error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Registration failed.'], 500);
@@ -91,7 +90,6 @@ class UserApiController extends Controller
                 'token'   => $token,
                 'user'    => $user
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Login error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Login failed.'], 500);
@@ -133,7 +131,6 @@ class UserApiController extends Controller
                 'status'  => 'success',
                 'message' => 'Verification OTP sent successfully.'
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Send Email Verification error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Failed to send OTP.'], 500);
@@ -167,7 +164,6 @@ class UserApiController extends Controller
                 'status'  => 'success',
                 'message' => 'Email verified successfully.'
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Email Verification error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Email verification failed.'], 500);
@@ -197,7 +193,6 @@ class UserApiController extends Controller
                 'status'  => 'success',
                 'message' => 'Password reset token sent.'
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Forgot Password error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Failed to send reset token.'], 500);
@@ -230,7 +225,6 @@ class UserApiController extends Controller
                 'status'  => 'success',
                 'message' => 'Password reset successfully.'
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Reset Password error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Password reset failed.'], 500);
@@ -258,7 +252,6 @@ class UserApiController extends Controller
                 'status'  => 'success',
                 'message' => 'Password updated successfully.'
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Update Password error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Failed to update password.'], 500);
@@ -308,10 +301,31 @@ class UserApiController extends Controller
                 'message' => 'Profile updated successfully.',
                 'user'    => $user
             ]);
-
         } catch (\Throwable $e) {
             // Log::error('Edit Profile error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Failed to update profile.'], 500);
+        }
+    }
+
+    public function deleteAccount(Request $request)
+    {
+        try {
+            $user = $request->user();
+            if ($user->profile_image) {
+                Storage::delete('public/' . $user->profile_image);
+            }
+            $user->tokens()->delete();
+            $user->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Account deleted successfully.'
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to delete account.'
+            ], 500);
         }
     }
 }

@@ -27,13 +27,14 @@ Route::prefix('api')->group(function () {
         Route::post('/forgot-password', 'forgotPassword');
         Route::post('/reset-password/{token}', 'reset');
 
+        Route::post('/email-verification/send', 'sendEmailVerification');
+        Route::post('/email-verification/verify', 'emailVerification');
         Route::middleware('auth:sanctum')->group(function () {
             Route::post('/logout', 'logout');
-            Route::post('/email-verification/send', 'sendEmailVerification');
-            Route::post('/email-verification/verify', 'emailVerification');
             Route::post('/change-password', 'updatePassword');
             Route::get('/profile', 'profile');
             Route::put('/profile', 'editProfile');
+            Route::delete('/user/delete', 'deleteAccount');
         });
     });
     // Route::post('/register', [UserApiController::class, 'register']);
