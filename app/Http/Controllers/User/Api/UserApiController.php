@@ -117,25 +117,56 @@ class UserApiController extends Controller
     /**
      * ✅ Send Email Verification OTP
      */
+    // public function sendEmailVerification(Request $request)
+    // {
+    //     try {
+    //         $request->validate(['email' => 'required|email|exists:users']);
+
+    //         $user = User::where('email', $request->email)->first();
+    //         $otp  = $this->otp->generate($user->email, 6, 15);
+
+    //         Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
+
+    //         return response()->json([
+    //             'status'  => 'success',
+    //             'message' => 'Verification OTP sent successfully.'
+    //         ]);
+    //     } catch (\Throwable $e) {
+    //         // Log::error('Send Email Verification error: ' . $e->getMessage());
+    //         return response()->json(['status' => 'error', 'message' => 'Failed to send OTP.'], 500);
+    //     }
+    // }
+
     public function sendEmailVerification(Request $request)
     {
         try {
-            $request->validate(['email' => 'required|email|exists:users']);
+            $request->validate([
+                'email' => 'required|email|exists:users,email'
+            ]);
 
             $user = User::where('email', $request->email)->first();
-            $otp  = $this->otp->generate($user->email, 6, 15);
 
-            Mail::to($user->email)->send(new EmailVerificationMail($otp->token, $user->name));
+            // Generate exactly 6-digit numeric OTP
+            $otpCode = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+
+            // Store OTP (assuming you have a method for this)
+            $otp = $this->otp->store($user->email, $otpCode, 15); // expiry: 15 minutes
+
+            // Send email
+            Mail::to($user->email)->send(new EmailVerificationMail($otpCode, $user->name));
 
             return response()->json([
                 'status'  => 'success',
                 'message' => 'Verification OTP sent successfully.'
             ]);
         } catch (\Throwable $e) {
-            // Log::error('Send Email Verification error: ' . $e->getMessage());
-            return response()->json(['status' => 'error', 'message' => 'Failed to send OTP.'], 500);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to send OTP.',
+            ], 500);
         }
     }
+
 
     /**
      * ✅ Verify Email
@@ -264,10 +295,10 @@ class UserApiController extends Controller
     public function profile(Request $request)
     {
         return response()->json([
-            'status'  => 'success',
-            'message' => 'Profile retrieved successfully.',
-            'user'    => $request->user()
-        ]);
+            'user' => $request->user(),
+            'message' => 'User profile retrieved successfully.',
+            'status' => 'success'
+        ], 200);
     }
 
     /**
@@ -279,22 +310,54 @@ class UserApiController extends Controller
             $user = $request->user();
 
             $request->validate([
-                'name'  => 'required|string|max:255',
-                'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-                'phone' => 'nullable|string|max:19|unique:users,phone,' . $user->id,
+                'name'          => 'required|string|max:255',
+                'email'         => 'required|email|max:255|unique:users,email,' . $user->id,
+                'phone'         => 'nullable|string|max:19|unique:users,phone,' . $user->id,
+                'gender'        => 'nullable|string|max:20',
+                'division'      => 'nullable|string|max:255',
+                'district'      => 'nullable|string|max:255',
+                'city'          => 'nullable|string|max:255',
+                'area'          => 'nullable|string|max:255',
+                'location'      => 'nullable|string|max:255',
                 'profile_image' => 'nullable|image|max:2048',
             ]);
 
-            $data = $request->only(['name', 'email', 'phone', 'gender', 'city', 'area', 'location']);
+            // Collect update fields
+            $data = $request->only([
+                'name',
+                'email',
+                'phone',
+                'gender',
+                'division',
+                'district',
+                'city',
+                'area',
+                'location'
+            ]);
 
+            // If user changed email → reset email verification
+            if ($request->email !== $user->email) {
+                $data['email_verified_at'] = null;
+            }
+
+            // Handle profile image upload
             if ($request->hasFile('profile_image')) {
-                if ($user->profile_image) Storage::delete('public/' . $user->profile_image);
+
+                // Delete old file
+                if ($user->profile_image) {
+                    Storage::disk('public')->delete($user->profile_image);
+                }
+
                 $data['profile_image'] = $request->file('profile_image')->store('profile_images', 'public');
             }
 
+            // Update user data
             $user->update($data);
 
-            $user->profile_image = $user->profile_image ? url('storage/' . $user->profile_image) : null;
+            // Prepare full image URL
+            $user->profile_image = $user->profile_image
+                ? url('storage/' . $user->profile_image)
+                : null;
 
             return response()->json([
                 'status'  => 'success',
@@ -302,10 +365,13 @@ class UserApiController extends Controller
                 'user'    => $user
             ]);
         } catch (\Throwable $e) {
-            // Log::error('Edit Profile error: ' . $e->getMessage());
-            return response()->json(['status' => 'error', 'message' => 'Failed to update profile.'], 500);
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Failed to update profile.'
+            ], 500);
         }
     }
+
 
     public function deleteAccount(Request $request)
     {
