@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\API;
 
 use Carbon\Carbon;
 use App\Models\Faq;
+use App\Models\Area;
 use App\Models\City;
 use App\Models\Brand;
 use App\Models\Offer;
@@ -16,6 +17,7 @@ use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Division;
 use App\Models\HomePage;
+use App\Models\OfferType;
 use App\Models\PageBanner;
 use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
@@ -617,7 +619,7 @@ class HomeApiController extends Controller
     public function offerDetails($slug)
     {
         $offer = Offer::where('slug', $slug)->first();
-        $brand = Brand::select('id','slug','name','url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
+        $brand = Brand::select('id', 'slug', 'name', 'url', 'logo', 'image', 'banner_image')->where('id', $offer->brand_id)->first();
         if ($offer) {
             $offer->description       = html_entity_decode(strip_tags($offer->description));
             $offer->short_description = html_entity_decode(strip_tags($offer->short_description));
@@ -734,7 +736,7 @@ class HomeApiController extends Controller
 
     public function brandStores($slug)
     {
-        $brand  = Brand::select('id','slug','name','url', 'logo', 'image', 'banner_image')->with('stores')->where('slug', $slug)->first();
+        $brand  = Brand::select('id', 'slug', 'name', 'url', 'logo', 'image', 'banner_image')->with('stores')->where('slug', $slug)->first();
         $stores = $brand->stores;
 
         if ($brand) {
@@ -806,7 +808,7 @@ class HomeApiController extends Controller
     }
     public function brandOffers($slug)
     {
-        $brand  = Brand::select('id','slug','name','url', 'logo', 'image', 'banner_image')->with('offers')->where('slug', $slug)->first();
+        $brand  = Brand::select('id', 'slug', 'name', 'url', 'logo', 'image', 'banner_image')->with('offers')->where('slug', $slug)->first();
         $offers = $brand->offers;
 
         if ($brand) {
@@ -1100,6 +1102,146 @@ class HomeApiController extends Controller
             'offer'  => $offers,
             'store'  => $stores,
             'count'  => $mergedResults->count(),
+        ]);
+    }
+
+    // filter by area filterByArea all brands, offers, stores belongs to that area all of these 3 tables have this $table->json('area_id')->nullable(); field where id is stored as json. but here i got area_id as slug. so first i need to get area id from slug then filter by that id.
+    public function filterByArea($area_slug)
+    {
+        $area = Area::where('slug', $area_slug)->first();
+
+        if (!$area) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Area not found',
+            ], 404);
+        }
+
+        $areaId = $area->id;
+        $today  = Carbon::now()->format('Y-m-d');
+
+
+        //    BRANDS
+
+        $brands = Brand::whereJsonContains('area_id', (string) $areaId)
+            ->where('status', 'active')
+            ->get()
+            ->map(function ($brand) {
+                return [
+                    'name'        => $brand->name,
+                    'slug'        => $brand->slug,
+                    'logo'        => $brand->logo ? url('storage/' . $brand->logo) : null,
+                    'type'        => 'brand',
+                ];
+            });
+
+
+        //   OFFERS
+
+        $offers = Offer::whereJsonContains('area_id', (string) $areaId)
+            ->where('status', 'active')
+            ->where(function ($query) use ($today) {
+                $query->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
+            ->get()
+            ->map(function ($offer) {
+                return [
+                    'name'         => $offer->name,
+                    'slug'         => $offer->slug,
+                    'image'        => $offer->image ? url('storage/' . $offer->image)                      : null,
+                    'banner_image' => $offer->banner_image ? url('storage/' . $offer->banner_image)        : null,
+                    'brand_logo'   => optional($offer->brand)->logo ? url('storage/' . $offer->brand->logo) : null,
+                    'price'        => $offer->price,
+                    'offer_price'  => $offer->offer_price,
+                    'badge'        => $offer->badge,
+                    'url'          => $offer->url,
+                    'source_url'   => $offer->source_url,
+                    'coupon_code'  => $offer->coupon_code,
+                    'validity'     => $offer->expiry_date ?? 'No Expiry',
+                    'type'         => 'offer',
+                ];
+            });
+
+
+        //  STORES
+
+        // IMPORTANT: stores.area_id is single value, NOT JSON
+        $stores = Store::where('area_id', $areaId)
+            ->where('status', 'active')
+            ->get()
+            ->map(function ($store) {
+                return [
+                    'name'             => $store->title,
+                    'slug'             => $store->slug,
+                    'address_line_one' => $store->address_line_one,
+                    'address_line_two' => $store->address_line_two,
+                    'url'              => $store->url,
+                    'brand_name'       => optional($store->brand)->name,
+                    'brand_slug'       => optional($store->brand)->slug,
+                    'type'             => 'store',
+                ];
+            });
+
+        //   MERGED LIST (IF NEEDED)
+
+        // $merged = $brands->merge($offers)->merge($stores);
+
+        return response()->json([
+            'status' => 'success',
+            'brand'  => $brands,
+            'offer'  => $offers,
+            'store'  => $stores,
+        ]);
+    }
+
+    public function getOfferTypesWithOffers()
+    {
+        $today = now()->format('Y-m-d');
+
+        // Fetch only active offer types that have at least one active/valid offer
+        $offerTypes = OfferType::where('status', 'active')
+            ->whereHas('offers', function ($q) use ($today) {
+                $q->where('status', 'active')
+                    ->where(function ($qq) use ($today) {
+                        $qq->whereNull('expiry_date')
+                            ->orWhere('expiry_date', '>=', $today);
+                    });
+            })
+            ->with(['offers' => function ($q) use ($today) {
+                $q->where('status', 'active')
+                    ->where(function ($qq) use ($today) {
+                        $qq->whereNull('expiry_date')
+                            ->orWhere('expiry_date', '>=', $today);
+                    })
+                    ->with('brand:id,name,slug,logo');
+            }])
+            ->orderBy('name', 'ASC')
+            ->get()
+            ->map(function ($type) {
+                return [
+                    'type_name' => $type->name,
+                    'type_slug' => $type->slug,
+                    'description' => $type->description,
+                    'offers' => $type->offers->map(function ($offer) {
+                        return [
+                            'offer_name'     => $offer->name,
+                            'offer_slug'     => $offer->slug,
+                            'offer_image'    => $offer->image ? url('storage/' . $offer->image) : null,
+                            'brand_logo'     => optional($offer->brand)->logo ? url('storage/' . $offer->brand->logo) : null,
+                            'price'          => $offer->price,
+                            'offer_price'    => $offer->offer_price,
+                            'validity'       => $offer->expiry_date ?? 'No Expiry',
+                            'type'           => 'offer',
+                        ];
+                    })
+                ];
+            });
+
+        return response()->json([
+            'status' => 'success',
+            'count'  => $offerTypes->count(),
+            'data'   => $offerTypes
         ]);
     }
 }

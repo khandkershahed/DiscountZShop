@@ -118,11 +118,13 @@ Route::prefix('api')->group(function () {
     Route::get('/stores', [HomeApiController::class, 'allStore']);
     Route::get('/stores/{id}', [HomeApiController::class, 'storeDetails']);
     Route::get('/stores/search', [HomeApiController::class, 'searchStoreName']);
-    Route::get('/stores/area/{area_id}', [HomeApiController::class, 'filterByArea']);
+    Route::get('/area/{area_id}', [HomeApiController::class, 'filterByArea']);
 
     // Terms and Privacy
     Route::get('/terms-and-conditions', [HomeApiController::class, 'termsCondition']);
     Route::get('/privacy', [HomeApiController::class, 'privacyPolicy']);
+
+    Route::get('/offer-types', [HomeApiController::class, 'getOfferTypesWithOffers']);
 
     // Wallet & FAQ
     Route::get('/wallet', [HomeApiController::class, 'wallet']);

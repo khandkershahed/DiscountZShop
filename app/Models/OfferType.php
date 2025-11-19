@@ -20,9 +20,17 @@ class OfferType extends Model
      */
     protected $guarded = [];
 
+    // public function offers()
+    // {
+    //     return $this->hasMany(Offer::class)->where('expiry_date', '>=', Carbon::now()->format('Y-m-d')); // Assuming an Offer belongs to an OfferType
+    // }
     public function offers()
     {
-        return $this->hasMany(Offer::class)->where('expiry_date', '>=', Carbon::now()->format('Y-m-d')); // Assuming an Offer belongs to an OfferType
+        return $this->hasMany(Offer::class)
+            ->where('status', 'active')
+            ->where(function ($q) {
+                $q->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', now()->format('Y-m-d'));
+            });
     }
-
 }
