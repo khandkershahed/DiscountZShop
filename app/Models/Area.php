@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     use HasFactory,HasSlug;
+    
     protected $slugSourceColumn = 'name';
     /**
      * The attributes that aren't mass assignable.

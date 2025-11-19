@@ -44,7 +44,7 @@ class AreaController extends Controller
             'country_id'     => 'nullable|exists:countries,id',
             'division_id'    => 'nullable|exists:divisions,id',
             'city_id'        => 'nullable|exists:cities,id',
-            'name'           => 'required|string|max:150|unique:divisions,name',
+            'name'           => 'required|string|max:150|unique:areas,name',
             'status'         => 'required|in:active,inactive',
         ], [
             'country_id.exists'  => 'The selected Country does not exist.',
@@ -55,7 +55,7 @@ class AreaController extends Controller
             'name.max'           => 'The name may not be greater than: max characters.',
             'name.unique'        => 'This name has already been taken.',
             'status.required'    => 'The Status field is required.',
-            'status.in'          => 'The status must be one of       : active, inactive.',
+            'status.in'          => 'The status must be one of :active, inactive.',
         ]);
 
         if ($validator->fails()) {
